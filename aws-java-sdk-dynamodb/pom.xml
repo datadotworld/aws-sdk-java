@@ -19,20 +19,20 @@
         <artifactId>aws-java-sdk-s3</artifactId>
         <groupId>com.amazonaws</groupId>
         <optional>false</optional>
-        <version>${awsjavasdk.version}</version>
+        <version>${awsjavasdk-stable.version}</version>
     </dependency>
     <dependency>
         <artifactId>aws-java-sdk-core</artifactId>
         <groupId>com.amazonaws</groupId>
         <optional>false</optional>
-        <version>${awsjavasdk.version}</version>
+        <version>${awsjavasdk-stable.version}</version>
     </dependency>
     <dependency>
         <artifactId>aws-java-sdk-test-utils</artifactId>
         <groupId>com.amazonaws</groupId>
         <optional>false</optional>
         <scope>test</scope>
-        <version>${awsjavasdk.version}</version>
+        <version>${awsjavasdk-stable.version}</version>
     </dependency>
     <dependency>
         <artifactId>junit</artifactId>
@@ -59,6 +59,7 @@
         <artifactId>jmespath-java</artifactId>
         <groupId>com.amazonaws</groupId>
         <optional>false</optional>
+        <version>${awsjavasdk-stable.version}</version>
     </dependency>
 </dependencies>
 
