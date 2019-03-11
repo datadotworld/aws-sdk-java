@@ -1,0 +1,112 @@
+version: 2
+
+resources:
+  base_docker_image: &base_docker_image
+    image: circleci/openjdk:8-jdk-browsers
+
+  env_vars: &env_vars
+    _JAVA_OPTIONS: -Xms512m -Xmx1792m
+    AWS_DEFAULT_REGION: us-east-1
+    DW_PROJECT_HOME: $HOME
+    WORKON_HOME: $HOME/virtualenvs
+    CIRCLE_TEST_REPORTS: /tmp/circleci-test-results
+
+  defaults: &defaults
+    resource_class: xlarge
+    working_directory: ~/aws-sdk-java
+
+    environment:
+      << : *env_vars
+
+    docker:
+      - *base_docker_image
+
+  cache_key: &cache_key
+    key: mvn-deps-{{ checksum "pom.xml" }}
+
+  cache_config: &cache_config
+    key: mvn-deps-{{ checksum "pom.xml" }}
+    paths:
+      - ~/.m2
+
+  copy_test_results: &copy_test_results
+    run:
+      name: Collecting Surefire test reports
+      command: |
+        mkdir -p $CIRCLE_TEST_REPORTS/junit/
+        find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp -v {} $CIRCLE_TEST_REPORTS/junit/ \;
+
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key
+      - run:
+          name: Main maven build
+          command: |
+            mvn clean install -s settings.xml -e
+      - *copy_test_results
+      - save_cache:
+          <<: *cache_config
+      - store_test_results:
+          path: /tmp/circleci-test-results
+
+  master_build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key
+      - run:
+          name: Main maven deploy build
+          command: |
+            mvn clean deploy -s settings.xml -e
+      - *copy_test_results
+      - save_cache:
+          <<: *cache_config
+      - store_test_results:
+          path: /tmp/circleci-test-results
+
+  # Use ".circleci/release.sh" to kick off a release build
+  release_build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          <<: *cache_key
+      - run:
+          name: Configure Git
+          command: |
+            git config user.email "admin@data.world"
+            git config user.name "CircleCI"
+      # Don't use "mvn release:perform", CircleCI will trigger off the new commit and deploy the release tag
+      - run:
+          name: Main maven release build
+          command: |
+            mvn release:prepare -B -s settings.xml
+      - *copy_test_results
+      - save_cache:
+          <<: *cache_config
+      - store_test_results:
+          path: /tmp/circleci-test-results
+
+workflows:
+  version: 2
+
+  build-and-test:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - dw-master
+
+  build-test-deploy:
+    jobs:
+      - master_build:
+          filters:
+            branches:
+              only:
+                - dw-master

@@ -210,9 +210,10 @@
     <!--<module>aws-java-sdk-bundle</module>-->
 </modules>
   <scm>
-    <connection>scm:git:https://github.com/aws/aws-sdk-java.git</connection>
-    <developerConnection>scm:git:git@github.com:aws/aws-sdk-java.git</developerConnection>
-    <url>https://github.com/aws/aws-sdk-java</url>
+      <connection>scm:git:git://github.com/datadotworld/aws-sdk-java.git</connection>
+      <developerConnection>scm:git:git@github.com:datadotworld/aws-sdk-java.git</developerConnection>
+      <url>https://github.com/datadotworld/aws-sdk-java</url>
+      <tag>HEAD</tag>
   </scm>
   <properties>
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
@@ -255,7 +256,7 @@
       <dependency>
         <groupId>com.amazonaws</groupId>
         <artifactId>jmespath-java</artifactId>
-        <version>${awsjavasdk.version}</version>
+        <version>${awsjavasdk-stable.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -303,10 +304,41 @@
               <include>**/*Test.java</include>
               <include>**/*TestCase.java</include>
             </includes>
+            <useSystemClassLoader>false</useSystemClassLoader>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.jfrog.buildinfo</groupId>
+          <artifactId>artifactory-maven-plugin</artifactId>
+          <version>2.6.1</version>
+          <executions>
+            <execution>
+              <id>build-info</id>
+              <goals>
+                <goal>publish</goal>
+              </goals>
+              <configuration>
+                <publisher>
+                  <contextUrl>
+                    {{ARTIFACTORY_CONTEXT_URL|"https://dataworld.artifactoryonline.com/dataworld"}}
+                  </contextUrl>
+                  <username>{{ARTIFACTORY_USERNAME|"maven"}}</username>
+                  <password>{{ARTIFACTORY_PASSWORD}}</password>
+                  <repoKey>libs-release-local</repoKey>
+                  <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                </publisher>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.jfrog.buildinfo</groupId>
+        <artifactId>artifactory-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
   <profiles>
     <profile>
@@ -361,6 +393,7 @@
                 <excludes combine.self="override">
                   <exclude></exclude>
                 </excludes>
+                <useSystemClassLoader>false</useSystemClassLoader>
               </configuration>
             </plugin>
           </plugins>
