@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.515-dw1-SNAPSHOT</version>
+  <version>1.11.515-dw1</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -213,7 +212,7 @@
       <connection>scm:git:git://github.com/datadotworld/aws-sdk-java.git</connection>
       <developerConnection>scm:git:git@github.com:datadotworld/aws-sdk-java.git</developerConnection>
       <url>https://github.com/datadotworld/aws-sdk-java</url>
-      <tag>HEAD</tag>
+      <tag>aws-java-sdk-pom-1.11.515-dw1</tag>
   </scm>
   <properties>
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
@@ -385,13 +384,13 @@
       <build>
         <pluginManagement>
           <plugins>
-            <plugin >
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-surefire-plugin</artifactId>
               <version>2.19.1</version>
               <configuration>
                 <excludes combine.self="override">
-                  <exclude></exclude>
+                  <exclude />
                 </excludes>
                 <useSystemClassLoader>false</useSystemClassLoader>
               </configuration>
