@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.515-dw1</version>
+  <version>1.11.515-dw2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -212,7 +212,7 @@
       <connection>scm:git:git://github.com/datadotworld/aws-sdk-java.git</connection>
       <developerConnection>scm:git:git@github.com:datadotworld/aws-sdk-java.git</developerConnection>
       <url>https://github.com/datadotworld/aws-sdk-java</url>
-      <tag>aws-java-sdk-pom-1.11.515-dw1</tag>
+      <tag>HEAD</tag>
   </scm>
   <properties>
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
