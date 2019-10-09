@@ -26,15 +26,16 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
 
+    /** Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality. */
     private String adaptiveQuantization;
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      */
     private Integer bitrate;
-
+    /** Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output. */
     private String codecLevel;
-
+    /** Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output. */
     private String codecProfile;
     /**
      * Choose Adaptive to improve subjective video quality for high-motion content. This will cause the service to use
@@ -43,9 +44,18 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
      * setting B frames between reference frames (numberBFramesBetweenReferenceFrames).
      */
     private String dynamicSubGop;
-
+    /**
+     * If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to
+     * keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion,
+     * choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal
+     * approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your
+     * transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the
+     * service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the
+     * frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the
+     * settings FramerateNumerator and FramerateDenominator.
+     */
     private String framerateControl;
-
+    /** When set to INTERPOLATE, produces smoother motion during frame rate conversion. */
     private String framerateConversionAlgorithm;
     /** Frame rate denominator. */
     private Integer framerateDenominator;
@@ -59,15 +69,31 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     private Integer gopClosedCadence;
     /** GOP Length (keyframe interval) in frames or seconds. Must be greater than zero. */
     private Double gopSize;
-
+    /**
+     * Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert the GOP
+     * Size into a frame count at run time.
+     */
     private String gopSizeUnits;
     /** Percentage of the buffer that should initially be filled (HRD buffer model). */
     private Integer hrdBufferInitialFillPercentage;
     /** Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000. */
     private Integer hrdBufferSize;
-
+    /**
+     * Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and
+     * Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity
+     * (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD)
+     * use the same field polarity as the source. Therefore, behavior depends on the input scan type. - If the source is
+     * interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The
+     * output could therefore be a mix of "top field first" and "bottom field first". - If the source is progressive,
+     * the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the
+     * Follow options you chose.
+     */
     private String interlaceMode;
-
+    /**
+     * Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC coefficients. If
+     * you choose the value auto, the service will automatically select the precision based on the per-frame compression
+     * ratio.
+     */
     private String intraDcPrecision;
     /** Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000. */
     private Integer maxBitrate;
@@ -81,33 +107,54 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     private Integer minIInterval;
     /** Number of B-frames between reference frames. */
     private Integer numberBFramesBetweenReferenceFrames;
-
+    /**
+     * Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using
+     * the console, do this by choosing Follow source for Pixel aspect ratio.
+     */
     private String parControl;
     /** Pixel Aspect Ratio denominator. */
     private Integer parDenominator;
     /** Pixel Aspect Ratio numerator. */
     private Integer parNumerator;
-
+    /**
+     * Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass video
+     * encoding.
+     */
     private String qualityTuningLevel;
-
+    /**
+     * Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant (cbr).
+     */
     private String rateControlMode;
-
+    /**
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default.
+     */
     private String sceneChangeDetect;
-
+    /**
+     * Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     * correspondingly.
+     */
     private String slowPal;
     /** Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image. */
     private Integer softness;
-
+    /** Adjust quantization within each frame based on spatial variation of content complexity. */
     private String spatialAdaptiveQuantization;
-
+    /** Produces a Type D-10 compatible bitstream (SMPTE 356M-2001). */
     private String syntax;
-
+    /**
+     * Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine (Mpeg2Telecine) to
+     * Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and
+     * leave converstion to the player.
+     */
     private String telecine;
-
+    /** Adjust quantization within each frame based on temporal variation of content complexity. */
     private String temporalAdaptiveQuantization;
 
     /**
+     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+     * 
      * @param adaptiveQuantization
+     *        Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
      * @see Mpeg2AdaptiveQuantization
      */
 
@@ -116,7 +163,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+     * 
+     * @return Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
      * @see Mpeg2AdaptiveQuantization
      */
 
@@ -125,7 +174,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+     * 
      * @param adaptiveQuantization
+     *        Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2AdaptiveQuantization
      */
@@ -136,7 +188,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+     * 
      * @param adaptiveQuantization
+     *        Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2AdaptiveQuantization
      */
@@ -147,12 +202,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      * 
      * @param bitrate
-     *        Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique
-     *        when rounded down to the nearest multiple of 1000.
+     *        Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates
+     *        must be unique when rounded down to the nearest multiple of 1000.
      */
 
     public void setBitrate(Integer bitrate) {
@@ -160,11 +215,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      * 
-     * @return Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique
-     *         when rounded down to the nearest multiple of 1000.
+     * @return Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates
+     *         must be unique when rounded down to the nearest multiple of 1000.
      */
 
     public Integer getBitrate() {
@@ -172,12 +227,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when
-     * rounded down to the nearest multiple of 1000.
+     * Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be
+     * unique when rounded down to the nearest multiple of 1000.
      * 
      * @param bitrate
-     *        Average bitrate in bits/second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique
-     *        when rounded down to the nearest multiple of 1000.
+     *        Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates
+     *        must be unique when rounded down to the nearest multiple of 1000.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -187,7 +242,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
+     * 
      * @param codecLevel
+     *        Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
      * @see Mpeg2CodecLevel
      */
 
@@ -196,7 +254,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
+     * 
+     * @return Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
      * @see Mpeg2CodecLevel
      */
 
@@ -205,7 +265,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
+     * 
      * @param codecLevel
+     *        Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2CodecLevel
      */
@@ -216,7 +279,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
+     * 
      * @param codecLevel
+     *        Use Level (Mpeg2CodecLevel) to set the MPEG-2 level for the video output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2CodecLevel
      */
@@ -227,7 +293,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
+     * 
      * @param codecProfile
+     *        Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
      * @see Mpeg2CodecProfile
      */
 
@@ -236,7 +305,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
+     * 
+     * @return Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
      * @see Mpeg2CodecProfile
      */
 
@@ -245,7 +316,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
+     * 
      * @param codecProfile
+     *        Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2CodecProfile
      */
@@ -256,7 +330,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
+     * 
      * @param codecProfile
+     *        Use Profile (Mpeg2CodecProfile) to set the MPEG-2 profile for the video output.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2CodecProfile
      */
@@ -342,7 +419,25 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to
+     * keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion,
+     * choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal
+     * approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your
+     * transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the
+     * service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the
+     * frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the
+     * settings FramerateNumerator and FramerateDenominator.
+     * 
      * @param framerateControl
+     *        If you are using the console, use the Framerate setting to specify the frame rate for this output. If you
+     *        want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate
+     *        conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the
+     *        dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a
+     *        fraction. If you are creating your transcoding job sepecification as a JSON file without the console, use
+     *        FramerateControl to specify which value the service uses for the frame rate for this output. Choose
+     *        INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if
+     *        you want the service to use the frame rate you specify in the settings FramerateNumerator and
+     *        FramerateDenominator.
      * @see Mpeg2FramerateControl
      */
 
@@ -351,7 +446,24 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to
+     * keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion,
+     * choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal
+     * approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your
+     * transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the
+     * service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the
+     * frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the
+     * settings FramerateNumerator and FramerateDenominator.
+     * 
+     * @return If you are using the console, use the Framerate setting to specify the frame rate for this output. If you
+     *         want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate
+     *         conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the
+     *         dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a
+     *         fraction. If you are creating your transcoding job sepecification as a JSON file without the console, use
+     *         FramerateControl to specify which value the service uses for the frame rate for this output. Choose
+     *         INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if
+     *         you want the service to use the frame rate you specify in the settings FramerateNumerator and
+     *         FramerateDenominator.
      * @see Mpeg2FramerateControl
      */
 
@@ -360,7 +472,25 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to
+     * keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion,
+     * choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal
+     * approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your
+     * transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the
+     * service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the
+     * frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the
+     * settings FramerateNumerator and FramerateDenominator.
+     * 
      * @param framerateControl
+     *        If you are using the console, use the Framerate setting to specify the frame rate for this output. If you
+     *        want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate
+     *        conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the
+     *        dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a
+     *        fraction. If you are creating your transcoding job sepecification as a JSON file without the console, use
+     *        FramerateControl to specify which value the service uses for the frame rate for this output. Choose
+     *        INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if
+     *        you want the service to use the frame rate you specify in the settings FramerateNumerator and
+     *        FramerateDenominator.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2FramerateControl
      */
@@ -371,7 +501,25 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to
+     * keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion,
+     * choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal
+     * approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your
+     * transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the
+     * service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the
+     * frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the
+     * settings FramerateNumerator and FramerateDenominator.
+     * 
      * @param framerateControl
+     *        If you are using the console, use the Framerate setting to specify the frame rate for this output. If you
+     *        want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate
+     *        conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the
+     *        dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a
+     *        fraction. If you are creating your transcoding job sepecification as a JSON file without the console, use
+     *        FramerateControl to specify which value the service uses for the frame rate for this output. Choose
+     *        INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if
+     *        you want the service to use the frame rate you specify in the settings FramerateNumerator and
+     *        FramerateDenominator.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2FramerateControl
      */
@@ -382,7 +530,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to INTERPOLATE, produces smoother motion during frame rate conversion.
+     * 
      * @param framerateConversionAlgorithm
+     *        When set to INTERPOLATE, produces smoother motion during frame rate conversion.
      * @see Mpeg2FramerateConversionAlgorithm
      */
 
@@ -391,7 +542,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * When set to INTERPOLATE, produces smoother motion during frame rate conversion.
+     * 
+     * @return When set to INTERPOLATE, produces smoother motion during frame rate conversion.
      * @see Mpeg2FramerateConversionAlgorithm
      */
 
@@ -400,7 +553,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to INTERPOLATE, produces smoother motion during frame rate conversion.
+     * 
      * @param framerateConversionAlgorithm
+     *        When set to INTERPOLATE, produces smoother motion during frame rate conversion.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2FramerateConversionAlgorithm
      */
@@ -411,7 +567,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * When set to INTERPOLATE, produces smoother motion during frame rate conversion.
+     * 
      * @param framerateConversionAlgorithm
+     *        When set to INTERPOLATE, produces smoother motion during frame rate conversion.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2FramerateConversionAlgorithm
      */
@@ -570,7 +729,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert the GOP
+     * Size into a frame count at run time.
+     * 
      * @param gopSizeUnits
+     *        Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert
+     *        the GOP Size into a frame count at run time.
      * @see Mpeg2GopSizeUnits
      */
 
@@ -579,7 +743,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert the GOP
+     * Size into a frame count at run time.
+     * 
+     * @return Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert
+     *         the GOP Size into a frame count at run time.
      * @see Mpeg2GopSizeUnits
      */
 
@@ -588,7 +756,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert the GOP
+     * Size into a frame count at run time.
+     * 
      * @param gopSizeUnits
+     *        Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert
+     *        the GOP Size into a frame count at run time.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2GopSizeUnits
      */
@@ -599,7 +772,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert the GOP
+     * Size into a frame count at run time.
+     * 
      * @param gopSizeUnits
+     *        Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert
+     *        the GOP Size into a frame count at run time.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2GopSizeUnits
      */
@@ -678,7 +856,25 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and
+     * Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity
+     * (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD)
+     * use the same field polarity as the source. Therefore, behavior depends on the input scan type. - If the source is
+     * interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The
+     * output could therefore be a mix of "top field first" and "bottom field first". - If the source is progressive,
+     * the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the
+     * Follow options you chose.
+     * 
      * @param interlaceMode
+     *        Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First
+     *        (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having
+     *        the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow,
+     *        Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior
+     *        depends on the input scan type. - If the source is interlaced, the output will be interlaced with the same
+     *        polarity as the source (it will follow the source). The output could therefore be a mix of
+     *        "top field first" and "bottom field first". - If the source is progressive, the output will be interlaced
+     *        with "top field first" or "bottom field first" polarity, depending on which of the Follow options you
+     *        chose.
      * @see Mpeg2InterlaceMode
      */
 
@@ -687,7 +883,24 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and
+     * Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity
+     * (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD)
+     * use the same field polarity as the source. Therefore, behavior depends on the input scan type. - If the source is
+     * interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The
+     * output could therefore be a mix of "top field first" and "bottom field first". - If the source is progressive,
+     * the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the
+     * Follow options you chose.
+     * 
+     * @return Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First
+     *         (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having
+     *         the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow,
+     *         Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior
+     *         depends on the input scan type. - If the source is interlaced, the output will be interlaced with the
+     *         same polarity as the source (it will follow the source). The output could therefore be a mix of
+     *         "top field first" and "bottom field first". - If the source is progressive, the output will be interlaced
+     *         with "top field first" or "bottom field first" polarity, depending on which of the Follow options you
+     *         chose.
      * @see Mpeg2InterlaceMode
      */
 
@@ -696,7 +909,25 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and
+     * Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity
+     * (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD)
+     * use the same field polarity as the source. Therefore, behavior depends on the input scan type. - If the source is
+     * interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The
+     * output could therefore be a mix of "top field first" and "bottom field first". - If the source is progressive,
+     * the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the
+     * Follow options you chose.
+     * 
      * @param interlaceMode
+     *        Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First
+     *        (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having
+     *        the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow,
+     *        Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior
+     *        depends on the input scan type. - If the source is interlaced, the output will be interlaced with the same
+     *        polarity as the source (it will follow the source). The output could therefore be a mix of
+     *        "top field first" and "bottom field first". - If the source is progressive, the output will be interlaced
+     *        with "top field first" or "bottom field first" polarity, depending on which of the Follow options you
+     *        chose.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2InterlaceMode
      */
@@ -707,7 +938,25 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and
+     * Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity
+     * (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD)
+     * use the same field polarity as the source. Therefore, behavior depends on the input scan type. - If the source is
+     * interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The
+     * output could therefore be a mix of "top field first" and "bottom field first". - If the source is progressive,
+     * the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the
+     * Follow options you chose.
+     * 
      * @param interlaceMode
+     *        Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First
+     *        (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having
+     *        the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow,
+     *        Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior
+     *        depends on the input scan type. - If the source is interlaced, the output will be interlaced with the same
+     *        polarity as the source (it will follow the source). The output could therefore be a mix of
+     *        "top field first" and "bottom field first". - If the source is progressive, the output will be interlaced
+     *        with "top field first" or "bottom field first" polarity, depending on which of the Follow options you
+     *        chose.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2InterlaceMode
      */
@@ -718,7 +967,14 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC coefficients. If
+     * you choose the value auto, the service will automatically select the precision based on the per-frame compression
+     * ratio.
+     * 
      * @param intraDcPrecision
+     *        Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC
+     *        coefficients. If you choose the value auto, the service will automatically select the precision based on
+     *        the per-frame compression ratio.
      * @see Mpeg2IntraDcPrecision
      */
 
@@ -727,7 +983,13 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC coefficients. If
+     * you choose the value auto, the service will automatically select the precision based on the per-frame compression
+     * ratio.
+     * 
+     * @return Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC
+     *         coefficients. If you choose the value auto, the service will automatically select the precision based on
+     *         the per-frame compression ratio.
      * @see Mpeg2IntraDcPrecision
      */
 
@@ -736,7 +998,14 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC coefficients. If
+     * you choose the value auto, the service will automatically select the precision based on the per-frame compression
+     * ratio.
+     * 
      * @param intraDcPrecision
+     *        Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC
+     *        coefficients. If you choose the value auto, the service will automatically select the precision based on
+     *        the per-frame compression ratio.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2IntraDcPrecision
      */
@@ -747,7 +1016,14 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC coefficients. If
+     * you choose the value auto, the service will automatically select the precision based on the per-frame compression
+     * ratio.
+     * 
      * @param intraDcPrecision
+     *        Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC
+     *        coefficients. If you choose the value auto, the service will automatically select the precision based on
+     *        the per-frame compression ratio.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2IntraDcPrecision
      */
@@ -884,7 +1160,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using
+     * the console, do this by choosing Follow source for Pixel aspect ratio.
+     * 
      * @param parControl
+     *        Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the
+     *        input. Using the console, do this by choosing Follow source for Pixel aspect ratio.
      * @see Mpeg2ParControl
      */
 
@@ -893,7 +1174,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using
+     * the console, do this by choosing Follow source for Pixel aspect ratio.
+     * 
+     * @return Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the
+     *         input. Using the console, do this by choosing Follow source for Pixel aspect ratio.
      * @see Mpeg2ParControl
      */
 
@@ -902,7 +1187,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using
+     * the console, do this by choosing Follow source for Pixel aspect ratio.
+     * 
      * @param parControl
+     *        Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the
+     *        input. Using the console, do this by choosing Follow source for Pixel aspect ratio.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2ParControl
      */
@@ -913,7 +1203,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using
+     * the console, do this by choosing Follow source for Pixel aspect ratio.
+     * 
      * @param parControl
+     *        Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the
+     *        input. Using the console, do this by choosing Follow source for Pixel aspect ratio.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2ParControl
      */
@@ -992,7 +1287,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass video
+     * encoding.
+     * 
      * @param qualityTuningLevel
+     *        Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass
+     *        video encoding.
      * @see Mpeg2QualityTuningLevel
      */
 
@@ -1001,7 +1301,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass video
+     * encoding.
+     * 
+     * @return Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass
+     *         video encoding.
      * @see Mpeg2QualityTuningLevel
      */
 
@@ -1010,7 +1314,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass video
+     * encoding.
+     * 
      * @param qualityTuningLevel
+     *        Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass
+     *        video encoding.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2QualityTuningLevel
      */
@@ -1021,7 +1330,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass video
+     * encoding.
+     * 
      * @param qualityTuningLevel
+     *        Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass
+     *        video encoding.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2QualityTuningLevel
      */
@@ -1032,7 +1346,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant (cbr).
+     * 
      * @param rateControlMode
+     *        Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant
+     *        (cbr).
      * @see Mpeg2RateControlMode
      */
 
@@ -1041,7 +1359,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant (cbr).
+     * 
+     * @return Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or
+     *         constant (cbr).
      * @see Mpeg2RateControlMode
      */
 
@@ -1050,7 +1371,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant (cbr).
+     * 
      * @param rateControlMode
+     *        Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant
+     *        (cbr).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2RateControlMode
      */
@@ -1061,7 +1386,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant (cbr).
+     * 
      * @param rateControlMode
+     *        Use Rate control mode (Mpeg2RateControlMode) to specifiy whether the bitrate is variable (vbr) or constant
+     *        (cbr).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2RateControlMode
      */
@@ -1072,7 +1401,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default.
+     * 
      * @param sceneChangeDetect
+     *        Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *        improves video quality and is enabled by default.
      * @see Mpeg2SceneChangeDetect
      */
 
@@ -1081,7 +1415,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default.
+     * 
+     * @return Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *         improves video quality and is enabled by default.
      * @see Mpeg2SceneChangeDetect
      */
 
@@ -1090,7 +1428,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default.
+     * 
      * @param sceneChangeDetect
+     *        Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *        improves video quality and is enabled by default.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2SceneChangeDetect
      */
@@ -1101,7 +1444,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves
+     * video quality and is enabled by default.
+     * 
      * @param sceneChangeDetect
+     *        Enable this setting to insert I-frames at scene changes that the service automatically detects. This
+     *        improves video quality and is enabled by default.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2SceneChangeDetect
      */
@@ -1112,7 +1460,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     * correspondingly.
+     * 
      * @param slowPal
+     *        Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     *        correspondingly.
      * @see Mpeg2SlowPal
      */
 
@@ -1121,7 +1474,11 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     * correspondingly.
+     * 
+     * @return Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     *         correspondingly.
      * @see Mpeg2SlowPal
      */
 
@@ -1130,7 +1487,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     * correspondingly.
+     * 
      * @param slowPal
+     *        Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     *        correspondingly.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2SlowPal
      */
@@ -1141,7 +1503,12 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     * correspondingly.
+     * 
      * @param slowPal
+     *        Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up
+     *        correspondingly.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2SlowPal
      */
@@ -1186,7 +1553,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adjust quantization within each frame based on spatial variation of content complexity.
+     * 
      * @param spatialAdaptiveQuantization
+     *        Adjust quantization within each frame based on spatial variation of content complexity.
      * @see Mpeg2SpatialAdaptiveQuantization
      */
 
@@ -1195,7 +1565,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Adjust quantization within each frame based on spatial variation of content complexity.
+     * 
+     * @return Adjust quantization within each frame based on spatial variation of content complexity.
      * @see Mpeg2SpatialAdaptiveQuantization
      */
 
@@ -1204,7 +1576,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adjust quantization within each frame based on spatial variation of content complexity.
+     * 
      * @param spatialAdaptiveQuantization
+     *        Adjust quantization within each frame based on spatial variation of content complexity.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2SpatialAdaptiveQuantization
      */
@@ -1215,7 +1590,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adjust quantization within each frame based on spatial variation of content complexity.
+     * 
      * @param spatialAdaptiveQuantization
+     *        Adjust quantization within each frame based on spatial variation of content complexity.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2SpatialAdaptiveQuantization
      */
@@ -1226,7 +1604,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
+     * 
      * @param syntax
+     *        Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
      * @see Mpeg2Syntax
      */
 
@@ -1235,7 +1616,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
+     * 
+     * @return Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
      * @see Mpeg2Syntax
      */
 
@@ -1244,7 +1627,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
+     * 
      * @param syntax
+     *        Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2Syntax
      */
@@ -1255,7 +1641,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
+     * 
      * @param syntax
+     *        Produces a Type D-10 compatible bitstream (SMPTE 356M-2001).
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2Syntax
      */
@@ -1266,7 +1655,14 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine (Mpeg2Telecine) to
+     * Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and
+     * leave converstion to the player.
+     * 
      * @param telecine
+     *        Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine
+     *        (Mpeg2Telecine) to Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to
+     *        produce 23.976 output and leave converstion to the player.
      * @see Mpeg2Telecine
      */
 
@@ -1275,7 +1671,13 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine (Mpeg2Telecine) to
+     * Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and
+     * leave converstion to the player.
+     * 
+     * @return Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine
+     *         (Mpeg2Telecine) to Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to
+     *         produce 23.976 output and leave converstion to the player.
      * @see Mpeg2Telecine
      */
 
@@ -1284,7 +1686,14 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine (Mpeg2Telecine) to
+     * Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and
+     * leave converstion to the player.
+     * 
      * @param telecine
+     *        Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine
+     *        (Mpeg2Telecine) to Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to
+     *        produce 23.976 output and leave converstion to the player.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2Telecine
      */
@@ -1295,7 +1704,14 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine (Mpeg2Telecine) to
+     * Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and
+     * leave converstion to the player.
+     * 
      * @param telecine
+     *        Only use Telecine (Mpeg2Telecine) when you set Framerate (Framerate) to 29.970. Set Telecine
+     *        (Mpeg2Telecine) to Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to
+     *        produce 23.976 output and leave converstion to the player.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2Telecine
      */
@@ -1306,7 +1722,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adjust quantization within each frame based on temporal variation of content complexity.
+     * 
      * @param temporalAdaptiveQuantization
+     *        Adjust quantization within each frame based on temporal variation of content complexity.
      * @see Mpeg2TemporalAdaptiveQuantization
      */
 
@@ -1315,7 +1734,9 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Adjust quantization within each frame based on temporal variation of content complexity.
+     * 
+     * @return Adjust quantization within each frame based on temporal variation of content complexity.
      * @see Mpeg2TemporalAdaptiveQuantization
      */
 
@@ -1324,7 +1745,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adjust quantization within each frame based on temporal variation of content complexity.
+     * 
      * @param temporalAdaptiveQuantization
+     *        Adjust quantization within each frame based on temporal variation of content complexity.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2TemporalAdaptiveQuantization
      */
@@ -1335,7 +1759,10 @@ public class Mpeg2Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Adjust quantization within each frame based on temporal variation of content complexity.
+     * 
      * @param temporalAdaptiveQuantization
+     *        Adjust quantization within each frame based on temporal variation of content complexity.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see Mpeg2TemporalAdaptiveQuantization
      */

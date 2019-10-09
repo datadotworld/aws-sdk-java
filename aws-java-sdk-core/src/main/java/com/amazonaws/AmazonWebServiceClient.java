@@ -18,15 +18,13 @@ import static com.amazonaws.SDKGlobalConfiguration.PROFILING_SYSTEM_PROPERTY;
 
 import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.annotation.SdkProtectedApi;
+import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.EndpointPrefixAwareSigner;
 import com.amazonaws.auth.RegionAwareSigner;
 import com.amazonaws.auth.Signer;
 import com.amazonaws.auth.SignerFactory;
 import com.amazonaws.client.AwsSyncClientParams;
 import com.amazonaws.client.builder.AwsClientBuilder;
-import com.amazonaws.monitoring.internal.AgentMonitoringListener;
-import com.amazonaws.monitoring.internal.ClientSideMonitoringRequestHandler;
-import com.amazonaws.monitoring.MonitoringListener;
 import com.amazonaws.handlers.RequestHandler;
 import com.amazonaws.handlers.RequestHandler2;
 import com.amazonaws.http.AmazonHttpClient;
@@ -40,6 +38,10 @@ import com.amazonaws.metrics.AwsSdkMetrics;
 import com.amazonaws.metrics.RequestMetricCollector;
 import com.amazonaws.monitoring.CsmConfiguration;
 import com.amazonaws.monitoring.CsmConfigurationProvider;
+import com.amazonaws.monitoring.DefaultCsmConfigurationProviderChain;
+import com.amazonaws.monitoring.MonitoringListener;
+import com.amazonaws.monitoring.internal.AgentMonitoringListener;
+import com.amazonaws.monitoring.internal.ClientSideMonitoringRequestHandler;
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.util.AWSRequestMetrics;
@@ -99,9 +101,17 @@ public abstract class AmazonWebServiceClient {
      * <p>
      * Subclass should only read but not assign to this field, at least not
      * without synchronization on the enclosing object for thread-safety
-     * reason.
+     * reason. If this value is changed to effectively override the endpoint, then the 'isEndpointOverridden' property
+     * should also be set to 'true' within the same synchronized block of code.
      */
     protected volatile URI endpoint;
+
+    /**
+     * A boolean flag that indicates whether the endpoint has been overridden either on construction or later mutated
+     * due to a call to setEndpoint(). If the endpoint property is updated directly then the method doing that update
+     * also has the responsibility to update this flag as part of an atomic threadsafe operation.
+     */
+    protected volatile boolean isEndpointOverridden = false;
 
     /**
      * Used to explicitly override the internal signer region computed by the
@@ -173,29 +183,62 @@ public abstract class AmazonWebServiceClient {
     }
 
     @SdkProtectedApi
-    protected AmazonWebServiceClient(ClientConfiguration clientConfiguration,
-                                     RequestMetricCollector requestMetricCollector,
+    protected AmazonWebServiceClient(final ClientConfiguration clientConfiguration,
+                                     final RequestMetricCollector requestMetricCollector,
                                      boolean disableStrictHostNameVerification) {
-        this.clientConfiguration = clientConfiguration;
-        requestHandler2s = new CopyOnWriteArrayList<RequestHandler2>();
-        monitoringListeners = new CopyOnWriteArrayList<MonitoringListener>();
-        client = new AmazonHttpClient(clientConfiguration,
-                requestMetricCollector, disableStrictHostNameVerification,
-                calculateCRC32FromCompressedData());
-        this.csmConfiguration = null;
+        this(new AwsSyncClientParams() {
+            @Override
+            public AWSCredentialsProvider getCredentialsProvider() {
+                return null;
+            }
+
+            @Override
+            public ClientConfiguration getClientConfiguration() {
+                return clientConfiguration;
+            }
+
+            @Override
+            public RequestMetricCollector getRequestMetricCollector() {
+                return requestMetricCollector;
+            }
+
+            @Override
+            public List<RequestHandler2> getRequestHandlers() {
+                return new CopyOnWriteArrayList<RequestHandler2>();
+            }
+
+            @Override
+            public CsmConfigurationProvider getClientSideMonitoringConfigurationProvider() {
+                return DefaultCsmConfigurationProviderChain.getInstance();
+            }
+
+            @Override
+            public MonitoringListener getMonitoringListener() {
+                return null;
+            }
+        }, !disableStrictHostNameVerification);
     }
 
     protected AmazonWebServiceClient(AwsSyncClientParams clientParams) {
+        this(clientParams, null);
+    }
+
+    private AmazonWebServiceClient(AwsSyncClientParams clientParams, Boolean useStrictHostNameVerification) {
         this.clientConfiguration = clientParams.getClientConfiguration();
-        requestHandler2s = clientParams.getRequestHandlers();
-        monitoringListeners = new CopyOnWriteArrayList<MonitoringListener>();
-        client = new AmazonHttpClient(clientConfiguration, clientParams.getRequestMetricCollector(),
-                                      !useStrictHostNameVerification(),
-                                      calculateCRC32FromCompressedData());
+        this.requestHandler2s = clientParams.getRequestHandlers();
+        this.monitoringListeners = new CopyOnWriteArrayList<MonitoringListener>();
+
+        useStrictHostNameVerification = useStrictHostNameVerification != null ? useStrictHostNameVerification
+                                                                              : useStrictHostNameVerification();
+
+        this.client = new AmazonHttpClient(clientConfiguration,
+                                           clientParams.getRequestMetricCollector(),
+                                           !useStrictHostNameVerification,
+                                           calculateCRC32FromCompressedData());
         this.csmConfiguration = getCsmConfiguration(clientParams.getClientSideMonitoringConfigurationProvider());
 
         if (isCsmEnabled()) {
-            agentMonitoringListener = new AgentMonitoringListener(csmConfiguration.getPort());
+            agentMonitoringListener = new AgentMonitoringListener(csmConfiguration.getHost(), csmConfiguration.getPort());
             monitoringListeners.add(agentMonitoringListener);
         }
 
@@ -217,6 +260,15 @@ public abstract class AmazonWebServiceClient {
     @Deprecated
     protected Signer getSigner() {
         return signerProvider.getSigner(SignerProviderContext.builder().build());
+    }
+
+    /**
+     * Returns a flag that indicates whether the endpoint for this client has been overridden or not.
+     * @return true if the configured endpoint is an override; false if not.
+     */
+    @SdkProtectedApi
+    protected boolean isEndpointOverridden() {
+        return this.isEndpointOverridden;
     }
 
     /**
@@ -263,6 +315,7 @@ public abstract class AmazonWebServiceClient {
         URI uri = toURI(endpoint);
         Signer signer = computeSignerByURI(uri, signerRegionOverride, false);
         synchronized (this) {
+            this.isEndpointOverridden = true;
             this.endpoint = uri;
             this.signerProvider = createSignerProvider(signer);
             this.signingRegion = AwsHostNameUtils.parseRegion(endpoint, getEndpointPrefix());
@@ -325,6 +378,7 @@ public abstract class AmazonWebServiceClient {
         synchronized (this) {
             setServiceNameIntern(serviceName);
             this.signerProvider = createSignerProvider(signer);
+            this.isEndpointOverridden = true;
             this.endpoint = uri;
             this.signerRegionOverride = regionId;
             this.signingRegion = regionId;
@@ -460,6 +514,7 @@ public abstract class AmazonWebServiceClient {
                 .toString()).withRegion(region).getServiceEndpoint();
         Signer signer = computeSignerByServiceRegion(serviceNameForSigner, region.getName(), signerRegionOverride, false);
         synchronized (this) {
+            this.isEndpointOverridden = false;
             this.endpoint = uri;
             this.signerProvider = createSignerProvider(signer);
             this.signingRegion = AwsHostNameUtils.parseRegion(endpoint.toString(), getEndpointPrefix());
@@ -484,10 +539,8 @@ public abstract class AmazonWebServiceClient {
 
     /**
      * Shuts down this client object, releasing any resources that might be held
-     * open. This is an optional method, and callers are not expected to call
-     * it, but can if they want to explicitly release any open resources. Once a
-     * client has been shutdown, it should not be used to make any more
-     * requests.
+     * open. If this method is not invoked, resources may be leaked. Once a client
+     * has been shutdown, it should not be used to make any more requests.
      */
     public void shutdown() {
         if (agentMonitoringListener != null) {

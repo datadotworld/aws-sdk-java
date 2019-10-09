@@ -26,6 +26,10 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DashPackage implements Serializable, Cloneable, StructuredPojo {
 
+    private java.util.List<String> adTriggers;
+
+    private String adsOnDeliveryRestrictions;
+
     private DashEncryption encryption;
     /**
      * Determines the position of some tags in the Media Presentation Description (MPD). When set to FULL, elements like
@@ -60,15 +64,131 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
      */
     private Integer segmentDurationSeconds;
     /**
-     * Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     * Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      * NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs. When set to
+     * NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media URLs.
      */
     private String segmentTemplateFormat;
 
     private StreamSelection streamSelection;
     /** Duration (in seconds) to delay live content before presentation. */
     private Integer suggestedPresentationDelaySeconds;
+
+    /**
+     * @return
+     * @see AdTriggersElement
+     */
+
+    public java.util.List<String> getAdTriggers() {
+        return adTriggers;
+    }
+
+    /**
+     * @param adTriggers
+     * @see AdTriggersElement
+     */
+
+    public void setAdTriggers(java.util.Collection<String> adTriggers) {
+        if (adTriggers == null) {
+            this.adTriggers = null;
+            return;
+        }
+
+        this.adTriggers = new java.util.ArrayList<String>(adTriggers);
+    }
+
+    /**
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAdTriggers(java.util.Collection)} or {@link #withAdTriggers(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param adTriggers
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AdTriggersElement
+     */
+
+    public DashPackage withAdTriggers(String... adTriggers) {
+        if (this.adTriggers == null) {
+            setAdTriggers(new java.util.ArrayList<String>(adTriggers.length));
+        }
+        for (String ele : adTriggers) {
+            this.adTriggers.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * @param adTriggers
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AdTriggersElement
+     */
+
+    public DashPackage withAdTriggers(java.util.Collection<String> adTriggers) {
+        setAdTriggers(adTriggers);
+        return this;
+    }
+
+    /**
+     * @param adTriggers
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AdTriggersElement
+     */
+
+    public DashPackage withAdTriggers(AdTriggersElement... adTriggers) {
+        java.util.ArrayList<String> adTriggersCopy = new java.util.ArrayList<String>(adTriggers.length);
+        for (AdTriggersElement value : adTriggers) {
+            adTriggersCopy.add(value.toString());
+        }
+        if (getAdTriggers() == null) {
+            setAdTriggers(adTriggersCopy);
+        } else {
+            getAdTriggers().addAll(adTriggersCopy);
+        }
+        return this;
+    }
+
+    /**
+     * @param adsOnDeliveryRestrictions
+     * @see AdsOnDeliveryRestrictions
+     */
+
+    public void setAdsOnDeliveryRestrictions(String adsOnDeliveryRestrictions) {
+        this.adsOnDeliveryRestrictions = adsOnDeliveryRestrictions;
+    }
+
+    /**
+     * @return
+     * @see AdsOnDeliveryRestrictions
+     */
+
+    public String getAdsOnDeliveryRestrictions() {
+        return this.adsOnDeliveryRestrictions;
+    }
+
+    /**
+     * @param adsOnDeliveryRestrictions
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AdsOnDeliveryRestrictions
+     */
+
+    public DashPackage withAdsOnDeliveryRestrictions(String adsOnDeliveryRestrictions) {
+        setAdsOnDeliveryRestrictions(adsOnDeliveryRestrictions);
+        return this;
+    }
+
+    /**
+     * @param adsOnDeliveryRestrictions
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AdsOnDeliveryRestrictions
+     */
+
+    public DashPackage withAdsOnDeliveryRestrictions(AdsOnDeliveryRestrictions adsOnDeliveryRestrictions) {
+        this.adsOnDeliveryRestrictions = adsOnDeliveryRestrictions.toString();
+        return this;
+    }
 
     /**
      * @param encryption
@@ -490,14 +610,17 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     * Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      * NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs. When set to
+     * NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media URLs.
      * 
      * @param segmentTemplateFormat
-     *        Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     *        Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      *        NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When
      *        set to TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     *        When set to NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media
+     *        URLs.
      * @see SegmentTemplateFormat
      */
 
@@ -506,14 +629,16 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     * Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      * NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs. When set to
+     * NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media URLs.
      * 
-     * @return Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     * @return Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      *         NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs.
      *         When set to TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media
-     *         URLs.
+     *         URLs. When set to NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with
+     *         $Number$ media URLs.
      * @see SegmentTemplateFormat
      */
 
@@ -522,14 +647,17 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     * Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      * NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs. When set to
+     * NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media URLs.
      * 
      * @param segmentTemplateFormat
-     *        Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     *        Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      *        NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When
      *        set to TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     *        When set to NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media
+     *        URLs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SegmentTemplateFormat
      */
@@ -540,14 +668,17 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     * Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      * NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When set to
-     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     * TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs. When set to
+     * NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media URLs.
      * 
      * @param segmentTemplateFormat
-     *        Determines the type of SegmentTimeline included in the Media Presentation Description (MPD). When set to
+     *        Determines the type of SegmentTemplate included in the Media Presentation Description (MPD). When set to
      *        NUMBER_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Number$ media URLs. When
      *        set to TIME_WITH_TIMELINE, a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+     *        When set to NUMBER_WITH_DURATION, only a duration is included in each SegmentTemplate, with $Number$ media
+     *        URLs.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see SegmentTemplateFormat
      */
@@ -629,6 +760,10 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAdTriggers() != null)
+            sb.append("AdTriggers: ").append(getAdTriggers()).append(",");
+        if (getAdsOnDeliveryRestrictions() != null)
+            sb.append("AdsOnDeliveryRestrictions: ").append(getAdsOnDeliveryRestrictions()).append(",");
         if (getEncryption() != null)
             sb.append("Encryption: ").append(getEncryption()).append(",");
         if (getManifestLayout() != null)
@@ -665,6 +800,14 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
         if (obj instanceof DashPackage == false)
             return false;
         DashPackage other = (DashPackage) obj;
+        if (other.getAdTriggers() == null ^ this.getAdTriggers() == null)
+            return false;
+        if (other.getAdTriggers() != null && other.getAdTriggers().equals(this.getAdTriggers()) == false)
+            return false;
+        if (other.getAdsOnDeliveryRestrictions() == null ^ this.getAdsOnDeliveryRestrictions() == null)
+            return false;
+        if (other.getAdsOnDeliveryRestrictions() != null && other.getAdsOnDeliveryRestrictions().equals(this.getAdsOnDeliveryRestrictions()) == false)
+            return false;
         if (other.getEncryption() == null ^ this.getEncryption() == null)
             return false;
         if (other.getEncryption() != null && other.getEncryption().equals(this.getEncryption()) == false)
@@ -718,6 +861,8 @@ public class DashPackage implements Serializable, Cloneable, StructuredPojo {
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAdTriggers() == null) ? 0 : getAdTriggers().hashCode());
+        hashCode = prime * hashCode + ((getAdsOnDeliveryRestrictions() == null) ? 0 : getAdsOnDeliveryRestrictions().hashCode());
         hashCode = prime * hashCode + ((getEncryption() == null) ? 0 : getEncryption().hashCode());
         hashCode = prime * hashCode + ((getManifestLayout() == null) ? 0 : getManifestLayout().hashCode());
         hashCode = prime * hashCode + ((getManifestWindowSeconds() == null) ? 0 : getManifestWindowSeconds().hashCode());

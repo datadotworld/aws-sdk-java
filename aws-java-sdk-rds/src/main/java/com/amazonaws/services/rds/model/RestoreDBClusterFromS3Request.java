@@ -27,7 +27,7 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> availabilityZones;
@@ -142,16 +142,37 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
      * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
      * </p>
      * <p>
      * <b>Aurora PostgreSQL</b>
      * </p>
      * <p>
-     * Example: <code>9.6.3</code>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
      * </p>
      */
     private String engineVersion;
@@ -273,7 +294,7 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
     /**
      * <p>
-     * Specifies whether the restored DB cluster is encrypted.
+     * A value that indicates whether the restored DB cluster is encrypted.
      * </p>
      */
     private Boolean storageEncrypted;
@@ -287,20 +308,21 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * can use the KMS key alias instead of the ARN for the KM encryption key.
      * </p>
      * <p>
-     * If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
-     * <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS
-     * Region.
+     * If the StorageEncrypted parameter is enabled, and you do not specify a value for the <code>KmsKeyId</code>
+     * parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for
+     * your AWS account. Your AWS account has a different default encryption key for each AWS Region.
      * </p>
      */
     private String kmsKeyId;
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
@@ -376,25 +398,25 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
     private com.amazonaws.internal.SdkInternalList<String> enableCloudwatchLogsExports;
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      */
     private Boolean deletionProtection;
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      */
     private Boolean copyTagsToSnapshot;
 
     /**
      * <p>
-     * A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * 
-     * @return A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * @return A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      */
 
     public java.util.List<String> getAvailabilityZones() {
@@ -406,11 +428,11 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * 
      * @param availabilityZones
-     *        A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     *        A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      */
 
     public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
@@ -424,7 +446,7 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -433,7 +455,7 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * </p>
      * 
      * @param availabilityZones
-     *        A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     *        A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -449,11 +471,11 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * 
      * @param availabilityZones
-     *        A list of EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     *        A list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1153,31 +1175,74 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
      * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
      * </p>
      * <p>
      * <b>Aurora PostgreSQL</b>
      * </p>
      * <p>
-     * Example: <code>9.6.3</code>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to use.</p>
      *        <p>
+     *        To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *        use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *        Aurora), use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *        command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
      *        <b>Aurora MySQL</b>
      *        </p>
      *        <p>
-     *        Example: <code>5.6.10a</code>
+     *        Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     *        <code>5.7.mysql_aurora.2.04.5</code>
      *        </p>
      *        <p>
      *        <b>Aurora PostgreSQL</b>
      *        </p>
      *        <p>
-     *        Example: <code>9.6.3</code>
+     *        Example: <code>9.6.3</code>, <code>10.7</code>
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -1189,30 +1254,73 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
      * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
      * </p>
      * <p>
      * <b>Aurora PostgreSQL</b>
      * </p>
      * <p>
-     * Example: <code>9.6.3</code>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
      * </p>
      * 
      * @return The version number of the database engine to use.</p>
      *         <p>
+     *         To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *         use the following command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *         Aurora), use the following command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *         command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
      *         <b>Aurora MySQL</b>
      *         </p>
      *         <p>
-     *         Example: <code>5.6.10a</code>
+     *         Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     *         <code>5.7.mysql_aurora.2.04.5</code>
      *         </p>
      *         <p>
      *         <b>Aurora PostgreSQL</b>
      *         </p>
      *         <p>
-     *         Example: <code>9.6.3</code>
+     *         Example: <code>9.6.3</code>, <code>10.7</code>
      */
 
     public String getEngineVersion() {
@@ -1224,31 +1332,74 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * The version number of the database engine to use.
      * </p>
      * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
      * <b>Aurora MySQL</b>
      * </p>
      * <p>
-     * Example: <code>5.6.10a</code>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
      * </p>
      * <p>
      * <b>Aurora PostgreSQL</b>
      * </p>
      * <p>
-     * Example: <code>9.6.3</code>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
      * </p>
      * 
      * @param engineVersion
      *        The version number of the database engine to use.</p>
      *        <p>
+     *        To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *        use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *        Aurora), use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *        command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
      *        <b>Aurora MySQL</b>
      *        </p>
      *        <p>
-     *        Example: <code>5.6.10a</code>
+     *        Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     *        <code>5.7.mysql_aurora.2.04.5</code>
      *        </p>
      *        <p>
      *        <b>Aurora PostgreSQL</b>
      *        </p>
      *        <p>
-     *        Example: <code>9.6.3</code>
+     *        Example: <code>9.6.3</code>, <code>10.7</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2007,11 +2158,11 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Specifies whether the restored DB cluster is encrypted.
+     * A value that indicates whether the restored DB cluster is encrypted.
      * </p>
      * 
      * @param storageEncrypted
-     *        Specifies whether the restored DB cluster is encrypted.
+     *        A value that indicates whether the restored DB cluster is encrypted.
      */
 
     public void setStorageEncrypted(Boolean storageEncrypted) {
@@ -2020,10 +2171,10 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Specifies whether the restored DB cluster is encrypted.
+     * A value that indicates whether the restored DB cluster is encrypted.
      * </p>
      * 
-     * @return Specifies whether the restored DB cluster is encrypted.
+     * @return A value that indicates whether the restored DB cluster is encrypted.
      */
 
     public Boolean getStorageEncrypted() {
@@ -2032,11 +2183,11 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Specifies whether the restored DB cluster is encrypted.
+     * A value that indicates whether the restored DB cluster is encrypted.
      * </p>
      * 
      * @param storageEncrypted
-     *        Specifies whether the restored DB cluster is encrypted.
+     *        A value that indicates whether the restored DB cluster is encrypted.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2047,10 +2198,10 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Specifies whether the restored DB cluster is encrypted.
+     * A value that indicates whether the restored DB cluster is encrypted.
      * </p>
      * 
-     * @return Specifies whether the restored DB cluster is encrypted.
+     * @return A value that indicates whether the restored DB cluster is encrypted.
      */
 
     public Boolean isStorageEncrypted() {
@@ -2067,10 +2218,9 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * can use the KMS key alias instead of the ARN for the KM encryption key.
      * </p>
      * <p>
-     * If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
-     * <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS
-     * Region.
+     * If the StorageEncrypted parameter is enabled, and you do not specify a value for the <code>KmsKeyId</code>
+     * parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for
+     * your AWS account. Your AWS account has a different default encryption key for each AWS Region.
      * </p>
      * 
      * @param kmsKeyId
@@ -2081,10 +2231,9 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      *        then you can use the KMS key alias instead of the ARN for the KM encryption key.
      *        </p>
      *        <p>
-     *        If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
-     *        <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the
-     *        default encryption key for your AWS account. Your AWS account has a different default encryption key for
-     *        each AWS Region.
+     *        If the StorageEncrypted parameter is enabled, and you do not specify a value for the <code>KmsKeyId</code>
+     *        parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption
+     *        key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -2101,10 +2250,9 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * can use the KMS key alias instead of the ARN for the KM encryption key.
      * </p>
      * <p>
-     * If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
-     * <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS
-     * Region.
+     * If the StorageEncrypted parameter is enabled, and you do not specify a value for the <code>KmsKeyId</code>
+     * parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for
+     * your AWS account. Your AWS account has a different default encryption key for each AWS Region.
      * </p>
      * 
      * @return The AWS KMS key identifier for an encrypted DB cluster.</p>
@@ -2114,7 +2262,7 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      *         cluster, then you can use the KMS key alias instead of the ARN for the KM encryption key.
      *         </p>
      *         <p>
-     *         If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
+     *         If the StorageEncrypted parameter is enabled, and you do not specify a value for the
      *         <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates
      *         the default encryption key for your AWS account. Your AWS account has a different default encryption key
      *         for each AWS Region.
@@ -2134,10 +2282,9 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      * can use the KMS key alias instead of the ARN for the KM encryption key.
      * </p>
      * <p>
-     * If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
-     * <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the
-     * default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS
-     * Region.
+     * If the StorageEncrypted parameter is enabled, and you do not specify a value for the <code>KmsKeyId</code>
+     * parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption key for
+     * your AWS account. Your AWS account has a different default encryption key for each AWS Region.
      * </p>
      * 
      * @param kmsKeyId
@@ -2148,10 +2295,9 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
      *        then you can use the KMS key alias instead of the ARN for the KM encryption key.
      *        </p>
      *        <p>
-     *        If the <code>StorageEncrypted</code> parameter is true, and you do not specify a value for the
-     *        <code>KmsKeyId</code> parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the
-     *        default encryption key for your AWS account. Your AWS account has a different default encryption key for
-     *        each AWS Region.
+     *        If the StorageEncrypted parameter is enabled, and you do not specify a value for the <code>KmsKeyId</code>
+     *        parameter, then Amazon RDS will use your default encryption key. AWS KMS creates the default encryption
+     *        key for your AWS account. Your AWS account has a different default encryption key for each AWS Region.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2162,18 +2308,22 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *        otherwise false.</p>
+     *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts. By default, mapping is disabled.</p>
      *        <p>
-     *        Default: <code>false</code>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *        Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public void setEnableIAMDatabaseAuthentication(Boolean enableIAMDatabaseAuthentication) {
@@ -2182,17 +2332,21 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *         otherwise false.</p>
+     * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts. By default, mapping is disabled.</p>
      *         <p>
-     *         Default: <code>false</code>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *         Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public Boolean getEnableIAMDatabaseAuthentication() {
@@ -2201,18 +2355,22 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *        otherwise false.</p>
+     *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts. By default, mapping is disabled.</p>
      *        <p>
-     *        Default: <code>false</code>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *        Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2223,17 +2381,21 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *         otherwise false.</p>
+     * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts. By default, mapping is disabled.</p>
      *         <p>
-     *         Default: <code>false</code>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *         Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public Boolean isEnableIAMDatabaseAuthentication() {
@@ -2723,13 +2885,13 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *        this value is set to true. The default is false.
+     *        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *        deleted when deletion protection is enabled. By default, deletion protection is disabled.
      */
 
     public void setDeletionProtection(Boolean deletionProtection) {
@@ -2738,12 +2900,12 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
-     * @return Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *         this value is set to true. The default is false.
+     * @return A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *         deleted when deletion protection is enabled. By default, deletion protection is disabled.
      */
 
     public Boolean getDeletionProtection() {
@@ -2752,13 +2914,13 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *        this value is set to true. The default is false.
+     *        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *        deleted when deletion protection is enabled. By default, deletion protection is disabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2769,12 +2931,12 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
-     * @return Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *         this value is set to true. The default is false.
+     * @return A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *         deleted when deletion protection is enabled. By default, deletion protection is disabled.
      */
 
     public Boolean isDeletionProtection() {
@@ -2783,13 +2945,13 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *        false. The default is false.
+     *        A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *        DB cluster. The default is not to copy them.
      */
 
     public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -2798,12 +2960,12 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
-     * @return True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *         false. The default is false.
+     * @return A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *         DB cluster. The default is not to copy them.
      */
 
     public Boolean getCopyTagsToSnapshot() {
@@ -2812,13 +2974,13 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *        false. The default is false.
+     *        A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *        DB cluster. The default is not to copy them.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2829,12 +2991,12 @@ public class RestoreDBClusterFromS3Request extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
-     * @return True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *         false. The default is false.
+     * @return A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *         DB cluster. The default is not to copy them.
      */
 
     public Boolean isCopyTagsToSnapshot() {

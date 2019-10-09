@@ -78,53 +78,56 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.fsx.model.ServiceLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.ServiceLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withModeledClass(
-                                    com.amazonaws.services.fsx.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotServiceResourceError").withModeledClass(
-                                    com.amazonaws.services.fsx.model.NotServiceResourceErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotServiceResourceError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.NotServiceResourceErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidImportPath").withModeledClass(
-                                    com.amazonaws.services.fsx.model.InvalidImportPathException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperation").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.UnsupportedOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNetworkSettings").withModeledClass(
-                                    com.amazonaws.services.fsx.model.InvalidNetworkSettingsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidImportPath").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.InvalidImportPathExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MissingFileSystemConfiguration").withModeledClass(
-                                    com.amazonaws.services.fsx.model.MissingFileSystemConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNetworkSettings").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.InvalidNetworkSettingsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FileSystemNotFound").withModeledClass(
-                                    com.amazonaws.services.fsx.model.FileSystemNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MissingFileSystemConfiguration").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.MissingFileSystemConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BackupRestoring").withModeledClass(
-                                    com.amazonaws.services.fsx.model.BackupRestoringException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FileSystemNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.FileSystemNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IncompatibleParameterError").withModeledClass(
-                                    com.amazonaws.services.fsx.model.IncompatibleParameterErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BackupRestoring").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.BackupRestoringExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BackupInProgress").withModeledClass(
-                                    com.amazonaws.services.fsx.model.BackupInProgressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IncompatibleParameterError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.IncompatibleParameterErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidExportPath").withModeledClass(
-                                    com.amazonaws.services.fsx.model.InvalidExportPathException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BackupInProgress").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.BackupInProgressExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceDoesNotSupportTagging").withModeledClass(
-                                    com.amazonaws.services.fsx.model.ResourceDoesNotSupportTaggingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidExportPath").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.InvalidExportPathExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BackupNotFound").withModeledClass(
-                                    com.amazonaws.services.fsx.model.BackupNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceDoesNotSupportTagging").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.ResourceDoesNotSupportTaggingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ActiveDirectoryError").withModeledClass(
-                                    com.amazonaws.services.fsx.model.ActiveDirectoryErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BackupNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.BackupNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequest").withModeledClass(
-                                    com.amazonaws.services.fsx.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ActiveDirectoryError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.ActiveDirectoryErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
-                                    com.amazonaws.services.fsx.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequest").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.fsx.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.fsx.model.AmazonFSxException.class));
 
     public static AmazonFSxClientBuilder builder() {
@@ -217,6 +220,8 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
      * @return Result of the CreateBackup operation returned by the service.
      * @throws BadRequestException
      *         A generic error indicating a failure with a client request.
+     * @throws UnsupportedOperationException
+     *         An error occured.
      * @throws FileSystemNotFoundException
      *         No Amazon FSx file systems were found based upon supplied parameters.
      * @throws BackupInProgressException
@@ -259,6 +264,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateBackup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -317,7 +323,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
      * </note>
      * 
      * @param createFileSystemRequest
-     *        The request object for the <code>CreateFileSystem</code> operation.
+     *        The request object used to create a new Amazon FSx file system.
      * @return Result of the CreateFileSystem operation returned by the service.
      * @throws BadRequestException
      *         A generic error indicating a failure with a client request.
@@ -372,6 +378,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateFileSystem");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -393,8 +400,8 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
      * Creates a new Amazon FSx file system from an existing Amazon FSx for Windows File Server backup.
      * </p>
      * <p>
-     * If a file system with the specified client request token exists and the parameters match, this call returns the
-     * description of the existing file system. If a client request token specified by the file system exists and the
+     * If a file system with the specified client request token exists and the parameters match, this operation returns
+     * the description of the file system. If a client request token specified by the file system exists and the
      * parameters don't match, this call returns <code>IncompatibleParameterError</code>. If a file system with the
      * specified client request token doesn't exist, this operation does the following:
      * </p>
@@ -485,6 +492,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateFileSystemFromBackup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -563,6 +571,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteBackup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -644,6 +653,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFileSystem");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -736,6 +746,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeBackups");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -826,6 +837,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeFileSystems");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -919,6 +931,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -983,6 +996,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1047,6 +1061,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1073,6 +1088,8 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
      * @return Result of the UpdateFileSystem operation returned by the service.
      * @throws BadRequestException
      *         A generic error indicating a failure with a client request.
+     * @throws UnsupportedOperationException
+     *         An error occured.
      * @throws IncompatibleParameterErrorException
      *         The error returned when a second request is received with the same client request token but different
      *         parameters settings. A client request token should always uniquely identify a single request.
@@ -1111,6 +1128,7 @@ public class AmazonFSxClient extends AmazonWebServiceClient implements AmazonFSx
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "FSx");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFileSystem");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

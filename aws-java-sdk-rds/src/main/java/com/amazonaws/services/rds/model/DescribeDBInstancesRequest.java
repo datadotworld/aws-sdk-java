@@ -64,6 +64,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      * results list will only include information about the DB instances identified by these ARNs.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only include
+     * information about the DB instances identified by these DB instance resource identifiers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include information
+     * about the DB instances associated with these domains.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>engine</code> - Accepts engine names. The results list will only include information about the DB instances
+     * for these engines.
+     * </p>
+     * </li>
      * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
@@ -214,6 +232,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      * results list will only include information about the DB instances identified by these ARNs.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only include
+     * information about the DB instances identified by these DB instance resource identifiers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include information
+     * about the DB instances associated with these domains.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>engine</code> - Accepts engine names. The results list will only include information about the DB instances
+     * for these engines.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return A filter that specifies one or more DB instances to describe.</p>
@@ -232,6 +268,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      *         <p>
      *         <code>db-instance-id</code> - Accepts DB instance identifiers and DB instance Amazon Resource Names
      *         (ARNs). The results list will only include information about the DB instances identified by these ARNs.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only
+     *         include information about the DB instances identified by these DB instance resource identifiers.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include
+     *         information about the DB instances associated with these domains.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>engine</code> - Accepts engine names. The results list will only include information about the DB
+     *         instances for these engines.
      *         </p>
      *         </li>
      */
@@ -264,6 +318,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      * results list will only include information about the DB instances identified by these ARNs.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only include
+     * information about the DB instances identified by these DB instance resource identifiers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include information
+     * about the DB instances associated with these domains.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>engine</code> - Accepts engine names. The results list will only include information about the DB instances
+     * for these engines.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param filters
@@ -283,6 +355,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      *        <p>
      *        <code>db-instance-id</code> - Accepts DB instance identifiers and DB instance Amazon Resource Names
      *        (ARNs). The results list will only include information about the DB instances identified by these ARNs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only
+     *        include information about the DB instances identified by these DB instance resource identifiers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include
+     *        information about the DB instances associated with these domains.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>engine</code> - Accepts engine names. The results list will only include information about the DB
+     *        instances for these engines.
      *        </p>
      *        </li>
      */
@@ -317,6 +407,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      * results list will only include information about the DB instances identified by these ARNs.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only include
+     * information about the DB instances identified by these DB instance resource identifiers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include information
+     * about the DB instances associated with these domains.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>engine</code> - Accepts engine names. The results list will only include information about the DB instances
+     * for these engines.
+     * </p>
+     * </li>
      * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -341,6 +449,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      *        <p>
      *        <code>db-instance-id</code> - Accepts DB instance identifiers and DB instance Amazon Resource Names
      *        (ARNs). The results list will only include information about the DB instances identified by these ARNs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only
+     *        include information about the DB instances identified by these DB instance resource identifiers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include
+     *        information about the DB instances associated with these domains.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>engine</code> - Accepts engine names. The results list will only include information about the DB
+     *        instances for these engines.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -377,6 +503,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      * results list will only include information about the DB instances identified by these ARNs.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only include
+     * information about the DB instances identified by these DB instance resource identifiers.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include information
+     * about the DB instances associated with these domains.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>engine</code> - Accepts engine names. The results list will only include information about the DB instances
+     * for these engines.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param filters
@@ -396,6 +540,24 @@ public class DescribeDBInstancesRequest extends com.amazonaws.AmazonWebServiceRe
      *        <p>
      *        <code>db-instance-id</code> - Accepts DB instance identifiers and DB instance Amazon Resource Names
      *        (ARNs). The results list will only include information about the DB instances identified by these ARNs.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>dbi-resource-id</code> - Accepts DB instance resource identifiers. The results list will only
+     *        include information about the DB instances identified by these DB instance resource identifiers.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>domain</code> - Accepts Active Directory directory IDs. The results list will only include
+     *        information about the DB instances associated with these domains.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>engine</code> - Accepts engine names. The results list will only include information about the DB
+     *        instances for these engines.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

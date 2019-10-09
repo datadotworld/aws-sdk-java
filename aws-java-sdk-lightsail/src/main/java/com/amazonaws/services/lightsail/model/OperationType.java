@@ -20,6 +20,7 @@ import javax.annotation.Generated;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum OperationType {
 
+    DeleteKnownHostKeys("DeleteKnownHostKeys"),
     DeleteInstance("DeleteInstance"),
     CreateInstance("CreateInstance"),
     StopInstance("StopInstance"),
@@ -63,7 +64,9 @@ public enum OperationType {
     UpdateRelationalDatabaseParameters("UpdateRelationalDatabaseParameters"),
     StartRelationalDatabase("StartRelationalDatabase"),
     RebootRelationalDatabase("RebootRelationalDatabase"),
-    StopRelationalDatabase("StopRelationalDatabase");
+    StopRelationalDatabase("StopRelationalDatabase"),
+    EnableAddOn("EnableAddOn"),
+    DisableAddOn("DisableAddOn");
 
     private String value;
 

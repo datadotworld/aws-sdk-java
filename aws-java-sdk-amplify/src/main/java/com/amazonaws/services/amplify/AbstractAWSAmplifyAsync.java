@@ -54,6 +54,19 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     }
 
     @Override
+    public java.util.concurrent.Future<CreateDeploymentResult> createDeploymentAsync(CreateDeploymentRequest request) {
+
+        return createDeploymentAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateDeploymentResult> createDeploymentAsync(CreateDeploymentRequest request,
+            com.amazonaws.handlers.AsyncHandler<CreateDeploymentRequest, CreateDeploymentResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateDomainAssociationResult> createDomainAssociationAsync(CreateDomainAssociationRequest request) {
 
         return createDomainAssociationAsync(request, null);
@@ -62,6 +75,19 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     @Override
     public java.util.concurrent.Future<CreateDomainAssociationResult> createDomainAssociationAsync(CreateDomainAssociationRequest request,
             com.amazonaws.handlers.AsyncHandler<CreateDomainAssociationRequest, CreateDomainAssociationResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateWebhookResult> createWebhookAsync(CreateWebhookRequest request) {
+
+        return createWebhookAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateWebhookResult> createWebhookAsync(CreateWebhookRequest request,
+            com.amazonaws.handlers.AsyncHandler<CreateWebhookRequest, CreateWebhookResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -119,6 +145,32 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteWebhookResult> deleteWebhookAsync(DeleteWebhookRequest request) {
+
+        return deleteWebhookAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteWebhookResult> deleteWebhookAsync(DeleteWebhookRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteWebhookRequest, DeleteWebhookResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GenerateAccessLogsResult> generateAccessLogsAsync(GenerateAccessLogsRequest request) {
+
+        return generateAccessLogsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GenerateAccessLogsResult> generateAccessLogsAsync(GenerateAccessLogsRequest request,
+            com.amazonaws.handlers.AsyncHandler<GenerateAccessLogsRequest, GenerateAccessLogsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<GetAppResult> getAppAsync(GetAppRequest request) {
 
         return getAppAsync(request, null);
@@ -127,6 +179,19 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     @Override
     public java.util.concurrent.Future<GetAppResult> getAppAsync(GetAppRequest request,
             com.amazonaws.handlers.AsyncHandler<GetAppRequest, GetAppResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetArtifactUrlResult> getArtifactUrlAsync(GetArtifactUrlRequest request) {
+
+        return getArtifactUrlAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetArtifactUrlResult> getArtifactUrlAsync(GetArtifactUrlRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetArtifactUrlRequest, GetArtifactUrlResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -171,6 +236,19 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     }
 
     @Override
+    public java.util.concurrent.Future<GetWebhookResult> getWebhookAsync(GetWebhookRequest request) {
+
+        return getWebhookAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetWebhookResult> getWebhookAsync(GetWebhookRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetWebhookRequest, GetWebhookResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<ListAppsResult> listAppsAsync(ListAppsRequest request) {
 
         return listAppsAsync(request, null);
@@ -179,6 +257,19 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     @Override
     public java.util.concurrent.Future<ListAppsResult> listAppsAsync(ListAppsRequest request,
             com.amazonaws.handlers.AsyncHandler<ListAppsRequest, ListAppsResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListArtifactsResult> listArtifactsAsync(ListArtifactsRequest request) {
+
+        return listArtifactsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListArtifactsResult> listArtifactsAsync(ListArtifactsRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListArtifactsRequest, ListArtifactsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -223,6 +314,45 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     }
 
     @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest request) {
+
+        return listTagsForResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListWebhooksResult> listWebhooksAsync(ListWebhooksRequest request) {
+
+        return listWebhooksAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListWebhooksResult> listWebhooksAsync(ListWebhooksRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListWebhooksRequest, ListWebhooksResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartDeploymentResult> startDeploymentAsync(StartDeploymentRequest request) {
+
+        return startDeploymentAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartDeploymentResult> startDeploymentAsync(StartDeploymentRequest request,
+            com.amazonaws.handlers.AsyncHandler<StartDeploymentRequest, StartDeploymentResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<StartJobResult> startJobAsync(StartJobRequest request) {
 
         return startJobAsync(request, null);
@@ -244,6 +374,32 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     @Override
     public java.util.concurrent.Future<StopJobResult> stopJobAsync(StopJobRequest request,
             com.amazonaws.handlers.AsyncHandler<StopJobRequest, StopJobResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest request) {
+
+        return tagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest request,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest request) {
+
+        return untagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest request,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -283,6 +439,19 @@ public class AbstractAWSAmplifyAsync extends AbstractAWSAmplify implements AWSAm
     @Override
     public java.util.concurrent.Future<UpdateDomainAssociationResult> updateDomainAssociationAsync(UpdateDomainAssociationRequest request,
             com.amazonaws.handlers.AsyncHandler<UpdateDomainAssociationRequest, UpdateDomainAssociationResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateWebhookResult> updateWebhookAsync(UpdateWebhookRequest request) {
+
+        return updateWebhookAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateWebhookResult> updateWebhookAsync(UpdateWebhookRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateWebhookRequest, UpdateWebhookResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

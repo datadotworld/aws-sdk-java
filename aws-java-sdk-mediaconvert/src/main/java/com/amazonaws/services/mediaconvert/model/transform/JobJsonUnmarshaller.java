@@ -64,6 +64,10 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     context.nextToken();
                     job.setCreatedAt(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
                 }
+                if (context.testExpression("currentPhase", targetDepth)) {
+                    context.nextToken();
+                    job.setCurrentPhase(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("errorCode", targetDepth)) {
                     context.nextToken();
                     job.setErrorCode(context.getUnmarshaller(Integer.class).unmarshall(context));
@@ -76,6 +80,10 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     context.nextToken();
                     job.setId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("jobPercentComplete", targetDepth)) {
+                    context.nextToken();
+                    job.setJobPercentComplete(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("jobTemplate", targetDepth)) {
                     context.nextToken();
                     job.setJobTemplate(context.getUnmarshaller(String.class).unmarshall(context));
@@ -84,9 +92,17 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     context.nextToken();
                     job.setOutputGroupDetails(new ListUnmarshaller<OutputGroupDetail>(OutputGroupDetailJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
+                if (context.testExpression("priority", targetDepth)) {
+                    context.nextToken();
+                    job.setPriority(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("queue", targetDepth)) {
                     context.nextToken();
                     job.setQueue(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("retryCount", targetDepth)) {
+                    context.nextToken();
+                    job.setRetryCount(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
                 if (context.testExpression("role", targetDepth)) {
                     context.nextToken();
@@ -96,13 +112,17 @@ public class JobJsonUnmarshaller implements Unmarshaller<Job, JsonUnmarshallerCo
                     context.nextToken();
                     job.setSettings(JobSettingsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("simulateReservedQueue", targetDepth)) {
+                    context.nextToken();
+                    job.setSimulateReservedQueue(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("status", targetDepth)) {
                     context.nextToken();
                     job.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
-                if (context.testExpression("statusUpdateIntervalInSecs", targetDepth)) {
+                if (context.testExpression("statusUpdateInterval", targetDepth)) {
                     context.nextToken();
-                    job.setStatusUpdateIntervalInSecs(context.getUnmarshaller(Long.class).unmarshall(context));
+                    job.setStatusUpdateInterval(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("timing", targetDepth)) {
                     context.nextToken();

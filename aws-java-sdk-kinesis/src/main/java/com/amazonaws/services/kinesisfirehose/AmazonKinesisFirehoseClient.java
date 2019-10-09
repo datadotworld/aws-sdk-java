@@ -79,23 +79,23 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.kinesisfirehose.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisfirehose.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                                    com.amazonaws.services.kinesisfirehose.model.InvalidArgumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisfirehose.model.transform.InvalidArgumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.kinesisfirehose.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisfirehose.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.kinesisfirehose.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisfirehose.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.kinesisfirehose.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisfirehose.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesisfirehose.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesisfirehose.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.kinesisfirehose.model.AmazonKinesisFirehoseException.class));
 
     /**
@@ -362,7 +362,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * Kinesis Data Firehose assumes the IAM role that is configured as part of the destination. The role should allow
      * the Kinesis Data Firehose principal to assume the role, and the role should have permissions that allow the
      * service to deliver the data. For more information, see <a
-     * href="http://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Grant Kinesis Data
+     * href="https://docs.aws.amazon.com/firehose/latest/dev/controlling-access.html#using-iam-s3">Grant Kinesis Data
      * Firehose Access to an Amazon S3 Destination</a> in the <i>Amazon Kinesis Data Firehose Developer Guide</i>.
      * </p>
      * 
@@ -403,6 +403,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDeliveryStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -472,6 +473,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDeliveryStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -528,6 +530,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDeliveryStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -589,6 +592,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDeliveryStreams");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -649,6 +653,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForDeliveryStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -676,7 +681,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * By default, each delivery stream can take in up to 2,000 transactions per second, 5,000 records per second, or 5
      * MB per second. If you use <a>PutRecord</a> and <a>PutRecordBatch</a>, the limits are an aggregate across these
      * two operations for each delivery stream. For more information about limits and how to request an increase, see <a
-     * href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose Limits</a>.
+     * href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose Limits</a>.
      * </p>
      * <p>
      * You must specify the name of the delivery stream and the data record when using <a>PutRecord</a>. The data record
@@ -719,7 +724,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *         The service is unavailable. Back off and retry the operation. If you continue to see the exception,
      *         throughput limits for the delivery stream may have been exceeded. For more information about limits and
      *         how to request an increase, see <a
-     *         href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose
+     *         href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose
      *         Limits</a>.
      * @sample AmazonKinesisFirehose.PutRecord
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/PutRecord" target="_top">AWS API
@@ -750,6 +755,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRecord");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -776,7 +782,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      * By default, each delivery stream can take in up to 2,000 transactions per second, 5,000 records per second, or 5
      * MB per second. If you use <a>PutRecord</a> and <a>PutRecordBatch</a>, the limits are an aggregate across these
      * two operations for each delivery stream. For more information about limits, see <a
-     * href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose Limits</a>.
+     * href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose Limits</a>.
      * </p>
      * <p>
      * Each <a>PutRecordBatch</a> request supports up to 500 records. Each record in the request can be as large as
@@ -843,7 +849,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
      *         The service is unavailable. Back off and retry the operation. If you continue to see the exception,
      *         throughput limits for the delivery stream may have been exceeded. For more information about limits and
      *         how to request an increase, see <a
-     *         href="http://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose
+     *         href="https://docs.aws.amazon.com/firehose/latest/dev/limits.html">Amazon Kinesis Data Firehose
      *         Limits</a>.
      * @sample AmazonKinesisFirehose.PutRecordBatch
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/firehose-2015-08-04/PutRecordBatch" target="_top">AWS API
@@ -874,6 +880,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRecordBatch");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -955,6 +962,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartDeliveryStreamEncryption");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1034,6 +1042,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopDeliveryStreamEncryption");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1106,6 +1115,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagDeliveryStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1173,6 +1183,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagDeliveryStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1263,6 +1274,7 @@ public class AmazonKinesisFirehoseClient extends AmazonWebServiceClient implemen
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Firehose");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDestination");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

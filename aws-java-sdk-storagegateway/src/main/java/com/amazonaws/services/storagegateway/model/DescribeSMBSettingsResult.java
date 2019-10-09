@@ -36,6 +36,26 @@ public class DescribeSMBSettingsResult extends com.amazonaws.AmazonWebServiceRes
      * </p>
      */
     private Boolean sMBGuestPasswordSet;
+    /**
+     * <p>
+     * The type of security strategy that was specified for file gateway.
+     * </p>
+     * <p>
+     * ClientSpecified: if you use this option, requests are established based on what is negotiated by the client. This
+     * option is recommended when you want to maximize compatibility across different clients in your environment.
+     * </p>
+     * <p>
+     * MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients that
+     * have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008 or
+     * newer.
+     * </p>
+     * <p>
+     * MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that have
+     * encryption enabled. This option is highly recommended for environments that handle sensitive data. This option
+     * works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * </p>
+     */
+    private String sMBSecurityStrategy;
 
     /**
      * @param gatewayARN
@@ -156,6 +176,177 @@ public class DescribeSMBSettingsResult extends com.amazonaws.AmazonWebServiceRes
     }
 
     /**
+     * <p>
+     * The type of security strategy that was specified for file gateway.
+     * </p>
+     * <p>
+     * ClientSpecified: if you use this option, requests are established based on what is negotiated by the client. This
+     * option is recommended when you want to maximize compatibility across different clients in your environment.
+     * </p>
+     * <p>
+     * MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients that
+     * have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008 or
+     * newer.
+     * </p>
+     * <p>
+     * MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that have
+     * encryption enabled. This option is highly recommended for environments that handle sensitive data. This option
+     * works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * </p>
+     * 
+     * @param sMBSecurityStrategy
+     *        The type of security strategy that was specified for file gateway.</p>
+     *        <p>
+     *        ClientSpecified: if you use this option, requests are established based on what is negotiated by the
+     *        client. This option is recommended when you want to maximize compatibility across different clients in
+     *        your environment.
+     *        </p>
+     *        <p>
+     *        MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients
+     *        that have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server
+     *        2008 or newer.
+     *        </p>
+     *        <p>
+     *        MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that
+     *        have encryption enabled. This option is highly recommended for environments that handle sensitive data.
+     *        This option works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * @see SMBSecurityStrategy
+     */
+
+    public void setSMBSecurityStrategy(String sMBSecurityStrategy) {
+        this.sMBSecurityStrategy = sMBSecurityStrategy;
+    }
+
+    /**
+     * <p>
+     * The type of security strategy that was specified for file gateway.
+     * </p>
+     * <p>
+     * ClientSpecified: if you use this option, requests are established based on what is negotiated by the client. This
+     * option is recommended when you want to maximize compatibility across different clients in your environment.
+     * </p>
+     * <p>
+     * MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients that
+     * have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008 or
+     * newer.
+     * </p>
+     * <p>
+     * MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that have
+     * encryption enabled. This option is highly recommended for environments that handle sensitive data. This option
+     * works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * </p>
+     * 
+     * @return The type of security strategy that was specified for file gateway.</p>
+     *         <p>
+     *         ClientSpecified: if you use this option, requests are established based on what is negotiated by the
+     *         client. This option is recommended when you want to maximize compatibility across different clients in
+     *         your environment.
+     *         </p>
+     *         <p>
+     *         MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3
+     *         clients that have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows
+     *         Server 2008 or newer.
+     *         </p>
+     *         <p>
+     *         MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that
+     *         have encryption enabled. This option is highly recommended for environments that handle sensitive data.
+     *         This option works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * @see SMBSecurityStrategy
+     */
+
+    public String getSMBSecurityStrategy() {
+        return this.sMBSecurityStrategy;
+    }
+
+    /**
+     * <p>
+     * The type of security strategy that was specified for file gateway.
+     * </p>
+     * <p>
+     * ClientSpecified: if you use this option, requests are established based on what is negotiated by the client. This
+     * option is recommended when you want to maximize compatibility across different clients in your environment.
+     * </p>
+     * <p>
+     * MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients that
+     * have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008 or
+     * newer.
+     * </p>
+     * <p>
+     * MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that have
+     * encryption enabled. This option is highly recommended for environments that handle sensitive data. This option
+     * works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * </p>
+     * 
+     * @param sMBSecurityStrategy
+     *        The type of security strategy that was specified for file gateway.</p>
+     *        <p>
+     *        ClientSpecified: if you use this option, requests are established based on what is negotiated by the
+     *        client. This option is recommended when you want to maximize compatibility across different clients in
+     *        your environment.
+     *        </p>
+     *        <p>
+     *        MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients
+     *        that have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server
+     *        2008 or newer.
+     *        </p>
+     *        <p>
+     *        MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that
+     *        have encryption enabled. This option is highly recommended for environments that handle sensitive data.
+     *        This option works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SMBSecurityStrategy
+     */
+
+    public DescribeSMBSettingsResult withSMBSecurityStrategy(String sMBSecurityStrategy) {
+        setSMBSecurityStrategy(sMBSecurityStrategy);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of security strategy that was specified for file gateway.
+     * </p>
+     * <p>
+     * ClientSpecified: if you use this option, requests are established based on what is negotiated by the client. This
+     * option is recommended when you want to maximize compatibility across different clients in your environment.
+     * </p>
+     * <p>
+     * MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients that
+     * have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server 2008 or
+     * newer.
+     * </p>
+     * <p>
+     * MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that have
+     * encryption enabled. This option is highly recommended for environments that handle sensitive data. This option
+     * works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * </p>
+     * 
+     * @param sMBSecurityStrategy
+     *        The type of security strategy that was specified for file gateway.</p>
+     *        <p>
+     *        ClientSpecified: if you use this option, requests are established based on what is negotiated by the
+     *        client. This option is recommended when you want to maximize compatibility across different clients in
+     *        your environment.
+     *        </p>
+     *        <p>
+     *        MandatorySigning: if you use this option, file gateway only allows connections from SMBv2 or SMBv3 clients
+     *        that have signing enabled. This option works with SMB clients on Microsoft Windows Vista, Windows Server
+     *        2008 or newer.
+     *        </p>
+     *        <p>
+     *        MandatoryEncryption: if you use this option, file gateway only allows connections from SMBv3 clients that
+     *        have encryption enabled. This option is highly recommended for environments that handle sensitive data.
+     *        This option works with SMB clients on Microsoft Windows 8, Windows Server 2012 or newer.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see SMBSecurityStrategy
+     */
+
+    public DescribeSMBSettingsResult withSMBSecurityStrategy(SMBSecurityStrategy sMBSecurityStrategy) {
+        this.sMBSecurityStrategy = sMBSecurityStrategy.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -172,7 +363,9 @@ public class DescribeSMBSettingsResult extends com.amazonaws.AmazonWebServiceRes
         if (getDomainName() != null)
             sb.append("DomainName: ").append(getDomainName()).append(",");
         if (getSMBGuestPasswordSet() != null)
-            sb.append("SMBGuestPasswordSet: ").append(getSMBGuestPasswordSet());
+            sb.append("SMBGuestPasswordSet: ").append(getSMBGuestPasswordSet()).append(",");
+        if (getSMBSecurityStrategy() != null)
+            sb.append("SMBSecurityStrategy: ").append(getSMBSecurityStrategy());
         sb.append("}");
         return sb.toString();
     }
@@ -199,6 +392,10 @@ public class DescribeSMBSettingsResult extends com.amazonaws.AmazonWebServiceRes
             return false;
         if (other.getSMBGuestPasswordSet() != null && other.getSMBGuestPasswordSet().equals(this.getSMBGuestPasswordSet()) == false)
             return false;
+        if (other.getSMBSecurityStrategy() == null ^ this.getSMBSecurityStrategy() == null)
+            return false;
+        if (other.getSMBSecurityStrategy() != null && other.getSMBSecurityStrategy().equals(this.getSMBSecurityStrategy()) == false)
+            return false;
         return true;
     }
 
@@ -210,6 +407,7 @@ public class DescribeSMBSettingsResult extends com.amazonaws.AmazonWebServiceRes
         hashCode = prime * hashCode + ((getGatewayARN() == null) ? 0 : getGatewayARN().hashCode());
         hashCode = prime * hashCode + ((getDomainName() == null) ? 0 : getDomainName().hashCode());
         hashCode = prime * hashCode + ((getSMBGuestPasswordSet() == null) ? 0 : getSMBGuestPasswordSet().hashCode());
+        hashCode = prime * hashCode + ((getSMBSecurityStrategy() == null) ? 0 : getSMBSecurityStrategy().hashCode());
         return hashCode;
     }
 

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.515-dw2-SNAPSHOT</version>
+  <version>1.11.648-dw1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -32,6 +32,25 @@
   </developers>
   <!-- The module section in pom.xml is auto generated. No manual changes are allowed -->
   <modules>
+    <!--<module>aws-java-sdk-workmailmessageflow</module>-->
+    <!--<module>aws-java-sdk-qldbsession</module>-->
+    <!--<module>aws-java-sdk-qldb</module>-->
+    <!--<module>aws-java-sdk-forecastquery</module>-->
+    <!--<module>aws-java-sdk-forecast</module>-->
+    <!--<module>aws-java-sdk-lakeformation</module>-->
+    <!--<module>aws-java-sdk-eventbridge</module>-->
+    <!--<module>aws-java-sdk-ec2instanceconnect</module>-->
+    <!--<module>aws-java-sdk-applicationinsights</module>-->
+    <!--<module>aws-java-sdk-servicequotas</module>-->
+    <!--<module>aws-java-sdk-personalizeevents</module>-->
+    <!--<module>aws-java-sdk-personalize</module>-->
+    <!--<module>aws-java-sdk-personalizeruntime</module>-->
+    <!--<module>aws-java-sdk-ioteventsdata</module>-->
+    <!--<module>aws-java-sdk-iotevents</module>-->
+    <!--<module>aws-java-sdk-iotthingsgraph</module>-->
+    <!--<module>aws-java-sdk-groundstation</module>-->
+    <!--<module>aws-java-sdk-mediapackagevod</module>-->
+    <!--<module>aws-java-sdk-managedblockchain</module>-->
     <!--<module>aws-java-sdk-textract</module>-->
     <!--<module>aws-java-sdk-worklink</module>-->
     <!--<module>aws-java-sdk-backup</module>-->
@@ -216,7 +235,7 @@
   </scm>
   <properties>
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
-      <awsjavasdk-stable.version>1.11.515</awsjavasdk-stable.version>
+      <awsjavasdk-stable.version>1.11.648</awsjavasdk-stable.version>
       <!-- The SDK requires Jackson 2.6 to support Java 6 customers. Feel free to override in your own application -->
       <jackson.version>2.6.7</jackson.version>
       <jackson.databind.version>2.6.7.2</jackson.databind.version>
@@ -242,7 +261,7 @@
         the aggregate ZIP artifact -->
       <javax.mail.version>1.4.6</javax.mail.version>
       <jre.version>1.6</jre.version>
-      <httpcomponents.httpclient.version>4.5.5</httpcomponents.httpclient.version>
+      <httpcomponents.httpclient.version>4.5.9</httpcomponents.httpclient.version>
       <!-- These properties are used by cucumber tests related code -->
       <cucumber.info.cukes.version>1.2.4</cucumber.info.cukes.version>
       <cucumber.guice.version>4.0</cucumber.guice.version>
@@ -364,7 +383,7 @@
             <extensions>true</extensions>
             <configuration>
               <serverId>sonatype-nexus-staging</serverId>
-              <nexusUrl>https://oss.sonatype.org</nexusUrl>
+              <nexusUrl>https://aws.oss.sonatype.org</nexusUrl>
             </configuration>
           </plugin>
         </plugins>

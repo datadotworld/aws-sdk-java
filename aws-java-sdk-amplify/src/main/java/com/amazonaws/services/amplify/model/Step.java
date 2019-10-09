@@ -53,22 +53,46 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
     private java.util.Date endTime;
     /**
      * <p>
-     * Url to the logs for the execution step.
+     * URL to the logs for the execution step.
      * </p>
      */
     private String logUrl;
     /**
      * <p>
-     * Url to teh artifact for the execution step.
+     * URL to the artifact for the execution step.
      * </p>
      */
     private String artifactsUrl;
     /**
      * <p>
-     * List of screenshot Urls for the execution step, if relevant.
+     * URL to the test artifact for the execution step.
+     * </p>
+     */
+    private String testArtifactsUrl;
+    /**
+     * <p>
+     * URL to the test config for the execution step.
+     * </p>
+     */
+    private String testConfigUrl;
+    /**
+     * <p>
+     * List of screenshot URLs for the execution step, if relevant.
      * </p>
      */
     private java.util.Map<String, String> screenshots;
+    /**
+     * <p>
+     * The reason for current step status.
+     * </p>
+     */
+    private String statusReason;
+    /**
+     * <p>
+     * The context for current step, will include build image if step is build.
+     * </p>
+     */
+    private String context;
 
     /**
      * <p>
@@ -251,11 +275,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Url to the logs for the execution step.
+     * URL to the logs for the execution step.
      * </p>
      * 
      * @param logUrl
-     *        Url to the logs for the execution step.
+     *        URL to the logs for the execution step.
      */
 
     public void setLogUrl(String logUrl) {
@@ -264,10 +288,10 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Url to the logs for the execution step.
+     * URL to the logs for the execution step.
      * </p>
      * 
-     * @return Url to the logs for the execution step.
+     * @return URL to the logs for the execution step.
      */
 
     public String getLogUrl() {
@@ -276,11 +300,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Url to the logs for the execution step.
+     * URL to the logs for the execution step.
      * </p>
      * 
      * @param logUrl
-     *        Url to the logs for the execution step.
+     *        URL to the logs for the execution step.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -291,11 +315,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Url to teh artifact for the execution step.
+     * URL to the artifact for the execution step.
      * </p>
      * 
      * @param artifactsUrl
-     *        Url to teh artifact for the execution step.
+     *        URL to the artifact for the execution step.
      */
 
     public void setArtifactsUrl(String artifactsUrl) {
@@ -304,10 +328,10 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Url to teh artifact for the execution step.
+     * URL to the artifact for the execution step.
      * </p>
      * 
-     * @return Url to teh artifact for the execution step.
+     * @return URL to the artifact for the execution step.
      */
 
     public String getArtifactsUrl() {
@@ -316,11 +340,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Url to teh artifact for the execution step.
+     * URL to the artifact for the execution step.
      * </p>
      * 
      * @param artifactsUrl
-     *        Url to teh artifact for the execution step.
+     *        URL to the artifact for the execution step.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -331,10 +355,90 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * List of screenshot Urls for the execution step, if relevant.
+     * URL to the test artifact for the execution step.
      * </p>
      * 
-     * @return List of screenshot Urls for the execution step, if relevant.
+     * @param testArtifactsUrl
+     *        URL to the test artifact for the execution step.
+     */
+
+    public void setTestArtifactsUrl(String testArtifactsUrl) {
+        this.testArtifactsUrl = testArtifactsUrl;
+    }
+
+    /**
+     * <p>
+     * URL to the test artifact for the execution step.
+     * </p>
+     * 
+     * @return URL to the test artifact for the execution step.
+     */
+
+    public String getTestArtifactsUrl() {
+        return this.testArtifactsUrl;
+    }
+
+    /**
+     * <p>
+     * URL to the test artifact for the execution step.
+     * </p>
+     * 
+     * @param testArtifactsUrl
+     *        URL to the test artifact for the execution step.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Step withTestArtifactsUrl(String testArtifactsUrl) {
+        setTestArtifactsUrl(testArtifactsUrl);
+        return this;
+    }
+
+    /**
+     * <p>
+     * URL to the test config for the execution step.
+     * </p>
+     * 
+     * @param testConfigUrl
+     *        URL to the test config for the execution step.
+     */
+
+    public void setTestConfigUrl(String testConfigUrl) {
+        this.testConfigUrl = testConfigUrl;
+    }
+
+    /**
+     * <p>
+     * URL to the test config for the execution step.
+     * </p>
+     * 
+     * @return URL to the test config for the execution step.
+     */
+
+    public String getTestConfigUrl() {
+        return this.testConfigUrl;
+    }
+
+    /**
+     * <p>
+     * URL to the test config for the execution step.
+     * </p>
+     * 
+     * @param testConfigUrl
+     *        URL to the test config for the execution step.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Step withTestConfigUrl(String testConfigUrl) {
+        setTestConfigUrl(testConfigUrl);
+        return this;
+    }
+
+    /**
+     * <p>
+     * List of screenshot URLs for the execution step, if relevant.
+     * </p>
+     * 
+     * @return List of screenshot URLs for the execution step, if relevant.
      */
 
     public java.util.Map<String, String> getScreenshots() {
@@ -343,11 +447,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * List of screenshot Urls for the execution step, if relevant.
+     * List of screenshot URLs for the execution step, if relevant.
      * </p>
      * 
      * @param screenshots
-     *        List of screenshot Urls for the execution step, if relevant.
+     *        List of screenshot URLs for the execution step, if relevant.
      */
 
     public void setScreenshots(java.util.Map<String, String> screenshots) {
@@ -356,11 +460,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * List of screenshot Urls for the execution step, if relevant.
+     * List of screenshot URLs for the execution step, if relevant.
      * </p>
      * 
      * @param screenshots
-     *        List of screenshot Urls for the execution step, if relevant.
+     *        List of screenshot URLs for the execution step, if relevant.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -391,6 +495,86 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The reason for current step status.
+     * </p>
+     * 
+     * @param statusReason
+     *        The reason for current step status.
+     */
+
+    public void setStatusReason(String statusReason) {
+        this.statusReason = statusReason;
+    }
+
+    /**
+     * <p>
+     * The reason for current step status.
+     * </p>
+     * 
+     * @return The reason for current step status.
+     */
+
+    public String getStatusReason() {
+        return this.statusReason;
+    }
+
+    /**
+     * <p>
+     * The reason for current step status.
+     * </p>
+     * 
+     * @param statusReason
+     *        The reason for current step status.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Step withStatusReason(String statusReason) {
+        setStatusReason(statusReason);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The context for current step, will include build image if step is build.
+     * </p>
+     * 
+     * @param context
+     *        The context for current step, will include build image if step is build.
+     */
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    /**
+     * <p>
+     * The context for current step, will include build image if step is build.
+     * </p>
+     * 
+     * @return The context for current step, will include build image if step is build.
+     */
+
+    public String getContext() {
+        return this.context;
+    }
+
+    /**
+     * <p>
+     * The context for current step, will include build image if step is build.
+     * </p>
+     * 
+     * @param context
+     *        The context for current step, will include build image if step is build.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Step withContext(String context) {
+        setContext(context);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -414,8 +598,16 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
             sb.append("LogUrl: ").append(getLogUrl()).append(",");
         if (getArtifactsUrl() != null)
             sb.append("ArtifactsUrl: ").append(getArtifactsUrl()).append(",");
+        if (getTestArtifactsUrl() != null)
+            sb.append("TestArtifactsUrl: ").append(getTestArtifactsUrl()).append(",");
+        if (getTestConfigUrl() != null)
+            sb.append("TestConfigUrl: ").append(getTestConfigUrl()).append(",");
         if (getScreenshots() != null)
-            sb.append("Screenshots: ").append(getScreenshots());
+            sb.append("Screenshots: ").append(getScreenshots()).append(",");
+        if (getStatusReason() != null)
+            sb.append("StatusReason: ").append(getStatusReason()).append(",");
+        if (getContext() != null)
+            sb.append("Context: ").append(getContext());
         sb.append("}");
         return sb.toString();
     }
@@ -454,9 +646,25 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getArtifactsUrl() != null && other.getArtifactsUrl().equals(this.getArtifactsUrl()) == false)
             return false;
+        if (other.getTestArtifactsUrl() == null ^ this.getTestArtifactsUrl() == null)
+            return false;
+        if (other.getTestArtifactsUrl() != null && other.getTestArtifactsUrl().equals(this.getTestArtifactsUrl()) == false)
+            return false;
+        if (other.getTestConfigUrl() == null ^ this.getTestConfigUrl() == null)
+            return false;
+        if (other.getTestConfigUrl() != null && other.getTestConfigUrl().equals(this.getTestConfigUrl()) == false)
+            return false;
         if (other.getScreenshots() == null ^ this.getScreenshots() == null)
             return false;
         if (other.getScreenshots() != null && other.getScreenshots().equals(this.getScreenshots()) == false)
+            return false;
+        if (other.getStatusReason() == null ^ this.getStatusReason() == null)
+            return false;
+        if (other.getStatusReason() != null && other.getStatusReason().equals(this.getStatusReason()) == false)
+            return false;
+        if (other.getContext() == null ^ this.getContext() == null)
+            return false;
+        if (other.getContext() != null && other.getContext().equals(this.getContext()) == false)
             return false;
         return true;
     }
@@ -472,7 +680,11 @@ public class Step implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getEndTime() == null) ? 0 : getEndTime().hashCode());
         hashCode = prime * hashCode + ((getLogUrl() == null) ? 0 : getLogUrl().hashCode());
         hashCode = prime * hashCode + ((getArtifactsUrl() == null) ? 0 : getArtifactsUrl().hashCode());
+        hashCode = prime * hashCode + ((getTestArtifactsUrl() == null) ? 0 : getTestArtifactsUrl().hashCode());
+        hashCode = prime * hashCode + ((getTestConfigUrl() == null) ? 0 : getTestConfigUrl().hashCode());
         hashCode = prime * hashCode + ((getScreenshots() == null) ? 0 : getScreenshots().hashCode());
+        hashCode = prime * hashCode + ((getStatusReason() == null) ? 0 : getStatusReason().hashCode());
+        hashCode = prime * hashCode + ((getContext() == null) ? 0 : getContext().hashCode());
         return hashCode;
     }
 

@@ -84,6 +84,18 @@ public class DevEndpointJsonUnmarshaller implements Unmarshaller<DevEndpoint, Js
                     context.nextToken();
                     devEndpoint.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("WorkerType", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setWorkerType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("GlueVersion", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setGlueVersion(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("NumberOfWorkers", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setNumberOfWorkers(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("NumberOfNodes", targetDepth)) {
                     context.nextToken();
                     devEndpoint.setNumberOfNodes(context.getUnmarshaller(Integer.class).unmarshall(context));
@@ -131,6 +143,11 @@ public class DevEndpointJsonUnmarshaller implements Unmarshaller<DevEndpoint, Js
                 if (context.testExpression("SecurityConfiguration", targetDepth)) {
                     context.nextToken();
                     devEndpoint.setSecurityConfiguration(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Arguments", targetDepth)) {
+                    context.nextToken();
+                    devEndpoint.setArguments(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

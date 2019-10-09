@@ -84,16 +84,9 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
     private ResourceConfig resourceConfig;
     /**
      * <p>
-     * Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit model
-     * training costs.
-     * </p>
-     * <p>
-     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job termination
-     * for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     * </p>
-     * <p>
-     * When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided
-     * by Amazon SageMaker save the intermediate results of the job.
+     * Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you are
+     * willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon SageMaker
+     * ends the training job. Use this API to cap model training costs.
      * </p>
      */
     private StoppingCondition stoppingCondition;
@@ -120,6 +113,14 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
      * </p>
      */
     private Boolean enableInterContainerTrafficEncryption;
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     */
+    private Boolean enableManagedSpotTraining;
+
+    private CheckpointConfig checkpointConfig;
 
     /**
      * <p>
@@ -533,28 +534,15 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
 
     /**
      * <p>
-     * Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit model
-     * training costs.
-     * </p>
-     * <p>
-     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job termination
-     * for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     * </p>
-     * <p>
-     * When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided
-     * by Amazon SageMaker save the intermediate results of the job.
+     * Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you are
+     * willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon SageMaker
+     * ends the training job. Use this API to cap model training costs.
      * </p>
      * 
      * @param stoppingCondition
-     *        Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit
-     *        model training costs. </p>
-     *        <p>
-     *        To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job
-     *        termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     *        </p>
-     *        <p>
-     *        When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms
-     *        provided by Amazon SageMaker save the intermediate results of the job.
+     *        Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you
+     *        are willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon
+     *        SageMaker ends the training job. Use this API to cap model training costs.
      */
 
     public void setStoppingCondition(StoppingCondition stoppingCondition) {
@@ -563,27 +551,14 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
 
     /**
      * <p>
-     * Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit model
-     * training costs.
-     * </p>
-     * <p>
-     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job termination
-     * for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     * </p>
-     * <p>
-     * When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided
-     * by Amazon SageMaker save the intermediate results of the job.
+     * Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you are
+     * willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon SageMaker
+     * ends the training job. Use this API to cap model training costs.
      * </p>
      * 
-     * @return Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit
-     *         model training costs. </p>
-     *         <p>
-     *         To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job
-     *         termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     *         </p>
-     *         <p>
-     *         When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms
-     *         provided by Amazon SageMaker save the intermediate results of the job.
+     * @return Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you
+     *         are willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon
+     *         SageMaker ends the training job. Use this API to cap model training costs.
      */
 
     public StoppingCondition getStoppingCondition() {
@@ -592,28 +567,15 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
 
     /**
      * <p>
-     * Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit model
-     * training costs.
-     * </p>
-     * <p>
-     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job termination
-     * for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     * </p>
-     * <p>
-     * When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms provided
-     * by Amazon SageMaker save the intermediate results of the job.
+     * Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you are
+     * willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon SageMaker
+     * ends the training job. Use this API to cap model training costs.
      * </p>
      * 
      * @param stoppingCondition
-     *        Sets a maximum duration for the training jobs that the tuning job launches. Use this parameter to limit
-     *        model training costs. </p>
-     *        <p>
-     *        To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal. This delays job
-     *        termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts.
-     *        </p>
-     *        <p>
-     *        When Amazon SageMaker terminates a job because the stopping condition has been met, training algorithms
-     *        provided by Amazon SageMaker save the intermediate results of the job.
+     *        Specifies a limit to how long a model hyperparameter training job can run. It also specifies how long you
+     *        are willing to wait for a managed spot training job to complete. When the job reaches the a limit, Amazon
+     *        SageMaker ends the training job. Use this API to cap model training costs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -811,6 +773,88 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
     }
 
     /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @param enableManagedSpotTraining
+     *        A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *        <code>False</code>).
+     */
+
+    public void setEnableManagedSpotTraining(Boolean enableManagedSpotTraining) {
+        this.enableManagedSpotTraining = enableManagedSpotTraining;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @return A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *         <code>False</code>).
+     */
+
+    public Boolean getEnableManagedSpotTraining() {
+        return this.enableManagedSpotTraining;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @param enableManagedSpotTraining
+     *        A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *        <code>False</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public HyperParameterTrainingJobDefinition withEnableManagedSpotTraining(Boolean enableManagedSpotTraining) {
+        setEnableManagedSpotTraining(enableManagedSpotTraining);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @return A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *         <code>False</code>).
+     */
+
+    public Boolean isEnableManagedSpotTraining() {
+        return this.enableManagedSpotTraining;
+    }
+
+    /**
+     * @param checkpointConfig
+     */
+
+    public void setCheckpointConfig(CheckpointConfig checkpointConfig) {
+        this.checkpointConfig = checkpointConfig;
+    }
+
+    /**
+     * @return
+     */
+
+    public CheckpointConfig getCheckpointConfig() {
+        return this.checkpointConfig;
+    }
+
+    /**
+     * @param checkpointConfig
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public HyperParameterTrainingJobDefinition withCheckpointConfig(CheckpointConfig checkpointConfig) {
+        setCheckpointConfig(checkpointConfig);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -841,7 +885,11 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
         if (getEnableNetworkIsolation() != null)
             sb.append("EnableNetworkIsolation: ").append(getEnableNetworkIsolation()).append(",");
         if (getEnableInterContainerTrafficEncryption() != null)
-            sb.append("EnableInterContainerTrafficEncryption: ").append(getEnableInterContainerTrafficEncryption());
+            sb.append("EnableInterContainerTrafficEncryption: ").append(getEnableInterContainerTrafficEncryption()).append(",");
+        if (getEnableManagedSpotTraining() != null)
+            sb.append("EnableManagedSpotTraining: ").append(getEnableManagedSpotTraining()).append(",");
+        if (getCheckpointConfig() != null)
+            sb.append("CheckpointConfig: ").append(getCheckpointConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -897,6 +945,14 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
         if (other.getEnableInterContainerTrafficEncryption() != null
                 && other.getEnableInterContainerTrafficEncryption().equals(this.getEnableInterContainerTrafficEncryption()) == false)
             return false;
+        if (other.getEnableManagedSpotTraining() == null ^ this.getEnableManagedSpotTraining() == null)
+            return false;
+        if (other.getEnableManagedSpotTraining() != null && other.getEnableManagedSpotTraining().equals(this.getEnableManagedSpotTraining()) == false)
+            return false;
+        if (other.getCheckpointConfig() == null ^ this.getCheckpointConfig() == null)
+            return false;
+        if (other.getCheckpointConfig() != null && other.getCheckpointConfig().equals(this.getCheckpointConfig()) == false)
+            return false;
         return true;
     }
 
@@ -915,6 +971,8 @@ public class HyperParameterTrainingJobDefinition implements Serializable, Clonea
         hashCode = prime * hashCode + ((getStoppingCondition() == null) ? 0 : getStoppingCondition().hashCode());
         hashCode = prime * hashCode + ((getEnableNetworkIsolation() == null) ? 0 : getEnableNetworkIsolation().hashCode());
         hashCode = prime * hashCode + ((getEnableInterContainerTrafficEncryption() == null) ? 0 : getEnableInterContainerTrafficEncryption().hashCode());
+        hashCode = prime * hashCode + ((getEnableManagedSpotTraining() == null) ? 0 : getEnableManagedSpotTraining().hashCode());
+        hashCode = prime * hashCode + ((getCheckpointConfig() == null) ? 0 : getCheckpointConfig().hashCode());
         return hashCode;
     }
 

@@ -81,38 +81,38 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.OperationNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.OperationNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUse").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUse").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.DuplicateRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.DuplicateRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInput").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInput").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceAlreadyExists").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ServiceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceAlreadyExists").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ServiceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ServiceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ServiceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NamespaceAlreadyExists").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.NamespaceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NamespaceAlreadyExists").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.NamespaceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InstanceNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.InstanceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InstanceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.InstanceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NamespaceNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.NamespaceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NamespaceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.NamespaceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CustomHealthNotFound").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.CustomHealthNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CustomHealthNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.CustomHealthNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.servicediscovery.model.ResourceLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.servicediscovery.model.transform.ResourceLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.servicediscovery.model.AWSServiceDiscoveryException.class));
 
     public static AWSServiceDiscoveryClientBuilder builder() {
@@ -212,6 +212,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateHttpNamespace");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -279,6 +280,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePrivateDnsNamespace");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -347,6 +349,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePublicDnsNamespace");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -457,6 +460,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -520,6 +524,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteNamespace");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -580,6 +585,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -646,6 +652,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -705,6 +712,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DiscoverInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -774,6 +782,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -842,6 +851,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstancesHealthStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -900,6 +910,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetNamespace");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -963,6 +974,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetOperation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1020,6 +1032,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1077,6 +1090,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1132,6 +1146,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListNamespaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1187,6 +1202,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListOperations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1242,6 +1258,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListServices");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1360,6 +1377,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1434,6 +1452,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateInstanceCustomHealthStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1520,6 +1539,7 @@ public class AWSServiceDiscoveryClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ServiceDiscovery");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateService");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

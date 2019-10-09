@@ -49,7 +49,7 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      */
@@ -68,8 +68,8 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     private String externalExecutionId;
     /**
      * <p>
-     * The URL of a resource external to AWS that will be used when running the action, for example an external
-     * repository URL.
+     * The URL of a resource external to AWS that is used when running the action (for example, an external repository
+     * URL).
      * </p>
      */
     private String externalExecutionUrl;
@@ -242,14 +242,14 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      * 
      * @param token
      *        The system-generated token used to identify a unique approval request. The token for each open approval
-     *        request can be obtained using the GetPipelineState command and is used to validate that the approval
-     *        request corresponding to this token is still valid.
+     *        request can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the
+     *        approval request corresponding to this token is still valid.
      */
 
     public void setToken(String token) {
@@ -259,13 +259,13 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      * 
      * @return The system-generated token used to identify a unique approval request. The token for each open approval
-     *         request can be obtained using the GetPipelineState command and is used to validate that the approval
-     *         request corresponding to this token is still valid.
+     *         request can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the
+     *         approval request corresponding to this token is still valid.
      */
 
     public String getToken() {
@@ -275,14 +275,14 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * The system-generated token used to identify a unique approval request. The token for each open approval request
-     * can be obtained using the GetPipelineState command and is used to validate that the approval request
+     * can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the approval request
      * corresponding to this token is still valid.
      * </p>
      * 
      * @param token
      *        The system-generated token used to identify a unique approval request. The token for each open approval
-     *        request can be obtained using the GetPipelineState command and is used to validate that the approval
-     *        request corresponding to this token is still valid.
+     *        request can be obtained using the <code>GetPipelineState</code> command. It is used to validate that the
+     *        approval request corresponding to this token is still valid.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -373,13 +373,13 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The URL of a resource external to AWS that will be used when running the action, for example an external
-     * repository URL.
+     * The URL of a resource external to AWS that is used when running the action (for example, an external repository
+     * URL).
      * </p>
      * 
      * @param externalExecutionUrl
-     *        The URL of a resource external to AWS that will be used when running the action, for example an external
-     *        repository URL.
+     *        The URL of a resource external to AWS that is used when running the action (for example, an external
+     *        repository URL).
      */
 
     public void setExternalExecutionUrl(String externalExecutionUrl) {
@@ -388,12 +388,12 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The URL of a resource external to AWS that will be used when running the action, for example an external
-     * repository URL.
+     * The URL of a resource external to AWS that is used when running the action (for example, an external repository
+     * URL).
      * </p>
      * 
-     * @return The URL of a resource external to AWS that will be used when running the action, for example an external
-     *         repository URL.
+     * @return The URL of a resource external to AWS that is used when running the action (for example, an external
+     *         repository URL).
      */
 
     public String getExternalExecutionUrl() {
@@ -402,13 +402,13 @@ public class ActionExecution implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The URL of a resource external to AWS that will be used when running the action, for example an external
-     * repository URL.
+     * The URL of a resource external to AWS that is used when running the action (for example, an external repository
+     * URL).
      * </p>
      * 
      * @param externalExecutionUrl
-     *        The URL of a resource external to AWS that will be used when running the action, for example an external
-     *        repository URL.
+     *        The URL of a resource external to AWS that is used when running the action (for example, an external
+     *        repository URL).
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

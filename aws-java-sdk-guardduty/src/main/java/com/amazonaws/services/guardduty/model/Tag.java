@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * A tag of the EC2 instance.
+ * <p>
+ * Contains information about the tag associated with the resource.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/Tag" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Tag implements Serializable, Cloneable, StructuredPojo {
 
-    /** EC2 instance tag key. */
+    /**
+     * <p>
+     * EC2 instance tag key.
+     * </p>
+     */
     private String key;
-    /** EC2 instance tag value. */
+    /**
+     * <p>
+     * EC2 instance tag value.
+     * </p>
+     */
     private String value;
 
     /**
+     * <p>
      * EC2 instance tag key.
+     * </p>
      * 
      * @param key
      *        EC2 instance tag key.
@@ -43,7 +55,9 @@ public class Tag implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance tag key.
+     * </p>
      * 
      * @return EC2 instance tag key.
      */
@@ -53,7 +67,9 @@ public class Tag implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance tag key.
+     * </p>
      * 
      * @param key
      *        EC2 instance tag key.
@@ -66,7 +82,9 @@ public class Tag implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance tag value.
+     * </p>
      * 
      * @param value
      *        EC2 instance tag value.
@@ -77,7 +95,9 @@ public class Tag implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance tag value.
+     * </p>
      * 
      * @return EC2 instance tag value.
      */
@@ -87,7 +107,9 @@ public class Tag implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * EC2 instance tag value.
+     * </p>
      * 
      * @param value
      *        EC2 instance tag value.

@@ -77,50 +77,50 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidImageFormatException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.InvalidImageFormatException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidImageFormatException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.InvalidImageFormatExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.ThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.ThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3ObjectException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.InvalidS3ObjectException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidS3ObjectException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.InvalidS3ObjectExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("VideoTooLargeException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.VideoTooLargeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("VideoTooLargeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.VideoTooLargeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IdempotentParameterMismatchException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.IdempotentParameterMismatchException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IdempotentParameterMismatchException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.IdempotentParameterMismatchExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.ProvisionedThroughputExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.ProvisionedThroughputExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ImageTooLargeException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.ImageTooLargeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ImageTooLargeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.ImageTooLargeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPaginationTokenException").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.InvalidPaginationTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPaginationTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.InvalidPaginationTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
-                                    com.amazonaws.services.rekognition.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.rekognition.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.rekognition.model.AmazonRekognitionException.class));
 
     /**
@@ -424,6 +424,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CompareFaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -503,6 +504,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCollection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -586,6 +588,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStreamProcessor");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -654,6 +657,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteCollection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -721,6 +725,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -787,6 +792,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteStreamProcessor");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -855,6 +861,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeCollection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -921,6 +928,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeStreamProcessor");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1013,6 +1021,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectFaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1159,6 +1168,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectLabels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1177,9 +1187,9 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
 
     /**
      * <p>
-     * Detects explicit or suggestive adult content in a specified JPEG or PNG format image. Use
-     * <code>DetectModerationLabels</code> to moderate images depending on your requirements. For example, you might
-     * want to filter images that contain nudity, but not images containing suggestive content.
+     * Detects unsafe content in a specified JPEG or PNG format image. Use <code>DetectModerationLabels</code> to
+     * moderate images depending on your requirements. For example, you might want to filter images that contain nudity,
+     * but not images containing suggestive content.
      * </p>
      * <p>
      * To filter images, use the labels returned by <code>DetectModerationLabels</code> to determine which types of
@@ -1241,6 +1251,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectModerationLabels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1343,6 +1354,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectText");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1414,6 +1426,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCelebrityInfo");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1527,6 +1540,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCelebrityRecognition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1546,24 +1560,24 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
 
     /**
      * <p>
-     * Gets the content moderation analysis results for a Amazon Rekognition Video analysis started by
+     * Gets the unsafe content analysis results for a Amazon Rekognition Video analysis started by
      * <a>StartContentModeration</a>.
      * </p>
      * <p>
-     * Content moderation analysis of a video is an asynchronous operation. You start analysis by calling
-     * <a>StartContentModeration</a>. which returns a job identifier (<code>JobId</code>). When analysis finishes,
-     * Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered
-     * in the initial call to <code>StartContentModeration</code>. To get the results of the content moderation
-     * analysis, first check that the status value published to the Amazon SNS topic is <code>SUCCEEDED</code>. If so,
-     * call <code>GetCelebrityDetection</code> and pass the job identifier (<code>JobId</code>) from the initial call to
-     * <code>StartCelebrityDetection</code>.
+     * Unsafe content analysis of a video is an asynchronous operation. You start analysis by calling
+     * <a>StartContentModeration</a> which returns a job identifier (<code>JobId</code>). When analysis finishes, Amazon
+     * Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the
+     * initial call to <code>StartContentModeration</code>. To get the results of the unsafe content analysis, first
+     * check that the status value published to the Amazon SNS topic is <code>SUCCEEDED</code>. If so, call
+     * <code>GetContentModeration</code> and pass the job identifier (<code>JobId</code>) from the initial call to
+     * <code>StartContentModeration</code>.
      * </p>
      * <p>
      * For more information, see Working with Stored Videos in the Amazon Rekognition Devlopers Guide.
      * </p>
      * <p>
-     * <code>GetContentModeration</code> returns detected content moderation labels, and the time they are detected, in
-     * an array, <code>ModerationLabels</code>, of <a>ContentModerationDetection</a> objects.
+     * <code>GetContentModeration</code> returns detected unsafe content labels, and the time they are detected, in an
+     * array, <code>ModerationLabels</code>, of <a>ContentModerationDetection</a> objects.
      * </p>
      * <p>
      * By default, the moderated labels are returned sorted by time, in milliseconds from the start of the video. You
@@ -1626,6 +1640,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetContentModeration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1711,6 +1726,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFaceDetection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1808,6 +1824,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFaceSearch");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1901,6 +1918,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLabelDetection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2002,6 +2020,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPersonTracking");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2198,6 +2217,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "IndexFaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2270,6 +2290,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListCollections");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2340,6 +2361,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListFaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2403,6 +2425,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListStreamProcessors");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2503,6 +2526,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RecognizeCelebrities");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2585,6 +2609,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SearchFaces");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2684,6 +2709,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SearchFacesByImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2772,6 +2798,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartCelebrityRecognition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2791,18 +2818,18 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
 
     /**
      * <p>
-     * Starts asynchronous detection of explicit or suggestive adult content in a stored video.
+     * Starts asynchronous detection of unsafe content in a stored video.
      * </p>
      * <p>
      * Amazon Rekognition Video can moderate content in a video stored in an Amazon S3 bucket. Use <a>Video</a> to
      * specify the bucket name and the filename of the video. <code>StartContentModeration</code> returns a job
-     * identifier (<code>JobId</code>) which you use to get the results of the analysis. When content moderation
-     * analysis is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification
-     * Service topic that you specify in <code>NotificationChannel</code>.
+     * identifier (<code>JobId</code>) which you use to get the results of the analysis. When unsafe content analysis is
+     * finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic
+     * that you specify in <code>NotificationChannel</code>.
      * </p>
      * <p>
-     * To get the results of the content moderation analysis, first check that the status value published to the Amazon
-     * SNS topic is <code>SUCCEEDED</code>. If so, call <a>GetContentModeration</a> and pass the job identifier (
+     * To get the results of the unsafe content analysis, first check that the status value published to the Amazon SNS
+     * topic is <code>SUCCEEDED</code>. If so, call <a>GetContentModeration</a> and pass the job identifier (
      * <code>JobId</code>) from the initial call to <code>StartContentModeration</code>.
      * </p>
      * <p>
@@ -2862,6 +2889,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartContentModeration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2949,6 +2977,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartFaceDetection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3036,6 +3065,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartFaceSearch");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3127,6 +3157,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartLabelDetection");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3213,6 +3244,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartPersonTracking");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3279,6 +3311,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartStreamProcessor");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3343,6 +3376,7 @@ public class AmazonRekognitionClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Rekognition");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopStreamProcessor");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

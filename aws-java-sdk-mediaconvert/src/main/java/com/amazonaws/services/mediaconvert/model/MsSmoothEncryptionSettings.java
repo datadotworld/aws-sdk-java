@@ -26,10 +26,20 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class MsSmoothEncryptionSettings implements Serializable, Cloneable, StructuredPojo {
 
+    /**
+     * If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a
+     * SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     */
     private SpekeKeyProvider spekeKeyProvider;
 
     /**
+     * If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a
+     * SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
      * @param spekeKeyProvider
+     *        If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption
+     *        with a SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf
+     *        settings instead.
      */
 
     public void setSpekeKeyProvider(SpekeKeyProvider spekeKeyProvider) {
@@ -37,7 +47,12 @@ public class MsSmoothEncryptionSettings implements Serializable, Cloneable, Stru
     }
 
     /**
-     * @return
+     * If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a
+     * SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
+     * @return If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption
+     *         with a SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf
+     *         settings instead.
      */
 
     public SpekeKeyProvider getSpekeKeyProvider() {
@@ -45,7 +60,13 @@ public class MsSmoothEncryptionSettings implements Serializable, Cloneable, Stru
     }
 
     /**
+     * If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a
+     * SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
+     * 
      * @param spekeKeyProvider
+     *        If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption
+     *        with a SPEKE-compliant key provider. If your output group type is CMAF, use the SpekeKeyProviderCmaf
+     *        settings instead.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -52,6 +52,10 @@ public class StopChannelResultJsonUnmarshaller implements Unmarshaller<StopChann
                     context.nextToken();
                     stopChannelResult.setArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("channelClass", targetDepth)) {
+                    context.nextToken();
+                    stopChannelResult.setChannelClass(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("destinations", targetDepth)) {
                     context.nextToken();
                     stopChannelResult.setDestinations(new ListUnmarshaller<OutputDestination>(OutputDestinationJsonUnmarshaller.getInstance())
@@ -86,6 +90,11 @@ public class StopChannelResultJsonUnmarshaller implements Unmarshaller<StopChann
                 if (context.testExpression("name", targetDepth)) {
                     context.nextToken();
                     stopChannelResult.setName(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("pipelineDetails", targetDepth)) {
+                    context.nextToken();
+                    stopChannelResult
+                            .setPipelineDetails(new ListUnmarshaller<PipelineDetail>(PipelineDetailJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("pipelinesRunningCount", targetDepth)) {
                     context.nextToken();

@@ -23,27 +23,27 @@ import javax.annotation.Generated;
  * <ul>
  * <li>
  * <p>
- * <a>CreateDBClusterEndpoint</a>
+ * <code>CreateDBClusterEndpoint</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DescribeDBClusterEndpoints</a>
+ * <code>DescribeDBClusterEndpoints</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ModifyDBClusterEndpoint</a>
+ * <code>ModifyDBClusterEndpoint</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteDBClusterEndpoint</a>
+ * <code>DeleteDBClusterEndpoint</code>
  * </p>
  * </li>
  * </ul>
  * <p>
- * For the data structure that represents Amazon RDS DB instance endpoints, see <a>Endpoint</a>.
+ * For the data structure that represents Amazon RDS DB instance endpoints, see <code>Endpoint</code>.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/CreateDBClusterEndpoint" target="_top">AWS API
@@ -92,7 +92,7 @@ public class CreateDBClusterEndpointResult extends com.amazonaws.AmazonWebServic
     private String endpointType;
     /**
      * <p>
-     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>, <code>ANY</code>.
      * </p>
      */
     private String customEndpointType;
@@ -373,11 +373,12 @@ public class CreateDBClusterEndpointResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>, <code>ANY</code>.
      * </p>
      * 
      * @param customEndpointType
-     *        The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     *        The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>,
+     *        <code>ANY</code>.
      */
 
     public void setCustomEndpointType(String customEndpointType) {
@@ -386,10 +387,11 @@ public class CreateDBClusterEndpointResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>, <code>ANY</code>.
      * </p>
      * 
-     * @return The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     * @return The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>,
+     *         <code>ANY</code>.
      */
 
     public String getCustomEndpointType() {
@@ -398,11 +400,12 @@ public class CreateDBClusterEndpointResult extends com.amazonaws.AmazonWebServic
 
     /**
      * <p>
-     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     * The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>, <code>ANY</code>.
      * </p>
      * 
      * @param customEndpointType
-     *        The type associated with a custom endpoint. One of: <code>READER</code>, <code>ANY</code>.
+     *        The type associated with a custom endpoint. One of: <code>READER</code>, <code>WRITER</code>,
+     *        <code>ANY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

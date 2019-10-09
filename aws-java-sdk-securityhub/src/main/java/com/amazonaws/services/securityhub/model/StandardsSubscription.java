@@ -38,13 +38,21 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
      * <p>
      * The ARN of a standard.
      * </p>
+     * <p>
+     * In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following ARN:
+     * <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
+     * </p>
      */
     private String standardsArn;
-    /** <p/> */
+    /**
+     * <p>
+     * A key-value pair of input for the standard.
+     * </p>
+     */
     private java.util.Map<String, String> standardsInput;
     /**
      * <p>
-     * The standard's status.
+     * The status of the standards subscription.
      * </p>
      */
     private String standardsStatus;
@@ -93,9 +101,16 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
      * <p>
      * The ARN of a standard.
      * </p>
+     * <p>
+     * In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following ARN:
+     * <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
+     * </p>
      * 
      * @param standardsArn
-     *        The ARN of a standard.
+     *        The ARN of a standard.</p>
+     *        <p>
+     *        In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following
+     *        ARN: <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
      */
 
     public void setStandardsArn(String standardsArn) {
@@ -106,8 +121,15 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
      * <p>
      * The ARN of a standard.
      * </p>
+     * <p>
+     * In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following ARN:
+     * <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
+     * </p>
      * 
-     * @return The ARN of a standard.
+     * @return The ARN of a standard.</p>
+     *         <p>
+     *         In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following
+     *         ARN: <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
      */
 
     public String getStandardsArn() {
@@ -118,9 +140,16 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
      * <p>
      * The ARN of a standard.
      * </p>
+     * <p>
+     * In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following ARN:
+     * <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
+     * </p>
      * 
      * @param standardsArn
-     *        The ARN of a standard.
+     *        The ARN of a standard.</p>
+     *        <p>
+     *        In this release, Security Hub supports only the CIS AWS Foundations standard, which uses the following
+     *        ARN: <code>arn:aws:securityhub:::ruleset/cis-aws-foundations-benchmark/v/1.2.0.</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -130,9 +159,11 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
     }
 
     /**
-     * <p/>
+     * <p>
+     * A key-value pair of input for the standard.
+     * </p>
      * 
-     * @return
+     * @return A key-value pair of input for the standard.
      */
 
     public java.util.Map<String, String> getStandardsInput() {
@@ -140,9 +171,12 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
     }
 
     /**
-     * <p/>
+     * <p>
+     * A key-value pair of input for the standard.
+     * </p>
      * 
      * @param standardsInput
+     *        A key-value pair of input for the standard.
      */
 
     public void setStandardsInput(java.util.Map<String, String> standardsInput) {
@@ -150,9 +184,12 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
     }
 
     /**
-     * <p/>
+     * <p>
+     * A key-value pair of input for the standard.
+     * </p>
      * 
      * @param standardsInput
+     *        A key-value pair of input for the standard.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -184,11 +221,11 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The standard's status.
+     * The status of the standards subscription.
      * </p>
      * 
      * @param standardsStatus
-     *        The standard's status.
+     *        The status of the standards subscription.
      * @see StandardsStatus
      */
 
@@ -198,10 +235,10 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The standard's status.
+     * The status of the standards subscription.
      * </p>
      * 
-     * @return The standard's status.
+     * @return The status of the standards subscription.
      * @see StandardsStatus
      */
 
@@ -211,11 +248,11 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The standard's status.
+     * The status of the standards subscription.
      * </p>
      * 
      * @param standardsStatus
-     *        The standard's status.
+     *        The status of the standards subscription.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardsStatus
      */
@@ -227,11 +264,11 @@ public class StandardsSubscription implements Serializable, Cloneable, Structure
 
     /**
      * <p>
-     * The standard's status.
+     * The status of the standards subscription.
      * </p>
      * 
      * @param standardsStatus
-     *        The standard's status.
+     *        The status of the standards subscription.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see StandardsStatus
      */

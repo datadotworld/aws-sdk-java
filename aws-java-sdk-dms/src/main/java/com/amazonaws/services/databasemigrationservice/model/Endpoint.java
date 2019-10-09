@@ -34,14 +34,14 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
     private String endpointIdentifier;
     /**
      * <p>
-     * The type of endpoint.
+     * The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * </p>
      */
     private String endpointType;
     /**
      * <p>
-     * The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb,
-     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+     * The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres, mariadb,
+     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      * </p>
      */
     private String engineName;
@@ -90,10 +90,15 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
     private String status;
     /**
      * <p>
-     * The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify
-     * a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key. AWS KMS creates
-     * the default encryption key for your AWS account. Your AWS account has a different default encryption key for each
-     * AWS Region.
+     * An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.
+     * </p>
+     * <p>
+     * If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption
+     * key.
+     * </p>
+     * <p>
+     * AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
+     * encryption key for each AWS Region.
      * </p>
      */
     private String kmsKeyId;
@@ -111,13 +116,7 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
     private String certificateArn;
     /**
      * <p>
-     * The SSL mode used to connect to the endpoint.
-     * </p>
-     * <p>
-     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     * </p>
-     * <p>
-     * The default value is none.
+     * The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * </p>
      */
     private String sslMode;
@@ -158,32 +157,32 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      */
@@ -209,6 +208,12 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private ElasticsearchSettings elasticsearchSettings;
+    /**
+     * <p>
+     * Settings for the Amazon Redshift endpoint.
+     * </p>
+     */
+    private RedshiftSettings redshiftSettings;
 
     /**
      * <p>
@@ -258,11 +263,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of endpoint.
+     * The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * </p>
      * 
      * @param endpointType
-     *        The type of endpoint.
+     *        The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * @see ReplicationEndpointTypeValue
      */
 
@@ -272,10 +277,10 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of endpoint.
+     * The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * </p>
      * 
-     * @return The type of endpoint.
+     * @return The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * @see ReplicationEndpointTypeValue
      */
 
@@ -285,11 +290,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of endpoint.
+     * The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * </p>
      * 
      * @param endpointType
-     *        The type of endpoint.
+     *        The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ReplicationEndpointTypeValue
      */
@@ -301,11 +306,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of endpoint.
+     * The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * </p>
      * 
      * @param endpointType
-     *        The type of endpoint.
+     *        The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * @see ReplicationEndpointTypeValue
      */
 
@@ -315,11 +320,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The type of endpoint.
+     * The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * </p>
      * 
      * @param endpointType
-     *        The type of endpoint.
+     *        The type of endpoint. Valid values are <code>source</code> and <code>target</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ReplicationEndpointTypeValue
      */
@@ -331,14 +336,13 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb,
-     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+     * The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres, mariadb,
+     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      * </p>
      * 
      * @param engineName
-     *        The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres,
-     *        mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and
-     *        sqlserver.
+     *        The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres,
+     *        mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      */
 
     public void setEngineName(String engineName) {
@@ -347,13 +351,12 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb,
-     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+     * The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres, mariadb,
+     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      * </p>
      * 
-     * @return The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres,
-     *         mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and
-     *         sqlserver.
+     * @return The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres,
+     *         mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      */
 
     public String getEngineName() {
@@ -362,14 +365,13 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres, mariadb,
-     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and sqlserver.
+     * The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres, mariadb,
+     * aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      * </p>
      * 
      * @param engineName
-     *        The database engine name. Valid values, depending on the EndPointType, include mysql, oracle, postgres,
-     *        mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, sybase, dynamodb, mongodb, and
-     *        sqlserver.
+     *        The database engine name. Valid values, depending on the EndpointType, include mysql, oracle, postgres,
+     *        mariadb, aurora, aurora-postgresql, redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -666,15 +668,24 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify
-     * a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key. AWS KMS creates
-     * the default encryption key for your AWS account. Your AWS account has a different default encryption key for each
-     * AWS Region.
+     * An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.
+     * </p>
+     * <p>
+     * If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption
+     * key.
+     * </p>
+     * <p>
+     * AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
+     * encryption key for each AWS Region.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't
-     *        specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key.
+     *        An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.</p>
+     *        <p>
+     *        If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default
+     *        encryption key.
+     *        </p>
+     *        <p>
      *        AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
      *        encryption key for each AWS Region.
      */
@@ -685,14 +696,23 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify
-     * a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key. AWS KMS creates
-     * the default encryption key for your AWS account. Your AWS account has a different default encryption key for each
-     * AWS Region.
+     * An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.
+     * </p>
+     * <p>
+     * If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption
+     * key.
+     * </p>
+     * <p>
+     * AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
+     * encryption key for each AWS Region.
      * </p>
      * 
-     * @return The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't
-     *         specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key.
+     * @return An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.</p>
+     *         <p>
+     *         If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default
+     *         encryption key.
+     *         </p>
+     *         <p>
      *         AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
      *         encryption key for each AWS Region.
      */
@@ -703,15 +723,24 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't specify
-     * a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key. AWS KMS creates
-     * the default encryption key for your AWS account. Your AWS account has a different default encryption key for each
-     * AWS Region.
+     * An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.
+     * </p>
+     * <p>
+     * If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption
+     * key.
+     * </p>
+     * <p>
+     * AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
+     * encryption key for each AWS Region.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS KMS key identifier that is used to encrypt the content on the replication instance. If you don't
-     *        specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default encryption key.
+     *        An AWS KMS key identifier that is used to encrypt the connection parameters for the endpoint.</p>
+     *        <p>
+     *        If you don't specify a value for the <code>KmsKeyId</code> parameter, then AWS DMS uses your default
+     *        encryption key.
+     *        </p>
+     *        <p>
      *        AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default
      *        encryption key for each AWS Region.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -804,22 +833,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The SSL mode used to connect to the endpoint.
-     * </p>
-     * <p>
-     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     * </p>
-     * <p>
-     * The default value is none.
+     * The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * </p>
      * 
      * @param sslMode
-     *        The SSL mode used to connect to the endpoint.</p>
-     *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     *        </p>
-     *        <p>
-     *        The default value is none.
+     *        The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * @see DmsSslModeValue
      */
 
@@ -829,21 +847,10 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The SSL mode used to connect to the endpoint.
-     * </p>
-     * <p>
-     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     * </p>
-     * <p>
-     * The default value is none.
+     * The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * </p>
      * 
-     * @return The SSL mode used to connect to the endpoint.</p>
-     *         <p>
-     *         SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     *         </p>
-     *         <p>
-     *         The default value is none.
+     * @return The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * @see DmsSslModeValue
      */
 
@@ -853,22 +860,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The SSL mode used to connect to the endpoint.
-     * </p>
-     * <p>
-     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     * </p>
-     * <p>
-     * The default value is none.
+     * The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * </p>
      * 
      * @param sslMode
-     *        The SSL mode used to connect to the endpoint.</p>
-     *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     *        </p>
-     *        <p>
-     *        The default value is none.
+     *        The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DmsSslModeValue
      */
@@ -880,22 +876,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The SSL mode used to connect to the endpoint.
-     * </p>
-     * <p>
-     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     * </p>
-     * <p>
-     * The default value is none.
+     * The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * </p>
      * 
      * @param sslMode
-     *        The SSL mode used to connect to the endpoint.</p>
-     *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     *        </p>
-     *        <p>
-     *        The default value is none.
+     *        The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * @see DmsSslModeValue
      */
 
@@ -905,22 +890,11 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The SSL mode used to connect to the endpoint.
-     * </p>
-     * <p>
-     * SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     * </p>
-     * <p>
-     * The default value is none.
+     * The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * </p>
      * 
      * @param sslMode
-     *        The SSL mode used to connect to the endpoint.</p>
-     *        <p>
-     *        SSL mode can be one of four values: none, require, verify-ca, verify-full.
-     *        </p>
-     *        <p>
-     *        The default value is none.
+     *        The SSL mode used to connect to the endpoint. The default value is <code>none</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see DmsSslModeValue
      */
@@ -1147,65 +1121,65 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      * 
      * @param dmsTransferSettings
      *        The settings in JSON format for the DMS transfer type of source endpoint. </p>
      *        <p>
-     *        Possible attributes include the following:
+     *        Possible settings include the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     *        <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>bucketName</code> - The name of the S3 bucket to use.
+     *        <code>BucketName</code> - The name of the S3 bucket to use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use
+     *        <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use
      *        GZIP, set this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this
      *        value.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        Shorthand syntax for these attributes is as follows:
+     *        Shorthand syntax for these settings is as follows:
      *        <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      *        </p>
      *        <p>
-     *        JSON syntax for these attributes is as follows:
+     *        JSON syntax for these settings is as follows:
      *        <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      */
 
@@ -1218,64 +1192,64 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      * 
      * @return The settings in JSON format for the DMS transfer type of source endpoint. </p>
      *         <p>
-     *         Possible attributes include the following:
+     *         Possible settings include the following:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     *         <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>bucketName</code> - The name of the S3 bucket to use.
+     *         <code>BucketName</code> - The name of the S3 bucket to use.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use
+     *         <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use
      *         GZIP, set this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this
      *         value.
      *         </p>
      *         </li>
      *         </ul>
      *         <p>
-     *         Shorthand syntax for these attributes is as follows:
+     *         Shorthand syntax for these settings is as follows:
      *         <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      *         </p>
      *         <p>
-     *         JSON syntax for these attributes is as follows:
+     *         JSON syntax for these settings is as follows:
      *         <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      */
 
@@ -1288,65 +1262,65 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
      * The settings in JSON format for the DMS transfer type of source endpoint.
      * </p>
      * <p>
-     * Possible attributes include the following:
+     * Possible settings include the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     * <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>bucketName</code> - The name of the S3 bucket to use.
+     * <code>BucketName</code> - The name of the S3 bucket to use.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
+     * <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use GZIP, set
      * this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this value.
      * </p>
      * </li>
      * </ul>
      * <p>
-     * Shorthand syntax for these attributes is as follows:
+     * Shorthand syntax for these settings is as follows:
      * <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      * </p>
      * <p>
-     * JSON syntax for these attributes is as follows:
+     * JSON syntax for these settings is as follows:
      * <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * </p>
      * 
      * @param dmsTransferSettings
      *        The settings in JSON format for the DMS transfer type of source endpoint. </p>
      *        <p>
-     *        Possible attributes include the following:
+     *        Possible settings include the following:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>serviceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
+     *        <code>ServiceAccessRoleArn</code> - The IAM role that has permission to access the Amazon S3 bucket.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>bucketName</code> - The name of the S3 bucket to use.
+     *        <code>BucketName</code> - The name of the S3 bucket to use.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>compressionType</code> - An optional parameter to use GZIP to compress the target files. To use
+     *        <code>CompressionType</code> - An optional parameter to use GZIP to compress the target files. To use
      *        GZIP, set this value to <code>NONE</code> (the default). To keep the files uncompressed, don't use this
      *        value.
      *        </p>
      *        </li>
      *        </ul>
      *        <p>
-     *        Shorthand syntax for these attributes is as follows:
+     *        Shorthand syntax for these settings is as follows:
      *        <code>ServiceAccessRoleArn=string,BucketName=string,CompressionType=string</code>
      *        </p>
      *        <p>
-     *        JSON syntax for these attributes is as follows:
+     *        JSON syntax for these settings is as follows:
      *        <code>{ "ServiceAccessRoleArn": "string", "BucketName": "string", "CompressionType": "none"|"gzip" } </code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1495,6 +1469,46 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Settings for the Amazon Redshift endpoint.
+     * </p>
+     * 
+     * @param redshiftSettings
+     *        Settings for the Amazon Redshift endpoint.
+     */
+
+    public void setRedshiftSettings(RedshiftSettings redshiftSettings) {
+        this.redshiftSettings = redshiftSettings;
+    }
+
+    /**
+     * <p>
+     * Settings for the Amazon Redshift endpoint.
+     * </p>
+     * 
+     * @return Settings for the Amazon Redshift endpoint.
+     */
+
+    public RedshiftSettings getRedshiftSettings() {
+        return this.redshiftSettings;
+    }
+
+    /**
+     * <p>
+     * Settings for the Amazon Redshift endpoint.
+     * </p>
+     * 
+     * @param redshiftSettings
+     *        Settings for the Amazon Redshift endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Endpoint withRedshiftSettings(RedshiftSettings redshiftSettings) {
+        setRedshiftSettings(redshiftSettings);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1551,7 +1565,9 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
         if (getKinesisSettings() != null)
             sb.append("KinesisSettings: ").append(getKinesisSettings()).append(",");
         if (getElasticsearchSettings() != null)
-            sb.append("ElasticsearchSettings: ").append(getElasticsearchSettings());
+            sb.append("ElasticsearchSettings: ").append(getElasticsearchSettings()).append(",");
+        if (getRedshiftSettings() != null)
+            sb.append("RedshiftSettings: ").append(getRedshiftSettings());
         sb.append("}");
         return sb.toString();
     }
@@ -1658,6 +1674,10 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getElasticsearchSettings() != null && other.getElasticsearchSettings().equals(this.getElasticsearchSettings()) == false)
             return false;
+        if (other.getRedshiftSettings() == null ^ this.getRedshiftSettings() == null)
+            return false;
+        if (other.getRedshiftSettings() != null && other.getRedshiftSettings().equals(this.getRedshiftSettings()) == false)
+            return false;
         return true;
     }
 
@@ -1689,6 +1709,7 @@ public class Endpoint implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getMongoDbSettings() == null) ? 0 : getMongoDbSettings().hashCode());
         hashCode = prime * hashCode + ((getKinesisSettings() == null) ? 0 : getKinesisSettings().hashCode());
         hashCode = prime * hashCode + ((getElasticsearchSettings() == null) ? 0 : getElasticsearchSettings().hashCode());
+        hashCode = prime * hashCode + ((getRedshiftSettings() == null) ? 0 : getRedshiftSettings().hashCode());
         return hashCode;
     }
 

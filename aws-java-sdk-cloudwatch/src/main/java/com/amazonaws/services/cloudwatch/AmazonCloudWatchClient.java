@@ -281,6 +281,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
     }
 
     private void init() {
+        exceptionUnmarshallers.add(new ConcurrentModificationExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidParameterValueExceptionUnmarshaller());
         exceptionUnmarshallers.add(new ResourceNotFoundExceptionUnmarshaller());
         exceptionUnmarshallers.add(new InvalidParameterCombinationExceptionUnmarshaller());
@@ -305,7 +306,8 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Deletes the specified alarms. In the event of an error, no alarms are deleted.
+     * Deletes the specified alarms. You can delete up to 50 alarms in one operation. In the event of an error, no
+     * alarms are deleted.
      * </p>
      * 
      * @param deleteAlarmsRequest
@@ -341,11 +343,73 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAlarms");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             StaxResponseHandler<DeleteAlarmsResult> responseHandler = new StaxResponseHandler<DeleteAlarmsResult>(new DeleteAlarmsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes the specified anomaly detection model from your account.
+     * </p>
+     * 
+     * @param deleteAnomalyDetectorRequest
+     * @return Result of the DeleteAnomalyDetector operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         The named resource does not exist.
+     * @throws InternalServiceException
+     *         Request processing has failed due to some unknown error, exception, or failure.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @sample AmazonCloudWatch.DeleteAnomalyDetector
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DeleteAnomalyDetector"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DeleteAnomalyDetectorResult deleteAnomalyDetector(DeleteAnomalyDetectorRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAnomalyDetector(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAnomalyDetectorResult executeDeleteAnomalyDetector(DeleteAnomalyDetectorRequest deleteAnomalyDetectorRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteAnomalyDetectorRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteAnomalyDetectorRequest> request = null;
+        Response<DeleteAnomalyDetectorResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteAnomalyDetectorRequestMarshaller().marshall(super.beforeMarshalling(deleteAnomalyDetectorRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAnomalyDetector");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteAnomalyDetectorResult> responseHandler = new StaxResponseHandler<DeleteAnomalyDetectorResult>(
+                    new DeleteAnomalyDetectorResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -399,6 +463,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDashboards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -457,6 +522,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAlarmHistory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -517,6 +583,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAlarms");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -574,12 +641,74 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAlarmsForMetric");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             StaxResponseHandler<DescribeAlarmsForMetricResult> responseHandler = new StaxResponseHandler<DescribeAlarmsForMetricResult>(
                     new DescribeAlarmsForMetricResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists the anomaly detection models that you have created in your account. You can list all models in your account
+     * or filter the results to only the models that are related to a certain namespace, metric name, or metric
+     * dimension.
+     * </p>
+     * 
+     * @param describeAnomalyDetectorsRequest
+     * @return Result of the DescribeAnomalyDetectors operation returned by the service.
+     * @throws InvalidNextTokenException
+     *         The next token specified is invalid.
+     * @throws InternalServiceException
+     *         Request processing has failed due to some unknown error, exception, or failure.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @sample AmazonCloudWatch.DescribeAnomalyDetectors
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/DescribeAnomalyDetectors"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public DescribeAnomalyDetectorsResult describeAnomalyDetectors(DescribeAnomalyDetectorsRequest request) {
+        request = beforeClientExecution(request);
+        return executeDescribeAnomalyDetectors(request);
+    }
+
+    @SdkInternalApi
+    final DescribeAnomalyDetectorsResult executeDescribeAnomalyDetectors(DescribeAnomalyDetectorsRequest describeAnomalyDetectorsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(describeAnomalyDetectorsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeAnomalyDetectorsRequest> request = null;
+        Response<DescribeAnomalyDetectorsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeAnomalyDetectorsRequestMarshaller().marshall(super.beforeMarshalling(describeAnomalyDetectorsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAnomalyDetectors");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeAnomalyDetectorsResult> responseHandler = new StaxResponseHandler<DescribeAnomalyDetectorsResult>(
+                    new DescribeAnomalyDetectorsResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -627,6 +756,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableAlarmActions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -679,6 +809,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableAlarmActions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -742,6 +873,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDashboard");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -805,6 +937,12 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * resolution. After 15 days, this data is still available, but is aggregated and retrievable only with a resolution
      * of 5 minutes. After 63 days, the data is further aggregated and is available with a resolution of 1 hour.
      * </p>
+     * <p>
+     * If you omit <code>Unit</code> in your request, all data that was collected with any unit is returned, along with
+     * the corresponding units that were specified when the data was reported to CloudWatch. If you specify a unit, the
+     * operation returns only data data that was collected with that unit specified. If you specify a unit that does not
+     * match the data collected, the results of the operation are null. CloudWatch does not perform unit conversions.
+     * </p>
      * 
      * @param getMetricDataRequest
      * @return Result of the GetMetricData operation returned by the service.
@@ -839,6 +977,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -970,6 +1109,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMetricStatistics");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1045,6 +1185,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMetricWidgetImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1107,6 +1248,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDashboards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1172,6 +1314,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListMetrics");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1194,12 +1337,137 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
+     * Displays the tags associated with a CloudWatch resource. Alarms support tagging.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws ResourceNotFoundException
+     *         The named resource does not exist.
+     * @throws InternalServiceException
+     *         Request processing has failed due to some unknown error, exception, or failure.
+     * @sample AmazonCloudWatch.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestMarshaller().marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ListTagsForResourceResult> responseHandler = new StaxResponseHandler<ListTagsForResourceResult>(
+                    new ListTagsForResourceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected
+     * normal values when the metric is graphed.
+     * </p>
+     * <p>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html"
+     * >CloudWatch Anomaly Detection</a>.
+     * </p>
+     * 
+     * @param putAnomalyDetectorRequest
+     * @return Result of the PutAnomalyDetector operation returned by the service.
+     * @throws LimitExceededException
+     *         The operation exceeded one or more limits.
+     * @throws InternalServiceException
+     *         Request processing has failed due to some unknown error, exception, or failure.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws MissingRequiredParameterException
+     *         An input parameter that is required is missing.
+     * @sample AmazonCloudWatch.PutAnomalyDetector
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/PutAnomalyDetector" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public PutAnomalyDetectorResult putAnomalyDetector(PutAnomalyDetectorRequest request) {
+        request = beforeClientExecution(request);
+        return executePutAnomalyDetector(request);
+    }
+
+    @SdkInternalApi
+    final PutAnomalyDetectorResult executePutAnomalyDetector(PutAnomalyDetectorRequest putAnomalyDetectorRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putAnomalyDetectorRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutAnomalyDetectorRequest> request = null;
+        Response<PutAnomalyDetectorResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutAnomalyDetectorRequestMarshaller().marshall(super.beforeMarshalling(putAnomalyDetectorRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutAnomalyDetector");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<PutAnomalyDetectorResult> responseHandler = new StaxResponseHandler<PutAnomalyDetectorResult>(
+                    new PutAnomalyDetectorResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard,
      * the entire contents are replaced with what you specify here.
      * </p>
      * <p>
-     * There is no limit to the number of dashboards in your account. All dashboards in your account are global, not
-     * region-specific.
+     * All dashboards in your account are global, not region-specific.
      * </p>
      * <p>
      * A simple way to create a dashboard using <code>PutDashboard</code> is to copy an existing dashboard. To copy an
@@ -1250,6 +1518,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutDashboard");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1267,7 +1536,11 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
 
     /**
      * <p>
-     * Creates or updates an alarm and associates it with the specified metric or metric math expression.
+     * Creates or updates an alarm and associates it with the specified metric, metric math expression, or anomaly
+     * detection model.
+     * </p>
+     * <p>
+     * Alarms based on anomaly detection models cannot have Auto Scaling actions.
      * </p>
      * <p>
      * When this operation creates an alarm, the alarm state is immediately set to <code>INSUFFICIENT_DATA</code>. The
@@ -1305,8 +1578,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
      * </li>
      * <li>
      * <p>
-     * <code>ec2:DescribeInstanceRecoveryAttribute</code> and <code>ec2:RecoverInstances</code> for alarms with recover
-     * actions
+     * No specific permissions are needed for alarms with recover actions
      * </p>
      * </li>
      * </ul>
@@ -1365,6 +1637,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutMetricAlarm");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1472,6 +1745,7 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1532,11 +1806,146 @@ public class AmazonCloudWatchClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SetAlarmState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             StaxResponseHandler<SetAlarmStateResult> responseHandler = new StaxResponseHandler<SetAlarmStateResult>(new SetAlarmStateResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Tags can help you organize and
+     * categorize your resources. You can also use them to scope user permissions, by granting a user permission to
+     * access or change only resources with certain tag values. In CloudWatch, alarms can be tagged.
+     * </p>
+     * <p>
+     * Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.
+     * </p>
+     * <p>
+     * You can use the <code>TagResource</code> action with a resource that already has tags. If you specify a new tag
+     * key for the resource, this tag is appended to the list of tags associated with the resource. If you specify a tag
+     * key that is already associated with the resource, the new tag value that you specify replaces the previous value
+     * for that tag.
+     * </p>
+     * <p>
+     * You can associate as many as 50 tags with a resource.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws ResourceNotFoundException
+     *         The named resource does not exist.
+     * @throws ConcurrentModificationException
+     *         More than one process tried to modify a resource at the same time.
+     * @throws InternalServiceException
+     *         Request processing has failed due to some unknown error, exception, or failure.
+     * @sample AmazonCloudWatch.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestMarshaller().marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<TagResourceResult> responseHandler = new StaxResponseHandler<TagResourceResult>(new TagResourceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Removes one or more tags from the specified resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws InvalidParameterValueException
+     *         The value of an input parameter is bad or out-of-range.
+     * @throws ResourceNotFoundException
+     *         The named resource does not exist.
+     * @throws ConcurrentModificationException
+     *         More than one process tried to modify a resource at the same time.
+     * @throws InternalServiceException
+     *         Request processing has failed due to some unknown error, exception, or failure.
+     * @sample AmazonCloudWatch.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/monitoring-2010-08-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestMarshaller().marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudWatch");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<UntagResourceResult> responseHandler = new StaxResponseHandler<UntagResourceResult>(new UntagResourceResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

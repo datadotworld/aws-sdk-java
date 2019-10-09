@@ -25,7 +25,11 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /** This is a beta feature. If you are interested in using this feature, please contact AWS customer support. */
+    /**
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
+     */
     private AccelerationSettings accelerationSettings;
     /** The new category for the job template, if you are changing it. */
     private String category;
@@ -33,22 +37,35 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     private String description;
     /** The name of the job template you are modifying */
     private String name;
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+    private Integer priority;
     /** The new queue for the job template, if you are changing it. */
     private String queue;
-
+    /**
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     */
     private JobTemplateSettings settings;
     /**
      * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
      * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
      * processing your job to the time it completes the transcode or encounters an error.
      */
-    private Long statusUpdateIntervalInSecs;
+    private String statusUpdateInterval;
 
     /**
-     * This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
      * 
      * @param accelerationSettings
-     *        This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+     *        Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that
+     *        use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     *        MediaConvert User Guide.
      */
 
     public void setAccelerationSettings(AccelerationSettings accelerationSettings) {
@@ -56,9 +73,13 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
      * 
-     * @return This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+     * @return Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that
+     *         use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     *         MediaConvert User Guide.
      */
 
     public AccelerationSettings getAccelerationSettings() {
@@ -66,10 +87,14 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+     * Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that use
+     * this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     * MediaConvert User Guide.
      * 
      * @param accelerationSettings
-     *        This is a beta feature. If you are interested in using this feature, please contact AWS customer support.
+     *        Accelerated transcoding can significantly speed up jobs with long, visually complex content. Outputs that
+     *        use this feature incur pro-tier pricing. For information about feature limitations, see the AWS Elemental
+     *        MediaConvert User Guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -181,6 +206,52 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @param priority
+     *        Specify the relative priority for this job. In any given queue, the service begins processing the job with
+     *        the highest value first. When more than one job has the same priority, the service begins processing the
+     *        job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @return Specify the relative priority for this job. In any given queue, the service begins processing the job
+     *         with the highest value first. When more than one job has the same priority, the service begins processing
+     *         the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     */
+
+    public Integer getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * Specify the relative priority for this job. In any given queue, the service begins processing the job with the
+     * highest value first. When more than one job has the same priority, the service begins processing the job that you
+     * submitted first. If you don't specify a priority, the service uses the default value 0.
+     * 
+     * @param priority
+     *        Specify the relative priority for this job. In any given queue, the service begins processing the job with
+     *        the highest value first. When more than one job has the same priority, the service begins processing the
+     *        job that you submitted first. If you don't specify a priority, the service uses the default value 0.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateJobTemplateRequest withPriority(Integer priority) {
+        setPriority(priority);
+        return this;
+    }
+
+    /**
      * The new queue for the job template, if you are changing it.
      * 
      * @param queue
@@ -215,7 +286,12 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     * 
      * @param settings
+     *        JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     *        created from it.
      */
 
     public void setSettings(JobTemplateSettings settings) {
@@ -223,7 +299,11 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
-     * @return
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     * 
+     * @return JobTemplateSettings contains all the transcode settings saved in the template that will be applied to
+     *         jobs created from it.
      */
 
     public JobTemplateSettings getSettings() {
@@ -231,7 +311,12 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
     }
 
     /**
+     * JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     * created from it.
+     * 
      * @param settings
+     *        JobTemplateSettings contains all the transcode settings saved in the template that will be applied to jobs
+     *        created from it.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -245,14 +330,15 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
      * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
      * processing your job to the time it completes the transcode or encounters an error.
      * 
-     * @param statusUpdateIntervalInSecs
+     * @param statusUpdateInterval
      *        Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
      *        in seconds, between status updates. MediaConvert sends an update at this interval from the time the
      *        service begins processing your job to the time it completes the transcode or encounters an error.
+     * @see StatusUpdateInterval
      */
 
-    public void setStatusUpdateIntervalInSecs(Long statusUpdateIntervalInSecs) {
-        this.statusUpdateIntervalInSecs = statusUpdateIntervalInSecs;
+    public void setStatusUpdateInterval(String statusUpdateInterval) {
+        this.statusUpdateInterval = statusUpdateInterval;
     }
 
     /**
@@ -263,10 +349,11 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
      * @return Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
      *         in seconds, between status updates. MediaConvert sends an update at this interval from the time the
      *         service begins processing your job to the time it completes the transcode or encounters an error.
+     * @see StatusUpdateInterval
      */
 
-    public Long getStatusUpdateIntervalInSecs() {
-        return this.statusUpdateIntervalInSecs;
+    public String getStatusUpdateInterval() {
+        return this.statusUpdateInterval;
     }
 
     /**
@@ -274,15 +361,34 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
      * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
      * processing your job to the time it completes the transcode or encounters an error.
      * 
-     * @param statusUpdateIntervalInSecs
+     * @param statusUpdateInterval
      *        Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
      *        in seconds, between status updates. MediaConvert sends an update at this interval from the time the
      *        service begins processing your job to the time it completes the transcode or encounters an error.
      * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StatusUpdateInterval
      */
 
-    public UpdateJobTemplateRequest withStatusUpdateIntervalInSecs(Long statusUpdateIntervalInSecs) {
-        setStatusUpdateIntervalInSecs(statusUpdateIntervalInSecs);
+    public UpdateJobTemplateRequest withStatusUpdateInterval(String statusUpdateInterval) {
+        setStatusUpdateInterval(statusUpdateInterval);
+        return this;
+    }
+
+    /**
+     * Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in
+     * seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins
+     * processing your job to the time it completes the transcode or encounters an error.
+     * 
+     * @param statusUpdateInterval
+     *        Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval,
+     *        in seconds, between status updates. MediaConvert sends an update at this interval from the time the
+     *        service begins processing your job to the time it completes the transcode or encounters an error.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StatusUpdateInterval
+     */
+
+    public UpdateJobTemplateRequest withStatusUpdateInterval(StatusUpdateInterval statusUpdateInterval) {
+        this.statusUpdateInterval = statusUpdateInterval.toString();
         return this;
     }
 
@@ -306,12 +412,14 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
             sb.append("Description: ").append(getDescription()).append(",");
         if (getName() != null)
             sb.append("Name: ").append(getName()).append(",");
+        if (getPriority() != null)
+            sb.append("Priority: ").append(getPriority()).append(",");
         if (getQueue() != null)
             sb.append("Queue: ").append(getQueue()).append(",");
         if (getSettings() != null)
             sb.append("Settings: ").append(getSettings()).append(",");
-        if (getStatusUpdateIntervalInSecs() != null)
-            sb.append("StatusUpdateIntervalInSecs: ").append(getStatusUpdateIntervalInSecs());
+        if (getStatusUpdateInterval() != null)
+            sb.append("StatusUpdateInterval: ").append(getStatusUpdateInterval());
         sb.append("}");
         return sb.toString();
     }
@@ -342,6 +450,10 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getPriority() == null ^ this.getPriority() == null)
+            return false;
+        if (other.getPriority() != null && other.getPriority().equals(this.getPriority()) == false)
+            return false;
         if (other.getQueue() == null ^ this.getQueue() == null)
             return false;
         if (other.getQueue() != null && other.getQueue().equals(this.getQueue()) == false)
@@ -350,9 +462,9 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
             return false;
-        if (other.getStatusUpdateIntervalInSecs() == null ^ this.getStatusUpdateIntervalInSecs() == null)
+        if (other.getStatusUpdateInterval() == null ^ this.getStatusUpdateInterval() == null)
             return false;
-        if (other.getStatusUpdateIntervalInSecs() != null && other.getStatusUpdateIntervalInSecs().equals(this.getStatusUpdateIntervalInSecs()) == false)
+        if (other.getStatusUpdateInterval() != null && other.getStatusUpdateInterval().equals(this.getStatusUpdateInterval()) == false)
             return false;
         return true;
     }
@@ -366,9 +478,10 @@ public class UpdateJobTemplateRequest extends com.amazonaws.AmazonWebServiceRequ
         hashCode = prime * hashCode + ((getCategory() == null) ? 0 : getCategory().hashCode());
         hashCode = prime * hashCode + ((getDescription() == null) ? 0 : getDescription().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getPriority() == null) ? 0 : getPriority().hashCode());
         hashCode = prime * hashCode + ((getQueue() == null) ? 0 : getQueue().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
-        hashCode = prime * hashCode + ((getStatusUpdateIntervalInSecs() == null) ? 0 : getStatusUpdateIntervalInSecs().hashCode());
+        hashCode = prime * hashCode + ((getStatusUpdateInterval() == null) ? 0 : getStatusUpdateInterval().hashCode());
         return hashCode;
     }
 

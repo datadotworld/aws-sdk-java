@@ -36,7 +36,7 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
      * instance of (CaptionDescriptions). (CaptionDescriptions) can contain multiple groups of captions settings.
      */
     private java.util.List<CaptionDescription> captionDescriptions;
-
+    /** Container specific settings. */
     private ContainerSettings containerSettings;
     /**
      * Use Extension (Extension) to specify the file extension for outputs in File output groups. If you do not specify
@@ -53,7 +53,7 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
      * of the output group.
      */
     private String nameModifier;
-
+    /** Specific settings for this type of output. */
     private OutputSettings outputSettings;
     /**
      * Use Preset (Preset) to specifiy a preset for your transcoding settings. Provide the system or custom preset name.
@@ -62,8 +62,8 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     private String preset;
     /**
      * (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video
-     * codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per
-     * output.
+     * codec that you choose when you specify a value for Video codec (codec). Include one instance of
+     * (VideoDescription) per output.
      */
     private VideoDescription videoDescription;
 
@@ -213,7 +213,10 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Container specific settings.
+     * 
      * @param containerSettings
+     *        Container specific settings.
      */
 
     public void setContainerSettings(ContainerSettings containerSettings) {
@@ -221,7 +224,9 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Container specific settings.
+     * 
+     * @return Container specific settings.
      */
 
     public ContainerSettings getContainerSettings() {
@@ -229,7 +234,10 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Container specific settings.
+     * 
      * @param containerSettings
+     *        Container specific settings.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -349,7 +357,10 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specific settings for this type of output.
+     * 
      * @param outputSettings
+     *        Specific settings for this type of output.
      */
 
     public void setOutputSettings(OutputSettings outputSettings) {
@@ -357,7 +368,9 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * @return
+     * Specific settings for this type of output.
+     * 
+     * @return Specific settings for this type of output.
      */
 
     public OutputSettings getOutputSettings() {
@@ -365,7 +378,10 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * Specific settings for this type of output.
+     * 
      * @param outputSettings
+     *        Specific settings for this type of output.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -419,12 +435,12 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video
-     * codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per
-     * output.
+     * codec that you choose when you specify a value for Video codec (codec). Include one instance of
+     * (VideoDescription) per output.
      * 
      * @param videoDescription
      *        (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the
-     *        video codec you choose when you specify a value for Video codec (codec). Include one instance of
+     *        video codec that you choose when you specify a value for Video codec (codec). Include one instance of
      *        (VideoDescription) per output.
      */
 
@@ -434,11 +450,11 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video
-     * codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per
-     * output.
+     * codec that you choose when you specify a value for Video codec (codec). Include one instance of
+     * (VideoDescription) per output.
      * 
      * @return (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the
-     *         video codec you choose when you specify a value for Video codec (codec). Include one instance of
+     *         video codec that you choose when you specify a value for Video codec (codec). Include one instance of
      *         (VideoDescription) per output.
      */
 
@@ -448,12 +464,12 @@ public class Output implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video
-     * codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per
-     * output.
+     * codec that you choose when you specify a value for Video codec (codec). Include one instance of
+     * (VideoDescription) per output.
      * 
      * @param videoDescription
      *        (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the
-     *        video codec you choose when you specify a value for Video codec (codec). Include one instance of
+     *        video codec that you choose when you specify a value for Video codec (codec). Include one instance of
      *        (VideoDescription) per output.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

@@ -76,32 +76,32 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CreateFlow420Exception").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.CreateFlow420Exception.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CreateFlow420Exception").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.CreateFlow420ExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("GrantFlowEntitlements420Exception").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.GrantFlowEntitlements420Exception.class))
+                            new JsonErrorShapeMetadata().withErrorCode("GrantFlowEntitlements420Exception").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.GrantFlowEntitlements420ExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.ForbiddenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.ForbiddenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AddFlowOutputs420Exception").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.AddFlowOutputs420Exception.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AddFlowOutputs420Exception").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.AddFlowOutputs420ExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withModeledClass(
-                                    com.amazonaws.services.mediaconnect.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mediaconnect.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.mediaconnect.model.AWSMediaConnectException.class));
 
     public static AWSMediaConnectClientBuilder builder() {
@@ -200,6 +200,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddFlowOutputs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -266,6 +267,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -328,6 +330,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -391,6 +394,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -457,6 +461,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GrantFlowEntitlements");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -517,6 +522,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListEntitlements");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -575,6 +581,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListFlows");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -592,7 +599,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
     }
 
     /**
-     * Lists all tags associated with the resource.
+     * List all tags on an AWS Elemental MediaConnect resource
      * 
      * @param listTagsForResourceRequest
      * @return Result of the ListTagsForResource operation returned by the service.
@@ -631,6 +638,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -695,6 +703,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveFlowOutput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -758,6 +767,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RevokeFlowEntitlement");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -821,6 +831,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -883,6 +894,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopFlow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -900,12 +912,13 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
     }
 
     /**
-     * Associates the specified tags to a resource. If the request does not mention an existing tag associated with the
-     * resource, that tag is not changed.
+     * Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are
+     * not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated
+     * with that resource are deleted as well.
      * 
      * @param tagResourceRequest
-     *        The tags to add to the resource. Tag keys can have a maximum character length of 128 characters, and tag
-     *        values can have a maximum length of 256 characters.
+     *        The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum
+     *        character length of 128 characters, and tag values can have a maximum length of 256 characters.
      * @return Result of the TagResource operation returned by the service.
      * @throws NotFoundException
      *         The requested resource was not found
@@ -942,6 +955,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -959,7 +973,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
     }
 
     /**
-     * Deletes the specified tags from a resource.
+     * Deletes specified tags from a resource.
      * 
      * @param untagResourceRequest
      * @return Result of the UntagResource operation returned by the service.
@@ -998,6 +1012,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1062,6 +1077,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFlowEntitlement");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1126,6 +1142,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFlowOutput");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1189,6 +1206,7 @@ public class AWSMediaConnectClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "MediaConnect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFlowSource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

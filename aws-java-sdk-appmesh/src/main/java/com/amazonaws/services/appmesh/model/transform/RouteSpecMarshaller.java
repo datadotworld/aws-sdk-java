@@ -29,6 +29,10 @@ public class RouteSpecMarshaller {
 
     private static final MarshallingInfo<StructuredPojo> HTTPROUTE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("httpRoute").build();
+    private static final MarshallingInfo<Integer> PRIORITY_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("priority").build();
+    private static final MarshallingInfo<StructuredPojo> TCPROUTE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("tcpRoute").build();
 
     private static final RouteSpecMarshaller instance = new RouteSpecMarshaller();
 
@@ -47,6 +51,8 @@ public class RouteSpecMarshaller {
 
         try {
             protocolMarshaller.marshall(routeSpec.getHttpRoute(), HTTPROUTE_BINDING);
+            protocolMarshaller.marshall(routeSpec.getPriority(), PRIORITY_BINDING);
+            protocolMarshaller.marshall(routeSpec.getTcpRoute(), TCPROUTE_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

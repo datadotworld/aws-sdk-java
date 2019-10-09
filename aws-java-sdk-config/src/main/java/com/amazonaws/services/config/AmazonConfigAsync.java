@@ -32,7 +32,7 @@ import com.amazonaws.services.config.model.*;
  * information about the relationship between the resources. An AWS resource can be an Amazon Compute Cloud (Amazon EC2)
  * instance, an Elastic Block Store (EBS) volume, an elastic network Interface (ENI), or a security group. For a
  * complete list of resources currently supported by AWS Config, see <a
- * href="http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources"
+ * href="https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources"
  * >Supported AWS Resources</a>.
  * </p>
  * <p>
@@ -40,11 +40,11 @@ import com.amazonaws.services.config.model.*;
  * the AWS Config API, or the AWS SDKs for AWS Config. This reference guide contains documentation for the AWS Config
  * API and the AWS CLI commands that you can use to manage AWS Config. The AWS Config API uses the Signature Version 4
  * protocol for signing requests. For more information about how to sign a request with this protocol, see <a
- * href="http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing Process</a>.
- * For detailed information about AWS Config features and their associated actions or commands, as well as how to work
- * with AWS Management Console, see <a
- * href="http://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html">What Is AWS Config</a> in the <i>AWS
- * Config Developer Guide</i>.
+ * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
+ * Process</a>. For detailed information about AWS Config features and their associated actions or commands, as well as
+ * how to work with AWS Management Console, see <a
+ * href="https://docs.aws.amazon.com/config/latest/developerguide/WhatIsConfig.html">What Is AWS Config</a> in the
+ * <i>AWS Config Developer Guide</i>.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -434,6 +434,51 @@ public interface AmazonConfigAsync extends AmazonConfig {
 
     /**
      * <p>
+     * Deletes the specified organization config rule and all of its evaluation results from all member accounts in that
+     * organization. Only a master account can delete an organization config rule.
+     * </p>
+     * <p>
+     * AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the deletion is complete. You cannot update a
+     * rule while it is in this state.
+     * </p>
+     * 
+     * @param deleteOrganizationConfigRuleRequest
+     * @return A Java Future containing the result of the DeleteOrganizationConfigRule operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.DeleteOrganizationConfigRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteOrganizationConfigRule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteOrganizationConfigRuleResult> deleteOrganizationConfigRuleAsync(
+            DeleteOrganizationConfigRuleRequest deleteOrganizationConfigRuleRequest);
+
+    /**
+     * <p>
+     * Deletes the specified organization config rule and all of its evaluation results from all member accounts in that
+     * organization. Only a master account can delete an organization config rule.
+     * </p>
+     * <p>
+     * AWS Config sets the state of a rule to DELETE_IN_PROGRESS until the deletion is complete. You cannot update a
+     * rule while it is in this state.
+     * </p>
+     * 
+     * @param deleteOrganizationConfigRuleRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteOrganizationConfigRule operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.DeleteOrganizationConfigRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteOrganizationConfigRule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteOrganizationConfigRuleResult> deleteOrganizationConfigRuleAsync(
+            DeleteOrganizationConfigRuleRequest deleteOrganizationConfigRuleRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteOrganizationConfigRuleRequest, DeleteOrganizationConfigRuleResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes pending authorization requests for a specified aggregator account in a specified region.
      * </p>
      * 
@@ -466,6 +511,74 @@ public interface AmazonConfigAsync extends AmazonConfig {
     java.util.concurrent.Future<DeletePendingAggregationRequestResult> deletePendingAggregationRequestAsync(
             DeletePendingAggregationRequestRequest deletePendingAggregationRequestRequest,
             com.amazonaws.handlers.AsyncHandler<DeletePendingAggregationRequestRequest, DeletePendingAggregationRequestResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes the remediation configuration.
+     * </p>
+     * 
+     * @param deleteRemediationConfigurationRequest
+     * @return A Java Future containing the result of the DeleteRemediationConfiguration operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.DeleteRemediationConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteRemediationConfigurationResult> deleteRemediationConfigurationAsync(
+            DeleteRemediationConfigurationRequest deleteRemediationConfigurationRequest);
+
+    /**
+     * <p>
+     * Deletes the remediation configuration.
+     * </p>
+     * 
+     * @param deleteRemediationConfigurationRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteRemediationConfiguration operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.DeleteRemediationConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteRemediationConfigurationResult> deleteRemediationConfigurationAsync(
+            DeleteRemediationConfigurationRequest deleteRemediationConfigurationRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteRemediationConfigurationRequest, DeleteRemediationConfigurationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes one or more remediation exceptions mentioned in the resource keys.
+     * </p>
+     * 
+     * @param deleteRemediationExceptionsRequest
+     * @return A Java Future containing the result of the DeleteRemediationExceptions operation returned by the service.
+     * @sample AmazonConfigAsync.DeleteRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteRemediationExceptionsResult> deleteRemediationExceptionsAsync(
+            DeleteRemediationExceptionsRequest deleteRemediationExceptionsRequest);
+
+    /**
+     * <p>
+     * Deletes one or more remediation exceptions mentioned in the resource keys.
+     * </p>
+     * 
+     * @param deleteRemediationExceptionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteRemediationExceptions operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.DeleteRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteRemediationExceptionsResult> deleteRemediationExceptionsAsync(
+            DeleteRemediationExceptionsRequest deleteRemediationExceptionsRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteRemediationExceptionsRequest, DeleteRemediationExceptionsResult> asyncHandler);
 
     /**
      * <p>
@@ -580,8 +693,8 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * </p>
      * <note>
      * <p>
-     * The results can return an empty result page, but if you have a nextToken, the results are displayed on the next
-     * page.
+     * The results can return an empty result page, but if you have a <code>nextToken</code>, the results are displayed
+     * on the next page.
      * </p>
      * </note>
      * 
@@ -602,8 +715,8 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * </p>
      * <note>
      * <p>
-     * The results can return an empty result page, but if you have a nextToken, the results are displayed on the next
-     * page.
+     * The results can return an empty result page, but if you have a <code>nextToken</code>, the results are displayed
+     * on the next page.
      * </p>
      * </note>
      * 
@@ -990,8 +1103,8 @@ public interface AmazonConfigAsync extends AmazonConfig {
     /**
      * <p>
      * Returns status information for sources within an aggregator. The status includes information about the last time
-     * AWS Config aggregated data from source accounts or AWS Config failed to aggregate data from source accounts with
-     * the related error code or message.
+     * AWS Config verified authorization between the source account and an aggregator account. In case of a failure, the
+     * status contains the related error code or message.
      * </p>
      * 
      * @param describeConfigurationAggregatorSourcesStatusRequest
@@ -1008,8 +1121,8 @@ public interface AmazonConfigAsync extends AmazonConfig {
     /**
      * <p>
      * Returns status information for sources within an aggregator. The status includes information about the last time
-     * AWS Config aggregated data from source accounts or AWS Config failed to aggregate data from source accounts with
-     * the related error code or message.
+     * AWS Config verified authorization between the source account and an aggregator account. In case of a failure, the
+     * status contains the related error code or message.
      * </p>
      * 
      * @param describeConfigurationAggregatorSourcesStatusRequest
@@ -1322,6 +1435,124 @@ public interface AmazonConfigAsync extends AmazonConfig {
 
     /**
      * <p>
+     * Provides organization config rule deployment status for an organization.
+     * </p>
+     * <note>
+     * <p>
+     * The status is not considered successful until organization config rule is successfully deployed in all the member
+     * accounts with an exception of excluded accounts.
+     * </p>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response. Limit and next token are not
+     * applicable if you specify organization config rule names. It is only applicable, when you request all the
+     * organization config rules.
+     * </p>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param describeOrganizationConfigRuleStatusesRequest
+     * @return A Java Future containing the result of the DescribeOrganizationConfigRuleStatuses operation returned by
+     *         the service.
+     * @sample AmazonConfigAsync.DescribeOrganizationConfigRuleStatuses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConfigRuleStatuses"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeOrganizationConfigRuleStatusesResult> describeOrganizationConfigRuleStatusesAsync(
+            DescribeOrganizationConfigRuleStatusesRequest describeOrganizationConfigRuleStatusesRequest);
+
+    /**
+     * <p>
+     * Provides organization config rule deployment status for an organization.
+     * </p>
+     * <note>
+     * <p>
+     * The status is not considered successful until organization config rule is successfully deployed in all the member
+     * accounts with an exception of excluded accounts.
+     * </p>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response. Limit and next token are not
+     * applicable if you specify organization config rule names. It is only applicable, when you request all the
+     * organization config rules.
+     * </p>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param describeOrganizationConfigRuleStatusesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeOrganizationConfigRuleStatuses operation returned by
+     *         the service.
+     * @sample AmazonConfigAsyncHandler.DescribeOrganizationConfigRuleStatuses
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConfigRuleStatuses"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeOrganizationConfigRuleStatusesResult> describeOrganizationConfigRuleStatusesAsync(
+            DescribeOrganizationConfigRuleStatusesRequest describeOrganizationConfigRuleStatusesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeOrganizationConfigRuleStatusesRequest, DescribeOrganizationConfigRuleStatusesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns a list of organization config rules.
+     * </p>
+     * <note>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response. Limit and next token are not
+     * applicable if you specify organization config rule names. It is only applicable, when you request all the
+     * organization config rules.
+     * </p>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param describeOrganizationConfigRulesRequest
+     * @return A Java Future containing the result of the DescribeOrganizationConfigRules operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.DescribeOrganizationConfigRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConfigRules"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeOrganizationConfigRulesResult> describeOrganizationConfigRulesAsync(
+            DescribeOrganizationConfigRulesRequest describeOrganizationConfigRulesRequest);
+
+    /**
+     * <p>
+     * Returns a list of organization config rules.
+     * </p>
+     * <note>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response. Limit and next token are not
+     * applicable if you specify organization config rule names. It is only applicable, when you request all the
+     * organization config rules.
+     * </p>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param describeOrganizationConfigRulesRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeOrganizationConfigRules operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.DescribeOrganizationConfigRules
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeOrganizationConfigRules"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeOrganizationConfigRulesResult> describeOrganizationConfigRulesAsync(
+            DescribeOrganizationConfigRulesRequest describeOrganizationConfigRulesRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeOrganizationConfigRulesRequest, DescribeOrganizationConfigRulesResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of all pending aggregation requests.
      * </p>
      * 
@@ -1354,6 +1585,137 @@ public interface AmazonConfigAsync extends AmazonConfig {
     java.util.concurrent.Future<DescribePendingAggregationRequestsResult> describePendingAggregationRequestsAsync(
             DescribePendingAggregationRequestsRequest describePendingAggregationRequestsRequest,
             com.amazonaws.handlers.AsyncHandler<DescribePendingAggregationRequestsRequest, DescribePendingAggregationRequestsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the details of one or more remediation configurations.
+     * </p>
+     * 
+     * @param describeRemediationConfigurationsRequest
+     * @return A Java Future containing the result of the DescribeRemediationConfigurations operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.DescribeRemediationConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationConfigurations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeRemediationConfigurationsResult> describeRemediationConfigurationsAsync(
+            DescribeRemediationConfigurationsRequest describeRemediationConfigurationsRequest);
+
+    /**
+     * <p>
+     * Returns the details of one or more remediation configurations.
+     * </p>
+     * 
+     * @param describeRemediationConfigurationsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeRemediationConfigurations operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.DescribeRemediationConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationConfigurations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeRemediationConfigurationsResult> describeRemediationConfigurationsAsync(
+            DescribeRemediationConfigurationsRequest describeRemediationConfigurationsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeRemediationConfigurationsRequest, DescribeRemediationConfigurationsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set
+     * of resources that includes an explanation of an exception and the time when the exception will be deleted. When
+     * you specify the limit and the next token, you receive a paginated response.
+     * </p>
+     * <note>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response.
+     * </p>
+     * <p>
+     * Limit and next token are not applicable if you request resources in batch. It is only applicable, when you
+     * request all resources.
+     * </p>
+     * </note>
+     * 
+     * @param describeRemediationExceptionsRequest
+     * @return A Java Future containing the result of the DescribeRemediationExceptions operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.DescribeRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeRemediationExceptionsResult> describeRemediationExceptionsAsync(
+            DescribeRemediationExceptionsRequest describeRemediationExceptionsRequest);
+
+    /**
+     * <p>
+     * Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set
+     * of resources that includes an explanation of an exception and the time when the exception will be deleted. When
+     * you specify the limit and the next token, you receive a paginated response.
+     * </p>
+     * <note>
+     * <p>
+     * When you specify the limit and the next token, you receive a paginated response.
+     * </p>
+     * <p>
+     * Limit and next token are not applicable if you request resources in batch. It is only applicable, when you
+     * request all resources.
+     * </p>
+     * </note>
+     * 
+     * @param describeRemediationExceptionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeRemediationExceptions operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.DescribeRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeRemediationExceptionsResult> describeRemediationExceptionsAsync(
+            DescribeRemediationExceptionsRequest describeRemediationExceptionsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeRemediationExceptionsRequest, DescribeRemediationExceptionsResult> asyncHandler);
+
+    /**
+     * <p>
+     * Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when
+     * steps for the remediation execution occur, and any error messages for steps that have failed. When you specify
+     * the limit and the next token, you receive a paginated response.
+     * </p>
+     * 
+     * @param describeRemediationExecutionStatusRequest
+     * @return A Java Future containing the result of the DescribeRemediationExecutionStatus operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.DescribeRemediationExecutionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExecutionStatus"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeRemediationExecutionStatusResult> describeRemediationExecutionStatusAsync(
+            DescribeRemediationExecutionStatusRequest describeRemediationExecutionStatusRequest);
+
+    /**
+     * <p>
+     * Provides a detailed view of a Remediation Execution for a set of resources including state, timestamps for when
+     * steps for the remediation execution occur, and any error messages for steps that have failed. When you specify
+     * the limit and the next token, you receive a paginated response.
+     * </p>
+     * 
+     * @param describeRemediationExecutionStatusRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeRemediationExecutionStatus operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.DescribeRemediationExecutionStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExecutionStatus"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeRemediationExecutionStatusResult> describeRemediationExecutionStatusAsync(
+            DescribeRemediationExecutionStatusRequest describeRemediationExecutionStatusRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeRemediationExecutionStatusRequest, DescribeRemediationExecutionStatusResult> asyncHandler);
 
     /**
      * <p>
@@ -1410,8 +1772,8 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * </p>
      * <note>
      * <p>
-     * The results can return an empty result page. But if you have a nextToken, the results are displayed on the next
-     * page.
+     * The results can return an empty result page. But if you have a <code>nextToken</code>, the results are displayed
+     * on the next page.
      * </p>
      * </note>
      * 
@@ -1433,8 +1795,8 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * </p>
      * <note>
      * <p>
-     * The results can return an empty result page. But if you have a nextToken, the results are displayed on the next
-     * page.
+     * The results can return an empty result page. But if you have a <code>nextToken</code>, the results are displayed
+     * on the next page.
      * </p>
      * </note>
      * 
@@ -1929,6 +2291,51 @@ public interface AmazonConfigAsync extends AmazonConfig {
 
     /**
      * <p>
+     * Returns detailed status for each member account within an organization for a given organization config rule.
+     * </p>
+     * <note>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param getOrganizationConfigRuleDetailedStatusRequest
+     * @return A Java Future containing the result of the GetOrganizationConfigRuleDetailedStatus operation returned by
+     *         the service.
+     * @sample AmazonConfigAsync.GetOrganizationConfigRuleDetailedStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetOrganizationConfigRuleDetailedStatus"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetOrganizationConfigRuleDetailedStatusResult> getOrganizationConfigRuleDetailedStatusAsync(
+            GetOrganizationConfigRuleDetailedStatusRequest getOrganizationConfigRuleDetailedStatusRequest);
+
+    /**
+     * <p>
+     * Returns detailed status for each member account within an organization for a given organization config rule.
+     * </p>
+     * <note>
+     * <p>
+     * Only a master account can call this API.
+     * </p>
+     * </note>
+     * 
+     * @param getOrganizationConfigRuleDetailedStatusRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the GetOrganizationConfigRuleDetailedStatus operation returned by
+     *         the service.
+     * @sample AmazonConfigAsyncHandler.GetOrganizationConfigRuleDetailedStatus
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/GetOrganizationConfigRuleDetailedStatus"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<GetOrganizationConfigRuleDetailedStatusResult> getOrganizationConfigRuleDetailedStatusAsync(
+            GetOrganizationConfigRuleDetailedStatusRequest getOrganizationConfigRuleDetailedStatusRequest,
+            com.amazonaws.handlers.AsyncHandler<GetOrganizationConfigRuleDetailedStatusRequest, GetOrganizationConfigRuleDetailedStatusResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of configuration items for the specified resource. The list contains details about each state of
      * the resource during the specified time interval. If you specified a retention period to retain your
      * <code>ConfigurationItems</code> between a minimum of 30 days and a maximum of 7 years (2557 days), AWS Config
@@ -2102,6 +2509,37 @@ public interface AmazonConfigAsync extends AmazonConfig {
 
     /**
      * <p>
+     * List the tags for AWS Config resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonConfigAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * List the tags for AWS Config resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
+
+    /**
+     * <p>
      * Authorizes the aggregator account and region to collect data from the source account and region.
      * </p>
      * 
@@ -2153,7 +2591,7 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * <p>
      * If you are adding an AWS managed Config rule, specify the rule's identifier for the <code>SourceIdentifier</code>
      * key. To reference AWS managed Config rule identifiers, see <a
-     * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">About AWS
+     * href="https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">About AWS
      * Managed Config Rules</a>.
      * </p>
      * <p>
@@ -2167,7 +2605,7 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * this request.
      * </p>
      * <p>
-     * The maximum number of rules that AWS Config supports is 50.
+     * The maximum number of rules that AWS Config supports is 150.
      * </p>
      * <p>
      * For information about requesting a rule limit increase, see <a
@@ -2176,7 +2614,7 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * </p>
      * <p>
      * For more information about developing and using AWS Config rules, see <a
-     * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource
+     * href="https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource
      * Configurations with AWS Config</a> in the <i>AWS Config Developer Guide</i>.
      * </p>
      * 
@@ -2208,7 +2646,7 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * <p>
      * If you are adding an AWS managed Config rule, specify the rule's identifier for the <code>SourceIdentifier</code>
      * key. To reference AWS managed Config rule identifiers, see <a
-     * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">About AWS
+     * href="https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html">About AWS
      * Managed Config Rules</a>.
      * </p>
      * <p>
@@ -2222,7 +2660,7 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * this request.
      * </p>
      * <p>
-     * The maximum number of rules that AWS Config supports is 50.
+     * The maximum number of rules that AWS Config supports is 150.
      * </p>
      * <p>
      * For information about requesting a rule limit increase, see <a
@@ -2231,7 +2669,7 @@ public interface AmazonConfigAsync extends AmazonConfig {
      * </p>
      * <p>
      * For more information about developing and using AWS Config rules, see <a
-     * href="http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource
+     * href="https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html">Evaluating AWS Resource
      * Configurations with AWS Config</a> in the <i>AWS Config Developer Guide</i>.
      * </p>
      * 
@@ -2460,6 +2898,157 @@ public interface AmazonConfigAsync extends AmazonConfig {
 
     /**
      * <p>
+     * Adds or updates organization config rule for your entire organization evaluating whether your AWS resources
+     * comply with your desired configurations. Only a master account can create or update an organization config rule.
+     * </p>
+     * <p>
+     * This API enables organization service access through the <code>EnableAWSServiceAccess</code> action and creates a
+     * service linked role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master account of your
+     * organization. The service linked role is created only when the role does not exist in the master account. AWS
+     * Config verifies the existence of role with <code>GetRole</code> action.
+     * </p>
+     * <p>
+     * You can use this action to create both custom AWS Config rules and AWS managed Config rules. If you are adding a
+     * new custom AWS Config rule, you must first create AWS Lambda function in the master account that the rule invokes
+     * to evaluate your resources. When you use the <code>PutOrganizationConfigRule</code> action to add the rule to AWS
+     * Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function. If you are
+     * adding an AWS managed Config rule, specify the rule's identifier for the <code>RuleIdentifier</code> key.
+     * </p>
+     * <p>
+     * The maximum number of organization config rules that AWS Config supports is 150.
+     * </p>
+     * <note>
+     * <p>
+     * Specify either <code>OrganizationCustomRuleMetadata</code> or <code>OrganizationManagedRuleMetadata</code>.
+     * </p>
+     * </note>
+     * 
+     * @param putOrganizationConfigRuleRequest
+     * @return A Java Future containing the result of the PutOrganizationConfigRule operation returned by the service.
+     * @sample AmazonConfigAsync.PutOrganizationConfigRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutOrganizationConfigRule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutOrganizationConfigRuleResult> putOrganizationConfigRuleAsync(
+            PutOrganizationConfigRuleRequest putOrganizationConfigRuleRequest);
+
+    /**
+     * <p>
+     * Adds or updates organization config rule for your entire organization evaluating whether your AWS resources
+     * comply with your desired configurations. Only a master account can create or update an organization config rule.
+     * </p>
+     * <p>
+     * This API enables organization service access through the <code>EnableAWSServiceAccess</code> action and creates a
+     * service linked role <code>AWSServiceRoleForConfigMultiAccountSetup</code> in the master account of your
+     * organization. The service linked role is created only when the role does not exist in the master account. AWS
+     * Config verifies the existence of role with <code>GetRole</code> action.
+     * </p>
+     * <p>
+     * You can use this action to create both custom AWS Config rules and AWS managed Config rules. If you are adding a
+     * new custom AWS Config rule, you must first create AWS Lambda function in the master account that the rule invokes
+     * to evaluate your resources. When you use the <code>PutOrganizationConfigRule</code> action to add the rule to AWS
+     * Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function. If you are
+     * adding an AWS managed Config rule, specify the rule's identifier for the <code>RuleIdentifier</code> key.
+     * </p>
+     * <p>
+     * The maximum number of organization config rules that AWS Config supports is 150.
+     * </p>
+     * <note>
+     * <p>
+     * Specify either <code>OrganizationCustomRuleMetadata</code> or <code>OrganizationManagedRuleMetadata</code>.
+     * </p>
+     * </note>
+     * 
+     * @param putOrganizationConfigRuleRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutOrganizationConfigRule operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.PutOrganizationConfigRule
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutOrganizationConfigRule"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutOrganizationConfigRuleResult> putOrganizationConfigRuleAsync(
+            PutOrganizationConfigRuleRequest putOrganizationConfigRuleRequest,
+            com.amazonaws.handlers.AsyncHandler<PutOrganizationConfigRuleRequest, PutOrganizationConfigRuleResult> asyncHandler);
+
+    /**
+     * <p>
+     * Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action.
+     * The API creates the <code>RemediationConfiguration</code> object for the AWS Config rule. The AWS Config rule
+     * must already exist for you to add a remediation configuration. The target (SSM document) must exist and have
+     * permissions to use the target.
+     * </p>
+     * 
+     * @param putRemediationConfigurationsRequest
+     * @return A Java Future containing the result of the PutRemediationConfigurations operation returned by the
+     *         service.
+     * @sample AmazonConfigAsync.PutRemediationConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationConfigurations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutRemediationConfigurationsResult> putRemediationConfigurationsAsync(
+            PutRemediationConfigurationsRequest putRemediationConfigurationsRequest);
+
+    /**
+     * <p>
+     * Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action.
+     * The API creates the <code>RemediationConfiguration</code> object for the AWS Config rule. The AWS Config rule
+     * must already exist for you to add a remediation configuration. The target (SSM document) must exist and have
+     * permissions to use the target.
+     * </p>
+     * 
+     * @param putRemediationConfigurationsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutRemediationConfigurations operation returned by the
+     *         service.
+     * @sample AmazonConfigAsyncHandler.PutRemediationConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationConfigurations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutRemediationConfigurationsResult> putRemediationConfigurationsAsync(
+            PutRemediationConfigurationsRequest putRemediationConfigurationsRequest,
+            com.amazonaws.handlers.AsyncHandler<PutRemediationConfigurationsRequest, PutRemediationConfigurationsResult> asyncHandler);
+
+    /**
+     * <p>
+     * A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a
+     * new exception or updates an exisiting exception for a specific resource with a specific AWS Config rule.
+     * </p>
+     * 
+     * @param putRemediationExceptionsRequest
+     * @return A Java Future containing the result of the PutRemediationExceptions operation returned by the service.
+     * @sample AmazonConfigAsync.PutRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutRemediationExceptionsResult> putRemediationExceptionsAsync(PutRemediationExceptionsRequest putRemediationExceptionsRequest);
+
+    /**
+     * <p>
+     * A remediation exception is when a specific resource is no longer considered for auto-remediation. This API adds a
+     * new exception or updates an exisiting exception for a specific resource with a specific AWS Config rule.
+     * </p>
+     * 
+     * @param putRemediationExceptionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PutRemediationExceptions operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.PutRemediationExceptions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationExceptions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<PutRemediationExceptionsResult> putRemediationExceptionsAsync(PutRemediationExceptionsRequest putRemediationExceptionsRequest,
+            com.amazonaws.handlers.AsyncHandler<PutRemediationExceptionsRequest, PutRemediationExceptionsResult> asyncHandler);
+
+    /**
+     * <p>
      * Creates and updates the retention configuration with details about retention period (number of days) that AWS
      * Config stores your historical information. The API creates the <code>RetentionConfiguration</code> object and
      * names the object as <b>default</b>. When you have a <code>RetentionConfiguration</code> object named
@@ -2506,6 +3095,49 @@ public interface AmazonConfigAsync extends AmazonConfig {
     java.util.concurrent.Future<PutRetentionConfigurationResult> putRetentionConfigurationAsync(
             PutRetentionConfigurationRequest putRetentionConfigurationRequest,
             com.amazonaws.handlers.AsyncHandler<PutRetentionConfigurationRequest, PutRetentionConfigurationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Accepts a structured query language (SQL) <code>SELECT</code> command, performs the corresponding search, and
+     * returns resource configurations matching the properties.
+     * </p>
+     * <p>
+     * For more information about query components, see the <a
+     * href="https://docs.aws.amazon.com/config/latest/developerguide/query-components.html"> <b>Query Components</b>
+     * </a> section in the AWS Config Developer Guide.
+     * </p>
+     * 
+     * @param selectResourceConfigRequest
+     * @return A Java Future containing the result of the SelectResourceConfig operation returned by the service.
+     * @sample AmazonConfigAsync.SelectResourceConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SelectResourceConfig" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<SelectResourceConfigResult> selectResourceConfigAsync(SelectResourceConfigRequest selectResourceConfigRequest);
+
+    /**
+     * <p>
+     * Accepts a structured query language (SQL) <code>SELECT</code> command, performs the corresponding search, and
+     * returns resource configurations matching the properties.
+     * </p>
+     * <p>
+     * For more information about query components, see the <a
+     * href="https://docs.aws.amazon.com/config/latest/developerguide/query-components.html"> <b>Query Components</b>
+     * </a> section in the AWS Config Developer Guide.
+     * </p>
+     * 
+     * @param selectResourceConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the SelectResourceConfig operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.SelectResourceConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SelectResourceConfig" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<SelectResourceConfigResult> selectResourceConfigAsync(SelectResourceConfigRequest selectResourceConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<SelectResourceConfigRequest, SelectResourceConfigResult> asyncHandler);
 
     /**
      * <p>
@@ -2679,6 +3311,51 @@ public interface AmazonConfigAsync extends AmazonConfig {
 
     /**
      * <p>
+     * Runs an on-demand remediation for the specified AWS Config rules against the last known remediation
+     * configuration. It runs an execution against the current state of your resources. Remediation execution is
+     * asynchronous.
+     * </p>
+     * <p>
+     * You can specify up to 100 resource keys per request. An existing StartRemediationExecution call for the specified
+     * resource keys must complete before you can call the API again.
+     * </p>
+     * 
+     * @param startRemediationExecutionRequest
+     * @return A Java Future containing the result of the StartRemediationExecution operation returned by the service.
+     * @sample AmazonConfigAsync.StartRemediationExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartRemediationExecution"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<StartRemediationExecutionResult> startRemediationExecutionAsync(
+            StartRemediationExecutionRequest startRemediationExecutionRequest);
+
+    /**
+     * <p>
+     * Runs an on-demand remediation for the specified AWS Config rules against the last known remediation
+     * configuration. It runs an execution against the current state of your resources. Remediation execution is
+     * asynchronous.
+     * </p>
+     * <p>
+     * You can specify up to 100 resource keys per request. An existing StartRemediationExecution call for the specified
+     * resource keys must complete before you can call the API again.
+     * </p>
+     * 
+     * @param startRemediationExecutionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the StartRemediationExecution operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.StartRemediationExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartRemediationExecution"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<StartRemediationExecutionResult> startRemediationExecutionAsync(
+            StartRemediationExecutionRequest startRemediationExecutionRequest,
+            com.amazonaws.handlers.AsyncHandler<StartRemediationExecutionRequest, StartRemediationExecutionResult> asyncHandler);
+
+    /**
+     * <p>
      * Stops recording configurations of the AWS resources you have selected to record in your AWS account.
      * </p>
      * 
@@ -2711,5 +3388,71 @@ public interface AmazonConfigAsync extends AmazonConfig {
     java.util.concurrent.Future<StopConfigurationRecorderResult> stopConfigurationRecorderAsync(
             StopConfigurationRecorderRequest stopConfigurationRecorderRequest,
             com.amazonaws.handlers.AsyncHandler<StopConfigurationRecorderRequest, StopConfigurationRecorderResult> asyncHandler);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are
+     * not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated
+     * with that resource are deleted as well.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonConfigAsync.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are
+     * not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated
+     * with that resource are deleted as well.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonConfigAsync.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonConfigAsyncHandler.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler);
 
 }

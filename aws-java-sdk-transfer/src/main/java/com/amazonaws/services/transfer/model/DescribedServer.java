@@ -19,9 +19,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Describe the properties of the server that was specified. Information returned includes: the server Amazon Resource
- * Name (ARN), the authentication configuration and type, the logging role, server Id and state, and assigned tags or
- * metadata.
+ * Describes the properties of the server that was specified. Information returned includes the following: the server
+ * Amazon Resource Name (ARN), the authentication configuration and type, the logging role, the server ID and state, and
+ * assigned tags or metadata.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/transfer-2018-11-05/DescribedServer" target="_top">AWS API
@@ -38,6 +38,26 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     private String arn;
     /**
      * <p>
+     * The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     * </p>
+     */
+    private EndpointDetails endpointDetails;
+    /**
+     * <p>
+     * The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC endpoint,
+     * your server isn't accessible over the public internet.
+     * </p>
+     */
+    private String endpointType;
+    /**
+     * <p>
+     * This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is equivalent to
+     * the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     * </p>
+     */
+    private String hostKeyFingerprint;
+    /**
+     * <p>
      * Specifies information to call a customer-supplied authentication API. This field is not populated when the
      * <code>IdentityProviderType</code> of the server is <code>SERVICE_MANAGED</code>&gt;.
      * </p>
@@ -46,7 +66,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property defines the mode of authentication method enabled for this service. A value of
-     * <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user credentials
+     * <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user credentials
      * within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an API Gateway
      * endpoint that will be invoked for authenticating your user into the service.
      * </p>
@@ -55,13 +75,13 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on Amazon
-     * CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch logs.
+     * CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch logs.
      * </p>
      */
     private String loggingRole;
     /**
      * <p>
-     * This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     * This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      * </p>
      */
     private String serverId;
@@ -72,7 +92,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      * server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -134,6 +154,159 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
+     * The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     * </p>
+     * 
+     * @param endpointDetails
+     *        The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     */
+
+    public void setEndpointDetails(EndpointDetails endpointDetails) {
+        this.endpointDetails = endpointDetails;
+    }
+
+    /**
+     * <p>
+     * The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     * </p>
+     * 
+     * @return The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     */
+
+    public EndpointDetails getEndpointDetails() {
+        return this.endpointDetails;
+    }
+
+    /**
+     * <p>
+     * The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     * </p>
+     * 
+     * @param endpointDetails
+     *        The virtual private cloud (VPC) endpoint settings that you configured for your SFTP server.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribedServer withEndpointDetails(EndpointDetails endpointDetails) {
+        setEndpointDetails(endpointDetails);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC endpoint,
+     * your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *        endpoint, your server isn't accessible over the public internet.
+     * @see EndpointType
+     */
+
+    public void setEndpointType(String endpointType) {
+        this.endpointType = endpointType;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC endpoint,
+     * your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @return The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *         endpoint, your server isn't accessible over the public internet.
+     * @see EndpointType
+     */
+
+    public String getEndpointType() {
+        return this.endpointType;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC endpoint,
+     * your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *        endpoint, your server isn't accessible over the public internet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EndpointType
+     */
+
+    public DescribedServer withEndpointType(String endpointType) {
+        setEndpointType(endpointType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC endpoint,
+     * your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *        endpoint, your server isn't accessible over the public internet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EndpointType
+     */
+
+    public DescribedServer withEndpointType(EndpointType endpointType) {
+        this.endpointType = endpointType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is equivalent to
+     * the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     * </p>
+     * 
+     * @param hostKeyFingerprint
+     *        This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is
+     *        equivalent to the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     */
+
+    public void setHostKeyFingerprint(String hostKeyFingerprint) {
+        this.hostKeyFingerprint = hostKeyFingerprint;
+    }
+
+    /**
+     * <p>
+     * This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is equivalent to
+     * the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     * </p>
+     * 
+     * @return This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is
+     *         equivalent to the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     */
+
+    public String getHostKeyFingerprint() {
+        return this.hostKeyFingerprint;
+    }
+
+    /**
+     * <p>
+     * This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is equivalent to
+     * the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     * </p>
+     * 
+     * @param hostKeyFingerprint
+     *        This value contains the message-digest algorithm (MD5) hash of the server's host key. This value is
+     *        equivalent to the output of the <code>ssh-keygen -l -E md5 -f my-new-server-key</code> command.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribedServer withHostKeyFingerprint(String hostKeyFingerprint) {
+        setHostKeyFingerprint(hostKeyFingerprint);
+        return this;
+    }
+
+    /**
+     * <p>
      * Specifies information to call a customer-supplied authentication API. This field is not populated when the
      * <code>IdentityProviderType</code> of the server is <code>SERVICE_MANAGED</code>&gt;.
      * </p>
@@ -181,14 +354,14 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property defines the mode of authentication method enabled for this service. A value of
-     * <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user credentials
+     * <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user credentials
      * within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an API Gateway
      * endpoint that will be invoked for authenticating your user into the service.
      * </p>
      * 
      * @param identityProviderType
      *        This property defines the mode of authentication method enabled for this service. A value of
-     *        <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user
+     *        <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user
      *        credentials within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an
      *        API Gateway endpoint that will be invoked for authenticating your user into the service.
      * @see IdentityProviderType
@@ -201,13 +374,13 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property defines the mode of authentication method enabled for this service. A value of
-     * <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user credentials
+     * <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user credentials
      * within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an API Gateway
      * endpoint that will be invoked for authenticating your user into the service.
      * </p>
      * 
      * @return This property defines the mode of authentication method enabled for this service. A value of
-     *         <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user
+     *         <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user
      *         credentials within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an
      *         API Gateway endpoint that will be invoked for authenticating your user into the service.
      * @see IdentityProviderType
@@ -220,14 +393,14 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property defines the mode of authentication method enabled for this service. A value of
-     * <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user credentials
+     * <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user credentials
      * within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an API Gateway
      * endpoint that will be invoked for authenticating your user into the service.
      * </p>
      * 
      * @param identityProviderType
      *        This property defines the mode of authentication method enabled for this service. A value of
-     *        <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user
+     *        <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user
      *        credentials within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an
      *        API Gateway endpoint that will be invoked for authenticating your user into the service.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -242,14 +415,14 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property defines the mode of authentication method enabled for this service. A value of
-     * <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user credentials
+     * <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user credentials
      * within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an API Gateway
      * endpoint that will be invoked for authenticating your user into the service.
      * </p>
      * 
      * @param identityProviderType
      *        This property defines the mode of authentication method enabled for this service. A value of
-     *        <code>SERVICE_MANAGED</code>, means that you are using this Server to store and access SFTP user
+     *        <code>SERVICE_MANAGED</code> means that you are using this server to store and access SFTP user
      *        credentials within the service. A value of <code>API_GATEWAY</code> indicates that you have integrated an
      *        API Gateway endpoint that will be invoked for authenticating your user into the service.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -264,12 +437,12 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on Amazon
-     * CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch logs.
+     * CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch logs.
      * </p>
      * 
      * @param loggingRole
      *        This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on
-     *        Amazon CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch
+     *        Amazon CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch
      *        logs.
      */
 
@@ -280,11 +453,11 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on Amazon
-     * CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch logs.
+     * CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch logs.
      * </p>
      * 
      * @return This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on
-     *         Amazon CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch
+     *         Amazon CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch
      *         logs.
      */
 
@@ -295,12 +468,12 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
     /**
      * <p>
      * This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on Amazon
-     * CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch logs.
+     * CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch logs.
      * </p>
      * 
      * @param loggingRole
      *        This property is an AWS Identity and Access Management (IAM) entity that allows the server to turn on
-     *        Amazon CloudWatch logging for Amazon S3 events. When set, user activity can be view in your CloudWatch
+     *        Amazon CloudWatch logging for Amazon S3 events. When set, user activity can be viewed in your CloudWatch
      *        logs.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -312,11 +485,11 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     * This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      * </p>
      * 
      * @param serverId
-     *        This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     *        This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      */
 
     public void setServerId(String serverId) {
@@ -325,10 +498,10 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     * This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      * </p>
      * 
-     * @return This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     * @return This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      */
 
     public String getServerId() {
@@ -337,11 +510,11 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     * This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      * </p>
      * 
      * @param serverId
-     *        This property is a unique system assigned identifier for the SFTP server that you instantiate.
+     *        This property is a unique system-assigned identifier for the SFTP server that you instantiate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -357,7 +530,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      * server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -367,7 +540,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      *        indicates that the server can accept jobs and transfer files. A <code>State</code> value of
      *        <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *        <p>
-     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *        intermediate state, either not fully able to respond, or not fully offline. The values of
      *        <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @see State
@@ -384,7 +557,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      * server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -393,7 +566,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      *         indicates that the server can accept jobs and transfer files. A <code>State</code> value of
      *         <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *         <p>
-     *         The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *         The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *         intermediate state, either not fully able to respond, or not fully offline. The values of
      *         <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @see State
@@ -410,7 +583,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      * server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -420,7 +593,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      *        indicates that the server can accept jobs and transfer files. A <code>State</code> value of
      *        <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *        <p>
-     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *        intermediate state, either not fully able to respond, or not fully offline. The values of
      *        <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -439,7 +612,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      * server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -449,7 +622,7 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
      *        indicates that the server can accept jobs and transfer files. A <code>State</code> value of
      *        <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *        <p>
-     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *        intermediate state, either not fully able to respond, or not fully offline. The values of
      *        <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -593,6 +766,12 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
         sb.append("{");
         if (getArn() != null)
             sb.append("Arn: ").append(getArn()).append(",");
+        if (getEndpointDetails() != null)
+            sb.append("EndpointDetails: ").append(getEndpointDetails()).append(",");
+        if (getEndpointType() != null)
+            sb.append("EndpointType: ").append(getEndpointType()).append(",");
+        if (getHostKeyFingerprint() != null)
+            sb.append("HostKeyFingerprint: ").append(getHostKeyFingerprint()).append(",");
         if (getIdentityProviderDetails() != null)
             sb.append("IdentityProviderDetails: ").append(getIdentityProviderDetails()).append(",");
         if (getIdentityProviderType() != null)
@@ -624,6 +803,18 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
         if (other.getArn() == null ^ this.getArn() == null)
             return false;
         if (other.getArn() != null && other.getArn().equals(this.getArn()) == false)
+            return false;
+        if (other.getEndpointDetails() == null ^ this.getEndpointDetails() == null)
+            return false;
+        if (other.getEndpointDetails() != null && other.getEndpointDetails().equals(this.getEndpointDetails()) == false)
+            return false;
+        if (other.getEndpointType() == null ^ this.getEndpointType() == null)
+            return false;
+        if (other.getEndpointType() != null && other.getEndpointType().equals(this.getEndpointType()) == false)
+            return false;
+        if (other.getHostKeyFingerprint() == null ^ this.getHostKeyFingerprint() == null)
+            return false;
+        if (other.getHostKeyFingerprint() != null && other.getHostKeyFingerprint().equals(this.getHostKeyFingerprint()) == false)
             return false;
         if (other.getIdentityProviderDetails() == null ^ this.getIdentityProviderDetails() == null)
             return false;
@@ -662,6 +853,9 @@ public class DescribedServer implements Serializable, Cloneable, StructuredPojo 
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
+        hashCode = prime * hashCode + ((getEndpointDetails() == null) ? 0 : getEndpointDetails().hashCode());
+        hashCode = prime * hashCode + ((getEndpointType() == null) ? 0 : getEndpointType().hashCode());
+        hashCode = prime * hashCode + ((getHostKeyFingerprint() == null) ? 0 : getHostKeyFingerprint().hashCode());
         hashCode = prime * hashCode + ((getIdentityProviderDetails() == null) ? 0 : getIdentityProviderDetails().hashCode());
         hashCode = prime * hashCode + ((getIdentityProviderType() == null) ? 0 : getIdentityProviderType().hashCode());
         hashCode = prime * hashCode + ((getLoggingRole() == null) ? 0 : getLoggingRole().hashCode());

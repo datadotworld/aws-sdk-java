@@ -48,6 +48,12 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     private String status;
     /**
      * <p>
+     * The time, in milliseconds since the epoch, when the simulation job was last started.
+     * </p>
+     */
+    private java.util.Date lastStartedAt;
+    /**
+     * <p>
      * The time, in milliseconds since the epoch, when the simulation job was last updated.
      * </p>
      */
@@ -98,6 +104,12 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     private OutputLocation outputLocation;
     /**
      * <p>
+     * The logging configuration.
+     * </p>
+     */
+    private LoggingConfig loggingConfig;
+    /**
+     * <p>
      * The maximum simulation job duration in seconds. The value must be 8 days (691,200 seconds) or less.
      * </p>
      */
@@ -111,9 +123,7 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The IAM role that allows the simulation instance to call the AWS APIs that are specified in its associated
-     * policies on your behalf. This is how credentials are passed in to your simulation job. See how to <a href=
-     * "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     * >specify AWS security credentials for your application</a>.
+     * policies on your behalf. This is how credentials are passed in to your simulation job.
      * </p>
      */
     private String iamRole;
@@ -131,6 +141,12 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<SimulationApplicationConfig> simulationApplications;
     /**
      * <p>
+     * The data sources for the simulation job.
+     * </p>
+     */
+    private java.util.List<DataSource> dataSources;
+    /**
+     * <p>
      * A map that contains tag keys and tag values that are attached to the simulation job.
      * </p>
      */
@@ -141,6 +157,8 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private VPCConfigResponse vpcConfig;
+    /** <p/> */
+    private NetworkInterface networkInterface;
 
     /**
      * <p>
@@ -278,6 +296,46 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
 
     public SimulationJob withStatus(SimulationJobStatus status) {
         this.status = status.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The time, in milliseconds since the epoch, when the simulation job was last started.
+     * </p>
+     * 
+     * @param lastStartedAt
+     *        The time, in milliseconds since the epoch, when the simulation job was last started.
+     */
+
+    public void setLastStartedAt(java.util.Date lastStartedAt) {
+        this.lastStartedAt = lastStartedAt;
+    }
+
+    /**
+     * <p>
+     * The time, in milliseconds since the epoch, when the simulation job was last started.
+     * </p>
+     * 
+     * @return The time, in milliseconds since the epoch, when the simulation job was last started.
+     */
+
+    public java.util.Date getLastStartedAt() {
+        return this.lastStartedAt;
+    }
+
+    /**
+     * <p>
+     * The time, in milliseconds since the epoch, when the simulation job was last started.
+     * </p>
+     * 
+     * @param lastStartedAt
+     *        The time, in milliseconds since the epoch, when the simulation job was last started.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SimulationJob withLastStartedAt(java.util.Date lastStartedAt) {
+        setLastStartedAt(lastStartedAt);
         return this;
     }
 
@@ -669,6 +727,46 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * The logging configuration.
+     * </p>
+     * 
+     * @param loggingConfig
+     *        The logging configuration.
+     */
+
+    public void setLoggingConfig(LoggingConfig loggingConfig) {
+        this.loggingConfig = loggingConfig;
+    }
+
+    /**
+     * <p>
+     * The logging configuration.
+     * </p>
+     * 
+     * @return The logging configuration.
+     */
+
+    public LoggingConfig getLoggingConfig() {
+        return this.loggingConfig;
+    }
+
+    /**
+     * <p>
+     * The logging configuration.
+     * </p>
+     * 
+     * @param loggingConfig
+     *        The logging configuration.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SimulationJob withLoggingConfig(LoggingConfig loggingConfig) {
+        setLoggingConfig(loggingConfig);
+        return this;
+    }
+
+    /**
+     * <p>
      * The maximum simulation job duration in seconds. The value must be 8 days (691,200 seconds) or less.
      * </p>
      * 
@@ -750,16 +848,12 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The IAM role that allows the simulation instance to call the AWS APIs that are specified in its associated
-     * policies on your behalf. This is how credentials are passed in to your simulation job. See how to <a href=
-     * "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     * >specify AWS security credentials for your application</a>.
+     * policies on your behalf. This is how credentials are passed in to your simulation job.
      * </p>
      * 
      * @param iamRole
      *        The IAM role that allows the simulation instance to call the AWS APIs that are specified in its associated
-     *        policies on your behalf. This is how credentials are passed in to your simulation job. See how to <a href=
-     *        "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     *        >specify AWS security credentials for your application</a>.
+     *        policies on your behalf. This is how credentials are passed in to your simulation job.
      */
 
     public void setIamRole(String iamRole) {
@@ -769,16 +863,11 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The IAM role that allows the simulation instance to call the AWS APIs that are specified in its associated
-     * policies on your behalf. This is how credentials are passed in to your simulation job. See how to <a href=
-     * "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     * >specify AWS security credentials for your application</a>.
+     * policies on your behalf. This is how credentials are passed in to your simulation job.
      * </p>
      * 
      * @return The IAM role that allows the simulation instance to call the AWS APIs that are specified in its
-     *         associated policies on your behalf. This is how credentials are passed in to your simulation job. See how
-     *         to <a href=
-     *         "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     *         >specify AWS security credentials for your application</a>.
+     *         associated policies on your behalf. This is how credentials are passed in to your simulation job.
      */
 
     public String getIamRole() {
@@ -788,16 +877,12 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The IAM role that allows the simulation instance to call the AWS APIs that are specified in its associated
-     * policies on your behalf. This is how credentials are passed in to your simulation job. See how to <a href=
-     * "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     * >specify AWS security credentials for your application</a>.
+     * policies on your behalf. This is how credentials are passed in to your simulation job.
      * </p>
      * 
      * @param iamRole
      *        The IAM role that allows the simulation instance to call the AWS APIs that are specified in its associated
-     *        policies on your behalf. This is how credentials are passed in to your simulation job. See how to <a href=
-     *        "https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials"
-     *        >specify AWS security credentials for your application</a>.
+     *        policies on your behalf. This is how credentials are passed in to your simulation job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -948,6 +1033,76 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * 
+     * @return The data sources for the simulation job.
+     */
+
+    public java.util.List<DataSource> getDataSources() {
+        return dataSources;
+    }
+
+    /**
+     * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * 
+     * @param dataSources
+     *        The data sources for the simulation job.
+     */
+
+    public void setDataSources(java.util.Collection<DataSource> dataSources) {
+        if (dataSources == null) {
+            this.dataSources = null;
+            return;
+        }
+
+        this.dataSources = new java.util.ArrayList<DataSource>(dataSources);
+    }
+
+    /**
+     * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDataSources(java.util.Collection)} or {@link #withDataSources(java.util.Collection)} if you want to
+     * override the existing values.
+     * </p>
+     * 
+     * @param dataSources
+     *        The data sources for the simulation job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SimulationJob withDataSources(DataSource... dataSources) {
+        if (this.dataSources == null) {
+            setDataSources(new java.util.ArrayList<DataSource>(dataSources.length));
+        }
+        for (DataSource ele : dataSources) {
+            this.dataSources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The data sources for the simulation job.
+     * </p>
+     * 
+     * @param dataSources
+     *        The data sources for the simulation job.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SimulationJob withDataSources(java.util.Collection<DataSource> dataSources) {
+        setDataSources(dataSources);
+        return this;
+    }
+
+    /**
+     * <p>
      * A map that contains tag keys and tag values that are attached to the simulation job.
      * </p>
      * 
@@ -1048,6 +1203,38 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p/>
+     * 
+     * @param networkInterface
+     */
+
+    public void setNetworkInterface(NetworkInterface networkInterface) {
+        this.networkInterface = networkInterface;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @return
+     */
+
+    public NetworkInterface getNetworkInterface() {
+        return this.networkInterface;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @param networkInterface
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SimulationJob withNetworkInterface(NetworkInterface networkInterface) {
+        setNetworkInterface(networkInterface);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1065,6 +1252,8 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             sb.append("Name: ").append(getName()).append(",");
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
+        if (getLastStartedAt() != null)
+            sb.append("LastStartedAt: ").append(getLastStartedAt()).append(",");
         if (getLastUpdatedAt() != null)
             sb.append("LastUpdatedAt: ").append(getLastUpdatedAt()).append(",");
         if (getFailureBehavior() != null)
@@ -1077,6 +1266,8 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             sb.append("ClientRequestToken: ").append(getClientRequestToken()).append(",");
         if (getOutputLocation() != null)
             sb.append("OutputLocation: ").append(getOutputLocation()).append(",");
+        if (getLoggingConfig() != null)
+            sb.append("LoggingConfig: ").append(getLoggingConfig()).append(",");
         if (getMaxJobDurationInSeconds() != null)
             sb.append("MaxJobDurationInSeconds: ").append(getMaxJobDurationInSeconds()).append(",");
         if (getSimulationTimeMillis() != null)
@@ -1087,10 +1278,14 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             sb.append("RobotApplications: ").append(getRobotApplications()).append(",");
         if (getSimulationApplications() != null)
             sb.append("SimulationApplications: ").append(getSimulationApplications()).append(",");
+        if (getDataSources() != null)
+            sb.append("DataSources: ").append(getDataSources()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getVpcConfig() != null)
-            sb.append("VpcConfig: ").append(getVpcConfig());
+            sb.append("VpcConfig: ").append(getVpcConfig()).append(",");
+        if (getNetworkInterface() != null)
+            sb.append("NetworkInterface: ").append(getNetworkInterface());
         sb.append("}");
         return sb.toString();
     }
@@ -1117,6 +1312,10 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
+        if (other.getLastStartedAt() == null ^ this.getLastStartedAt() == null)
+            return false;
+        if (other.getLastStartedAt() != null && other.getLastStartedAt().equals(this.getLastStartedAt()) == false)
+            return false;
         if (other.getLastUpdatedAt() == null ^ this.getLastUpdatedAt() == null)
             return false;
         if (other.getLastUpdatedAt() != null && other.getLastUpdatedAt().equals(this.getLastUpdatedAt()) == false)
@@ -1141,6 +1340,10 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getOutputLocation() != null && other.getOutputLocation().equals(this.getOutputLocation()) == false)
             return false;
+        if (other.getLoggingConfig() == null ^ this.getLoggingConfig() == null)
+            return false;
+        if (other.getLoggingConfig() != null && other.getLoggingConfig().equals(this.getLoggingConfig()) == false)
+            return false;
         if (other.getMaxJobDurationInSeconds() == null ^ this.getMaxJobDurationInSeconds() == null)
             return false;
         if (other.getMaxJobDurationInSeconds() != null && other.getMaxJobDurationInSeconds().equals(this.getMaxJobDurationInSeconds()) == false)
@@ -1161,6 +1364,10 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getSimulationApplications() != null && other.getSimulationApplications().equals(this.getSimulationApplications()) == false)
             return false;
+        if (other.getDataSources() == null ^ this.getDataSources() == null)
+            return false;
+        if (other.getDataSources() != null && other.getDataSources().equals(this.getDataSources()) == false)
+            return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
@@ -1168,6 +1375,10 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
         if (other.getVpcConfig() == null ^ this.getVpcConfig() == null)
             return false;
         if (other.getVpcConfig() != null && other.getVpcConfig().equals(this.getVpcConfig()) == false)
+            return false;
+        if (other.getNetworkInterface() == null ^ this.getNetworkInterface() == null)
+            return false;
+        if (other.getNetworkInterface() != null && other.getNetworkInterface().equals(this.getNetworkInterface()) == false)
             return false;
         return true;
     }
@@ -1180,19 +1391,23 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getLastStartedAt() == null) ? 0 : getLastStartedAt().hashCode());
         hashCode = prime * hashCode + ((getLastUpdatedAt() == null) ? 0 : getLastUpdatedAt().hashCode());
         hashCode = prime * hashCode + ((getFailureBehavior() == null) ? 0 : getFailureBehavior().hashCode());
         hashCode = prime * hashCode + ((getFailureCode() == null) ? 0 : getFailureCode().hashCode());
         hashCode = prime * hashCode + ((getFailureReason() == null) ? 0 : getFailureReason().hashCode());
         hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
         hashCode = prime * hashCode + ((getOutputLocation() == null) ? 0 : getOutputLocation().hashCode());
+        hashCode = prime * hashCode + ((getLoggingConfig() == null) ? 0 : getLoggingConfig().hashCode());
         hashCode = prime * hashCode + ((getMaxJobDurationInSeconds() == null) ? 0 : getMaxJobDurationInSeconds().hashCode());
         hashCode = prime * hashCode + ((getSimulationTimeMillis() == null) ? 0 : getSimulationTimeMillis().hashCode());
         hashCode = prime * hashCode + ((getIamRole() == null) ? 0 : getIamRole().hashCode());
         hashCode = prime * hashCode + ((getRobotApplications() == null) ? 0 : getRobotApplications().hashCode());
         hashCode = prime * hashCode + ((getSimulationApplications() == null) ? 0 : getSimulationApplications().hashCode());
+        hashCode = prime * hashCode + ((getDataSources() == null) ? 0 : getDataSources().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
+        hashCode = prime * hashCode + ((getNetworkInterface() == null) ? 0 : getNetworkInterface().hashCode());
         return hashCode;
     }
 

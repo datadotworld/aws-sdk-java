@@ -328,6 +328,7 @@ import com.amazonaws.util.RuntimeHttpUtils;
 import com.amazonaws.util.SdkHttpUtils;
 import com.amazonaws.util.ServiceClientHolderInputStream;
 import com.amazonaws.util.StringUtils;
+import com.amazonaws.util.ValidationUtils;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -1330,6 +1331,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     public boolean doesBucketExist(String bucketName)
             throws SdkClientException, AmazonServiceException {
         try {
+            ValidationUtils.assertStringNotEmpty(bucketName, "bucketName");
             headBucket(new HeadBucketRequest(bucketName));
             return true;
         } catch (AmazonServiceException ase) {
@@ -1349,6 +1351,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     @Override
     public boolean doesBucketExistV2(String bucketName) throws SdkClientException {
         try {
+            ValidationUtils.assertStringNotEmpty(bucketName, "bucketName");
             getBucketAcl(bucketName);
             return true;
         } catch (AmazonServiceException ase) {
@@ -1368,6 +1371,8 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
     public boolean doesObjectExist(String bucketName, String objectName)
             throws AmazonServiceException, SdkClientException {
         try {
+            ValidationUtils.assertStringNotEmpty(bucketName, "bucketName");
+            ValidationUtils.assertStringNotEmpty(objectName, "objectName");
             getObjectMetadata(bucketName, objectName);
             return true;
         } catch (AmazonS3Exception e) {
@@ -1580,7 +1585,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         try {
             return IOUtils.toString(object.getObjectContent());
         } catch (IOException e) {
-            throw new SdkClientException("Error streaming content from S3 during download");
+            throw new SdkClientException("Error streaming content from S3 during download", e);
         } finally {
             IOUtils.closeQuietly(object, log);
         }
@@ -1705,6 +1710,9 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
 
         Request<PutObjectRequest> request = createRequest(bucketName, key, putObjectRequest, HttpMethodName.PUT);
         request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutObject");
+        request.addHandlerContext(HandlerContextKey.REQUIRES_LENGTH, Boolean.TRUE);
+        request.addHandlerContext(HandlerContextKey.HAS_STREAMING_INPUT, Boolean.TRUE);
+
         // Make backward compatible with buffer size via system property
         final Integer bufsize = Constants.getS3StreamBufferSize();
         if (bufsize != null) {
@@ -3632,6 +3640,9 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             "The upload ID parameter must be specified when uploading a part");
         Request<UploadPartRequest> request = createRequest(bucketName, key, uploadPartRequest, HttpMethodName.PUT);
         request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UploadPart");
+        request.addHandlerContext(HandlerContextKey.REQUIRES_LENGTH, Boolean.TRUE);
+        request.addHandlerContext(HandlerContextKey.HAS_STREAMING_INPUT, Boolean.TRUE);
+
         request.addParameter("uploadId", uploadId);
         request.addParameter("partNumber", Integer.toString(partNumber));
 
@@ -4406,6 +4417,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
             addHeaderIfNotNull(request,
                     Headers.SERVER_SIDE_ENCRYPTION_AWS_KMS_KEYID,
                     sseParams.getAwsKmsKeyId());
+            addHeaderIfNotNull(request, Headers.SERVER_SIDE_ENCRYPTION_AWS_KMS_CONTEXT, sseParams.getAwsKmsEncryptionContext());
         }
     }
 
@@ -5255,6 +5267,7 @@ public class AmazonS3Client extends AmazonWebServiceClient implements AmazonS3 {
         final byte[] bytes = bucketConfigurationXmlFactory
                 .convertToXmlByteArray(bucketReplicationConfiguration);
 
+        addHeaderIfNotNull(request, Headers.OBJECT_LOCK_TOKEN, setBucketReplicationConfigurationRequest.getToken());
         request.addHeader("Content-Length", String.valueOf(bytes.length));
         request.addHeader("Content-Type", "application/xml");
         request.setContent(new ByteArrayInputStream(bytes));

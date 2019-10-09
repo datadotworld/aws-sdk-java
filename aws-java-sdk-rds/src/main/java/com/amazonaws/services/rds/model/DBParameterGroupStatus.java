@@ -25,32 +25,32 @@ import javax.annotation.Generated;
  * <ul>
  * <li>
  * <p>
- * <a>CreateDBInstance</a>
+ * <code>CreateDBInstance</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>CreateDBInstanceReadReplica</a>
+ * <code>CreateDBInstanceReadReplica</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>DeleteDBInstance</a>
+ * <code>DeleteDBInstance</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>ModifyDBInstance</a>
+ * <code>ModifyDBInstance</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>RebootDBInstance</a>
+ * <code>RebootDBInstance</code>
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>RestoreDBInstanceFromDBSnapshot</a>
+ * <code>RestoreDBInstanceFromDBSnapshot</code>
  * </p>
  * </li>
  * </ul>
@@ -63,7 +63,7 @@ public class DBParameterGroupStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DP parameter group.
+     * The name of the DB parameter group.
      * </p>
      */
     private String dBParameterGroupName;
@@ -76,11 +76,11 @@ public class DBParameterGroupStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DP parameter group.
+     * The name of the DB parameter group.
      * </p>
      * 
      * @param dBParameterGroupName
-     *        The name of the DP parameter group.
+     *        The name of the DB parameter group.
      */
 
     public void setDBParameterGroupName(String dBParameterGroupName) {
@@ -89,10 +89,10 @@ public class DBParameterGroupStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DP parameter group.
+     * The name of the DB parameter group.
      * </p>
      * 
-     * @return The name of the DP parameter group.
+     * @return The name of the DB parameter group.
      */
 
     public String getDBParameterGroupName() {
@@ -101,11 +101,11 @@ public class DBParameterGroupStatus implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the DP parameter group.
+     * The name of the DB parameter group.
      * </p>
      * 
      * @param dBParameterGroupName
-     *        The name of the DP parameter group.
+     *        The name of the DB parameter group.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

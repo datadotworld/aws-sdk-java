@@ -42,7 +42,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      */
@@ -53,11 +53,11 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * To learn the service namespace of a service, go to <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      * >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the name of the
      * service to view details for that service. In the first paragraph, find the service prefix. For example,
      * <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      * </p>
      */
@@ -69,18 +69,19 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      */
     private String lastAuthenticatedEntity;
     /**
      * <p>
-     * The total number of authenticated entities that have attempted to access the service.
+     * The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to access
+     * the service.
      * </p>
      * <p>
-     * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * This field is null if no principals attempted to access the service within the <a href=
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      */
@@ -133,7 +134,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
@@ -143,7 +144,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *        requests.</p>
      *        <p>
      *        This field is null if no IAM entities attempted to access the service within the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *        >reporting period</a>.
      */
 
@@ -158,7 +159,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
@@ -167,7 +168,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *         requests.</p>
      *         <p>
      *         This field is null if no IAM entities attempted to access the service within the <a href=
-     *         "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *         "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *         >reporting period</a>.
      */
 
@@ -182,7 +183,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
@@ -192,7 +193,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *        requests.</p>
      *        <p>
      *        This field is null if no IAM entities attempted to access the service within the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *        >reporting period</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -208,11 +209,11 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * To learn the service namespace of a service, go to <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      * >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the name of the
      * service to view details for that service. In the first paragraph, find the service prefix. For example,
      * <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      * </p>
      * 
@@ -220,11 +221,11 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *        The namespace of the service in which access was attempted.</p>
      *        <p>
      *        To learn the service namespace of a service, go to <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      *        >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the name
      *        of the service to view details for that service. In the first paragraph, find the service prefix. For
      *        example, <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *        >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      */
 
@@ -238,23 +239,23 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * To learn the service namespace of a service, go to <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      * >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the name of the
      * service to view details for that service. In the first paragraph, find the service prefix. For example,
      * <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      * </p>
      * 
      * @return The namespace of the service in which access was attempted.</p>
      *         <p>
      *         To learn the service namespace of a service, go to <a href=
-     *         "http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     *         "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      *         >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the
      *         name of the service to view details for that service. In the first paragraph, find the service prefix.
      *         For example, <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
      *         href=
-     *         "http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *         "https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *         >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      */
 
@@ -268,11 +269,11 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * To learn the service namespace of a service, go to <a
-     * href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      * >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the name of the
      * service to view details for that service. In the first paragraph, find the service prefix. For example,
      * <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
-     * href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     * href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      * >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      * </p>
      * 
@@ -280,11 +281,11 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *        The namespace of the service in which access was attempted.</p>
      *        <p>
      *        To learn the service namespace of a service, go to <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html"
      *        >Actions, Resources, and Condition Keys for AWS Services</a> in the <i>IAM User Guide</i>. Choose the name
      *        of the service to view details for that service. In the first paragraph, find the service prefix. For
      *        example, <code>(service prefix: a4b)</code>. For more information about service namespaces, see <a
-     *        href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
+     *        href="https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces"
      *        >AWS Service Namespaces</a> in the <i>AWS General Reference</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -301,7 +302,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
@@ -310,7 +311,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *        report unauthenticated requests.</p>
      *        <p>
      *        This field is null if no IAM entities attempted to access the service within the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *        >reporting period</a>.
      */
 
@@ -325,7 +326,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
@@ -333,7 +334,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *         not report unauthenticated requests.</p>
      *         <p>
      *         This field is null if no IAM entities attempted to access the service within the <a href=
-     *         "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *         "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *         >reporting period</a>.
      */
 
@@ -348,7 +349,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      * </p>
      * <p>
      * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
@@ -357,7 +358,7 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
      *        report unauthenticated requests.</p>
      *        <p>
      *        This field is null if no IAM entities attempted to access the service within the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *        >reporting period</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -369,19 +370,21 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The total number of authenticated entities that have attempted to access the service.
+     * The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to access
+     * the service.
      * </p>
      * <p>
-     * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * This field is null if no principals attempted to access the service within the <a href=
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
      * @param totalAuthenticatedEntities
-     *        The total number of authenticated entities that have attempted to access the service.</p>
+     *        The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to
+     *        access the service.</p>
      *        <p>
-     *        This field is null if no IAM entities attempted to access the service within the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *        This field is null if no principals attempted to access the service within the <a href=
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *        >reporting period</a>.
      */
 
@@ -391,18 +394,20 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The total number of authenticated entities that have attempted to access the service.
+     * The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to access
+     * the service.
      * </p>
      * <p>
-     * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * This field is null if no principals attempted to access the service within the <a href=
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
-     * @return The total number of authenticated entities that have attempted to access the service.</p>
+     * @return The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to
+     *         access the service.</p>
      *         <p>
-     *         This field is null if no IAM entities attempted to access the service within the <a href=
-     *         "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *         This field is null if no principals attempted to access the service within the <a href=
+     *         "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *         >reporting period</a>.
      */
 
@@ -412,19 +417,21 @@ public class ServiceLastAccessed implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The total number of authenticated entities that have attempted to access the service.
+     * The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to access
+     * the service.
      * </p>
      * <p>
-     * This field is null if no IAM entities attempted to access the service within the <a href=
-     * "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     * This field is null if no principals attempted to access the service within the <a href=
+     * "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      * >reporting period</a>.
      * </p>
      * 
      * @param totalAuthenticatedEntities
-     *        The total number of authenticated entities that have attempted to access the service.</p>
+     *        The total number of authenticated principals (root user, IAM users, or IAM roles) that have attempted to
+     *        access the service.</p>
      *        <p>
-     *        This field is null if no IAM entities attempted to access the service within the <a href=
-     *        "http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
+     *        This field is null if no principals attempted to access the service within the <a href=
+     *        "https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period"
      *        >reporting period</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

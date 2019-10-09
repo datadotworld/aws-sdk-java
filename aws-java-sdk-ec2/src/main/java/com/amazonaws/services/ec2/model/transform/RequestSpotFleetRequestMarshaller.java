@@ -349,6 +349,12 @@ public class RequestSpotFleetRequestMarshaller implements Marshaller<Request<Req
                                         + networkInterfacesListIndex + ".SubnetId",
                                         StringUtils.fromString(spotFleetLaunchSpecificationNetworkInterfacesListValue.getSubnetId()));
                             }
+
+                            if (spotFleetLaunchSpecificationNetworkInterfacesListValue.getInterfaceType() != null) {
+                                request.addParameter("SpotFleetRequestConfig.LaunchSpecifications." + launchSpecificationsListIndex + ".NetworkInterfaceSet."
+                                        + networkInterfacesListIndex + ".InterfaceType",
+                                        StringUtils.fromString(spotFleetLaunchSpecificationNetworkInterfacesListValue.getInterfaceType()));
+                            }
                             networkInterfacesListIndex++;
                         }
                     }
@@ -525,6 +531,14 @@ public class RequestSpotFleetRequestMarshaller implements Marshaller<Request<Req
             if (spotFleetRequestConfig.getOnDemandTargetCapacity() != null) {
                 request.addParameter("SpotFleetRequestConfig.OnDemandTargetCapacity",
                         StringUtils.fromInteger(spotFleetRequestConfig.getOnDemandTargetCapacity()));
+            }
+
+            if (spotFleetRequestConfig.getOnDemandMaxTotalPrice() != null) {
+                request.addParameter("SpotFleetRequestConfig.OnDemandMaxTotalPrice", StringUtils.fromString(spotFleetRequestConfig.getOnDemandMaxTotalPrice()));
+            }
+
+            if (spotFleetRequestConfig.getSpotMaxTotalPrice() != null) {
+                request.addParameter("SpotFleetRequestConfig.SpotMaxTotalPrice", StringUtils.fromString(spotFleetRequestConfig.getSpotMaxTotalPrice()));
             }
 
             if (spotFleetRequestConfig.getTerminateInstancesWithExpiration() != null) {

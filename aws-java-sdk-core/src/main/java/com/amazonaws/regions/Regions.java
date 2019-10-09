@@ -35,6 +35,7 @@ public enum Regions {
     EU_WEST_3("eu-west-3", "EU (Paris)"),
     EU_CENTRAL_1("eu-central-1", "EU (Frankfurt)"),
     EU_NORTH_1("eu-north-1", "EU (Stockholm)"),
+    AP_EAST_1("ap-east-1", "Asia Pacific (Hong Kong)"),
     AP_SOUTH_1("ap-south-1", "Asia Pacific (Mumbai)"),
     AP_SOUTHEAST_1("ap-southeast-1", "Asia Pacific (Singapore)"),
     AP_SOUTHEAST_2("ap-southeast-2", "Asia Pacific (Sydney)"),
@@ -43,7 +44,9 @@ public enum Regions {
     SA_EAST_1("sa-east-1", "South America (Sao Paulo)"),
     CN_NORTH_1("cn-north-1", "China (Beijing)"),
     CN_NORTHWEST_1("cn-northwest-1", "China (Ningxia)"),
-    CA_CENTRAL_1("ca-central-1", "Canada (Central)");
+    CA_CENTRAL_1("ca-central-1", "Canada (Central)"),
+    ME_SOUTH_1("me-south-1", "Middle East (Bahrain)")
+    ;
 
     /**
      * The default region that new customers in the US are encouraged to use

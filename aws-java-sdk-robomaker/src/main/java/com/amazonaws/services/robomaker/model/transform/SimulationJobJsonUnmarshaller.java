@@ -60,6 +60,10 @@ public class SimulationJobJsonUnmarshaller implements Unmarshaller<SimulationJob
                     context.nextToken();
                     simulationJob.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("lastStartedAt", targetDepth)) {
+                    context.nextToken();
+                    simulationJob.setLastStartedAt(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
                 if (context.testExpression("lastUpdatedAt", targetDepth)) {
                     context.nextToken();
                     simulationJob.setLastUpdatedAt(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
@@ -84,6 +88,10 @@ public class SimulationJobJsonUnmarshaller implements Unmarshaller<SimulationJob
                     context.nextToken();
                     simulationJob.setOutputLocation(OutputLocationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("loggingConfig", targetDepth)) {
+                    context.nextToken();
+                    simulationJob.setLoggingConfig(LoggingConfigJsonUnmarshaller.getInstance().unmarshall(context));
+                }
                 if (context.testExpression("maxJobDurationInSeconds", targetDepth)) {
                     context.nextToken();
                     simulationJob.setMaxJobDurationInSeconds(context.getUnmarshaller(Long.class).unmarshall(context));
@@ -106,6 +114,10 @@ public class SimulationJobJsonUnmarshaller implements Unmarshaller<SimulationJob
                     simulationJob.setSimulationApplications(new ListUnmarshaller<SimulationApplicationConfig>(SimulationApplicationConfigJsonUnmarshaller
                             .getInstance()).unmarshall(context));
                 }
+                if (context.testExpression("dataSources", targetDepth)) {
+                    context.nextToken();
+                    simulationJob.setDataSources(new ListUnmarshaller<DataSource>(DataSourceJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
                 if (context.testExpression("tags", targetDepth)) {
                     context.nextToken();
                     simulationJob.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
@@ -114,6 +126,10 @@ public class SimulationJobJsonUnmarshaller implements Unmarshaller<SimulationJob
                 if (context.testExpression("vpcConfig", targetDepth)) {
                     context.nextToken();
                     simulationJob.setVpcConfig(VPCConfigResponseJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("networkInterface", targetDepth)) {
+                    context.nextToken();
+                    simulationJob.setNetworkInterface(NetworkInterfaceJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

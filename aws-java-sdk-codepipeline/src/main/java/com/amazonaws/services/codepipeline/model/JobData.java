@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents additional information about a job required for a job worker to complete the job.
+ * Represents other information about a job required for a job worker to complete the job.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/JobData" target="_top">AWS API
@@ -44,6 +44,11 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     * </p>
+     * </note>
      */
     private PipelineContext pipelineContext;
     /**
@@ -62,14 +67,14 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS
      * Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to
-     * store artifact for the pipeline in AWS CodePipeline.
+     * store artifacts for the pipeline in AWS CodePipeline.
      * </p>
      */
     private AWSSessionCredentials artifactCredentials;
     /**
      * <p>
-     * A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the
-     * job asynchronously.
+     * A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     * asynchronously.
      * </p>
      */
     private String continuationToken;
@@ -165,9 +170,17 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     * </p>
+     * </note>
      * 
      * @param pipelineContext
-     *        Represents information about a pipeline to a job worker.
+     *        Represents information about a pipeline to a job worker.</p> <note>
+     *        <p>
+     *        Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     *        </p>
      */
 
     public void setPipelineContext(PipelineContext pipelineContext) {
@@ -178,8 +191,16 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     * </p>
+     * </note>
      * 
-     * @return Represents information about a pipeline to a job worker.
+     * @return Represents information about a pipeline to a job worker.</p> <note>
+     *         <p>
+     *         Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     *         </p>
      */
 
     public PipelineContext getPipelineContext() {
@@ -190,9 +211,17 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents information about a pipeline to a job worker.
      * </p>
+     * <note>
+     * <p>
+     * Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     * </p>
+     * </note>
      * 
      * @param pipelineContext
-     *        Represents information about a pipeline to a job worker.
+     *        Represents information about a pipeline to a job worker.</p> <note>
+     *        <p>
+     *        Includes <code>pipelineArn</code> and <code>pipelineExecutionId</code> for custom jobs.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -345,13 +374,13 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS
      * Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to
-     * store artifact for the pipeline in AWS CodePipeline.
+     * store artifacts for the pipeline in AWS CodePipeline.
      * </p>
      * 
      * @param artifactCredentials
      *        Represents an AWS session credentials object. These credentials are temporary credentials that are issued
      *        by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3
-     *        bucket used to store artifact for the pipeline in AWS CodePipeline.
+     *        bucket used to store artifacts for the pipeline in AWS CodePipeline.
      */
 
     public void setArtifactCredentials(AWSSessionCredentials artifactCredentials) {
@@ -362,12 +391,12 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS
      * Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to
-     * store artifact for the pipeline in AWS CodePipeline.
+     * store artifacts for the pipeline in AWS CodePipeline.
      * </p>
      * 
      * @return Represents an AWS session credentials object. These credentials are temporary credentials that are issued
      *         by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3
-     *         bucket used to store artifact for the pipeline in AWS CodePipeline.
+     *         bucket used to store artifacts for the pipeline in AWS CodePipeline.
      */
 
     public AWSSessionCredentials getArtifactCredentials() {
@@ -378,13 +407,13 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS
      * Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to
-     * store artifact for the pipeline in AWS CodePipeline.
+     * store artifacts for the pipeline in AWS CodePipeline.
      * </p>
      * 
      * @param artifactCredentials
      *        Represents an AWS session credentials object. These credentials are temporary credentials that are issued
      *        by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3
-     *        bucket used to store artifact for the pipeline in AWS CodePipeline.
+     *        bucket used to store artifacts for the pipeline in AWS CodePipeline.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -395,13 +424,13 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the
-     * job asynchronously.
+     * A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     * asynchronously.
      * </p>
      * 
      * @param continuationToken
-     *        A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue
-     *        the job asynchronously.
+     *        A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     *        asynchronously.
      */
 
     public void setContinuationToken(String continuationToken) {
@@ -410,12 +439,12 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the
-     * job asynchronously.
+     * A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     * asynchronously.
      * </p>
      * 
-     * @return A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to
-     *         continue the job asynchronously.
+     * @return A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     *         asynchronously.
      */
 
     public String getContinuationToken() {
@@ -424,13 +453,13 @@ public class JobData implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue the
-     * job asynchronously.
+     * A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     * asynchronously.
      * </p>
      * 
      * @param continuationToken
-     *        A system-generated token, such as a AWS CodeDeploy deployment ID, that a job requires in order to continue
-     *        the job asynchronously.
+     *        A system-generated token, such as a AWS CodeDeploy deployment ID, required by a job to continue the job
+     *        asynchronously.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

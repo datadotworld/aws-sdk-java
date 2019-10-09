@@ -76,6 +76,12 @@ public class Workteam implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private java.util.Date lastUpdatedDate;
+    /**
+     * <p>
+     * Configures SNS notifications of available or expiring work items for work teams.
+     * </p>
+     */
+    private NotificationConfiguration notificationConfiguration;
 
     /**
      * <p>
@@ -458,6 +464,46 @@ public class Workteam implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * Configures SNS notifications of available or expiring work items for work teams.
+     * </p>
+     * 
+     * @param notificationConfiguration
+     *        Configures SNS notifications of available or expiring work items for work teams.
+     */
+
+    public void setNotificationConfiguration(NotificationConfiguration notificationConfiguration) {
+        this.notificationConfiguration = notificationConfiguration;
+    }
+
+    /**
+     * <p>
+     * Configures SNS notifications of available or expiring work items for work teams.
+     * </p>
+     * 
+     * @return Configures SNS notifications of available or expiring work items for work teams.
+     */
+
+    public NotificationConfiguration getNotificationConfiguration() {
+        return this.notificationConfiguration;
+    }
+
+    /**
+     * <p>
+     * Configures SNS notifications of available or expiring work items for work teams.
+     * </p>
+     * 
+     * @param notificationConfiguration
+     *        Configures SNS notifications of available or expiring work items for work teams.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Workteam withNotificationConfiguration(NotificationConfiguration notificationConfiguration) {
+        setNotificationConfiguration(notificationConfiguration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -484,7 +530,9 @@ public class Workteam implements Serializable, Cloneable, StructuredPojo {
         if (getCreateDate() != null)
             sb.append("CreateDate: ").append(getCreateDate()).append(",");
         if (getLastUpdatedDate() != null)
-            sb.append("LastUpdatedDate: ").append(getLastUpdatedDate());
+            sb.append("LastUpdatedDate: ").append(getLastUpdatedDate()).append(",");
+        if (getNotificationConfiguration() != null)
+            sb.append("NotificationConfiguration: ").append(getNotificationConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -531,6 +579,10 @@ public class Workteam implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getLastUpdatedDate() != null && other.getLastUpdatedDate().equals(this.getLastUpdatedDate()) == false)
             return false;
+        if (other.getNotificationConfiguration() == null ^ this.getNotificationConfiguration() == null)
+            return false;
+        if (other.getNotificationConfiguration() != null && other.getNotificationConfiguration().equals(this.getNotificationConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -547,6 +599,7 @@ public class Workteam implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getSubDomain() == null) ? 0 : getSubDomain().hashCode());
         hashCode = prime * hashCode + ((getCreateDate() == null) ? 0 : getCreateDate().hashCode());
         hashCode = prime * hashCode + ((getLastUpdatedDate() == null) ? 0 : getLastUpdatedDate().hashCode());
+        hashCode = prime * hashCode + ((getNotificationConfiguration() == null) ? 0 : getNotificationConfiguration().hashCode());
         return hashCode;
     }
 

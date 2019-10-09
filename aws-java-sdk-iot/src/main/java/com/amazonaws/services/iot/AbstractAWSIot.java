@@ -79,6 +79,11 @@ public class AbstractAWSIot implements AWSIot {
     }
 
     @Override
+    public CancelAuditMitigationActionsTaskResult cancelAuditMitigationActionsTask(CancelAuditMitigationActionsTaskRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CancelAuditTaskResult cancelAuditTask(CancelAuditTaskRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -130,6 +135,11 @@ public class AbstractAWSIot implements AWSIot {
 
     @Override
     public CreateKeysAndCertificateResult createKeysAndCertificate(CreateKeysAndCertificateRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateMitigationActionResult createMitigationAction(CreateMitigationActionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -229,6 +239,11 @@ public class AbstractAWSIot implements AWSIot {
     }
 
     @Override
+    public DeleteMitigationActionResult deleteMitigationAction(DeleteMitigationActionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteOTAUpdateResult deleteOTAUpdate(DeleteOTAUpdateRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -304,6 +319,16 @@ public class AbstractAWSIot implements AWSIot {
     }
 
     @Override
+    public DescribeAuditFindingResult describeAuditFinding(DescribeAuditFindingRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeAuditMitigationActionsTaskResult describeAuditMitigationActionsTask(DescribeAuditMitigationActionsTaskRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeAuditTaskResult describeAuditTask(DescribeAuditTaskRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -355,6 +380,11 @@ public class AbstractAWSIot implements AWSIot {
 
     @Override
     public DescribeJobExecutionResult describeJobExecution(DescribeJobExecutionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeMitigationActionResult describeMitigationAction(DescribeMitigationActionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -470,6 +500,11 @@ public class AbstractAWSIot implements AWSIot {
     }
 
     @Override
+    public GetStatisticsResult getStatistics(GetStatisticsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetTopicRuleResult getTopicRule(GetTopicRuleRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -491,6 +526,16 @@ public class AbstractAWSIot implements AWSIot {
 
     @Override
     public ListAuditFindingsResult listAuditFindings(ListAuditFindingsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListAuditMitigationActionsExecutionsResult listAuditMitigationActionsExecutions(ListAuditMitigationActionsExecutionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListAuditMitigationActionsTasksResult listAuditMitigationActionsTasks(ListAuditMitigationActionsTasksRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -541,6 +586,11 @@ public class AbstractAWSIot implements AWSIot {
 
     @Override
     public ListJobsResult listJobs(ListJobsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListMitigationActionsResult listMitigationActions(ListMitigationActionsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -747,6 +797,11 @@ public class AbstractAWSIot implements AWSIot {
     }
 
     @Override
+    public StartAuditMitigationActionsTaskResult startAuditMitigationActionsTask(StartAuditMitigationActionsTaskRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public StartOnDemandAuditTaskResult startOnDemandAuditTask(StartOnDemandAuditTaskRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -828,6 +883,11 @@ public class AbstractAWSIot implements AWSIot {
 
     @Override
     public UpdateJobResult updateJob(UpdateJobRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateMitigationActionResult updateMitigationAction(UpdateMitigationActionRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

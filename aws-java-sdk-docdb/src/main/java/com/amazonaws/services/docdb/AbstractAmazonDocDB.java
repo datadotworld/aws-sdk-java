@@ -99,6 +99,11 @@ public class AbstractAmazonDocDB implements AmazonDocDB {
     }
 
     @Override
+    public DescribeCertificatesResult describeCertificates(DescribeCertificatesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeDBClusterParameterGroupsResult describeDBClusterParameterGroups(DescribeDBClusterParameterGroupsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -220,6 +225,16 @@ public class AbstractAmazonDocDB implements AmazonDocDB {
 
     @Override
     public DBCluster restoreDBClusterToPointInTime(RestoreDBClusterToPointInTimeRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DBCluster startDBCluster(StartDBClusterRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DBCluster stopDBCluster(StopDBClusterRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

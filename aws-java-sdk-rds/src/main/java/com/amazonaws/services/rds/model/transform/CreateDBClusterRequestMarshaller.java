@@ -204,6 +204,10 @@ public class CreateDBClusterRequestMarshaller implements Marshaller<Request<Crea
                 if (scalingConfiguration.getSecondsUntilAutoPause() != null) {
                     request.addParameter("ScalingConfiguration.SecondsUntilAutoPause", StringUtils.fromInteger(scalingConfiguration.getSecondsUntilAutoPause()));
                 }
+
+                if (scalingConfiguration.getTimeoutAction() != null) {
+                    request.addParameter("ScalingConfiguration.TimeoutAction", StringUtils.fromString(scalingConfiguration.getTimeoutAction()));
+                }
             }
         }
 
@@ -213,6 +217,10 @@ public class CreateDBClusterRequestMarshaller implements Marshaller<Request<Crea
 
         if (createDBClusterRequest.getGlobalClusterIdentifier() != null) {
             request.addParameter("GlobalClusterIdentifier", StringUtils.fromString(createDBClusterRequest.getGlobalClusterIdentifier()));
+        }
+
+        if (createDBClusterRequest.getEnableHttpEndpoint() != null) {
+            request.addParameter("EnableHttpEndpoint", StringUtils.fromBoolean(createDBClusterRequest.getEnableHttpEndpoint()));
         }
 
         if (createDBClusterRequest.getCopyTagsToSnapshot() != null) {

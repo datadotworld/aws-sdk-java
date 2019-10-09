@@ -84,110 +84,110 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArnException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArnException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidArnExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FacetInUseException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.FacetInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FacetInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.FacetInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidAttachmentException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidAttachmentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidAttachmentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidAttachmentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IndexedAttributeMissingException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.IndexedAttributeMissingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IndexedAttributeMissingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.IndexedAttributeMissingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IncompatibleSchemaException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.IncompatibleSchemaException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IncompatibleSchemaException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.IncompatibleSchemaExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SchemaAlreadyPublishedException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.SchemaAlreadyPublishedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SchemaAlreadyPublishedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.SchemaAlreadyPublishedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("StillContainsLinksException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.StillContainsLinksException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("StillContainsLinksException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.StillContainsLinksExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRuleException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidRuleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRuleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidRuleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNotEnabledException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.DirectoryNotEnabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNotEnabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.DirectoryNotEnabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FacetValidationException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.FacetValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FacetValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.FacetValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFacetUpdateException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidFacetUpdateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFacetUpdateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidFacetUpdateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SchemaAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.SchemaAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SchemaAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.SchemaAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.ValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InternalServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InternalServiceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FacetAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.FacetAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FacetAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.FacetAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotIndexException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.NotIndexException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotIndexException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.NotIndexExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ObjectAlreadyDetachedException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.ObjectAlreadyDetachedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ObjectAlreadyDetachedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.ObjectAlreadyDetachedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryDeletedException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.DirectoryDeletedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryDeletedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.DirectoryDeletedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RetryableConflictException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.RetryableConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RetryableConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.RetryableConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BatchWriteException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.BatchWriteException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BatchWriteException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.BatchWriteExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTaggingRequestException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidTaggingRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTaggingRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidTaggingRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotNodeException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.NotNodeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotNodeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.NotNodeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.DirectoryAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.DirectoryAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNotDisabledException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.DirectoryNotDisabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNotDisabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.DirectoryNotDisabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidSchemaDocException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.InvalidSchemaDocException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidSchemaDocException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.InvalidSchemaDocExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ObjectNotDetachedException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.ObjectNotDetachedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ObjectNotDetachedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.ObjectNotDetachedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LinkNameAlreadyInUseException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.LinkNameAlreadyInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LinkNameAlreadyInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.LinkNameAlreadyInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CannotListParentOfRootException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.CannotListParentOfRootException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CannotListParentOfRootException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.CannotListParentOfRootExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotPolicyException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.NotPolicyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotPolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.NotPolicyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FacetNotFoundException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.FacetNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FacetNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.FacetNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedIndexTypeException").withModeledClass(
-                                    com.amazonaws.services.clouddirectory.model.UnsupportedIndexTypeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedIndexTypeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.clouddirectory.model.transform.UnsupportedIndexTypeExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.clouddirectory.model.AmazonCloudDirectoryException.class));
 
     /**
@@ -453,6 +453,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddFacetToObject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -535,6 +536,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ApplySchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -634,6 +636,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachObject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -713,6 +716,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachPolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -801,6 +805,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachToIndex");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -887,6 +892,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachTypedLink");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -962,6 +968,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchRead");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1039,6 +1046,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchWrite");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1124,6 +1132,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1205,6 +1214,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1291,6 +1301,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateIndex");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1377,6 +1388,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateObject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1474,6 +1486,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateSchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1557,6 +1570,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTypedLinkFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1638,6 +1652,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1719,6 +1734,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1802,6 +1818,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteObject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1880,6 +1897,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1959,6 +1977,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTypedLinkFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2040,6 +2059,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachFromIndex");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2121,6 +2141,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachObject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2200,6 +2221,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachPolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2281,6 +2303,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachTypedLink");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2360,6 +2383,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2439,6 +2463,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2515,6 +2540,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAppliedSchemaVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2589,6 +2615,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2667,6 +2694,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2746,6 +2774,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLinkAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2825,6 +2854,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetObjectAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2902,6 +2932,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetObjectInformation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2981,6 +3012,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSchemaAsJson");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3063,6 +3095,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetTypedLinkFacetInformation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3142,6 +3175,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAppliedSchemaArns");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3220,6 +3254,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAttachedIndices");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3298,6 +3333,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDevelopmentSchemaArns");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3374,6 +3410,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDirectories");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3453,6 +3490,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListFacetAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3530,6 +3568,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListFacetNames");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3614,6 +3653,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListIncomingTypedLinks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3698,6 +3738,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListIndex");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3766,6 +3807,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListManagedSchemaArns");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3848,6 +3890,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListObjectAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3930,6 +3973,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListObjectChildren");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4019,6 +4063,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListObjectParentPaths");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4101,6 +4146,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListObjectParents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4180,6 +4226,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListObjectPolicies");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4264,6 +4311,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListOutgoingTypedLinks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4346,6 +4394,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPolicyAttachments");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4426,6 +4475,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPublishedSchemaArns");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4506,6 +4556,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4589,6 +4640,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTypedLinkFacetAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4671,6 +4723,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTypedLinkFacetNames");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4757,6 +4810,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "LookupPolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4834,6 +4888,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PublishSchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4913,6 +4968,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutSchemaFromJson");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4992,6 +5048,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveFacetFromObject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5071,6 +5128,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5149,6 +5207,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5249,6 +5308,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5329,6 +5389,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateLinkAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5411,6 +5472,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateObjectAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5487,6 +5549,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateSchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5572,6 +5635,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateTypedLinkFacet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5656,6 +5720,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpgradeAppliedSchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5738,6 +5803,7 @@ public class AmazonCloudDirectoryClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CloudDirectory");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpgradePublishedSchema");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

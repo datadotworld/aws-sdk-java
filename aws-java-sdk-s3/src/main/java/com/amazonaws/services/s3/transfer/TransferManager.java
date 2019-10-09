@@ -21,6 +21,7 @@ import com.amazonaws.AbortedException;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.AmazonWebServiceRequest;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.annotation.SdkInternalApi;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -50,6 +51,8 @@ import com.amazonaws.services.s3.model.ObjectTagging;
 import com.amazonaws.services.s3.model.PresignedUrlDownloadConfig;
 import com.amazonaws.services.s3.model.PresignedUrlDownloadRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import com.amazonaws.services.s3.transfer.Transfer.TransferState;
 import com.amazonaws.services.s3.transfer.exception.FileLockException;
@@ -61,6 +64,7 @@ import com.amazonaws.services.s3.transfer.internal.DownloadMonitor;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileDownloadImpl;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileTransferMonitor;
 import com.amazonaws.services.s3.transfer.internal.MultipleFileUploadImpl;
+import com.amazonaws.services.s3.transfer.internal.PreparedDownloadContext;
 import com.amazonaws.services.s3.transfer.internal.PresignUrlDownloadCallable;
 import com.amazonaws.services.s3.transfer.internal.PresignedUrlDownloadImpl;
 import com.amazonaws.services.s3.transfer.internal.S3ProgressListener;
@@ -71,6 +75,7 @@ import com.amazonaws.services.s3.transfer.internal.TransferStateChangeListener;
 import com.amazonaws.services.s3.transfer.internal.UploadCallable;
 import com.amazonaws.services.s3.transfer.internal.UploadImpl;
 import com.amazonaws.services.s3.transfer.internal.UploadMonitor;
+import com.amazonaws.util.IOUtils;
 import com.amazonaws.util.VersionInfoUtils;
 import java.io.File;
 import java.io.IOException;
@@ -1031,8 +1036,30 @@ public class TransferManager {
             final Integer lastFullyDownloadedPart,
             final long lastModifiedTimeRecordedDuringPause,
             final boolean resumeOnRetry,
-            final Long lastFullyDownloadedPartPosition)
-    {
+            final Long lastFullyDownloadedPartPosition) {
+
+        PreparedDownloadContext prepared = prepareDownload(getObjectRequest,
+                                                           file,
+                                                           stateListener,
+                                                           s3progressListener,
+                                                           resumeExistingDownload,
+                                                           timeoutMillis,
+                                                           lastFullyDownloadedPart,
+                                                           lastModifiedTimeRecordedDuringPause,
+                                                           resumeOnRetry,
+                                                           lastFullyDownloadedPartPosition);
+        return submitDownload(prepared);
+    }
+
+    private PreparedDownloadContext prepareDownload(final GetObjectRequest getObjectRequest,
+                                                    final File file, final TransferStateChangeListener stateListener,
+                                                    final S3ProgressListener s3progressListener,
+                                                    final boolean resumeExistingDownload,
+                                                    final long timeoutMillis,
+                                                    final Integer lastFullyDownloadedPart,
+                                                    final long lastModifiedTimeRecordedDuringPause,
+                                                    final boolean resumeOnRetry,
+                                                    final Long lastFullyDownloadedPartPosition) {
         assertParameterNotNull(getObjectRequest,
                 "A valid GetObjectRequest must be provided to initiate download");
         assertParameterNotNull(file,
@@ -1137,15 +1164,22 @@ public class TransferManager {
         }
 
         final CountDownLatch latch = new CountDownLatch(1);
-        Future<?> future = executorService.submit(
-            new DownloadCallable(s3, latch,
+
+        DownloadCallable downloadCallable = new DownloadCallable(s3, latch,
                 getObjectRequest, resumeExistingDownload,
                 download, file, origStartingByte, fileLength, timeoutMillis, timedThreadPool,
                 executorService, lastFullyDownloadedPart, isDownloadParallel, resumeOnRetry)
-                .withLastFullyMergedPartPosition(lastFullyDownloadedPartPosition));
-        download.setMonitor(new DownloadMonitor(download, future));
-        latch.countDown();
-        return download;
+                .withLastFullyMergedPartPosition(lastFullyDownloadedPartPosition);
+
+        return new PreparedDownloadContext(download, downloadCallable, latch);
+    }
+
+    private DownloadImpl submitDownload(PreparedDownloadContext preparedDownloadContext) {
+        Future<?> future = executorService.submit(preparedDownloadContext.getCallable());
+        DownloadImpl transfer = preparedDownloadContext.getTransfer();
+        transfer.setMonitor(new DownloadMonitor(transfer, future));
+        preparedDownloadContext.getLatch().countDown();
+        return transfer;
     }
 
     private boolean isS3ObjectModifiedSincePause(final long lastModifiedTimeRecordedDuringResume,
@@ -1255,17 +1289,24 @@ public class TransferManager {
      */
     private ObjectMetadata getObjectMetadataUsingRange(final PresignedUrlDownloadRequest request) {
         PresignedUrlDownloadRequest copy = request.clone();
-
+        S3Object s3Object = null;
         try {
-            return s3.download(copy.withRange(0, 1))
-                     .getS3Object()
-                     .getObjectMetadata();
+            s3Object = s3.download(copy.withRange(0, 0))
+                     .getS3Object();
+
+            return s3Object.getObjectMetadata();
         } catch (AmazonS3Exception exception) {
             // This handles error case when trying a range GET on object with zero size
             if (exception.getStatusCode() == 416 && "InvalidRange".equals(exception.getErrorCode())) {
                 return null;
             }
             throw exception;
+        } finally {
+            if (s3Object != null) {
+                S3ObjectInputStream objectContent = s3Object.getObjectContent();
+                IOUtils.drainInputStream(objectContent);
+                IOUtils.closeQuietly(objectContent, log);
+            }
         }
     }
 
@@ -1396,6 +1437,8 @@ public class TransferManager {
 
         List<DownloadImpl> downloads = new ArrayList<DownloadImpl>();
 
+        List<PreparedDownloadContext> preparedDownloadContexts = new ArrayList<PreparedDownloadContext>();
+
         String description = "Downloading from " + bucketName + "/" + keyPrefix;
         final MultipleFileDownloadImpl multipleFileDownload = new MultipleFileDownloadImpl(description, transferProgress,
                 additionalListeners, keyPrefix, bucketName, downloads);
@@ -1404,6 +1447,11 @@ public class TransferManager {
         final CountDownLatch latch = new CountDownLatch(1);
         MultipleFileTransferStateChangeListener transferListener =
                 new MultipleFileTransferStateChangeListener(latch, multipleFileDownload);
+
+        if (objectSummaries.isEmpty()) {
+            multipleFileDownload.setState(TransferState.Completed);
+            return multipleFileDownload;
+        }
 
         for ( S3ObjectSummary summary : objectSummaries ) {
             // TODO: non-standard delimiters
@@ -1420,16 +1468,26 @@ public class TransferManager {
             GetObjectRequest req = new GetObjectRequest(summary.getBucketName(), summary.getKey())
                     .<GetObjectRequest>withGeneralProgressListener(
                                             listener);
-            downloads.add((DownloadImpl) doDownload(
-                            req,
-                            f,
-                            transferListener, null, false, 0,
-                            null, 0L, resumeOnRetry, null));
+
+
+            PreparedDownloadContext ctx = prepareDownload(req, f, transferListener, null, false, 0,
+                                                          null, 0L, resumeOnRetry, null);
+            preparedDownloadContexts.add(ctx);
         }
 
-        if ( downloads.isEmpty() ) {
-            multipleFileDownload.setState(TransferState.Completed);
-            return multipleFileDownload;
+        try {
+            for (PreparedDownloadContext ctx : preparedDownloadContexts) {
+                downloads.add(submitDownload(ctx));
+            }
+        } catch (Throwable t) {
+            for (DownloadImpl d : downloads) {
+                try {
+                    d.getMonitor().getFuture().cancel(true);
+                } catch (Throwable cancelErr) {
+                    log.warn("DownloadImpl could not be aborted", cancelErr);
+                }
+            }
+            throw new SdkClientException(t);
         }
 
         // Notify all state changes waiting for the downloads to all be queued

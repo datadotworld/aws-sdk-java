@@ -310,8 +310,33 @@ public class DBClusterStaxUnmarshaller implements Unmarshaller<DBCluster, StaxUn
                     continue;
                 }
 
+                if (context.testExpression("ActivityStreamMode", targetDepth)) {
+                    dBCluster.setActivityStreamMode(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ActivityStreamStatus", targetDepth)) {
+                    dBCluster.setActivityStreamStatus(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ActivityStreamKmsKeyId", targetDepth)) {
+                    dBCluster.setActivityStreamKmsKeyId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("ActivityStreamKinesisStreamName", targetDepth)) {
+                    dBCluster.setActivityStreamKinesisStreamName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
                 if (context.testExpression("CopyTagsToSnapshot", targetDepth)) {
                     dBCluster.setCopyTagsToSnapshot(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("CrossAccountClone", targetDepth)) {
+                    dBCluster.setCrossAccountClone(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
             } else if (xmlEvent.isEndElement()) {

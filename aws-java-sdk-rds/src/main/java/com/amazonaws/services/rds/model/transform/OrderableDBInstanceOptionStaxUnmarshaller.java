@@ -170,6 +170,15 @@ public class OrderableDBInstanceOptionStaxUnmarshaller implements Unmarshaller<O
                     continue;
                 }
 
+                if (context.testExpression("SupportsStorageAutoscaling", targetDepth)) {
+                    orderableDBInstanceOption.setSupportsStorageAutoscaling(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
+                if (context.testExpression("SupportsKerberosAuthentication", targetDepth)) {
+                    orderableDBInstanceOption.setSupportsKerberosAuthentication(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return orderableDBInstanceOption;

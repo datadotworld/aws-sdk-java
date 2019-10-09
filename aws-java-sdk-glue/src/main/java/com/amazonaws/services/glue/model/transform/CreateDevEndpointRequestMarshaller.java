@@ -43,6 +43,12 @@ public class CreateDevEndpointRequestMarshaller {
             .marshallLocationName("PublicKeys").build();
     private static final MarshallingInfo<Integer> NUMBEROFNODES_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NumberOfNodes").build();
+    private static final MarshallingInfo<String> WORKERTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("WorkerType").build();
+    private static final MarshallingInfo<String> GLUEVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GlueVersion").build();
+    private static final MarshallingInfo<Integer> NUMBEROFWORKERS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NumberOfWorkers").build();
     private static final MarshallingInfo<String> EXTRAPYTHONLIBSS3PATH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ExtraPythonLibsS3Path").build();
     private static final MarshallingInfo<String> EXTRAJARSS3PATH_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -51,6 +57,8 @@ public class CreateDevEndpointRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SecurityConfiguration").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Tags").build();
+    private static final MarshallingInfo<Map> ARGUMENTS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Arguments").build();
 
     private static final CreateDevEndpointRequestMarshaller instance = new CreateDevEndpointRequestMarshaller();
 
@@ -75,10 +83,14 @@ public class CreateDevEndpointRequestMarshaller {
             protocolMarshaller.marshall(createDevEndpointRequest.getPublicKey(), PUBLICKEY_BINDING);
             protocolMarshaller.marshall(createDevEndpointRequest.getPublicKeys(), PUBLICKEYS_BINDING);
             protocolMarshaller.marshall(createDevEndpointRequest.getNumberOfNodes(), NUMBEROFNODES_BINDING);
+            protocolMarshaller.marshall(createDevEndpointRequest.getWorkerType(), WORKERTYPE_BINDING);
+            protocolMarshaller.marshall(createDevEndpointRequest.getGlueVersion(), GLUEVERSION_BINDING);
+            protocolMarshaller.marshall(createDevEndpointRequest.getNumberOfWorkers(), NUMBEROFWORKERS_BINDING);
             protocolMarshaller.marshall(createDevEndpointRequest.getExtraPythonLibsS3Path(), EXTRAPYTHONLIBSS3PATH_BINDING);
             protocolMarshaller.marshall(createDevEndpointRequest.getExtraJarsS3Path(), EXTRAJARSS3PATH_BINDING);
             protocolMarshaller.marshall(createDevEndpointRequest.getSecurityConfiguration(), SECURITYCONFIGURATION_BINDING);
             protocolMarshaller.marshall(createDevEndpointRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(createDevEndpointRequest.getArguments(), ARGUMENTS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

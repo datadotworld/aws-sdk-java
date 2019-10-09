@@ -49,7 +49,7 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
     private String status;
     /**
      * <p>
-     * The time that the agent was last connected.
+     * The time that the agent last connected to DataSyc.
      * </p>
      */
     private java.util.Date lastConnectionTime;
@@ -59,6 +59,19 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
      * </p>
      */
     private java.util.Date creationTime;
+    /**
+     * <p>
+     * The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     * accessible over the public Internet.
+     * </p>
+     */
+    private String endpointType;
+    /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     */
+    private PrivateLinkConfig privateLinkConfig;
 
     /**
      * <p>
@@ -225,11 +238,11 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The time that the agent was last connected.
+     * The time that the agent last connected to DataSyc.
      * </p>
      * 
      * @param lastConnectionTime
-     *        The time that the agent was last connected.
+     *        The time that the agent last connected to DataSyc.
      */
 
     public void setLastConnectionTime(java.util.Date lastConnectionTime) {
@@ -238,10 +251,10 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The time that the agent was last connected.
+     * The time that the agent last connected to DataSyc.
      * </p>
      * 
-     * @return The time that the agent was last connected.
+     * @return The time that the agent last connected to DataSyc.
      */
 
     public java.util.Date getLastConnectionTime() {
@@ -250,11 +263,11 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
 
     /**
      * <p>
-     * The time that the agent was last connected.
+     * The time that the agent last connected to DataSyc.
      * </p>
      * 
      * @param lastConnectionTime
-     *        The time that the agent was last connected.
+     *        The time that the agent last connected to DataSyc.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -304,6 +317,113 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
     }
 
     /**
+     * <p>
+     * The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     * accessible over the public Internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     *        accessible over the public Internet.
+     * @see EndpointType
+     */
+
+    public void setEndpointType(String endpointType) {
+        this.endpointType = endpointType;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     * accessible over the public Internet.
+     * </p>
+     * 
+     * @return The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     *         accessible over the public Internet.
+     * @see EndpointType
+     */
+
+    public String getEndpointType() {
+        return this.endpointType;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     * accessible over the public Internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     *        accessible over the public Internet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EndpointType
+     */
+
+    public DescribeAgentResult withEndpointType(String endpointType) {
+        setEndpointType(endpointType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     * accessible over the public Internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of endpoint that your agent is connected to. If the endpoint is a VPC endpoint, the agent is not
+     *        accessible over the public Internet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EndpointType
+     */
+
+    public DescribeAgentResult withEndpointType(EndpointType endpointType) {
+        this.endpointType = endpointType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     * 
+     * @param privateLinkConfig
+     *        The subnet and the security group that DataSync used to access a VPC endpoint.
+     */
+
+    public void setPrivateLinkConfig(PrivateLinkConfig privateLinkConfig) {
+        this.privateLinkConfig = privateLinkConfig;
+    }
+
+    /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     * 
+     * @return The subnet and the security group that DataSync used to access a VPC endpoint.
+     */
+
+    public PrivateLinkConfig getPrivateLinkConfig() {
+        return this.privateLinkConfig;
+    }
+
+    /**
+     * <p>
+     * The subnet and the security group that DataSync used to access a VPC endpoint.
+     * </p>
+     * 
+     * @param privateLinkConfig
+     *        The subnet and the security group that DataSync used to access a VPC endpoint.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeAgentResult withPrivateLinkConfig(PrivateLinkConfig privateLinkConfig) {
+        setPrivateLinkConfig(privateLinkConfig);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -324,7 +444,11 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
         if (getLastConnectionTime() != null)
             sb.append("LastConnectionTime: ").append(getLastConnectionTime()).append(",");
         if (getCreationTime() != null)
-            sb.append("CreationTime: ").append(getCreationTime());
+            sb.append("CreationTime: ").append(getCreationTime()).append(",");
+        if (getEndpointType() != null)
+            sb.append("EndpointType: ").append(getEndpointType()).append(",");
+        if (getPrivateLinkConfig() != null)
+            sb.append("PrivateLinkConfig: ").append(getPrivateLinkConfig());
         sb.append("}");
         return sb.toString();
     }
@@ -359,6 +483,14 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
             return false;
         if (other.getCreationTime() != null && other.getCreationTime().equals(this.getCreationTime()) == false)
             return false;
+        if (other.getEndpointType() == null ^ this.getEndpointType() == null)
+            return false;
+        if (other.getEndpointType() != null && other.getEndpointType().equals(this.getEndpointType()) == false)
+            return false;
+        if (other.getPrivateLinkConfig() == null ^ this.getPrivateLinkConfig() == null)
+            return false;
+        if (other.getPrivateLinkConfig() != null && other.getPrivateLinkConfig().equals(this.getPrivateLinkConfig()) == false)
+            return false;
         return true;
     }
 
@@ -372,6 +504,8 @@ public class DescribeAgentResult extends com.amazonaws.AmazonWebServiceResult<co
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getLastConnectionTime() == null) ? 0 : getLastConnectionTime().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());
+        hashCode = prime * hashCode + ((getEndpointType() == null) ? 0 : getEndpointType().hashCode());
+        hashCode = prime * hashCode + ((getPrivateLinkConfig() == null) ? 0 : getPrivateLinkConfig().hashCode());
         return hashCode;
     }
 

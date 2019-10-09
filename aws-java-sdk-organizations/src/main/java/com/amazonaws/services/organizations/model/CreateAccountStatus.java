@@ -19,7 +19,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Contains the status about a <a>CreateAccount</a> request to create an AWS account in an organization.
+ * Contains the status about a <a>CreateAccount</a> or <a>CreateGovCloudAccount</a> request to create an AWS account or
+ * an AWS GovCloud (US) account in an organization.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreateAccountStatus" target="_top">AWS
@@ -75,6 +76,13 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
     private String accountId;
     /**
      * <p>
+     * If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US)
+     * Region.
+     * </p>
+     */
+    private String govCloudAccountId;
+    /**
+     * <p>
      * If the request failed, a description of the reason for the failure.
      * </p>
      * <ul>
@@ -88,6 +96,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <p>
      * EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address
      * already exists.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
      * </p>
      * </li>
      * <li>
@@ -433,6 +447,52 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
+     * If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US)
+     * Region.
+     * </p>
+     * 
+     * @param govCloudAccountId
+     *        If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud
+     *        (US) Region.
+     */
+
+    public void setGovCloudAccountId(String govCloudAccountId) {
+        this.govCloudAccountId = govCloudAccountId;
+    }
+
+    /**
+     * <p>
+     * If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US)
+     * Region.
+     * </p>
+     * 
+     * @return If the account was created successfully, the unique identifier (ID) of the new account in the AWS
+     *         GovCloud (US) Region.
+     */
+
+    public String getGovCloudAccountId() {
+        return this.govCloudAccountId;
+    }
+
+    /**
+     * <p>
+     * If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US)
+     * Region.
+     * </p>
+     * 
+     * @param govCloudAccountId
+     *        If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud
+     *        (US) Region.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateAccountStatus withGovCloudAccountId(String govCloudAccountId) {
+        setGovCloudAccountId(govCloudAccountId);
+        return this;
+    }
+
+    /**
+     * <p>
      * If the request failed, a description of the reason for the failure.
      * </p>
      * <ul>
@@ -446,6 +506,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * <p>
      * EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address
      * already exists.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
      * </p>
      * </li>
      * <li>
@@ -479,6 +545,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <p>
      *        EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address
      *        already exists.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
      *        </p>
      *        </li>
      *        <li>
@@ -523,6 +595,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -551,6 +629,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *         <p>
      *         EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email
      *         address already exists.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *         this Region already includes an account with that email address.
      *         </p>
      *         </li>
      *         <li>
@@ -595,6 +679,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -624,6 +714,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <p>
      *        EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address
      *        already exists.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
      *        </p>
      *        </li>
      *        <li>
@@ -670,6 +766,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -699,6 +801,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <p>
      *        EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address
      *        already exists.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
      *        </p>
      *        </li>
      *        <li>
@@ -743,6 +851,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      * </li>
      * <li>
      * <p>
+     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this
+     * Region already includes an account with that email address.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.
      * </p>
      * </li>
@@ -772,6 +886,12 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
      *        <p>
      *        EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address
      *        already exists.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because
+     *        this Region already includes an account with that email address.
      *        </p>
      *        </li>
      *        <li>
@@ -823,6 +943,8 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
             sb.append("CompletedTimestamp: ").append(getCompletedTimestamp()).append(",");
         if (getAccountId() != null)
             sb.append("AccountId: ").append(getAccountId()).append(",");
+        if (getGovCloudAccountId() != null)
+            sb.append("GovCloudAccountId: ").append(getGovCloudAccountId()).append(",");
         if (getFailureReason() != null)
             sb.append("FailureReason: ").append(getFailureReason());
         sb.append("}");
@@ -863,6 +985,10 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
             return false;
         if (other.getAccountId() != null && other.getAccountId().equals(this.getAccountId()) == false)
             return false;
+        if (other.getGovCloudAccountId() == null ^ this.getGovCloudAccountId() == null)
+            return false;
+        if (other.getGovCloudAccountId() != null && other.getGovCloudAccountId().equals(this.getGovCloudAccountId()) == false)
+            return false;
         if (other.getFailureReason() == null ^ this.getFailureReason() == null)
             return false;
         if (other.getFailureReason() != null && other.getFailureReason().equals(this.getFailureReason()) == false)
@@ -881,6 +1007,7 @@ public class CreateAccountStatus implements Serializable, Cloneable, StructuredP
         hashCode = prime * hashCode + ((getRequestedTimestamp() == null) ? 0 : getRequestedTimestamp().hashCode());
         hashCode = prime * hashCode + ((getCompletedTimestamp() == null) ? 0 : getCompletedTimestamp().hashCode());
         hashCode = prime * hashCode + ((getAccountId() == null) ? 0 : getAccountId().hashCode());
+        hashCode = prime * hashCode + ((getGovCloudAccountId() == null) ? 0 : getGovCloudAccountId().hashCode());
         hashCode = prime * hashCode + ((getFailureReason() == null) ? 0 : getFailureReason().hashCode());
         return hashCode;
     }

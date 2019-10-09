@@ -78,29 +78,29 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedOperation").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.UnauthorizedOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedOperation").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.UnauthorizedOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PolicyErrorException").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.PolicyErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PolicyErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.PolicyErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DryRunOperation").withModeledClass(
-                                    com.amazonaws.services.migrationhub.model.DryRunOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DryRunOperation").withExceptionUnmarshaller(
+                                    com.amazonaws.services.migrationhub.model.transform.DryRunOperationExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.migrationhub.model.AWSMigrationHubException.class));
 
     public static AWSMigrationHubClientBuilder builder() {
@@ -224,6 +224,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateCreatedArtifact");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -300,6 +301,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateDiscoveredResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -372,6 +374,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateProgressUpdateStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -478,6 +481,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteProgressUpdateStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -548,6 +552,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeApplicationState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -613,6 +618,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeMigrationTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -705,6 +711,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateCreatedArtifact");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -777,6 +784,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateDiscoveredResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -853,6 +861,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportMigrationTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -936,6 +945,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListCreatedArtifacts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1001,6 +1011,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDiscoveredResources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1088,6 +1099,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListMigrationTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1150,6 +1162,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListProgressUpdateStreams");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1227,6 +1240,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "NotifyApplicationState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1317,6 +1331,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "NotifyMigrationTaskState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1413,6 +1428,7 @@ public class AWSMigrationHubClient extends AmazonWebServiceClient implements AWS
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Migration Hub");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutResourceAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

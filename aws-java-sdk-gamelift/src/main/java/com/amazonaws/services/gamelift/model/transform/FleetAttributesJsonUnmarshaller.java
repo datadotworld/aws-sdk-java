@@ -88,6 +88,10 @@ public class FleetAttributesJsonUnmarshaller implements Unmarshaller<FleetAttrib
                     context.nextToken();
                     fleetAttributes.setBuildId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("ScriptId", targetDepth)) {
+                    context.nextToken();
+                    fleetAttributes.setScriptId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("ServerLaunchPath", targetDepth)) {
                     context.nextToken();
                     fleetAttributes.setServerLaunchPath(context.getUnmarshaller(String.class).unmarshall(context));
@@ -123,6 +127,10 @@ public class FleetAttributesJsonUnmarshaller implements Unmarshaller<FleetAttrib
                 if (context.testExpression("InstanceRoleArn", targetDepth)) {
                     context.nextToken();
                     fleetAttributes.setInstanceRoleArn(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("CertificateConfiguration", targetDepth)) {
+                    context.nextToken();
+                    fleetAttributes.setCertificateConfiguration(CertificateConfigurationJsonUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

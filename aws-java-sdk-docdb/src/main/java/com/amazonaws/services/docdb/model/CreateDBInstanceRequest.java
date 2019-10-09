@@ -59,7 +59,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     * The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      * </p>
      */
     private String dBInstanceClass;
@@ -119,7 +119,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private Boolean autoMinorVersionUpgrade;
     /**
      * <p>
-     * The tags to be assigned to the DB instance.
+     * The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * </p>
      */
     private java.util.List<Tag> tags;
@@ -320,11 +320,11 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     * The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      * </p>
      * 
      * @param dBInstanceClass
-     *        The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     *        The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      */
 
     public void setDBInstanceClass(String dBInstanceClass) {
@@ -333,10 +333,10 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     * The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      * </p>
      * 
-     * @return The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     * @return The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      */
 
     public String getDBInstanceClass() {
@@ -345,11 +345,11 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     * The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      * </p>
      * 
      * @param dBInstanceClass
-     *        The compute and memory capacity of the DB instance; for example, <code>db.m4.large</code>.
+     *        The compute and memory capacity of the DB instance; for example, <code>db.r5.large</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -712,10 +712,10 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The tags to be assigned to the DB instance.
+     * The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * </p>
      * 
-     * @return The tags to be assigned to the DB instance.
+     * @return The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      */
 
     public java.util.List<Tag> getTags() {
@@ -724,11 +724,11 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The tags to be assigned to the DB instance.
+     * The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * </p>
      * 
      * @param tags
-     *        The tags to be assigned to the DB instance.
+     *        The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -742,7 +742,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The tags to be assigned to the DB instance.
+     * The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -751,7 +751,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param tags
-     *        The tags to be assigned to the DB instance.
+     *        The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -767,11 +767,11 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The tags to be assigned to the DB instance.
+     * The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * </p>
      * 
      * @param tags
-     *        The tags to be assigned to the DB instance.
+     *        The tags to be assigned to the DB instance. You can assign up to 10 tags to an instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

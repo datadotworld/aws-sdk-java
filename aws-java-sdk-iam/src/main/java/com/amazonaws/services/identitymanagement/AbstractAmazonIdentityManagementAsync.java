@@ -753,6 +753,21 @@ public class AbstractAmazonIdentityManagementAsync extends AbstractAmazonIdentit
     }
 
     @Override
+    public java.util.concurrent.Future<GenerateOrganizationsAccessReportResult> generateOrganizationsAccessReportAsync(
+            GenerateOrganizationsAccessReportRequest request) {
+
+        return generateOrganizationsAccessReportAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GenerateOrganizationsAccessReportResult> generateOrganizationsAccessReportAsync(
+            GenerateOrganizationsAccessReportRequest request,
+            com.amazonaws.handlers.AsyncHandler<GenerateOrganizationsAccessReportRequest, GenerateOrganizationsAccessReportResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<GenerateServiceLastAccessedDetailsResult> generateServiceLastAccessedDetailsAsync(
             GenerateServiceLastAccessedDetailsRequest request) {
 
@@ -1014,6 +1029,19 @@ public class AbstractAmazonIdentityManagementAsync extends AbstractAmazonIdentit
     @Override
     public java.util.concurrent.Future<GetOpenIDConnectProviderResult> getOpenIDConnectProviderAsync(GetOpenIDConnectProviderRequest request,
             com.amazonaws.handlers.AsyncHandler<GetOpenIDConnectProviderRequest, GetOpenIDConnectProviderResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetOrganizationsAccessReportResult> getOrganizationsAccessReportAsync(GetOrganizationsAccessReportRequest request) {
+
+        return getOrganizationsAccessReportAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetOrganizationsAccessReportResult> getOrganizationsAccessReportAsync(GetOrganizationsAccessReportRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetOrganizationsAccessReportRequest, GetOrganizationsAccessReportResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -2026,6 +2054,21 @@ public class AbstractAmazonIdentityManagementAsync extends AbstractAmazonIdentit
     @Override
     public java.util.concurrent.Future<SetDefaultPolicyVersionResult> setDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest request,
             com.amazonaws.handlers.AsyncHandler<SetDefaultPolicyVersionRequest, SetDefaultPolicyVersionResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<SetSecurityTokenServicePreferencesResult> setSecurityTokenServicePreferencesAsync(
+            SetSecurityTokenServicePreferencesRequest request) {
+
+        return setSecurityTokenServicePreferencesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<SetSecurityTokenServicePreferencesResult> setSecurityTokenServicePreferencesAsync(
+            SetSecurityTokenServicePreferencesRequest request,
+            com.amazonaws.handlers.AsyncHandler<SetSecurityTokenServicePreferencesRequest, SetSecurityTokenServicePreferencesResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

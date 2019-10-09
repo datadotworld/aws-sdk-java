@@ -97,44 +97,44 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModification").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModification").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidConfiguration").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.InvalidConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidConfiguration").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.InvalidConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameter").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameter").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.DuplicateRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequest").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.DuplicateRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceConflict").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.ResourceConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceConflict").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.ResourceConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LambdaThrottled").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.LambdaThrottledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LambdaThrottled").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.LambdaThrottledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedError").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.NotAuthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotAuthorizedError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.NotAuthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalError").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.InternalErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.InternalErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequests").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequests").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidLambdaFunctionOutput").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.InvalidLambdaFunctionOutputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLambdaFunctionOutput").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.InvalidLambdaFunctionOutputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceeded").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AlreadyStreamed").withModeledClass(
-                                    com.amazonaws.services.cognitosync.model.AlreadyStreamedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AlreadyStreamed").withExceptionUnmarshaller(
+                                    com.amazonaws.services.cognitosync.model.transform.AlreadyStreamedExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.cognitosync.model.AmazonCognitoSyncException.class));
 
     /**
@@ -393,6 +393,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BulkPublish");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -465,6 +466,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -534,6 +536,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -602,6 +605,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeIdentityPoolUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -670,6 +674,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeIdentityUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -736,6 +741,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBulkPublishDetails");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -804,6 +810,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCognitoEvents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -872,6 +879,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIdentityPoolConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -939,6 +947,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDatasets");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1004,6 +1013,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListIdentityPoolUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1072,6 +1082,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListRecords");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1140,6 +1151,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterDevice");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1209,6 +1221,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SetCognitoEvents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1279,6 +1292,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SetIdentityPoolConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1348,6 +1362,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SubscribeToDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1416,6 +1431,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UnsubscribeFromDataset");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1505,6 +1521,7 @@ public class AmazonCognitoSyncClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Cognito Sync");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRecords");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -28,24 +28,29 @@ public class PutWebhookRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the
-     * action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name
-     * the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
+     * action name. Give the webhook a unique name that helps you identify it. You might name the webhook after the
+     * pipeline and action it targets so that you can easily recognize what it's used for later.
      * </p>
      */
     private WebhookDefinition webhook;
+    /**
+     * <p>
+     * The tags for the webhook.
+     * </p>
+     */
+    private java.util.List<Tag> tags;
 
     /**
      * <p>
      * The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the
-     * action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name
-     * the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
+     * action name. Give the webhook a unique name that helps you identify it. You might name the webhook after the
+     * pipeline and action it targets so that you can easily recognize what it's used for later.
      * </p>
      * 
      * @param webhook
      *        The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name,
-     *        and the action name. Give the webhook a unique name which identifies the webhook being defined. You may
-     *        choose to name the webhook after the pipeline and action it targets so that you can easily recognize what
-     *        it's used for later.
+     *        and the action name. Give the webhook a unique name that helps you identify it. You might name the webhook
+     *        after the pipeline and action it targets so that you can easily recognize what it's used for later.
      */
 
     public void setWebhook(WebhookDefinition webhook) {
@@ -55,14 +60,14 @@ public class PutWebhookRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the
-     * action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name
-     * the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
+     * action name. Give the webhook a unique name that helps you identify it. You might name the webhook after the
+     * pipeline and action it targets so that you can easily recognize what it's used for later.
      * </p>
      * 
      * @return The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name,
-     *         and the action name. Give the webhook a unique name which identifies the webhook being defined. You may
-     *         choose to name the webhook after the pipeline and action it targets so that you can easily recognize what
-     *         it's used for later.
+     *         and the action name. Give the webhook a unique name that helps you identify it. You might name the
+     *         webhook after the pipeline and action it targets so that you can easily recognize what it's used for
+     *         later.
      */
 
     public WebhookDefinition getWebhook() {
@@ -72,20 +77,89 @@ public class PutWebhookRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name, and the
-     * action name. Give the webhook a unique name which identifies the webhook being defined. You may choose to name
-     * the webhook after the pipeline and action it targets so that you can easily recognize what it's used for later.
+     * action name. Give the webhook a unique name that helps you identify it. You might name the webhook after the
+     * pipeline and action it targets so that you can easily recognize what it's used for later.
      * </p>
      * 
      * @param webhook
      *        The detail provided in an input file to create the webhook, such as the webhook name, the pipeline name,
-     *        and the action name. Give the webhook a unique name which identifies the webhook being defined. You may
-     *        choose to name the webhook after the pipeline and action it targets so that you can easily recognize what
-     *        it's used for later.
+     *        and the action name. Give the webhook a unique name that helps you identify it. You might name the webhook
+     *        after the pipeline and action it targets so that you can easily recognize what it's used for later.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PutWebhookRequest withWebhook(WebhookDefinition webhook) {
         setWebhook(webhook);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags for the webhook.
+     * </p>
+     * 
+     * @return The tags for the webhook.
+     */
+
+    public java.util.List<Tag> getTags() {
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags for the webhook.
+     * </p>
+     * 
+     * @param tags
+     *        The tags for the webhook.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new java.util.ArrayList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags for the webhook.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags for the webhook.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutWebhookRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new java.util.ArrayList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags for the webhook.
+     * </p>
+     * 
+     * @param tags
+     *        The tags for the webhook.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PutWebhookRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
         return this;
     }
 
@@ -102,7 +176,9 @@ public class PutWebhookRequest extends com.amazonaws.AmazonWebServiceRequest imp
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getWebhook() != null)
-            sb.append("Webhook: ").append(getWebhook());
+            sb.append("Webhook: ").append(getWebhook()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -121,6 +197,10 @@ public class PutWebhookRequest extends com.amazonaws.AmazonWebServiceRequest imp
             return false;
         if (other.getWebhook() != null && other.getWebhook().equals(this.getWebhook()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -130,6 +210,7 @@ public class PutWebhookRequest extends com.amazonaws.AmazonWebServiceRequest imp
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getWebhook() == null) ? 0 : getWebhook().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

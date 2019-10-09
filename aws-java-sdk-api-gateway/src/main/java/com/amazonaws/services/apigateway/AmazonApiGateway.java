@@ -615,6 +615,9 @@ public interface AmazonApiGateway {
      *         The requested resource is not found. Make sure that the request URI is correct.
      * @throws TooManyRequestsException
      *         The request has reached its throttling limit. Retry after the specified time period.
+     * @throws BadRequestException
+     *         The submitted request is not valid, for example, the input is incomplete or incorrect. See the
+     *         accompanying error message for details.
      * @sample AmazonApiGateway.DeleteDomainName
      */
     DeleteDomainNameResult deleteDomainName(DeleteDomainNameRequest deleteDomainNameRequest);
@@ -2097,8 +2100,10 @@ public interface AmazonApiGateway {
      * request body.
      * </p>
      * <div class="seeAlso"> <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom
-     * authorizers</a> </div>
+     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html">Use
+     * Lambda Function as Authorizer</a> <a
+     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use
+     * Cognito User Pool as Authorizer</a> </div>
      * 
      * @param testInvokeAuthorizerRequest
      *        Make a request to simulate the execution of an <a>Authorizer</a>.

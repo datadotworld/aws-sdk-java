@@ -81,26 +81,26 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.UnauthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.UnauthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.ConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.ConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.apigateway.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigateway.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.apigateway.model.AmazonApiGatewayException.class));
 
     /**
@@ -353,6 +353,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateApiKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -417,6 +418,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -479,6 +481,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateBasePathMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -547,6 +550,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -608,6 +612,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDocumentationPart");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -670,6 +675,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDocumentationVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -731,6 +737,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -795,6 +802,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -857,6 +865,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRequestValidator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -922,6 +931,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -982,6 +992,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRestApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1046,6 +1057,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1112,6 +1124,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUsagePlan");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1174,6 +1187,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUsagePlanKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1236,6 +1250,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateVpcLink");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1293,6 +1308,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApiKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1357,6 +1373,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1419,6 +1436,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteBasePathMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1481,6 +1499,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteClientCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1543,6 +1562,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1602,6 +1622,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDocumentationPart");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1662,6 +1683,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDocumentationVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1693,6 +1715,9 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
      *         The requested resource is not found. Make sure that the request URI is correct.
      * @throws TooManyRequestsException
      *         The request has reached its throttling limit. Retry after the specified time period.
+     * @throws BadRequestException
+     *         The submitted request is not valid, for example, the input is incomplete or incorrect. See the
+     *         accompanying error message for details.
      * @sample AmazonApiGateway.DeleteDomainName
      */
     @Override
@@ -1720,6 +1745,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1784,6 +1810,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteGatewayResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1844,6 +1871,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1907,6 +1935,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1967,6 +1996,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteMethod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2029,6 +2059,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteMethodResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2091,6 +2122,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2153,6 +2185,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRequestValidator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2216,6 +2249,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2276,6 +2310,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRestApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2336,6 +2371,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2396,6 +2432,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUsagePlan");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2459,6 +2496,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUsagePlanKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2519,6 +2557,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteVpcLink");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2580,6 +2619,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "FlushStageAuthorizersCache");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2641,6 +2681,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "FlushStageCache");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2699,6 +2740,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GenerateClientCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2757,6 +2799,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAccount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2814,6 +2857,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApiKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2872,6 +2916,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApiKeys");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2931,6 +2976,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2993,6 +3039,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAuthorizers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3050,6 +3097,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBasePathMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3107,6 +3155,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBasePathMappings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3164,6 +3213,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetClientCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3222,6 +3272,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetClientCertificates");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3283,6 +3334,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3344,6 +3396,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDeployments");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3397,6 +3450,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDocumentationPart");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3454,6 +3508,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDocumentationParts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3509,6 +3564,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDocumentationVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3567,6 +3623,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDocumentationVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3628,6 +3685,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3686,6 +3744,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDomainNames");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3748,6 +3807,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetExport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3805,6 +3865,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetGatewayResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3869,6 +3930,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetGatewayResponses");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3926,6 +3988,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3983,6 +4046,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4041,6 +4105,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMethod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4098,6 +4163,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMethodResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4155,6 +4221,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4215,6 +4282,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetModelTemplate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4275,6 +4343,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetModels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4332,6 +4401,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRequestValidator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4392,6 +4462,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRequestValidators");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4449,6 +4520,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4509,6 +4581,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetResources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4566,6 +4639,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRestApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4624,6 +4698,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRestApis");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4686,6 +4761,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSdk");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4739,6 +4815,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSdkType");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4790,6 +4867,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSdkTypes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4847,6 +4925,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4904,6 +4983,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetStages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4966,6 +5046,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5026,6 +5107,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5086,6 +5168,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUsagePlan");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5146,6 +5229,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUsagePlanKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5206,6 +5290,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUsagePlanKeys");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5268,6 +5353,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUsagePlans");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5325,6 +5411,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetVpcLink");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5383,6 +5470,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetVpcLinks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5447,6 +5535,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportApiKeys");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5506,6 +5595,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportDocumentationParts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5569,6 +5659,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportRestApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5633,6 +5724,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutGatewayResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5695,6 +5787,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5759,6 +5852,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5824,6 +5918,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutMethod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5888,6 +5983,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutMethodResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5954,6 +6050,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRestApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6018,6 +6115,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6040,8 +6138,10 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
      * request body.
      * </p>
      * <div class="seeAlso"> <a
-     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/use-custom-authorizer.html">Enable custom
-     * authorizers</a> </div>
+     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html">Use
+     * Lambda Function as Authorizer</a> <a
+     * href="https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html">Use
+     * Cognito User Pool as Authorizer</a> </div>
      * 
      * @param testInvokeAuthorizerRequest
      *        Make a request to simulate the execution of an <a>Authorizer</a>.
@@ -6082,6 +6182,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TestInvokeAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6143,6 +6244,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TestInvokeMethod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6205,6 +6307,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6265,6 +6368,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAccount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6327,6 +6431,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApiKey");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6389,6 +6494,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6451,6 +6557,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateBasePathMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6513,6 +6620,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateClientCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6577,6 +6685,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6638,6 +6747,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDocumentationPart");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6698,6 +6808,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDocumentationVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6761,6 +6872,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6821,6 +6933,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateGatewayResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6884,6 +6997,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6947,6 +7061,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7010,6 +7125,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateMethod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7074,6 +7190,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateMethodResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7136,6 +7253,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7196,6 +7314,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRequestValidator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7259,6 +7378,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7321,6 +7441,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRestApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7383,6 +7504,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7444,6 +7566,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7506,6 +7629,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUsagePlan");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7568,6 +7692,7 @@ public class AmazonApiGatewayClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "API Gateway");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateVpcLink");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

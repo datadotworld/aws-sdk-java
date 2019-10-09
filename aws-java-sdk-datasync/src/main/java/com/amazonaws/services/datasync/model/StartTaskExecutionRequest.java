@@ -36,6 +36,16 @@ public class StartTaskExecutionRequest extends com.amazonaws.AmazonWebServiceReq
     private String taskArn;
 
     private Options overrideOptions;
+    /**
+     * <p>
+     * A list of filter rules that determines which files to include when running a task. The pattern should contain a
+     * single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a
+     * pipe). For example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     */
+    private java.util.List<FilterRule> includes;
 
     /**
      * <p>
@@ -104,6 +114,104 @@ public class StartTaskExecutionRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
+     * A list of filter rules that determines which files to include when running a task. The pattern should contain a
+     * single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a
+     * pipe). For example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * 
+     * @return A list of filter rules that determines which files to include when running a task. The pattern should
+     *         contain a single filter string that consists of the patterns to include. The patterns are delimited by
+     *         "|" (that is, a pipe). For example: <code>"/folder1|/folder2"</code> </p>
+     *         <p>
+     */
+
+    public java.util.List<FilterRule> getIncludes() {
+        return includes;
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to include when running a task. The pattern should contain a
+     * single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a
+     * pipe). For example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * 
+     * @param includes
+     *        A list of filter rules that determines which files to include when running a task. The pattern should
+     *        contain a single filter string that consists of the patterns to include. The patterns are delimited by "|"
+     *        (that is, a pipe). For example: <code>"/folder1|/folder2"</code> </p>
+     *        <p>
+     */
+
+    public void setIncludes(java.util.Collection<FilterRule> includes) {
+        if (includes == null) {
+            this.includes = null;
+            return;
+        }
+
+        this.includes = new java.util.ArrayList<FilterRule>(includes);
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to include when running a task. The pattern should contain a
+     * single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a
+     * pipe). For example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setIncludes(java.util.Collection)} or {@link #withIncludes(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param includes
+     *        A list of filter rules that determines which files to include when running a task. The pattern should
+     *        contain a single filter string that consists of the patterns to include. The patterns are delimited by "|"
+     *        (that is, a pipe). For example: <code>"/folder1|/folder2"</code> </p>
+     *        <p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTaskExecutionRequest withIncludes(FilterRule... includes) {
+        if (this.includes == null) {
+            setIncludes(new java.util.ArrayList<FilterRule>(includes.length));
+        }
+        for (FilterRule ele : includes) {
+            this.includes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to include when running a task. The pattern should contain a
+     * single filter string that consists of the patterns to include. The patterns are delimited by "|" (that is, a
+     * pipe). For example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * 
+     * @param includes
+     *        A list of filter rules that determines which files to include when running a task. The pattern should
+     *        contain a single filter string that consists of the patterns to include. The patterns are delimited by "|"
+     *        (that is, a pipe). For example: <code>"/folder1|/folder2"</code> </p>
+     *        <p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTaskExecutionRequest withIncludes(java.util.Collection<FilterRule> includes) {
+        setIncludes(includes);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -118,7 +226,9 @@ public class StartTaskExecutionRequest extends com.amazonaws.AmazonWebServiceReq
         if (getTaskArn() != null)
             sb.append("TaskArn: ").append(getTaskArn()).append(",");
         if (getOverrideOptions() != null)
-            sb.append("OverrideOptions: ").append(getOverrideOptions());
+            sb.append("OverrideOptions: ").append(getOverrideOptions()).append(",");
+        if (getIncludes() != null)
+            sb.append("Includes: ").append(getIncludes());
         sb.append("}");
         return sb.toString();
     }
@@ -141,6 +251,10 @@ public class StartTaskExecutionRequest extends com.amazonaws.AmazonWebServiceReq
             return false;
         if (other.getOverrideOptions() != null && other.getOverrideOptions().equals(this.getOverrideOptions()) == false)
             return false;
+        if (other.getIncludes() == null ^ this.getIncludes() == null)
+            return false;
+        if (other.getIncludes() != null && other.getIncludes().equals(this.getIncludes()) == false)
+            return false;
         return true;
     }
 
@@ -151,6 +265,7 @@ public class StartTaskExecutionRequest extends com.amazonaws.AmazonWebServiceReq
 
         hashCode = prime * hashCode + ((getTaskArn() == null) ? 0 : getTaskArn().hashCode());
         hashCode = prime * hashCode + ((getOverrideOptions() == null) ? 0 : getOverrideOptions().hashCode());
+        hashCode = prime * hashCode + ((getIncludes() == null) ? 0 : getIncludes().hashCode());
         return hashCode;
     }
 

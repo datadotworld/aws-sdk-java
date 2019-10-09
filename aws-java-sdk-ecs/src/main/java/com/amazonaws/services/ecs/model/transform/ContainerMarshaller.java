@@ -34,6 +34,12 @@ public class ContainerMarshaller {
             .marshallLocationName("taskArn").build();
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("name").build();
+    private static final MarshallingInfo<String> IMAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("image").build();
+    private static final MarshallingInfo<String> IMAGEDIGEST_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("imageDigest").build();
+    private static final MarshallingInfo<String> RUNTIMEID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("runtimeId").build();
     private static final MarshallingInfo<String> LASTSTATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("lastStatus").build();
     private static final MarshallingInfo<Integer> EXITCODE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
@@ -74,6 +80,9 @@ public class ContainerMarshaller {
             protocolMarshaller.marshall(container.getContainerArn(), CONTAINERARN_BINDING);
             protocolMarshaller.marshall(container.getTaskArn(), TASKARN_BINDING);
             protocolMarshaller.marshall(container.getName(), NAME_BINDING);
+            protocolMarshaller.marshall(container.getImage(), IMAGE_BINDING);
+            protocolMarshaller.marshall(container.getImageDigest(), IMAGEDIGEST_BINDING);
+            protocolMarshaller.marshall(container.getRuntimeId(), RUNTIMEID_BINDING);
             protocolMarshaller.marshall(container.getLastStatus(), LASTSTATUS_BINDING);
             protocolMarshaller.marshall(container.getExitCode(), EXITCODE_BINDING);
             protocolMarshaller.marshall(container.getReason(), REASON_BINDING);

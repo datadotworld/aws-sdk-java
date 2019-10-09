@@ -191,20 +191,20 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccountLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.AccountLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccountLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.AccountLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OAuthProviderException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.OAuthProviderException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OAuthProviderException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.OAuthProviderExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.codebuild.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codebuild.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.codebuild.model.AWSCodeBuildException.class));
 
     /**
@@ -444,6 +444,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDeleteBuilds");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -498,6 +499,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchGetBuilds");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -552,6 +554,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchGetProjects");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -611,6 +614,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -684,6 +688,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateWebhook");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -738,6 +743,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -795,6 +801,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSourceCredentials");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -855,6 +862,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteWebhook");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -883,6 +891,9 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
      *         The input value that was provided is not valid.
      * @throws AccountLimitExceededException
      *         An AWS service limit was exceeded for the calling AWS account.
+     * @throws ResourceAlreadyExistsException
+     *         The specified AWS resource cannot be created, because an AWS resource with the same settings already
+     *         exists.
      * @sample AWSCodeBuild.ImportSourceCredentials
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06/ImportSourceCredentials"
      *      target="_top">AWS API Documentation</a>
@@ -913,6 +924,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportSourceCredentials");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -970,6 +982,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "InvalidateProjectCache");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1025,6 +1038,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListBuilds");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1081,6 +1095,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListBuildsForProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1134,6 +1149,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListCuratedEnvironmentImages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1189,6 +1205,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListProjects");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1241,6 +1258,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListSourceCredentials");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1300,6 +1318,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartBuild");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1356,6 +1375,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopBuild");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1412,6 +1432,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1475,6 +1496,7 @@ public class AWSCodeBuildClient extends AmazonWebServiceClient implements AWSCod
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeBuild");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateWebhook");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

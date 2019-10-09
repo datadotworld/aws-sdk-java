@@ -3543,6 +3543,29 @@ public interface AWSWAFAsync extends AWSWAF {
             com.amazonaws.handlers.AsyncHandler<ListSubscribedRuleGroupsRequest, ListSubscribedRuleGroupsResult> asyncHandler);
 
     /**
+     * @param listTagsForResourceRequest
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AWSWAFAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * @param listTagsForResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AWSWAFAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
+
+    /**
      * <p>
      * Returns an array of <a>WebACLSummary</a> objects in the response.
      * </p>
@@ -3616,13 +3639,17 @@ public interface AWSWAFAsync extends AWSWAF {
      * <ol>
      * <li>
      * <p>
-     * Create an Amazon Kinesis Data Firehose .
+     * Create an Amazon Kinesis Data Firehose.
      * </p>
      * <p>
      * Create the data firehose with a PUT source and in the region that you are operating. However, if you are
      * capturing logs for Amazon CloudFront, always create the firehose in US East (N. Virginia).
      * </p>
-     * </li>
+     * <note>
+     * <p>
+     * Do not create the data firehose using a <code>Kinesis stream</code> as your source.
+     * </p>
+     * </note></li>
      * <li>
      * <p>
      * Associate that firehose to your web ACL using a <code>PutLoggingConfiguration</code> request.
@@ -3654,13 +3681,17 @@ public interface AWSWAFAsync extends AWSWAF {
      * <ol>
      * <li>
      * <p>
-     * Create an Amazon Kinesis Data Firehose .
+     * Create an Amazon Kinesis Data Firehose.
      * </p>
      * <p>
      * Create the data firehose with a PUT source and in the region that you are operating. However, if you are
      * capturing logs for Amazon CloudFront, always create the firehose in US East (N. Virginia).
      * </p>
-     * </li>
+     * <note>
+     * <p>
+     * Do not create the data firehose using a <code>Kinesis stream</code> as your source.
+     * </p>
+     * </note></li>
      * <li>
      * <p>
      * Associate that firehose to your web ACL using a <code>PutLoggingConfiguration</code> request.
@@ -3827,6 +3858,52 @@ public interface AWSWAFAsync extends AWSWAF {
      */
     java.util.concurrent.Future<PutPermissionPolicyResult> putPermissionPolicyAsync(PutPermissionPolicyRequest putPermissionPolicyRequest,
             com.amazonaws.handlers.AsyncHandler<PutPermissionPolicyRequest, PutPermissionPolicyResult> asyncHandler);
+
+    /**
+     * @param tagResourceRequest
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AWSWAFAsync.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest);
+
+    /**
+     * @param tagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AWSWAFAsyncHandler.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler);
+
+    /**
+     * @param untagResourceRequest
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AWSWAFAsync.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * @param untagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AWSWAFAsyncHandler.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler);
 
     /**
      * <p>

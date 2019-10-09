@@ -38,7 +38,17 @@ public class AbstractAWSAmplify implements AWSAmplify {
     }
 
     @Override
+    public CreateDeploymentResult createDeployment(CreateDeploymentRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateDomainAssociationResult createDomainAssociation(CreateDomainAssociationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateWebhookResult createWebhook(CreateWebhookRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -63,7 +73,22 @@ public class AbstractAWSAmplify implements AWSAmplify {
     }
 
     @Override
+    public DeleteWebhookResult deleteWebhook(DeleteWebhookRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GenerateAccessLogsResult generateAccessLogs(GenerateAccessLogsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public GetAppResult getApp(GetAppRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetArtifactUrlResult getArtifactUrl(GetArtifactUrlRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -83,7 +108,17 @@ public class AbstractAWSAmplify implements AWSAmplify {
     }
 
     @Override
+    public GetWebhookResult getWebhook(GetWebhookRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListAppsResult listApps(ListAppsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListArtifactsResult listArtifacts(ListArtifactsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -103,12 +138,37 @@ public class AbstractAWSAmplify implements AWSAmplify {
     }
 
     @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListWebhooksResult listWebhooks(ListWebhooksRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public StartDeploymentResult startDeployment(StartDeploymentRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public StartJobResult startJob(StartJobRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public StopJobResult stopJob(StopJobRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -124,6 +184,11 @@ public class AbstractAWSAmplify implements AWSAmplify {
 
     @Override
     public UpdateDomainAssociationResult updateDomainAssociation(UpdateDomainAssociationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateWebhookResult updateWebhook(UpdateWebhookRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

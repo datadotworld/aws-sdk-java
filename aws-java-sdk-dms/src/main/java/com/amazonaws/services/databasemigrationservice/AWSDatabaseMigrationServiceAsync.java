@@ -34,7 +34,7 @@ import com.amazonaws.services.databasemigrationservice.model.*;
  * Server to PostgreSQL.
  * </p>
  * <p>
- * For more information about AWS DMS, see <a href="http://docs.aws.amazon.com/dms/latest/userguide/Welcome.html">What
+ * For more information about AWS DMS, see <a href="https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html">What
  * Is AWS Database Migration Service?</a> in the <i>AWS Database Migration User Guide.</i>
  * </p>
  */
@@ -49,6 +49,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * 
      * @param addTagsToResourceRequest
+     *        Associates a set of tags with an AWS DMS resource.
      * @return A Java Future containing the result of the AddTagsToResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.AddTagsToResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/AddTagsToResource" target="_top">AWS API
@@ -64,6 +65,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * 
      * @param addTagsToResourceRequest
+     *        Associates a set of tags with an AWS DMS resource.
      * @param asyncHandler
      *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
      *        implementation of the callback methods in this interface to receive notification of successful or
@@ -75,6 +77,41 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      */
     java.util.concurrent.Future<AddTagsToResourceResult> addTagsToResourceAsync(AddTagsToResourceRequest addTagsToResourceRequest,
             com.amazonaws.handlers.AsyncHandler<AddTagsToResourceRequest, AddTagsToResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Applies a pending maintenance action to a resource (for example, to a replication instance).
+     * </p>
+     * 
+     * @param applyPendingMaintenanceActionRequest
+     * @return A Java Future containing the result of the ApplyPendingMaintenanceAction operation returned by the
+     *         service.
+     * @sample AWSDatabaseMigrationServiceAsync.ApplyPendingMaintenanceAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ApplyPendingMaintenanceAction"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ApplyPendingMaintenanceActionResult> applyPendingMaintenanceActionAsync(
+            ApplyPendingMaintenanceActionRequest applyPendingMaintenanceActionRequest);
+
+    /**
+     * <p>
+     * Applies a pending maintenance action to a resource (for example, to a replication instance).
+     * </p>
+     * 
+     * @param applyPendingMaintenanceActionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ApplyPendingMaintenanceAction operation returned by the
+     *         service.
+     * @sample AWSDatabaseMigrationServiceAsyncHandler.ApplyPendingMaintenanceAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ApplyPendingMaintenanceAction"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ApplyPendingMaintenanceActionResult> applyPendingMaintenanceActionAsync(
+            ApplyPendingMaintenanceActionRequest applyPendingMaintenanceActionRequest,
+            com.amazonaws.handlers.AsyncHandler<ApplyPendingMaintenanceActionRequest, ApplyPendingMaintenanceActionResult> asyncHandler);
 
     /**
      * <p>
@@ -124,8 +161,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * <p>
      * For more information about AWS DMS events, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and Notifications</a>
-     * in the <i>AWS Database Migration Service User Guide.</i>
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and
+     * Notifications</a> in the <i>AWS Database Migration Service User Guide.</i>
      * </p>
      * 
      * @param createEventSubscriptionRequest
@@ -153,8 +190,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * <p>
      * For more information about AWS DMS events, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and Notifications</a>
-     * in the <i>AWS Database Migration Service User Guide.</i>
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and
+     * Notifications</a> in the <i>AWS Database Migration Service User Guide.</i>
      * </p>
      * 
      * @param createEventSubscriptionRequest
@@ -299,6 +336,37 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      */
     java.util.concurrent.Future<DeleteCertificateResult> deleteCertificateAsync(DeleteCertificateRequest deleteCertificateRequest,
             com.amazonaws.handlers.AsyncHandler<DeleteCertificateRequest, DeleteCertificateResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes the connection between a replication instance and an endpoint.
+     * </p>
+     * 
+     * @param deleteConnectionRequest
+     * @return A Java Future containing the result of the DeleteConnection operation returned by the service.
+     * @sample AWSDatabaseMigrationServiceAsync.DeleteConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteConnection" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteConnectionResult> deleteConnectionAsync(DeleteConnectionRequest deleteConnectionRequest);
+
+    /**
+     * <p>
+     * Deletes the connection between a replication instance and an endpoint.
+     * </p>
+     * 
+     * @param deleteConnectionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteConnection operation returned by the service.
+     * @sample AWSDatabaseMigrationServiceAsyncHandler.DeleteConnection
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DeleteConnection" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteConnectionResult> deleteConnectionAsync(DeleteConnectionRequest deleteConnectionRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteConnectionRequest, DeleteConnectionResult> asyncHandler);
 
     /**
      * <p>
@@ -487,9 +555,11 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
 
     /**
      * <p>
-     * Lists all of the AWS DMS attributes for a customer account. The attributes include AWS DMS quotas for the
-     * account, such as the number of replication instances allowed. The description for a quota includes the quota
-     * name, current usage toward that quota, and the quota's maximum value.
+     * Lists all of the AWS DMS attributes for a customer account. These attributes include AWS DMS quotas for the
+     * account and a unique account identifier in a particular DMS region. DMS quotas include a list of resource quotas
+     * supported by the account, such as the number of replication instances allowed. The description for each resource
+     * quota, includes the quota name, current usage toward that quota, and the quota's maximum value. DMS uses the
+     * unique account identifier to name each artifact used by DMS in the given region.
      * </p>
      * <p>
      * This command does not take any parameters.
@@ -506,9 +576,11 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
 
     /**
      * <p>
-     * Lists all of the AWS DMS attributes for a customer account. The attributes include AWS DMS quotas for the
-     * account, such as the number of replication instances allowed. The description for a quota includes the quota
-     * name, current usage toward that quota, and the quota's maximum value.
+     * Lists all of the AWS DMS attributes for a customer account. These attributes include AWS DMS quotas for the
+     * account and a unique account identifier in a particular DMS region. DMS quotas include a list of resource quotas
+     * supported by the account, such as the number of replication instances allowed. The description for each resource
+     * quota, includes the quota name, current usage toward that quota, and the quota's maximum value. DMS uses the
+     * unique account identifier to name each artifact used by DMS in the given region.
      * </p>
      * <p>
      * This command does not take any parameters.
@@ -658,8 +730,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * <p>
      * Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of
      * the event categories and source types in <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and Notifications</a>
-     * in the <i>AWS Database Migration Service User Guide.</i>
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and
+     * Notifications</a> in the <i>AWS Database Migration Service User Guide.</i>
      * </p>
      * 
      * @param describeEventCategoriesRequest
@@ -674,8 +746,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * <p>
      * Lists categories for all event source types, or, if specified, for a specified source type. You can see a list of
      * the event categories and source types in <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and Notifications</a>
-     * in the <i>AWS Database Migration Service User Guide.</i>
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and
+     * Notifications</a> in the <i>AWS Database Migration Service User Guide.</i>
      * </p>
      * 
      * @param describeEventCategoriesRequest
@@ -738,8 +810,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * <p>
      * Lists events for a given source identifier and source type. You can also specify a start and end time. For more
      * information on AWS DMS events, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and Notifications</a>
-     * in the <i>AWS Database Migration User Guide.</i>
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and
+     * Notifications</a> in the <i>AWS Database Migration User Guide.</i>
      * </p>
      * 
      * @param describeEventsRequest
@@ -754,8 +826,8 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * <p>
      * Lists events for a given source identifier and source type. You can also specify a start and end time. For more
      * information on AWS DMS events, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and Notifications</a>
-     * in the <i>AWS Database Migration User Guide.</i>
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html">Working with Events and
+     * Notifications</a> in the <i>AWS Database Migration User Guide.</i>
      * </p>
      * 
      * @param describeEventsRequest
@@ -805,6 +877,41 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
     java.util.concurrent.Future<DescribeOrderableReplicationInstancesResult> describeOrderableReplicationInstancesAsync(
             DescribeOrderableReplicationInstancesRequest describeOrderableReplicationInstancesRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeOrderableReplicationInstancesRequest, DescribeOrderableReplicationInstancesResult> asyncHandler);
+
+    /**
+     * <p>
+     * For internal use only
+     * </p>
+     * 
+     * @param describePendingMaintenanceActionsRequest
+     * @return A Java Future containing the result of the DescribePendingMaintenanceActions operation returned by the
+     *         service.
+     * @sample AWSDatabaseMigrationServiceAsync.DescribePendingMaintenanceActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribePendingMaintenanceActions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribePendingMaintenanceActionsResult> describePendingMaintenanceActionsAsync(
+            DescribePendingMaintenanceActionsRequest describePendingMaintenanceActionsRequest);
+
+    /**
+     * <p>
+     * For internal use only
+     * </p>
+     * 
+     * @param describePendingMaintenanceActionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribePendingMaintenanceActions operation returned by the
+     *         service.
+     * @sample AWSDatabaseMigrationServiceAsyncHandler.DescribePendingMaintenanceActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribePendingMaintenanceActions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribePendingMaintenanceActionsResult> describePendingMaintenanceActionsAsync(
+            DescribePendingMaintenanceActionsRequest describePendingMaintenanceActionsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribePendingMaintenanceActionsRequest, DescribePendingMaintenanceActionsResult> asyncHandler);
 
     /**
      * <p>
@@ -1297,7 +1404,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * <p>
      * For more information about AWS DMS tasks, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks</a> in the
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks</a> in the
      * <i>AWS Database Migration Service User Guide</i>.
      * </p>
      * 
@@ -1318,7 +1425,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * <p>
      * For more information about AWS DMS tasks, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks</a> in the
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks</a> in the
      * <i>AWS Database Migration Service User Guide</i>.
      * </p>
      * 
@@ -1440,6 +1547,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * 
      * @param removeTagsFromResourceRequest
+     *        Removes one or more tags from an AWS DMS resource.
      * @return A Java Future containing the result of the RemoveTagsFromResource operation returned by the service.
      * @sample AWSDatabaseMigrationServiceAsync.RemoveTagsFromResource
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RemoveTagsFromResource" target="_top">AWS API
@@ -1453,6 +1561,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * 
      * @param removeTagsFromResourceRequest
+     *        Removes one or more tags from an AWS DMS resource.
      * @param asyncHandler
      *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
      *        implementation of the callback methods in this interface to receive notification of successful or
@@ -1471,7 +1580,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * <p>
      * For more information about AWS DMS tasks, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks </a> in the
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks </a> in the
      * <i>AWS Database Migration Service User Guide.</i>
      * </p>
      * 
@@ -1489,7 +1598,7 @@ public interface AWSDatabaseMigrationServiceAsync extends AWSDatabaseMigrationSe
      * </p>
      * <p>
      * For more information about AWS DMS tasks, see <a
-     * href="http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks </a> in the
+     * href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html">Working with Migration Tasks </a> in the
      * <i>AWS Database Migration Service User Guide.</i>
      * </p>
      * 

@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * ISP Organization information of the remote IP address.
+ * <p>
+ * Continas information about the organization.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/Organization" target="_top">AWS API
  *      Documentation</a>
@@ -26,17 +28,35 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class Organization implements Serializable, Cloneable, StructuredPojo {
 
-    /** Autonomous system number of the internet provider of the remote IP address. */
+    /**
+     * <p>
+     * Autonomous system number of the internet provider of the remote IP address.
+     * </p>
+     */
     private String asn;
-    /** Organization that registered this ASN. */
+    /**
+     * <p>
+     * Organization that registered this ASN.
+     * </p>
+     */
     private String asnOrg;
-    /** ISP information for the internet provider. */
+    /**
+     * <p>
+     * ISP information for the internet provider.
+     * </p>
+     */
     private String isp;
-    /** Name of the internet provider. */
+    /**
+     * <p>
+     * Name of the internet provider.
+     * </p>
+     */
     private String org;
 
     /**
+     * <p>
      * Autonomous system number of the internet provider of the remote IP address.
+     * </p>
      * 
      * @param asn
      *        Autonomous system number of the internet provider of the remote IP address.
@@ -47,7 +67,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Autonomous system number of the internet provider of the remote IP address.
+     * </p>
      * 
      * @return Autonomous system number of the internet provider of the remote IP address.
      */
@@ -57,7 +79,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Autonomous system number of the internet provider of the remote IP address.
+     * </p>
      * 
      * @param asn
      *        Autonomous system number of the internet provider of the remote IP address.
@@ -70,7 +94,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Organization that registered this ASN.
+     * </p>
      * 
      * @param asnOrg
      *        Organization that registered this ASN.
@@ -81,7 +107,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Organization that registered this ASN.
+     * </p>
      * 
      * @return Organization that registered this ASN.
      */
@@ -91,7 +119,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Organization that registered this ASN.
+     * </p>
      * 
      * @param asnOrg
      *        Organization that registered this ASN.
@@ -104,7 +134,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * ISP information for the internet provider.
+     * </p>
      * 
      * @param isp
      *        ISP information for the internet provider.
@@ -115,7 +147,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * ISP information for the internet provider.
+     * </p>
      * 
      * @return ISP information for the internet provider.
      */
@@ -125,7 +159,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * ISP information for the internet provider.
+     * </p>
      * 
      * @param isp
      *        ISP information for the internet provider.
@@ -138,7 +174,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Name of the internet provider.
+     * </p>
      * 
      * @param org
      *        Name of the internet provider.
@@ -149,7 +187,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Name of the internet provider.
+     * </p>
      * 
      * @return Name of the internet provider.
      */
@@ -159,7 +199,9 @@ public class Organization implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * Name of the internet provider.
+     * </p>
      * 
      * @param org
      *        Name of the internet provider.

@@ -41,6 +41,12 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      */
     private Integer unusedAccountValidityDays;
     /**
@@ -49,7 +55,7 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * See also <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      * >Customizing User Invitation Messages</a>.
      * </p>
      */
@@ -121,12 +127,22 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      * 
      * @param unusedAccountValidityDays
      *        The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *        account after that time limit, you must call <code>AdminCreateUser</code> again, specifying
      *        <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter
-     *        is 7.
+     *        is 7. </p> <note>
+     *        <p>
+     *        If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that
+     *        value will be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     *        </p>
      */
 
     public void setUnusedAccountValidityDays(Integer unusedAccountValidityDays) {
@@ -139,11 +155,21 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      * 
      * @return The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *         account after that time limit, you must call <code>AdminCreateUser</code> again, specifying
      *         <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter
-     *         is 7.
+     *         is 7. </p> <note>
+     *         <p>
+     *         If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that
+     *         value will be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     *         </p>
      */
 
     public Integer getUnusedAccountValidityDays() {
@@ -156,12 +182,22 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * after that time limit, you must call <code>AdminCreateUser</code> again, specifying <code>"RESEND"</code> for the
      * <code>MessageAction</code> parameter. The default value for this parameter is 7.
      * </p>
+     * <note>
+     * <p>
+     * If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that value will
+     * be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     * </p>
+     * </note>
      * 
      * @param unusedAccountValidityDays
      *        The user account expiration limit, in days, after which the account is no longer usable. To reset the
      *        account after that time limit, you must call <code>AdminCreateUser</code> again, specifying
      *        <code>"RESEND"</code> for the <code>MessageAction</code> parameter. The default value for this parameter
-     *        is 7.
+     *        is 7. </p> <note>
+     *        <p>
+     *        If you set a value for <code>TemporaryPasswordValidityDays</code> in <code>PasswordPolicy</code>, that
+     *        value will be used and <code>UnusedAccountValidityDays</code> will be deprecated for that user pool.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -176,7 +212,7 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * See also <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      * >Customizing User Invitation Messages</a>.
      * </p>
      * 
@@ -184,7 +220,7 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      *        The message template to be used for the welcome message to new users.</p>
      *        <p>
      *        See also <a href=
-     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      *        >Customizing User Invitation Messages</a>.
      */
 
@@ -198,14 +234,14 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * See also <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      * >Customizing User Invitation Messages</a>.
      * </p>
      * 
      * @return The message template to be used for the welcome message to new users.</p>
      *         <p>
      *         See also <a href=
-     *         "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     *         "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      *         >Customizing User Invitation Messages</a>.
      */
 
@@ -219,7 +255,7 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      * </p>
      * <p>
      * See also <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      * >Customizing User Invitation Messages</a>.
      * </p>
      * 
@@ -227,7 +263,7 @@ public class AdminCreateUserConfigType implements Serializable, Cloneable, Struc
      *        The message template to be used for the welcome message to new users.</p>
      *        <p>
      *        See also <a href=
-     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-message-customizations.html#cognito-user-pool-settings-user-invitation-message-customization"
      *        >Customizing User Invitation Messages</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

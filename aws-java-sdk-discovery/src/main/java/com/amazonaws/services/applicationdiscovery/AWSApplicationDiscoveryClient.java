@@ -135,29 +135,29 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServerInternalErrorException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.ServerInternalErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServerInternalErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.ServerInternalErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValueException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.InvalidParameterValueException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValueException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.InvalidParameterValueExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictErrorException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.ConflictErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.ConflictErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.OperationNotPermittedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationNotPermittedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.OperationNotPermittedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AuthorizationErrorException").withModeledClass(
-                                    com.amazonaws.services.applicationdiscovery.model.AuthorizationErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AuthorizationErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.applicationdiscovery.model.transform.AuthorizationErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.applicationdiscovery.model.AWSApplicationDiscoveryException.class));
 
     /**
@@ -408,6 +408,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateConfigurationItemsToApplication");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -474,6 +475,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDeleteImportData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -535,6 +537,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateApplication");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -598,6 +601,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -658,6 +662,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApplications");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -721,6 +726,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -782,6 +788,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAgents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -879,6 +886,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeConfigurations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -946,6 +954,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeContinuousExports");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1013,6 +1022,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeExportConfigurations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1074,6 +1084,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeExportTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1133,6 +1144,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeImportTasks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1220,6 +1232,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1283,6 +1296,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateConfigurationItemsFromApplication");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1353,6 +1367,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ExportConfigurations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1416,6 +1431,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDiscoverySummary");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1479,6 +1495,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListConfigurations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1539,6 +1556,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListServerNeighbors");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1607,6 +1625,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartContinuousExport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1669,6 +1688,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartDataCollectionByAgentIds");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1743,6 +1763,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartExportTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1851,6 +1872,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartImportTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1920,6 +1942,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopContinuousExport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1981,6 +2004,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopDataCollectionByAgentIds");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2042,6 +2066,7 @@ public class AWSApplicationDiscoveryClient extends AmazonWebServiceClient implem
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Application Discovery Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApplication");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

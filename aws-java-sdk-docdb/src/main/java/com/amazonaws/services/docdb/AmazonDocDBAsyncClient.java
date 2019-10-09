@@ -526,6 +526,39 @@ public class AmazonDocDBAsyncClient extends AmazonDocDBClient implements AmazonD
     }
 
     @Override
+    public java.util.concurrent.Future<DescribeCertificatesResult> describeCertificatesAsync(DescribeCertificatesRequest request) {
+
+        return describeCertificatesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeCertificatesResult> describeCertificatesAsync(final DescribeCertificatesRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeCertificatesRequest, DescribeCertificatesResult> asyncHandler) {
+        final DescribeCertificatesRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeCertificatesResult>() {
+            @Override
+            public DescribeCertificatesResult call() throws Exception {
+                DescribeCertificatesResult result = null;
+
+                try {
+                    result = executeDescribeCertificates(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DescribeDBClusterParameterGroupsResult> describeDBClusterParameterGroupsAsync(
             DescribeDBClusterParameterGroupsRequest request) {
 
@@ -1345,6 +1378,72 @@ public class AmazonDocDBAsyncClient extends AmazonDocDBClient implements AmazonD
 
                 try {
                     result = executeRestoreDBClusterToPointInTime(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DBCluster> startDBClusterAsync(StartDBClusterRequest request) {
+
+        return startDBClusterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DBCluster> startDBClusterAsync(final StartDBClusterRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartDBClusterRequest, DBCluster> asyncHandler) {
+        final StartDBClusterRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DBCluster>() {
+            @Override
+            public DBCluster call() throws Exception {
+                DBCluster result = null;
+
+                try {
+                    result = executeStartDBCluster(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DBCluster> stopDBClusterAsync(StopDBClusterRequest request) {
+
+        return stopDBClusterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DBCluster> stopDBClusterAsync(final StopDBClusterRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StopDBClusterRequest, DBCluster> asyncHandler) {
+        final StopDBClusterRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DBCluster>() {
+            @Override
+            public DBCluster call() throws Exception {
+                DBCluster result = null;
+
+                try {
+                    result = executeStopDBCluster(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

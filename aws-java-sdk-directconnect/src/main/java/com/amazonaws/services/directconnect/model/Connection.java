@@ -168,6 +168,18 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String hasLogicalRedundancy;
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * The name of the service provider associated with the connection.
+     * </p>
+     */
+    private String providerName;
 
     /**
      * <p>
@@ -1348,6 +1360,119 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * 
+     * @return The tags associated with the connection.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the connection.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the connection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Connection withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the connection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Connection withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the service provider associated with the connection.
+     * </p>
+     * 
+     * @param providerName
+     *        The name of the service provider associated with the connection.
+     */
+
+    public void setProviderName(String providerName) {
+        this.providerName = providerName;
+    }
+
+    /**
+     * <p>
+     * The name of the service provider associated with the connection.
+     * </p>
+     * 
+     * @return The name of the service provider associated with the connection.
+     */
+
+    public String getProviderName() {
+        return this.providerName;
+    }
+
+    /**
+     * <p>
+     * The name of the service provider associated with the connection.
+     * </p>
+     * 
+     * @param providerName
+     *        The name of the service provider associated with the connection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Connection withProviderName(String providerName) {
+        setProviderName(providerName);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1388,7 +1513,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
         if (getAwsDeviceV2() != null)
             sb.append("AwsDeviceV2: ").append(getAwsDeviceV2()).append(",");
         if (getHasLogicalRedundancy() != null)
-            sb.append("HasLogicalRedundancy: ").append(getHasLogicalRedundancy());
+            sb.append("HasLogicalRedundancy: ").append(getHasLogicalRedundancy()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getProviderName() != null)
+            sb.append("ProviderName: ").append(getProviderName());
         sb.append("}");
         return sb.toString();
     }
@@ -1463,6 +1592,14 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getHasLogicalRedundancy() != null && other.getHasLogicalRedundancy().equals(this.getHasLogicalRedundancy()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getProviderName() == null ^ this.getProviderName() == null)
+            return false;
+        if (other.getProviderName() != null && other.getProviderName().equals(this.getProviderName()) == false)
+            return false;
         return true;
     }
 
@@ -1486,6 +1623,8 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getJumboFrameCapable() == null) ? 0 : getJumboFrameCapable().hashCode());
         hashCode = prime * hashCode + ((getAwsDeviceV2() == null) ? 0 : getAwsDeviceV2().hashCode());
         hashCode = prime * hashCode + ((getHasLogicalRedundancy() == null) ? 0 : getHasLogicalRedundancy().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getProviderName() == null) ? 0 : getProviderName().hashCode());
         return hashCode;
     }
 

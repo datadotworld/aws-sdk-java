@@ -78,17 +78,17 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.apigatewayv2.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigatewayv2.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                                    com.amazonaws.services.apigatewayv2.model.ConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigatewayv2.model.transform.ConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.apigatewayv2.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigatewayv2.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.apigatewayv2.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.apigatewayv2.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.apigatewayv2.model.AmazonApiGatewayV2Exception.class));
 
     public static AmazonApiGatewayV2ClientBuilder builder() {
@@ -179,6 +179,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -237,6 +238,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateApiMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -295,6 +297,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -353,6 +356,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -411,6 +415,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -469,6 +474,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -528,6 +534,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -587,6 +594,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -645,6 +653,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRoute");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -703,6 +712,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRouteResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -761,6 +771,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -815,6 +826,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -871,6 +883,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApiMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -925,6 +938,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -979,6 +993,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1033,6 +1048,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1087,6 +1103,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1142,6 +1159,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1197,6 +1215,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1251,6 +1270,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRoute");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1305,6 +1325,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRouteResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1359,6 +1380,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1413,6 +1435,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1469,6 +1492,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApiMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1525,6 +1549,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApiMappings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1581,6 +1606,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApis");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1635,6 +1661,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1691,6 +1718,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAuthorizers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1745,6 +1773,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1801,6 +1830,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDeployments");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1855,6 +1885,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1911,6 +1942,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDomainNames");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1965,6 +1997,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2019,6 +2052,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2077,6 +2111,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIntegrationResponses");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2134,6 +2169,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetIntegrations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2188,6 +2224,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2242,6 +2279,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetModelTemplate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2298,6 +2336,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetModels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2352,6 +2391,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRoute");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2406,6 +2446,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRouteResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2462,6 +2503,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRouteResponses");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2518,6 +2560,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRoutes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2572,6 +2615,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2628,12 +2672,190 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetStages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<GetStagesResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetStagesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Gets the Tags for an API.
+     * </p>
+     * 
+     * @param getTagsRequest
+     * @return Result of the GetTags operation returned by the service.
+     * @throws NotFoundException
+     *         The resource specified in the request was not found.
+     * @throws TooManyRequestsException
+     *         The client is sending more than the allowed number of requests per unit of time.
+     * @throws BadRequestException
+     *         One of the parameters in the request is invalid.
+     * @throws ConflictException
+     *         The resource already exists.
+     * @sample AmazonApiGatewayV2.GetTags
+     */
+    @Override
+    public GetTagsResult getTags(GetTagsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetTags(request);
+    }
+
+    @SdkInternalApi
+    final GetTagsResult executeGetTags(GetTagsRequest getTagsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getTagsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetTagsRequest> request = null;
+        Response<GetTagsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetTagsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getTagsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetTags");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetTagsResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
+                    .withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetTagsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Tag an APIGW resource
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws NotFoundException
+     *         The resource specified in the request was not found.
+     * @throws TooManyRequestsException
+     *         The client is sending more than the allowed number of requests per unit of time.
+     * @throws BadRequestException
+     *         One of the parameters in the request is invalid.
+     * @throws ConflictException
+     *         The resource already exists.
+     * @sample AmazonApiGatewayV2.TagResource
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Untag an APIGW resource
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws NotFoundException
+     *         The resource specified in the request was not found.
+     * @throws TooManyRequestsException
+     *         The client is sending more than the allowed number of requests per unit of time.
+     * @throws BadRequestException
+     *         One of the parameters in the request is invalid.
+     * @throws ConflictException
+     *         The resource already exists.
+     * @sample AmazonApiGatewayV2.UntagResource
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2686,6 +2908,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApi");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2744,6 +2967,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApiMapping");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2802,6 +3026,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAuthorizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2860,6 +3085,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDeployment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2918,6 +3144,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDomainName");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2976,6 +3203,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateIntegration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3035,6 +3263,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateIntegrationResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3094,6 +3323,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateModel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3152,6 +3382,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRoute");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3210,6 +3441,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRouteResponse");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3268,6 +3500,7 @@ public class AmazonApiGatewayV2Client extends AmazonWebServiceClient implements 
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ApiGatewayV2");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateStage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

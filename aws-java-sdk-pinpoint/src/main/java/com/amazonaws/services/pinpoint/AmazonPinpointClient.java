@@ -50,7 +50,9 @@ import com.amazonaws.services.pinpoint.model.transform.*;
  * Client for accessing Amazon Pinpoint. All service calls made using this client are blocking, and will not return
  * until the service call completes.
  * <p>
- * Amazon Pinpoint
+ * <p>
+ * Doc Engage API - Amazon Pinpoint API
+ * </p>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -76,23 +78,23 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.ForbiddenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ForbiddenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.pinpoint.model.transform.ForbiddenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.pinpoint.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.MethodNotAllowedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.pinpoint.model.transform.MethodNotAllowedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.pinpoint.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.pinpoint.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withModeledClass(
-                                    com.amazonaws.services.pinpoint.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.pinpoint.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.pinpoint.model.AmazonPinpointException.class));
 
     /**
@@ -295,22 +297,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Creates or updates an app.
+     * <p>
+     * Creates an application.
+     * </p>
      * 
      * @param createAppRequest
      * @return Result of the CreateApp operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.CreateApp
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateApp" target="_top">AWS API
      *      Documentation</a>
@@ -340,6 +347,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateApp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -357,22 +365,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Creates or updates a campaign.
+     * <p>
+     * Creates a new campaign for an application or updates the settings of an existing campaign for an application.
+     * </p>
      * 
      * @param createCampaignRequest
      * @return Result of the CreateCampaign operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.CreateCampaign
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateCampaign" target="_top">AWS API
      *      Documentation</a>
@@ -402,6 +415,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCampaign");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -419,22 +433,93 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Creates an export job.
+     * <p>
+     * Creates a message template that you can use in messages that are sent through the email channel.
+     * </p>
+     * 
+     * @param createEmailTemplateRequest
+     * @return Result of the CreateEmailTemplate operation returned by the service.
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @sample AmazonPinpoint.CreateEmailTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateEmailTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CreateEmailTemplateResult createEmailTemplate(CreateEmailTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateEmailTemplate(request);
+    }
+
+    @SdkInternalApi
+    final CreateEmailTemplateResult executeCreateEmailTemplate(CreateEmailTemplateRequest createEmailTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createEmailTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateEmailTemplateRequest> request = null;
+        Response<CreateEmailTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateEmailTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createEmailTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateEmailTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateEmailTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateEmailTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates an export job for an application.
+     * </p>
      * 
      * @param createExportJobRequest
      * @return Result of the CreateExportJob operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.CreateExportJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateExportJob" target="_top">AWS API
      *      Documentation</a>
@@ -464,6 +549,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateExportJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -481,22 +567,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Creates or updates an import job.
+     * <p>
+     * Creates an import job for an application.
+     * </p>
      * 
      * @param createImportJobRequest
      * @return Result of the CreateImportJob operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.CreateImportJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateImportJob" target="_top">AWS API
      *      Documentation</a>
@@ -526,6 +617,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateImportJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -543,22 +635,94 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to create or update a segment.
+     * <p>
+     * Creates a message template that you can use in messages that are sent through a push notification channel.
+     * </p>
+     * 
+     * @param createPushTemplateRequest
+     * @return Result of the CreatePushTemplate operation returned by the service.
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @sample AmazonPinpoint.CreatePushTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreatePushTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public CreatePushTemplateResult createPushTemplate(CreatePushTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePushTemplate(request);
+    }
+
+    @SdkInternalApi
+    final CreatePushTemplateResult executeCreatePushTemplate(CreatePushTemplateRequest createPushTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createPushTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreatePushTemplateRequest> request = null;
+        Response<CreatePushTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreatePushTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createPushTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePushTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreatePushTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreatePushTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a new segment for an application or updates the configuration, dimension, and other settings for an
+     * existing segment that's associated with an application.
+     * </p>
      * 
      * @param createSegmentRequest
      * @return Result of the CreateSegment operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.CreateSegment
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateSegment" target="_top">AWS API
      *      Documentation</a>
@@ -588,6 +752,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateSegment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -605,22 +770,93 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an ADM channel.
+     * <p>
+     * Creates a message template that you can use in messages that are sent through the SMS channel.
+     * </p>
+     * 
+     * @param createSmsTemplateRequest
+     * @return Result of the CreateSmsTemplate operation returned by the service.
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @sample AmazonPinpoint.CreateSmsTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateSmsTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreateSmsTemplateResult createSmsTemplate(CreateSmsTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreateSmsTemplate(request);
+    }
+
+    @SdkInternalApi
+    final CreateSmsTemplateResult executeCreateSmsTemplate(CreateSmsTemplateRequest createSmsTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createSmsTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateSmsTemplateRequest> request = null;
+        Response<CreateSmsTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateSmsTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createSmsTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateSmsTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreateSmsTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreateSmsTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Disables the ADM channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteAdmChannelRequest
      * @return Result of the DeleteAdmChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteAdmChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteAdmChannel" target="_top">AWS API
      *      Documentation</a>
@@ -650,6 +886,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAdmChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -667,22 +904,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes the APNs channel for an app.
+     * <p>
+     * Disables the APNs channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteApnsChannelRequest
      * @return Result of the DeleteApnsChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteApnsChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsChannel" target="_top">AWS API
      *      Documentation</a>
@@ -712,6 +954,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApnsChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -729,22 +972,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an APNS sandbox channel.
+     * <p>
+     * Disables the APNs sandbox channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteApnsSandboxChannelRequest
      * @return Result of the DeleteApnsSandboxChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteApnsSandboxChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsSandboxChannel"
      *      target="_top">AWS API Documentation</a>
@@ -775,6 +1023,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApnsSandboxChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -793,22 +1042,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an APNS VoIP channel
+     * <p>
+     * Disables the APNs VoIP channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteApnsVoipChannelRequest
      * @return Result of the DeleteApnsVoipChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteApnsVoipChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsVoipChannel" target="_top">AWS
      *      API Documentation</a>
@@ -838,6 +1092,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApnsVoipChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -856,22 +1111,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an APNS VoIP sandbox channel
+     * <p>
+     * Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteApnsVoipSandboxChannelRequest
      * @return Result of the DeleteApnsVoipSandboxChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteApnsVoipSandboxChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApnsVoipSandboxChannel"
      *      target="_top">AWS API Documentation</a>
@@ -902,6 +1162,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApnsVoipSandboxChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -920,22 +1181,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes an app.
+     * <p>
+     * Deletes an application.
+     * </p>
      * 
      * @param deleteAppRequest
      * @return Result of the DeleteApp operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteApp
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteApp" target="_top">AWS API
      *      Documentation</a>
@@ -965,6 +1231,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteApp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -982,22 +1249,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete a BAIDU GCM channel
+     * <p>
+     * Disables the Baidu channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteBaiduChannelRequest
      * @return Result of the DeleteBaiduChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteBaiduChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteBaiduChannel" target="_top">AWS
      *      API Documentation</a>
@@ -1027,6 +1299,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteBaiduChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1044,22 +1317,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes a campaign.
+     * <p>
+     * Deletes a campaign from an application.
+     * </p>
      * 
      * @param deleteCampaignRequest
      * @return Result of the DeleteCampaign operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteCampaign
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteCampaign" target="_top">AWS API
      *      Documentation</a>
@@ -1089,6 +1367,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteCampaign");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1106,22 +1385,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an email channel.
+     * <p>
+     * Disables the email channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteEmailChannelRequest
      * @return Result of the DeleteEmailChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteEmailChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEmailChannel" target="_top">AWS
      *      API Documentation</a>
@@ -1151,6 +1435,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteEmailChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1168,22 +1453,95 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes an endpoint.
+     * <p>
+     * Deletes a message template that was designed for use in messages that were sent through the email channel.
+     * </p>
+     * 
+     * @param deleteEmailTemplateRequest
+     * @return Result of the DeleteEmailTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.DeleteEmailTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEmailTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteEmailTemplateResult deleteEmailTemplate(DeleteEmailTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteEmailTemplate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteEmailTemplateResult executeDeleteEmailTemplate(DeleteEmailTemplateRequest deleteEmailTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteEmailTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteEmailTemplateRequest> request = null;
+        Response<DeleteEmailTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteEmailTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteEmailTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteEmailTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteEmailTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteEmailTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes an endpoint from an application.
+     * </p>
      * 
      * @param deleteEndpointRequest
      * @return Result of the DeleteEndpoint operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteEndpoint
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEndpoint" target="_top">AWS API
      *      Documentation</a>
@@ -1213,6 +1571,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteEndpoint");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1230,22 +1589,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes the event stream for an app.
+     * <p>
+     * Deletes the event stream for an application.
+     * </p>
      * 
      * @param deleteEventStreamRequest
      * @return Result of the DeleteEventStream operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteEventStream
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteEventStream" target="_top">AWS API
      *      Documentation</a>
@@ -1275,6 +1639,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteEventStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1292,22 +1657,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes the GCM channel for an app.
+     * <p>
+     * Disables the GCM channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteGcmChannelRequest
      * @return Result of the DeleteGcmChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteGcmChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteGcmChannel" target="_top">AWS API
      *      Documentation</a>
@@ -1337,6 +1707,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteGcmChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1354,22 +1725,96 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes a segment.
+     * <p>
+     * Deletes a message template that was designed for use in messages that were sent through a push notification
+     * channel.
+     * </p>
+     * 
+     * @param deletePushTemplateRequest
+     * @return Result of the DeletePushTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.DeletePushTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeletePushTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeletePushTemplateResult deletePushTemplate(DeletePushTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePushTemplate(request);
+    }
+
+    @SdkInternalApi
+    final DeletePushTemplateResult executeDeletePushTemplate(DeletePushTemplateRequest deletePushTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deletePushTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeletePushTemplateRequest> request = null;
+        Response<DeletePushTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeletePushTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deletePushTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeletePushTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeletePushTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeletePushTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a segment from an application.
+     * </p>
      * 
      * @param deleteSegmentRequest
      * @return Result of the DeleteSegment operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteSegment
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSegment" target="_top">AWS API
      *      Documentation</a>
@@ -1399,6 +1844,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSegment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1416,22 +1862,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an SMS channel.
+     * <p>
+     * Disables the SMS channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteSmsChannelRequest
      * @return Result of the DeleteSmsChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteSmsChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSmsChannel" target="_top">AWS API
      *      Documentation</a>
@@ -1461,6 +1912,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSmsChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1478,22 +1930,95 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Deletes endpoints that are associated with a User ID.
+     * <p>
+     * Deletes a message template that was designed for use in messages that were sent through the SMS channel.
+     * </p>
+     * 
+     * @param deleteSmsTemplateRequest
+     * @return Result of the DeleteSmsTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.DeleteSmsTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteSmsTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeleteSmsTemplateResult deleteSmsTemplate(DeleteSmsTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteSmsTemplate(request);
+    }
+
+    @SdkInternalApi
+    final DeleteSmsTemplateResult executeDeleteSmsTemplate(DeleteSmsTemplateRequest deleteSmsTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteSmsTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteSmsTemplateRequest> request = null;
+        Response<DeleteSmsTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteSmsTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteSmsTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSmsTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteSmsTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteSmsTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes all the endpoints that are associated with a specific user ID.
+     * </p>
      * 
      * @param deleteUserEndpointsRequest
      * @return Result of the DeleteUserEndpoints operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteUserEndpoints
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteUserEndpoints" target="_top">AWS
      *      API Documentation</a>
@@ -1523,6 +2048,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUserEndpoints");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1540,22 +2066,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Delete an Voice channel
+     * <p>
+     * Disables the voice channel for an application and deletes any existing settings for the channel.
+     * </p>
      * 
      * @param deleteVoiceChannelRequest
      * @return Result of the DeleteVoiceChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.DeleteVoiceChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteVoiceChannel" target="_top">AWS
      *      API Documentation</a>
@@ -1585,6 +2116,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteVoiceChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1602,22 +2134,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get an ADM channel.
+     * <p>
+     * Retrieves information about the status and settings of the ADM channel for an application.
+     * </p>
      * 
      * @param getAdmChannelRequest
      * @return Result of the GetAdmChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetAdmChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetAdmChannel" target="_top">AWS API
      *      Documentation</a>
@@ -1647,6 +2184,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAdmChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1664,22 +2202,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about the APNs channel for an app.
+     * <p>
+     * Retrieves information about the status and settings of the APNs channel for an application.
+     * </p>
      * 
      * @param getApnsChannelRequest
      * @return Result of the GetApnsChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApnsChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsChannel" target="_top">AWS API
      *      Documentation</a>
@@ -1709,6 +2252,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApnsChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1726,22 +2270,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get an APNS sandbox channel.
+     * <p>
+     * Retrieves information about the status and settings of the APNs sandbox channel for an application.
+     * </p>
      * 
      * @param getApnsSandboxChannelRequest
      * @return Result of the GetApnsSandboxChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApnsSandboxChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsSandboxChannel" target="_top">AWS
      *      API Documentation</a>
@@ -1771,6 +2320,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApnsSandboxChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1789,22 +2339,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get an APNS VoIP channel
+     * <p>
+     * Retrieves information about the status and settings of the APNs VoIP channel for an application.
+     * </p>
      * 
      * @param getApnsVoipChannelRequest
      * @return Result of the GetApnsVoipChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApnsVoipChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsVoipChannel" target="_top">AWS
      *      API Documentation</a>
@@ -1834,6 +2389,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApnsVoipChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1851,22 +2407,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get an APNS VoIPSandbox channel
+     * <p>
+     * Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application.
+     * </p>
      * 
      * @param getApnsVoipSandboxChannelRequest
      * @return Result of the GetApnsVoipSandboxChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApnsVoipSandboxChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApnsVoipSandboxChannel"
      *      target="_top">AWS API Documentation</a>
@@ -1897,6 +2458,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApnsVoipSandboxChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1915,22 +2477,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about an app.
+     * <p>
+     * Retrieves information about an application.
+     * </p>
      * 
      * @param getAppRequest
      * @return Result of the GetApp operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApp
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApp" target="_top">AWS API
      *      Documentation</a>
@@ -1960,6 +2527,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1977,22 +2545,97 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to request the settings for an app.
+     * <p>
+     * Retrieves (queries) pre-aggregated data for a standard metric that applies to an application.
+     * </p>
+     * 
+     * @param getApplicationDateRangeKpiRequest
+     * @return Result of the GetApplicationDateRangeKpi operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetApplicationDateRangeKpi
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApplicationDateRangeKpi"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public GetApplicationDateRangeKpiResult getApplicationDateRangeKpi(GetApplicationDateRangeKpiRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetApplicationDateRangeKpi(request);
+    }
+
+    @SdkInternalApi
+    final GetApplicationDateRangeKpiResult executeGetApplicationDateRangeKpi(GetApplicationDateRangeKpiRequest getApplicationDateRangeKpiRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getApplicationDateRangeKpiRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetApplicationDateRangeKpiRequest> request = null;
+        Response<GetApplicationDateRangeKpiResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetApplicationDateRangeKpiRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(getApplicationDateRangeKpiRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApplicationDateRangeKpi");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetApplicationDateRangeKpiResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new GetApplicationDateRangeKpiResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information about the settings for an application.
+     * </p>
      * 
      * @param getApplicationSettingsRequest
      * @return Result of the GetApplicationSettings operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApplicationSettings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApplicationSettings"
      *      target="_top">AWS API Documentation</a>
@@ -2022,6 +2665,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApplicationSettings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2040,22 +2684,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about your apps.
+     * <p>
+     * Retrieves information about all of your applications.
+     * </p>
      * 
      * @param getAppsRequest
      * @return Result of the GetApps operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetApps
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetApps" target="_top">AWS API
      *      Documentation</a>
@@ -2085,6 +2734,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetApps");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2102,22 +2752,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get a BAIDU GCM channel
+     * <p>
+     * Retrieves information about the status and settings of the Baidu channel for an application.
+     * </p>
      * 
      * @param getBaiduChannelRequest
      * @return Result of the GetBaiduChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetBaiduChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetBaiduChannel" target="_top">AWS API
      *      Documentation</a>
@@ -2147,6 +2802,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBaiduChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2164,22 +2820,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about a campaign.
+     * <p>
+     * Retrieves information about the status, configuration, and other settings for a campaign.
+     * </p>
      * 
      * @param getCampaignRequest
      * @return Result of the GetCampaign operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetCampaign
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaign" target="_top">AWS API
      *      Documentation</a>
@@ -2209,6 +2870,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCampaign");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2226,22 +2888,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about the activity performed by a campaign.
+     * <p>
+     * Retrieves information about the activity performed by a campaign.
+     * </p>
      * 
      * @param getCampaignActivitiesRequest
      * @return Result of the GetCampaignActivities operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetCampaignActivities
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignActivities" target="_top">AWS
      *      API Documentation</a>
@@ -2271,6 +2938,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCampaignActivities");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2289,22 +2957,97 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about a specific version of a campaign.
+     * <p>
+     * Retrieves (queries) pre-aggregated data for a standard metric that applies to a campaign.
+     * </p>
+     * 
+     * @param getCampaignDateRangeKpiRequest
+     * @return Result of the GetCampaignDateRangeKpi operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetCampaignDateRangeKpi
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignDateRangeKpi"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public GetCampaignDateRangeKpiResult getCampaignDateRangeKpi(GetCampaignDateRangeKpiRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetCampaignDateRangeKpi(request);
+    }
+
+    @SdkInternalApi
+    final GetCampaignDateRangeKpiResult executeGetCampaignDateRangeKpi(GetCampaignDateRangeKpiRequest getCampaignDateRangeKpiRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getCampaignDateRangeKpiRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetCampaignDateRangeKpiRequest> request = null;
+        Response<GetCampaignDateRangeKpiResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetCampaignDateRangeKpiRequestProtocolMarshaller(protocolFactory).marshall(super
+                        .beforeMarshalling(getCampaignDateRangeKpiRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCampaignDateRangeKpi");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetCampaignDateRangeKpiResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                    new GetCampaignDateRangeKpiResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information about the status, configuration, and other settings for a specific version of a campaign.
+     * </p>
      * 
      * @param getCampaignVersionRequest
      * @return Result of the GetCampaignVersion operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetCampaignVersion
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignVersion" target="_top">AWS
      *      API Documentation</a>
@@ -2334,6 +3077,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCampaignVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2351,22 +3095,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about your campaign versions.
+     * <p>
+     * Retrieves information about the status, configuration, and other settings for all versions of a specific
+     * campaign.
+     * </p>
      * 
      * @param getCampaignVersionsRequest
      * @return Result of the GetCampaignVersions operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetCampaignVersions
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaignVersions" target="_top">AWS
      *      API Documentation</a>
@@ -2396,6 +3146,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCampaignVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2413,22 +3164,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about your campaigns.
+     * <p>
+     * Retrieves information about the status, configuration, and other settings for all the campaigns that are
+     * associated with an application.
+     * </p>
      * 
      * @param getCampaignsRequest
      * @return Result of the GetCampaigns operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetCampaigns
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetCampaigns" target="_top">AWS API
      *      Documentation</a>
@@ -2458,6 +3215,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCampaigns");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2475,22 +3233,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get all channels.
+     * <p>
+     * Retrieves information about the history and status of each channel for an application.
+     * </p>
      * 
      * @param getChannelsRequest
      * @return Result of the GetChannels operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetChannels
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetChannels" target="_top">AWS API
      *      Documentation</a>
@@ -2520,6 +3283,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetChannels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2537,22 +3301,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get an email channel.
+     * <p>
+     * Retrieves information about the status and settings of the email channel for an application.
+     * </p>
      * 
      * @param getEmailChannelRequest
      * @return Result of the GetEmailChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetEmailChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEmailChannel" target="_top">AWS API
      *      Documentation</a>
@@ -2582,6 +3351,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetEmailChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2599,22 +3369,96 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about an endpoint.
+     * <p>
+     * Retrieves the content and settings for a message template that you can use in messages that are sent through the
+     * email channel.
+     * </p>
+     * 
+     * @param getEmailTemplateRequest
+     * @return Result of the GetEmailTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetEmailTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEmailTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetEmailTemplateResult getEmailTemplate(GetEmailTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetEmailTemplate(request);
+    }
+
+    @SdkInternalApi
+    final GetEmailTemplateResult executeGetEmailTemplate(GetEmailTemplateRequest getEmailTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getEmailTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetEmailTemplateRequest> request = null;
+        Response<GetEmailTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetEmailTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getEmailTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetEmailTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetEmailTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetEmailTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information about the settings and attributes of a specific endpoint for an application.
+     * </p>
      * 
      * @param getEndpointRequest
      * @return Result of the GetEndpoint operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetEndpoint
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEndpoint" target="_top">AWS API
      *      Documentation</a>
@@ -2644,6 +3488,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetEndpoint");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2661,22 +3506,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns the event stream for an app.
+     * <p>
+     * Retrieves information about the event stream settings for an application.
+     * </p>
      * 
      * @param getEventStreamRequest
      * @return Result of the GetEventStream operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetEventStream
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetEventStream" target="_top">AWS API
      *      Documentation</a>
@@ -2706,6 +3556,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetEventStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2723,22 +3574,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about an export job.
+     * <p>
+     * Retrieves information about the status and settings of a specific export job for an application.
+     * </p>
      * 
      * @param getExportJobRequest
      * @return Result of the GetExportJob operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetExportJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetExportJob" target="_top">AWS API
      *      Documentation</a>
@@ -2768,6 +3624,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetExportJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2785,22 +3642,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about your export jobs.
+     * <p>
+     * Retrieves information about the status and settings of all the export jobs for an application.
+     * </p>
      * 
      * @param getExportJobsRequest
      * @return Result of the GetExportJobs operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetExportJobs
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetExportJobs" target="_top">AWS API
      *      Documentation</a>
@@ -2830,6 +3692,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetExportJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2847,22 +3710,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about the GCM channel for an app.
+     * <p>
+     * Retrieves information about the status and settings of the GCM channel for an application.
+     * </p>
      * 
      * @param getGcmChannelRequest
      * @return Result of the GetGcmChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetGcmChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetGcmChannel" target="_top">AWS API
      *      Documentation</a>
@@ -2892,6 +3760,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetGcmChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2909,22 +3778,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about an import job.
+     * <p>
+     * Retrieves information about the status and settings of a specific import job for an application.
+     * </p>
      * 
      * @param getImportJobRequest
      * @return Result of the GetImportJob operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetImportJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetImportJob" target="_top">AWS API
      *      Documentation</a>
@@ -2954,6 +3828,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetImportJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2971,22 +3846,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about your import jobs.
+     * <p>
+     * Retrieves information about the status and settings of all the import jobs for an application.
+     * </p>
      * 
      * @param getImportJobsRequest
      * @return Result of the GetImportJobs operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetImportJobs
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetImportJobs" target="_top">AWS API
      *      Documentation</a>
@@ -3016,6 +3896,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetImportJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3033,22 +3914,97 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about a segment.
+     * <p>
+     * Retrieves the content and settings for a message template that you can use in messages that are sent through a
+     * push notification channel.
+     * </p>
+     * 
+     * @param getPushTemplateRequest
+     * @return Result of the GetPushTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetPushTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetPushTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetPushTemplateResult getPushTemplate(GetPushTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetPushTemplate(request);
+    }
+
+    @SdkInternalApi
+    final GetPushTemplateResult executeGetPushTemplate(GetPushTemplateRequest getPushTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getPushTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetPushTemplateRequest> request = null;
+        Response<GetPushTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetPushTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getPushTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPushTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetPushTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetPushTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information about the configuration, dimension, and other settings for a specific segment that's
+     * associated with an application.
+     * </p>
      * 
      * @param getSegmentRequest
      * @return Result of the GetSegment operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSegment
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegment" target="_top">AWS API
      *      Documentation</a>
@@ -3078,6 +4034,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSegment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3095,22 +4052,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns a list of export jobs for a specific segment.
+     * <p>
+     * Retrieves information about the status and settings of the export jobs for a segment.
+     * </p>
      * 
      * @param getSegmentExportJobsRequest
      * @return Result of the GetSegmentExportJobs operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSegmentExportJobs
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentExportJobs" target="_top">AWS
      *      API Documentation</a>
@@ -3140,6 +4102,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSegmentExportJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3157,22 +4120,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns a list of import jobs for a specific segment.
+     * <p>
+     * Retrieves information about the status and settings of the import jobs for a segment.
+     * </p>
      * 
      * @param getSegmentImportJobsRequest
      * @return Result of the GetSegmentImportJobs operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSegmentImportJobs
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentImportJobs" target="_top">AWS
      *      API Documentation</a>
@@ -3202,6 +4170,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSegmentImportJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3219,22 +4188,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about a segment version.
+     * <p>
+     * Retrieves information about the configuration, dimension, and other settings for a specific version of a segment
+     * that's associated with an application.
+     * </p>
      * 
      * @param getSegmentVersionRequest
      * @return Result of the GetSegmentVersion operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSegmentVersion
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentVersion" target="_top">AWS API
      *      Documentation</a>
@@ -3264,6 +4239,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSegmentVersion");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3281,22 +4257,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about your segment versions.
+     * <p>
+     * Retrieves information about the configuration, dimension, and other settings for all versions of a specific
+     * segment that's associated with an application.
+     * </p>
      * 
      * @param getSegmentVersionsRequest
      * @return Result of the GetSegmentVersions operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSegmentVersions
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegmentVersions" target="_top">AWS
      *      API Documentation</a>
@@ -3326,6 +4308,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSegmentVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3343,22 +4326,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to get information about your segments.
+     * <p>
+     * Retrieves information about the configuration, dimension, and other settings for all the segments that are
+     * associated with an application.
+     * </p>
      * 
      * @param getSegmentsRequest
      * @return Result of the GetSegments operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSegments
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSegments" target="_top">AWS API
      *      Documentation</a>
@@ -3388,6 +4377,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSegments");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3405,22 +4395,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get an SMS channel.
+     * <p>
+     * Retrieves information about the status and settings of the SMS channel for an application.
+     * </p>
      * 
      * @param getSmsChannelRequest
      * @return Result of the GetSmsChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetSmsChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSmsChannel" target="_top">AWS API
      *      Documentation</a>
@@ -3450,6 +4445,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSmsChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3467,22 +4463,96 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about the endpoints that are associated with a User ID.
+     * <p>
+     * Retrieves the content and settings for a message template that you can use in messages that are sent through the
+     * SMS channel.
+     * </p>
+     * 
+     * @param getSmsTemplateRequest
+     * @return Result of the GetSmsTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetSmsTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetSmsTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetSmsTemplateResult getSmsTemplate(GetSmsTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetSmsTemplate(request);
+    }
+
+    @SdkInternalApi
+    final GetSmsTemplateResult executeGetSmsTemplate(GetSmsTemplateRequest getSmsTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getSmsTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetSmsTemplateRequest> request = null;
+        Response<GetSmsTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetSmsTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getSmsTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSmsTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetSmsTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetSmsTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information about all the endpoints that are associated with a specific user ID.
+     * </p>
      * 
      * @param getUserEndpointsRequest
      * @return Result of the GetUserEndpoints operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetUserEndpoints
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetUserEndpoints" target="_top">AWS API
      *      Documentation</a>
@@ -3512,6 +4582,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUserEndpoints");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3529,22 +4600,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Get a Voice Channel
+     * <p>
+     * Retrieves information about the status and settings of the voice channel for an application.
+     * </p>
      * 
      * @param getVoiceChannelRequest
      * @return Result of the GetVoiceChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.GetVoiceChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetVoiceChannel" target="_top">AWS API
      *      Documentation</a>
@@ -3574,6 +4650,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetVoiceChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3591,6 +4668,11 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * <p>
+     * Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or
+     * segment.
+     * </p>
+     * 
      * @param listTagsForResourceRequest
      * @return Result of the ListTagsForResource operation returned by the service.
      * @sample AmazonPinpoint.ListTagsForResource
@@ -3622,6 +4704,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3639,22 +4722,95 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Returns information about the specified phone number.
+     * <p>
+     * Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
+     * </p>
+     * 
+     * @param listTemplatesRequest
+     * @return Result of the ListTemplates operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.ListTemplates
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ListTemplates" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ListTemplatesResult listTemplates(ListTemplatesRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTemplates(request);
+    }
+
+    @SdkInternalApi
+    final ListTemplatesResult executeListTemplates(ListTemplatesRequest listTemplatesRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTemplatesRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTemplatesRequest> request = null;
+        Response<ListTemplatesResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTemplatesRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTemplatesRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTemplates");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTemplatesResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTemplatesResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Retrieves information about a phone number.
+     * </p>
      * 
      * @param phoneNumberValidateRequest
      * @return Result of the PhoneNumberValidate operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.PhoneNumberValidate
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/PhoneNumberValidate" target="_top">AWS
      *      API Documentation</a>
@@ -3684,6 +4840,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PhoneNumberValidate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3701,22 +4858,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Use to create or update the event stream for an app.
+     * <p>
+     * Creates a new event stream for an application or updates the settings of an existing event stream for an
+     * application.
+     * </p>
      * 
      * @param putEventStreamRequest
      * @return Result of the PutEventStream operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.PutEventStream
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/PutEventStream" target="_top">AWS API
      *      Documentation</a>
@@ -3746,6 +4909,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutEventStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3763,23 +4927,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Use to record events for endpoints. This method creates events and creates or updates the endpoints that those
-     * events are associated with.
+     * <p>
+     * Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are
+     * associated with.
+     * </p>
      * 
      * @param putEventsRequest
      * @return Result of the PutEvents operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.PutEvents
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/PutEvents" target="_top">AWS API
      *      Documentation</a>
@@ -3809,6 +4978,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutEvents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3826,22 +4996,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to remove the attributes for an app
+     * <p>
+     * Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an
+     * application.
+     * </p>
      * 
      * @param removeAttributesRequest
      * @return Result of the RemoveAttributes operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.RemoveAttributes
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/RemoveAttributes" target="_top">AWS API
      *      Documentation</a>
@@ -3871,6 +5047,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3888,22 +5065,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to send a direct message.
+     * <p>
+     * Creates and sends a direct message.
+     * </p>
      * 
      * @param sendMessagesRequest
      * @return Result of the SendMessages operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.SendMessages
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendMessages" target="_top">AWS API
      *      Documentation</a>
@@ -3933,6 +5115,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SendMessages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3950,22 +5133,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to send a message to a list of users.
+     * <p>
+     * Creates and sends a message to a list of users.
+     * </p>
      * 
      * @param sendUsersMessagesRequest
      * @return Result of the SendUsersMessages operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.SendUsersMessages
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/SendUsersMessages" target="_top">AWS API
      *      Documentation</a>
@@ -3995,6 +5183,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SendUsersMessages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4012,6 +5201,10 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * <p>
+     * Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
+     * </p>
+     * 
      * @param tagResourceRequest
      * @return Result of the TagResource operation returned by the service.
      * @sample AmazonPinpoint.TagResource
@@ -4043,6 +5236,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4060,6 +5254,10 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
+     * <p>
+     * Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
+     * </p>
+     * 
      * @param untagResourceRequest
      * @return Result of the UntagResource operation returned by the service.
      * @sample AmazonPinpoint.UntagResource
@@ -4091,6 +5289,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4108,22 +5307,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an ADM channel.
+     * <p>
+     * Enables the ADM channel for an application or updates the status and settings of the ADM channel for an
+     * application.
+     * </p>
      * 
      * @param updateAdmChannelRequest
      * @return Result of the UpdateAdmChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateAdmChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateAdmChannel" target="_top">AWS API
      *      Documentation</a>
@@ -4153,6 +5358,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAdmChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4170,22 +5376,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Use to update the APNs channel for an app.
+     * <p>
+     * Enables the APNs channel for an application or updates the status and settings of the APNs channel for an
+     * application.
+     * </p>
      * 
      * @param updateApnsChannelRequest
      * @return Result of the UpdateApnsChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateApnsChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsChannel" target="_top">AWS API
      *      Documentation</a>
@@ -4215,6 +5427,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApnsChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4232,22 +5445,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an APNS sandbox channel.
+     * <p>
+     * Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox
+     * channel for an application.
+     * </p>
      * 
      * @param updateApnsSandboxChannelRequest
      * @return Result of the UpdateApnsSandboxChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateApnsSandboxChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsSandboxChannel"
      *      target="_top">AWS API Documentation</a>
@@ -4278,6 +5497,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApnsSandboxChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4296,22 +5516,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an APNS VoIP channel
+     * <p>
+     * Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for
+     * an application.
+     * </p>
      * 
      * @param updateApnsVoipChannelRequest
      * @return Result of the UpdateApnsVoipChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateApnsVoipChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsVoipChannel" target="_top">AWS
      *      API Documentation</a>
@@ -4341,6 +5567,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApnsVoipChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4359,22 +5586,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an APNS VoIP sandbox channel
+     * <p>
+     * Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP
+     * sandbox channel for an application.
+     * </p>
      * 
      * @param updateApnsVoipSandboxChannelRequest
      * @return Result of the UpdateApnsVoipSandboxChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateApnsVoipSandboxChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApnsVoipSandboxChannel"
      *      target="_top">AWS API Documentation</a>
@@ -4405,6 +5638,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApnsVoipSandboxChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4423,22 +5657,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to update the settings for an app.
+     * <p>
+     * Updates the settings for an application.
+     * </p>
      * 
      * @param updateApplicationSettingsRequest
      * @return Result of the UpdateApplicationSettings operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateApplicationSettings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateApplicationSettings"
      *      target="_top">AWS API Documentation</a>
@@ -4469,6 +5708,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateApplicationSettings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4487,22 +5727,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update a BAIDU GCM channel
+     * <p>
+     * Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an
+     * application.
+     * </p>
      * 
      * @param updateBaiduChannelRequest
      * @return Result of the UpdateBaiduChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateBaiduChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateBaiduChannel" target="_top">AWS
      *      API Documentation</a>
@@ -4532,6 +5778,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateBaiduChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4549,22 +5796,27 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Use to update a campaign.
+     * <p>
+     * Updates the settings for a campaign.
+     * </p>
      * 
      * @param updateCampaignRequest
      * @return Result of the UpdateCampaign operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateCampaign
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateCampaign" target="_top">AWS API
      *      Documentation</a>
@@ -4594,6 +5846,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateCampaign");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4611,22 +5864,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an email channel.
+     * <p>
+     * Enables the email channel for an application or updates the status and settings of the email channel for an
+     * application.
+     * </p>
      * 
      * @param updateEmailChannelRequest
      * @return Result of the UpdateEmailChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateEmailChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEmailChannel" target="_top">AWS
      *      API Documentation</a>
@@ -4656,6 +5915,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateEmailChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4673,22 +5933,97 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Creates or updates an endpoint.
+     * <p>
+     * Updates an existing message template that you can use in messages that are sent through the email channel.
+     * </p>
+     * 
+     * @param updateEmailTemplateRequest
+     * @return Result of the UpdateEmailTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateEmailTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEmailTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdateEmailTemplateResult updateEmailTemplate(UpdateEmailTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateEmailTemplate(request);
+    }
+
+    @SdkInternalApi
+    final UpdateEmailTemplateResult executeUpdateEmailTemplate(UpdateEmailTemplateRequest updateEmailTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateEmailTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateEmailTemplateRequest> request = null;
+        Response<UpdateEmailTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateEmailTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateEmailTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateEmailTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateEmailTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateEmailTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an
+     * application. You can also use this operation to define custom attributes (Attributes, Metrics, and UserAttributes
+     * properties) for an endpoint.
+     * </p>
      * 
      * @param updateEndpointRequest
      * @return Result of the UpdateEndpoint operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateEndpoint
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEndpoint" target="_top">AWS API
      *      Documentation</a>
@@ -4718,6 +6053,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateEndpoint");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4735,22 +6071,29 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Use to update a batch of endpoints.
+     * <p>
+     * Creates a new batch of endpoints for an application or updates the settings and attributes of a batch of existing
+     * endpoints for an application. You can also use this operation to define custom attributes (Attributes, Metrics,
+     * and UserAttributes properties) for a batch of endpoints.
+     * </p>
      * 
      * @param updateEndpointsBatchRequest
      * @return Result of the UpdateEndpointsBatch operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateEndpointsBatch
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateEndpointsBatch" target="_top">AWS
      *      API Documentation</a>
@@ -4780,6 +6123,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateEndpointsBatch");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4797,22 +6141,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Use to update the GCM channel for an app.
+     * <p>
+     * Enables the GCM channel for an application or updates the status and settings of the GCM channel for an
+     * application.
+     * </p>
      * 
      * @param updateGcmChannelRequest
      * @return Result of the UpdateGcmChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateGcmChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateGcmChannel" target="_top">AWS API
      *      Documentation</a>
@@ -4842,6 +6192,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateGcmChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4859,22 +6210,97 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Used to update a segment.
+     * <p>
+     * Updates an existing message template that you can use in messages that are sent through a push notification
+     * channel.
+     * </p>
+     * 
+     * @param updatePushTemplateRequest
+     * @return Result of the UpdatePushTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdatePushTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdatePushTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public UpdatePushTemplateResult updatePushTemplate(UpdatePushTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdatePushTemplate(request);
+    }
+
+    @SdkInternalApi
+    final UpdatePushTemplateResult executeUpdatePushTemplate(UpdatePushTemplateRequest updatePushTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updatePushTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdatePushTemplateRequest> request = null;
+        Response<UpdatePushTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdatePushTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updatePushTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdatePushTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdatePushTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdatePushTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Creates a new segment for an application or updates the configuration, dimension, and other settings for an
+     * existing segment that's associated with an application.
+     * </p>
      * 
      * @param updateSegmentRequest
      * @return Result of the UpdateSegment operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateSegment
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSegment" target="_top">AWS API
      *      Documentation</a>
@@ -4904,6 +6330,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateSegment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4921,22 +6348,28 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an SMS channel.
+     * <p>
+     * Enables the SMS channel for an application or updates the status and settings of the SMS channel for an
+     * application.
+     * </p>
      * 
      * @param updateSmsChannelRequest
      * @return Result of the UpdateSmsChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateSmsChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSmsChannel" target="_top">AWS API
      *      Documentation</a>
@@ -4966,6 +6399,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateSmsChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4983,22 +6417,96 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
     }
 
     /**
-     * Update an Voice channel
+     * <p>
+     * Updates an existing message template that you can use in messages that are sent through the SMS channel.
+     * </p>
+     * 
+     * @param updateSmsTemplateRequest
+     * @return Result of the UpdateSmsTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateSmsTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateSmsTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UpdateSmsTemplateResult updateSmsTemplate(UpdateSmsTemplateRequest request) {
+        request = beforeClientExecution(request);
+        return executeUpdateSmsTemplate(request);
+    }
+
+    @SdkInternalApi
+    final UpdateSmsTemplateResult executeUpdateSmsTemplate(UpdateSmsTemplateRequest updateSmsTemplateRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(updateSmsTemplateRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UpdateSmsTemplateRequest> request = null;
+        Response<UpdateSmsTemplateResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UpdateSmsTemplateRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(updateSmsTemplateRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateSmsTemplate");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UpdateSmsTemplateResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UpdateSmsTemplateResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Enables the voice channel for an application or updates the status and settings of the voice channel for an
+     * application.
+     * </p>
      * 
      * @param updateVoiceChannelRequest
      * @return Result of the UpdateVoiceChannel operation returned by the service.
      * @throws BadRequestException
-     *         400 response
+     *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
-     *         500 response
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
      * @throws ForbiddenException
-     *         403 response
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
-     *         404 response
+     *         The request failed because the specified resource was not found (NotFoundException).
      * @throws MethodNotAllowedException
-     *         405 response
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
      * @throws TooManyRequestsException
-     *         429 response
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
      * @sample AmazonPinpoint.UpdateVoiceChannel
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateVoiceChannel" target="_top">AWS
      *      API Documentation</a>
@@ -5028,6 +6536,7 @@ public class AmazonPinpointClient extends AmazonWebServiceClient implements Amaz
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Pinpoint");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateVoiceChannel");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

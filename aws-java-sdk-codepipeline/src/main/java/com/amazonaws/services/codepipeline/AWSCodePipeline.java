@@ -32,12 +32,11 @@ import com.amazonaws.services.codepipeline.model.*;
  * </p>
  * <p>
  * This is the AWS CodePipeline API Reference. This guide provides descriptions of the actions and data types for AWS
- * CodePipeline. Some functionality for your pipeline is only configurable through the API. For additional information,
- * see the <a href="http://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html">AWS CodePipeline User
- * Guide</a>.
+ * CodePipeline. Some functionality for your pipeline can only be configured through the API. For more information, see
+ * the <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html">AWS CodePipeline User Guide</a>.
  * </p>
  * <p>
- * You can use the AWS CodePipeline API to work with pipelines, stages, actions, and transitions, as described below.
+ * You can use the AWS CodePipeline API to work with pipelines, stages, actions, and transitions.
  * </p>
  * <p>
  * <i>Pipelines</i> are models of automated release processes. Each pipeline is uniquely named, and consists of stages,
@@ -49,7 +48,7 @@ import com.amazonaws.services.codepipeline.model.*;
  * <ul>
  * <li>
  * <p>
- * <a>CreatePipeline</a>, which creates a uniquely-named pipeline.
+ * <a>CreatePipeline</a>, which creates a uniquely named pipeline.
  * </p>
  * </li>
  * <li>
@@ -75,6 +74,13 @@ import com.amazonaws.services.codepipeline.model.*;
  * </li>
  * <li>
  * <p>
+ * <a>ListActionExecutions</a>, which returns action-level details for past executions. The details include full stage
+ * and action-level details, including individual action duration, status, any errors that occurred during the
+ * execution, and input and output artifact location details.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * <a>ListPipelines</a>, which gets a summary of all of the pipelines associated with your account.
  * </p>
  * </li>
@@ -85,7 +91,7 @@ import com.amazonaws.services.codepipeline.model.*;
  * </li>
  * <li>
  * <p>
- * <a>StartPipelineExecution</a>, which runs the the most recent revision of an artifact through the pipeline.
+ * <a>StartPipelineExecution</a>, which runs the most recent revision of an artifact through the pipeline.
  * </p>
  * </li>
  * <li>
@@ -96,21 +102,20 @@ import com.amazonaws.services.codepipeline.model.*;
  * </ul>
  * <p>
  * Pipelines include <i>stages</i>. Each stage contains one or more actions that must complete before the next stage
- * begins. A stage will result in success or failure. If a stage fails, then the pipeline stops at that stage and will
- * remain stopped until either a new version of an artifact appears in the source location, or a user takes action to
- * re-run the most recent artifact through the pipeline. You can call <a>GetPipelineState</a>, which displays the status
- * of a pipeline, including the status of stages in the pipeline, or <a>GetPipeline</a>, which returns the entire
- * structure of the pipeline, including the stages of that pipeline. For more information about the structure of stages
- * and actions, also refer to the <a
- * href="http://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS CodePipeline Pipeline
+ * begins. A stage results in success or failure. If a stage fails, the pipeline stops at that stage and remains stopped
+ * until either a new version of an artifact appears in the source location, or a user takes action to rerun the most
+ * recent artifact through the pipeline. You can call <a>GetPipelineState</a>, which displays the status of a pipeline,
+ * including the status of stages in the pipeline, or <a>GetPipeline</a>, which returns the entire structure of the
+ * pipeline, including the stages of that pipeline. For more information about the structure of stages and actions, see
+ * <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html">AWS CodePipeline Pipeline
  * Structure Reference</a>.
  * </p>
  * <p>
- * Pipeline stages include <i>actions</i>, which are categorized into categories such as source or build actions
- * performed within a stage of a pipeline. For example, you can use a source action to import artifacts into a pipeline
- * from a source such as Amazon S3. Like stages, you do not work with actions directly in most cases, but you do define
- * and interact with actions when working with pipeline operations such as <a>CreatePipeline</a> and
- * <a>GetPipelineState</a>. Valid action categories are:
+ * Pipeline stages include <i>actions</i> that are categorized into categories such as source or build actions performed
+ * in a stage of a pipeline. For example, you can use a source action to import artifacts into a pipeline from a source
+ * such as Amazon S3. Like stages, you do not work with actions directly in most cases, but you do define and interact
+ * with actions when working with pipeline operations such as <a>CreatePipeline</a> and <a>GetPipelineState</a>. Valid
+ * action categories are:
  * </p>
  * <ul>
  * <li>
@@ -168,8 +173,8 @@ import com.amazonaws.services.codepipeline.model.*;
  * </p>
  * <p>
  * For third-party integrators or developers who want to create their own integrations with AWS CodePipeline, the
- * expected sequence varies from the standard API user. In order to integrate with AWS CodePipeline, developers will
- * need to work with the following items:
+ * expected sequence varies from the standard API user. To integrate with AWS CodePipeline, developers need to work with
+ * the following items:
  * </p>
  * <p>
  * <b>Jobs</b>, which are instances of an action. For example, a job for a source action might import a revision of an
@@ -181,22 +186,22 @@ import com.amazonaws.services.codepipeline.model.*;
  * <ul>
  * <li>
  * <p>
- * <a>AcknowledgeJob</a>, which confirms whether a job worker has received the specified job,
+ * <a>AcknowledgeJob</a>, which confirms whether a job worker has received the specified job.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>GetJobDetails</a>, which returns the details of a job,
+ * <a>GetJobDetails</a>, which returns the details of a job.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>PollForJobs</a>, which determines whether there are any jobs to act upon,
+ * <a>PollForJobs</a>, which determines whether there are any jobs to act on.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>PutJobFailureResult</a>, which provides details of a job failure, and
+ * <a>PutJobFailureResult</a>, which provides details of a job failure.
  * </p>
  * </li>
  * <li>
@@ -215,22 +220,22 @@ import com.amazonaws.services.codepipeline.model.*;
  * <ul>
  * <li>
  * <p>
- * <a>AcknowledgeThirdPartyJob</a>, which confirms whether a job worker has received the specified job,
+ * <a>AcknowledgeThirdPartyJob</a>, which confirms whether a job worker has received the specified job.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>GetThirdPartyJobDetails</a>, which requests the details of a job for a partner action,
+ * <a>GetThirdPartyJobDetails</a>, which requests the details of a job for a partner action.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>PollForThirdPartyJobs</a>, which determines whether there are any jobs to act upon,
+ * <a>PollForThirdPartyJobs</a>, which determines whether there are any jobs to act on.
  * </p>
  * </li>
  * <li>
  * <p>
- * <a>PutThirdPartyJobFailureResult</a>, which provides details of a job failure, and
+ * <a>PutThirdPartyJobFailureResult</a>, which provides details of a job failure.
  * </p>
  * </li>
  * <li>
@@ -305,8 +310,8 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Returns information about a specified job and whether that job has been received by the job worker. Only used for
-     * custom actions.
+     * Returns information about a specified job and whether that job has been received by the job worker. Used for
+     * custom actions only.
      * </p>
      * 
      * @param acknowledgeJobRequest
@@ -315,9 +320,9 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidNonceException
-     *         The specified nonce was specified in an invalid format.
+     *         The nonce was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.AcknowledgeJob
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/AcknowledgeJob" target="_top">AWS
      *      API Documentation</a>
@@ -326,7 +331,7 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Confirms a job worker has received the specified job. Only used for partner actions.
+     * Confirms a job worker has received the specified job. Used for partner actions only.
      * </p>
      * 
      * @param acknowledgeThirdPartyJobRequest
@@ -335,9 +340,9 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidNonceException
-     *         The specified nonce was specified in an invalid format.
+     *         The nonce was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @sample AWSCodePipeline.AcknowledgeThirdPartyJob
@@ -359,6 +364,12 @@ public interface AWSCodePipeline {
      *         The validation was specified in an invalid format.
      * @throws LimitExceededException
      *         The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.
+     * @throws TooManyTagsException
+     *         The tags limit for a resource has been exceeded.
+     * @throws InvalidTagsException
+     *         The specified resource tags are invalid.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
      * @sample AWSCodePipeline.CreateCustomActionType
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreateCustomActionType"
      *      target="_top">AWS API Documentation</a>
@@ -369,24 +380,37 @@ public interface AWSCodePipeline {
      * <p>
      * Creates a pipeline.
      * </p>
+     * <note>
+     * <p>
+     * In the pipeline structure, you must include either <code>artifactStore</code> or <code>artifactStores</code> in
+     * your pipeline, but you cannot use both. If you create a cross-region action in your pipeline, you must use
+     * <code>artifactStores</code>.
+     * </p>
+     * </note>
      * 
      * @param createPipelineRequest
-     *        Represents the input of a CreatePipeline action.
+     *        Represents the input of a <code>CreatePipeline</code> action.
      * @return Result of the CreatePipeline operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNameInUseException
      *         The specified pipeline name is already in use.
      * @throws InvalidStageDeclarationException
-     *         The specified stage declaration was specified in an invalid format.
+     *         The stage declaration was specified in an invalid format.
      * @throws InvalidActionDeclarationException
-     *         The specified action declaration was specified in an invalid format.
+     *         The action declaration was specified in an invalid format.
      * @throws InvalidBlockerDeclarationException
      *         Reserved for future use.
      * @throws InvalidStructureException
-     *         The specified structure was specified in an invalid format.
+     *         The structure was specified in an invalid format.
      * @throws LimitExceededException
      *         The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.
+     * @throws TooManyTagsException
+     *         The tags limit for a resource has been exceeded.
+     * @throws InvalidTagsException
+     *         The specified resource tags are invalid.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
      * @sample AWSCodePipeline.CreatePipeline
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/CreatePipeline" target="_top">AWS
      *      API Documentation</a>
@@ -395,8 +419,8 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Marks a custom action as deleted. PollForJobs for the custom action will fail after the action is marked for
-     * deletion. Only used for custom actions.
+     * Marks a custom action as deleted. <code>PollForJobs</code> for the custom action fails after the action is marked
+     * for deletion. Used for custom actions only.
      * </p>
      * <important>
      * <p>
@@ -408,10 +432,13 @@ public interface AWSCodePipeline {
      * </important>
      * 
      * @param deleteCustomActionTypeRequest
-     *        Represents the input of a DeleteCustomActionType operation. The custom action will be marked as deleted.
+     *        Represents the input of a <code>DeleteCustomActionType</code> operation. The custom action will be marked
+     *        as deleted.
      * @return Result of the DeleteCustomActionType operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
      * @sample AWSCodePipeline.DeleteCustomActionType
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeleteCustomActionType"
      *      target="_top">AWS API Documentation</a>
@@ -424,10 +451,12 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param deletePipelineRequest
-     *        Represents the input of a DeletePipeline action.
+     *        Represents the input of a <code>DeletePipeline</code> action.
      * @return Result of the DeletePipeline operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
      * @sample AWSCodePipeline.DeletePipeline
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeletePipeline" target="_top">AWS
      *      API Documentation</a>
@@ -437,15 +466,17 @@ public interface AWSCodePipeline {
     /**
      * <p>
      * Deletes a previously created webhook by name. Deleting the webhook stops AWS CodePipeline from starting a
-     * pipeline every time an external event occurs. The API will return successfully when trying to delete a webhook
-     * that is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will
-     * have a different URL.
+     * pipeline every time an external event occurs. The API returns successfully when trying to delete a webhook that
+     * is already deleted. If a deleted webhook is re-created by calling PutWebhook with the same name, it will have a
+     * different URL.
      * </p>
      * 
      * @param deleteWebhookRequest
      * @return Result of the DeleteWebhook operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
      * @sample AWSCodePipeline.DeleteWebhook
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DeleteWebhook" target="_top">AWS API
      *      Documentation</a>
@@ -455,7 +486,7 @@ public interface AWSCodePipeline {
     /**
      * <p>
      * Removes the connection between the webhook that was created by CodePipeline and the external tool with events to
-     * be detected. Currently only supported for webhooks that target an action type of GitHub.
+     * be detected. Currently supported only for webhooks that target an action type of GitHub.
      * </p>
      * 
      * @param deregisterWebhookWithThirdPartyRequest
@@ -476,14 +507,14 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param disableStageTransitionRequest
-     *        Represents the input of a DisableStageTransition action.
+     *        Represents the input of a <code>DisableStageTransition</code> action.
      * @return Result of the DisableStageTransition operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws StageNotFoundException
-     *         The specified stage was specified in an invalid format or cannot be found.
+     *         The stage was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.DisableStageTransition
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/DisableStageTransition"
      *      target="_top">AWS API Documentation</a>
@@ -496,14 +527,14 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param enableStageTransitionRequest
-     *        Represents the input of an EnableStageTransition action.
+     *        Represents the input of an <code>EnableStageTransition</code> action.
      * @return Result of the EnableStageTransition operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws StageNotFoundException
-     *         The specified stage was specified in an invalid format or cannot be found.
+     *         The stage was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.EnableStageTransition
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/EnableStageTransition"
      *      target="_top">AWS API Documentation</a>
@@ -512,23 +543,23 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Returns information about a job. Only used for custom actions.
+     * Returns information about a job. Used for custom actions only.
      * </p>
      * <important>
      * <p>
      * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
      * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
-     * Additionally, this API returns any secret values defined for the action.
+     * This API also returns any secret values defined for the action.
      * </p>
      * </important>
      * 
      * @param getJobDetailsRequest
-     *        Represents the input of a GetJobDetails action.
+     *        Represents the input of a <code>GetJobDetails</code> action.
      * @return Result of the GetJobDetails operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetJobDetails
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetJobDetails" target="_top">AWS API
      *      Documentation</a>
@@ -543,14 +574,14 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param getPipelineRequest
-     *        Represents the input of a GetPipeline action.
+     *        Represents the input of a <code>GetPipeline</code> action.
      * @return Result of the GetPipeline operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws PipelineVersionNotFoundException
-     *         The specified pipeline version was specified in an invalid format or cannot be found.
+     *         The pipeline version was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetPipeline
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipeline" target="_top">AWS API
      *      Documentation</a>
@@ -564,12 +595,12 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param getPipelineExecutionRequest
-     *        Represents the input of a GetPipelineExecution action.
+     *        Represents the input of a <code>GetPipelineExecution</code> action.
      * @return Result of the GetPipelineExecution operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws PipelineExecutionNotFoundException
      *         The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not
      *         belong to the specified pipeline.
@@ -583,14 +614,20 @@ public interface AWSCodePipeline {
      * <p>
      * Returns information about the state of a pipeline, including the stages and actions.
      * </p>
+     * <note>
+     * <p>
+     * Values returned in the <code>revisionId</code> and <code>revisionUrl</code> fields indicate the source revision
+     * information, such as the commit ID, for the current state.
+     * </p>
+     * </note>
      * 
      * @param getPipelineStateRequest
-     *        Represents the input of a GetPipelineState action.
+     *        Represents the input of a <code>GetPipelineState</code> action.
      * @return Result of the GetPipelineState operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetPipelineState
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetPipelineState" target="_top">AWS
      *      API Documentation</a>
@@ -599,27 +636,27 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Requests the details of a job for a third party action. Only used for partner actions.
+     * Requests the details of a job for a third party action. Used for partner actions only.
      * </p>
      * <important>
      * <p>
      * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
      * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
-     * Additionally, this API returns any secret values defined for the action.
+     * This API also returns any secret values defined for the action.
      * </p>
      * </important>
      * 
      * @param getThirdPartyJobDetailsRequest
-     *        Represents the input of a GetThirdPartyJobDetails action.
+     *        Represents the input of a <code>GetThirdPartyJobDetails</code> action.
      * @return Result of the GetThirdPartyJobDetails operation returned by the service.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @throws InvalidJobException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.GetThirdPartyJobDetails
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/GetThirdPartyJobDetails"
      *      target="_top">AWS API Documentation</a>
@@ -628,17 +665,40 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
+     * Lists the action executions that have occurred in a pipeline.
+     * </p>
+     * 
+     * @param listActionExecutionsRequest
+     * @return Result of the ListActionExecutions operation returned by the service.
+     * @throws ValidationException
+     *         The validation was specified in an invalid format.
+     * @throws PipelineNotFoundException
+     *         The pipeline was specified in an invalid format or cannot be found.
+     * @throws InvalidNextTokenException
+     *         The next token was specified in an invalid format. Make sure that the next token you provide is the token
+     *         returned by a previous call.
+     * @throws PipelineExecutionNotFoundException
+     *         The pipeline execution was specified in an invalid format or cannot be found, or an execution ID does not
+     *         belong to the specified pipeline.
+     * @sample AWSCodePipeline.ListActionExecutions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionExecutions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListActionExecutionsResult listActionExecutions(ListActionExecutionsRequest listActionExecutionsRequest);
+
+    /**
+     * <p>
      * Gets a summary of all AWS CodePipeline action types associated with your account.
      * </p>
      * 
      * @param listActionTypesRequest
-     *        Represents the input of a ListActionTypes action.
+     *        Represents the input of a <code>ListActionTypes</code> action.
      * @return Result of the ListActionTypes operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidNextTokenException
-     *         The next token was specified in an invalid format. Make sure that the next token you provided is the
-     *         token returned by a previous call.
+     *         The next token was specified in an invalid format. Make sure that the next token you provide is the token
+     *         returned by a previous call.
      * @sample AWSCodePipeline.ListActionTypes
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListActionTypes" target="_top">AWS
      *      API Documentation</a>
@@ -651,15 +711,15 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param listPipelineExecutionsRequest
-     *        Represents the input of a ListPipelineExecutions action.
+     *        Represents the input of a <code>ListPipelineExecutions</code> action.
      * @return Result of the ListPipelineExecutions operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws InvalidNextTokenException
-     *         The next token was specified in an invalid format. Make sure that the next token you provided is the
-     *         token returned by a previous call.
+     *         The next token was specified in an invalid format. Make sure that the next token you provide is the token
+     *         returned by a previous call.
      * @sample AWSCodePipeline.ListPipelineExecutions
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListPipelineExecutions"
      *      target="_top">AWS API Documentation</a>
@@ -672,13 +732,13 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param listPipelinesRequest
-     *        Represents the input of a ListPipelines action.
+     *        Represents the input of a <code>ListPipelines</code> action.
      * @return Result of the ListPipelines operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidNextTokenException
-     *         The next token was specified in an invalid format. Make sure that the next token you provided is the
-     *         token returned by a previous call.
+     *         The next token was specified in an invalid format. Make sure that the next token you provide is the token
+     *         returned by a previous call.
      * @sample AWSCodePipeline.ListPipelines
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListPipelines" target="_top">AWS API
      *      Documentation</a>
@@ -687,8 +747,30 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Gets a listing of all the webhooks in this region for this account. The output lists all webhooks and includes
-     * the webhook URL and ARN, as well the configuration for each webhook.
+     * Gets the set of key-value pairs (metadata) that are used to manage the resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws ValidationException
+     *         The validation was specified in an invalid format.
+     * @throws ResourceNotFoundException
+     *         The resource was specified in an invalid format.
+     * @throws InvalidNextTokenException
+     *         The next token was specified in an invalid format. Make sure that the next token you provide is the token
+     *         returned by a previous call.
+     * @throws InvalidArnException
+     *         The specified resource ARN is invalid.
+     * @sample AWSCodePipeline.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * Gets a listing of all the webhooks in this AWS Region for this account. The output lists all webhooks and
+     * includes the webhook URL and ARN and the configuration for each webhook.
      * </p>
      * 
      * @param listWebhooksRequest
@@ -696,8 +778,8 @@ public interface AWSCodePipeline {
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidNextTokenException
-     *         The next token was specified in an invalid format. Make sure that the next token you provided is the
-     *         token returned by a previous call.
+     *         The next token was specified in an invalid format. Make sure that the next token you provide is the token
+     *         returned by a previous call.
      * @sample AWSCodePipeline.ListWebhooks
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ListWebhooks" target="_top">AWS API
      *      Documentation</a>
@@ -706,20 +788,20 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Returns information about any jobs for AWS CodePipeline to act upon. PollForJobs is only valid for action types
-     * with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner field, the
-     * PollForJobs action returns an error.
+     * Returns information about any jobs for AWS CodePipeline to act on. <code>PollForJobs</code> is valid only for
+     * action types with "Custom" in the owner field. If the action type contains "AWS" or "ThirdParty" in the owner
+     * field, the <code>PollForJobs</code> action returns an error.
      * </p>
      * <important>
      * <p>
      * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
      * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
-     * Additionally, this API returns any secret values defined for the action.
+     * This API also returns any secret values defined for the action.
      * </p>
      * </important>
      * 
      * @param pollForJobsRequest
-     *        Represents the input of a PollForJobs action.
+     *        Represents the input of a <code>PollForJobs</code> action.
      * @return Result of the PollForJobs operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
@@ -733,7 +815,7 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Determines whether there are any third party jobs for a job worker to act on. Only used for partner actions.
+     * Determines whether there are any third party jobs for a job worker to act on. Used for partner actions only.
      * </p>
      * <important>
      * <p>
@@ -743,7 +825,7 @@ public interface AWSCodePipeline {
      * </important>
      * 
      * @param pollForThirdPartyJobsRequest
-     *        Represents the input of a PollForThirdPartyJobs action.
+     *        Represents the input of a <code>PollForThirdPartyJobs</code> action.
      * @return Result of the PollForThirdPartyJobs operation returned by the service.
      * @throws ActionTypeNotFoundException
      *         The specified action type cannot be found.
@@ -761,12 +843,12 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param putActionRevisionRequest
-     *        Represents the input of a PutActionRevision action.
+     *        Represents the input of a <code>PutActionRevision</code> action.
      * @return Result of the PutActionRevision operation returned by the service.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws StageNotFoundException
-     *         The specified stage was specified in an invalid format or cannot be found.
+     *         The stage was specified in an invalid format or cannot be found.
      * @throws ActionNotFoundException
      *         The specified action cannot be found.
      * @throws ValidationException
@@ -784,16 +866,16 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param putApprovalResultRequest
-     *        Represents the input of a PutApprovalResult action.
+     *        Represents the input of a <code>PutApprovalResult</code> action.
      * @return Result of the PutApprovalResult operation returned by the service.
      * @throws InvalidApprovalTokenException
      *         The approval request already received a response or has expired.
      * @throws ApprovalAlreadyCompletedException
      *         The approval action has already been approved or rejected.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws StageNotFoundException
-     *         The specified stage was specified in an invalid format or cannot be found.
+     *         The stage was specified in an invalid format or cannot be found.
      * @throws ActionNotFoundException
      *         The specified action cannot be found.
      * @throws ValidationException
@@ -806,18 +888,18 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Represents the failure of a job as returned to the pipeline by a job worker. Only used for custom actions.
+     * Represents the failure of a job as returned to the pipeline by a job worker. Used for custom actions only.
      * </p>
      * 
      * @param putJobFailureResultRequest
-     *        Represents the input of a PutJobFailureResult action.
+     *        Represents the input of a <code>PutJobFailureResult</code> action.
      * @return Result of the PutJobFailureResult operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @throws InvalidJobStateException
-     *         The specified job state was specified in an invalid format.
+     *         The job state was specified in an invalid format.
      * @sample AWSCodePipeline.PutJobFailureResult
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobFailureResult"
      *      target="_top">AWS API Documentation</a>
@@ -826,18 +908,18 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Represents the success of a job as returned to the pipeline by a job worker. Only used for custom actions.
+     * Represents the success of a job as returned to the pipeline by a job worker. Used for custom actions only.
      * </p>
      * 
      * @param putJobSuccessResultRequest
-     *        Represents the input of a PutJobSuccessResult action.
+     *        Represents the input of a <code>PutJobSuccessResult</code> action.
      * @return Result of the PutJobSuccessResult operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @throws InvalidJobStateException
-     *         The specified job state was specified in an invalid format.
+     *         The job state was specified in an invalid format.
      * @sample AWSCodePipeline.PutJobSuccessResult
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobSuccessResult"
      *      target="_top">AWS API Documentation</a>
@@ -846,19 +928,19 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Represents the failure of a third party job as returned to the pipeline by a job worker. Only used for partner
-     * actions.
+     * Represents the failure of a third party job as returned to the pipeline by a job worker. Used for partner actions
+     * only.
      * </p>
      * 
      * @param putThirdPartyJobFailureResultRequest
-     *        Represents the input of a PutThirdPartyJobFailureResult action.
+     *        Represents the input of a <code>PutThirdPartyJobFailureResult</code> action.
      * @return Result of the PutThirdPartyJobFailureResult operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @throws InvalidJobStateException
-     *         The specified job state was specified in an invalid format.
+     *         The job state was specified in an invalid format.
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @sample AWSCodePipeline.PutThirdPartyJobFailureResult
@@ -869,19 +951,19 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Represents the success of a third party job as returned to the pipeline by a job worker. Only used for partner
-     * actions.
+     * Represents the success of a third party job as returned to the pipeline by a job worker. Used for partner actions
+     * only.
      * </p>
      * 
      * @param putThirdPartyJobSuccessResultRequest
-     *        Represents the input of a PutThirdPartyJobSuccessResult action.
+     *        Represents the input of a <code>PutThirdPartyJobSuccessResult</code> action.
      * @return Result of the PutThirdPartyJobSuccessResult operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws JobNotFoundException
-     *         The specified job was specified in an invalid format or cannot be found.
+     *         The job was specified in an invalid format or cannot be found.
      * @throws InvalidJobStateException
-     *         The specified job state was specified in an invalid format.
+     *         The job state was specified in an invalid format.
      * @throws InvalidClientTokenException
      *         The client token was specified in an invalid format
      * @sample AWSCodePipeline.PutThirdPartyJobSuccessResult
@@ -911,7 +993,13 @@ public interface AWSCodePipeline {
      * @throws InvalidWebhookAuthenticationParametersException
      *         The specified authentication type is in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
+     * @throws TooManyTagsException
+     *         The tags limit for a resource has been exceeded.
+     * @throws InvalidTagsException
+     *         The specified resource tags are invalid.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
      * @sample AWSCodePipeline.PutWebhook
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutWebhook" target="_top">AWS API
      *      Documentation</a>
@@ -937,22 +1025,23 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
-     * Resumes the pipeline execution by retrying the last failed actions in a stage.
+     * Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately
+     * if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working,
+     * and failed actions are triggered again.
      * </p>
      * 
      * @param retryStageExecutionRequest
-     *        Represents the input of a RetryStageExecution action.
+     *        Represents the input of a <code>RetryStageExecution</code> action.
      * @return Result of the RetryStageExecution operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @throws StageNotFoundException
-     *         The specified stage was specified in an invalid format or cannot be found.
+     *         The stage was specified in an invalid format or cannot be found.
      * @throws StageNotRetryableException
-     *         The specified stage can't be retried because the pipeline structure or stage state changed after the
-     *         stage was not completed; the stage contains no failed actions; one or more actions are still in progress;
-     *         or another retry attempt is already in progress.
+     *         Unable to retry. The pipeline structure or stage state might have changed while actions awaited retry, or
+     *         the stage contains no failed actions.
      * @throws NotLatestPipelineExecutionException
      *         The stage has failed in a later run of the pipeline and the pipelineExecutionId associated with the
      *         request is out of date.
@@ -969,12 +1058,12 @@ public interface AWSCodePipeline {
      * </p>
      * 
      * @param startPipelineExecutionRequest
-     *        Represents the input of a StartPipelineExecution action.
+     *        Represents the input of a <code>StartPipelineExecution</code> action.
      * @return Result of the StartPipelineExecution operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws PipelineNotFoundException
-     *         The specified pipeline was specified in an invalid format or cannot be found.
+     *         The pipeline was specified in an invalid format or cannot be found.
      * @sample AWSCodePipeline.StartPipelineExecution
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StartPipelineExecution"
      *      target="_top">AWS API Documentation</a>
@@ -983,24 +1072,72 @@ public interface AWSCodePipeline {
 
     /**
      * <p>
+     * Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws ValidationException
+     *         The validation was specified in an invalid format.
+     * @throws ResourceNotFoundException
+     *         The resource was specified in an invalid format.
+     * @throws InvalidArnException
+     *         The specified resource ARN is invalid.
+     * @throws TooManyTagsException
+     *         The tags limit for a resource has been exceeded.
+     * @throws InvalidTagsException
+     *         The specified resource tags are invalid.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
+     * @sample AWSCodePipeline.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Removes tags from an AWS resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws ValidationException
+     *         The validation was specified in an invalid format.
+     * @throws ResourceNotFoundException
+     *         The resource was specified in an invalid format.
+     * @throws InvalidArnException
+     *         The specified resource ARN is invalid.
+     * @throws InvalidTagsException
+     *         The specified resource tags are invalid.
+     * @throws ConcurrentModificationException
+     *         Unable to modify the tag due to a simultaneous update request.
+     * @sample AWSCodePipeline.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
      * Updates a specified pipeline with edits or changes to its structure. Use a JSON file with the pipeline structure
-     * in conjunction with UpdatePipeline to provide the full structure of the pipeline. Updating the pipeline increases
+     * and <code>UpdatePipeline</code> to provide the full structure of the pipeline. Updating the pipeline increases
      * the version number of the pipeline by 1.
      * </p>
      * 
      * @param updatePipelineRequest
-     *        Represents the input of an UpdatePipeline action.
+     *        Represents the input of an <code>UpdatePipeline</code> action.
      * @return Result of the UpdatePipeline operation returned by the service.
      * @throws ValidationException
      *         The validation was specified in an invalid format.
      * @throws InvalidStageDeclarationException
-     *         The specified stage declaration was specified in an invalid format.
+     *         The stage declaration was specified in an invalid format.
      * @throws InvalidActionDeclarationException
-     *         The specified action declaration was specified in an invalid format.
+     *         The action declaration was specified in an invalid format.
      * @throws InvalidBlockerDeclarationException
      *         Reserved for future use.
      * @throws InvalidStructureException
-     *         The specified structure was specified in an invalid format.
+     *         The structure was specified in an invalid format.
      * @throws LimitExceededException
      *         The number of pipelines associated with the AWS account has exceeded the limit allowed for the account.
      * @sample AWSCodePipeline.UpdatePipeline

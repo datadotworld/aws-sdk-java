@@ -26,6 +26,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class AudioDescription implements Serializable, Cloneable, StructuredPojo {
 
+    /** Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard. */
     private AudioNormalizationSettings audioNormalizationSettings;
     /**
      * Specifies which audio data to use from each input. In the simplest case, specify an
@@ -43,9 +44,20 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
      * Commentary, 4-255 = Reserved.
      */
     private Integer audioType;
-
+    /**
+     * When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through to the
+     * output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the output. Otherwise
+     * the value in Audio Type is included in the output. Note that this field and audioType are both ignored if
+     * audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
+     */
     private String audioTypeControl;
-
+    /**
+     * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
+     */
     private AudioCodecSettings codecSettings;
     /**
      * Specify the language for this audio output track, using the ISO 639-2 or ISO 639-3 three-letter language code.
@@ -59,18 +71,27 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
      * but there is no ISO 639 language code specified by the input.
      */
     private String languageCode;
-
+    /**
+     * Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language code of
+     * the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected or when
+     * FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
+     */
     private String languageCodeControl;
     /** Advanced audio remixing settings. */
     private RemixSettings remixSettings;
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      */
     private String streamName;
 
     /**
+     * Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard.
+     * 
      * @param audioNormalizationSettings
+     *        Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness
+     *        standard.
      */
 
     public void setAudioNormalizationSettings(AudioNormalizationSettings audioNormalizationSettings) {
@@ -78,7 +99,10 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard.
+     * 
+     * @return Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness
+     *         standard.
      */
 
     public AudioNormalizationSettings getAudioNormalizationSettings() {
@@ -86,7 +110,11 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness standard.
+     * 
      * @param audioNormalizationSettings
+     *        Advanced audio normalization settings. Ignore these settings unless you need to comply with a loudness
+     *        standard.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -215,7 +243,16 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through to the
+     * output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the output. Otherwise
+     * the value in Audio Type is included in the output. Note that this field and audioType are both ignored if
+     * audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
+     * 
      * @param audioTypeControl
+     *        When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through
+     *        to the output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the
+     *        output. Otherwise the value in Audio Type is included in the output. Note that this field and audioType
+     *        are both ignored if audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
      * @see AudioTypeControl
      */
 
@@ -224,7 +261,15 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through to the
+     * output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the output. Otherwise
+     * the value in Audio Type is included in the output. Note that this field and audioType are both ignored if
+     * audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
+     * 
+     * @return When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through
+     *         to the output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the
+     *         output. Otherwise the value in Audio Type is included in the output. Note that this field and audioType
+     *         are both ignored if audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
      * @see AudioTypeControl
      */
 
@@ -233,7 +278,16 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through to the
+     * output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the output. Otherwise
+     * the value in Audio Type is included in the output. Note that this field and audioType are both ignored if
+     * audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
+     * 
      * @param audioTypeControl
+     *        When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through
+     *        to the output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the
+     *        output. Otherwise the value in Audio Type is included in the output. Note that this field and audioType
+     *        are both ignored if audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AudioTypeControl
      */
@@ -244,7 +298,16 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through to the
+     * output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the output. Otherwise
+     * the value in Audio Type is included in the output. Note that this field and audioType are both ignored if
+     * audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
+     * 
      * @param audioTypeControl
+     *        When set to FOLLOW_INPUT, if the input contains an ISO 639 audio_type, then that value is passed through
+     *        to the output. If the input contains no ISO 639 audio_type, the value in Audio Type is included in the
+     *        output. Otherwise the value in Audio Type is included in the output. Note that this field and audioType
+     *        are both ignored if audioDescriptionBroadcasterMix is set to BROADCASTER_MIXED_AD.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AudioTypeControl
      */
@@ -255,7 +318,18 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
+     * 
      * @param codecSettings
+     *        Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to
+     *        audio encoding. The settings in this group vary depending on the value that you choose for Audio codec
+     *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *        lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings *
+     *        AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      */
 
     public void setCodecSettings(AudioCodecSettings codecSettings) {
@@ -263,7 +337,17 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
+     * 
+     * @return Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to
+     *         audio encoding. The settings in this group vary depending on the value that you choose for Audio codec
+     *         (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *         lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings *
+     *         AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      */
 
     public AudioCodecSettings getCodecSettings() {
@@ -271,7 +355,18 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio
+     * encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For
+     * each codec enum that you choose, define the corresponding settings object. The following lists the codec enum,
+     * settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3,
+     * Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
+     * 
      * @param codecSettings
+     *        Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to
+     *        audio encoding. The settings in this group vary depending on the value that you choose for Audio codec
+     *        (Codec). For each codec enum that you choose, define the corresponding settings object. The following
+     *        lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings *
+     *        AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -394,7 +489,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language code of
+     * the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected or when
+     * FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
+     * 
      * @param languageCodeControl
+     *        Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language
+     *        code of the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected
+     *        or when FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
      * @see AudioLanguageCodeControl
      */
 
@@ -403,7 +505,13 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * @return
+     * Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language code of
+     * the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected or when
+     * FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
+     * 
+     * @return Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language
+     *         code of the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected
+     *         or when FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
      * @see AudioLanguageCodeControl
      */
 
@@ -412,7 +520,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language code of
+     * the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected or when
+     * FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
+     * 
      * @param languageCodeControl
+     *        Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language
+     *        code of the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected
+     *        or when FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AudioLanguageCodeControl
      */
@@ -423,7 +538,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
+     * Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language code of
+     * the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected or when
+     * FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
+     * 
      * @param languageCodeControl
+     *        Choosing FOLLOW_INPUT will cause the ISO 639 language code of the output to follow the ISO 639 language
+     *        code of the input. The language specified for languageCode' will be used when USE_CONFIGURED is selected
+     *        or when FOLLOW_INPUT is selected but there is no ISO 639 language code specified by the input.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see AudioLanguageCodeControl
      */
@@ -468,12 +590,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
      * @param streamName
-     *        Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or
-     *        Director Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     *        Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2".
+     *        For streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     *        end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      */
 
     public void setStreamName(String streamName) {
@@ -481,11 +605,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
-     * @return Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or
-     *         Director Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * @return Specify a label for this output audio stream. For example, "English", "Director commentary", or
+     *         "track_2". For streaming outputs, MediaConvert passes this information into destination manifests for
+     *         display on the end-viewer's player device. For outputs in other output groups, the service ignores this
+     *         setting.
      */
 
     public String getStreamName() {
@@ -493,12 +620,14 @@ public class AudioDescription implements Serializable, Cloneable, StructuredPojo
     }
 
     /**
-     * Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or Director
-     * Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     * Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
      * @param streamName
-     *        Used for MS Smooth and Apple HLS outputs. Indicates the name displayed by the player (eg. English, or
-     *        Director Commentary). Alphanumeric characters, spaces, and underscore are legal.
+     *        Specify a label for this output audio stream. For example, "English", "Director commentary", or "track_2".
+     *        For streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     *        end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -184,44 +184,44 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidServiceRoleException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.InvalidServiceRoleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidServiceRoleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.InvalidServiceRoleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ProjectAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.ProjectAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ProjectAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.ProjectAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UserProfileAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.UserProfileAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UserProfileAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.UserProfileAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ProjectConfigurationException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.ProjectConfigurationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ProjectConfigurationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.ProjectConfigurationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ProjectNotFoundException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.ProjectNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ProjectNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.ProjectNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ProjectCreationFailedException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.ProjectCreationFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ProjectCreationFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.ProjectCreationFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TeamMemberAlreadyAssociatedException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.TeamMemberAlreadyAssociatedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TeamMemberAlreadyAssociatedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.TeamMemberAlreadyAssociatedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UserProfileNotFoundException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.UserProfileNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UserProfileNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.UserProfileNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.ValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TeamMemberNotFoundException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.TeamMemberNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TeamMemberNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.TeamMemberNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.codestar.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codestar.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.codestar.model.AWSCodeStarException.class));
 
     public static AWSCodeStarClientBuilder builder() {
@@ -320,6 +320,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateTeamMember");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -390,6 +391,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -449,6 +451,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUserProfile");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -508,6 +511,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -564,6 +568,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUserProfile");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -626,6 +631,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -682,6 +688,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUserProfile");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -744,6 +751,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateTeamMember");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -801,6 +809,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListProjects");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -859,6 +868,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListResources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -917,6 +927,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -975,6 +986,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTeamMembers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1031,6 +1043,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListUserProfiles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1091,6 +1104,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1151,6 +1165,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1207,6 +1222,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1274,6 +1290,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateTeamMember");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1331,6 +1348,7 @@ public class AWSCodeStarClient extends AmazonWebServiceClient implements AWSCode
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodeStar");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUserProfile");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

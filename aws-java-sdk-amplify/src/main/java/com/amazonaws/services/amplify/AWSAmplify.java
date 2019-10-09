@@ -93,6 +93,28 @@ public interface AWSAmplify {
 
     /**
      * <p>
+     * Create a deployment for manual deploy apps. (Apps are not connected to repository)
+     * </p>
+     * 
+     * @param createDeploymentRequest
+     *        Request structure for create a new deployment.
+     * @return Result of the CreateDeployment operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.CreateDeployment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateDeployment" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateDeploymentResult createDeployment(CreateDeploymentRequest createDeploymentRequest);
+
+    /**
+     * <p>
      * Create a new DomainAssociation on an App
      * </p>
      * 
@@ -116,6 +138,32 @@ public interface AWSAmplify {
      *      target="_top">AWS API Documentation</a>
      */
     CreateDomainAssociationResult createDomainAssociation(CreateDomainAssociationRequest createDomainAssociationRequest);
+
+    /**
+     * <p>
+     * Create a new webhook on an App.
+     * </p>
+     * 
+     * @param createWebhookRequest
+     *        Request structure for create webhook request.
+     * @return Result of the CreateWebhook operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @throws DependentServiceFailureException
+     *         Exception thrown when an operation fails due to a dependent service throwing an exception.
+     * @sample AWSAmplify.CreateWebhook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/CreateWebhook" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateWebhookResult createWebhook(CreateWebhookRequest createWebhookRequest);
 
     /**
      * <p>
@@ -215,6 +263,53 @@ public interface AWSAmplify {
 
     /**
      * <p>
+     * Deletes a webhook.
+     * </p>
+     * 
+     * @param deleteWebhookRequest
+     *        Request structure for the delete webhook request.
+     * @return Result of the DeleteWebhook operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.DeleteWebhook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/DeleteWebhook" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteWebhookResult deleteWebhook(DeleteWebhookRequest deleteWebhookRequest);
+
+    /**
+     * <p>
+     * Retrieve website access logs for a specific time range via a pre-signed URL. Optionally, deliver the logs to a
+     * given S3 bucket.
+     * </p>
+     * 
+     * @param generateAccessLogsRequest
+     *        Request structure for the generate access logs request.
+     * @return Result of the GenerateAccessLogs operation returned by the service.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @sample AWSAmplify.GenerateAccessLogs
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GenerateAccessLogs" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GenerateAccessLogsResult generateAccessLogs(GenerateAccessLogsRequest generateAccessLogsRequest);
+
+    /**
+     * <p>
      * Retrieves an existing Amplify App by appId.
      * </p>
      * 
@@ -234,6 +329,30 @@ public interface AWSAmplify {
      *      Documentation</a>
      */
     GetAppResult getApp(GetAppRequest getAppRequest);
+
+    /**
+     * <p>
+     * Retrieves artifact info that corresponds to a artifactId.
+     * </p>
+     * 
+     * @param getArtifactUrlRequest
+     *        Request structure for the get artifact request.
+     * @return Result of the GetArtifactUrl operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.GetArtifactUrl
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetArtifactUrl" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetArtifactUrlResult getArtifactUrl(GetArtifactUrlRequest getArtifactUrlRequest);
 
     /**
      * <p>
@@ -305,6 +424,30 @@ public interface AWSAmplify {
 
     /**
      * <p>
+     * Retrieves webhook info that corresponds to a webhookId.
+     * </p>
+     * 
+     * @param getWebhookRequest
+     *        Request structure for the get webhook request.
+     * @return Result of the GetWebhook operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.GetWebhook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/GetWebhook" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetWebhookResult getWebhook(GetWebhookRequest getWebhookRequest);
+
+    /**
+     * <p>
      * Lists existing Amplify Apps.
      * </p>
      * 
@@ -322,6 +465,28 @@ public interface AWSAmplify {
      *      Documentation</a>
      */
     ListAppsResult listApps(ListAppsRequest listAppsRequest);
+
+    /**
+     * <p>
+     * List artifacts with an app, a branch, a job and an artifact type.
+     * </p>
+     * 
+     * @param listArtifactsRequest
+     *        Request structure for the list artifacts request.
+     * @return Result of the ListArtifacts operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.ListArtifacts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListArtifacts" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListArtifactsResult listArtifacts(ListArtifactsRequest listArtifactsRequest);
 
     /**
      * <p>
@@ -387,6 +552,72 @@ public interface AWSAmplify {
 
     /**
      * <p>
+     * List tags for resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     *        Request structure used to list tags for resource.
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws ResourceNotFoundException
+     *         Exception thrown when an operation fails due to non-existent resource.
+     * @sample AWSAmplify.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * List webhooks with an app.
+     * </p>
+     * 
+     * @param listWebhooksRequest
+     *        Request structure for the list webhooks request.
+     * @return Result of the ListWebhooks operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.ListWebhooks
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/ListWebhooks" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListWebhooksResult listWebhooks(ListWebhooksRequest listWebhooksRequest);
+
+    /**
+     * <p>
+     * Start a deployment for manual deploy apps. (Apps are not connected to repository)
+     * </p>
+     * 
+     * @param startDeploymentRequest
+     *        Request structure for start a deployment.
+     * @return Result of the StartDeployment operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws LimitExceededException
+     *         Exception thrown when a resource could not be created because of service limits.
+     * @sample AWSAmplify.StartDeployment
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/StartDeployment" target="_top">AWS API
+     *      Documentation</a>
+     */
+    StartDeploymentResult startDeployment(StartDeploymentRequest startDeploymentRequest);
+
+    /**
+     * <p>
      * Starts a new job for a branch, part of an Amplify App.
      * </p>
      * 
@@ -432,6 +663,46 @@ public interface AWSAmplify {
      *      Documentation</a>
      */
     StopJobResult stopJob(StopJobRequest stopJobRequest);
+
+    /**
+     * <p>
+     * Tag resource with tag key and value.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     *        Request structure used to tag resource.
+     * @return Result of the TagResource operation returned by the service.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws ResourceNotFoundException
+     *         Exception thrown when an operation fails due to non-existent resource.
+     * @sample AWSAmplify.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Untag resource with resourceArn.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     *        Request structure used to untag resource.
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws ResourceNotFoundException
+     *         Exception thrown when an operation fails due to non-existent resource.
+     * @sample AWSAmplify.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
 
     /**
      * <p>
@@ -502,6 +773,30 @@ public interface AWSAmplify {
      *      target="_top">AWS API Documentation</a>
      */
     UpdateDomainAssociationResult updateDomainAssociation(UpdateDomainAssociationRequest updateDomainAssociationRequest);
+
+    /**
+     * <p>
+     * Update a webhook.
+     * </p>
+     * 
+     * @param updateWebhookRequest
+     *        Request structure for update webhook request.
+     * @return Result of the UpdateWebhook operation returned by the service.
+     * @throws BadRequestException
+     *         Exception thrown when a request contains unexpected data.
+     * @throws UnauthorizedException
+     *         Exception thrown when an operation fails due to a lack of access.
+     * @throws NotFoundException
+     *         Exception thrown when an entity has not been found during an operation.
+     * @throws InternalFailureException
+     *         Exception thrown when the service fails to perform an operation due to an internal issue.
+     * @throws DependentServiceFailureException
+     *         Exception thrown when an operation fails due to a dependent service throwing an exception.
+     * @sample AWSAmplify.UpdateWebhook
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/amplify-2017-07-25/UpdateWebhook" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateWebhookResult updateWebhook(UpdateWebhookRequest updateWebhookRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

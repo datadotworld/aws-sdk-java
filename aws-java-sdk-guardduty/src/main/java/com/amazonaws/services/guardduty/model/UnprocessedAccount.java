@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * An object containing the unprocessed account and a result string explaining why it was unprocessed.
+ * <p>
+ * Contains information about the accounts that were not processed.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/UnprocessedAccount" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class UnprocessedAccount implements Serializable, Cloneable, StructuredPojo {
 
-    /** AWS Account ID. */
+    /**
+     * <p>
+     * AWS Account ID.
+     * </p>
+     */
     private String accountId;
-    /** A reason why the account hasn't been processed. */
+    /**
+     * <p>
+     * A reason why the account hasn't been processed.
+     * </p>
+     */
     private String result;
 
     /**
+     * <p>
      * AWS Account ID.
+     * </p>
      * 
      * @param accountId
      *        AWS Account ID.
@@ -43,7 +55,9 @@ public class UnprocessedAccount implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS Account ID.
+     * </p>
      * 
      * @return AWS Account ID.
      */
@@ -53,7 +67,9 @@ public class UnprocessedAccount implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS Account ID.
+     * </p>
      * 
      * @param accountId
      *        AWS Account ID.
@@ -66,7 +82,9 @@ public class UnprocessedAccount implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * A reason why the account hasn't been processed.
+     * </p>
      * 
      * @param result
      *        A reason why the account hasn't been processed.
@@ -77,7 +95,9 @@ public class UnprocessedAccount implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * A reason why the account hasn't been processed.
+     * </p>
      * 
      * @return A reason why the account hasn't been processed.
      */
@@ -87,7 +107,9 @@ public class UnprocessedAccount implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * A reason why the account hasn't been processed.
+     * </p>
      * 
      * @param result
      *        A reason why the account hasn't been processed.

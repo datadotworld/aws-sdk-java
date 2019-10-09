@@ -79,41 +79,53 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidFilterException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.InvalidFilterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BatchSizeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.BatchSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KmsKeyValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.KmsKeyValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TextSizeLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.TextSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidFilterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.InvalidFilterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedLanguageException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.UnsupportedLanguageException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagKeysException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TooManyTagKeysExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.InternalServerException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BatchSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.BatchSizeLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TextSizeLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TextSizeLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedLanguageException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.UnsupportedLanguageExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("JobNotFoundException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.JobNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.InternalServerExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.comprehend.model.ResourceLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceUnavailableExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("JobNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.JobNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehend.model.transform.ResourceLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.comprehend.model.AmazonComprehendException.class));
 
     public static AmazonComprehendClientBuilder builder() {
@@ -165,7 +177,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
     /**
      * <p>
      * Determines the dominant language of the input text for a batch of documents. For a list of languages that Amazon
-     * Comprehend can detect, see <a href="http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html">Amazon
+     * Comprehend can detect, see <a href="https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html">Amazon
      * Comprehend Supported Languages</a>.
      * </p>
      * 
@@ -210,6 +222,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDetectDominantLanguage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -241,8 +254,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -277,6 +291,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDetectEntities");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -306,8 +321,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -342,6 +358,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDetectKeyPhrases");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -373,8 +390,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -409,6 +427,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDetectSentiment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -439,8 +458,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws BatchSizeLimitExceededException
      *         The number of documents in the request exceeds the limit of 25. Try your request again with fewer
      *         documents.
@@ -475,6 +495,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDetectSyntax");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -505,6 +526,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The request is invalid.
      * @throws ResourceInUseException
      *         The specified name is already in use. Use a different name and try your request again.
+     * @throws TooManyTagsException
+     *         The request contains more tags than can be associated with a resource (50 tags per resource). The maximum
+     *         number of tags includes both existing tags and those included in your current request.
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws ResourceLimitExceededException
@@ -512,8 +536,11 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         and then try your request again.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.CreateDocumentClassifier
@@ -546,6 +573,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDocumentClassifier");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -575,6 +603,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The request is invalid.
      * @throws ResourceInUseException
      *         The specified name is already in use. Use a different name and try your request again.
+     * @throws TooManyTagsException
+     *         The request contains more tags than can be associated with a resource (50 tags per resource). The maximum
+     *         number of tags includes both existing tags and those included in your current request.
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws ResourceLimitExceededException
@@ -582,8 +613,11 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         and then try your request again.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.CreateEntityRecognizer
@@ -615,6 +649,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateEntityRecognizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -690,6 +725,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDocumentClassifier");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -764,6 +800,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteEntityRecognizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -828,6 +865,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDocumentClassificationJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -890,6 +928,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDocumentClassifier");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -954,6 +993,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDominantLanguageDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1017,6 +1057,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEntitiesDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1080,6 +1121,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEntityRecognizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1143,6 +1185,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeKeyPhrasesDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1206,6 +1249,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSentimentDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1269,6 +1313,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTopicsDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1289,7 +1334,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
     /**
      * <p>
      * Determines the dominant language of the input text. For a list of languages that Amazon Comprehend can detect,
-     * see <a href="http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html">Amazon Comprehend Supported
+     * see <a href="https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html">Amazon Comprehend Supported
      * Languages</a>.
      * </p>
      * 
@@ -1330,6 +1375,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectDominantLanguage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1361,8 +1407,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectEntities
@@ -1394,6 +1441,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectEntities");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1423,8 +1471,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectKeyPhrases
@@ -1456,6 +1505,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectKeyPhrases");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1486,8 +1536,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectSentiment
@@ -1519,6 +1570,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectSentiment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1549,8 +1601,9 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The size of the input text exceeds the limit. Use a smaller document.
      * @throws UnsupportedLanguageException
      *         Amazon Comprehend can't process the language of the input text. For all custom entity recognition APIs
-     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, Amazon
-     *         Comprehend accepts only English or Spanish text.
+     *         (such as <code>CreateEntityRecognizer</code>), only English is accepted. For most other APIs, such as
+     *         those for Custom Classification, Amazon Comprehend accepts text in all supported languages. For a list of
+     *         supported languages, see <a>supported-languages</a>.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.DetectSyntax
@@ -1582,6 +1635,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetectSyntax");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1610,8 +1664,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListDocumentClassificationJobs
@@ -1644,6 +1697,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDocumentClassificationJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1673,8 +1727,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListDocumentClassifiers
@@ -1707,6 +1760,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDocumentClassifiers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1736,8 +1790,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListDominantLanguageDetectionJobs
@@ -1771,6 +1824,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDominantLanguageDetectionJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1800,8 +1854,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListEntitiesDetectionJobs
@@ -1834,6 +1887,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListEntitiesDetectionJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1868,8 +1922,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListEntityRecognizers
@@ -1901,6 +1954,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListEntityRecognizers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1930,8 +1984,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListKeyPhrasesDetectionJobs
@@ -1964,6 +2017,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListKeyPhrasesDetectionJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1993,8 +2047,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListSentimentDetectionJobs
@@ -2027,6 +2080,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListSentimentDetectionJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2034,6 +2088,65 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
             HttpResponseHandler<AmazonWebServiceResponse<ListSentimentDetectionJobsResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new ListSentimentDetectionJobsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Lists all tags associated with a given Amazon Comprehend resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is invalid.
+     * @throws ResourceNotFoundException
+     *         The specified resource ARN was not found. Check the ARN and try your request again.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @sample AmazonComprehend.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/ListTagsForResource" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeListTagsForResource(request);
+    }
+
+    @SdkInternalApi
+    final ListTagsForResourceResult executeListTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listTagsForResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListTagsForResourceRequest> request = null;
+        Response<ListTagsForResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListTagsForResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listTagsForResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListTagsForResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListTagsForResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2056,8 +2169,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
      * @throws InvalidFilterException
-     *         The filter specified for the <code>ListDocumentClassificationJobs</code> operation is invalid. Specify a
-     *         different filter.
+     *         The filter specified for the operation is invalid. Specify a different filter.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.ListTopicsDetectionJobs
@@ -2090,6 +2202,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTopicsDetectionJobs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2123,6 +2236,8 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws ResourceUnavailableException
      *         The specified resource is not available. Check to see if the resource is in the <code>TRAINED</code>
      *         state and try your request again.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.StartDocumentClassificationJob
@@ -2155,6 +2270,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartDocumentClassificationJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2184,6 +2300,8 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The request is invalid.
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.StartDominantLanguageDetectionJob
@@ -2217,6 +2335,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartDominantLanguageDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2256,6 +2375,8 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      * @throws ResourceUnavailableException
      *         The specified resource is not available. Check to see if the resource is in the <code>TRAINED</code>
      *         state and try your request again.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.StartEntitiesDetectionJob
@@ -2288,6 +2409,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartEntitiesDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2317,6 +2439,8 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The request is invalid.
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.StartKeyPhrasesDetectionJob
@@ -2349,6 +2473,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartKeyPhrasesDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2378,6 +2503,8 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The request is invalid.
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.StartSentimentDetectionJob
@@ -2410,6 +2537,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartSentimentDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2439,6 +2567,8 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
      *         The request is invalid.
      * @throws TooManyRequestsException
      *         The number of requests exceeds the limit. Resubmit your request later.
+     * @throws KmsKeyValidationException
+     *         The KMS customer managed key (CMK) entered cannot be validated. Verify the key and re-enter it.
      * @throws InternalServerException
      *         An internal server error occurred. Retry your request.
      * @sample AmazonComprehend.StartTopicsDetectionJob
@@ -2471,6 +2601,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartTopicsDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2544,6 +2675,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopDominantLanguageDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2616,6 +2748,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopEntitiesDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2688,6 +2821,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopKeyPhrasesDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2760,6 +2894,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopSentimentDetectionJob");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2828,6 +2963,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopTrainingDocumentClassifier");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2896,6 +3032,7 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopTrainingEntityRecognizer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2903,6 +3040,135 @@ public class AmazonComprehendClient extends AmazonWebServiceClient implements Am
             HttpResponseHandler<AmazonWebServiceResponse<StopTrainingEntityRecognizerResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new StopTrainingEntityRecognizerResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Associates a specific tag with an Amazon Comprehend resource. A tag is a key-value pair that adds as a metadata
+     * to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource
+     * to indicate its use by the sales department.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws InvalidRequestException
+     *         The request is invalid.
+     * @throws ConcurrentModificationException
+     *         Concurrent modification of the tags associated with an Amazon Comprehend resource is not supported.
+     * @throws ResourceNotFoundException
+     *         The specified resource ARN was not found. Check the ARN and try your request again.
+     * @throws TooManyTagsException
+     *         The request contains more tags than can be associated with a resource (50 tags per resource). The maximum
+     *         number of tags includes both existing tags and those included in your current request.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @sample AmazonComprehend.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeTagResource(request);
+    }
+
+    @SdkInternalApi
+    final TagResourceResult executeTagResource(TagResourceRequest tagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(tagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<TagResourceRequest> request = null;
+        Response<TagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new TagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(tagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<TagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new TagResourceResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Removes a specific tag associated with an Amazon Comprehend resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws TooManyTagKeysException
+     *         The request contains more tag keys than can be associated with a resource (50 tag keys per resource).
+     * @throws InvalidRequestException
+     *         The request is invalid.
+     * @throws ConcurrentModificationException
+     *         Concurrent modification of the tags associated with an Amazon Comprehend resource is not supported.
+     * @throws ResourceNotFoundException
+     *         The specified resource ARN was not found. Check the ARN and try your request again.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @sample AmazonComprehend.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        request = beforeClientExecution(request);
+        return executeUntagResource(request);
+    }
+
+    @SdkInternalApi
+    final UntagResourceResult executeUntagResource(UntagResourceRequest untagResourceRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(untagResourceRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UntagResourceRequest> request = null;
+        Response<UntagResourceResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UntagResourceRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(untagResourceRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Comprehend");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<UntagResourceResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new UntagResourceResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

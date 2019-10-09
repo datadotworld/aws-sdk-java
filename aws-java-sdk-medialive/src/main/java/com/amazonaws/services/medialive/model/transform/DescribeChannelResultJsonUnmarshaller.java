@@ -52,6 +52,10 @@ public class DescribeChannelResultJsonUnmarshaller implements Unmarshaller<Descr
                     context.nextToken();
                     describeChannelResult.setArn(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("channelClass", targetDepth)) {
+                    context.nextToken();
+                    describeChannelResult.setChannelClass(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("destinations", targetDepth)) {
                     context.nextToken();
                     describeChannelResult.setDestinations(new ListUnmarshaller<OutputDestination>(OutputDestinationJsonUnmarshaller.getInstance())
@@ -86,6 +90,11 @@ public class DescribeChannelResultJsonUnmarshaller implements Unmarshaller<Descr
                 if (context.testExpression("name", targetDepth)) {
                     context.nextToken();
                     describeChannelResult.setName(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("pipelineDetails", targetDepth)) {
+                    context.nextToken();
+                    describeChannelResult.setPipelineDetails(new ListUnmarshaller<PipelineDetail>(PipelineDetailJsonUnmarshaller.getInstance())
+                            .unmarshall(context));
                 }
                 if (context.testExpression("pipelinesRunningCount", targetDepth)) {
                     context.nextToken();

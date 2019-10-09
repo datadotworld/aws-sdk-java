@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.DescribeImportSnapshotTasksRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for DescribeImportSnapshotTasks.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest implements Serializable, Cloneable,
@@ -30,7 +28,7 @@ public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest 
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Filter> filters;
@@ -56,10 +54,10 @@ public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest 
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * 
-     * @return One or more filters.
+     * @return The filters.
      */
 
     public java.util.List<Filter> getFilters() {
@@ -71,11 +69,11 @@ public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest 
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.
      */
 
     public void setFilters(java.util.Collection<Filter> filters) {
@@ -89,7 +87,7 @@ public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest 
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -98,7 +96,7 @@ public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest 
      * </p>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -114,11 +112,11 @@ public class DescribeImportSnapshotTasksRequest extends AmazonWebServiceRequest 
 
     /**
      * <p>
-     * One or more filters.
+     * The filters.
      * </p>
      * 
      * @param filters
-     *        One or more filters.
+     *        The filters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

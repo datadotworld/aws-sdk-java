@@ -27,38 +27,38 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes that is use for querying findings.
+     * The findings attributes used to define a condition to filter the findings returned.
      * </p>
      */
     private AwsSecurityFindingFilters filters;
     /**
      * <p>
-     * A collection of attributes used for sorting findings.
+     * Findings attributes used to sort the list of findings returned.
      * </p>
      */
     private java.util.List<SortCriterion> sortCriteria;
     /**
      * <p>
-     * Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings operation. For
-     * subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous
-     * response to continue listing data.
+     * Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this parameter
+     * to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the request with the
+     * value of <code>nextToken</code> from the previous response to continue listing data.
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * Indicates the maximum number of items that you want in the response.
+     * The maximum number of findings to return.
      * </p>
      */
     private Integer maxResults;
 
     /**
      * <p>
-     * A collection of attributes that is use for querying findings.
+     * The findings attributes used to define a condition to filter the findings returned.
      * </p>
      * 
      * @param filters
-     *        A collection of attributes that is use for querying findings.
+     *        The findings attributes used to define a condition to filter the findings returned.
      */
 
     public void setFilters(AwsSecurityFindingFilters filters) {
@@ -67,10 +67,10 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes that is use for querying findings.
+     * The findings attributes used to define a condition to filter the findings returned.
      * </p>
      * 
-     * @return A collection of attributes that is use for querying findings.
+     * @return The findings attributes used to define a condition to filter the findings returned.
      */
 
     public AwsSecurityFindingFilters getFilters() {
@@ -79,11 +79,11 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes that is use for querying findings.
+     * The findings attributes used to define a condition to filter the findings returned.
      * </p>
      * 
      * @param filters
-     *        A collection of attributes that is use for querying findings.
+     *        The findings attributes used to define a condition to filter the findings returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -94,10 +94,10 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes used for sorting findings.
+     * Findings attributes used to sort the list of findings returned.
      * </p>
      * 
-     * @return A collection of attributes used for sorting findings.
+     * @return Findings attributes used to sort the list of findings returned.
      */
 
     public java.util.List<SortCriterion> getSortCriteria() {
@@ -106,11 +106,11 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes used for sorting findings.
+     * Findings attributes used to sort the list of findings returned.
      * </p>
      * 
      * @param sortCriteria
-     *        A collection of attributes used for sorting findings.
+     *        Findings attributes used to sort the list of findings returned.
      */
 
     public void setSortCriteria(java.util.Collection<SortCriterion> sortCriteria) {
@@ -124,7 +124,7 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes used for sorting findings.
+     * Findings attributes used to sort the list of findings returned.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -133,7 +133,7 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param sortCriteria
-     *        A collection of attributes used for sorting findings.
+     *        Findings attributes used to sort the list of findings returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -149,11 +149,11 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A collection of attributes used for sorting findings.
+     * Findings attributes used to sort the list of findings returned.
      * </p>
      * 
      * @param sortCriteria
-     *        A collection of attributes used for sorting findings.
+     *        Findings attributes used to sort the list of findings returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -164,15 +164,15 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings operation. For
-     * subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous
-     * response to continue listing data.
+     * Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this parameter
+     * to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the request with the
+     * value of <code>nextToken</code> from the previous response to continue listing data.
      * </p>
      * 
      * @param nextToken
-     *        Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings
-     *        operation. For subsequent calls to the operation, fill nextToken in the request with the value of
-     *        nextToken from the previous response to continue listing data.
+     *        Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this
+     *        parameter to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the
+     *        request with the value of <code>nextToken</code> from the previous response to continue listing data.
      */
 
     public void setNextToken(String nextToken) {
@@ -181,14 +181,14 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings operation. For
-     * subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous
-     * response to continue listing data.
+     * Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this parameter
+     * to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the request with the
+     * value of <code>nextToken</code> from the previous response to continue listing data.
      * </p>
      * 
-     * @return Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings
-     *         operation. For subsequent calls to the operation, fill nextToken in the request with the value of
-     *         nextToken from the previous response to continue listing data.
+     * @return Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this
+     *         parameter to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the
+     *         request with the value of <code>nextToken</code> from the previous response to continue listing data.
      */
 
     public String getNextToken() {
@@ -197,15 +197,15 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings operation. For
-     * subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous
-     * response to continue listing data.
+     * Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this parameter
+     * to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the request with the
+     * value of <code>nextToken</code> from the previous response to continue listing data.
      * </p>
      * 
      * @param nextToken
-     *        Paginates results. Set the value of this parameter to NULL on your first call to the GetFindings
-     *        operation. For subsequent calls to the operation, fill nextToken in the request with the value of
-     *        nextToken from the previous response to continue listing data.
+     *        Paginates results. On your first call to the <code>GetFindings</code> operation, set the value of this
+     *        parameter to <code>NULL</code>. For subsequent calls to the operation, fill <code>nextToken</code> in the
+     *        request with the value of <code>nextToken</code> from the previous response to continue listing data.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -216,11 +216,11 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Indicates the maximum number of items that you want in the response.
+     * The maximum number of findings to return.
      * </p>
      * 
      * @param maxResults
-     *        Indicates the maximum number of items that you want in the response.
+     *        The maximum number of findings to return.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -229,10 +229,10 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Indicates the maximum number of items that you want in the response.
+     * The maximum number of findings to return.
      * </p>
      * 
-     * @return Indicates the maximum number of items that you want in the response.
+     * @return The maximum number of findings to return.
      */
 
     public Integer getMaxResults() {
@@ -241,11 +241,11 @@ public class GetFindingsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Indicates the maximum number of items that you want in the response.
+     * The maximum number of findings to return.
      * </p>
      * 
      * @param maxResults
-     *        Indicates the maximum number of items that you want in the response.
+     *        The maximum number of findings to return.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

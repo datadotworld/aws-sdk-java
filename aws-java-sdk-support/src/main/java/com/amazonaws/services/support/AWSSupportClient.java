@@ -150,32 +150,32 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetIdNotFound").withModeledClass(
-                                    com.amazonaws.services.support.model.AttachmentSetIdNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetIdNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.AttachmentSetIdNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CaseCreationLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.support.model.CaseCreationLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CaseCreationLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.CaseCreationLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AttachmentIdNotFound").withModeledClass(
-                                    com.amazonaws.services.support.model.AttachmentIdNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentIdNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.AttachmentIdNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetExpired").withModeledClass(
-                                    com.amazonaws.services.support.model.AttachmentSetExpiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetExpired").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.AttachmentSetExpiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AttachmentLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.support.model.AttachmentLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.AttachmentLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CaseIdNotFound").withModeledClass(
-                                    com.amazonaws.services.support.model.CaseIdNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CaseIdNotFound").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.CaseIdNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DescribeAttachmentLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.support.model.DescribeAttachmentLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DescribeAttachmentLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.DescribeAttachmentLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withModeledClass(
-                                    com.amazonaws.services.support.model.InternalServerErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServerError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.InternalServerErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetSizeLimitExceeded").withModeledClass(
-                                    com.amazonaws.services.support.model.AttachmentSetSizeLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AttachmentSetSizeLimitExceeded").withExceptionUnmarshaller(
+                                    com.amazonaws.services.support.model.transform.AttachmentSetSizeLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.support.model.AWSSupportException.class));
 
     /**
@@ -432,6 +432,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddAttachmentsToSet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -502,6 +503,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddCommunicationToCase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -634,6 +636,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -695,6 +698,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAttachment");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -774,6 +778,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeCases");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -846,6 +851,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeCommunications");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -910,6 +916,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeServices");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -970,6 +977,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSeverityLevels");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1041,6 +1049,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTrustedAdvisorCheckRefreshStatuses");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1140,6 +1149,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTrustedAdvisorCheckResult");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1201,6 +1211,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTrustedAdvisorCheckSummaries");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1259,6 +1270,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTrustedAdvisorChecks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1343,6 +1355,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RefreshTrustedAdvisorCheck");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1401,6 +1414,7 @@ public class AWSSupportClient extends AmazonWebServiceClient implements AWSSuppo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Support");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ResolveCase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

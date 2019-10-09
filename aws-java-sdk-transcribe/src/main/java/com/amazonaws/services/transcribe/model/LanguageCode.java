@@ -28,7 +28,14 @@ public enum LanguageCode {
     DeDE("de-DE"),
     PtBR("pt-BR"),
     FrFR("fr-FR"),
-    ItIT("it-IT");
+    ItIT("it-IT"),
+    KoKR("ko-KR"),
+    EsES("es-ES"),
+    EnIN("en-IN"),
+    HiIN("hi-IN"),
+    ArSA("ar-SA"),
+    RuRU("ru-RU"),
+    ZhCN("zh-CN");
 
     private String value;
 

@@ -75,8 +75,9 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MarketplaceCommerceAnalyticsException").withModeledClass(
-                                    com.amazonaws.services.marketplacecommerceanalytics.model.MarketplaceCommerceAnalyticsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MarketplaceCommerceAnalyticsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacecommerceanalytics.model.transform.MarketplaceCommerceAnalyticsExceptionUnmarshaller
+                                            .getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.marketplacecommerceanalytics.model.AWSMarketplaceCommerceAnalyticsException.class));
 
     /**
@@ -325,6 +326,7 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Marketplace Commerce Analytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GenerateDataSet");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -386,6 +388,7 @@ public class AWSMarketplaceCommerceAnalyticsClient extends AmazonWebServiceClien
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Marketplace Commerce Analytics");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartSupportDataExport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

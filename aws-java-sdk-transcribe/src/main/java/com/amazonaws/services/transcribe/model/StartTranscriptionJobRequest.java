@@ -42,6 +42,11 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
+     * <p>
+     * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
+     * sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should leave the
+     * <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample rate.
+     * </p>
      */
     private Integer mediaSampleRateHertz;
     /**
@@ -65,8 +70,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
      * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
      * files in the bucket. For more information, see <a href=
-     * "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
+     * </p>
+     * <p>
+     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
+     * your S3 bucket. You can't specify your own encryption key.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -75,6 +84,8 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * </p>
      */
     private String outputBucketName;
+
+    private String outputEncryptionKMSKeyId;
     /**
      * <p>
      * A <code>Settings</code> object that provides optional settings for a transcription job.
@@ -191,9 +202,19 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
+     * <p>
+     * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
+     * sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should leave the
+     * <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample rate.
+     * </p>
      * 
      * @param mediaSampleRateHertz
-     *        The sample rate, in Hertz, of the audio track in the input media file.
+     *        The sample rate, in Hertz, of the audio track in the input media file. </p>
+     *        <p>
+     *        If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify
+     *        the sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should
+     *        leave the <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample
+     *        rate.
      */
 
     public void setMediaSampleRateHertz(Integer mediaSampleRateHertz) {
@@ -204,8 +225,18 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
+     * <p>
+     * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
+     * sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should leave the
+     * <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample rate.
+     * </p>
      * 
-     * @return The sample rate, in Hertz, of the audio track in the input media file.
+     * @return The sample rate, in Hertz, of the audio track in the input media file. </p>
+     *         <p>
+     *         If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify
+     *         the sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should
+     *         leave the <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample
+     *         rate.
      */
 
     public Integer getMediaSampleRateHertz() {
@@ -216,9 +247,19 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The sample rate, in Hertz, of the audio track in the input media file.
      * </p>
+     * <p>
+     * If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify the
+     * sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should leave the
+     * <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample rate.
+     * </p>
      * 
      * @param mediaSampleRateHertz
-     *        The sample rate, in Hertz, of the audio track in the input media file.
+     *        The sample rate, in Hertz, of the audio track in the input media file. </p>
+     *        <p>
+     *        If you do not specify the media sample rate, Amazon Transcribe determines the sample rate. If you specify
+     *        the sample rate, it must match the sample rate detected by Amazon Transcribe. In most cases, you should
+     *        leave the <code>MediaSampleRateHertz</code> field blank and let Amazon Transcribe determine the sample
+     *        rate.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -335,8 +376,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
      * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
      * files in the bucket. For more information, see <a href=
-     * "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
+     * </p>
+     * <p>
+     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
+     * your S3 bucket. You can't specify your own encryption key.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -351,8 +396,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      *        bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
      *        <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to
      *        put files in the bucket. For more information, see <a href=
-     *        "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     *        "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      *        >Permissions Required for IAM User Roles</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed
+     *        in your S3 bucket. You can't specify your own encryption key.
      *        </p>
      *        <p>
      *        If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a
@@ -373,8 +422,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
      * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
      * files in the bucket. For more information, see <a href=
-     * "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
+     * </p>
+     * <p>
+     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
+     * your S3 bucket. You can't specify your own encryption key.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -388,8 +441,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      *         S3 bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in
      *         the <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon
      *         Transcribe to put files in the bucket. For more information, see <a href=
-     *         "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     *         "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      *         >Permissions Required for IAM User Roles</a>.
+     *         </p>
+     *         <p>
+     *         Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are
+     *         placed in your S3 bucket. You can't specify your own encryption key.
      *         </p>
      *         <p>
      *         If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a
@@ -410,8 +467,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      * bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
      * <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to put
      * files in the bucket. For more information, see <a href=
-     * "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     * "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      * >Permissions Required for IAM User Roles</a>.
+     * </p>
+     * <p>
+     * Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed in
+     * your S3 bucket. You can't specify your own encryption key.
      * </p>
      * <p>
      * If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a shareable URL
@@ -426,8 +487,12 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
      *        bucket. When you call the <a>GetTranscriptionJob</a> operation, the operation returns this location in the
      *        <code>TranscriptFileUri</code> field. The S3 bucket must have permissions that allow Amazon Transcribe to
      *        put files in the bucket. For more information, see <a href=
-     *        "https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user"
+     *        "https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user"
      *        >Permissions Required for IAM User Roles</a>.
+     *        </p>
+     *        <p>
+     *        Amazon Transcribe uses the default Amazon S3 key for server-side encryption of transcripts that are placed
+     *        in your S3 bucket. You can't specify your own encryption key.
      *        </p>
      *        <p>
      *        If you don't set the <code>OutputBucketName</code>, Amazon Transcribe generates a pre-signed URL, a
@@ -438,6 +503,32 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
 
     public StartTranscriptionJobRequest withOutputBucketName(String outputBucketName) {
         setOutputBucketName(outputBucketName);
+        return this;
+    }
+
+    /**
+     * @param outputEncryptionKMSKeyId
+     */
+
+    public void setOutputEncryptionKMSKeyId(String outputEncryptionKMSKeyId) {
+        this.outputEncryptionKMSKeyId = outputEncryptionKMSKeyId;
+    }
+
+    /**
+     * @return
+     */
+
+    public String getOutputEncryptionKMSKeyId() {
+        return this.outputEncryptionKMSKeyId;
+    }
+
+    /**
+     * @param outputEncryptionKMSKeyId
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StartTranscriptionJobRequest withOutputEncryptionKMSKeyId(String outputEncryptionKMSKeyId) {
+        setOutputEncryptionKMSKeyId(outputEncryptionKMSKeyId);
         return this;
     }
 
@@ -505,6 +596,8 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
             sb.append("Media: ").append(getMedia()).append(",");
         if (getOutputBucketName() != null)
             sb.append("OutputBucketName: ").append(getOutputBucketName()).append(",");
+        if (getOutputEncryptionKMSKeyId() != null)
+            sb.append("OutputEncryptionKMSKeyId: ").append(getOutputEncryptionKMSKeyId()).append(",");
         if (getSettings() != null)
             sb.append("Settings: ").append(getSettings());
         sb.append("}");
@@ -545,6 +638,10 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
             return false;
         if (other.getOutputBucketName() != null && other.getOutputBucketName().equals(this.getOutputBucketName()) == false)
             return false;
+        if (other.getOutputEncryptionKMSKeyId() == null ^ this.getOutputEncryptionKMSKeyId() == null)
+            return false;
+        if (other.getOutputEncryptionKMSKeyId() != null && other.getOutputEncryptionKMSKeyId().equals(this.getOutputEncryptionKMSKeyId()) == false)
+            return false;
         if (other.getSettings() == null ^ this.getSettings() == null)
             return false;
         if (other.getSettings() != null && other.getSettings().equals(this.getSettings()) == false)
@@ -563,6 +660,7 @@ public class StartTranscriptionJobRequest extends com.amazonaws.AmazonWebService
         hashCode = prime * hashCode + ((getMediaFormat() == null) ? 0 : getMediaFormat().hashCode());
         hashCode = prime * hashCode + ((getMedia() == null) ? 0 : getMedia().hashCode());
         hashCode = prime * hashCode + ((getOutputBucketName() == null) ? 0 : getOutputBucketName().hashCode());
+        hashCode = prime * hashCode + ((getOutputEncryptionKMSKeyId() == null) ? 0 : getOutputEncryptionKMSKeyId().hashCode());
         hashCode = prime * hashCode + ((getSettings() == null) ? 0 : getSettings().hashCode());
         return hashCode;
     }

@@ -161,7 +161,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * </p>
      * <p>
      * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
-     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * go to <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
@@ -220,7 +220,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
      * time blocks for each region, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -245,7 +245,15 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * </p>
      */
     private Integer automatedSnapshotRetentionPeriod;
-
+    /**
+     * <p>
+     * The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     * indefinitely. This setting doesn't change the retention period of existing snapshots.
+     * </p>
+     * <p>
+     * The value must be either -1 or an integer between 1 and 3,653.
+     * </p>
+     */
     private Integer manualSnapshotRetentionPeriod;
     /**
      * <p>
@@ -266,7 +274,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to
      * dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information
      * about node types, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
      * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      */
@@ -275,7 +283,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
      * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
      * Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -319,6 +327,12 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * </p>
      */
     private String snapshotScheduleIdentifier;
+    /**
+     * <p>
+     * The number of nodes specified when provisioning the restored cluster.
+     * </p>
+     */
+    private Integer numberOfNodes;
 
     /**
      * <p>
@@ -1164,7 +1178,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * </p>
      * <p>
      * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
-     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * go to <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
@@ -1193,7 +1207,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        <p>
      *        Default: The default Amazon Redshift cluster parameter group. For information about the default parameter
      *        group, go to <a
-     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      *        Amazon Redshift Parameter Groups</a>.
      *        </p>
      *        <p>
@@ -1227,7 +1241,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * </p>
      * <p>
      * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
-     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * go to <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
@@ -1255,7 +1269,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *         <p>
      *         Default: The default Amazon Redshift cluster parameter group. For information about the default parameter
      *         group, go to <a
-     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     *         href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      *         Amazon Redshift Parameter Groups</a>.
      *         </p>
      *         <p>
@@ -1289,7 +1303,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * </p>
      * <p>
      * Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group,
-     * go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     * go to <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      * Amazon Redshift Parameter Groups</a>.
      * </p>
      * <p>
@@ -1318,7 +1332,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        <p>
      *        Default: The default Amazon Redshift cluster parameter group. For information about the default parameter
      *        group, go to <a
-     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Working with
      *        Amazon Redshift Parameter Groups</a>.
      *        </p>
      *        <p>
@@ -1592,7 +1606,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
      * time blocks for each region, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1609,8 +1623,8 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        </p>
      *        <p>
      *        Default: The value selected for the cluster from which the snapshot was taken. For more information about
-     *        the time blocks for each region, see <a
-     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     *        the time blocks for each region, see <a href=
+     *        "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      *        >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      *        </p>
      *        <p>
@@ -1634,7 +1648,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
      * time blocks for each region, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1651,7 +1665,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *         <p>
      *         Default: The value selected for the cluster from which the snapshot was taken. For more information about
      *         the time blocks for each region, see <a href=
-     *         "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     *         "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      *         >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      *         </p>
      *         <p>
@@ -1675,7 +1689,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * Default: The value selected for the cluster from which the snapshot was taken. For more information about the
      * time blocks for each region, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      * >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1692,8 +1706,8 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        </p>
      *        <p>
      *        Default: The value selected for the cluster from which the snapshot was taken. For more information about
-     *        the time blocks for each region, see <a
-     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
+     *        the time blocks for each region, see <a href=
+     *        "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows"
      *        >Maintenance Windows</a> in Amazon Redshift Cluster Management Guide.
      *        </p>
      *        <p>
@@ -1795,7 +1809,19 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
+     * <p>
+     * The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     * indefinitely. This setting doesn't change the retention period of existing snapshots.
+     * </p>
+     * <p>
+     * The value must be either -1 or an integer between 1 and 3,653.
+     * </p>
+     * 
      * @param manualSnapshotRetentionPeriod
+     *        The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     *        indefinitely. This setting doesn't change the retention period of existing snapshots.</p>
+     *        <p>
+     *        The value must be either -1 or an integer between 1 and 3,653.
      */
 
     public void setManualSnapshotRetentionPeriod(Integer manualSnapshotRetentionPeriod) {
@@ -1803,7 +1829,18 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
-     * @return
+     * <p>
+     * The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     * indefinitely. This setting doesn't change the retention period of existing snapshots.
+     * </p>
+     * <p>
+     * The value must be either -1 or an integer between 1 and 3,653.
+     * </p>
+     * 
+     * @return The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     *         indefinitely. This setting doesn't change the retention period of existing snapshots.</p>
+     *         <p>
+     *         The value must be either -1 or an integer between 1 and 3,653.
      */
 
     public Integer getManualSnapshotRetentionPeriod() {
@@ -1811,7 +1848,19 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
+     * <p>
+     * The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     * indefinitely. This setting doesn't change the retention period of existing snapshots.
+     * </p>
+     * <p>
+     * The value must be either -1 or an integer between 1 and 3,653.
+     * </p>
+     * 
      * @param manualSnapshotRetentionPeriod
+     *        The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained
+     *        indefinitely. This setting doesn't change the retention period of existing snapshots.</p>
+     *        <p>
+     *        The value must be either -1 or an integer between 1 and 3,653.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1878,7 +1927,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to
      * dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information
      * about node types, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
      * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * 
@@ -1892,7 +1941,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type.
      *        You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a
      *        dc2.8large cluster. For more information about node types, see <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     *        "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
      *        About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      */
 
@@ -1912,7 +1961,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to
      * dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information
      * about node types, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
      * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * 
@@ -1925,8 +1974,8 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *         only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type.
      *         You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a
      *         dc2.8large cluster. For more information about node types, see <a href=
-     *         "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
-     *         About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
+     *         "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes"
+     *         > About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      */
 
     public String getNodeType() {
@@ -1945,7 +1994,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to
      * dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information
      * about node types, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
      * About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * 
@@ -1959,7 +2008,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type.
      *        You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a
      *        dc2.8large cluster. For more information about node types, see <a href=
-     *        "http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
+     *        "https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes">
      *        About Clusters and Nodes</a> in the <i>Amazon Redshift Cluster Management Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1973,7 +2022,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
      * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
      * Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -1986,7 +2035,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * @param enhancedVpcRouting
      *        An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
      *        cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
      *        in the Amazon Redshift Cluster Management Guide.</p>
      *        <p>
      *        If this option is <code>true</code>, enhanced VPC routing is enabled.
@@ -2003,7 +2052,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
      * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
      * Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -2015,8 +2064,8 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * 
      * @return An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
      *         cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
-     *         in the Amazon Redshift Cluster Management Guide.</p>
+     *         href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC
+     *         Routing</a> in the Amazon Redshift Cluster Management Guide.</p>
      *         <p>
      *         If this option is <code>true</code>, enhanced VPC routing is enabled.
      *         </p>
@@ -2032,7 +2081,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
      * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
      * Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -2045,7 +2094,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * @param enhancedVpcRouting
      *        An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
      *        cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     *        href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
+     *        href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
      *        in the Amazon Redshift Cluster Management Guide.</p>
      *        <p>
      *        If this option is <code>true</code>, enhanced VPC routing is enabled.
@@ -2064,7 +2113,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * <p>
      * An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster
      * that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a> in the
      * Amazon Redshift Cluster Management Guide.
      * </p>
      * <p>
@@ -2076,8 +2125,8 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * 
      * @return An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a
      *         cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <a
-     *         href="http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC Routing</a>
-     *         in the Amazon Redshift Cluster Management Guide.</p>
+     *         href="https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html">Enhanced VPC
+     *         Routing</a> in the Amazon Redshift Cluster Management Guide.</p>
      *         <p>
      *         If this option is <code>true</code>, enhanced VPC routing is enabled.
      *         </p>
@@ -2343,6 +2392,46 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
     }
 
     /**
+     * <p>
+     * The number of nodes specified when provisioning the restored cluster.
+     * </p>
+     * 
+     * @param numberOfNodes
+     *        The number of nodes specified when provisioning the restored cluster.
+     */
+
+    public void setNumberOfNodes(Integer numberOfNodes) {
+        this.numberOfNodes = numberOfNodes;
+    }
+
+    /**
+     * <p>
+     * The number of nodes specified when provisioning the restored cluster.
+     * </p>
+     * 
+     * @return The number of nodes specified when provisioning the restored cluster.
+     */
+
+    public Integer getNumberOfNodes() {
+        return this.numberOfNodes;
+    }
+
+    /**
+     * <p>
+     * The number of nodes specified when provisioning the restored cluster.
+     * </p>
+     * 
+     * @param numberOfNodes
+     *        The number of nodes specified when provisioning the restored cluster.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RestoreFromClusterSnapshotRequest withNumberOfNodes(Integer numberOfNodes) {
+        setNumberOfNodes(numberOfNodes);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -2403,7 +2492,9 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
         if (getMaintenanceTrackName() != null)
             sb.append("MaintenanceTrackName: ").append(getMaintenanceTrackName()).append(",");
         if (getSnapshotScheduleIdentifier() != null)
-            sb.append("SnapshotScheduleIdentifier: ").append(getSnapshotScheduleIdentifier());
+            sb.append("SnapshotScheduleIdentifier: ").append(getSnapshotScheduleIdentifier()).append(",");
+        if (getNumberOfNodes() != null)
+            sb.append("NumberOfNodes: ").append(getNumberOfNodes());
         sb.append("}");
         return sb.toString();
     }
@@ -2521,6 +2612,10 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
             return false;
         if (other.getSnapshotScheduleIdentifier() != null && other.getSnapshotScheduleIdentifier().equals(this.getSnapshotScheduleIdentifier()) == false)
             return false;
+        if (other.getNumberOfNodes() == null ^ this.getNumberOfNodes() == null)
+            return false;
+        if (other.getNumberOfNodes() != null && other.getNumberOfNodes().equals(this.getNumberOfNodes()) == false)
+            return false;
         return true;
     }
 
@@ -2554,6 +2649,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
         hashCode = prime * hashCode + ((getIamRoles() == null) ? 0 : getIamRoles().hashCode());
         hashCode = prime * hashCode + ((getMaintenanceTrackName() == null) ? 0 : getMaintenanceTrackName().hashCode());
         hashCode = prime * hashCode + ((getSnapshotScheduleIdentifier() == null) ? 0 : getSnapshotScheduleIdentifier().hashCode());
+        hashCode = prime * hashCode + ((getNumberOfNodes() == null) ? 0 : getNumberOfNodes().hashCode());
         return hashCode;
     }
 

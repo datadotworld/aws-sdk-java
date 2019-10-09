@@ -82,44 +82,44 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                     .withSupportsCbor(true)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.InvalidArgumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.InvalidArgumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.ResourceInUseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceInUseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.ResourceInUseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSOptInRequired").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.KMSOptInRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSOptInRequired").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.KMSOptInRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ExpiredIteratorException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.ExpiredIteratorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ExpiredIteratorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.ExpiredIteratorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSAccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.KMSAccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSAccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.KMSAccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSInvalidStateException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.KMSInvalidStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSInvalidStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.KMSInvalidStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSDisabledException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.KMSDisabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSDisabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.KMSDisabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSNotFoundException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.KMSNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.KMSNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.ProvisionedThroughputExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ProvisionedThroughputExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.ProvisionedThroughputExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("KMSThrottlingException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.KMSThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("KMSThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.KMSThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ExpiredNextTokenException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.ExpiredNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ExpiredNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.ExpiredNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.kinesis.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.kinesis.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.kinesis.model.AmazonKinesisException.class));
 
     /**
@@ -378,6 +378,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddTagsToStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -488,6 +489,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -563,6 +565,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DecreaseStreamRetentionPeriod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -647,6 +650,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -720,6 +724,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterStreamConsumer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -782,6 +787,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeLimits");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -859,6 +865,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -941,6 +948,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeStreamConsumer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1003,6 +1011,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeStreamSummary");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1069,6 +1078,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableEnhancedMonitoring");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1135,6 +1145,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableEnhancedMonitoring");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1271,6 +1282,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRecords");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1374,6 +1386,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetShardIterator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1458,6 +1471,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "IncreaseStreamRetentionPeriod");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1533,6 +1547,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListShards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1602,6 +1617,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListStreamConsumers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1673,6 +1689,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListStreams");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1750,6 +1767,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1854,6 +1872,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MergeShards");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1984,6 +2003,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRecord");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2139,6 +2159,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutRecords");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2210,6 +2231,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterStreamConsumer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2282,6 +2304,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveTagsFromStream");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2395,6 +2418,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SplitShard");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2497,6 +2521,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartStreamEncryption");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2577,6 +2602,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopStreamEncryption");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2695,6 +2721,7 @@ public class AmazonKinesisClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Kinesis");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateShardCount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

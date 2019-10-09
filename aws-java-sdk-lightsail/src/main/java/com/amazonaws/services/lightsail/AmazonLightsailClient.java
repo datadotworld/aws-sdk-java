@@ -52,9 +52,9 @@ import com.amazonaws.services.lightsail.model.transform.*;
  * <p>
  * <p>
  * Amazon Lightsail is the easiest way to get started with AWS for developers who just need virtual private servers.
- * Lightsail includes everything you need to launch your project quickly - a virtual machine, SSD-based storage, data
- * transfer, DNS management, and a static IP - for a low, predictable price. You manage those Lightsail servers through
- * the Lightsail console or by using the API or command-line interface (CLI).
+ * Lightsail includes everything you need to launch your project quickly - a virtual machine, a managed database,
+ * SSD-based storage, data transfer, DNS management, and a static IP - for a low, predictable price. You manage those
+ * Lightsail servers through the Lightsail console or by using the API or command-line interface (CLI).
  * </p>
  * <p>
  * For more information about Lightsail concepts and tasks, see the <a
@@ -90,26 +90,26 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OperationFailureException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.OperationFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OperationFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.OperationFailureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthenticatedException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.UnauthenticatedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthenticatedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.UnauthenticatedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.ServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.ServiceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccountSetupInProgressException").withModeledClass(
-                                    com.amazonaws.services.lightsail.model.AccountSetupInProgressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccountSetupInProgressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.lightsail.model.transform.AccountSetupInProgressExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.lightsail.model.AmazonLightsailException.class));
 
     /**
@@ -368,6 +368,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AllocateStaticIp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -391,7 +392,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>attach disk</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by diskName. For more information, see the <a
+     * resource identified by <code>disk name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -447,6 +448,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachDisk");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -472,7 +474,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>attach instances to load balancer</code> operation supports tag-based access control via resource tags
-     * applied to the resource identified by loadBalancerName. For more information, see the <a
+     * applied to the resource identified by <code>load balancer name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -529,6 +531,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachInstancesToLoadBalancer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -553,14 +556,15 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * Once you create and validate your certificate, you can attach it to your load balancer. You can also use this API
-     * to rotate the certificates on your account. Use the <code>AttachLoadBalancerTlsCertificate</code> operation with
-     * the non-attached certificate, and it will replace the existing one and become the attached certificate.
+     * to rotate the certificates on your account. Use the <code>attach load balancer tls certificate</code> operation
+     * with the non-attached certificate, and it will replace the existing one and become the attached certificate.
      * </p>
      * <p>
      * The <code>attach load balancer tls certificate</code> operation supports tag-based access control via resource
-     * tags applied to the resource identified by loadBalancerName. For more information, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
-     * >Lightsail Dev Guide</a>.
+     * tags applied to the resource identified by <code>load balancer name</code>. For more information, see the <a
+     * href=
+     * "https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail
+     * Dev Guide</a>.
      * </p>
      * 
      * @param attachLoadBalancerTlsCertificateRequest
@@ -616,6 +620,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachLoadBalancerTlsCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -689,6 +694,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AttachStaticIp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -711,7 +717,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>close instance public ports</code> operation supports tag-based access control via resource tags
-     * applied to the resource identified by instanceName. For more information, see the <a
+     * applied to the resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -768,6 +774,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CloseInstancePublicPorts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -787,8 +794,24 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Copies an instance or disk snapshot from one AWS Region to another in Amazon Lightsail.
+     * Copies a manual instance or disk snapshot as another manual snapshot, or copies an automatic instance or disk
+     * snapshot as a manual snapshot. This operation can also be used to copy a manual or automatic snapshot of an
+     * instance or a disk from one AWS Region to another in Amazon Lightsail.
      * </p>
+     * <p>
+     * When copying a <i>manual snapshot</i>, be sure to define the <code>source region</code>,
+     * <code>source snapshot name</code>, and <code>target snapshot name</code> parameters.
+     * </p>
+     * <p>
+     * When copying an <i>automatic snapshot</i>, be sure to define the <code>source region</code>,
+     * <code>source resource name</code>, <code>target snapshot name</code>, and either the <code>restore date</code> or
+     * the <code>use latest restorable auto snapshot</code> parameters.
+     * </p>
+     * <note>
+     * <p>
+     * Database snapshots cannot be copied at this time.
+     * </p>
+     * </note>
      * 
      * @param copySnapshotRequest
      * @return Result of the CopySnapshot operation returned by the service.
@@ -841,6 +864,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CopySnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -923,6 +947,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCloudFormationStack");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -942,11 +967,8 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Creates a block storage disk that can be attached to a Lightsail instance in the same Availability Zone (e.g.,
-     * <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the HTTP request to. For
-     * more information, see <a href=
-     * "https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail"
-     * >Regions and Availability Zones in Lightsail</a>.
+     * Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone
+     * (e.g., <code>us-east-2a</code>).
      * </p>
      * <p>
      * The <code>create disk</code> operation supports tag-based access control via request tags. For more information,
@@ -1006,6 +1028,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDisk");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1024,17 +1047,15 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Creates a block storage disk from a disk snapshot that can be attached to a Lightsail instance in the same
-     * Availability Zone (e.g., <code>us-east-2a</code>). The disk is created in the regional endpoint that you send the
-     * HTTP request to. For more information, see <a href=
-     * "https://lightsail.aws.amazon.com/ls/docs/overview/article/understanding-regions-and-availability-zones-in-amazon-lightsail"
-     * >Regions and Availability Zones in Lightsail</a>.
+     * Creates a block storage disk from a manual or automatic snapshot of a disk. The resulting disk can be attached to
+     * an Amazon Lightsail instance in the same Availability Zone (e.g., <code>us-east-2a</code>).
      * </p>
      * <p>
      * The <code>create disk from snapshot</code> operation supports tag-based access control via request tags and
-     * resource tags applied to the resource identified by diskSnapshotName. For more information, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
-     * >Lightsail Dev Guide</a>.
+     * resource tags applied to the resource identified by <code>disk snapshot name</code>. For more information, see
+     * the <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">
+     * Lightsail Dev Guide</a>.
      * </p>
      * 
      * @param createDiskFromSnapshotRequest
@@ -1088,6 +1109,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDiskFromSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1185,6 +1207,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDiskSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1263,6 +1286,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1281,12 +1305,12 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX
-     * record.
+     * Creates one of the following entry records associated with the domain: Address (A), canonical name (CNAME), mail
+     * exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT).
      * </p>
      * <p>
      * The <code>create domain entry</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by domainName. For more information, see the <a
+     * resource identified by <code>domain name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -1342,6 +1366,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDomainEntry");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1421,6 +1446,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateInstanceSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1440,11 +1466,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Creates one or more Amazon Lightsail virtual private servers, or <i>instances</i>. Create instances using active
-     * blueprints. Inactive blueprints are listed to support customers with existing instances but are not necessarily
-     * available for launch of new instances. Blueprints are marked inactive when they become outdated due to operating
-     * system updates or new application releases. Use the get blueprints operation to return a list of available
-     * blueprints.
+     * Creates one or more Amazon Lightsail instances.
      * </p>
      * <p>
      * The <code>create instances</code> operation supports tag-based access control via request tags. For more
@@ -1504,6 +1526,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1522,12 +1545,12 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Uses a specific snapshot as a blueprint for creating one or more new instances that are based on that identical
-     * configuration.
+     * Creates one or more new instances from a manual or automatic snapshot of an instance.
      * </p>
      * <p>
      * The <code>create instances from snapshot</code> operation supports tag-based access control via request tags and
-     * resource tags applied to the resource identified by instanceSnapshotName. For more information, see the <a
+     * resource tags applied to the resource identified by <code>instance snapshot name</code>. For more information,
+     * see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -1584,6 +1607,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateInstancesFromSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1663,6 +1687,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateKeyPair");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1748,6 +1773,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateLoadBalancer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1773,9 +1799,10 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>create load balancer tls certificate</code> operation supports tag-based access control via resource
-     * tags applied to the resource identified by loadBalancerName. For more information, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
-     * >Lightsail Dev Guide</a>.
+     * tags applied to the resource identified by <code>load balancer name</code>. For more information, see the <a
+     * href=
+     * "https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail
+     * Dev Guide</a>.
      * </p>
      * 
      * @param createLoadBalancerTlsCertificateRequest
@@ -1831,6 +1858,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateLoadBalancerTlsCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1911,6 +1939,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1997,6 +2026,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRelationalDatabaseFromSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2079,6 +2109,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRelationalDatabaseSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2086,6 +2117,77 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
             HttpResponseHandler<AmazonWebServiceResponse<CreateRelationalDatabaseSnapshotResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new CreateRelationalDatabaseSnapshotResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes an automatic snapshot for an instance or disk.
+     * </p>
+     * 
+     * @param deleteAutoSnapshotRequest
+     * @return Result of the DeleteAutoSnapshot operation returned by the service.
+     * @throws ServiceException
+     *         A general service exception.
+     * @throws InvalidInputException
+     *         Lightsail throws this exception when user input does not conform to the validation rules of an input
+     *         field.</p> <note>
+     *         <p>
+     *         Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your AWS Region
+     *         configuration to us-east-1 to create, view, or edit these resources.
+     *         </p>
+     * @throws NotFoundException
+     *         Lightsail throws this exception when it cannot find a resource.
+     * @throws OperationFailureException
+     *         Lightsail throws this exception when an operation fails to execute.
+     * @throws AccessDeniedException
+     *         Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to
+     *         access a resource.
+     * @throws UnauthenticatedException
+     *         Lightsail throws this exception when the user has not been authenticated.
+     * @sample AmazonLightsail.DeleteAutoSnapshot
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteAutoSnapshot" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteAutoSnapshotResult deleteAutoSnapshot(DeleteAutoSnapshotRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteAutoSnapshot(request);
+    }
+
+    @SdkInternalApi
+    final DeleteAutoSnapshotResult executeDeleteAutoSnapshot(DeleteAutoSnapshotRequest deleteAutoSnapshotRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteAutoSnapshotRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteAutoSnapshotRequest> request = null;
+        Response<DeleteAutoSnapshotResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteAutoSnapshotRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteAutoSnapshotRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAutoSnapshot");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteAutoSnapshotResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteAutoSnapshotResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -2108,7 +2210,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </note>
      * <p>
      * The <code>delete disk</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by diskName. For more information, see the <a
+     * resource identified by <code>disk name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2164,6 +2266,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDisk");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2192,7 +2295,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>delete disk snapshot</code> operation supports tag-based access control via resource tags applied to
-     * the resource identified by diskSnapshotName. For more information, see the <a
+     * the resource identified by <code>disk snapshot name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2248,6 +2351,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDiskSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2270,7 +2374,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>delete domain</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by domainName. For more information, see the <a
+     * resource identified by <code>domain name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2326,6 +2430,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2348,7 +2453,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>delete domain entry</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by domainName. For more information, see the <a
+     * resource identified by <code>domain name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2404,6 +2509,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDomainEntry");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2422,11 +2528,11 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Deletes a specific Amazon Lightsail virtual private server, or <i>instance</i>.
+     * Deletes an Amazon Lightsail instance.
      * </p>
      * <p>
      * The <code>delete instance</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by instanceName. For more information, see the <a
+     * resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2482,6 +2588,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2504,7 +2611,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>delete instance snapshot</code> operation supports tag-based access control via resource tags applied
-     * to the resource identified by instanceSnapshotName. For more information, see the <a
+     * to the resource identified by <code>instance snapshot name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2560,6 +2667,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteInstanceSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2583,7 +2691,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>delete key pair</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by keyPairName. For more information, see the <a
+     * resource identified by <code>key pair name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2639,6 +2747,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteKeyPair");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2657,12 +2766,95 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
+     * Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to
+     * authenticate an instance. This operation enables the Lightsail browser-based SSH or RDP clients to connect to the
+     * instance after a host key mismatch.
+     * </p>
+     * <important>
+     * <p>
+     * Perform this operation only if you were expecting the host key or certificate mismatch or if you are familiar
+     * with the new host key or certificate on the instance. For more information, see <a href=
+     * "https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection"
+     * >Troubleshooting connection issues when using the Amazon Lightsail browser-based SSH or RDP client</a>.
+     * </p>
+     * </important>
+     * 
+     * @param deleteKnownHostKeysRequest
+     * @return Result of the DeleteKnownHostKeys operation returned by the service.
+     * @throws ServiceException
+     *         A general service exception.
+     * @throws InvalidInputException
+     *         Lightsail throws this exception when user input does not conform to the validation rules of an input
+     *         field.</p> <note>
+     *         <p>
+     *         Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your AWS Region
+     *         configuration to us-east-1 to create, view, or edit these resources.
+     *         </p>
+     * @throws NotFoundException
+     *         Lightsail throws this exception when it cannot find a resource.
+     * @throws OperationFailureException
+     *         Lightsail throws this exception when an operation fails to execute.
+     * @throws AccessDeniedException
+     *         Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to
+     *         access a resource.
+     * @throws AccountSetupInProgressException
+     *         Lightsail throws this exception when an account is still in the setup in progress state.
+     * @throws UnauthenticatedException
+     *         Lightsail throws this exception when the user has not been authenticated.
+     * @sample AmazonLightsail.DeleteKnownHostKeys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteKnownHostKeys" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public DeleteKnownHostKeysResult deleteKnownHostKeys(DeleteKnownHostKeysRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeleteKnownHostKeys(request);
+    }
+
+    @SdkInternalApi
+    final DeleteKnownHostKeysResult executeDeleteKnownHostKeys(DeleteKnownHostKeysRequest deleteKnownHostKeysRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deleteKnownHostKeysRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteKnownHostKeysRequest> request = null;
+        Response<DeleteKnownHostKeysResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteKnownHostKeysRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deleteKnownHostKeysRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteKnownHostKeys");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeleteKnownHostKeysResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeleteKnownHostKeysResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted,
      * you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
      * </p>
      * <p>
      * The <code>delete load balancer</code> operation supports tag-based access control via resource tags applied to
-     * the resource identified by loadBalancerName. For more information, see the <a
+     * the resource identified by <code>load balancer name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -2718,6 +2910,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteLoadBalancer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2740,9 +2933,10 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>delete load balancer tls certificate</code> operation supports tag-based access control via resource
-     * tags applied to the resource identified by loadBalancerName. For more information, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
-     * >Lightsail Dev Guide</a>.
+     * tags applied to the resource identified by <code>load balancer name</code>. For more information, see the <a
+     * href=
+     * "https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail
+     * Dev Guide</a>.
      * </p>
      * 
      * @param deleteLoadBalancerTlsCertificateRequest
@@ -2798,6 +2992,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteLoadBalancerTlsCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2878,6 +3073,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2959,6 +3155,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRelationalDatabaseSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2983,7 +3180,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>detach disk</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by diskName. For more information, see the <a
+     * resource identified by <code>disk name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -3039,6 +3236,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachDisk");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3064,9 +3262,10 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>detach instances from load balancer</code> operation supports tag-based access control via resource
-     * tags applied to the resource identified by loadBalancerName. For more information, see the <a
-     * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
-     * >Lightsail Dev Guide</a>.
+     * tags applied to the resource identified by <code>load balancer name</code>. For more information, see the <a
+     * href=
+     * "https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags">Lightsail
+     * Dev Guide</a>.
      * </p>
      * 
      * @param detachInstancesFromLoadBalancerRequest
@@ -3122,6 +3321,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachInstancesFromLoadBalancer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3195,12 +3395,86 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DetachStaticIp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
             HttpResponseHandler<AmazonWebServiceResponse<DetachStaticIpResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DetachStaticIpResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Disables an add-on for an Amazon Lightsail resource. For more information, see the <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * 
+     * @param disableAddOnRequest
+     * @return Result of the DisableAddOn operation returned by the service.
+     * @throws ServiceException
+     *         A general service exception.
+     * @throws InvalidInputException
+     *         Lightsail throws this exception when user input does not conform to the validation rules of an input
+     *         field.</p> <note>
+     *         <p>
+     *         Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your AWS Region
+     *         configuration to us-east-1 to create, view, or edit these resources.
+     *         </p>
+     * @throws NotFoundException
+     *         Lightsail throws this exception when it cannot find a resource.
+     * @throws OperationFailureException
+     *         Lightsail throws this exception when an operation fails to execute.
+     * @throws AccessDeniedException
+     *         Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to
+     *         access a resource.
+     * @throws UnauthenticatedException
+     *         Lightsail throws this exception when the user has not been authenticated.
+     * @sample AmazonLightsail.DisableAddOn
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DisableAddOn" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DisableAddOnResult disableAddOn(DisableAddOnRequest request) {
+        request = beforeClientExecution(request);
+        return executeDisableAddOn(request);
+    }
+
+    @SdkInternalApi
+    final DisableAddOnResult executeDisableAddOn(DisableAddOnRequest disableAddOnRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(disableAddOnRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisableAddOnRequest> request = null;
+        Response<DisableAddOnResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisableAddOnRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(disableAddOnRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableAddOn");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DisableAddOnResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DisableAddOnResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3267,6 +3541,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DownloadDefaultKeyPair");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3274,6 +3549,79 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
             HttpResponseHandler<AmazonWebServiceResponse<DownloadDefaultKeyPairResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new DownloadDefaultKeyPairResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
+     * </p>
+     * 
+     * @param enableAddOnRequest
+     * @return Result of the EnableAddOn operation returned by the service.
+     * @throws ServiceException
+     *         A general service exception.
+     * @throws InvalidInputException
+     *         Lightsail throws this exception when user input does not conform to the validation rules of an input
+     *         field.</p> <note>
+     *         <p>
+     *         Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your AWS Region
+     *         configuration to us-east-1 to create, view, or edit these resources.
+     *         </p>
+     * @throws NotFoundException
+     *         Lightsail throws this exception when it cannot find a resource.
+     * @throws OperationFailureException
+     *         Lightsail throws this exception when an operation fails to execute.
+     * @throws AccessDeniedException
+     *         Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to
+     *         access a resource.
+     * @throws UnauthenticatedException
+     *         Lightsail throws this exception when the user has not been authenticated.
+     * @sample AmazonLightsail.EnableAddOn
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/EnableAddOn" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public EnableAddOnResult enableAddOn(EnableAddOnRequest request) {
+        request = beforeClientExecution(request);
+        return executeEnableAddOn(request);
+    }
+
+    @SdkInternalApi
+    final EnableAddOnResult executeEnableAddOn(EnableAddOnRequest enableAddOnRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(enableAddOnRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<EnableAddOnRequest> request = null;
+        Response<EnableAddOnResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new EnableAddOnRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(enableAddOnRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableAddOn");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<EnableAddOnResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new EnableAddOnResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
@@ -3299,7 +3647,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * <p/>
      * <p>
      * The <code>export snapshot</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by sourceSnapshotName. For more information, see the <a
+     * resource identified by <code>source snapshot name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -3361,6 +3709,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ExportSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3433,6 +3782,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetActiveNames");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3451,10 +3801,90 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
 
     /**
      * <p>
-     * Returns the list of available instance images, or <i>blueprints</i>. You can use a blueprint to create a new
-     * virtual private server already running a specific operating system, as well as a preinstalled app or development
-     * stack. The software each instance is running depends on the blueprint image you choose.
+     * Returns the available automatic snapshots for the specified resource name. For more information, see the <a
+     * href="https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots"
+     * >Lightsail Dev Guide</a>.
      * </p>
+     * 
+     * @param getAutoSnapshotsRequest
+     * @return Result of the GetAutoSnapshots operation returned by the service.
+     * @throws ServiceException
+     *         A general service exception.
+     * @throws InvalidInputException
+     *         Lightsail throws this exception when user input does not conform to the validation rules of an input
+     *         field.</p> <note>
+     *         <p>
+     *         Domain-related APIs are only available in the N. Virginia (us-east-1) Region. Please set your AWS Region
+     *         configuration to us-east-1 to create, view, or edit these resources.
+     *         </p>
+     * @throws NotFoundException
+     *         Lightsail throws this exception when it cannot find a resource.
+     * @throws OperationFailureException
+     *         Lightsail throws this exception when an operation fails to execute.
+     * @throws AccessDeniedException
+     *         Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to
+     *         access a resource.
+     * @throws UnauthenticatedException
+     *         Lightsail throws this exception when the user has not been authenticated.
+     * @sample AmazonLightsail.GetAutoSnapshots
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/GetAutoSnapshots" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public GetAutoSnapshotsResult getAutoSnapshots(GetAutoSnapshotsRequest request) {
+        request = beforeClientExecution(request);
+        return executeGetAutoSnapshots(request);
+    }
+
+    @SdkInternalApi
+    final GetAutoSnapshotsResult executeGetAutoSnapshots(GetAutoSnapshotsRequest getAutoSnapshotsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(getAutoSnapshotsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<GetAutoSnapshotsRequest> request = null;
+        Response<GetAutoSnapshotsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetAutoSnapshotsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(getAutoSnapshotsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAutoSnapshots");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<GetAutoSnapshotsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new GetAutoSnapshotsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Returns the list of available instance images, or <i>blueprints</i>. You can use a blueprint to create a new
+     * instance already running a specific operating system, as well as a preinstalled app or development stack. The
+     * software each instance is running depends on the blueprint image you choose.
+     * </p>
+     * <note>
+     * <p>
+     * Use active blueprints when creating new instances. Inactive blueprints are listed to support customers with
+     * existing instances and are not necessarily available to create new instances. Blueprints are marked inactive when
+     * they become outdated due to operating system updates or new application releases.
+     * </p>
+     * </note>
      * 
      * @param getBlueprintsRequest
      * @return Result of the GetBlueprints operation returned by the service.
@@ -3507,6 +3937,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBlueprints");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3580,6 +4011,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetBundles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3657,6 +4089,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCloudFormationStackRecords");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3730,6 +4163,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDisk");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3802,6 +4236,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDiskSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3878,6 +4313,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDiskSnapshots");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3954,6 +4390,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDisks");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4026,6 +4463,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4098,6 +4536,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDomains");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4175,6 +4614,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetExportSnapshotRecords");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4248,6 +4688,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4270,7 +4711,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>get instance access details</code> operation supports tag-based access control via resource tags
-     * applied to the resource identified by instanceName. For more information, see the <a
+     * applied to the resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -4327,6 +4768,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstanceAccessDetails");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4400,6 +4842,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstanceMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4473,6 +4916,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstancePortStates");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4546,6 +4990,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstanceSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4618,6 +5063,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstanceSnapshots");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4690,6 +5136,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstanceState");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4762,6 +5209,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4834,6 +5282,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetKeyPair");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4906,6 +5355,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetKeyPairs");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -4978,6 +5428,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLoadBalancer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5051,6 +5502,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLoadBalancerMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5132,6 +5584,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLoadBalancerTlsCertificates");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5209,6 +5662,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLoadBalancers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5282,6 +5736,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetOperation");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5359,6 +5814,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetOperations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5432,6 +5888,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetOperationsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5506,6 +5963,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRegions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5578,6 +6036,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5657,6 +6116,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseBlueprints");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5735,6 +6195,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseBundles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5809,6 +6270,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseEvents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5883,6 +6345,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseLogEvents");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5958,6 +6421,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseLogStreams");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -5980,8 +6444,8 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * Returns the current, previous, or pending versions of the master user password for a Lightsail database.
      * </p>
      * <p>
-     * The <code>asdf</code> operation GetRelationalDatabaseMasterUserPassword supports tag-based access control via
-     * resource tags applied to the resource identified by relationalDatabaseName.
+     * The <code>GetRelationalDatabaseMasterUserPassword</code> operation supports tag-based access control via resource
+     * tags applied to the resource identified by relationalDatabaseName.
      * </p>
      * 
      * @param getRelationalDatabaseMasterUserPasswordRequest
@@ -6038,6 +6502,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseMasterUserPassword");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6113,6 +6578,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6194,6 +6660,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseParameters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6268,6 +6735,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6342,6 +6810,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabaseSnapshots");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6415,6 +6884,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRelationalDatabases");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6488,6 +6958,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetStaticIp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6560,6 +7031,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetStaticIps");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6632,6 +7104,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportKeyPair");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6704,6 +7177,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "IsVpcPeered");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6726,7 +7200,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>open instance public ports</code> operation supports tag-based access control via resource tags applied
-     * to the resource identified by instanceName. For more information, see the <a
+     * to the resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -6783,6 +7257,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "OpenInstancePublicPorts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6856,6 +7331,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PeerVpc");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6879,7 +7355,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>put instance public ports</code> operation supports tag-based access control via resource tags applied
-     * to the resource identified by instanceName. For more information, see the <a
+     * to the resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -6935,6 +7411,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutInstancePublicPorts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -6958,7 +7435,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>reboot instance</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by instanceName. For more information, see the <a
+     * resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7014,6 +7491,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RebootInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7093,6 +7571,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RebootRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7166,6 +7645,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ReleaseStaticIp");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7197,7 +7677,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </note>
      * <p>
      * The <code>start instance</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by instanceName. For more information, see the <a
+     * resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7253,6 +7733,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7333,6 +7814,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7364,7 +7846,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </note>
      * <p>
      * The <code>stop instance</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by instanceName. For more information, see the <a
+     * resource identified by <code>instance name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7420,6 +7902,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopInstance");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7498,6 +7981,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7524,7 +8008,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>tag resource</code> operation supports tag-based access control via request tags and resource tags
-     * applied to the resource identified by resourceName. For more information, see the <a
+     * applied to the resource identified by <code>resource name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7580,6 +8064,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7652,6 +8137,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UnpeerVpc");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7674,7 +8160,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>untag resource</code> operation supports tag-based access control via request tags and resource tags
-     * applied to the resource identified by resourceName. For more information, see the <a
+     * applied to the resource identified by <code>resource name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7730,6 +8216,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7752,7 +8239,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>update domain entry</code> operation supports tag-based access control via resource tags applied to the
-     * resource identified by domainName. For more information, see the <a
+     * resource identified by <code>domain name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7808,6 +8295,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateDomainEntry");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7830,7 +8318,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
      * </p>
      * <p>
      * The <code>update load balancer attribute</code> operation supports tag-based access control via resource tags
-     * applied to the resource identified by loadBalancerName. For more information, see the <a
+     * applied to the resource identified by <code>load balancer name</code>. For more information, see the <a
      * href="https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags"
      * >Lightsail Dev Guide</a>.
      * </p>
@@ -7887,6 +8375,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateLoadBalancerAttribute");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -7971,6 +8460,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRelationalDatabase");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -8059,6 +8549,7 @@ public class AmazonLightsailClient extends AmazonWebServiceClient implements Ama
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Lightsail");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRelationalDatabaseParameters");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

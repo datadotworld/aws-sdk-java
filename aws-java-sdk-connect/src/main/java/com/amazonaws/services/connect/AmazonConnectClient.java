@@ -95,38 +95,38 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UserNotFoundException").withModeledClass(
-                                    com.amazonaws.services.connect.model.UserNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UserNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.UserNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OutboundContactNotPermittedException").withModeledClass(
-                                    com.amazonaws.services.connect.model.OutboundContactNotPermittedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OutboundContactNotPermittedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.OutboundContactNotPermittedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.connect.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.connect.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.connect.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DestinationNotAllowedException").withModeledClass(
-                                    com.amazonaws.services.connect.model.DestinationNotAllowedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DestinationNotAllowedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.DestinationNotAllowedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                                    com.amazonaws.services.connect.model.ThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.ThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ContactNotFoundException").withModeledClass(
-                                    com.amazonaws.services.connect.model.ContactNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ContactNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.ContactNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateResourceException").withModeledClass(
-                                    com.amazonaws.services.connect.model.DuplicateResourceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateResourceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.DuplicateResourceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withModeledClass(
-                                    com.amazonaws.services.connect.model.InternalServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.InternalServiceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.connect.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.connect.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.connect.model.AmazonConnectException.class));
 
     public static AmazonConnectClientBuilder builder() {
@@ -225,6 +225,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -287,6 +288,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -350,6 +352,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUser");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -413,6 +416,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUserHierarchyGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -478,6 +482,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeUserHierarchyStructure");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -537,6 +542,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetContactAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -602,6 +608,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCurrentMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -666,6 +673,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetFederationToken");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -731,6 +739,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetMetricData");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -794,6 +803,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListRoutingProfiles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -857,6 +867,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListSecurityProfiles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -921,6 +932,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListUserHierarchyGroups");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -984,6 +996,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListUsers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1060,6 +1073,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartOutboundVoiceContact");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1126,6 +1140,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopContact");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1206,6 +1221,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateContactAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1269,6 +1285,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUserHierarchy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1332,6 +1349,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUserIdentityInfo");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1395,6 +1413,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUserPhoneConfig");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1459,6 +1478,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUserRoutingProfile");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1523,6 +1543,7 @@ public class AmazonConnectClient extends AmazonWebServiceClient implements Amazo
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Connect");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateUserSecurityProfiles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -36,12 +36,19 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
     private String arn;
     /**
      * <p>
-     * The authentication method used to validate a user for the server that was specified. listed. This can include
-     * Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values
-     * include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     * The authentication method used to validate a user for the server that was specified. This can include Secure
+     * Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values include
+     * <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * </p>
      */
     private String identityProviderType;
+    /**
+     * <p>
+     * The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     * endpoint, your server isn't accessible over the public internet.
+     * </p>
+     */
+    private String endpointType;
     /**
      * <p>
      * The AWS Identity and Access Management entity that allows the server to turn on Amazon CloudWatch logging.
@@ -61,7 +68,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      * of <code>OFFLINE</code> means that the server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -117,15 +124,15 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method used to validate a user for the server that was specified. listed. This can include
-     * Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values
-     * include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     * The authentication method used to validate a user for the server that was specified. This can include Secure
+     * Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values include
+     * <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * </p>
      * 
      * @param identityProviderType
-     *        The authentication method used to validate a user for the server that was specified. listed. This can
-     *        include Secure Shell (SSH), user name and password combinations, or your own custom authentication method.
-     *        Valid values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     *        The authentication method used to validate a user for the server that was specified. This can include
+     *        Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid
+     *        values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * @see IdentityProviderType
      */
 
@@ -135,14 +142,14 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method used to validate a user for the server that was specified. listed. This can include
-     * Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values
-     * include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     * The authentication method used to validate a user for the server that was specified. This can include Secure
+     * Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values include
+     * <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * </p>
      * 
-     * @return The authentication method used to validate a user for the server that was specified. listed. This can
-     *         include Secure Shell (SSH), user name and password combinations, or your own custom authentication
-     *         method. Valid values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     * @return The authentication method used to validate a user for the server that was specified. This can include
+     *         Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid
+     *         values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * @see IdentityProviderType
      */
 
@@ -152,15 +159,15 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method used to validate a user for the server that was specified. listed. This can include
-     * Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values
-     * include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     * The authentication method used to validate a user for the server that was specified. This can include Secure
+     * Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values include
+     * <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * </p>
      * 
      * @param identityProviderType
-     *        The authentication method used to validate a user for the server that was specified. listed. This can
-     *        include Secure Shell (SSH), user name and password combinations, or your own custom authentication method.
-     *        Valid values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     *        The authentication method used to validate a user for the server that was specified. This can include
+     *        Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid
+     *        values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see IdentityProviderType
      */
@@ -172,21 +179,88 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The authentication method used to validate a user for the server that was specified. listed. This can include
-     * Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values
-     * include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     * The authentication method used to validate a user for the server that was specified. This can include Secure
+     * Shell (SSH), user name and password combinations, or your own custom authentication method. Valid values include
+     * <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * </p>
      * 
      * @param identityProviderType
-     *        The authentication method used to validate a user for the server that was specified. listed. This can
-     *        include Secure Shell (SSH), user name and password combinations, or your own custom authentication method.
-     *        Valid values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
+     *        The authentication method used to validate a user for the server that was specified. This can include
+     *        Secure Shell (SSH), user name and password combinations, or your own custom authentication method. Valid
+     *        values include <code>SERVICE_MANAGED</code> or <code>API_GATEWAY</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see IdentityProviderType
      */
 
     public ListedServer withIdentityProviderType(IdentityProviderType identityProviderType) {
         this.identityProviderType = identityProviderType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     * endpoint, your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *        endpoint, your server isn't accessible over the public internet.
+     * @see EndpointType
+     */
+
+    public void setEndpointType(String endpointType) {
+        this.endpointType = endpointType;
+    }
+
+    /**
+     * <p>
+     * The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     * endpoint, your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @return The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *         endpoint, your server isn't accessible over the public internet.
+     * @see EndpointType
+     */
+
+    public String getEndpointType() {
+        return this.endpointType;
+    }
+
+    /**
+     * <p>
+     * The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     * endpoint, your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *        endpoint, your server isn't accessible over the public internet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EndpointType
+     */
+
+    public ListedServer withEndpointType(String endpointType) {
+        setEndpointType(endpointType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     * endpoint, your server isn't accessible over the public internet.
+     * </p>
+     * 
+     * @param endpointType
+     *        The type of VPC endpoint that your SFTP server is connected to. If your SFTP server is connected to a VPC
+     *        endpoint, your server isn't accessible over the public internet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see EndpointType
+     */
+
+    public ListedServer withEndpointType(EndpointType endpointType) {
+        this.endpointType = endpointType.toString();
         return this;
     }
 
@@ -278,7 +352,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      * of <code>OFFLINE</code> means that the server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -288,7 +362,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      *        <code>ONLINE</code>&gt; indicates that the server can accept jobs and transfer files. A <code>State</code>
      *        value of <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *        <p>
-     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *        intermediate state, either not fully able to respond, or not fully offline. The values of
      *        <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @see State
@@ -305,7 +379,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      * of <code>OFFLINE</code> means that the server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -315,7 +389,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      *         <code>State</code> value of <code>OFFLINE</code> means that the server cannot perform file transfer
      *         operations.</p>
      *         <p>
-     *         The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *         The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *         intermediate state, either not fully able to respond, or not fully offline. The values of
      *         <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @see State
@@ -332,7 +406,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      * of <code>OFFLINE</code> means that the server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -342,7 +416,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      *        <code>ONLINE</code>&gt; indicates that the server can accept jobs and transfer files. A <code>State</code>
      *        value of <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *        <p>
-     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *        intermediate state, either not fully able to respond, or not fully offline. The values of
      *        <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -361,7 +435,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      * of <code>OFFLINE</code> means that the server cannot perform file transfer operations.
      * </p>
      * <p>
-     * The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an intermediate
+     * The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an intermediate
      * state, either not fully able to respond, or not fully offline. The values of <code>START_FAILED</code> or
      * <code>STOP_FAILED</code> can indicate an error condition.
      * </p>
@@ -371,7 +445,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
      *        <code>ONLINE</code>&gt; indicates that the server can accept jobs and transfer files. A <code>State</code>
      *        value of <code>OFFLINE</code> means that the server cannot perform file transfer operations.</p>
      *        <p>
-     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicated that the server is in an
+     *        The states of <code>STARTING</code> and <code>STOPPING</code> indicate that the server is in an
      *        intermediate state, either not fully able to respond, or not fully offline. The values of
      *        <code>START_FAILED</code> or <code>STOP_FAILED</code> can indicate an error condition.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -445,6 +519,8 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
             sb.append("Arn: ").append(getArn()).append(",");
         if (getIdentityProviderType() != null)
             sb.append("IdentityProviderType: ").append(getIdentityProviderType()).append(",");
+        if (getEndpointType() != null)
+            sb.append("EndpointType: ").append(getEndpointType()).append(",");
         if (getLoggingRole() != null)
             sb.append("LoggingRole: ").append(getLoggingRole()).append(",");
         if (getServerId() != null)
@@ -475,6 +551,10 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getIdentityProviderType() != null && other.getIdentityProviderType().equals(this.getIdentityProviderType()) == false)
             return false;
+        if (other.getEndpointType() == null ^ this.getEndpointType() == null)
+            return false;
+        if (other.getEndpointType() != null && other.getEndpointType().equals(this.getEndpointType()) == false)
+            return false;
         if (other.getLoggingRole() == null ^ this.getLoggingRole() == null)
             return false;
         if (other.getLoggingRole() != null && other.getLoggingRole().equals(this.getLoggingRole()) == false)
@@ -501,6 +581,7 @@ public class ListedServer implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getArn() == null) ? 0 : getArn().hashCode());
         hashCode = prime * hashCode + ((getIdentityProviderType() == null) ? 0 : getIdentityProviderType().hashCode());
+        hashCode = prime * hashCode + ((getEndpointType() == null) ? 0 : getEndpointType().hashCode());
         hashCode = prime * hashCode + ((getLoggingRole() == null) ? 0 : getLoggingRole().hashCode());
         hashCode = prime * hashCode + ((getServerId() == null) ? 0 : getServerId().hashCode());
         hashCode = prime * hashCode + ((getState() == null) ? 0 : getState().hashCode());

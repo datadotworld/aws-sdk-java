@@ -162,6 +162,46 @@
       },
       "syncReturnType" : "DescribeReportDefinitionsResult"
     },
+    "ModifyReportDefinition" : {
+      "asyncCallableType" : "java.util.concurrent.Callable<ModifyReportDefinitionResult>",
+      "asyncFutureType" : "java.util.concurrent.Future<ModifyReportDefinitionResult>",
+      "asyncHandlerType" : "com.amazonaws.handlers.AsyncHandler<ModifyReportDefinitionRequest, ModifyReportDefinitionResult>",
+      "asyncReturnType" : "ModifyReportDefinitionResult",
+      "authenticated" : true,
+      "deprecated" : false,
+      "documentation" : "<p>Allows you to programatically update your report preferences.</p>",
+      "endpointDiscovery" : null,
+      "endpointOperation" : false,
+      "endpointTrait" : null,
+      "exceptions" : [ {
+        "exceptionName" : "InternalErrorException",
+        "documentation" : "<p>An error on the server occurred during the processing of your request. Try again later.</p>",
+        "httpStatusCode" : null
+      }, {
+        "exceptionName" : "ValidationException",
+        "documentation" : "<p>The input fails to satisfy the constraints specified by an AWS service.</p>",
+        "httpStatusCode" : null
+      } ],
+      "hasBlobMemberAsPayload" : false,
+      "hostPrefixProcessor" : null,
+      "input" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "ModifyReportDefinitionRequest",
+        "variableName" : "modifyReportDefinitionRequest",
+        "variableType" : "ModifyReportDefinitionRequest",
+        "documentation" : "",
+        "simpleType" : "ModifyReportDefinitionRequest",
+        "variableSetterType" : "ModifyReportDefinitionRequest"
+      },
+      "inputStreamPropertyName" : null,
+      "methodName" : "modifyReportDefinition",
+      "operationName" : "ModifyReportDefinition",
+      "returnType" : {
+        "returnType" : "ModifyReportDefinitionResult",
+        "documentation" : null
+      },
+      "syncReturnType" : "ModifyReportDefinitionResult"
+    },
     "PutReportDefinition" : {
       "asyncCallableType" : "java.util.concurrent.Callable<PutReportDefinitionResult>",
       "asyncFutureType" : "java.util.concurrent.Future<PutReportDefinitionResult>",
@@ -252,10 +292,14 @@
       }, {
         "name" : "ApNortheast3",
         "value" : "ap-northeast-3"
+      }, {
+        "name" : "ApEast1",
+        "value" : "ap-east-1"
       } ],
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -305,6 +349,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -354,6 +399,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -394,6 +440,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -430,6 +477,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ReportName",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ReportName",
           "uri" : false
@@ -498,6 +546,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ReportName",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ReportName",
             "uri" : false
@@ -572,6 +621,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -601,6 +651,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ResponseMessage",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ResponseMessage",
           "uri" : false
@@ -669,6 +720,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ResponseMessage",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ResponseMessage",
             "uri" : false
@@ -746,6 +798,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -782,6 +835,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "MaxResults",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "MaxResults",
           "uri" : false
@@ -848,6 +902,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "NextToken",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "NextToken",
           "uri" : false
@@ -916,6 +971,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "MaxResults",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "MaxResults",
             "uri" : false
@@ -983,6 +1039,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "NextToken",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "NextToken",
             "uri" : false
@@ -1057,6 +1114,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1086,6 +1144,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ReportDefinitions",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ReportDefinitions",
           "uri" : false
@@ -1123,6 +1182,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -1233,6 +1293,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "NextToken",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "NextToken",
           "uri" : false
@@ -1301,6 +1362,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "NextToken",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "NextToken",
             "uri" : false
@@ -1368,6 +1430,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ReportDefinitions",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ReportDefinitions",
             "uri" : false
@@ -1405,6 +1468,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -1526,6 +1590,7 @@
       "errorCode" : "DuplicateReportNameException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1563,6 +1628,7 @@
       "errorCode" : "InternalErrorException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1586,6 +1652,363 @@
       },
       "wrapper" : false
     },
+    "ModifyReportDefinitionRequest" : {
+      "c2jName" : "ModifyReportDefinitionRequest",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : {
+        "action" : "ModifyReportDefinition",
+        "locationName" : null,
+        "requestUri" : "/",
+        "target" : "AWSOrigamiServiceGatewayService.ModifyReportDefinition",
+        "verb" : "POST",
+        "xmlNameSpaceUri" : null
+      },
+      "members" : [ {
+        "c2jName" : "ReportName",
+        "c2jShape" : "ReportName",
+        "deprecated" : false,
+        "documentation" : "",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**\n@param reportName \n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withReportName",
+        "getterDocumentation" : "/**\n@return */",
+        "getterMethodName" : "getReportName",
+        "getterModel" : {
+          "returnType" : "String",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "ReportName",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "ReportName",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "String",
+        "marshallingType" : "STRING",
+        "name" : "ReportName",
+        "sensitive" : false,
+        "setterDocumentation" : "/**\n@param reportName */",
+        "setterMethodName" : "setReportName",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "reportName",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : true,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**\n@param reportName \n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "String",
+          "variableName" : "reportName",
+          "variableType" : "String",
+          "documentation" : "",
+          "simpleType" : "String",
+          "variableSetterType" : "String"
+        },
+        "xmlNameSpaceUri" : null
+      }, {
+        "c2jName" : "ReportDefinition",
+        "c2jShape" : "ReportDefinition",
+        "deprecated" : false,
+        "documentation" : "",
+        "enumType" : null,
+        "fluentSetterDocumentation" : "/**\n@param reportDefinition \n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "fluentSetterMethodName" : "withReportDefinition",
+        "getterDocumentation" : "/**\n@return */",
+        "getterMethodName" : "getReportDefinition",
+        "getterModel" : {
+          "returnType" : "ReportDefinition",
+          "documentation" : null
+        },
+        "http" : {
+          "additionalMarshallingPath" : null,
+          "additionalUnmarshallingPath" : null,
+          "flattened" : false,
+          "greedy" : false,
+          "header" : false,
+          "isPayload" : false,
+          "isStreaming" : false,
+          "location" : null,
+          "marshallLocation" : "PAYLOAD",
+          "marshallLocationName" : "ReportDefinition",
+          "queryString" : false,
+          "requiresLength" : false,
+          "statusCode" : false,
+          "unmarshallLocationName" : "ReportDefinition",
+          "uri" : false
+        },
+        "idempotencyToken" : false,
+        "isBinary" : false,
+        "jsonValue" : false,
+        "list" : false,
+        "listModel" : null,
+        "map" : false,
+        "mapModel" : null,
+        "marshallingTargetClass" : "StructuredPojo",
+        "marshallingType" : "STRUCTURED",
+        "name" : "ReportDefinition",
+        "sensitive" : false,
+        "setterDocumentation" : "/**\n@param reportDefinition */",
+        "setterMethodName" : "setReportDefinition",
+        "setterModel" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "ReportDefinition",
+          "variableName" : "reportDefinition",
+          "variableType" : "ReportDefinition",
+          "documentation" : "",
+          "simpleType" : "ReportDefinition",
+          "variableSetterType" : "ReportDefinition"
+        },
+        "shouldEmitLegacyEnumSetter" : false,
+        "simple" : false,
+        "unmarshallingType" : null,
+        "varargSetterDocumentation" : "/**\n@param reportDefinition \n@return Returns a reference to this object so that method calls can be chained together.*/",
+        "variable" : {
+          "timestampFormat" : null,
+          "variableDeclarationType" : "ReportDefinition",
+          "variableName" : "reportDefinition",
+          "variableType" : "ReportDefinition",
+          "documentation" : "",
+          "simpleType" : "ReportDefinition",
+          "variableSetterType" : "ReportDefinition"
+        },
+        "xmlNameSpaceUri" : null
+      } ],
+      "membersAsMap" : {
+        "ReportDefinition" : {
+          "c2jName" : "ReportDefinition",
+          "c2jShape" : "ReportDefinition",
+          "deprecated" : false,
+          "documentation" : "",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**\n@param reportDefinition \n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withReportDefinition",
+          "getterDocumentation" : "/**\n@return */",
+          "getterMethodName" : "getReportDefinition",
+          "getterModel" : {
+            "returnType" : "ReportDefinition",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "ReportDefinition",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "ReportDefinition",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "StructuredPojo",
+          "marshallingType" : "STRUCTURED",
+          "name" : "ReportDefinition",
+          "sensitive" : false,
+          "setterDocumentation" : "/**\n@param reportDefinition */",
+          "setterMethodName" : "setReportDefinition",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "ReportDefinition",
+            "variableName" : "reportDefinition",
+            "variableType" : "ReportDefinition",
+            "documentation" : "",
+            "simpleType" : "ReportDefinition",
+            "variableSetterType" : "ReportDefinition"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : false,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**\n@param reportDefinition \n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "ReportDefinition",
+            "variableName" : "reportDefinition",
+            "variableType" : "ReportDefinition",
+            "documentation" : "",
+            "simpleType" : "ReportDefinition",
+            "variableSetterType" : "ReportDefinition"
+          },
+          "xmlNameSpaceUri" : null
+        },
+        "ReportName" : {
+          "c2jName" : "ReportName",
+          "c2jShape" : "ReportName",
+          "deprecated" : false,
+          "documentation" : "",
+          "enumType" : null,
+          "fluentSetterDocumentation" : "/**\n@param reportName \n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "fluentSetterMethodName" : "withReportName",
+          "getterDocumentation" : "/**\n@return */",
+          "getterMethodName" : "getReportName",
+          "getterModel" : {
+            "returnType" : "String",
+            "documentation" : null
+          },
+          "http" : {
+            "additionalMarshallingPath" : null,
+            "additionalUnmarshallingPath" : null,
+            "flattened" : false,
+            "greedy" : false,
+            "header" : false,
+            "isPayload" : false,
+            "isStreaming" : false,
+            "location" : null,
+            "marshallLocation" : "PAYLOAD",
+            "marshallLocationName" : "ReportName",
+            "queryString" : false,
+            "requiresLength" : false,
+            "statusCode" : false,
+            "unmarshallLocationName" : "ReportName",
+            "uri" : false
+          },
+          "idempotencyToken" : false,
+          "isBinary" : false,
+          "jsonValue" : false,
+          "list" : false,
+          "listModel" : null,
+          "map" : false,
+          "mapModel" : null,
+          "marshallingTargetClass" : "String",
+          "marshallingType" : "STRING",
+          "name" : "ReportName",
+          "sensitive" : false,
+          "setterDocumentation" : "/**\n@param reportName */",
+          "setterMethodName" : "setReportName",
+          "setterModel" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "reportName",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "shouldEmitLegacyEnumSetter" : false,
+          "simple" : true,
+          "unmarshallingType" : null,
+          "varargSetterDocumentation" : "/**\n@param reportName \n@return Returns a reference to this object so that method calls can be chained together.*/",
+          "variable" : {
+            "timestampFormat" : null,
+            "variableDeclarationType" : "String",
+            "variableName" : "reportName",
+            "variableType" : "String",
+            "documentation" : "",
+            "simpleType" : "String",
+            "variableSetterType" : "String"
+          },
+          "xmlNameSpaceUri" : null
+        }
+      },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : [ "ReportName", "ReportDefinition" ],
+      "shapeName" : "ModifyReportDefinitionRequest",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : null,
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "ModifyReportDefinitionRequest",
+        "variableName" : "modifyReportDefinitionRequest",
+        "variableType" : "ModifyReportDefinitionRequest",
+        "documentation" : null,
+        "simpleType" : "ModifyReportDefinitionRequest",
+        "variableSetterType" : "ModifyReportDefinitionRequest"
+      },
+      "wrapper" : false
+    },
+    "ModifyReportDefinitionResult" : {
+      "c2jName" : "ModifyReportDefinitionResponse",
+      "customization" : {
+        "artificialResultWrapper" : null,
+        "skipGeneratingMarshaller" : false,
+        "skipGeneratingModelClass" : false,
+        "skipGeneratingUnmarshaller" : false
+      },
+      "deprecated" : false,
+      "documentation" : "",
+      "enums" : null,
+      "errorCode" : null,
+      "hasHeaderMember" : false,
+      "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
+      "hasStatusCodeMember" : false,
+      "hasStreamingMember" : false,
+      "marshaller" : null,
+      "members" : null,
+      "membersAsMap" : { },
+      "requestSignerAware" : false,
+      "requestSignerClassFqcn" : null,
+      "required" : null,
+      "shapeName" : "ModifyReportDefinitionResult",
+      "signerAware" : false,
+      "signerType" : null,
+      "unmarshaller" : {
+        "flattened" : false,
+        "resultWrapper" : null
+      },
+      "variable" : {
+        "timestampFormat" : null,
+        "variableDeclarationType" : "ModifyReportDefinitionResult",
+        "variableName" : "modifyReportDefinitionResult",
+        "variableType" : "ModifyReportDefinitionResult",
+        "documentation" : null,
+        "simpleType" : "ModifyReportDefinitionResult",
+        "variableSetterType" : "ModifyReportDefinitionResult"
+      },
+      "wrapper" : false
+    },
     "PutReportDefinitionRequest" : {
       "c2jName" : "PutReportDefinitionRequest",
       "customization" : {
@@ -1600,6 +2023,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : {
@@ -1636,6 +2060,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ReportDefinition",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ReportDefinition",
           "uri" : false
@@ -1704,6 +2129,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ReportDefinition",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ReportDefinition",
             "uri" : false
@@ -1778,6 +2204,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1818,6 +2245,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -1847,6 +2275,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ReportName",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ReportName",
           "uri" : false
@@ -1913,6 +2342,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "TimeUnit",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "TimeUnit",
           "uri" : false
@@ -1979,6 +2409,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "Format",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "Format",
           "uri" : false
@@ -2045,6 +2476,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "Compression",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "Compression",
           "uri" : false
@@ -2111,6 +2543,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "AdditionalSchemaElements",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "AdditionalSchemaElements",
           "uri" : false
@@ -2148,6 +2581,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -2258,6 +2692,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "S3Bucket",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "S3Bucket",
           "uri" : false
@@ -2324,6 +2759,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "S3Prefix",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "S3Prefix",
           "uri" : false
@@ -2390,6 +2826,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "S3Region",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "S3Region",
           "uri" : false
@@ -2456,6 +2893,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "AdditionalArtifacts",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "AdditionalArtifacts",
           "uri" : false
@@ -2493,6 +2931,7 @@
               "marshallLocation" : "PAYLOAD",
               "marshallLocationName" : "member",
               "queryString" : false,
+              "requiresLength" : false,
               "statusCode" : false,
               "unmarshallLocationName" : "member",
               "uri" : false
@@ -2603,6 +3042,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "RefreshClosedReports",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "RefreshClosedReports",
           "uri" : false
@@ -2669,6 +3109,7 @@
           "marshallLocation" : "PAYLOAD",
           "marshallLocationName" : "ReportVersioning",
           "queryString" : false,
+          "requiresLength" : false,
           "statusCode" : false,
           "unmarshallLocationName" : "ReportVersioning",
           "uri" : false
@@ -2737,6 +3178,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "AdditionalArtifacts",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "AdditionalArtifacts",
             "uri" : false
@@ -2774,6 +3216,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -2885,6 +3328,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "AdditionalSchemaElements",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "AdditionalSchemaElements",
             "uri" : false
@@ -2922,6 +3366,7 @@
                 "marshallLocation" : "PAYLOAD",
                 "marshallLocationName" : "member",
                 "queryString" : false,
+                "requiresLength" : false,
                 "statusCode" : false,
                 "unmarshallLocationName" : "member",
                 "uri" : false
@@ -3033,6 +3478,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "Compression",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "Compression",
             "uri" : false
@@ -3100,6 +3546,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "Format",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "Format",
             "uri" : false
@@ -3167,6 +3614,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "RefreshClosedReports",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "RefreshClosedReports",
             "uri" : false
@@ -3234,6 +3682,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ReportName",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ReportName",
             "uri" : false
@@ -3301,6 +3750,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "ReportVersioning",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "ReportVersioning",
             "uri" : false
@@ -3368,6 +3818,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "S3Bucket",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "S3Bucket",
             "uri" : false
@@ -3435,6 +3886,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "S3Prefix",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "S3Prefix",
             "uri" : false
@@ -3502,6 +3954,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "S3Region",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "S3Region",
             "uri" : false
@@ -3569,6 +4022,7 @@
             "marshallLocation" : "PAYLOAD",
             "marshallLocationName" : "TimeUnit",
             "queryString" : false,
+            "requiresLength" : false,
             "statusCode" : false,
             "unmarshallLocationName" : "TimeUnit",
             "uri" : false
@@ -3652,6 +4106,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3692,6 +4147,7 @@
       "errorCode" : "ReportLimitReachedException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3735,6 +4191,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3778,6 +4235,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3824,6 +4282,7 @@
       "errorCode" : null,
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,
@@ -3864,6 +4323,7 @@
       "errorCode" : "ValidationException",
       "hasHeaderMember" : false,
       "hasPayloadMember" : false,
+      "hasRequiresLengthMember" : false,
       "hasStatusCodeMember" : false,
       "hasStreamingMember" : false,
       "marshaller" : null,

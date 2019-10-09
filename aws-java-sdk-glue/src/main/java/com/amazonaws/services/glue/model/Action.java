@@ -44,24 +44,30 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For information about how to specify and consume your own Job arguments, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
      * in Python</a> topic in the developer guide.
      * </p>
      * <p>
      * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
      * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      */
     private java.util.Map<String, String> arguments;
     /**
      * <p>
-     * The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     * terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides the
-     * timeout value set in the parent job.
+     * The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources before
+     * it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides
+     * the timeout value set in the parent job.
      * </p>
      */
     private Integer timeout;
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     * </p>
+     */
+    private String securityConfiguration;
     /**
      * <p>
      * Specifies configuration properties of a job run notification.
@@ -70,10 +76,10 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
     private NotificationProperty notificationProperty;
     /**
      * <p>
-     * The name of the SecurityConfiguration structure to be used with this action.
+     * The name of the crawler to be used with this action.
      * </p>
      */
-    private String securityConfiguration;
+    private String crawlerName;
 
     /**
      * <p>
@@ -126,12 +132,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For information about how to specify and consume your own Job arguments, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
      * in Python</a> topic in the developer guide.
      * </p>
      * <p>
      * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
      * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      * 
@@ -143,12 +149,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      *         </p>
      *         <p>
      *         For information about how to specify and consume your own Job arguments, see the <a
-     *         href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS
+     *         href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS
      *         Glue APIs in Python</a> topic in the developer guide.
      *         </p>
      *         <p>
      *         For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     *         href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
+     *         href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
      *         Parameters Used by AWS Glue</a> topic in the developer guide.
      */
 
@@ -167,12 +173,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For information about how to specify and consume your own Job arguments, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
      * in Python</a> topic in the developer guide.
      * </p>
      * <p>
      * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
      * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      * 
@@ -185,12 +191,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For information about how to specify and consume your own Job arguments, see the <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue
-     *        APIs in Python</a> topic in the developer guide.
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS
+     *        Glue APIs in Python</a> topic in the developer guide.
      *        </p>
      *        <p>
      *        For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
      *        Parameters Used by AWS Glue</a> topic in the developer guide.
      */
 
@@ -209,12 +215,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      * </p>
      * <p>
      * For information about how to specify and consume your own Job arguments, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue APIs
      * in Python</a> topic in the developer guide.
      * </p>
      * <p>
      * For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     * href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
+     * href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special Parameters
      * Used by AWS Glue</a> topic in the developer guide.
      * </p>
      * 
@@ -227,12 +233,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
      *        </p>
      *        <p>
      *        For information about how to specify and consume your own Job arguments, see the <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS Glue
-     *        APIs in Python</a> topic in the developer guide.
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html">Calling AWS
+     *        Glue APIs in Python</a> topic in the developer guide.
      *        </p>
      *        <p>
      *        For information about the key-value pairs that AWS Glue consumes to set up your job, see the <a
-     *        href="http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
+     *        href="https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html">Special
      *        Parameters Used by AWS Glue</a> topic in the developer guide.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -265,15 +271,15 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     * terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides the
-     * timeout value set in the parent job.
+     * The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources before
+     * it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides
+     * the timeout value set in the parent job.
      * </p>
      * 
      * @param timeout
-     *        The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     *        terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides
-     *        the timeout value set in the parent job.
+     *        The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources
+     *        before it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours).
+     *        This overrides the timeout value set in the parent job.
      */
 
     public void setTimeout(Integer timeout) {
@@ -282,14 +288,14 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     * terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides the
-     * timeout value set in the parent job.
+     * The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources before
+     * it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides
+     * the timeout value set in the parent job.
      * </p>
      * 
-     * @return The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     *         terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This
-     *         overrides the timeout value set in the parent job.
+     * @return The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources
+     *         before it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours).
+     *         This overrides the timeout value set in the parent job.
      */
 
     public Integer getTimeout() {
@@ -298,20 +304,60 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     * terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides the
-     * timeout value set in the parent job.
+     * The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources before
+     * it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides
+     * the timeout value set in the parent job.
      * </p>
      * 
      * @param timeout
-     *        The JobRun timeout in minutes. This is the maximum time that a job run can consume resources before it is
-     *        terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours). This overrides
-     *        the timeout value set in the parent job.
+     *        The <code>JobRun</code> timeout in minutes. This is the maximum time that a job run can consume resources
+     *        before it is terminated and enters <code>TIMEOUT</code> status. The default is 2,880 minutes (48 hours).
+     *        This overrides the timeout value set in the parent job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Action withTimeout(Integer timeout) {
         setTimeout(timeout);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     * </p>
+     * 
+     * @param securityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     */
+
+    public void setSecurityConfiguration(String securityConfiguration) {
+        this.securityConfiguration = securityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     * </p>
+     * 
+     * @return The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     */
+
+    public String getSecurityConfiguration() {
+        return this.securityConfiguration;
+    }
+
+    /**
+     * <p>
+     * The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     * </p>
+     * 
+     * @param securityConfiguration
+     *        The name of the <code>SecurityConfiguration</code> structure to be used with this action.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Action withSecurityConfiguration(String securityConfiguration) {
+        setSecurityConfiguration(securityConfiguration);
         return this;
     }
 
@@ -357,41 +403,41 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the SecurityConfiguration structure to be used with this action.
+     * The name of the crawler to be used with this action.
      * </p>
      * 
-     * @param securityConfiguration
-     *        The name of the SecurityConfiguration structure to be used with this action.
+     * @param crawlerName
+     *        The name of the crawler to be used with this action.
      */
 
-    public void setSecurityConfiguration(String securityConfiguration) {
-        this.securityConfiguration = securityConfiguration;
+    public void setCrawlerName(String crawlerName) {
+        this.crawlerName = crawlerName;
     }
 
     /**
      * <p>
-     * The name of the SecurityConfiguration structure to be used with this action.
+     * The name of the crawler to be used with this action.
      * </p>
      * 
-     * @return The name of the SecurityConfiguration structure to be used with this action.
+     * @return The name of the crawler to be used with this action.
      */
 
-    public String getSecurityConfiguration() {
-        return this.securityConfiguration;
+    public String getCrawlerName() {
+        return this.crawlerName;
     }
 
     /**
      * <p>
-     * The name of the SecurityConfiguration structure to be used with this action.
+     * The name of the crawler to be used with this action.
      * </p>
      * 
-     * @param securityConfiguration
-     *        The name of the SecurityConfiguration structure to be used with this action.
+     * @param crawlerName
+     *        The name of the crawler to be used with this action.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
-    public Action withSecurityConfiguration(String securityConfiguration) {
-        setSecurityConfiguration(securityConfiguration);
+    public Action withCrawlerName(String crawlerName) {
+        setCrawlerName(crawlerName);
         return this;
     }
 
@@ -413,10 +459,12 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
             sb.append("Arguments: ").append(getArguments()).append(",");
         if (getTimeout() != null)
             sb.append("Timeout: ").append(getTimeout()).append(",");
+        if (getSecurityConfiguration() != null)
+            sb.append("SecurityConfiguration: ").append(getSecurityConfiguration()).append(",");
         if (getNotificationProperty() != null)
             sb.append("NotificationProperty: ").append(getNotificationProperty()).append(",");
-        if (getSecurityConfiguration() != null)
-            sb.append("SecurityConfiguration: ").append(getSecurityConfiguration());
+        if (getCrawlerName() != null)
+            sb.append("CrawlerName: ").append(getCrawlerName());
         sb.append("}");
         return sb.toString();
     }
@@ -443,13 +491,17 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getTimeout() != null && other.getTimeout().equals(this.getTimeout()) == false)
             return false;
+        if (other.getSecurityConfiguration() == null ^ this.getSecurityConfiguration() == null)
+            return false;
+        if (other.getSecurityConfiguration() != null && other.getSecurityConfiguration().equals(this.getSecurityConfiguration()) == false)
+            return false;
         if (other.getNotificationProperty() == null ^ this.getNotificationProperty() == null)
             return false;
         if (other.getNotificationProperty() != null && other.getNotificationProperty().equals(this.getNotificationProperty()) == false)
             return false;
-        if (other.getSecurityConfiguration() == null ^ this.getSecurityConfiguration() == null)
+        if (other.getCrawlerName() == null ^ this.getCrawlerName() == null)
             return false;
-        if (other.getSecurityConfiguration() != null && other.getSecurityConfiguration().equals(this.getSecurityConfiguration()) == false)
+        if (other.getCrawlerName() != null && other.getCrawlerName().equals(this.getCrawlerName()) == false)
             return false;
         return true;
     }
@@ -462,8 +514,9 @@ public class Action implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getJobName() == null) ? 0 : getJobName().hashCode());
         hashCode = prime * hashCode + ((getArguments() == null) ? 0 : getArguments().hashCode());
         hashCode = prime * hashCode + ((getTimeout() == null) ? 0 : getTimeout().hashCode());
-        hashCode = prime * hashCode + ((getNotificationProperty() == null) ? 0 : getNotificationProperty().hashCode());
         hashCode = prime * hashCode + ((getSecurityConfiguration() == null) ? 0 : getSecurityConfiguration().hashCode());
+        hashCode = prime * hashCode + ((getNotificationProperty() == null) ? 0 : getNotificationProperty().hashCode());
+        hashCode = prime * hashCode + ((getCrawlerName() == null) ? 0 : getCrawlerName().hashCode());
         return hashCode;
     }
 

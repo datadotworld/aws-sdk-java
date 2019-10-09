@@ -41,7 +41,7 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * when a command has been applied. In this reference, the parameter descriptions indicate whether a change is applied
  * immediately, on the next instance reboot, or during the next maintenance window. For a summary of the Amazon Redshift
  * cluster management interfaces, go to <a
- * href="http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html">Using the Amazon Redshift Management
+ * href="https://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html">Using the Amazon Redshift Management
  * Interfaces</a>.
  * </p>
  * <p>
@@ -51,10 +51,11 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * </p>
  * <p>
  * If you are a first-time user of Amazon Redshift, we recommend that you begin by reading the <a
- * href="http://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html">Amazon Redshift Getting Started Guide</a>.
+ * href="https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html">Amazon Redshift Getting Started
+ * Guide</a>.
  * </p>
  * <p>
- * If you are a database developer, the <a href="http://docs.aws.amazon.com/redshift/latest/dg/welcome.html">Amazon
+ * If you are a database developer, the <a href="https://docs.aws.amazon.com/redshift/latest/dg/welcome.html">Amazon
  * Redshift Database Developer Guide</a> explains how to design, build, query, and maintain the databases that make up
  * your data warehouse.
  * </p>
@@ -2031,6 +2032,41 @@ public class AmazonRedshiftAsyncClient extends AmazonRedshiftClient implements A
 
                 try {
                     result = executeDescribeLoggingStatus(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeNodeConfigurationOptionsResult> describeNodeConfigurationOptionsAsync(
+            DescribeNodeConfigurationOptionsRequest request) {
+
+        return describeNodeConfigurationOptionsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeNodeConfigurationOptionsResult> describeNodeConfigurationOptionsAsync(
+            final DescribeNodeConfigurationOptionsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeNodeConfigurationOptionsRequest, DescribeNodeConfigurationOptionsResult> asyncHandler) {
+        final DescribeNodeConfigurationOptionsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeNodeConfigurationOptionsResult>() {
+            @Override
+            public DescribeNodeConfigurationOptionsResult call() throws Exception {
+                DescribeNodeConfigurationOptionsResult result = null;
+
+                try {
+                    result = executeDescribeNodeConfigurationOptions(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

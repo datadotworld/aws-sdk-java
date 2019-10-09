@@ -33,7 +33,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      * namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner,
      * the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     * <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.
+     * <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      * </p>
      */
     private String containerInstanceArn;
@@ -81,15 +81,34 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     private com.amazonaws.internal.SdkInternalList<Resource> registeredResources;
     /**
      * <p>
-     * The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     * <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
-     * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
-     * running on the container instance are removed if possible. For more information, see <a
+     * The status of the container instance. The valid values are <code>REGISTERING</code>,
+     * <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>, or
+     * <code>DRAINING</code>.
+     * </p>
+     * <p>
+     * If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly registered
+     * container instance will transition to a <code>REGISTERING</code> status while the trunk elastic network interface
+     * is provisioned for the instance. If the registration fails, the instance will transition to a
+     * <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see the reason for failure
+     * in the <code>statusReason</code> parameter. Once the container instance is terminated, the instance transitions
+     * to a <code>DEREGISTERING</code> status while the trunk elastic network interface is deprovisioned. The instance
+     * then transitions to an <code>INACTIVE</code> status.
+     * </p>
+     * <p>
+     * The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The <code>DRAINING</code>
+     * indicates that new tasks are not placed on the container instance and any service tasks running on the container
+     * instance are removed if possible. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
      * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private String status;
+    /**
+     * <p>
+     * The reason that the container instance reached its current status.
+     * </p>
+     */
+    private String statusReason;
     /**
      * <p>
      * This parameter returns <code>true</code> if the agent is connected to Amazon ECS. Registered instances with an
@@ -132,16 +151,59 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     private java.util.Date registeredAt;
     /**
      * <p>
-     * The elastic network interfaces associated with the container instance.
+     * The resources attached to a container instance, such as elastic network interfaces.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Attachment> attachments;
     /**
      * <p>
      * The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists
-     * of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     * characters, and tag values can have a maximum length of 256 characters.
+     * of a key and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
@@ -150,15 +212,14 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      * namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner,
      * the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     * <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.
+     * <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      * </p>
      * 
      * @param containerInstanceArn
      *        The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      *        namespace, followed by the Region of the container instance, the AWS account ID of the container instance
      *        owner, the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     *        <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>
-     *        .
+     *        <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      */
 
     public void setContainerInstanceArn(String containerInstanceArn) {
@@ -170,14 +231,13 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      * namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner,
      * the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     * <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.
+     * <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      *         namespace, followed by the Region of the container instance, the AWS account ID of the container instance
      *         owner, the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     *         <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>
-     *         .
+     *         <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      */
 
     public String getContainerInstanceArn() {
@@ -189,15 +249,14 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      * namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner,
      * the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     * <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.
+     * <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      * </p>
      * 
      * @param containerInstanceArn
      *        The Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code>
      *        namespace, followed by the Region of the container instance, the AWS account ID of the container instance
      *        owner, the <code>container-instance</code> namespace, and then the container instance ID. For example,
-     *        <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>
-     *        .
+     *        <code>arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -569,17 +628,42 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     * <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
-     * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
-     * running on the container instance are removed if possible. For more information, see <a
+     * The status of the container instance. The valid values are <code>REGISTERING</code>,
+     * <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>, or
+     * <code>DRAINING</code>.
+     * </p>
+     * <p>
+     * If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly registered
+     * container instance will transition to a <code>REGISTERING</code> status while the trunk elastic network interface
+     * is provisioned for the instance. If the registration fails, the instance will transition to a
+     * <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see the reason for failure
+     * in the <code>statusReason</code> parameter. Once the container instance is terminated, the instance transitions
+     * to a <code>DEREGISTERING</code> status while the trunk elastic network interface is deprovisioned. The instance
+     * then transitions to an <code>INACTIVE</code> status.
+     * </p>
+     * <p>
+     * The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The <code>DRAINING</code>
+     * indicates that new tasks are not placed on the container instance and any service tasks running on the container
+     * instance are removed if possible. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
      * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param status
-     *        The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     *        <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
+     *        The status of the container instance. The valid values are <code>REGISTERING</code>,
+     *        <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>,
+     *        or <code>DRAINING</code>.</p>
+     *        <p>
+     *        If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly registered
+     *        container instance will transition to a <code>REGISTERING</code> status while the trunk elastic network
+     *        interface is provisioned for the instance. If the registration fails, the instance will transition to a
+     *        <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see the reason for
+     *        failure in the <code>statusReason</code> parameter. Once the container instance is terminated, the
+     *        instance transitions to a <code>DEREGISTERING</code> status while the trunk elastic network interface is
+     *        deprovisioned. The instance then transitions to an <code>INACTIVE</code> status.
+     *        </p>
+     *        <p>
+     *        The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The
      *        <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service
      *        tasks running on the container instance are removed if possible. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html"
@@ -592,16 +676,41 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     * <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
-     * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
-     * running on the container instance are removed if possible. For more information, see <a
+     * The status of the container instance. The valid values are <code>REGISTERING</code>,
+     * <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>, or
+     * <code>DRAINING</code>.
+     * </p>
+     * <p>
+     * If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly registered
+     * container instance will transition to a <code>REGISTERING</code> status while the trunk elastic network interface
+     * is provisioned for the instance. If the registration fails, the instance will transition to a
+     * <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see the reason for failure
+     * in the <code>statusReason</code> parameter. Once the container instance is terminated, the instance transitions
+     * to a <code>DEREGISTERING</code> status while the trunk elastic network interface is deprovisioned. The instance
+     * then transitions to an <code>INACTIVE</code> status.
+     * </p>
+     * <p>
+     * The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The <code>DRAINING</code>
+     * indicates that new tasks are not placed on the container instance and any service tasks running on the container
+     * instance are removed if possible. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
      * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
-     * @return The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     *         <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
+     * @return The status of the container instance. The valid values are <code>REGISTERING</code>,
+     *         <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>,
+     *         or <code>DRAINING</code>.</p>
+     *         <p>
+     *         If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly
+     *         registered container instance will transition to a <code>REGISTERING</code> status while the trunk
+     *         elastic network interface is provisioned for the instance. If the registration fails, the instance will
+     *         transition to a <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see
+     *         the reason for failure in the <code>statusReason</code> parameter. Once the container instance is
+     *         terminated, the instance transitions to a <code>DEREGISTERING</code> status while the trunk elastic
+     *         network interface is deprovisioned. The instance then transitions to an <code>INACTIVE</code> status.
+     *         </p>
+     *         <p>
+     *         The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The
      *         <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service
      *         tasks running on the container instance are removed if possible. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html"
@@ -614,17 +723,42 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     * <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
-     * <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service tasks
-     * running on the container instance are removed if possible. For more information, see <a
+     * The status of the container instance. The valid values are <code>REGISTERING</code>,
+     * <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>, or
+     * <code>DRAINING</code>.
+     * </p>
+     * <p>
+     * If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly registered
+     * container instance will transition to a <code>REGISTERING</code> status while the trunk elastic network interface
+     * is provisioned for the instance. If the registration fails, the instance will transition to a
+     * <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see the reason for failure
+     * in the <code>statusReason</code> parameter. Once the container instance is terminated, the instance transitions
+     * to a <code>DEREGISTERING</code> status while the trunk elastic network interface is deprovisioned. The instance
+     * then transitions to an <code>INACTIVE</code> status.
+     * </p>
+     * <p>
+     * The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The <code>DRAINING</code>
+     * indicates that new tasks are not placed on the container instance and any service tasks running on the container
+     * instance are removed if possible. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html">Container
      * Instance Draining</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param status
-     *        The status of the container instance. The valid values are <code>ACTIVE</code>, <code>INACTIVE</code>, or
-     *        <code>DRAINING</code>. <code>ACTIVE</code> indicates that the container instance can accept tasks.
+     *        The status of the container instance. The valid values are <code>REGISTERING</code>,
+     *        <code>REGISTRATION_FAILED</code>, <code>ACTIVE</code>, <code>INACTIVE</code>, <code>DEREGISTERING</code>,
+     *        or <code>DRAINING</code>.</p>
+     *        <p>
+     *        If your account has opted in to the <code>awsvpcTrunking</code> account setting, then any newly registered
+     *        container instance will transition to a <code>REGISTERING</code> status while the trunk elastic network
+     *        interface is provisioned for the instance. If the registration fails, the instance will transition to a
+     *        <code>REGISTRATION_FAILED</code> status. You can describe the container instance and see the reason for
+     *        failure in the <code>statusReason</code> parameter. Once the container instance is terminated, the
+     *        instance transitions to a <code>DEREGISTERING</code> status while the trunk elastic network interface is
+     *        deprovisioned. The instance then transitions to an <code>INACTIVE</code> status.
+     *        </p>
+     *        <p>
+     *        The <code>ACTIVE</code> status indicates that the container instance can accept tasks. The
      *        <code>DRAINING</code> indicates that new tasks are not placed on the container instance and any service
      *        tasks running on the container instance are removed if possible. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html"
@@ -634,6 +768,46 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     public ContainerInstance withStatus(String status) {
         setStatus(status);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The reason that the container instance reached its current status.
+     * </p>
+     * 
+     * @param statusReason
+     *        The reason that the container instance reached its current status.
+     */
+
+    public void setStatusReason(String statusReason) {
+        this.statusReason = statusReason;
+    }
+
+    /**
+     * <p>
+     * The reason that the container instance reached its current status.
+     * </p>
+     * 
+     * @return The reason that the container instance reached its current status.
+     */
+
+    public String getStatusReason() {
+        return this.statusReason;
+    }
+
+    /**
+     * <p>
+     * The reason that the container instance reached its current status.
+     * </p>
+     * 
+     * @param statusReason
+     *        The reason that the container instance reached its current status.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ContainerInstance withStatusReason(String statusReason) {
+        setStatusReason(statusReason);
         return this;
     }
 
@@ -991,10 +1165,10 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The elastic network interfaces associated with the container instance.
+     * The resources attached to a container instance, such as elastic network interfaces.
      * </p>
      * 
-     * @return The elastic network interfaces associated with the container instance.
+     * @return The resources attached to a container instance, such as elastic network interfaces.
      */
 
     public java.util.List<Attachment> getAttachments() {
@@ -1006,11 +1180,11 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The elastic network interfaces associated with the container instance.
+     * The resources attached to a container instance, such as elastic network interfaces.
      * </p>
      * 
      * @param attachments
-     *        The elastic network interfaces associated with the container instance.
+     *        The resources attached to a container instance, such as elastic network interfaces.
      */
 
     public void setAttachments(java.util.Collection<Attachment> attachments) {
@@ -1024,7 +1198,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The elastic network interfaces associated with the container instance.
+     * The resources attached to a container instance, such as elastic network interfaces.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1033,7 +1207,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * </p>
      * 
      * @param attachments
-     *        The elastic network interfaces associated with the container instance.
+     *        The resources attached to a container instance, such as elastic network interfaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1049,11 +1223,11 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The elastic network interfaces associated with the container instance.
+     * The resources attached to a container instance, such as elastic network interfaces.
      * </p>
      * 
      * @param attachments
-     *        The elastic network interfaces associated with the container instance.
+     *        The resources attached to a container instance, such as elastic network interfaces.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1065,13 +1239,98 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists
-     * of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     * characters, and tag values can have a maximum length of 256 characters.
+     * of a key and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The metadata that you apply to the container instance to help you categorize and organize them. Each tag
-     *         consists of a key and an optional value, both of which you define. Tag keys can have a maximum character
-     *         length of 128 characters, and tag values can have a maximum length of 256 characters.
+     *         consists of a key and an optional value, both of which you define.</p>
+     *         <p>
+     *         The following basic restrictions apply to tags:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Maximum number of tags per resource - 50
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For each resource, each tag key must be unique, and each tag key can have only one value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum key length - 128 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum value length - 256 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If your tagging schema is used across multiple services and resources, remember that other services may
+     *         have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *         representable in UTF-8, and the following characters: + - = . _ : / @.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Tag keys and values are case-sensitive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a
+     *         prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or
+     *         values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Tag> getTags() {
@@ -1084,14 +1343,99 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists
-     * of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     * characters, and tag values can have a maximum length of 256 characters.
+     * of a key and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the container instance to help you categorize and organize them. Each tag
-     *        consists of a key and an optional value, both of which you define. Tag keys can have a maximum character
-     *        length of 128 characters, and tag values can have a maximum length of 256 characters.
+     *        consists of a key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -1106,9 +1450,52 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists
-     * of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     * characters, and tag values can have a maximum length of 256 characters.
+     * of a key and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
@@ -1117,8 +1504,50 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
      * 
      * @param tags
      *        The metadata that you apply to the container instance to help you categorize and organize them. Each tag
-     *        consists of a key and an optional value, both of which you define. Tag keys can have a maximum character
-     *        length of 128 characters, and tag values can have a maximum length of 256 characters.
+     *        consists of a key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1135,14 +1564,99 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists
-     * of a key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     * characters, and tag values can have a maximum length of 256 characters.
+     * of a key and an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the container instance to help you categorize and organize them. Each tag
-     *        consists of a key and an optional value, both of which you define. Tag keys can have a maximum character
-     *        length of 128 characters, and tag values can have a maximum length of 256 characters.
+     *        consists of a key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1177,6 +1691,8 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
             sb.append("RegisteredResources: ").append(getRegisteredResources()).append(",");
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
+        if (getStatusReason() != null)
+            sb.append("StatusReason: ").append(getStatusReason()).append(",");
         if (getAgentConnected() != null)
             sb.append("AgentConnected: ").append(getAgentConnected()).append(",");
         if (getRunningTasksCount() != null)
@@ -1235,6 +1751,10 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
             return false;
+        if (other.getStatusReason() == null ^ this.getStatusReason() == null)
+            return false;
+        if (other.getStatusReason() != null && other.getStatusReason().equals(this.getStatusReason()) == false)
+            return false;
         if (other.getAgentConnected() == null ^ this.getAgentConnected() == null)
             return false;
         if (other.getAgentConnected() != null && other.getAgentConnected().equals(this.getAgentConnected()) == false)
@@ -1282,6 +1802,7 @@ public class ContainerInstance implements Serializable, Cloneable, StructuredPoj
         hashCode = prime * hashCode + ((getRemainingResources() == null) ? 0 : getRemainingResources().hashCode());
         hashCode = prime * hashCode + ((getRegisteredResources() == null) ? 0 : getRegisteredResources().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getStatusReason() == null) ? 0 : getStatusReason().hashCode());
         hashCode = prime * hashCode + ((getAgentConnected() == null) ? 0 : getAgentConnected().hashCode());
         hashCode = prime * hashCode + ((getRunningTasksCount() == null) ? 0 : getRunningTasksCount().hashCode());
         hashCode = prime * hashCode + ((getPendingTasksCount() == null) ? 0 : getPendingTasksCount().hashCode());

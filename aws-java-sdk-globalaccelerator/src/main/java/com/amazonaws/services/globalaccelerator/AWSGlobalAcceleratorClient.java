@@ -61,6 +61,11 @@ import com.amazonaws.services.globalaccelerator.model.transform.*;
  * AWS Global Accelerator is a network layer service in which you create accelerators to improve availability and
  * performance for internet applications used by a global audience.
  * </p>
+ * <important>
+ * <p>
+ * You must specify the US-West-2 (Oregon) Region to create or update accelerators.
+ * </p>
+ * </important>
  * <p>
  * Global Accelerator provides you with static IP addresses that you associate with your accelerator. These IP addresses
  * are anycast from the AWS edge network and distribute incoming application traffic across multiple endpoint resources
@@ -158,41 +163,44 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.InvalidArgumentException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ListenerNotFoundException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.ListenerNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgumentException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.InvalidArgumentExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AcceleratorNotFoundException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.AcceleratorNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ListenerNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.ListenerNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AssociatedListenerFoundException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.AssociatedListenerFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AcceleratorNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.AcceleratorNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceErrorException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.InternalServiceErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AssociatedListenerFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.AssociatedListenerFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AssociatedEndpointGroupFoundException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.AssociatedEndpointGroupFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.InternalServiceErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EndpointGroupNotFoundException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.EndpointGroupNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AssociatedEndpointGroupFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.AssociatedEndpointGroupFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AcceleratorNotDisabledException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.AcceleratorNotDisabledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EndpointGroupNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.EndpointGroupNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AcceleratorNotDisabledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.AcceleratorNotDisabledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EndpointGroupAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.EndpointGroupAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPortRangeException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.InvalidPortRangeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EndpointGroupAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.EndpointGroupAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.globalaccelerator.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPortRangeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.InvalidPortRangeExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.globalaccelerator.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.globalaccelerator.model.AWSGlobalAcceleratorException.class));
 
     public static AWSGlobalAcceleratorClientBuilder builder() {
@@ -247,6 +255,11 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      * traffic to one or more endpoint groups, each of which includes endpoints, such as Network Load Balancers. To see
      * an AWS CLI example of creating an accelerator, scroll down to <b>Example</b>.
      * </p>
+     * <important>
+     * <p>
+     * You must specify the US-West-2 (Oregon) Region to create or update accelerators.
+     * </p>
+     * </important>
      * 
      * @param createAcceleratorRequest
      * @return Result of the CreateAccelerator operation returned by the service.
@@ -285,6 +298,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateAccelerator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -321,6 +335,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      *         An argument that you specified is invalid.
      * @throws LimitExceededException
      *         Processing your request would cause you to exceed an AWS Global Accelerator limit.
+     * @throws AccessDeniedException
+     *         You don't have access permission.
      * @sample AWSGlobalAccelerator.CreateEndpointGroup
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/globalaccelerator-2018-08-08/CreateEndpointGroup"
      *      target="_top">AWS API Documentation</a>
@@ -350,6 +366,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateEndpointGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -414,6 +431,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateListener");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -478,6 +496,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteAccelerator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -501,6 +520,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      * 
      * @param deleteEndpointGroupRequest
      * @return Result of the DeleteEndpointGroup operation returned by the service.
+     * @throws InvalidArgumentException
+     *         An argument that you specified is invalid.
      * @throws EndpointGroupNotFoundException
      *         The endpoint group that you specified doesn't exist.
      * @throws InternalServiceErrorException
@@ -534,6 +555,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteEndpointGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -557,6 +579,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      * 
      * @param deleteListenerRequest
      * @return Result of the DeleteListener operation returned by the service.
+     * @throws InvalidArgumentException
+     *         An argument that you specified is invalid.
      * @throws ListenerNotFoundException
      *         The listener that you specified doesn't exist.
      * @throws AssociatedEndpointGroupFoundException
@@ -593,6 +617,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteListener");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -651,6 +676,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAccelerator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -710,6 +736,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeAcceleratorAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -734,6 +761,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      * 
      * @param describeEndpointGroupRequest
      * @return Result of the DescribeEndpointGroup operation returned by the service.
+     * @throws InvalidArgumentException
+     *         An argument that you specified is invalid.
      * @throws EndpointGroupNotFoundException
      *         The endpoint group that you specified doesn't exist.
      * @throws InternalServiceErrorException
@@ -767,6 +796,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEndpointGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -826,6 +856,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeListener");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -849,6 +880,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      * 
      * @param listAcceleratorsRequest
      * @return Result of the ListAccelerators operation returned by the service.
+     * @throws InvalidArgumentException
+     *         An argument that you specified is invalid.
      * @throws InvalidNextTokenException
      *         There isn't another item to return.
      * @throws InternalServiceErrorException
@@ -882,6 +915,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAccelerators");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -942,6 +976,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListEndpointGroups");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -965,6 +1000,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      * 
      * @param listListenersRequest
      * @return Result of the ListListeners operation returned by the service.
+     * @throws InvalidArgumentException
+     *         An argument that you specified is invalid.
      * @throws AcceleratorNotFoundException
      *         The accelerator that you specified doesn't exist.
      * @throws InvalidNextTokenException
@@ -1000,6 +1037,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListListeners");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1018,8 +1056,13 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
 
     /**
      * <p>
-     * Update an accelerator.
+     * Update an accelerator. To see an AWS CLI example of updating an accelerator, scroll down to <b>Example</b>.
      * </p>
+     * <important>
+     * <p>
+     * You must specify the US-West-2 (Oregon) Region to create or update accelerators.
+     * </p>
+     * </important>
      * 
      * @param updateAcceleratorRequest
      * @return Result of the UpdateAccelerator operation returned by the service.
@@ -1058,6 +1101,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAccelerator");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1088,6 +1132,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      *         There was an internal error for AWS Global Accelerator.
      * @throws InvalidArgumentException
      *         An argument that you specified is invalid.
+     * @throws AccessDeniedException
+     *         You don't have access permission.
      * @sample AWSGlobalAccelerator.UpdateAcceleratorAttributes
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/globalaccelerator-2018-08-08/UpdateAcceleratorAttributes"
      *      target="_top">AWS API Documentation</a>
@@ -1118,6 +1164,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateAcceleratorAttributes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1150,6 +1197,8 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
      *         There was an internal error for AWS Global Accelerator.
      * @throws LimitExceededException
      *         Processing your request would cause you to exceed an AWS Global Accelerator limit.
+     * @throws AccessDeniedException
+     *         You don't have access permission.
      * @sample AWSGlobalAccelerator.UpdateEndpointGroup
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/globalaccelerator-2018-08-08/UpdateEndpointGroup"
      *      target="_top">AWS API Documentation</a>
@@ -1179,6 +1228,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateEndpointGroup");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1241,6 +1291,7 @@ public class AWSGlobalAcceleratorClient extends AmazonWebServiceClient implement
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Global Accelerator");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateListener");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

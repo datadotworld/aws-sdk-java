@@ -60,7 +60,7 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
     private String stage;
     /**
      * <p>
-     * Display name for a branch, part of an Amplify App.
+     * Display name for a branch, will use as the default domain prefix.
      * </p>
      */
     private String displayName;
@@ -126,7 +126,7 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
     private Boolean enableBasicAuth;
     /**
      * <p>
-     * Thumbnail Url for the branch.
+     * Thumbnail URL for the branch.
      * </p>
      */
     private String thumbnailUrl;
@@ -148,6 +148,30 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String ttl;
+    /**
+     * <p>
+     * List of custom resources that are linked to this branch.
+     * </p>
+     */
+    private java.util.List<String> associatedResources;
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     */
+    private Boolean enablePullRequestPreview;
+    /**
+     * <p>
+     * The destination branch if the branch is a pull request branch.
+     * </p>
+     */
+    private String destinationBranch;
+    /**
+     * <p>
+     * The source branch if the branch is a pull request branch.
+     * </p>
+     */
+    private String sourceBranch;
 
     /**
      * <p>
@@ -391,11 +415,11 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Display name for a branch, part of an Amplify App.
+     * Display name for a branch, will use as the default domain prefix.
      * </p>
      * 
      * @param displayName
-     *        Display name for a branch, part of an Amplify App.
+     *        Display name for a branch, will use as the default domain prefix.
      */
 
     public void setDisplayName(String displayName) {
@@ -404,10 +428,10 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Display name for a branch, part of an Amplify App.
+     * Display name for a branch, will use as the default domain prefix.
      * </p>
      * 
-     * @return Display name for a branch, part of an Amplify App.
+     * @return Display name for a branch, will use as the default domain prefix.
      */
 
     public String getDisplayName() {
@@ -416,11 +440,11 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Display name for a branch, part of an Amplify App.
+     * Display name for a branch, will use as the default domain prefix.
      * </p>
      * 
      * @param displayName
-     *        Display name for a branch, part of an Amplify App.
+     *        Display name for a branch, will use as the default domain prefix.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -918,11 +942,11 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Thumbnail Url for the branch.
+     * Thumbnail URL for the branch.
      * </p>
      * 
      * @param thumbnailUrl
-     *        Thumbnail Url for the branch.
+     *        Thumbnail URL for the branch.
      */
 
     public void setThumbnailUrl(String thumbnailUrl) {
@@ -931,10 +955,10 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Thumbnail Url for the branch.
+     * Thumbnail URL for the branch.
      * </p>
      * 
-     * @return Thumbnail Url for the branch.
+     * @return Thumbnail URL for the branch.
      */
 
     public String getThumbnailUrl() {
@@ -943,11 +967,11 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * Thumbnail Url for the branch.
+     * Thumbnail URL for the branch.
      * </p>
      * 
      * @param thumbnailUrl
-     *        Thumbnail Url for the branch.
+     *        Thumbnail URL for the branch.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1077,6 +1101,208 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * List of custom resources that are linked to this branch.
+     * </p>
+     * 
+     * @return List of custom resources that are linked to this branch.
+     */
+
+    public java.util.List<String> getAssociatedResources() {
+        return associatedResources;
+    }
+
+    /**
+     * <p>
+     * List of custom resources that are linked to this branch.
+     * </p>
+     * 
+     * @param associatedResources
+     *        List of custom resources that are linked to this branch.
+     */
+
+    public void setAssociatedResources(java.util.Collection<String> associatedResources) {
+        if (associatedResources == null) {
+            this.associatedResources = null;
+            return;
+        }
+
+        this.associatedResources = new java.util.ArrayList<String>(associatedResources);
+    }
+
+    /**
+     * <p>
+     * List of custom resources that are linked to this branch.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setAssociatedResources(java.util.Collection)} or {@link #withAssociatedResources(java.util.Collection)}
+     * if you want to override the existing values.
+     * </p>
+     * 
+     * @param associatedResources
+     *        List of custom resources that are linked to this branch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Branch withAssociatedResources(String... associatedResources) {
+        if (this.associatedResources == null) {
+            setAssociatedResources(new java.util.ArrayList<String>(associatedResources.length));
+        }
+        for (String ele : associatedResources) {
+            this.associatedResources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * List of custom resources that are linked to this branch.
+     * </p>
+     * 
+     * @param associatedResources
+     *        List of custom resources that are linked to this branch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Branch withAssociatedResources(java.util.Collection<String> associatedResources) {
+        setAssociatedResources(associatedResources);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @param enablePullRequestPreview
+     *        Enables Pull Request Preview for this branch.
+     */
+
+    public void setEnablePullRequestPreview(Boolean enablePullRequestPreview) {
+        this.enablePullRequestPreview = enablePullRequestPreview;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @return Enables Pull Request Preview for this branch.
+     */
+
+    public Boolean getEnablePullRequestPreview() {
+        return this.enablePullRequestPreview;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @param enablePullRequestPreview
+     *        Enables Pull Request Preview for this branch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Branch withEnablePullRequestPreview(Boolean enablePullRequestPreview) {
+        setEnablePullRequestPreview(enablePullRequestPreview);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @return Enables Pull Request Preview for this branch.
+     */
+
+    public Boolean isEnablePullRequestPreview() {
+        return this.enablePullRequestPreview;
+    }
+
+    /**
+     * <p>
+     * The destination branch if the branch is a pull request branch.
+     * </p>
+     * 
+     * @param destinationBranch
+     *        The destination branch if the branch is a pull request branch.
+     */
+
+    public void setDestinationBranch(String destinationBranch) {
+        this.destinationBranch = destinationBranch;
+    }
+
+    /**
+     * <p>
+     * The destination branch if the branch is a pull request branch.
+     * </p>
+     * 
+     * @return The destination branch if the branch is a pull request branch.
+     */
+
+    public String getDestinationBranch() {
+        return this.destinationBranch;
+    }
+
+    /**
+     * <p>
+     * The destination branch if the branch is a pull request branch.
+     * </p>
+     * 
+     * @param destinationBranch
+     *        The destination branch if the branch is a pull request branch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Branch withDestinationBranch(String destinationBranch) {
+        setDestinationBranch(destinationBranch);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The source branch if the branch is a pull request branch.
+     * </p>
+     * 
+     * @param sourceBranch
+     *        The source branch if the branch is a pull request branch.
+     */
+
+    public void setSourceBranch(String sourceBranch) {
+        this.sourceBranch = sourceBranch;
+    }
+
+    /**
+     * <p>
+     * The source branch if the branch is a pull request branch.
+     * </p>
+     * 
+     * @return The source branch if the branch is a pull request branch.
+     */
+
+    public String getSourceBranch() {
+        return this.sourceBranch;
+    }
+
+    /**
+     * <p>
+     * The source branch if the branch is a pull request branch.
+     * </p>
+     * 
+     * @param sourceBranch
+     *        The source branch if the branch is a pull request branch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Branch withSourceBranch(String sourceBranch) {
+        setSourceBranch(sourceBranch);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1127,7 +1353,15 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
         if (getBuildSpec() != null)
             sb.append("BuildSpec: ").append(getBuildSpec()).append(",");
         if (getTtl() != null)
-            sb.append("Ttl: ").append(getTtl());
+            sb.append("Ttl: ").append(getTtl()).append(",");
+        if (getAssociatedResources() != null)
+            sb.append("AssociatedResources: ").append(getAssociatedResources()).append(",");
+        if (getEnablePullRequestPreview() != null)
+            sb.append("EnablePullRequestPreview: ").append(getEnablePullRequestPreview()).append(",");
+        if (getDestinationBranch() != null)
+            sb.append("DestinationBranch: ").append(getDestinationBranch()).append(",");
+        if (getSourceBranch() != null)
+            sb.append("SourceBranch: ").append(getSourceBranch());
         sb.append("}");
         return sb.toString();
     }
@@ -1222,6 +1456,22 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getTtl() != null && other.getTtl().equals(this.getTtl()) == false)
             return false;
+        if (other.getAssociatedResources() == null ^ this.getAssociatedResources() == null)
+            return false;
+        if (other.getAssociatedResources() != null && other.getAssociatedResources().equals(this.getAssociatedResources()) == false)
+            return false;
+        if (other.getEnablePullRequestPreview() == null ^ this.getEnablePullRequestPreview() == null)
+            return false;
+        if (other.getEnablePullRequestPreview() != null && other.getEnablePullRequestPreview().equals(this.getEnablePullRequestPreview()) == false)
+            return false;
+        if (other.getDestinationBranch() == null ^ this.getDestinationBranch() == null)
+            return false;
+        if (other.getDestinationBranch() != null && other.getDestinationBranch().equals(this.getDestinationBranch()) == false)
+            return false;
+        if (other.getSourceBranch() == null ^ this.getSourceBranch() == null)
+            return false;
+        if (other.getSourceBranch() != null && other.getSourceBranch().equals(this.getSourceBranch()) == false)
+            return false;
         return true;
     }
 
@@ -1250,6 +1500,10 @@ public class Branch implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getBasicAuthCredentials() == null) ? 0 : getBasicAuthCredentials().hashCode());
         hashCode = prime * hashCode + ((getBuildSpec() == null) ? 0 : getBuildSpec().hashCode());
         hashCode = prime * hashCode + ((getTtl() == null) ? 0 : getTtl().hashCode());
+        hashCode = prime * hashCode + ((getAssociatedResources() == null) ? 0 : getAssociatedResources().hashCode());
+        hashCode = prime * hashCode + ((getEnablePullRequestPreview() == null) ? 0 : getEnablePullRequestPreview().hashCode());
+        hashCode = prime * hashCode + ((getDestinationBranch() == null) ? 0 : getDestinationBranch().hashCode());
+        hashCode = prime * hashCode + ((getSourceBranch() == null) ? 0 : getSourceBranch().hashCode());
         return hashCode;
     }
 

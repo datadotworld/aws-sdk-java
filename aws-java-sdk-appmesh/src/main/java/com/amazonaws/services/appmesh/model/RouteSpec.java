@@ -34,6 +34,18 @@ public class RouteSpec implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private HttpRoute httpRoute;
+    /**
+     * <p>
+     * The priority for the route. Routes are matched based on the specified value, where 0 is the highest priority.
+     * </p>
+     */
+    private Integer priority;
+    /**
+     * <p>
+     * The TCP routing information for the route.
+     * </p>
+     */
+    private TcpRoute tcpRoute;
 
     /**
      * <p>
@@ -76,6 +88,89 @@ public class RouteSpec implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
+     * The priority for the route. Routes are matched based on the specified value, where 0 is the highest priority.
+     * </p>
+     * 
+     * @param priority
+     *        The priority for the route. Routes are matched based on the specified value, where 0 is the highest
+     *        priority.
+     */
+
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    /**
+     * <p>
+     * The priority for the route. Routes are matched based on the specified value, where 0 is the highest priority.
+     * </p>
+     * 
+     * @return The priority for the route. Routes are matched based on the specified value, where 0 is the highest
+     *         priority.
+     */
+
+    public Integer getPriority() {
+        return this.priority;
+    }
+
+    /**
+     * <p>
+     * The priority for the route. Routes are matched based on the specified value, where 0 is the highest priority.
+     * </p>
+     * 
+     * @param priority
+     *        The priority for the route. Routes are matched based on the specified value, where 0 is the highest
+     *        priority.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RouteSpec withPriority(Integer priority) {
+        setPriority(priority);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The TCP routing information for the route.
+     * </p>
+     * 
+     * @param tcpRoute
+     *        The TCP routing information for the route.
+     */
+
+    public void setTcpRoute(TcpRoute tcpRoute) {
+        this.tcpRoute = tcpRoute;
+    }
+
+    /**
+     * <p>
+     * The TCP routing information for the route.
+     * </p>
+     * 
+     * @return The TCP routing information for the route.
+     */
+
+    public TcpRoute getTcpRoute() {
+        return this.tcpRoute;
+    }
+
+    /**
+     * <p>
+     * The TCP routing information for the route.
+     * </p>
+     * 
+     * @param tcpRoute
+     *        The TCP routing information for the route.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public RouteSpec withTcpRoute(TcpRoute tcpRoute) {
+        setTcpRoute(tcpRoute);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -88,7 +183,11 @@ public class RouteSpec implements Serializable, Cloneable, StructuredPojo {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getHttpRoute() != null)
-            sb.append("HttpRoute: ").append(getHttpRoute());
+            sb.append("HttpRoute: ").append(getHttpRoute()).append(",");
+        if (getPriority() != null)
+            sb.append("Priority: ").append(getPriority()).append(",");
+        if (getTcpRoute() != null)
+            sb.append("TcpRoute: ").append(getTcpRoute());
         sb.append("}");
         return sb.toString();
     }
@@ -107,6 +206,14 @@ public class RouteSpec implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getHttpRoute() != null && other.getHttpRoute().equals(this.getHttpRoute()) == false)
             return false;
+        if (other.getPriority() == null ^ this.getPriority() == null)
+            return false;
+        if (other.getPriority() != null && other.getPriority().equals(this.getPriority()) == false)
+            return false;
+        if (other.getTcpRoute() == null ^ this.getTcpRoute() == null)
+            return false;
+        if (other.getTcpRoute() != null && other.getTcpRoute().equals(this.getTcpRoute()) == false)
+            return false;
         return true;
     }
 
@@ -116,6 +223,8 @@ public class RouteSpec implements Serializable, Cloneable, StructuredPojo {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getHttpRoute() == null) ? 0 : getHttpRoute().hashCode());
+        hashCode = prime * hashCode + ((getPriority() == null) ? 0 : getPriority().hashCode());
+        hashCode = prime * hashCode + ((getTcpRoute() == null) ? 0 : getTcpRoute().hashCode());
         return hashCode;
     }
 

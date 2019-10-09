@@ -52,6 +52,14 @@ public class ContainerStateChangeJsonUnmarshaller implements Unmarshaller<Contai
                     context.nextToken();
                     containerStateChange.setContainerName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("imageDigest", targetDepth)) {
+                    context.nextToken();
+                    containerStateChange.setImageDigest(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("runtimeId", targetDepth)) {
+                    context.nextToken();
+                    containerStateChange.setRuntimeId(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("exitCode", targetDepth)) {
                     context.nextToken();
                     containerStateChange.setExitCode(context.getUnmarshaller(Integer.class).unmarshall(context));

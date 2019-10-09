@@ -39,8 +39,9 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
     private String ownerAccount;
     /**
      * <p>
-     * The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
-     * 400Mbps, and 500Mbps.
+     * The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps,
+     * 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific
+     * requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      * </p>
      */
     private String bandwidth;
@@ -56,6 +57,12 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
      * </p>
      */
     private Integer vlan;
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
@@ -139,13 +146,15 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
-     * 400Mbps, and 500Mbps.
+     * The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps,
+     * 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific
+     * requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      * </p>
      * 
      * @param bandwidth
-     *        The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps,
-     *        300Mbps, 400Mbps, and 500Mbps.
+     *        The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
+     *        500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met
+     *        specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      */
 
     public void setBandwidth(String bandwidth) {
@@ -154,12 +163,14 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
-     * 400Mbps, and 500Mbps.
+     * The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps,
+     * 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific
+     * requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      * </p>
      * 
-     * @return The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps,
-     *         300Mbps, 400Mbps, and 500Mbps.
+     * @return The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
+     *         500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met
+     *         specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      */
 
     public String getBandwidth() {
@@ -168,13 +179,15 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
 
     /**
      * <p>
-     * The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
-     * 400Mbps, and 500Mbps.
+     * The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps,
+     * 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific
+     * requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      * </p>
      * 
      * @param bandwidth
-     *        The bandwidth of the hosted connection, in Mbps. The possible values are 50Mbps, 100Mbps, 200Mbps,
-     *        300Mbps, 400Mbps, and 500Mbps.
+     *        The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
+     *        500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met
+     *        specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -264,6 +277,79 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
     }
 
     /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * 
+     * @return The tags associated with the connection.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the connection.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the connection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocateHostedConnectionRequest withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags associated with the connection.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the connection.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocateHostedConnectionRequest withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -284,7 +370,9 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
         if (getConnectionName() != null)
             sb.append("ConnectionName: ").append(getConnectionName()).append(",");
         if (getVlan() != null)
-            sb.append("Vlan: ").append(getVlan());
+            sb.append("Vlan: ").append(getVlan()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -319,6 +407,10 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
             return false;
         if (other.getVlan() != null && other.getVlan().equals(this.getVlan()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -332,6 +424,7 @@ public class AllocateHostedConnectionRequest extends com.amazonaws.AmazonWebServ
         hashCode = prime * hashCode + ((getBandwidth() == null) ? 0 : getBandwidth().hashCode());
         hashCode = prime * hashCode + ((getConnectionName() == null) ? 0 : getConnectionName().hashCode());
         hashCode = prime * hashCode + ((getVlan() == null) ? 0 : getVlan().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

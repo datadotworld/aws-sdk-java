@@ -157,16 +157,13 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      */
     private java.util.List<String> allowedOAuthFlows;
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      */
     private java.util.List<String> allowedOAuthScopes;
@@ -1235,16 +1232,9 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @return Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *         response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *         <p>
-     *         Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *         token, based on scopes) directly.
+     *         response. This code can be exchanged for access tokens with the token endpoint.
      * @see OAuthFlowType
      */
 
@@ -1257,17 +1247,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @see OAuthFlowType
      */
 
@@ -1286,10 +1269,6 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
      * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
-     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setAllowedOAuthFlows(java.util.Collection)} or {@link #withAllowedOAuthFlows(java.util.Collection)} if
      * you want to override the existing values.
@@ -1297,10 +1276,7 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OAuthFlowType
      */
@@ -1320,17 +1296,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OAuthFlowType
      */
@@ -1345,17 +1314,10 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the response.
      * This code can be exchanged for access tokens with the token endpoint.
      * </p>
-     * <p>
-     * Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID token,
-     * based on scopes) directly.
-     * </p>
      * 
      * @param allowedOAuthFlows
      *        Set to <code>code</code> to initiate a code grant flow, which provides an authorization code as the
-     *        response. This code can be exchanged for access tokens with the token endpoint.</p>
-     *        <p>
-     *        Set to <code>token</code> to specify that the client should get the access token (and, optionally, ID
-     *        token, based on scopes) directly.
+     *        response. This code can be exchanged for access tokens with the token endpoint.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see OAuthFlowType
      */
@@ -1376,11 +1338,13 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * 
      * @return A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *         <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *         <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *         custom scopes created in Resource Servers are also supported.
      */
 
     public java.util.List<String> getAllowedOAuthScopes() {
@@ -1390,12 +1354,14 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * 
      * @param allowedOAuthScopes
      *        A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *        custom scopes created in Resource Servers are also supported.
      */
 
     public void setAllowedOAuthScopes(java.util.Collection<String> allowedOAuthScopes) {
@@ -1410,7 +1376,8 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1420,7 +1387,8 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * 
      * @param allowedOAuthScopes
      *        A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *        custom scopes created in Resource Servers are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1437,12 +1405,14 @@ public class UpdateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * 
      * @param allowedOAuthScopes
      *        A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *        custom scopes created in Resource Servers are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

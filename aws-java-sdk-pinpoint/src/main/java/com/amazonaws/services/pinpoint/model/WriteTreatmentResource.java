@@ -18,7 +18,10 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Used to create a campaign treatment.
+ * <p>
+ * Specifies the settings for a campaign treatment. A treatment is a variation of a campaign that's used for A/B testing
+ * of a campaign.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/WriteTreatmentResource" target="_top">AWS
  *      API Documentation</a>
@@ -26,22 +29,47 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class WriteTreatmentResource implements Serializable, Cloneable, StructuredPojo {
 
-    /** The message configuration settings. */
+    /**
+     * <p>
+     * The message configuration settings for the treatment.
+     * </p>
+     */
     private MessageConfiguration messageConfiguration;
-    /** The campaign schedule. */
+    /**
+     * <p>
+     * The schedule settings for the treatment.
+     * </p>
+     */
     private Schedule schedule;
-    /** The allocated percentage of users for this treatment. */
+    /**
+     * <p>
+     * The allocated percentage of users (segment members) to send the treatment to.
+     * </p>
+     */
     private Integer sizePercent;
-    /** A custom description for the treatment. */
+
+    private TemplateConfiguration templateConfiguration;
+    /**
+     * <p>
+     * The custom description of the treatment.
+     * </p>
+     */
     private String treatmentDescription;
-    /** The custom name of a variation of the campaign used for A/B testing. */
+    /**
+     * <p>
+     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * campaign.
+     * </p>
+     */
     private String treatmentName;
 
     /**
-     * The message configuration settings.
+     * <p>
+     * The message configuration settings for the treatment.
+     * </p>
      * 
      * @param messageConfiguration
-     *        The message configuration settings.
+     *        The message configuration settings for the treatment.
      */
 
     public void setMessageConfiguration(MessageConfiguration messageConfiguration) {
@@ -49,9 +77,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The message configuration settings.
+     * <p>
+     * The message configuration settings for the treatment.
+     * </p>
      * 
-     * @return The message configuration settings.
+     * @return The message configuration settings for the treatment.
      */
 
     public MessageConfiguration getMessageConfiguration() {
@@ -59,10 +89,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The message configuration settings.
+     * <p>
+     * The message configuration settings for the treatment.
+     * </p>
      * 
      * @param messageConfiguration
-     *        The message configuration settings.
+     *        The message configuration settings for the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -72,10 +104,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The campaign schedule.
+     * <p>
+     * The schedule settings for the treatment.
+     * </p>
      * 
      * @param schedule
-     *        The campaign schedule.
+     *        The schedule settings for the treatment.
      */
 
     public void setSchedule(Schedule schedule) {
@@ -83,9 +117,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The campaign schedule.
+     * <p>
+     * The schedule settings for the treatment.
+     * </p>
      * 
-     * @return The campaign schedule.
+     * @return The schedule settings for the treatment.
      */
 
     public Schedule getSchedule() {
@@ -93,10 +129,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The campaign schedule.
+     * <p>
+     * The schedule settings for the treatment.
+     * </p>
      * 
      * @param schedule
-     *        The campaign schedule.
+     *        The schedule settings for the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -106,10 +144,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The allocated percentage of users for this treatment.
+     * <p>
+     * The allocated percentage of users (segment members) to send the treatment to.
+     * </p>
      * 
      * @param sizePercent
-     *        The allocated percentage of users for this treatment.
+     *        The allocated percentage of users (segment members) to send the treatment to.
      */
 
     public void setSizePercent(Integer sizePercent) {
@@ -117,9 +157,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The allocated percentage of users for this treatment.
+     * <p>
+     * The allocated percentage of users (segment members) to send the treatment to.
+     * </p>
      * 
-     * @return The allocated percentage of users for this treatment.
+     * @return The allocated percentage of users (segment members) to send the treatment to.
      */
 
     public Integer getSizePercent() {
@@ -127,10 +169,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The allocated percentage of users for this treatment.
+     * <p>
+     * The allocated percentage of users (segment members) to send the treatment to.
+     * </p>
      * 
      * @param sizePercent
-     *        The allocated percentage of users for this treatment.
+     *        The allocated percentage of users (segment members) to send the treatment to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -140,10 +184,38 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * A custom description for the treatment.
+     * @param templateConfiguration
+     */
+
+    public void setTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        this.templateConfiguration = templateConfiguration;
+    }
+
+    /**
+     * @return
+     */
+
+    public TemplateConfiguration getTemplateConfiguration() {
+        return this.templateConfiguration;
+    }
+
+    /**
+     * @param templateConfiguration
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public WriteTreatmentResource withTemplateConfiguration(TemplateConfiguration templateConfiguration) {
+        setTemplateConfiguration(templateConfiguration);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The custom description of the treatment.
+     * </p>
      * 
      * @param treatmentDescription
-     *        A custom description for the treatment.
+     *        The custom description of the treatment.
      */
 
     public void setTreatmentDescription(String treatmentDescription) {
@@ -151,9 +223,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * A custom description for the treatment.
+     * <p>
+     * The custom description of the treatment.
+     * </p>
      * 
-     * @return A custom description for the treatment.
+     * @return The custom description of the treatment.
      */
 
     public String getTreatmentDescription() {
@@ -161,10 +235,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * A custom description for the treatment.
+     * <p>
+     * The custom description of the treatment.
+     * </p>
      * 
      * @param treatmentDescription
-     *        A custom description for the treatment.
+     *        The custom description of the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -174,10 +250,14 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The custom name of a variation of the campaign used for A/B testing.
+     * <p>
+     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * campaign.
+     * </p>
      * 
      * @param treatmentName
-     *        The custom name of a variation of the campaign used for A/B testing.
+     *        The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
+     *        a campaign.
      */
 
     public void setTreatmentName(String treatmentName) {
@@ -185,9 +265,13 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The custom name of a variation of the campaign used for A/B testing.
+     * <p>
+     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * campaign.
+     * </p>
      * 
-     * @return The custom name of a variation of the campaign used for A/B testing.
+     * @return The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
+     *         a campaign.
      */
 
     public String getTreatmentName() {
@@ -195,10 +279,14 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * The custom name of a variation of the campaign used for A/B testing.
+     * <p>
+     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * campaign.
+     * </p>
      * 
      * @param treatmentName
-     *        The custom name of a variation of the campaign used for A/B testing.
+     *        The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
+     *        a campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -225,6 +313,8 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
             sb.append("Schedule: ").append(getSchedule()).append(",");
         if (getSizePercent() != null)
             sb.append("SizePercent: ").append(getSizePercent()).append(",");
+        if (getTemplateConfiguration() != null)
+            sb.append("TemplateConfiguration: ").append(getTemplateConfiguration()).append(",");
         if (getTreatmentDescription() != null)
             sb.append("TreatmentDescription: ").append(getTreatmentDescription()).append(",");
         if (getTreatmentName() != null)
@@ -255,6 +345,10 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
             return false;
         if (other.getSizePercent() != null && other.getSizePercent().equals(this.getSizePercent()) == false)
             return false;
+        if (other.getTemplateConfiguration() == null ^ this.getTemplateConfiguration() == null)
+            return false;
+        if (other.getTemplateConfiguration() != null && other.getTemplateConfiguration().equals(this.getTemplateConfiguration()) == false)
+            return false;
         if (other.getTreatmentDescription() == null ^ this.getTreatmentDescription() == null)
             return false;
         if (other.getTreatmentDescription() != null && other.getTreatmentDescription().equals(this.getTreatmentDescription()) == false)
@@ -274,6 +368,7 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
         hashCode = prime * hashCode + ((getMessageConfiguration() == null) ? 0 : getMessageConfiguration().hashCode());
         hashCode = prime * hashCode + ((getSchedule() == null) ? 0 : getSchedule().hashCode());
         hashCode = prime * hashCode + ((getSizePercent() == null) ? 0 : getSizePercent().hashCode());
+        hashCode = prime * hashCode + ((getTemplateConfiguration() == null) ? 0 : getTemplateConfiguration().hashCode());
         hashCode = prime * hashCode + ((getTreatmentDescription() == null) ? 0 : getTreatmentDescription().hashCode());
         hashCode = prime * hashCode + ((getTreatmentName() == null) ? 0 : getTreatmentName().hashCode());
         return hashCode;

@@ -67,7 +67,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
      * your application through an identity provider. If your app client lacks write access to a mapped attribute,
      * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      */
@@ -80,7 +80,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     private java.util.List<String> explicitAuthFlows;
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      */
     private java.util.List<String> supportedIdentityProviders;
@@ -174,7 +175,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      */
     private java.util.List<String> allowedOAuthScopes;
@@ -443,7 +445,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
      * your application through an identity provider. If your app client lacks write access to a mapped attribute,
      * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * 
@@ -454,7 +456,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      *         users sign in to your application through an identity provider. If your app client lacks write access to
      *         a mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
      *         information, see <a href=
-     *         "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *         "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      *         >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      */
 
@@ -471,7 +473,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
      * your application through an identity provider. If your app client lacks write access to a mapped attribute,
      * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * 
@@ -483,7 +485,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      *        users sign in to your application through an identity provider. If your app client lacks write access to a
      *        mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      *        >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      */
 
@@ -505,7 +507,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
      * your application through an identity provider. If your app client lacks write access to a mapped attribute,
      * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * <p>
@@ -522,7 +524,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      *        users sign in to your application through an identity provider. If your app client lacks write access to a
      *        mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      *        >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -546,7 +548,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to
      * your application through an identity provider. If your app client lacks write access to a mapped attribute,
      * Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <a href=
-     * "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     * "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      * >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * </p>
      * 
@@ -558,7 +560,7 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      *        users sign in to your application through an identity provider. If your app client lacks write access to a
      *        mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more
      *        information, see <a href=
-     *        "http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
+     *        "https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html"
      *        >Specifying Identity Provider Attribute Mappings for Your User Pool</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -668,10 +670,13 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * 
-     * @return A list of provider names for the identity providers that are supported on this client.
+     * @return A list of provider names for the identity providers that are supported on this client. The following are
+     *         supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *         <code>LoginWithAmazon</code>.
      */
 
     public java.util.List<String> getSupportedIdentityProviders() {
@@ -680,11 +685,14 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * 
      * @param supportedIdentityProviders
-     *        A list of provider names for the identity providers that are supported on this client.
+     *        A list of provider names for the identity providers that are supported on this client. The following are
+     *        supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *        <code>LoginWithAmazon</code>.
      */
 
     public void setSupportedIdentityProviders(java.util.Collection<String> supportedIdentityProviders) {
@@ -698,7 +706,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -707,7 +716,9 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param supportedIdentityProviders
-     *        A list of provider names for the identity providers that are supported on this client.
+     *        A list of provider names for the identity providers that are supported on this client. The following are
+     *        supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *        <code>LoginWithAmazon</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -723,11 +734,14 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * A list of provider names for the identity providers that are supported on this client.
+     * A list of provider names for the identity providers that are supported on this client. The following are
+     * supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and <code>LoginWithAmazon</code>.
      * </p>
      * 
      * @param supportedIdentityProviders
-     *        A list of provider names for the identity providers that are supported on this client.
+     *        A list of provider names for the identity providers that are supported on this client. The following are
+     *        supported: <code>COGNITO</code>, <code>Facebook</code>, <code>Google</code> and
+     *        <code>LoginWithAmazon</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1461,11 +1475,13 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * 
      * @return A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *         <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *         <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *         custom scopes created in Resource Servers are also supported.
      */
 
     public java.util.List<String> getAllowedOAuthScopes() {
@@ -1475,12 +1491,14 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * 
      * @param allowedOAuthScopes
      *        A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *        custom scopes created in Resource Servers are also supported.
      */
 
     public void setAllowedOAuthScopes(java.util.Collection<String> allowedOAuthScopes) {
@@ -1495,7 +1513,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1505,7 +1524,8 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
      * 
      * @param allowedOAuthScopes
      *        A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *        custom scopes created in Resource Servers are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1522,12 +1542,14 @@ public class CreateUserPoolClientRequest extends com.amazonaws.AmazonWebServiceR
     /**
      * <p>
      * A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     * <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values, custom
+     * scopes created in Resource Servers are also supported.
      * </p>
      * 
      * @param allowedOAuthScopes
      *        A list of allowed <code>OAuth</code> scopes. Currently supported values are <code>"phone"</code>,
-     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>.
+     *        <code>"email"</code>, <code>"openid"</code>, and <code>"Cognito"</code>. In addition to these values,
+     *        custom scopes created in Resource Servers are also supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -73,6 +73,9 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      */
     private Integer asn;
     /**
@@ -83,7 +86,8 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
     private Long amazonSideAsn;
     /**
      * <p>
-     * The authentication key for BGP configuration.
+     * The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a maximun
+     * lenth of 80 characters.
      * </p>
      */
     private String authKey;
@@ -220,6 +224,12 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
      * </p>
      */
     private String awsDeviceV2;
+    /**
+     * <p>
+     * The tags associated with the virtual interface.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<Tag> tags;
 
     /**
      * <p>
@@ -505,9 +515,14 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      * 
      * @param asn
-     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+     *        <p>
+     *        The valid values are 1-2147483647.
      */
 
     public void setAsn(Integer asn) {
@@ -518,8 +533,13 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      * 
-     * @return The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     * @return The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+     *         <p>
+     *         The valid values are 1-2147483647.
      */
 
     public Integer getAsn() {
@@ -530,9 +550,14 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
      * <p>
      * The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
      * </p>
+     * <p>
+     * The valid values are 1-2147483647.
+     * </p>
      * 
      * @param asn
-     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.
+     *        The autonomous system (AS) number for Border Gateway Protocol (BGP) configuration.</p>
+     *        <p>
+     *        The valid values are 1-2147483647.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -583,11 +608,13 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The authentication key for BGP configuration.
+     * The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a maximun
+     * lenth of 80 characters.
      * </p>
      * 
      * @param authKey
-     *        The authentication key for BGP configuration.
+     *        The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a
+     *        maximun lenth of 80 characters.
      */
 
     public void setAuthKey(String authKey) {
@@ -596,10 +623,12 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The authentication key for BGP configuration.
+     * The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a maximun
+     * lenth of 80 characters.
      * </p>
      * 
-     * @return The authentication key for BGP configuration.
+     * @return The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a
+     *         maximun lenth of 80 characters.
      */
 
     public String getAuthKey() {
@@ -608,11 +637,13 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * The authentication key for BGP configuration.
+     * The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a maximun
+     * lenth of 80 characters.
      * </p>
      * 
      * @param authKey
-     *        The authentication key for BGP configuration.
+     *        The authentication key for BGP configuration. This string has a minimum length of 6 characters and and a
+     *        maximun lenth of 80 characters.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1834,6 +1865,79 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
     }
 
     /**
+     * <p>
+     * The tags associated with the virtual interface.
+     * </p>
+     * 
+     * @return The tags associated with the virtual interface.
+     */
+
+    public java.util.List<Tag> getTags() {
+        if (tags == null) {
+            tags = new com.amazonaws.internal.SdkInternalList<Tag>();
+        }
+        return tags;
+    }
+
+    /**
+     * <p>
+     * The tags associated with the virtual interface.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the virtual interface.
+     */
+
+    public void setTags(java.util.Collection<Tag> tags) {
+        if (tags == null) {
+            this.tags = null;
+            return;
+        }
+
+        this.tags = new com.amazonaws.internal.SdkInternalList<Tag>(tags);
+    }
+
+    /**
+     * <p>
+     * The tags associated with the virtual interface.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
+     * existing values.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the virtual interface.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocatePrivateVirtualInterfaceResult withTags(Tag... tags) {
+        if (this.tags == null) {
+            setTags(new com.amazonaws.internal.SdkInternalList<Tag>(tags.length));
+        }
+        for (Tag ele : tags) {
+            this.tags.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The tags associated with the virtual interface.
+     * </p>
+     * 
+     * @param tags
+     *        The tags associated with the virtual interface.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public AllocatePrivateVirtualInterfaceResult withTags(java.util.Collection<Tag> tags) {
+        setTags(tags);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1890,7 +1994,9 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
         if (getRegion() != null)
             sb.append("Region: ").append(getRegion()).append(",");
         if (getAwsDeviceV2() != null)
-            sb.append("AwsDeviceV2: ").append(getAwsDeviceV2());
+            sb.append("AwsDeviceV2: ").append(getAwsDeviceV2()).append(",");
+        if (getTags() != null)
+            sb.append("Tags: ").append(getTags());
         sb.append("}");
         return sb.toString();
     }
@@ -1997,6 +2103,10 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
             return false;
         if (other.getAwsDeviceV2() != null && other.getAwsDeviceV2().equals(this.getAwsDeviceV2()) == false)
             return false;
+        if (other.getTags() == null ^ this.getTags() == null)
+            return false;
+        if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
         return true;
     }
 
@@ -2028,6 +2138,7 @@ public class AllocatePrivateVirtualInterfaceResult extends com.amazonaws.AmazonW
         hashCode = prime * hashCode + ((getBgpPeers() == null) ? 0 : getBgpPeers().hashCode());
         hashCode = prime * hashCode + ((getRegion() == null) ? 0 : getRegion().hashCode());
         hashCode = prime * hashCode + ((getAwsDeviceV2() == null) ? 0 : getAwsDeviceV2().hashCode());
+        hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         return hashCode;
     }
 

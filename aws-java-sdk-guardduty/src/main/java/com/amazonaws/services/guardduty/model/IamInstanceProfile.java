@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * The profile information of the EC2 instance.
+ * <p>
+ * Contains information about the instance profile.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/IamInstanceProfile" target="_top">AWS API
  *      Documentation</a>
@@ -26,13 +28,23 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class IamInstanceProfile implements Serializable, Cloneable, StructuredPojo {
 
-    /** AWS EC2 instance profile ARN. */
+    /**
+     * <p>
+     * AWS EC2 instance profile ARN.
+     * </p>
+     */
     private String arn;
-    /** AWS EC2 instance profile ID. */
+    /**
+     * <p>
+     * AWS EC2 instance profile ID.
+     * </p>
+     */
     private String id;
 
     /**
+     * <p>
      * AWS EC2 instance profile ARN.
+     * </p>
      * 
      * @param arn
      *        AWS EC2 instance profile ARN.
@@ -43,7 +55,9 @@ public class IamInstanceProfile implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS EC2 instance profile ARN.
+     * </p>
      * 
      * @return AWS EC2 instance profile ARN.
      */
@@ -53,7 +67,9 @@ public class IamInstanceProfile implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS EC2 instance profile ARN.
+     * </p>
      * 
      * @param arn
      *        AWS EC2 instance profile ARN.
@@ -66,7 +82,9 @@ public class IamInstanceProfile implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS EC2 instance profile ID.
+     * </p>
      * 
      * @param id
      *        AWS EC2 instance profile ID.
@@ -77,7 +95,9 @@ public class IamInstanceProfile implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS EC2 instance profile ID.
+     * </p>
      * 
      * @return AWS EC2 instance profile ID.
      */
@@ -87,7 +107,9 @@ public class IamInstanceProfile implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
      * AWS EC2 instance profile ID.
+     * </p>
      * 
      * @param id
      *        AWS EC2 instance profile ID.

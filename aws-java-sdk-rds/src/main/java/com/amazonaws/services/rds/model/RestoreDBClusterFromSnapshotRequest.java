@@ -28,7 +28,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> availabilityZones;
@@ -97,6 +97,39 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     /**
      * <p>
      * The version of the database engine to use for the new DB cluster.
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * <b>Aurora MySQL</b>
+     * </p>
+     * <p>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
      * </p>
      */
     private String engineVersion;
@@ -179,11 +212,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     private String kmsKeyId;
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      */
     private Boolean enableIAMDatabaseAuthentication;
@@ -217,8 +252,8 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     private com.amazonaws.internal.SdkInternalList<String> enableCloudwatchLogsExports;
     /**
      * <p>
-     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     * <code>parallelquery</code>.
+     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     * <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      * </p>
      */
     private String engineMode;
@@ -262,26 +297,25 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
     private String dBClusterParameterGroupName;
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      */
     private Boolean deletionProtection;
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      */
     private Boolean copyTagsToSnapshot;
 
     /**
      * <p>
-     * Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * 
-     * @return Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be
-     *         created in.
+     * @return Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      */
 
     public java.util.List<String> getAvailabilityZones() {
@@ -293,12 +327,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * 
      * @param availabilityZones
-     *        Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be
-     *        created in.
+     *        Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      */
 
     public void setAvailabilityZones(java.util.Collection<String> availabilityZones) {
@@ -312,7 +345,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -321,8 +354,7 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * </p>
      * 
      * @param availabilityZones
-     *        Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be
-     *        created in.
+     *        Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -338,12 +370,11 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be created in.
+     * Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * </p>
      * 
      * @param availabilityZones
-     *        Provides the list of Amazon EC2 Availability Zones that instances in the restored DB cluster can be
-     *        created in.
+     *        Provides the list of Availability Zones (AZs) where instances in the restored DB cluster can be created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -731,9 +762,75 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * The version of the database engine to use for the new DB cluster.
      * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * <b>Aurora MySQL</b>
+     * </p>
+     * <p>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
+     * </p>
      * 
      * @param engineVersion
-     *        The version of the database engine to use for the new DB cluster.
+     *        The version of the database engine to use for the new DB cluster.</p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *        use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *        Aurora), use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *        command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora MySQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     *        <code>5.7.mysql_aurora.2.04.5</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>9.6.3</code>, <code>10.7</code>
      */
 
     public void setEngineVersion(String engineVersion) {
@@ -744,8 +841,74 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * The version of the database engine to use for the new DB cluster.
      * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * <b>Aurora MySQL</b>
+     * </p>
+     * <p>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
+     * </p>
      * 
-     * @return The version of the database engine to use for the new DB cluster.
+     * @return The version of the database engine to use for the new DB cluster.</p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *         use the following command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *         Aurora), use the following command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *         command:
+     *         </p>
+     *         <p>
+     *         <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     *         </p>
+     *         <p>
+     *         <b>Aurora MySQL</b>
+     *         </p>
+     *         <p>
+     *         Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     *         <code>5.7.mysql_aurora.2.04.5</code>
+     *         </p>
+     *         <p>
+     *         <b>Aurora PostgreSQL</b>
+     *         </p>
+     *         <p>
+     *         Example: <code>9.6.3</code>, <code>10.7</code>
      */
 
     public String getEngineVersion() {
@@ -756,9 +919,75 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
      * <p>
      * The version of the database engine to use for the new DB cluster.
      * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora), use the
+     * following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible Aurora), use
+     * the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * To list all of the available engine versions for <code>aurora-postgresql</code>, use the following command:
+     * </p>
+     * <p>
+     * <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     * </p>
+     * <p>
+     * <b>Aurora MySQL</b>
+     * </p>
+     * <p>
+     * Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     * <code>5.7.mysql_aurora.2.04.5</code>
+     * </p>
+     * <p>
+     * <b>Aurora PostgreSQL</b>
+     * </p>
+     * <p>
+     * Example: <code>9.6.3</code>, <code>10.7</code>
+     * </p>
      * 
      * @param engineVersion
-     *        The version of the database engine to use for the new DB cluster.
+     *        The version of the database engine to use for the new DB cluster.</p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora</code> (for MySQL 5.6-compatible Aurora),
+     *        use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-mysql</code> (for MySQL 5.7-compatible
+     *        Aurora), use the following command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-mysql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        To list all of the available engine versions for <code>aurora-postgresql</code>, use the following
+     *        command:
+     *        </p>
+     *        <p>
+     *        <code>aws rds describe-db-engine-versions --engine aurora-postgresql --query "DBEngineVersions[].EngineVersion"</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora MySQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>5.6.10a</code>, <code>5.6.mysql_aurora.1.19.2</code>, <code>5.7.12</code>,
+     *        <code>5.7.mysql_aurora.2.04.5</code>
+     *        </p>
+     *        <p>
+     *        <b>Aurora PostgreSQL</b>
+     *        </p>
+     *        <p>
+     *        Example: <code>9.6.3</code>, <code>10.7</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1319,18 +1548,22 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *        otherwise false.</p>
+     *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts. By default, mapping is disabled.</p>
      *        <p>
-     *        Default: <code>false</code>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *        Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public void setEnableIAMDatabaseAuthentication(Boolean enableIAMDatabaseAuthentication) {
@@ -1339,17 +1572,21 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *         otherwise false.</p>
+     * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts. By default, mapping is disabled.</p>
      *         <p>
-     *         Default: <code>false</code>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *         Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public Boolean getEnableIAMDatabaseAuthentication() {
@@ -1358,18 +1595,22 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
      * @param enableIAMDatabaseAuthentication
-     *        True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *        otherwise false.</p>
+     *        A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *        database accounts. By default, mapping is disabled.</p>
      *        <p>
-     *        Default: <code>false</code>
+     *        For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *        Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1380,17 +1621,21 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise
-     * false.
+     * A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to database
+     * accounts. By default, mapping is disabled.
      * </p>
      * <p>
-     * Default: <code>false</code>
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM Database
+     * Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      * </p>
      * 
-     * @return True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and
-     *         otherwise false.</p>
+     * @return A value that indicates whether to enable mapping of AWS Identity and Access Management (IAM) accounts to
+     *         database accounts. By default, mapping is disabled.</p>
      *         <p>
-     *         Default: <code>false</code>
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html"> IAM
+     *         Database Authentication</a> in the <i>Amazon Aurora User Guide.</i>
      */
 
     public Boolean isEnableIAMDatabaseAuthentication() {
@@ -1611,13 +1856,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     * <code>parallelquery</code>.
+     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     * <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      * </p>
      * 
      * @param engineMode
-     *        The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     *        <code>parallelquery</code>.
+     *        The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     *        <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      */
 
     public void setEngineMode(String engineMode) {
@@ -1626,12 +1871,12 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     * <code>parallelquery</code>.
+     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     * <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      * </p>
      * 
-     * @return The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     *         <code>parallelquery</code>.
+     * @return The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     *         <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      */
 
     public String getEngineMode() {
@@ -1640,13 +1885,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     * <code>parallelquery</code>.
+     * The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     * <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      * </p>
      * 
      * @param engineMode
-     *        The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>, or
-     *        <code>parallelquery</code>.
+     *        The DB engine mode of the DB cluster, either <code>provisioned</code>, <code>serverless</code>,
+     *        <code>parallelquery</code>, <code>global</code>, or <code>multimaster</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1890,13 +2135,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *        this value is set to true. The default is false.
+     *        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *        deleted when deletion protection is enabled. By default, deletion protection is disabled.
      */
 
     public void setDeletionProtection(Boolean deletionProtection) {
@@ -1905,12 +2150,12 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
-     * @return Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *         this value is set to true. The default is false.
+     * @return A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *         deleted when deletion protection is enabled. By default, deletion protection is disabled.
      */
 
     public Boolean getDeletionProtection() {
@@ -1919,13 +2164,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *        this value is set to true. The default is false.
+     *        A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *        deleted when deletion protection is enabled. By default, deletion protection is disabled.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1936,12 +2181,12 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when this
-     * value is set to true. The default is false.
+     * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when
+     * deletion protection is enabled. By default, deletion protection is disabled.
      * </p>
      * 
-     * @return Indicates if the DB cluster should have deletion protection enabled. The database can't be deleted when
-     *         this value is set to true. The default is false.
+     * @return A value that indicates whether the DB cluster has deletion protection enabled. The database can't be
+     *         deleted when deletion protection is enabled. By default, deletion protection is disabled.
      */
 
     public Boolean isDeletionProtection() {
@@ -1950,13 +2195,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *        false. The default is false.
+     *        A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *        DB cluster. The default is not to copy them.
      */
 
     public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -1965,12 +2210,12 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
-     * @return True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *         false. The default is false.
+     * @return A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *         DB cluster. The default is not to copy them.
      */
 
     public Boolean getCopyTagsToSnapshot() {
@@ -1979,13 +2224,13 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *        false. The default is false.
+     *        A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *        DB cluster. The default is not to copy them.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1996,12 +2241,12 @@ public class RestoreDBClusterFromSnapshotRequest extends com.amazonaws.AmazonWeb
 
     /**
      * <p>
-     * True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise false.
-     * The default is false.
+     * A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored DB
+     * cluster. The default is not to copy them.
      * </p>
      * 
-     * @return True to copy all tags from the restored DB cluster to snapshots of the restored DB cluster, and otherwise
-     *         false. The default is false.
+     * @return A value that indicates whether to copy all tags from the restored DB cluster to snapshots of the restored
+     *         DB cluster. The default is not to copy them.
      */
 
     public Boolean isCopyTagsToSnapshot() {

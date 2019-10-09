@@ -76,6 +76,10 @@ public class JobTemplateJsonUnmarshaller implements Unmarshaller<JobTemplate, Js
                     context.nextToken();
                     jobTemplate.setName(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("priority", targetDepth)) {
+                    context.nextToken();
+                    jobTemplate.setPriority(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
                 if (context.testExpression("queue", targetDepth)) {
                     context.nextToken();
                     jobTemplate.setQueue(context.getUnmarshaller(String.class).unmarshall(context));
@@ -84,9 +88,9 @@ public class JobTemplateJsonUnmarshaller implements Unmarshaller<JobTemplate, Js
                     context.nextToken();
                     jobTemplate.setSettings(JobTemplateSettingsJsonUnmarshaller.getInstance().unmarshall(context));
                 }
-                if (context.testExpression("statusUpdateIntervalInSecs", targetDepth)) {
+                if (context.testExpression("statusUpdateInterval", targetDepth)) {
                     context.nextToken();
-                    jobTemplate.setStatusUpdateIntervalInSecs(context.getUnmarshaller(Long.class).unmarshall(context));
+                    jobTemplate.setStatusUpdateInterval(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("type", targetDepth)) {
                     context.nextToken();

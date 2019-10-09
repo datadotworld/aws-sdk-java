@@ -40,14 +40,18 @@ public class CreateJobRequestMarshaller {
             .defaultValueSupplier(com.amazonaws.util.IdempotentUtils.getGenerator()).build();
     private static final MarshallingInfo<String> JOBTEMPLATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("jobTemplate").build();
+    private static final MarshallingInfo<Integer> PRIORITY_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("priority").build();
     private static final MarshallingInfo<String> QUEUE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("queue").build();
     private static final MarshallingInfo<String> ROLE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("role").build();
     private static final MarshallingInfo<StructuredPojo> SETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("settings").build();
-    private static final MarshallingInfo<Long> STATUSUPDATEINTERVALINSECS_BINDING = MarshallingInfo.builder(MarshallingType.LONG)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("statusUpdateIntervalInSecs").build();
+    private static final MarshallingInfo<String> SIMULATERESERVEDQUEUE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("simulateReservedQueue").build();
+    private static final MarshallingInfo<String> STATUSUPDATEINTERVAL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("statusUpdateInterval").build();
     private static final MarshallingInfo<Map> USERMETADATA_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("userMetadata").build();
 
@@ -71,10 +75,12 @@ public class CreateJobRequestMarshaller {
             protocolMarshaller.marshall(createJobRequest.getBillingTagsSource(), BILLINGTAGSSOURCE_BINDING);
             protocolMarshaller.marshall(createJobRequest.getClientRequestToken(), CLIENTREQUESTTOKEN_BINDING);
             protocolMarshaller.marshall(createJobRequest.getJobTemplate(), JOBTEMPLATE_BINDING);
+            protocolMarshaller.marshall(createJobRequest.getPriority(), PRIORITY_BINDING);
             protocolMarshaller.marshall(createJobRequest.getQueue(), QUEUE_BINDING);
             protocolMarshaller.marshall(createJobRequest.getRole(), ROLE_BINDING);
             protocolMarshaller.marshall(createJobRequest.getSettings(), SETTINGS_BINDING);
-            protocolMarshaller.marshall(createJobRequest.getStatusUpdateIntervalInSecs(), STATUSUPDATEINTERVALINSECS_BINDING);
+            protocolMarshaller.marshall(createJobRequest.getSimulateReservedQueue(), SIMULATERESERVEDQUEUE_BINDING);
+            protocolMarshaller.marshall(createJobRequest.getStatusUpdateInterval(), STATUSUPDATEINTERVAL_BINDING);
             protocolMarshaller.marshall(createJobRequest.getUserMetadata(), USERMETADATA_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

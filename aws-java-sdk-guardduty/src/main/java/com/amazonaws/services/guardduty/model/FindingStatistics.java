@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * Finding statistics object.
+ * <p>
+ * Contains information about finding statistics.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/FindingStatistics" target="_top">AWS API
  *      Documentation</a>
@@ -26,11 +28,17 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class FindingStatistics implements Serializable, Cloneable, StructuredPojo {
 
-    /** Represents a map of severity to count statistic for a set of findings */
+    /**
+     * <p>
+     * Represents a map of severity to count statistic for a set of findings
+     * </p>
+     */
     private java.util.Map<String, Integer> countBySeverity;
 
     /**
+     * <p>
      * Represents a map of severity to count statistic for a set of findings
+     * </p>
      * 
      * @return Represents a map of severity to count statistic for a set of findings
      */
@@ -40,7 +48,9 @@ public class FindingStatistics implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Represents a map of severity to count statistic for a set of findings
+     * </p>
      * 
      * @param countBySeverity
      *        Represents a map of severity to count statistic for a set of findings
@@ -51,7 +61,9 @@ public class FindingStatistics implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
      * Represents a map of severity to count statistic for a set of findings
+     * </p>
      * 
      * @param countBySeverity
      *        Represents a map of severity to count statistic for a set of findings

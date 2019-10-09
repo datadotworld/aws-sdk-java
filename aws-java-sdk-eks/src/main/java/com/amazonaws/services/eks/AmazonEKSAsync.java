@@ -26,9 +26,9 @@ import com.amazonaws.services.eks.model.*;
  * </p>
  * <p>
  * <p>
- * Amazon Elastic Container Service for Kubernetes (Amazon EKS) is a managed service that makes it easy for you to run
- * Kubernetes on AWS without needing to stand up or maintain your own Kubernetes control plane. Kubernetes is an
- * open-source system for automating the deployment, scaling, and management of containerized applications.
+ * Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that makes it easy for you to run Kubernetes on
+ * AWS without needing to stand up or maintain your own Kubernetes control plane. Kubernetes is an open-source system
+ * for automating the deployment, scaling, and management of containerized applications.
  * </p>
  * <p>
  * Amazon EKS runs up-to-date versions of the open-source Kubernetes software, so you can use all the existing plugins
@@ -46,13 +46,10 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * Creates an Amazon EKS control plane.
      * </p>
      * <p>
-     * The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, like
+     * The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as
      * <code>etcd</code> and the API server. The control plane runs in an account managed by AWS, and the Kubernetes API
-     * is exposed via the Amazon EKS API server endpoint.
-     * </p>
-     * <p>
-     * Amazon EKS worker nodes run in your AWS account and connect to your cluster's control plane via the Kubernetes
-     * API server endpoint and a certificate file that is created for your cluster.
+     * is exposed via the Amazon EKS API server endpoint. Each Amazon EKS cluster control plane is single-tenant and
+     * unique and runs on its own set of Amazon EC2 instances.
      * </p>
      * <p>
      * The cluster control plane is provisioned across multiple Availability Zones and fronted by an Elastic Load
@@ -61,11 +58,36 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * <code>kubectl exec</code>, <code>logs</code>, and <code>proxy</code> data flows).
      * </p>
      * <p>
-     * After you create an Amazon EKS cluster, you must configure your Kubernetes tooling to communicate with the API
-     * server and launch worker nodes into your cluster. For more information, see <a
-     * href="http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html">Managing Cluster Authentication</a> and
-     * <a href="http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">Launching Amazon EKS Worker
-     * Nodes</a>in the <i>Amazon EKS User Guide</i>.
+     * Amazon EKS worker nodes run in your AWS account and connect to your cluster's control plane via the Kubernetes
+     * API server endpoint and a certificate file that is created for your cluster.
+     * </p>
+     * <p>
+     * You can use the <code>endpointPublicAccess</code> and <code>endpointPrivateAccess</code> parameters to enable or
+     * disable public and private access to your cluster's Kubernetes API server endpoint. By default, public access is
+     * enabled, and private access is disabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster Endpoint Access
+     * Control</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <p>
+     * You can use the <code>logging</code> parameter to enable or disable exporting the Kubernetes control plane logs
+     * for your cluster to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon EKS Cluster Control Plane
+     * Logs</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <note>
+     * <p>
+     * CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For
+     * more information, see <a href="http://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * </note>
+     * <p>
+     * Cluster creation typically takes between 10 and 15 minutes. After you create an Amazon EKS cluster, you must
+     * configure your Kubernetes tooling to communicate with the API server and launch worker nodes into your cluster.
+     * For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html">Managing
+     * Cluster Authentication</a> and <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">Launching Amazon EKS Worker Nodes</a>
+     * in the <i>Amazon EKS User Guide</i>.
      * </p>
      * 
      * @param createClusterRequest
@@ -81,13 +103,10 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * Creates an Amazon EKS control plane.
      * </p>
      * <p>
-     * The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, like
+     * The Amazon EKS control plane consists of control plane instances that run the Kubernetes software, such as
      * <code>etcd</code> and the API server. The control plane runs in an account managed by AWS, and the Kubernetes API
-     * is exposed via the Amazon EKS API server endpoint.
-     * </p>
-     * <p>
-     * Amazon EKS worker nodes run in your AWS account and connect to your cluster's control plane via the Kubernetes
-     * API server endpoint and a certificate file that is created for your cluster.
+     * is exposed via the Amazon EKS API server endpoint. Each Amazon EKS cluster control plane is single-tenant and
+     * unique and runs on its own set of Amazon EC2 instances.
      * </p>
      * <p>
      * The cluster control plane is provisioned across multiple Availability Zones and fronted by an Elastic Load
@@ -96,11 +115,36 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * <code>kubectl exec</code>, <code>logs</code>, and <code>proxy</code> data flows).
      * </p>
      * <p>
-     * After you create an Amazon EKS cluster, you must configure your Kubernetes tooling to communicate with the API
-     * server and launch worker nodes into your cluster. For more information, see <a
-     * href="http://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html">Managing Cluster Authentication</a> and
-     * <a href="http://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">Launching Amazon EKS Worker
-     * Nodes</a>in the <i>Amazon EKS User Guide</i>.
+     * Amazon EKS worker nodes run in your AWS account and connect to your cluster's control plane via the Kubernetes
+     * API server endpoint and a certificate file that is created for your cluster.
+     * </p>
+     * <p>
+     * You can use the <code>endpointPublicAccess</code> and <code>endpointPrivateAccess</code> parameters to enable or
+     * disable public and private access to your cluster's Kubernetes API server endpoint. By default, public access is
+     * enabled, and private access is disabled. For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster Endpoint Access
+     * Control</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <p>
+     * You can use the <code>logging</code> parameter to enable or disable exporting the Kubernetes control plane logs
+     * for your cluster to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs.
+     * For more information, see <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon EKS Cluster Control Plane
+     * Logs</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <note>
+     * <p>
+     * CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For
+     * more information, see <a href="http://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * </note>
+     * <p>
+     * Cluster creation typically takes between 10 and 15 minutes. After you create an Amazon EKS cluster, you must
+     * configure your Kubernetes tooling to communicate with the API server and launch worker nodes into your cluster.
+     * For more information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html">Managing
+     * Cluster Authentication</a> and <a
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html">Launching Amazon EKS Worker Nodes</a>
+     * in the <i>Amazon EKS User Guide</i>.
      * </p>
      * 
      * @param createClusterRequest
@@ -125,7 +169,7 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * If you have active services in your cluster that are associated with a load balancer, you must delete those
      * services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have
      * orphaned resources in your VPC that prevent you from being able to delete the VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
      * <i>Amazon EKS User Guide</i>.
      * </p>
      * </note>
@@ -147,7 +191,7 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * If you have active services in your cluster that are associated with a load balancer, you must delete those
      * services before deleting the cluster so that the load balancers are deleted properly. Otherwise, you can have
      * orphaned resources in your VPC that prevent you from being able to delete the VPC. For more information, see <a
-     * href="http://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
+     * href="https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html">Deleting a Cluster</a> in the
      * <i>Amazon EKS User Guide</i>.
      * </p>
      * </note>
@@ -172,12 +216,12 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * <p>
      * The API server endpoint and certificate authority data returned by this operation are required for
      * <code>kubelet</code> and <code>kubectl</code> to communicate with your Kubernetes API server. For more
-     * information, see <a href="http://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">Create a
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">Create a
      * kubeconfig for Amazon EKS</a>.
      * </p>
      * <note>
      * <p>
-     * The API server endpoint and certificate authority data are not available until the cluster reaches the
+     * The API server endpoint and certificate authority data aren't available until the cluster reaches the
      * <code>ACTIVE</code> state.
      * </p>
      * </note>
@@ -197,12 +241,12 @@ public interface AmazonEKSAsync extends AmazonEKS {
      * <p>
      * The API server endpoint and certificate authority data returned by this operation are required for
      * <code>kubelet</code> and <code>kubectl</code> to communicate with your Kubernetes API server. For more
-     * information, see <a href="http://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">Create a
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html">Create a
      * kubeconfig for Amazon EKS</a>.
      * </p>
      * <note>
      * <p>
-     * The API server endpoint and certificate authority data are not available until the cluster reaches the
+     * The API server endpoint and certificate authority data aren't available until the cluster reaches the
      * <code>ACTIVE</code> state.
      * </p>
      * </note>
@@ -292,6 +336,37 @@ public interface AmazonEKSAsync extends AmazonEKS {
 
     /**
      * <p>
+     * List the tags for an Amazon EKS resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonEKSAsync.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * List the tags for an Amazon EKS resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListTagsForResource operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/ListTagsForResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest listTagsForResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler);
+
+    /**
+     * <p>
      * Lists the updates associated with an Amazon EKS cluster in your AWS account, in the specified Region.
      * </p>
      * 
@@ -320,6 +395,165 @@ public interface AmazonEKSAsync extends AmazonEKS {
      */
     java.util.concurrent.Future<ListUpdatesResult> listUpdatesAsync(ListUpdatesRequest listUpdatesRequest,
             com.amazonaws.handlers.AsyncHandler<ListUpdatesRequest, ListUpdatesResult> asyncHandler);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified <code>resourceArn</code>. If existing tags on a
+     * resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags
+     * associated with that resource are deleted as well.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonEKSAsync.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Associates the specified tags to a resource with the specified <code>resourceArn</code>. If existing tags on a
+     * resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags
+     * associated with that resource are deleted as well.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the TagResource operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest tagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonEKSAsync.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Deletes specified tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UntagResource operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest untagResourceRequest,
+            com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response
+     * output includes an update ID that you can use to track the status of your cluster update with the
+     * <a>DescribeUpdate</a> API operation.
+     * </p>
+     * <p>
+     * You can use this API operation to enable or disable exporting the Kubernetes control plane logs for your cluster
+     * to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs. For more
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon EKS
+     * Cluster Control Plane Logs</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <note>
+     * <p>
+     * CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For
+     * more information, see <a href="http://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * </note>
+     * <p>
+     * You can also use this API operation to enable or disable public and private access to your cluster's Kubernetes
+     * API server endpoint. By default, public access is enabled, and private access is disabled. For more information,
+     * see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster Endpoint
+     * Access Control</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <important>
+     * <p>
+     * At this time, you can not update the subnets or security group IDs for an existing cluster.
+     * </p>
+     * </important>
+     * <p>
+     * Cluster updates are asynchronous, and they should finish within a few minutes. During an update, the cluster
+     * status moves to <code>UPDATING</code> (this status transition is eventually consistent). When the update is
+     * complete (either <code>Failed</code> or <code>Successful</code>), the cluster status moves to <code>Active</code>
+     * .
+     * </p>
+     * 
+     * @param updateClusterConfigRequest
+     * @return A Java Future containing the result of the UpdateClusterConfig operation returned by the service.
+     * @sample AmazonEKSAsync.UpdateClusterConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateClusterConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateClusterConfigResult> updateClusterConfigAsync(UpdateClusterConfigRequest updateClusterConfigRequest);
+
+    /**
+     * <p>
+     * Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response
+     * output includes an update ID that you can use to track the status of your cluster update with the
+     * <a>DescribeUpdate</a> API operation.
+     * </p>
+     * <p>
+     * You can use this API operation to enable or disable exporting the Kubernetes control plane logs for your cluster
+     * to CloudWatch Logs. By default, cluster control plane logs aren't exported to CloudWatch Logs. For more
+     * information, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html">Amazon EKS
+     * Cluster Control Plane Logs</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <note>
+     * <p>
+     * CloudWatch Logs ingestion, archive storage, and data scanning rates apply to exported control plane logs. For
+     * more information, see <a href="http://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch Pricing</a>.
+     * </p>
+     * </note>
+     * <p>
+     * You can also use this API operation to enable or disable public and private access to your cluster's Kubernetes
+     * API server endpoint. By default, public access is enabled, and private access is disabled. For more information,
+     * see <a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Amazon EKS Cluster Endpoint
+     * Access Control</a> in the <i> <i>Amazon EKS User Guide</i> </i>.
+     * </p>
+     * <important>
+     * <p>
+     * At this time, you can not update the subnets or security group IDs for an existing cluster.
+     * </p>
+     * </important>
+     * <p>
+     * Cluster updates are asynchronous, and they should finish within a few minutes. During an update, the cluster
+     * status moves to <code>UPDATING</code> (this status transition is eventually consistent). When the update is
+     * complete (either <code>Failed</code> or <code>Successful</code>), the cluster status moves to <code>Active</code>
+     * .
+     * </p>
+     * 
+     * @param updateClusterConfigRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateClusterConfig operation returned by the service.
+     * @sample AmazonEKSAsyncHandler.UpdateClusterConfig
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/eks-2017-11-01/UpdateClusterConfig" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateClusterConfigResult> updateClusterConfigAsync(UpdateClusterConfigRequest updateClusterConfigRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateClusterConfigRequest, UpdateClusterConfigResult> asyncHandler);
 
     /**
      * <p>

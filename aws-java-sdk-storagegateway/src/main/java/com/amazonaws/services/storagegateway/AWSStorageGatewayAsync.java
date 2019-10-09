@@ -28,7 +28,7 @@ import com.amazonaws.services.storagegateway.model.*;
  * <fullname>AWS Storage Gateway Service</fullname>
  * <p>
  * AWS Storage Gateway is the service that connects an on-premises software appliance with cloud-based storage to
- * provide seamless and secure integration between an organization's on-premises IT environment and AWS's storage
+ * provide seamless and secure integration between an organization's on-premises IT environment and the AWS storage
  * infrastructure. The service enables you to securely upload data to the AWS cloud for cost effective backup and rapid
  * disaster recovery.
  * </p>
@@ -68,7 +68,7 @@ import com.amazonaws.services.storagegateway.model.*;
  * <li>
  * <p>
  * <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region">AWS Storage Gateway Regions and
- * Endpoints:</a> Provides a list of each AWS region and endpoints available for use with AWS Storage Gateway.
+ * Endpoints:</a> Provides a list of each AWS Region and the endpoints available for use with AWS Storage Gateway.
  * </p>
  * </li>
  * </ul>
@@ -108,8 +108,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Activates the gateway you previously deployed on your host. In the activation process, you specify information
-     * such as the region you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the
-     * gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also
+     * such as the AWS Region that you want to use for storing snapshots or tapes, the time zone for scheduled snapshots
+     * the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also
      * associates your gateway with your account; for more information, see <a>UpdateGatewayInformation</a>.
      * </p>
      * <note>
@@ -166,8 +166,8 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
     /**
      * <p>
      * Activates the gateway you previously deployed on your host. In the activation process, you specify information
-     * such as the region you want to use for storing snapshots or tapes, the time zone for scheduled snapshots the
-     * gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also
+     * such as the AWS Region that you want to use for storing snapshots or tapes, the time zone for scheduled snapshots
+     * the gateway snapshot schedule window, an activation key, and a name for your gateway. The activation process also
      * associates your gateway with your account; for more information, see <a>UpdateGatewayInformation</a>.
      * </p>
      * <note>
@@ -286,22 +286,22 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * </li>
      * <li>
      * <p>
-     * Storage Volumes
+     * Storage volumes
      * </p>
      * </li>
      * <li>
      * <p>
-     * Virtual Tapes
+     * Virtual tapes
      * </p>
      * </li>
      * <li>
      * <p>
-     * NFS and SMB File Shares
+     * NFS and SMB file shares
      * </p>
      * </li>
      * </ul>
      * <p>
-     * You can create a maximum of 10 tags for each resource. Virtual tapes and storage volumes that are recovered to a
+     * You can create a maximum of 50 tags for each resource. Virtual tapes and storage volumes that are recovered to a
      * new gateway maintain their tags.
      * </p>
      * 
@@ -329,22 +329,22 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * </li>
      * <li>
      * <p>
-     * Storage Volumes
+     * Storage volumes
      * </p>
      * </li>
      * <li>
      * <p>
-     * Virtual Tapes
+     * Virtual tapes
      * </p>
      * </li>
      * <li>
      * <p>
-     * NFS and SMB File Shares
+     * NFS and SMB file shares
      * </p>
      * </li>
      * </ul>
      * <p>
-     * You can create a maximum of 10 tags for each resource. Virtual tapes and storage volumes that are recovered to a
+     * You can create a maximum of 50 tags for each resource. Virtual tapes and storage volumes that are recovered to a
      * new gateway maintain their tags.
      * </p>
      * 
@@ -471,6 +471,47 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      */
     java.util.concurrent.Future<AddWorkingStorageResult> addWorkingStorageAsync(AddWorkingStorageRequest addWorkingStorageRequest,
             com.amazonaws.handlers.AsyncHandler<AddWorkingStorageRequest, AddWorkingStorageResult> asyncHandler);
+
+    /**
+     * <p>
+     * Assigns a tape to a tape pool for archiving. The tape assigned to a pool is archived in the S3 storage class that
+     * is associated with the pool. When you use your backup application to eject the tape, the tape is archived
+     * directly into the S3 storage class (Glacier or Deep Archive) that corresponds to the pool.
+     * </p>
+     * <p>
+     * Valid values: "GLACIER", "DEEP_ARCHIVE"
+     * </p>
+     * 
+     * @param assignTapePoolRequest
+     * @return A Java Future containing the result of the AssignTapePool operation returned by the service.
+     * @sample AWSStorageGatewayAsync.AssignTapePool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AssignTapePool" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<AssignTapePoolResult> assignTapePoolAsync(AssignTapePoolRequest assignTapePoolRequest);
+
+    /**
+     * <p>
+     * Assigns a tape to a tape pool for archiving. The tape assigned to a pool is archived in the S3 storage class that
+     * is associated with the pool. When you use your backup application to eject the tape, the tape is archived
+     * directly into the S3 storage class (Glacier or Deep Archive) that corresponds to the pool.
+     * </p>
+     * <p>
+     * Valid values: "GLACIER", "DEEP_ARCHIVE"
+     * </p>
+     * 
+     * @param assignTapePoolRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the AssignTapePool operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.AssignTapePool
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/AssignTapePool" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<AssignTapePoolResult> assignTapePoolAsync(AssignTapePoolRequest assignTapePoolRequest,
+            com.amazonaws.handlers.AsyncHandler<AssignTapePoolRequest, AssignTapePoolResult> asyncHandler);
 
     /**
      * <p>
@@ -657,9 +698,9 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <important>
      * <p>
      * File gateway requires AWS Security Token Service (AWS STS) to be activated to enable you create a file share.
-     * Make sure AWS STS is activated in the region you are creating your file gateway in. If AWS STS is not activated
-     * in the region, activate it. For information about how to activate AWS STS, see Activating and Deactivating AWS
-     * STS in an AWS Region in the AWS Identity and Access Management User Guide.
+     * Make sure AWS STS is activated in the AWS Region you are creating your file gateway in. If AWS STS is not
+     * activated in the AWS Region, activate it. For information about how to activate AWS STS, see Activating and
+     * Deactivating AWS STS in an AWS Region in the AWS Identity and Access Management User Guide.
      * </p>
      * <p>
      * File gateway does not support creating hard or symbolic links on a file share.
@@ -684,9 +725,9 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <important>
      * <p>
      * File gateway requires AWS Security Token Service (AWS STS) to be activated to enable you create a file share.
-     * Make sure AWS STS is activated in the region you are creating your file gateway in. If AWS STS is not activated
-     * in the region, activate it. For information about how to activate AWS STS, see Activating and Deactivating AWS
-     * STS in an AWS Region in the AWS Identity and Access Management User Guide.
+     * Make sure AWS STS is activated in the AWS Region you are creating your file gateway in. If AWS STS is not
+     * activated in the AWS Region, activate it. For information about how to activate AWS STS, see Activating and
+     * Deactivating AWS STS in an AWS Region in the AWS Identity and Access Management User Guide.
      * </p>
      * <p>
      * File gateway does not support creating hard or symbolic links on a file share.
@@ -775,7 +816,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * AWS Storage Gateway provides the ability to back up point-in-time snapshots of your data to Amazon Simple Storage
      * (S3) for durable off-site recovery, as well as import the data to an Amazon Elastic Block Store (EBS) volume in
-     * Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway volume on a scheduled or ad-hoc basis.
+     * Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway volume on a scheduled or ad hoc basis.
      * This API enables you to take ad-hoc snapshot. For more information, see <a
      * href="https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot"
      * >Editing a Snapshot Schedule</a>.
@@ -827,7 +868,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * <p>
      * AWS Storage Gateway provides the ability to back up point-in-time snapshots of your data to Amazon Simple Storage
      * (S3) for durable off-site recovery, as well as import the data to an Amazon Elastic Block Store (EBS) volume in
-     * Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway volume on a scheduled or ad-hoc basis.
+     * Amazon Elastic Compute Cloud (EC2). You can take snapshots of your gateway volume on a scheduled or ad hoc basis.
      * This API enables you to take ad-hoc snapshot. For more information, see <a
      * href="https://docs.aws.amazon.com/storagegateway/latest/userguide/managing-volumes.html#SchedulingSnapshot"
      * >Editing a Snapshot Schedule</a>.
@@ -2407,7 +2448,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Lists gateways owned by an AWS account in a region specified in the request. The returned list is ordered by
+     * Lists gateways owned by an AWS account in an AWS Region specified in the request. The returned list is ordered by
      * gateway Amazon Resource Name (ARN).
      * </p>
      * <p>
@@ -2442,7 +2483,7 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Lists gateways owned by an AWS account in a region specified in the request. The returned list is ordered by
+     * Lists gateways owned by an AWS account in an AWS Region specified in the request. The returned list is ordered by
      * gateway Amazon Resource Name (ARN).
      * </p>
      * <p>
@@ -2827,12 +2868,12 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded
-     * to Amazon S3.
+     * Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to
+     * Amazon S3.
      * </p>
      * <p>
      * AWS Storage Gateway can send a notification through Amazon CloudWatch Events when all files written to your file
-     * share up to that point in time have been uploaded to Amazon S3. These files include files written to the NFS file
+     * share up to that point in time have been uploaded to Amazon S3. These files include files written to the file
      * share up to the time that you make a request for notification. When the upload is done, Storage Gateway sends you
      * notification through an Amazon CloudWatch Event. You can configure CloudWatch Events to send the notification
      * through event targets such as Amazon SNS or AWS Lambda function. This operation is only supported for file
@@ -2854,12 +2895,12 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
 
     /**
      * <p>
-     * Sends you notification through CloudWatch Events when all files written to your NFS file share have been uploaded
-     * to Amazon S3.
+     * Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to
+     * Amazon S3.
      * </p>
      * <p>
      * AWS Storage Gateway can send a notification through Amazon CloudWatch Events when all files written to your file
-     * share up to that point in time have been uploaded to Amazon S3. These files include files written to the NFS file
+     * share up to that point in time have been uploaded to Amazon S3. These files include files written to the file
      * share up to the time that you make a request for notification. When the upload is done, Storage Gateway sends you
      * notification through an Amazon CloudWatch Event. You can configure CloudWatch Events to send the notification
      * through event targets such as Amazon SNS or AWS Lambda function. This operation is only supported for file
@@ -2893,6 +2934,13 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * "https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification"
      * >Getting Notified About File Operations</a>.
      * </p>
+     * <p>
+     * When this API is called, it only initiates the refresh operation. When the API call completes and returns a
+     * success code, it doesn't necessarily mean that the file refresh has completed. You should use the
+     * refresh-complete notification to determine that the operation has completed before you check for new files on the
+     * gateway file share. You can subscribe to be notified through an CloudWatch event when your
+     * <code>RefreshCache</code> operation completes.
+     * </p>
      * 
      * @param refreshCacheRequest
      *        RefreshCacheInput
@@ -2911,6 +2959,13 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * CloudWatch event when your RefreshCache operation completes. For more information, see <a href=
      * "https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification"
      * >Getting Notified About File Operations</a>.
+     * </p>
+     * <p>
+     * When this API is called, it only initiates the refresh operation. When the API call completes and returns a
+     * success code, it doesn't necessarily mean that the file refresh has completed. You should use the
+     * refresh-complete notification to determine that the operation has completed before you check for new files on the
+     * gateway file share. You can subscribe to be notified through an CloudWatch event when your
+     * <code>RefreshCache</code> operation completes.
      * </p>
      * 
      * @param refreshCacheRequest
@@ -3635,6 +3690,11 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      *        <ul>
      *        <li>
      *        <p>
+     *        <a>UpdateMaintenanceStartTimeInput$DayOfMonth</a>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a>
      *        </p>
      *        </li>
@@ -3665,6 +3725,11 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      * @param updateMaintenanceStartTimeRequest
      *        A JSON object containing the following fields:</p>
      *        <ul>
+     *        <li>
+     *        <p>
+     *        <a>UpdateMaintenanceStartTimeInput$DayOfMonth</a>
+     *        </p>
+     *        </li>
      *        <li>
      *        <p>
      *        <a>UpdateMaintenanceStartTimeInput$DayOfWeek</a>
@@ -3874,6 +3939,55 @@ public interface AWSStorageGatewayAsync extends AWSStorageGateway {
      */
     java.util.concurrent.Future<UpdateSMBFileShareResult> updateSMBFileShareAsync(UpdateSMBFileShareRequest updateSMBFileShareRequest,
             com.amazonaws.handlers.AsyncHandler<UpdateSMBFileShareRequest, UpdateSMBFileShareResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates the SMB security strategy on a file gateway. This action is only supported in file gateways.
+     * </p>
+     * <note>
+     * <p>
+     * This API is called Security level in the User Guide.
+     * </p>
+     * <p>
+     * A higher security level can affect performance of the gateway.
+     * </p>
+     * </note>
+     * 
+     * @param updateSMBSecurityStrategyRequest
+     * @return A Java Future containing the result of the UpdateSMBSecurityStrategy operation returned by the service.
+     * @sample AWSStorageGatewayAsync.UpdateSMBSecurityStrategy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSMBSecurityStrategy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateSMBSecurityStrategyResult> updateSMBSecurityStrategyAsync(
+            UpdateSMBSecurityStrategyRequest updateSMBSecurityStrategyRequest);
+
+    /**
+     * <p>
+     * Updates the SMB security strategy on a file gateway. This action is only supported in file gateways.
+     * </p>
+     * <note>
+     * <p>
+     * This API is called Security level in the User Guide.
+     * </p>
+     * <p>
+     * A higher security level can affect performance of the gateway.
+     * </p>
+     * </note>
+     * 
+     * @param updateSMBSecurityStrategyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateSMBSecurityStrategy operation returned by the service.
+     * @sample AWSStorageGatewayAsyncHandler.UpdateSMBSecurityStrategy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/storagegateway-2013-06-30/UpdateSMBSecurityStrategy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateSMBSecurityStrategyResult> updateSMBSecurityStrategyAsync(
+            UpdateSMBSecurityStrategyRequest updateSMBSecurityStrategyRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateSMBSecurityStrategyRequest, UpdateSMBSecurityStrategyResult> asyncHandler);
 
     /**
      * <p>

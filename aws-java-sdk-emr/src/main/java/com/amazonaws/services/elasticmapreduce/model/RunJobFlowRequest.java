@@ -57,11 +57,11 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon EMR release label, which determines the version of open-source application packages installed on the
-     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version, for
-     * example, <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
      * versions and features, see <a
-     * href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">http://docs.aws.amazon.com
-     * /emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases versions 4.x and later.
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
      * Earlier versions use <code>AmiVersion</code>.
      * </p>
      */
@@ -92,7 +92,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </note>
      * <p>
      * A list of strings that indicates third-party software to use. For more information, see the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
      * supported values are:
      * </p>
      * <ul>
@@ -119,7 +119,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
      * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
      * values are:
      * </p>
      * <ul>
@@ -171,7 +171,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install
      * and configure when launching the cluster. For a list of applications available for each Amazon EMR release
-     * version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
+     * version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Application> applications;
@@ -182,6 +182,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      */
     private com.amazonaws.internal.SdkInternalList<Configuration> configurations;
     /**
+     * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
      * <p>
      * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
      * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
@@ -242,17 +245,17 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      * specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about custom
-     * AMIs in Amazon EMR, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using
-     * a Custom AMI</a> in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for
-     * the <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
-     * instead.
+     * AMIs in Amazon EMR, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in the
+     * <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
+     * <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code> instead.
      * </p>
      * <p>
      * For information about creating a custom AMI, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
      * Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For information about
-     * finding an AMI ID, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a
-     * Linux AMI</a>.
+     * finding an AMI ID, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding
+     * a Linux AMI</a>.
      * </p>
      */
     private String customAmiId;
@@ -275,7 +278,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      */
@@ -477,22 +480,22 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon EMR release label, which determines the version of open-source application packages installed on the
-     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version, for
-     * example, <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
      * versions and features, see <a
-     * href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">http://docs.aws.amazon.com
-     * /emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases versions 4.x and later.
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
      * Earlier versions use <code>AmiVersion</code>.
      * </p>
      * 
      * @param releaseLabel
      *        The Amazon EMR release label, which determines the version of open-source application packages installed
      *        on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR
-     *        release version, for example, <code>emr-5.14.0</code>. For more information about Amazon EMR release
-     *        versions and included application versions and features, see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
-     *        >http://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
-     *        releases versions 4.x and later. Earlier versions use <code>AmiVersion</code>.
+     *        release version such as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions
+     *        and included application versions and features, see <a
+     *        href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
+     *        >https://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
+     *        releases version 4.0 and later. Earlier versions use <code>AmiVersion</code>.
      */
 
     public void setReleaseLabel(String releaseLabel) {
@@ -502,21 +505,21 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon EMR release label, which determines the version of open-source application packages installed on the
-     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version, for
-     * example, <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
      * versions and features, see <a
-     * href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">http://docs.aws.amazon.com
-     * /emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases versions 4.x and later.
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
      * Earlier versions use <code>AmiVersion</code>.
      * </p>
      * 
      * @return The Amazon EMR release label, which determines the version of open-source application packages installed
      *         on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR
-     *         release version, for example, <code>emr-5.14.0</code>. For more information about Amazon EMR release
-     *         versions and included application versions and features, see <a
-     *         href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
-     *         >http://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
-     *         releases versions 4.x and later. Earlier versions use <code>AmiVersion</code>.
+     *         release version such as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions
+     *         and included application versions and features, see <a
+     *         href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
+     *         >https://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
+     *         releases version 4.0 and later. Earlier versions use <code>AmiVersion</code>.
      */
 
     public String getReleaseLabel() {
@@ -526,22 +529,22 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * The Amazon EMR release label, which determines the version of open-source application packages installed on the
-     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version, for
-     * example, <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
+     * cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR release version such
+     * as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions and included application
      * versions and features, see <a
-     * href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">http://docs.aws.amazon.com
-     * /emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases versions 4.x and later.
+     * href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">https://docs.aws.amazon.
+     * com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR releases version 4.0 and later.
      * Earlier versions use <code>AmiVersion</code>.
      * </p>
      * 
      * @param releaseLabel
      *        The Amazon EMR release label, which determines the version of open-source application packages installed
      *        on the cluster. Release labels are in the form <code>emr-x.x.x</code>, where x.x.x is an Amazon EMR
-     *        release version, for example, <code>emr-5.14.0</code>. For more information about Amazon EMR release
-     *        versions and included application versions and features, see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
-     *        >http://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
-     *        releases versions 4.x and later. Earlier versions use <code>AmiVersion</code>.
+     *        release version such as <code>emr-5.14.0</code>. For more information about Amazon EMR release versions
+     *        and included application versions and features, see <a
+     *        href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/"
+     *        >https://docs.aws.amazon.com/emr/latest/ReleaseGuide/</a>. The release label applies only to Amazon EMR
+     *        releases version 4.0 and later. Earlier versions use <code>AmiVersion</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -744,7 +747,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </note>
      * <p>
      * A list of strings that indicates third-party software to use. For more information, see the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
      * supported values are:
      * </p>
      * <ul>
@@ -766,7 +769,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         </note>
      *         <p>
      *         A list of strings that indicates third-party software to use. For more information, see the <a
-     *         href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *         href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *         Currently supported values are:
      *         </p>
      *         <ul>
@@ -797,7 +800,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </note>
      * <p>
      * A list of strings that indicates third-party software to use. For more information, see the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
      * supported values are:
      * </p>
      * <ul>
@@ -820,7 +823,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        </note>
      *        <p>
      *        A list of strings that indicates third-party software to use. For more information, see the <a
-     *        href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *        href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *        Currently supported values are:
      *        </p>
      *        <ul>
@@ -853,7 +856,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </note>
      * <p>
      * A list of strings that indicates third-party software to use. For more information, see the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
      * supported values are:
      * </p>
      * <ul>
@@ -881,7 +884,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        </note>
      *        <p>
      *        A list of strings that indicates third-party software to use. For more information, see the <a
-     *        href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *        href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *        Currently supported values are:
      *        </p>
      *        <ul>
@@ -916,7 +919,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </note>
      * <p>
      * A list of strings that indicates third-party software to use. For more information, see the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Currently
      * supported values are:
      * </p>
      * <ul>
@@ -939,7 +942,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        </note>
      *        <p>
      *        A list of strings that indicates third-party software to use. For more information, see the <a
-     *        href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *        href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *        Currently supported values are:
      *        </p>
      *        <ul>
@@ -971,7 +974,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
      * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
      * values are:
      * </p>
      * <ul>
@@ -1027,7 +1030,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *         argument list. EMR accepts and forwards the argument list to the corresponding installation script as
      *         bootstrap action arguments. For more information, see
      *         "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     *         href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *         href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *         Supported values are:
      *         </p>
      *         <ul>
@@ -1091,7 +1094,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
      * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
      * values are:
      * </p>
      * <ul>
@@ -1148,7 +1151,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        argument list. EMR accepts and forwards the argument list to the corresponding installation script as
      *        bootstrap action arguments. For more information, see
      *        "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     *        href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *        href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *        Supported values are:
      *        </p>
      *        <ul>
@@ -1214,7 +1217,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
      * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
      * values are:
      * </p>
      * <ul>
@@ -1276,7 +1279,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        argument list. EMR accepts and forwards the argument list to the corresponding installation script as
      *        bootstrap action arguments. For more information, see
      *        "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     *        href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *        href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *        Supported values are:
      *        </p>
      *        <ul>
@@ -1344,7 +1347,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * A list of strings that indicates third-party software to use with the job flow that accepts a user argument list.
      * EMR accepts and forwards the argument list to the corresponding installation script as bootstrap action
      * arguments. For more information, see "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     * href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
+     * href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>. Supported
      * values are:
      * </p>
      * <ul>
@@ -1401,7 +1404,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      *        argument list. EMR accepts and forwards the argument list to the corresponding installation script as
      *        bootstrap action arguments. For more information, see
      *        "Launch a Job Flow on the MapR Distribution for Hadoop" in the <a
-     *        href="http://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
+     *        href="https://docs.aws.amazon.com/emr/latest/DeveloperGuide/emr-dg.pdf">Amazon EMR Developer Guide</a>.
      *        Supported values are:
      *        </p>
      *        <ul>
@@ -1458,12 +1461,12 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install
      * and configure when launching the cluster. For a list of applications available for each Amazon EMR release
-     * version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
+     * version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
      * </p>
      * 
      * @return Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to
      *         install and configure when launching the cluster. For a list of applications available for each Amazon
-     *         EMR release version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR
+     *         EMR release version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR
      *         Release Guide</a>.
      */
 
@@ -1478,13 +1481,13 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install
      * and configure when launching the cluster. For a list of applications available for each Amazon EMR release
-     * version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
+     * version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
      * </p>
      * 
      * @param applications
      *        Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to
      *        install and configure when launching the cluster. For a list of applications available for each Amazon EMR
-     *        release version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release
+     *        release version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release
      *        Guide</a>.
      */
 
@@ -1501,7 +1504,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install
      * and configure when launching the cluster. For a list of applications available for each Amazon EMR release
-     * version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
+     * version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -1512,7 +1515,7 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * @param applications
      *        Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to
      *        install and configure when launching the cluster. For a list of applications available for each Amazon EMR
-     *        release version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release
+     *        release version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release
      *        Guide</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1531,13 +1534,13 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to install
      * and configure when launching the cluster. For a list of applications available for each Amazon EMR release
-     * version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
+     * version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release Guide</a>.
      * </p>
      * 
      * @param applications
      *        Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of applications for Amazon EMR to
      *        install and configure when launching the cluster. For a list of applications available for each Amazon EMR
-     *        release version, see the <a href="http://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release
+     *        release version, see the <a href="https://docs.aws.amazon.com/emr/latest/ReleaseGuide/">Amazon EMR Release
      *        Guide</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1626,6 +1629,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
      * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
      * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
@@ -1633,6 +1639,8 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * 
      * @param visibleToAllUsers
+     *        <i>This member will be deprecated.</i> </p>
+     *        <p>
      *        Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *        value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper
      *        policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that
@@ -1645,13 +1653,18 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
      * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
      * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
      * cluster can view and manage it.
      * </p>
      * 
-     * @return Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * @return <i>This member will be deprecated.</i> </p>
+     *         <p>
+     *         Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *         value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the
      *         proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user
      *         that created the cluster can view and manage it.
@@ -1663,6 +1676,9 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
      * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
      * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
@@ -1670,6 +1686,8 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * </p>
      * 
      * @param visibleToAllUsers
+     *        <i>This member will be deprecated.</i> </p>
+     *        <p>
      *        Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *        value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper
      *        policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that
@@ -1684,13 +1702,18 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
+     * <i>This member will be deprecated.</i>
+     * </p>
+     * <p>
      * Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is
      * set to <code>true</code>, all IAM users of that AWS account can view and (if they have the proper policy
      * permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user that created the
      * cluster can view and manage it.
      * </p>
      * 
-     * @return Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
+     * @return <i>This member will be deprecated.</i> </p>
+     *         <p>
+     *         Whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this
      *         value is set to <code>true</code>, all IAM users of that AWS account can view and (if they have the
      *         proper policy permissions set) manage the cluster. If it is set to <code>false</code>, only the IAM user
      *         that created the cluster can view and manage it.
@@ -2119,33 +2142,33 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      * specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about custom
-     * AMIs in Amazon EMR, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using
-     * a Custom AMI</a> in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for
-     * the <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
-     * instead.
+     * AMIs in Amazon EMR, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in the
+     * <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
+     * <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code> instead.
      * </p>
      * <p>
      * For information about creating a custom AMI, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
      * Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For information about
-     * finding an AMI ID, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a
-     * Linux AMI</a>.
+     * finding an AMI ID, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding
+     * a Linux AMI</a>.
      * </p>
      * 
      * @param customAmiId
      *        Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      *        specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about
      *        custom AMIs in Amazon EMR, see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in
-     *        the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
+     *        href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a>
+     *        in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
      *        <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
      *        instead.</p>
      *        <p>
      *        For information about creating a custom AMI, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon
      *        EBS-Backed Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For
      *        information about finding an AMI ID, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>.
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>.
      */
 
     public void setCustomAmiId(String customAmiId) {
@@ -2156,32 +2179,32 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      * specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about custom
-     * AMIs in Amazon EMR, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using
-     * a Custom AMI</a> in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for
-     * the <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
-     * instead.
+     * AMIs in Amazon EMR, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in the
+     * <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
+     * <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code> instead.
      * </p>
      * <p>
      * For information about creating a custom AMI, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
      * Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For information about
-     * finding an AMI ID, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a
-     * Linux AMI</a>.
+     * finding an AMI ID, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding
+     * a Linux AMI</a>.
      * </p>
      * 
      * @return Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      *         specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about
      *         custom AMIs in Amazon EMR, see <a
-     *         href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a>
+     *         href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a>
      *         in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
      *         <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
      *         instead.</p>
      *         <p>
      *         For information about creating a custom AMI, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon
      *         EBS-Backed Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For
      *         information about finding an AMI ID, see <a
-     *         href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>.
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>.
      */
 
     public String getCustomAmiId() {
@@ -2192,33 +2215,33 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
      * <p>
      * Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      * specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about custom
-     * AMIs in Amazon EMR, see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using
-     * a Custom AMI</a> in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for
-     * the <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
-     * instead.
+     * AMIs in Amazon EMR, see <a
+     * href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in the
+     * <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
+     * <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code> instead.
      * </p>
      * <p>
      * For information about creating a custom AMI, see <a
-     * href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon EBS-Backed
      * Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For information about
-     * finding an AMI ID, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a
-     * Linux AMI</a>.
+     * finding an AMI ID, see <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding
+     * a Linux AMI</a>.
      * </p>
      * 
      * @param customAmiId
      *        Available only in Amazon EMR version 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI. If
      *        specified, Amazon EMR uses this AMI when it launches cluster EC2 instances. For more information about
      *        custom AMIs in Amazon EMR, see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a> in
-     *        the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
+     *        href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-custom-ami.html">Using a Custom AMI</a>
+     *        in the <i>Amazon EMR Management Guide</i>. If omitted, the cluster uses the base Linux AMI for the
      *        <code>ReleaseLabel</code> specified. For Amazon EMR versions 2.x and 3.x, use <code>AmiVersion</code>
      *        instead.</p>
      *        <p>
      *        For information about creating a custom AMI, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html">Creating an Amazon
      *        EBS-Backed Linux AMI</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>. For
      *        information about finding an AMI ID, see <a
-     *        href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>.
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html">Finding a Linux AMI</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2379,14 +2402,14 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      * 
      * @param kerberosAttributes
      *        Attributes for Kerberos configuration when Kerberos authentication is enabled using a security
      *        configuration. For more information see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
+     *        href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
      *        Authentication</a> in the <i>EMR Management Guide</i>.
      */
 
@@ -2397,13 +2420,13 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      * 
      * @return Attributes for Kerberos configuration when Kerberos authentication is enabled using a security
      *         configuration. For more information see <a
-     *         href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
+     *         href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
      *         Authentication</a> in the <i>EMR Management Guide</i>.
      */
 
@@ -2414,14 +2437,14 @@ public class RunJobFlowRequest extends com.amazonaws.AmazonWebServiceRequest imp
     /**
      * <p>
      * Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For
-     * more information see <a href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
+     * more information see <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use
      * Kerberos Authentication</a> in the <i>EMR Management Guide</i>.
      * </p>
      * 
      * @param kerberosAttributes
      *        Attributes for Kerberos configuration when Kerberos authentication is enabled using a security
      *        configuration. For more information see <a
-     *        href="http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
+     *        href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html">Use Kerberos
      *        Authentication</a> in the <i>EMR Management Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

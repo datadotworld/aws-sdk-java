@@ -33,7 +33,10 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
      * language for rendering the captions text.
      */
     private String customLanguageCode;
-
+    /**
+     * Specific settings required by destination type. Note that burnin_destination_settings are not available if the
+     * source of the caption data is Embedded or Teletext.
+     */
     private CaptionDestinationSettings destinationSettings;
     /**
      * Specify the language of this captions output track. For most captions output formats, the encoder puts this
@@ -42,8 +45,9 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
      */
     private String languageCode;
     /**
-     * Human readable information to indicate captions available for players (eg. English, or Spanish). Alphanumeric
-     * characters, spaces, and underscore are legal.
+     * Specify a label for this set of output captions. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      */
     private String languageDescription;
 
@@ -100,7 +104,12 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
     }
 
     /**
+     * Specific settings required by destination type. Note that burnin_destination_settings are not available if the
+     * source of the caption data is Embedded or Teletext.
+     * 
      * @param destinationSettings
+     *        Specific settings required by destination type. Note that burnin_destination_settings are not available if
+     *        the source of the caption data is Embedded or Teletext.
      */
 
     public void setDestinationSettings(CaptionDestinationSettings destinationSettings) {
@@ -108,7 +117,11 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
     }
 
     /**
-     * @return
+     * Specific settings required by destination type. Note that burnin_destination_settings are not available if the
+     * source of the caption data is Embedded or Teletext.
+     * 
+     * @return Specific settings required by destination type. Note that burnin_destination_settings are not available
+     *         if the source of the caption data is Embedded or Teletext.
      */
 
     public CaptionDestinationSettings getDestinationSettings() {
@@ -116,7 +129,12 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
     }
 
     /**
+     * Specific settings required by destination type. Note that burnin_destination_settings are not available if the
+     * source of the caption data is Embedded or Teletext.
+     * 
      * @param destinationSettings
+     *        Specific settings required by destination type. Note that burnin_destination_settings are not available if
+     *        the source of the caption data is Embedded or Teletext.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -197,12 +215,15 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Human readable information to indicate captions available for players (eg. English, or Spanish). Alphanumeric
-     * characters, spaces, and underscore are legal.
+     * Specify a label for this set of output captions. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
      * @param languageDescription
-     *        Human readable information to indicate captions available for players (eg. English, or Spanish).
-     *        Alphanumeric characters, spaces, and underscore are legal.
+     *        Specify a label for this set of output captions. For example, "English", "Director commentary", or
+     *        "track_2". For streaming outputs, MediaConvert passes this information into destination manifests for
+     *        display on the end-viewer's player device. For outputs in other output groups, the service ignores this
+     *        setting.
      */
 
     public void setLanguageDescription(String languageDescription) {
@@ -210,11 +231,14 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Human readable information to indicate captions available for players (eg. English, or Spanish). Alphanumeric
-     * characters, spaces, and underscore are legal.
+     * Specify a label for this set of output captions. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
-     * @return Human readable information to indicate captions available for players (eg. English, or Spanish).
-     *         Alphanumeric characters, spaces, and underscore are legal.
+     * @return Specify a label for this set of output captions. For example, "English", "Director commentary", or
+     *         "track_2". For streaming outputs, MediaConvert passes this information into destination manifests for
+     *         display on the end-viewer's player device. For outputs in other output groups, the service ignores this
+     *         setting.
      */
 
     public String getLanguageDescription() {
@@ -222,12 +246,15 @@ public class CaptionDescriptionPreset implements Serializable, Cloneable, Struct
     }
 
     /**
-     * Human readable information to indicate captions available for players (eg. English, or Spanish). Alphanumeric
-     * characters, spaces, and underscore are legal.
+     * Specify a label for this set of output captions. For example, "English", "Director commentary", or "track_2". For
+     * streaming outputs, MediaConvert passes this information into destination manifests for display on the
+     * end-viewer's player device. For outputs in other output groups, the service ignores this setting.
      * 
      * @param languageDescription
-     *        Human readable information to indicate captions available for players (eg. English, or Spanish).
-     *        Alphanumeric characters, spaces, and underscore are legal.
+     *        Specify a label for this set of output captions. For example, "English", "Director commentary", or
+     *        "track_2". For streaming outputs, MediaConvert passes this information into destination manifests for
+     *        display on the end-viewer's player device. For outputs in other output groups, the service ignores this
+     *        setting.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

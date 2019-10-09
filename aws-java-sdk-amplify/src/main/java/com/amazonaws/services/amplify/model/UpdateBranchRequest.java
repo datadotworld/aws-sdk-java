@@ -100,6 +100,18 @@ public class UpdateBranchRequest extends com.amazonaws.AmazonWebServiceRequest i
      * </p>
      */
     private String ttl;
+    /**
+     * <p>
+     * Display name for a branch, will use as the default domain prefix.
+     * </p>
+     */
+    private String displayName;
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     */
+    private Boolean enablePullRequestPreview;
 
     /**
      * <p>
@@ -658,6 +670,98 @@ public class UpdateBranchRequest extends com.amazonaws.AmazonWebServiceRequest i
     }
 
     /**
+     * <p>
+     * Display name for a branch, will use as the default domain prefix.
+     * </p>
+     * 
+     * @param displayName
+     *        Display name for a branch, will use as the default domain prefix.
+     */
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    /**
+     * <p>
+     * Display name for a branch, will use as the default domain prefix.
+     * </p>
+     * 
+     * @return Display name for a branch, will use as the default domain prefix.
+     */
+
+    public String getDisplayName() {
+        return this.displayName;
+    }
+
+    /**
+     * <p>
+     * Display name for a branch, will use as the default domain prefix.
+     * </p>
+     * 
+     * @param displayName
+     *        Display name for a branch, will use as the default domain prefix.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBranchRequest withDisplayName(String displayName) {
+        setDisplayName(displayName);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @param enablePullRequestPreview
+     *        Enables Pull Request Preview for this branch.
+     */
+
+    public void setEnablePullRequestPreview(Boolean enablePullRequestPreview) {
+        this.enablePullRequestPreview = enablePullRequestPreview;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @return Enables Pull Request Preview for this branch.
+     */
+
+    public Boolean getEnablePullRequestPreview() {
+        return this.enablePullRequestPreview;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @param enablePullRequestPreview
+     *        Enables Pull Request Preview for this branch.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateBranchRequest withEnablePullRequestPreview(Boolean enablePullRequestPreview) {
+        setEnablePullRequestPreview(enablePullRequestPreview);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Enables Pull Request Preview for this branch.
+     * </p>
+     * 
+     * @return Enables Pull Request Preview for this branch.
+     */
+
+    public Boolean isEnablePullRequestPreview() {
+        return this.enablePullRequestPreview;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -692,7 +796,11 @@ public class UpdateBranchRequest extends com.amazonaws.AmazonWebServiceRequest i
         if (getBuildSpec() != null)
             sb.append("BuildSpec: ").append(getBuildSpec()).append(",");
         if (getTtl() != null)
-            sb.append("Ttl: ").append(getTtl());
+            sb.append("Ttl: ").append(getTtl()).append(",");
+        if (getDisplayName() != null)
+            sb.append("DisplayName: ").append(getDisplayName()).append(",");
+        if (getEnablePullRequestPreview() != null)
+            sb.append("EnablePullRequestPreview: ").append(getEnablePullRequestPreview());
         sb.append("}");
         return sb.toString();
     }
@@ -755,6 +863,14 @@ public class UpdateBranchRequest extends com.amazonaws.AmazonWebServiceRequest i
             return false;
         if (other.getTtl() != null && other.getTtl().equals(this.getTtl()) == false)
             return false;
+        if (other.getDisplayName() == null ^ this.getDisplayName() == null)
+            return false;
+        if (other.getDisplayName() != null && other.getDisplayName().equals(this.getDisplayName()) == false)
+            return false;
+        if (other.getEnablePullRequestPreview() == null ^ this.getEnablePullRequestPreview() == null)
+            return false;
+        if (other.getEnablePullRequestPreview() != null && other.getEnablePullRequestPreview().equals(this.getEnablePullRequestPreview()) == false)
+            return false;
         return true;
     }
 
@@ -775,6 +891,8 @@ public class UpdateBranchRequest extends com.amazonaws.AmazonWebServiceRequest i
         hashCode = prime * hashCode + ((getEnableBasicAuth() == null) ? 0 : getEnableBasicAuth().hashCode());
         hashCode = prime * hashCode + ((getBuildSpec() == null) ? 0 : getBuildSpec().hashCode());
         hashCode = prime * hashCode + ((getTtl() == null) ? 0 : getTtl().hashCode());
+        hashCode = prime * hashCode + ((getDisplayName() == null) ? 0 : getDisplayName().hashCode());
+        hashCode = prime * hashCode + ((getEnablePullRequestPreview() == null) ? 0 : getEnablePullRequestPreview().hashCode());
         return hashCode;
     }
 

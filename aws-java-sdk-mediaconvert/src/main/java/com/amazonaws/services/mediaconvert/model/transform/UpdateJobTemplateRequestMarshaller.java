@@ -35,12 +35,14 @@ public class UpdateJobTemplateRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("description").build();
     private static final MarshallingInfo<String> NAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("name").build();
+    private static final MarshallingInfo<Integer> PRIORITY_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("priority").build();
     private static final MarshallingInfo<String> QUEUE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("queue").build();
     private static final MarshallingInfo<StructuredPojo> SETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("settings").build();
-    private static final MarshallingInfo<Long> STATUSUPDATEINTERVALINSECS_BINDING = MarshallingInfo.builder(MarshallingType.LONG)
-            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("statusUpdateIntervalInSecs").build();
+    private static final MarshallingInfo<String> STATUSUPDATEINTERVAL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("statusUpdateInterval").build();
 
     private static final UpdateJobTemplateRequestMarshaller instance = new UpdateJobTemplateRequestMarshaller();
 
@@ -62,9 +64,10 @@ public class UpdateJobTemplateRequestMarshaller {
             protocolMarshaller.marshall(updateJobTemplateRequest.getCategory(), CATEGORY_BINDING);
             protocolMarshaller.marshall(updateJobTemplateRequest.getDescription(), DESCRIPTION_BINDING);
             protocolMarshaller.marshall(updateJobTemplateRequest.getName(), NAME_BINDING);
+            protocolMarshaller.marshall(updateJobTemplateRequest.getPriority(), PRIORITY_BINDING);
             protocolMarshaller.marshall(updateJobTemplateRequest.getQueue(), QUEUE_BINDING);
             protocolMarshaller.marshall(updateJobTemplateRequest.getSettings(), SETTINGS_BINDING);
-            protocolMarshaller.marshall(updateJobTemplateRequest.getStatusUpdateIntervalInSecs(), STATUSUPDATEINTERVALINSECS_BINDING);
+            protocolMarshaller.marshall(updateJobTemplateRequest.getStatusUpdateInterval(), STATUSUPDATEINTERVAL_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

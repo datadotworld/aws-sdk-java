@@ -94,20 +94,20 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TaskNotFoundException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.TaskNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TaskNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.TaskNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PipelineDeletedException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.PipelineDeletedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineDeletedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.PipelineDeletedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PipelineNotFoundException").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.PipelineNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.PipelineNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceError").withModeledClass(
-                                    com.amazonaws.services.datapipeline.model.InternalServiceErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceError").withExceptionUnmarshaller(
+                                    com.amazonaws.services.datapipeline.model.transform.InternalServiceErrorExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.datapipeline.model.DataPipelineException.class));
 
     /**
@@ -365,6 +365,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ActivatePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -428,6 +429,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -487,6 +489,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -555,6 +558,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeactivatePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -622,6 +626,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeletePipeline");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -686,6 +691,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeObjects");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -756,6 +762,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribePipelines");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -822,6 +829,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EvaluateExpression");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -886,6 +894,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetPipelineDefinition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -946,6 +955,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPipelines");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1023,6 +1033,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PollForTask");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1101,6 +1112,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutPipelineDefinition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1165,6 +1177,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "QueryObjects");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1228,6 +1241,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1302,6 +1316,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ReportTaskProgress");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1364,6 +1379,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ReportTaskRunnerHeartbeat");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1431,6 +1447,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SetStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1499,6 +1516,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SetTaskStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1563,6 +1581,7 @@ public class DataPipelineClient extends AmazonWebServiceClient implements DataPi
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Data Pipeline");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ValidatePipelineDefinition");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

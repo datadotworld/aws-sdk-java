@@ -45,7 +45,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * Specifies the launch type on which your task is running. The launch type that you specify here must match one of
      * the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported only in the
      * Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -53,12 +53,12 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies the VPC
-     * subnets and security groups associated with the task, and whether a public IP address is to be used. This
+     * subnets and security groups associated with the task and whether a public IP address is to be used. This
      * structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the <code>awsvpc</code> mode is
      * required for Fargate tasks.
      * </p>
      * <p>
-     * If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the <code>awsvpc</code>
+     * If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the <code>awsvpc</code>
      * network mode, the task fails.
      * </p>
      */
@@ -71,7 +71,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information about valid
      * platform versions, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -168,7 +168,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * Specifies the launch type on which your task is running. The launch type that you specify here must match one of
      * the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported only in the
      * Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -176,7 +176,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      *        Specifies the launch type on which your task is running. The launch type that you specify here must match
      *        one of the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported
      *        only in the Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
      *        ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -190,14 +190,14 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * Specifies the launch type on which your task is running. The launch type that you specify here must match one of
      * the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported only in the
      * Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies the launch type on which your task is running. The launch type that you specify here must match
      *         one of the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported
      *         only in the Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
      *         ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @see LaunchType
      */
@@ -211,7 +211,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * Specifies the launch type on which your task is running. The launch type that you specify here must match one of
      * the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported only in the
      * Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -219,7 +219,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      *        Specifies the launch type on which your task is running. The launch type that you specify here must match
      *        one of the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported
      *        only in the Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
      *        ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -235,7 +235,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * Specifies the launch type on which your task is running. The launch type that you specify here must match one of
      * the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported only in the
      * Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon ECS</a>
      * in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -243,7 +243,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      *        Specifies the launch type on which your task is running. The launch type that you specify here must match
      *        one of the launch type (compatibilities) of the target task. The <code>FARGATE</code> value is supported
      *        only in the Regions where AWS Fargate with Amazon ECS is supported. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS-Fargate.html">AWS Fargate on Amazon
      *        ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see LaunchType
@@ -257,22 +257,22 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies the VPC
-     * subnets and security groups associated with the task, and whether a public IP address is to be used. This
+     * subnets and security groups associated with the task and whether a public IP address is to be used. This
      * structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the <code>awsvpc</code> mode is
      * required for Fargate tasks.
      * </p>
      * <p>
-     * If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the <code>awsvpc</code>
+     * If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the <code>awsvpc</code>
      * network mode, the task fails.
      * </p>
      * 
      * @param networkConfiguration
      *        Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies the
-     *        VPC subnets and security groups associated with the task, and whether a public IP address is to be used.
+     *        VPC subnets and security groups associated with the task and whether a public IP address is to be used.
      *        This structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the
      *        <code>awsvpc</code> mode is required for Fargate tasks.</p>
      *        <p>
-     *        If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the
+     *        If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the
      *        <code>awsvpc</code> network mode, the task fails.
      */
 
@@ -283,21 +283,21 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies the VPC
-     * subnets and security groups associated with the task, and whether a public IP address is to be used. This
+     * subnets and security groups associated with the task and whether a public IP address is to be used. This
      * structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the <code>awsvpc</code> mode is
      * required for Fargate tasks.
      * </p>
      * <p>
-     * If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the <code>awsvpc</code>
+     * If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the <code>awsvpc</code>
      * network mode, the task fails.
      * </p>
      * 
      * @return Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies
-     *         the VPC subnets and security groups associated with the task, and whether a public IP address is to be
+     *         the VPC subnets and security groups associated with the task and whether a public IP address is to be
      *         used. This structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the
      *         <code>awsvpc</code> mode is required for Fargate tasks.</p>
      *         <p>
-     *         If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the
+     *         If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the
      *         <code>awsvpc</code> network mode, the task fails.
      */
 
@@ -308,22 +308,22 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies the VPC
-     * subnets and security groups associated with the task, and whether a public IP address is to be used. This
+     * subnets and security groups associated with the task and whether a public IP address is to be used. This
      * structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the <code>awsvpc</code> mode is
      * required for Fargate tasks.
      * </p>
      * <p>
-     * If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the <code>awsvpc</code>
+     * If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the <code>awsvpc</code>
      * network mode, the task fails.
      * </p>
      * 
      * @param networkConfiguration
      *        Use this structure if the ECS task uses the <code>awsvpc</code> network mode. This structure specifies the
-     *        VPC subnets and security groups associated with the task, and whether a public IP address is to be used.
+     *        VPC subnets and security groups associated with the task and whether a public IP address is to be used.
      *        This structure is required if <code>LaunchType</code> is <code>FARGATE</code> because the
      *        <code>awsvpc</code> mode is required for Fargate tasks.</p>
      *        <p>
-     *        If you specify <code>NetworkConfiguration</code> when the target ECS task does not use the
+     *        If you specify <code>NetworkConfiguration</code> when the target ECS task doesn't use the
      *        <code>awsvpc</code> network mode, the task fails.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -341,7 +341,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information about valid
      * platform versions, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -351,7 +351,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      *        <p>
      *        This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information about
      *        valid platform versions, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -367,7 +367,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information about valid
      * platform versions, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -376,7 +376,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      *         <p>
      *         This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information
      *         about valid platform versions, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *         Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -392,7 +392,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information about valid
      * platform versions, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
@@ -402,7 +402,7 @@ public class EcsParameters implements Serializable, Cloneable, StructuredPojo {
      *        <p>
      *        This structure is used only if <code>LaunchType</code> is <code>FARGATE</code>. For more information about
      *        valid platform versions, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */

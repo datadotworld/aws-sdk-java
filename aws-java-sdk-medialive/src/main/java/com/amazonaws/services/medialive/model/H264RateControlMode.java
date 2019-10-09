@@ -15,12 +15,13 @@ package com.amazonaws.services.medialive.model;
 import javax.annotation.Generated;
 
 /**
- * Placeholder documentation for H264RateControlMode
+ * H264 Rate Control Mode
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum H264RateControlMode {
 
     CBR("CBR"),
+    MULTIPLEX("MULTIPLEX"),
     QVBR("QVBR"),
     VBR("VBR");
 

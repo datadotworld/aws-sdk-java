@@ -125,6 +125,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * </li>
      * <li>
      * <p>
+     * <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3 location.
      * </p>
      * </li>
@@ -157,6 +162,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <li>
      * <p>
      * <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      * </p>
      * </li>
      * <li>
@@ -257,7 +267,14 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
     private VpcConfig vpcConfig;
     /**
      * <p>
-     * The condition under which to stop the training job.
+     * Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait for a spot
+     * instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model
+     * training costs.
+     * </p>
+     * <p>
+     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job termination
+     * for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of
+     * training are not lost.
      * </p>
      */
     private StoppingCondition stoppingCondition;
@@ -322,11 +339,36 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <p>
      * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
      * Encryption provides greater security for distributed training, but training might take longer. How long it takes
-     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
-     * in distributed training.
+     * depends on the amount of communication between compute instances, especially if you use a deep learning
+     * algorithms in distributed training.
      * </p>
      */
     private Boolean enableInterContainerTrafficEncryption;
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     */
+    private Boolean enableManagedSpotTraining;
+
+    private CheckpointConfig checkpointConfig;
+    /**
+     * <p>
+     * The training time in seconds.
+     * </p>
+     */
+    private Integer trainingTimeInSeconds;
+    /**
+     * <p>
+     * The billable time in seconds.
+     * </p>
+     * <p>
+     * You can calculate the savings from using managed spot training using the formula
+     * <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     * <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is 80%.
+     * </p>
+     */
+    private Integer billableTimeInSeconds;
 
     /**
      * <p>
@@ -897,6 +939,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * </li>
      * <li>
      * <p>
+     * <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3 location.
      * </p>
      * </li>
@@ -929,6 +976,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <li>
      * <p>
      * <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      * </p>
      * </li>
      * <li>
@@ -1004,6 +1056,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *        </li>
      *        <li>
      *        <p>
+     *        <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3
      *        location.
      *        </p>
@@ -1037,6 +1094,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *        <li>
      *        <p>
      *        <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      *        </p>
      *        </li>
      *        <li>
@@ -1118,6 +1180,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * </li>
      * <li>
      * <p>
+     * <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3 location.
      * </p>
      * </li>
@@ -1150,6 +1217,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <li>
      * <p>
      * <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      * </p>
      * </li>
      * <li>
@@ -1224,6 +1296,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *         </li>
      *         <li>
      *         <p>
+     *         <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3
      *         location.
      *         </p>
@@ -1257,6 +1334,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *         <li>
      *         <p>
      *         <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      *         </p>
      *         </li>
      *         <li>
@@ -1338,6 +1420,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * </li>
      * <li>
      * <p>
+     * <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3 location.
      * </p>
      * </li>
@@ -1370,6 +1457,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <li>
      * <p>
      * <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      * </p>
      * </li>
      * <li>
@@ -1445,6 +1537,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *        </li>
      *        <li>
      *        <p>
+     *        <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3
      *        location.
      *        </p>
@@ -1478,6 +1575,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *        <li>
      *        <p>
      *        <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      *        </p>
      *        </li>
      *        <li>
@@ -1561,6 +1663,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * </li>
      * <li>
      * <p>
+     * <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
      * <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3 location.
      * </p>
      * </li>
@@ -1593,6 +1700,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <li>
      * <p>
      * <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      * </p>
      * </li>
      * <li>
@@ -1668,6 +1780,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *        </li>
      *        <li>
      *        <p>
+     *        <code>Interrupted</code> - The job stopped because the managed spot training instances were interrupted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
      *        <code>Uploading</code> - Training is complete and the model artifacts are being uploaded to the S3
      *        location.
      *        </p>
@@ -1701,6 +1818,11 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      *        <li>
      *        <p>
      *        <code>MaxRuntimeExceeded</code> - The job stopped because it exceeded the maximum allowed runtime.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>MaxWaitTmeExceeded</code> - The job stopped because it exceeded the maximum allowed wait time.
      *        </p>
      *        </li>
      *        <li>
@@ -2145,11 +2267,24 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The condition under which to stop the training job.
+     * Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait for a spot
+     * instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model
+     * training costs.
+     * </p>
+     * <p>
+     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job termination
+     * for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of
+     * training are not lost.
      * </p>
      * 
      * @param stoppingCondition
-     *        The condition under which to stop the training job.
+     *        Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait for
+     *        a spot instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API
+     *        to cap model training costs.</p>
+     *        <p>
+     *        To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job
+     *        termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the
+     *        results of training are not lost.
      */
 
     public void setStoppingCondition(StoppingCondition stoppingCondition) {
@@ -2158,10 +2293,23 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The condition under which to stop the training job.
+     * Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait for a spot
+     * instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model
+     * training costs.
+     * </p>
+     * <p>
+     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job termination
+     * for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of
+     * training are not lost.
      * </p>
      * 
-     * @return The condition under which to stop the training job.
+     * @return Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait
+     *         for a spot instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use
+     *         this API to cap model training costs.</p>
+     *         <p>
+     *         To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job
+     *         termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so
+     *         the results of training are not lost.
      */
 
     public StoppingCondition getStoppingCondition() {
@@ -2170,11 +2318,24 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
 
     /**
      * <p>
-     * The condition under which to stop the training job.
+     * Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait for a spot
+     * instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API to cap model
+     * training costs.
+     * </p>
+     * <p>
+     * To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job termination
+     * for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the results of
+     * training are not lost.
      * </p>
      * 
      * @param stoppingCondition
-     *        The condition under which to stop the training job.
+     *        Specifies a limit to how long a model training job can run. It also specifies the maximum time to wait for
+     *        a spot instance. When the job reaches the time limit, Amazon SageMaker ends the training job. Use this API
+     *        to cap model training costs.</p>
+     *        <p>
+     *        To stop a job, Amazon SageMaker sends the algorithm the <code>SIGTERM</code> signal, which delays job
+     *        termination for 120 seconds. Algorithms can use this 120-second window to save the model artifacts, so the
+     *        results of training are not lost.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2639,15 +2800,15 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <p>
      * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
      * Encryption provides greater security for distributed training, but training might take longer. How long it takes
-     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
-     * in distributed training.
+     * depends on the amount of communication between compute instances, especially if you use a deep learning
+     * algorithms in distributed training.
      * </p>
      * 
      * @param enableInterContainerTrafficEncryption
      *        To encrypt all communications between ML compute instances in distributed training, choose
      *        <code>True</code>. Encryption provides greater security for distributed training, but training might take
      *        longer. How long it takes depends on the amount of communication between compute instances, especially if
-     *        you use a deep learning algorithm in distributed training.
+     *        you use a deep learning algorithms in distributed training.
      */
 
     public void setEnableInterContainerTrafficEncryption(Boolean enableInterContainerTrafficEncryption) {
@@ -2658,14 +2819,14 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <p>
      * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
      * Encryption provides greater security for distributed training, but training might take longer. How long it takes
-     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
-     * in distributed training.
+     * depends on the amount of communication between compute instances, especially if you use a deep learning
+     * algorithms in distributed training.
      * </p>
      * 
      * @return To encrypt all communications between ML compute instances in distributed training, choose
      *         <code>True</code>. Encryption provides greater security for distributed training, but training might take
      *         longer. How long it takes depends on the amount of communication between compute instances, especially if
-     *         you use a deep learning algorithm in distributed training.
+     *         you use a deep learning algorithms in distributed training.
      */
 
     public Boolean getEnableInterContainerTrafficEncryption() {
@@ -2676,15 +2837,15 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <p>
      * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
      * Encryption provides greater security for distributed training, but training might take longer. How long it takes
-     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
-     * in distributed training.
+     * depends on the amount of communication between compute instances, especially if you use a deep learning
+     * algorithms in distributed training.
      * </p>
      * 
      * @param enableInterContainerTrafficEncryption
      *        To encrypt all communications between ML compute instances in distributed training, choose
      *        <code>True</code>. Encryption provides greater security for distributed training, but training might take
      *        longer. How long it takes depends on the amount of communication between compute instances, especially if
-     *        you use a deep learning algorithm in distributed training.
+     *        you use a deep learning algorithms in distributed training.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2697,18 +2858,210 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
      * <p>
      * To encrypt all communications between ML compute instances in distributed training, choose <code>True</code>.
      * Encryption provides greater security for distributed training, but training might take longer. How long it takes
-     * depends on the amount of communication between compute instances, especially if you use a deep learning algorithm
-     * in distributed training.
+     * depends on the amount of communication between compute instances, especially if you use a deep learning
+     * algorithms in distributed training.
      * </p>
      * 
      * @return To encrypt all communications between ML compute instances in distributed training, choose
      *         <code>True</code>. Encryption provides greater security for distributed training, but training might take
      *         longer. How long it takes depends on the amount of communication between compute instances, especially if
-     *         you use a deep learning algorithm in distributed training.
+     *         you use a deep learning algorithms in distributed training.
      */
 
     public Boolean isEnableInterContainerTrafficEncryption() {
         return this.enableInterContainerTrafficEncryption;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @param enableManagedSpotTraining
+     *        A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *        <code>False</code>).
+     */
+
+    public void setEnableManagedSpotTraining(Boolean enableManagedSpotTraining) {
+        this.enableManagedSpotTraining = enableManagedSpotTraining;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @return A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *         <code>False</code>).
+     */
+
+    public Boolean getEnableManagedSpotTraining() {
+        return this.enableManagedSpotTraining;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @param enableManagedSpotTraining
+     *        A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *        <code>False</code>).
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTrainingJobResult withEnableManagedSpotTraining(Boolean enableManagedSpotTraining) {
+        setEnableManagedSpotTraining(enableManagedSpotTraining);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (<code>False</code>).
+     * </p>
+     * 
+     * @return A Boolean indicating whether managed spot training is enabled (<code>True</code>) or not (
+     *         <code>False</code>).
+     */
+
+    public Boolean isEnableManagedSpotTraining() {
+        return this.enableManagedSpotTraining;
+    }
+
+    /**
+     * @param checkpointConfig
+     */
+
+    public void setCheckpointConfig(CheckpointConfig checkpointConfig) {
+        this.checkpointConfig = checkpointConfig;
+    }
+
+    /**
+     * @return
+     */
+
+    public CheckpointConfig getCheckpointConfig() {
+        return this.checkpointConfig;
+    }
+
+    /**
+     * @param checkpointConfig
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTrainingJobResult withCheckpointConfig(CheckpointConfig checkpointConfig) {
+        setCheckpointConfig(checkpointConfig);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The training time in seconds.
+     * </p>
+     * 
+     * @param trainingTimeInSeconds
+     *        The training time in seconds.
+     */
+
+    public void setTrainingTimeInSeconds(Integer trainingTimeInSeconds) {
+        this.trainingTimeInSeconds = trainingTimeInSeconds;
+    }
+
+    /**
+     * <p>
+     * The training time in seconds.
+     * </p>
+     * 
+     * @return The training time in seconds.
+     */
+
+    public Integer getTrainingTimeInSeconds() {
+        return this.trainingTimeInSeconds;
+    }
+
+    /**
+     * <p>
+     * The training time in seconds.
+     * </p>
+     * 
+     * @param trainingTimeInSeconds
+     *        The training time in seconds.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTrainingJobResult withTrainingTimeInSeconds(Integer trainingTimeInSeconds) {
+        setTrainingTimeInSeconds(trainingTimeInSeconds);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The billable time in seconds.
+     * </p>
+     * <p>
+     * You can calculate the savings from using managed spot training using the formula
+     * <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     * <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is 80%.
+     * </p>
+     * 
+     * @param billableTimeInSeconds
+     *        The billable time in seconds.</p>
+     *        <p>
+     *        You can calculate the savings from using managed spot training using the formula
+     *        <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     *        <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is
+     *        80%.
+     */
+
+    public void setBillableTimeInSeconds(Integer billableTimeInSeconds) {
+        this.billableTimeInSeconds = billableTimeInSeconds;
+    }
+
+    /**
+     * <p>
+     * The billable time in seconds.
+     * </p>
+     * <p>
+     * You can calculate the savings from using managed spot training using the formula
+     * <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     * <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is 80%.
+     * </p>
+     * 
+     * @return The billable time in seconds.</p>
+     *         <p>
+     *         You can calculate the savings from using managed spot training using the formula
+     *         <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     *         <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is
+     *         80%.
+     */
+
+    public Integer getBillableTimeInSeconds() {
+        return this.billableTimeInSeconds;
+    }
+
+    /**
+     * <p>
+     * The billable time in seconds.
+     * </p>
+     * <p>
+     * You can calculate the savings from using managed spot training using the formula
+     * <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     * <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is 80%.
+     * </p>
+     * 
+     * @param billableTimeInSeconds
+     *        The billable time in seconds.</p>
+     *        <p>
+     *        You can calculate the savings from using managed spot training using the formula
+     *        <code>(1 - BillableTimeInSeconds / TrainingTimeInSeconds) * 100</code>. For example, if
+     *        <code>BillableTimeInSeconds</code> is 100 and <code>TrainingTimeInSeconds</code> is 500, the savings is
+     *        80%.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTrainingJobResult withBillableTimeInSeconds(Integer billableTimeInSeconds) {
+        setBillableTimeInSeconds(billableTimeInSeconds);
+        return this;
     }
 
     /**
@@ -2770,7 +3123,15 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
         if (getEnableNetworkIsolation() != null)
             sb.append("EnableNetworkIsolation: ").append(getEnableNetworkIsolation()).append(",");
         if (getEnableInterContainerTrafficEncryption() != null)
-            sb.append("EnableInterContainerTrafficEncryption: ").append(getEnableInterContainerTrafficEncryption());
+            sb.append("EnableInterContainerTrafficEncryption: ").append(getEnableInterContainerTrafficEncryption()).append(",");
+        if (getEnableManagedSpotTraining() != null)
+            sb.append("EnableManagedSpotTraining: ").append(getEnableManagedSpotTraining()).append(",");
+        if (getCheckpointConfig() != null)
+            sb.append("CheckpointConfig: ").append(getCheckpointConfig()).append(",");
+        if (getTrainingTimeInSeconds() != null)
+            sb.append("TrainingTimeInSeconds: ").append(getTrainingTimeInSeconds()).append(",");
+        if (getBillableTimeInSeconds() != null)
+            sb.append("BillableTimeInSeconds: ").append(getBillableTimeInSeconds());
         sb.append("}");
         return sb.toString();
     }
@@ -2882,6 +3243,22 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
         if (other.getEnableInterContainerTrafficEncryption() != null
                 && other.getEnableInterContainerTrafficEncryption().equals(this.getEnableInterContainerTrafficEncryption()) == false)
             return false;
+        if (other.getEnableManagedSpotTraining() == null ^ this.getEnableManagedSpotTraining() == null)
+            return false;
+        if (other.getEnableManagedSpotTraining() != null && other.getEnableManagedSpotTraining().equals(this.getEnableManagedSpotTraining()) == false)
+            return false;
+        if (other.getCheckpointConfig() == null ^ this.getCheckpointConfig() == null)
+            return false;
+        if (other.getCheckpointConfig() != null && other.getCheckpointConfig().equals(this.getCheckpointConfig()) == false)
+            return false;
+        if (other.getTrainingTimeInSeconds() == null ^ this.getTrainingTimeInSeconds() == null)
+            return false;
+        if (other.getTrainingTimeInSeconds() != null && other.getTrainingTimeInSeconds().equals(this.getTrainingTimeInSeconds()) == false)
+            return false;
+        if (other.getBillableTimeInSeconds() == null ^ this.getBillableTimeInSeconds() == null)
+            return false;
+        if (other.getBillableTimeInSeconds() != null && other.getBillableTimeInSeconds().equals(this.getBillableTimeInSeconds()) == false)
+            return false;
         return true;
     }
 
@@ -2914,6 +3291,10 @@ public class DescribeTrainingJobResult extends com.amazonaws.AmazonWebServiceRes
         hashCode = prime * hashCode + ((getFinalMetricDataList() == null) ? 0 : getFinalMetricDataList().hashCode());
         hashCode = prime * hashCode + ((getEnableNetworkIsolation() == null) ? 0 : getEnableNetworkIsolation().hashCode());
         hashCode = prime * hashCode + ((getEnableInterContainerTrafficEncryption() == null) ? 0 : getEnableInterContainerTrafficEncryption().hashCode());
+        hashCode = prime * hashCode + ((getEnableManagedSpotTraining() == null) ? 0 : getEnableManagedSpotTraining().hashCode());
+        hashCode = prime * hashCode + ((getCheckpointConfig() == null) ? 0 : getCheckpointConfig().hashCode());
+        hashCode = prime * hashCode + ((getTrainingTimeInSeconds() == null) ? 0 : getTrainingTimeInSeconds().hashCode());
+        hashCode = prime * hashCode + ((getBillableTimeInSeconds() == null) ? 0 : getBillableTimeInSeconds().hashCode());
         return hashCode;
     }
 

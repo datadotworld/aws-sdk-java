@@ -82,35 +82,35 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedDocumentEncodingException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.UnsupportedDocumentEncodingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedDocumentEncodingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.UnsupportedDocumentEncodingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.MethodNotAllowedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MethodNotAllowedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.MethodNotAllowedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.ConflictException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConflictException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.ConflictExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.InternalFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.InternalFailureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.UnauthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.UnauthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RequestEntityTooLargeException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.RequestEntityTooLargeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RequestEntityTooLargeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.RequestEntityTooLargeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.InvalidRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.ThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.ThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.iotdata.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.iotdata.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.iotdata.model.AWSIotDataException.class));
 
     /**
@@ -369,6 +369,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT Data Plane");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteThingShadow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -441,6 +442,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT Data Plane");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetThingShadow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -504,6 +506,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT Data Plane");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "Publish");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -578,6 +581,7 @@ public class AWSIotDataClient extends AmazonWebServiceClient implements AWSIotDa
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "IoT Data Plane");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateThingShadow");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

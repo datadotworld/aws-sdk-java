@@ -56,23 +56,25 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
     private java.util.List<WebhookFilterRule> filters;
     /**
      * <p>
-     * Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.
+     * Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * GITHUB_HMAC implements the authentication scheme described here: https://developer.github.com/webhooks/securing/
+     * For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     * href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     * website.
      * </p>
      * </li>
      * <li>
      * <p>
-     * IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted in the
+     * IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted in the
      * authentication configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     * UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      * </p>
      * </li>
      * </ul>
@@ -81,9 +83,9 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     * properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set. For IP,
-     * only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no properties can be
-     * set.
+     * properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property must be
+     * set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     * UNAUTHENTICATED, no properties can be set.
      * </p>
      */
     private WebhookAuthConfiguration authenticationConfiguration;
@@ -294,45 +296,48 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.
+     * Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * GITHUB_HMAC implements the authentication scheme described here: https://developer.github.com/webhooks/securing/
+     * For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     * href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     * website.
      * </p>
      * </li>
      * <li>
      * <p>
-     * IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted in the
+     * IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted in the
      * authentication configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     * UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      * </p>
      * </li>
      * </ul>
      * 
      * @param authentication
-     *        Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.</p>
+     *        Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        GITHUB_HMAC implements the authentication scheme described here:
-     *        https://developer.github.com/webhooks/securing/
+     *        For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     *        href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     *        website.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted
+     *        IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted
      *        in the authentication configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     *        UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      *        </p>
      *        </li>
      * @see WebhookAuthenticationType
@@ -344,44 +349,47 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.
+     * Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * GITHUB_HMAC implements the authentication scheme described here: https://developer.github.com/webhooks/securing/
+     * For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     * href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     * website.
      * </p>
      * </li>
      * <li>
      * <p>
-     * IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted in the
+     * IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted in the
      * authentication configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     * UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.</p>
+     * @return Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         GITHUB_HMAC implements the authentication scheme described here:
-     *         https://developer.github.com/webhooks/securing/
+     *         For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     *         href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     *         website.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted
+     *         IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted
      *         in the authentication configuration.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     *         UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      *         </p>
      *         </li>
      * @see WebhookAuthenticationType
@@ -393,45 +401,48 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.
+     * Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * GITHUB_HMAC implements the authentication scheme described here: https://developer.github.com/webhooks/securing/
+     * For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     * href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     * website.
      * </p>
      * </li>
      * <li>
      * <p>
-     * IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted in the
+     * IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted in the
      * authentication configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     * UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      * </p>
      * </li>
      * </ul>
      * 
      * @param authentication
-     *        Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.</p>
+     *        Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        GITHUB_HMAC implements the authentication scheme described here:
-     *        https://developer.github.com/webhooks/securing/
+     *        For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     *        href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     *        website.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted
+     *        IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted
      *        in the authentication configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     *        UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -445,45 +456,48 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.
+     * Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * GITHUB_HMAC implements the authentication scheme described here: https://developer.github.com/webhooks/securing/
+     * For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     * href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     * website.
      * </p>
      * </li>
      * <li>
      * <p>
-     * IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted in the
+     * IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted in the
      * authentication configuration.
      * </p>
      * </li>
      * <li>
      * <p>
-     * UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     * UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      * </p>
      * </li>
      * </ul>
      * 
      * @param authentication
-     *        Supported options are GITHUB_HMAC, IP and UNAUTHENTICATED.</p>
+     *        Supported options are GITHUB_HMAC, IP, and UNAUTHENTICATED.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        GITHUB_HMAC implements the authentication scheme described here:
-     *        https://developer.github.com/webhooks/securing/
+     *        For information about the authentication scheme implemented by GITHUB_HMAC, see <a
+     *        href="https://developer.github.com/webhooks/securing/">Securing your webhooks</a> on the GitHub Developer
+     *        website.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        IP will reject webhooks trigger requests unless they originate from an IP within the IP range whitelisted
+     *        IP rejects webhooks trigger requests unless they originate from an IP address in the IP range whitelisted
      *        in the authentication configuration.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        UNAUTHENTICATED will accept all webhook trigger requests regardless of origin.
+     *        UNAUTHENTICATED accepts all webhook trigger requests regardless of origin.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -498,16 +512,16 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     * properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set. For IP,
-     * only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no properties can be
-     * set.
+     * properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property must be
+     * set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     * UNAUTHENTICATED, no properties can be set.
      * </p>
      * 
      * @param authenticationConfiguration
      *        Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     *        properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set.
-     *        For IP, only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no
-     *        properties can be set.
+     *        properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property
+     *        must be set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     *        UNAUTHENTICATED, no properties can be set.
      */
 
     public void setAuthenticationConfiguration(WebhookAuthConfiguration authenticationConfiguration) {
@@ -517,15 +531,15 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     * properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set. For IP,
-     * only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no properties can be
-     * set.
+     * properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property must be
+     * set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     * UNAUTHENTICATED, no properties can be set.
      * </p>
      * 
      * @return Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     *         properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set.
-     *         For IP, only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no
-     *         properties can be set.
+     *         properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property
+     *         must be set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     *         UNAUTHENTICATED, no properties can be set.
      */
 
     public WebhookAuthConfiguration getAuthenticationConfiguration() {
@@ -535,16 +549,16 @@ public class WebhookDefinition implements Serializable, Cloneable, StructuredPoj
     /**
      * <p>
      * Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     * properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set. For IP,
-     * only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no properties can be
-     * set.
+     * properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property must be
+     * set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     * UNAUTHENTICATED, no properties can be set.
      * </p>
      * 
      * @param authenticationConfiguration
      *        Properties that configure the authentication applied to incoming webhook trigger requests. The required
-     *        properties depend on the authentication type. For GITHUB_HMAC, only the SecretToken property must be set.
-     *        For IP, only the AllowedIPRange property must be set to a valid CIDR range. For UNAUTHENTICATED, no
-     *        properties can be set.
+     *        properties depend on the authentication type. For GITHUB_HMAC, only the <code>SecretToken </code>property
+     *        must be set. For IP, only the <code>AllowedIPRange </code>property must be set to a valid CIDR range. For
+     *        UNAUTHENTICATED, no properties can be set.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

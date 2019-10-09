@@ -52,7 +52,14 @@ import com.amazonaws.services.elasticsearch.model.transform.*;
  * <p>
  * <fullname>Amazon Elasticsearch Configuration Service</fullname>
  * <p>
- * Use the Amazon Elasticsearch configuration API to create, configure, and manage Elasticsearch domains.
+ * Use the Amazon Elasticsearch Configuration API to create, configure, and manage Elasticsearch domains.
+ * </p>
+ * <p>
+ * For sample code that uses the Configuration API, see the <a
+ * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-configuration-samples.html">Amazon
+ * Elasticsearch Service Developer Guide</a>. The guide also contains <a
+ * href="https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-request-signing.html">sample code
+ * for sending signed HTTP requests to the Elasticsearch APIs</a>.
  * </p>
  * <p>
  * The endpoint for configuration service requests is region-specific: es.<i>region</i>.amazonaws.com. For example,
@@ -85,29 +92,29 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DisabledOperationException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.DisabledOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DisabledOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.DisabledOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTypeException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.InvalidTypeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTypeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.InvalidTypeExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.ValidationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BaseException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.BaseException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BaseException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.BaseExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.ResourceAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.ResourceAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withModeledClass(
-                                    com.amazonaws.services.elasticsearch.model.InternalException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.elasticsearch.model.transform.InternalExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.elasticsearch.model.AWSElasticsearchException.class));
 
     /**
@@ -359,6 +366,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -425,6 +433,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelElasticsearchServiceSoftwareUpdate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -497,6 +506,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateElasticsearchDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -561,6 +571,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteElasticsearchDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -625,6 +636,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteElasticsearchServiceRole");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -688,6 +700,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeElasticsearchDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -753,6 +766,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeElasticsearchDomainConfig");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -815,6 +829,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeElasticsearchDomains");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -885,6 +900,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeElasticsearchInstanceTypeLimits");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -950,6 +966,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeReservedElasticsearchInstanceOfferings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1014,6 +1031,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeReservedElasticsearchInstances");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1081,6 +1099,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCompatibleElasticsearchVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1145,6 +1164,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUpgradeHistory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1208,6 +1228,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetUpgradeStatus");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1262,6 +1283,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListDomainNames");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1323,6 +1345,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListElasticsearchInstanceTypes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1393,6 +1416,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListElasticsearchVersions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1455,6 +1479,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1524,6 +1549,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PurchaseReservedElasticsearchInstanceOffering");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1584,6 +1610,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1647,6 +1674,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartElasticsearchServiceSoftwareUpdate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1718,6 +1746,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateElasticsearchDomainConfig");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1786,6 +1815,7 @@ public class AWSElasticsearchClient extends AmazonWebServiceClient implements AW
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Elasticsearch Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpgradeElasticsearchDomain");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

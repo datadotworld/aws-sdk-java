@@ -52,39 +52,20 @@ import com.amazonaws.services.acmpca.model.transform.*;
  * service call completes.
  * <p>
  * <p>
- * You can use the ACM PCA API to create a private certificate authority (CA). You must first call the
- * <a>CreateCertificateAuthority</a> operation. If successful, the operation returns an Amazon Resource Name (ARN) for
- * your private CA. Use this ARN as input to the <a>GetCertificateAuthorityCsr</a> operation to retrieve the certificate
- * signing request (CSR) for your private CA certificate. Sign the CSR using the root or an intermediate CA in your
- * on-premises PKI hierarchy, and call the <a>ImportCertificateAuthorityCertificate</a> to import your signed private CA
- * certificate into ACM PCA.
+ * This is the <i>ACM Private CA API Reference</i>. It provides descriptions, syntax, and usage examples for each of the
+ * actions and data types involved in creating and managing private certificate authorities (CA) for your organization.
  * </p>
  * <p>
- * Use your private CA to issue and revoke certificates. These are private certificates that identify and secure client
- * computers, servers, applications, services, devices, and users over SSLS/TLS connections within your organization.
- * Call the <a>IssueCertificate</a> operation to issue a certificate. Call the <a>RevokeCertificate</a> operation to
- * revoke a certificate.
+ * The documentation for each action shows the Query API request parameters and the XML response. Alternatively, you can
+ * use one of the AWS SDKs to access an API that's tailored to the programming language or platform that you're using.
+ * For more information, see <a href="https://aws.amazon.com/tools/#SDKs">AWS SDKs</a>.
  * </p>
  * <note>
  * <p>
- * Certificates issued by your private CA can be trusted only within your organization, not publicly.
- * </p>
- * </note>
- * <p>
- * Your private CA can optionally create a certificate revocation list (CRL) to track the certificates you revoke. To
- * create a CRL, you must specify a <a>RevocationConfiguration</a> object when you call the
- * <a>CreateCertificateAuthority</a> operation. ACM PCA writes the CRL to an S3 bucket that you specify. You must
- * specify a bucket policy that grants ACM PCA write permission.
- * </p>
- * <p>
- * You can also call the <a>CreateCertificateAuthorityAuditReport</a> to create an optional audit report, which
- * enumerates all of the issued, valid, expired, and revoked certificates from the CA.
- * </p>
- * <note>
- * <p>
- * Each ACM PCA API operation has a throttling limit which determines the number of times the operation can be called
- * per second. For more information, see <a href="acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api">API Rate Limits
- * in ACM PCA</a> in the ACM PCA user guide.
+ * Each ACM Private CA API action has a throttling limit which determines the number of times the action can be called
+ * per second. For more information, see <a
+ * href="https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api">API Rate Limits in ACM
+ * Private CA</a> in the ACM Private CA user guide.
  * </p>
  * </note>
  */
@@ -113,53 +94,59 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.InvalidTagException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidTagExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.ConcurrentModificationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ConcurrentModificationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.ConcurrentModificationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CertificateMismatchException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.CertificateMismatchException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CertificateMismatchException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.CertificateMismatchExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPolicyException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.InvalidPolicyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPolicyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidPolicyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.ResourceNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgsException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.InvalidArgsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidArnException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.InvalidArnException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArgsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidArgsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MalformedCSRException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.MalformedCSRException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidArnException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidArnExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RequestInProgressException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.RequestInProgressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MalformedCSRException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.MalformedCSRExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.InvalidStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RequestInProgressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.RequestInProgressExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RequestAlreadyProcessedException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.RequestAlreadyProcessedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("MalformedCertificateException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.MalformedCertificateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PermissionAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.PermissionAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RequestFailedException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.RequestFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RequestAlreadyProcessedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.RequestAlreadyProcessedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("MalformedCertificateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.MalformedCertificateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.acmpca.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RequestFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.RequestFailedExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.acmpca.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.acmpca.model.AWSACMPCAException.class));
 
     public static AWSACMPCAClientBuilder builder() {
@@ -210,13 +197,13 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Creates a private subordinate certificate authority (CA). You must specify the CA configuration, the revocation
-     * configuration, the CA type, and an optional idempotency token. The CA configuration specifies the name of the
-     * algorithm and key size to be used to create the CA private key, the type of signing algorithm that the CA uses to
-     * sign, and X.500 subject information. The CRL (certificate revocation list) configuration specifies the CRL
-     * expiration period in days (the validity period of the CRL), the Amazon S3 bucket that will contain the CRL, and a
-     * CNAME alias for the S3 bucket that is included in certificates issued by the CA. If successful, this operation
-     * returns the Amazon Resource Name (ARN) of the CA.
+     * Creates a root or subordinate private certificate authority (CA). You must specify the CA configuration, the
+     * certificate revocation list (CRL) configuration, the CA type, and an optional idempotency token to avoid
+     * accidental creation of multiple CAs. The CA configuration specifies the name of the algorithm and key size to be
+     * used to create the CA private key, the type of signing algorithm that the CA uses, and X.500 subject information.
+     * The CRL configuration specifies the CRL expiration period in days (the validity period of the CRL), the Amazon S3
+     * bucket that will contain the CRL, and a CNAME alias for the S3 bucket that is included in certificates issued by
+     * the CA. If successful, this action returns the Amazon Resource Name (ARN) of the CA.
      * </p>
      * 
      * @param createCertificateAuthorityRequest
@@ -224,13 +211,13 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      * @throws InvalidArgsException
      *         One or more of the specified arguments was not valid.
      * @throws InvalidPolicyException
-     *         The S3 bucket policy is not valid. The policy must give ACM PCA rights to read from and write to the
-     *         bucket and find the bucket location.
+     *         The S3 bucket policy is not valid. The policy must give ACM Private CA rights to read from and write to
+     *         the bucket and find the bucket location.
      * @throws InvalidTagException
      *         The tag associated with the CA is not valid. The invalid argument is contained in the message field.
      * @throws LimitExceededException
-     *         An ACM PCA limit has been exceeded. See the exception message returned to determine the limit that was
-     *         exceeded.
+     *         An ACM Private CA limit has been exceeded. See the exception message returned to determine the limit that
+     *         was exceeded.
      * @sample AWSACMPCA.CreateCertificateAuthority
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/CreateCertificateAuthority"
      *      target="_top">AWS API Documentation</a>
@@ -261,6 +248,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -280,9 +268,9 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Creates an audit report that lists every time that the your CA private key is used. The report is saved in the
-     * Amazon S3 bucket that you specify on input. The <a>IssueCertificate</a> and <a>RevokeCertificate</a> operations
-     * use the private key. You can generate a new report every 30 minutes.
+     * Creates an audit report that lists every time that your CA private key is used. The report is saved in the Amazon
+     * S3 bucket that you specify on input. The <a>IssueCertificate</a> and <a>RevokeCertificate</a> actions use the
+     * private key.
      * </p>
      * 
      * @param createCertificateAuthorityAuditReportRequest
@@ -330,6 +318,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateCertificateAuthorityAuditReport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -349,23 +338,105 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Deletes a private certificate authority (CA). You must provide the ARN (Amazon Resource Name) of the private CA
-     * that you want to delete. You can find the ARN by calling the <a>ListCertificateAuthorities</a> operation. Before
-     * you can delete a CA, you must disable it. Call the <a>UpdateCertificateAuthority</a> operation and set the
-     * <b>CertificateAuthorityStatus</b> parameter to <code>DISABLED</code>.
+     * Assigns permissions from a private CA to a designated AWS service. Services are specified by their service
+     * principals and can be given permission to create and retrieve certificates on a private CA. Services can also be
+     * given permission to list the active permissions that the private CA has granted. For ACM to automatically renew
+     * your private CA's certificates, you must assign all possible permissions from the CA to the ACM service
+     * principal.
      * </p>
      * <p>
-     * Additionally, you can delete a CA if you are waiting for it to be created (the <b>Status</b> field of the
-     * <a>CertificateAuthority</a> is <code>CREATING</code>). You can also delete it if the CA has been created but you
-     * haven't yet imported the signed certificate (the <b>Status</b> is <code>PENDING_CERTIFICATE</code>) into ACM PCA.
+     * At this time, you can only assign permissions to ACM (<code>acm.amazonaws.com</code>). Permissions can be revoked
+     * with the <a>DeletePermission</a> action and listed with the <a>ListPermissions</a> action.
+     * </p>
+     * 
+     * @param createPermissionRequest
+     * @return Result of the CreatePermission operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
+     * @throws InvalidArnException
+     *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+     * @throws PermissionAlreadyExistsException
+     *         The designated permission has already been given to the user.
+     * @throws LimitExceededException
+     *         An ACM Private CA limit has been exceeded. See the exception message returned to determine the limit that
+     *         was exceeded.
+     * @throws InvalidStateException
+     *         The private CA is in a state during which a report or certificate cannot be generated.
+     * @throws RequestFailedException
+     *         The request has failed for an unspecified reason.
+     * @sample AWSACMPCA.CreatePermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/CreatePermission" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public CreatePermissionResult createPermission(CreatePermissionRequest request) {
+        request = beforeClientExecution(request);
+        return executeCreatePermission(request);
+    }
+
+    @SdkInternalApi
+    final CreatePermissionResult executeCreatePermission(CreatePermissionRequest createPermissionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(createPermissionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreatePermissionRequest> request = null;
+        Response<CreatePermissionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreatePermissionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(createPermissionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreatePermission");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<CreatePermissionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new CreatePermissionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Deletes a private certificate authority (CA). You must provide the Amazon Resource Name (ARN) of the private CA
+     * that you want to delete. You can find the ARN by calling the <a>ListCertificateAuthorities</a> action.
+     * </p>
+     * <note>
+     * <p>
+     * Deleting a CA will invalidate other CAs and certificates below it in your CA hierarchy.
+     * </p>
+     * </note>
+     * <p>
+     * Before you can delete a CA that you have created and activated, you must disable it. To do this, call the
+     * <a>UpdateCertificateAuthority</a> action and set the <b>CertificateAuthorityStatus</b> parameter to
+     * <code>DISABLED</code>.
      * </p>
      * <p>
-     * If the CA is in one of the aforementioned states and you call <a>DeleteCertificateAuthority</a>, the CA's status
-     * changes to <code>DELETED</code>. However, the CA won't be permentantly deleted until the restoration period has
-     * passed. By default, if you do not set the <code>PermanentDeletionTimeInDays</code> parameter, the CA remains
-     * restorable for 30 days. You can set the parameter from 7 to 30 days. The <a>DescribeCertificateAuthority</a>
-     * operation returns the time remaining in the restoration window of a Private CA in the <code>DELETED</code> state.
-     * To restore an eligable CA, call the <a>RestoreCertificateAuthority</a> operation.
+     * Additionally, you can delete a CA if you are waiting for it to be created (that is, the status of the CA is
+     * <code>CREATING</code>). You can also delete it if the CA has been created but you haven't yet imported the signed
+     * certificate into ACM Private CA (that is, the status of the CA is <code>PENDING_CERTIFICATE</code>).
+     * </p>
+     * <p>
+     * When you successfully call <a>DeleteCertificateAuthority</a>, the CA's status changes to <code>DELETED</code>.
+     * However, the CA won't be permanently deleted until the restoration period has passed. By default, if you do not
+     * set the <code>PermanentDeletionTimeInDays</code> parameter, the CA remains restorable for 30 days. You can set
+     * the parameter from 7 to 30 days. The <a>DescribeCertificateAuthority</a> action returns the time remaining in the
+     * restoration window of a private CA in the <code>DELETED</code> state. To restore an eligible CA, call the
+     * <a>RestoreCertificateAuthority</a> action.
      * </p>
      * 
      * @param deleteCertificateAuthorityRequest
@@ -408,6 +479,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -427,19 +499,81 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
+     * Revokes permissions that a private CA assigned to a designated AWS service. Permissions can be created with the
+     * <a>CreatePermission</a> action and listed with the <a>ListPermissions</a> action.
+     * </p>
+     * 
+     * @param deletePermissionRequest
+     * @return Result of the DeletePermission operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
+     * @throws InvalidArnException
+     *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+     * @throws InvalidStateException
+     *         The private CA is in a state during which a report or certificate cannot be generated.
+     * @throws RequestFailedException
+     *         The request has failed for an unspecified reason.
+     * @sample AWSACMPCA.DeletePermission
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/DeletePermission" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public DeletePermissionResult deletePermission(DeletePermissionRequest request) {
+        request = beforeClientExecution(request);
+        return executeDeletePermission(request);
+    }
+
+    @SdkInternalApi
+    final DeletePermissionResult executeDeletePermission(DeletePermissionRequest deletePermissionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(deletePermissionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeletePermissionRequest> request = null;
+        Response<DeletePermissionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeletePermissionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(deletePermissionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeletePermission");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<DeletePermissionResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new DeletePermissionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Lists information about your private certificate authority (CA). You specify the private CA on input by its ARN
      * (Amazon Resource Name). The output contains the status of your CA. This can be any of the following:
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CREATING</code> - ACM PCA is creating your private certificate authority.
+     * <code>CREATING</code> - ACM Private CA is creating your private certificate authority.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING_CERTIFICATE</code> - The certificate is pending. You must use your on-premises root or subordinate
-     * CA to sign your private CA CSR and then import it into PCA.
+     * <code>PENDING_CERTIFICATE</code> - The certificate is pending. You must use your ACM Private CA-hosted or
+     * on-premises root or subordinate CA to sign your private CA CSR and then import it into PCA.
      * </p>
      * </li>
      * <li>
@@ -466,7 +600,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      * <li>
      * <p>
      * <code>DELETED</code> - Your private CA is within the restoration period, after which it is permanently deleted.
-     * The length of time remaining in the CA's restoration period is also included in this operation's output.
+     * The length of time remaining in the CA's restoration period is also included in this action's output.
      * </p>
      * </li>
      * </ul>
@@ -507,6 +641,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -527,9 +662,9 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
     /**
      * <p>
      * Lists information about a specific audit report created by calling the
-     * <a>CreateCertificateAuthorityAuditReport</a> operation. Audit information is created every time the certificate
-     * authority (CA) private key is used. The private key is used when you call the <a>IssueCertificate</a> operation
-     * or the <a>RevokeCertificate</a> operation.
+     * <a>CreateCertificateAuthorityAuditReport</a> action. Audit information is created every time the certificate
+     * authority (CA) private key is used. The private key is used when you call the <a>IssueCertificate</a> action or
+     * the <a>RevokeCertificate</a> action.
      * </p>
      * 
      * @param describeCertificateAuthorityAuditReportRequest
@@ -571,6 +706,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeCertificateAuthorityAuditReport");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -591,10 +727,10 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
     /**
      * <p>
      * Retrieves a certificate from your private CA. The ARN of the certificate is returned when you call the
-     * <a>IssueCertificate</a> operation. You must specify both the ARN of your private CA and the ARN of the issued
-     * certificate when calling the <b>GetCertificate</b> operation. You can retrieve the certificate if it is in the
-     * <b>ISSUED</b> state. You can call the <a>CreateCertificateAuthorityAuditReport</a> operation to create a report
-     * that contains information about all of the certificates issued and revoked by your private CA.
+     * <a>IssueCertificate</a> action. You must specify both the ARN of your private CA and the ARN of the issued
+     * certificate when calling the <b>GetCertificate</b> action. You can retrieve the certificate if it is in the
+     * <b>ISSUED</b> state. You can call the <a>CreateCertificateAuthorityAuditReport</a> action to create a report that
+     * contains information about all of the certificates issued and revoked by your private CA.
      * </p>
      * 
      * @param getCertificateRequest
@@ -638,6 +774,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -700,6 +837,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCertificateAuthorityCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -720,10 +858,9 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
     /**
      * <p>
      * Retrieves the certificate signing request (CSR) for your private certificate authority (CA). The CSR is created
-     * when you call the <a>CreateCertificateAuthority</a> operation. Take the CSR to your on-premises X.509
-     * infrastructure and sign it by using your root or a subordinate CA. Then import the signed certificate back into
-     * ACM PCA by calling the <a>ImportCertificateAuthorityCertificate</a> operation. The CSR is returned as a base64
-     * PEM-encoded string.
+     * when you call the <a>CreateCertificateAuthority</a> action. Sign the CSR with your ACM Private CA-hosted or
+     * on-premises root or subordinate CA. Then import the signed certificate back into ACM Private CA by calling the
+     * <a>ImportCertificateAuthorityCertificate</a> action. The CSR is returned as a base64 PEM-encoded string.
      * </p>
      * 
      * @param getCertificateAuthorityCsrRequest
@@ -768,6 +905,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetCertificateAuthorityCsr");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -787,27 +925,65 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Imports your signed private CA certificate into ACM PCA. Before you can call this operation, you must create the
-     * private certificate authority by calling the <a>CreateCertificateAuthority</a> operation. You must then generate
-     * a certificate signing request (CSR) by calling the <a>GetCertificateAuthorityCsr</a> operation. Take the CSR to
-     * your on-premises CA and use the root certificate or a subordinate certificate to sign it. Create a certificate
-     * chain and copy the signed certificate and the certificate chain to your working directory.
+     * Imports a signed private CA certificate into ACM Private CA. This action is used when you are using a chain of
+     * trust whose root is located outside ACM Private CA. Before you can call this action, the following preparations
+     * must in place:
      * </p>
-     * <note>
+     * <ol>
+     * <li>
+     * <p>
+     * In ACM Private CA, call the <a>CreateCertificateAuthority</a> action to create the private CA that that you plan
+     * to back with the imported certificate.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Call the <a>GetCertificateAuthorityCsr</a> action to generate a certificate signing request (CSR).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Sign the CSR using a root or intermediate CA hosted either by an on-premises PKI hierarchy or a commercial CA..
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Create a certificate chain and copy the signed certificate and the certificate chain to your working directory.
+     * </p>
+     * </li>
+     * </ol>
+     * <p>
+     * The following requirements apply when you import a CA certificate.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * You cannot import a non-self-signed certificate for use as a root CA.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * You cannot import a self-signed certificate for use as a subordinate CA.
+     * </p>
+     * </li>
+     * <li>
      * <p>
      * Your certificate chain must not include the private CA certificate that you are importing.
      * </p>
-     * </note> <note>
+     * </li>
+     * <li>
      * <p>
-     * Your on-premises CA certificate must be the last certificate in your chain. The subordinate certificate, if any,
-     * that your root CA signed must be next to last. The subordinate certificate signed by the preceding subordinate CA
-     * must come next, and so on until your chain is built.
+     * Your ACM Private CA-hosted or on-premises CA certificate must be the last certificate in your chain. The
+     * subordinate certificate, if any, that your root CA signed must be next to last. The subordinate certificate
+     * signed by the preceding subordinate CA must come next, and so on until your chain is built.
      * </p>
-     * </note> <note>
+     * </li>
+     * <li>
      * <p>
      * The chain must be PEM-encoded.
      * </p>
-     * </note>
+     * </li>
+     * </ul>
      * 
      * @param importCertificateAuthorityCertificateRequest
      * @return Result of the ImportCertificateAuthorityCertificate operation returned by the service.
@@ -821,6 +997,8 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+     * @throws InvalidRequestException
+     *         The request action cannot be performed or is prohibited.
      * @throws InvalidStateException
      *         The private CA is in a state during which a report or certificate cannot be generated.
      * @throws MalformedCertificateException
@@ -859,6 +1037,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ImportCertificateAuthorityCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -878,22 +1057,22 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Uses your private certificate authority (CA) to issue a client certificate. This operation returns the Amazon
+     * Uses your private certificate authority (CA) to issue a client certificate. This action returns the Amazon
      * Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the <a>GetCertificate</a>
-     * operation and specifying the ARN.
+     * action and specifying the ARN.
      * </p>
      * <note>
      * <p>
-     * You cannot use the ACM <b>ListCertificateAuthorities</b> operation to retrieve the ARNs of the certificates that
-     * you issue by using ACM PCA.
+     * You cannot use the ACM <b>ListCertificateAuthorities</b> action to retrieve the ARNs of the certificates that you
+     * issue by using ACM Private CA.
      * </p>
      * </note>
      * 
      * @param issueCertificateRequest
      * @return Result of the IssueCertificate operation returned by the service.
      * @throws LimitExceededException
-     *         An ACM PCA limit has been exceeded. See the exception message returned to determine the limit that was
-     *         exceeded.
+     *         An ACM Private CA limit has been exceeded. See the exception message returned to determine the limit that
+     *         was exceeded.
      * @throws ResourceNotFoundException
      *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
      * @throws InvalidStateException
@@ -933,6 +1112,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "IssueCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -951,8 +1131,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Lists the private certificate authorities that you created by using the <a>CreateCertificateAuthority</a>
-     * operation.
+     * Lists the private certificate authorities that you created by using the <a>CreateCertificateAuthority</a> action.
      * </p>
      * 
      * @param listCertificateAuthoritiesRequest
@@ -990,6 +1169,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListCertificateAuthorities");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1009,9 +1189,74 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
+     * Lists all the permissions, if any, that have been assigned by a private CA. Permissions can be granted with the
+     * <a>CreatePermission</a> action and revoked with the <a>DeletePermission</a> action.
+     * </p>
+     * 
+     * @param listPermissionsRequest
+     * @return Result of the ListPermissions operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
+     * @throws InvalidArnException
+     *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+     * @throws InvalidNextTokenException
+     *         The token specified in the <code>NextToken</code> argument is not valid. Use the token returned from your
+     *         previous call to <a>ListCertificateAuthorities</a>.
+     * @throws InvalidStateException
+     *         The private CA is in a state during which a report or certificate cannot be generated.
+     * @throws RequestFailedException
+     *         The request has failed for an unspecified reason.
+     * @sample AWSACMPCA.ListPermissions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/ListPermissions" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public ListPermissionsResult listPermissions(ListPermissionsRequest request) {
+        request = beforeClientExecution(request);
+        return executeListPermissions(request);
+    }
+
+    @SdkInternalApi
+    final ListPermissionsResult executeListPermissions(ListPermissionsRequest listPermissionsRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(listPermissionsRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListPermissionsRequest> request = null;
+        Response<ListPermissionsResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListPermissionsRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(listPermissionsRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListPermissions");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<ListPermissionsResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new ListPermissionsResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Lists the tags, if any, that are associated with your private CA. Tags are labels that you can use to identify
      * and organize your CAs. Each tag consists of a key and an optional value. Call the <a>TagCertificateAuthority</a>
-     * operation to add one or more tags to your CA. Call the <a>UntagCertificateAuthority</a> operation to remove tags.
+     * action to add one or more tags to your CA. Call the <a>UntagCertificateAuthority</a> action to remove tags.
      * </p>
      * 
      * @param listTagsRequest
@@ -1020,6 +1265,8 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+     * @throws InvalidStateException
+     *         The private CA is in a state during which a report or certificate cannot be generated.
      * @sample AWSACMPCA.ListTags
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/ListTags" target="_top">AWS API
      *      Documentation</a>
@@ -1049,6 +1296,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTags");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1069,15 +1317,15 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      * <p>
      * Restores a certificate authority (CA) that is in the <code>DELETED</code> state. You can restore a CA during the
      * period that you defined in the <b>PermanentDeletionTimeInDays</b> parameter of the
-     * <a>DeleteCertificateAuthority</a> operation. Currently, you can specify 7 to 30 days. If you did not specify a
+     * <a>DeleteCertificateAuthority</a> action. Currently, you can specify 7 to 30 days. If you did not specify a
      * <b>PermanentDeletionTimeInDays</b> value, by default you can restore the CA at any time in a 30 day period. You
      * can check the time remaining in the restoration period of a private CA in the <code>DELETED</code> state by
-     * calling the <a>DescribeCertificateAuthority</a> or <a>ListCertificateAuthorities</a> operations. The status of a
-     * restored CA is set to its pre-deletion status when the <b>RestoreCertificateAuthority</b> operation returns. To
-     * change its status to <code>ACTIVE</code>, call the <a>UpdateCertificateAuthority</a> operation. If the private CA
+     * calling the <a>DescribeCertificateAuthority</a> or <a>ListCertificateAuthorities</a> actions. The status of a
+     * restored CA is set to its pre-deletion status when the <b>RestoreCertificateAuthority</b> action returns. To
+     * change its status to <code>ACTIVE</code>, call the <a>UpdateCertificateAuthority</a> action. If the private CA
      * was in the <code>PENDING_CERTIFICATE</code> state at deletion, you must use the
-     * <a>ImportCertificateAuthorityCertificate</a> operation to import a certificate authority into the private CA
-     * before it can be activated. You cannot restore a CA after the restoration period has ended.
+     * <a>ImportCertificateAuthorityCertificate</a> action to import a certificate authority into the private CA before
+     * it can be activated. You cannot restore a CA after the restoration period has ended.
      * </p>
      * 
      * @param restoreCertificateAuthorityRequest
@@ -1118,6 +1366,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RestoreCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1137,12 +1386,17 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
 
     /**
      * <p>
-     * Revokes a certificate that you issued by calling the <a>IssueCertificate</a> operation. If you enable a
-     * certificate revocation list (CRL) when you create or update your private CA, information about the revoked
-     * certificates will be included in the CRL. ACM PCA writes the CRL to an S3 bucket that you specify. For more
-     * information about revocation, see the <a>CrlConfiguration</a> structure. ACM PCA also writes revocation
-     * information to the audit report. For more information, see <a>CreateCertificateAuthorityAuditReport</a>.
+     * Revokes a certificate that was issued inside ACM Private CA. If you enable a certificate revocation list (CRL)
+     * when you create or update your private CA, information about the revoked certificates will be included in the
+     * CRL. ACM Private CA writes the CRL to an S3 bucket that you specify. For more information about revocation, see
+     * the <a>CrlConfiguration</a> structure. ACM Private CA also writes revocation information to the audit report. For
+     * more information, see <a>CreateCertificateAuthorityAuditReport</a>.
      * </p>
+     * <note>
+     * <p>
+     * You cannot revoke a root CA self-signed certificate.
+     * </p>
+     * </note>
      * 
      * @param revokeCertificateRequest
      * @return Result of the RevokeCertificate operation returned by the service.
@@ -1150,11 +1404,13 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      *         A previous update to your private CA is still ongoing.
      * @throws InvalidArnException
      *         The requested Amazon Resource Name (ARN) does not refer to an existing resource.
+     * @throws InvalidRequestException
+     *         The request action cannot be performed or is prohibited.
      * @throws InvalidStateException
      *         The private CA is in a state during which a report or certificate cannot be generated.
      * @throws LimitExceededException
-     *         An ACM PCA limit has been exceeded. See the exception message returned to determine the limit that was
-     *         exceeded.
+     *         An ACM Private CA limit has been exceeded. See the exception message returned to determine the limit that
+     *         was exceeded.
      * @throws ResourceNotFoundException
      *         A resource such as a private CA, S3 bucket, certificate, or audit report cannot be found.
      * @throws RequestAlreadyProcessedException
@@ -1192,6 +1448,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RevokeCertificate");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1215,8 +1472,8 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      * Resource Name (ARN). You specify the tag by using a key-value pair. You can apply a tag to just one private CA if
      * you want to identify a specific characteristic of that CA, or you can apply the same tag to multiple private CAs
      * if you want to filter for a common relationship among those CAs. To remove one or more tags, use the
-     * <a>UntagCertificateAuthority</a> operation. Call the <a>ListTags</a> operation to see what tags are associated
-     * with your CA.
+     * <a>UntagCertificateAuthority</a> action. Call the <a>ListTags</a> action to see what tags are associated with
+     * your CA.
      * </p>
      * 
      * @param tagCertificateAuthorityRequest
@@ -1262,6 +1519,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1282,9 +1540,9 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
     /**
      * <p>
      * Remove one or more tags from your private CA. A tag consists of a key-value pair. If you do not specify the value
-     * portion of the tag when calling this operation, the tag will be removed regardless of value. If you specify a
-     * value, the tag is removed only if it is associated with the specified value. To add tags to a private CA, use the
-     * <a>TagCertificateAuthority</a>. Call the <a>ListTags</a> operation to see what tags are associated with your CA.
+     * portion of the tag when calling this action, the tag will be removed regardless of value. If you specify a value,
+     * the tag is removed only if it is associated with the specified value. To add tags to a private CA, use the
+     * <a>TagCertificateAuthority</a>. Call the <a>ListTags</a> action to see what tags are associated with your CA.
      * </p>
      * 
      * @param untagCertificateAuthorityRequest
@@ -1327,6 +1585,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1364,8 +1623,8 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
      * @throws InvalidStateException
      *         The private CA is in a state during which a report or certificate cannot be generated.
      * @throws InvalidPolicyException
-     *         The S3 bucket policy is not valid. The policy must give ACM PCA rights to read from and write to the
-     *         bucket and find the bucket location.
+     *         The S3 bucket policy is not valid. The policy must give ACM Private CA rights to read from and write to
+     *         the bucket and find the bucket location.
      * @sample AWSACMPCA.UpdateCertificateAuthority
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/acm-pca-2017-08-22/UpdateCertificateAuthority"
      *      target="_top">AWS API Documentation</a>
@@ -1396,6 +1655,7 @@ public class AWSACMPCAClient extends AmazonWebServiceClient implements AWSACMPCA
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ACM PCA");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateCertificateAuthority");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

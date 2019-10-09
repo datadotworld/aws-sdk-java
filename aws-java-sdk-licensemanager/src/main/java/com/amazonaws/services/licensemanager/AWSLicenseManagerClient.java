@@ -84,35 +84,35 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FailedDependencyException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.FailedDependencyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FailedDependencyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.FailedDependencyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AuthorizationException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.AuthorizationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AuthorizationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.AuthorizationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValueException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.InvalidParameterValueException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterValueException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.InvalidParameterValueExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.InvalidResourceStateException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidResourceStateException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.InvalidResourceStateExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RateLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.RateLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RateLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.RateLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("FilterLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.FilterLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("FilterLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.FilterLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServerInternalException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.ServerInternalException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServerInternalException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.ServerInternalExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LicenseUsageException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.LicenseUsageException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LicenseUsageException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.LicenseUsageExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.licensemanager.model.ResourceLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.licensemanager.model.transform.ResourceLimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.licensemanager.model.AWSLicenseManagerException.class));
 
     public static AWSLicenseManagerClientBuilder builder() {
@@ -215,6 +215,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateLicenseConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -280,6 +281,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteLicenseConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -345,6 +347,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLicenseConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -407,6 +410,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetServiceSettings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -477,6 +481,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListAssociationsForLicenseConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -545,6 +550,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListLicenseConfigurations");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -612,6 +618,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListLicenseSpecificationsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -680,6 +687,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListResourceInventory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -744,6 +752,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -813,6 +822,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListUsageForLicenseConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -877,6 +887,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -940,6 +951,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1007,6 +1019,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateLicenseConfiguration");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1083,6 +1096,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateLicenseSpecificationsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1147,6 +1161,7 @@ public class AWSLicenseManagerClient extends AmazonWebServiceClient implements A
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "License Manager");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateServiceSettings");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

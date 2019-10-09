@@ -125,6 +125,8 @@ public enum IdentityManagementActions implements Action {
     EnableMFADevice("iam:EnableMFADevice"),
     /** Action for the GenerateCredentialReport operation. */
     GenerateCredentialReport("iam:GenerateCredentialReport"),
+    /** Action for the GenerateOrganizationsAccessReport operation. */
+    GenerateOrganizationsAccessReport("iam:GenerateOrganizationsAccessReport"),
     /** Action for the GenerateServiceLastAccessedDetails operation. */
     GenerateServiceLastAccessedDetails("iam:GenerateServiceLastAccessedDetails"),
     /** Action for the GetAccessKeyLastUsed operation. */
@@ -151,6 +153,8 @@ public enum IdentityManagementActions implements Action {
     GetLoginProfile("iam:GetLoginProfile"),
     /** Action for the GetOpenIDConnectProvider operation. */
     GetOpenIDConnectProvider("iam:GetOpenIDConnectProvider"),
+    /** Action for the GetOrganizationsAccessReport operation. */
+    GetOrganizationsAccessReport("iam:GetOrganizationsAccessReport"),
     /** Action for the GetPolicy operation. */
     GetPolicy("iam:GetPolicy"),
     /** Action for the GetPolicyVersion operation. */
@@ -253,6 +257,8 @@ public enum IdentityManagementActions implements Action {
     ResyncMFADevice("iam:ResyncMFADevice"),
     /** Action for the SetDefaultPolicyVersion operation. */
     SetDefaultPolicyVersion("iam:SetDefaultPolicyVersion"),
+    /** Action for the SetSecurityTokenServicePreferences operation. */
+    SetSecurityTokenServicePreferences("iam:SetSecurityTokenServicePreferences"),
     /** Action for the SimulateCustomPolicy operation. */
     SimulateCustomPolicy("iam:SimulateCustomPolicy"),
     /** Action for the SimulatePrincipalPolicy operation. */

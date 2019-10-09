@@ -50,6 +50,7 @@ import com.amazonaws.services.ecr.model.transform.*;
  * Client for accessing Amazon ECR. All service calls made using this client are blocking, and will not return until the
  * service call completes.
  * <p>
+ * <fullname>Amazon Elastic Container Registry</fullname>
  * <p>
  * Amazon Elastic Container Registry (Amazon ECR) is a managed Docker registry service. Customers can use the familiar
  * Docker CLI to push, pull, and manage images. Amazon ECR provides a secure, scalable, and reliable registry. Amazon
@@ -80,71 +81,74 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.TooManyTagsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LayerPartTooSmallException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LayerPartTooSmallExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LayerPartTooSmallException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LayerPartTooSmallException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidLayerPartException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.InvalidLayerPartException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNotEmptyException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.RepositoryNotEmptyExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LayerAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LayerAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyPreviewNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LifecyclePolicyPreviewNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EmptyUploadException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.EmptyUploadExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServerException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.ServerException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.RepositoryAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNotEmptyException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.RepositoryNotEmptyException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryPolicyNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.RepositoryPolicyNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LifecyclePolicyNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ImageAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.ImageAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LayerAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LayerAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LayerInaccessibleException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LayerInaccessibleExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EmptyUploadException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.EmptyUploadException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagParameterException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.InvalidTagParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UploadNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.UploadNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ImageNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.ImageNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyTagsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.TooManyTagsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LayersNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LayersNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLayerPartException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.InvalidLayerPartExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidLayerException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.InvalidLayerException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ImageTagAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.ImageTagAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.RepositoryNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyPreviewNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LifecyclePolicyPreviewNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.RepositoryAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServerException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.ServerExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("RepositoryPolicyNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.RepositoryPolicyNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LifecyclePolicyNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyPreviewInProgressException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LifecyclePolicyPreviewInProgressException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTagParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.InvalidTagParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ImageAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.ImageAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ImageNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.ImageNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LayerInaccessibleException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LayerInaccessibleException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LayersNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LayersNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidLayerException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.InvalidLayerExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UploadNotFoundException").withModeledClass(
-                                    com.amazonaws.services.ecr.model.UploadNotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("RepositoryNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.RepositoryNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("LifecyclePolicyPreviewInProgressException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.ecr.model.transform.LifecyclePolicyPreviewInProgressExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.ecr.model.AmazonECRException.class));
 
     /**
@@ -395,6 +399,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchCheckLayerAvailability");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -465,6 +470,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchDeleteImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -525,6 +531,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchGetImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -603,6 +610,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CompleteLayerUpload");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -641,7 +649,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * @throws LimitExceededException
      *         The operation did not succeed because it would have exceeded a service limit for your account. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
+     *         href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
      *         Service Limits</a> in the Amazon Elastic Container Registry User Guide.
      * @sample AmazonECR.CreateRepository
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/CreateRepository" target="_top">AWS API
@@ -672,6 +680,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateRepository");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -733,6 +742,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteLifecyclePolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -797,6 +807,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRepository");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -858,6 +869,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteRepositoryPolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -927,6 +939,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeImages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -986,6 +999,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeRepositories");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1049,6 +1063,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetAuthorizationToken");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1121,6 +1136,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDownloadUrlForLayer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1183,6 +1199,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLifecyclePolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1245,6 +1262,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetLifecyclePolicyPreview");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1307,6 +1325,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetRepositoryPolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1372,6 +1391,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "InitiateLayerUpload");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1437,6 +1457,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListImages");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1496,6 +1517,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1540,8 +1562,11 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * @throws LimitExceededException
      *         The operation did not succeed because it would have exceeded a service limit for your account. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
+     *         href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
      *         Service Limits</a> in the Amazon Elastic Container Registry User Guide.
+     * @throws ImageTagAlreadyExistsException
+     *         The specified image is tagged with a tag that already exists. The repository is configured for tag
+     *         immutability.
      * @sample AmazonECR.PutImage
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutImage" target="_top">AWS API
      *      Documentation</a>
@@ -1571,6 +1596,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutImage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1589,8 +1615,69 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
+     * Updates the image tag mutability settings for a repository.
+     * </p>
+     * 
+     * @param putImageTagMutabilityRequest
+     * @return Result of the PutImageTagMutability operation returned by the service.
+     * @throws ServerException
+     *         These errors are usually caused by a server-side issue.
+     * @throws InvalidParameterException
+     *         The specified parameter is invalid. Review the available parameters for the API request.
+     * @throws RepositoryNotFoundException
+     *         The specified repository could not be found. Check the spelling of the specified repository and ensure
+     *         that you are performing operations on the correct registry.
+     * @sample AmazonECR.PutImageTagMutability
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/PutImageTagMutability" target="_top">AWS API
+     *      Documentation</a>
+     */
+    @Override
+    public PutImageTagMutabilityResult putImageTagMutability(PutImageTagMutabilityRequest request) {
+        request = beforeClientExecution(request);
+        return executePutImageTagMutability(request);
+    }
+
+    @SdkInternalApi
+    final PutImageTagMutabilityResult executePutImageTagMutability(PutImageTagMutabilityRequest putImageTagMutabilityRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(putImageTagMutabilityRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<PutImageTagMutabilityRequest> request = null;
+        Response<PutImageTagMutabilityResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new PutImageTagMutabilityRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(putImageTagMutabilityRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutImageTagMutability");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<PutImageTagMutabilityResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new PutImageTagMutabilityResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
      * Creates or updates a lifecycle policy. For information about lifecycle policy syntax, see <a
-     * href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html">Lifecycle Policy
+     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html">Lifecycle Policy
      * Template</a>.
      * </p>
      * 
@@ -1632,6 +1719,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "PutLifecyclePolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1650,7 +1738,9 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
 
     /**
      * <p>
-     * Applies a repository policy on a specified repository to control access permissions.
+     * Applies a repository policy on a specified repository to control access permissions. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html">Amazon ECR Repository
+     * Policies</a> in the <i>Amazon Elastic Container Registry User Guide</i>.
      * </p>
      * 
      * @param setRepositoryPolicyRequest
@@ -1691,6 +1781,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "SetRepositoryPolicy");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1756,6 +1847,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartLifecyclePolicyPreview");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1823,6 +1915,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "TagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1888,6 +1981,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UntagResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1932,7 +2026,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
      * @throws LimitExceededException
      *         The operation did not succeed because it would have exceeded a service limit for your account. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
+     *         href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html">Amazon ECR Default
      *         Service Limits</a> in the Amazon Elastic Container Registry User Guide.
      * @sample AmazonECR.UploadLayerPart
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/ecr-2015-09-21/UploadLayerPart" target="_top">AWS API
@@ -1963,6 +2057,7 @@ public class AmazonECRClient extends AmazonWebServiceClient implements AmazonECR
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ECR");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UploadLayerPart");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

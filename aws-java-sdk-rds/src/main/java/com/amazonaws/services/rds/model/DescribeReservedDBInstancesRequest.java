@@ -76,11 +76,22 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
     private String offeringType;
     /**
      * <p>
-     * The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ
-     * parameter.
+     * A value that indicates whether to show only those reservations that support Multi-AZ.
      * </p>
      */
     private Boolean multiAZ;
+    /**
+     * <p>
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     */
+    private String leaseId;
     /**
      * <p>
      * This parameter is not currently supported.
@@ -417,13 +428,11 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ
-     * parameter.
+     * A value that indicates whether to show only those reservations that support Multi-AZ.
      * </p>
      * 
      * @param multiAZ
-     *        The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified
-     *        Multi-AZ parameter.
+     *        A value that indicates whether to show only those reservations that support Multi-AZ.
      */
 
     public void setMultiAZ(Boolean multiAZ) {
@@ -432,12 +441,10 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ
-     * parameter.
+     * A value that indicates whether to show only those reservations that support Multi-AZ.
      * </p>
      * 
-     * @return The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified
-     *         Multi-AZ parameter.
+     * @return A value that indicates whether to show only those reservations that support Multi-AZ.
      */
 
     public Boolean getMultiAZ() {
@@ -446,13 +453,11 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ
-     * parameter.
+     * A value that indicates whether to show only those reservations that support Multi-AZ.
      * </p>
      * 
      * @param multiAZ
-     *        The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified
-     *        Multi-AZ parameter.
+     *        A value that indicates whether to show only those reservations that support Multi-AZ.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -463,16 +468,84 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ
-     * parameter.
+     * A value that indicates whether to show only those reservations that support Multi-AZ.
      * </p>
      * 
-     * @return The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified
-     *         Multi-AZ parameter.
+     * @return A value that indicates whether to show only those reservations that support Multi-AZ.
      */
 
     public Boolean isMultiAZ() {
         return this.multiAZ;
+    }
+
+    /**
+     * <p>
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     * 
+     * @param leaseId
+     *        The lease identifier filter value. Specify this parameter to show only the reservation that matches the
+     *        specified lease ID.</p> <note>
+     *        <p>
+     *        AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     *        </p>
+     */
+
+    public void setLeaseId(String leaseId) {
+        this.leaseId = leaseId;
+    }
+
+    /**
+     * <p>
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     * 
+     * @return The lease identifier filter value. Specify this parameter to show only the reservation that matches the
+     *         specified lease ID.</p> <note>
+     *         <p>
+     *         AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     *         </p>
+     */
+
+    public String getLeaseId() {
+        return this.leaseId;
+    }
+
+    /**
+     * <p>
+     * The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified
+     * lease ID.
+     * </p>
+     * <note>
+     * <p>
+     * AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     * </p>
+     * </note>
+     * 
+     * @param leaseId
+     *        The lease identifier filter value. Specify this parameter to show only the reservation that matches the
+     *        specified lease ID.</p> <note>
+     *        <p>
+     *        AWS Support might request the lease ID for an issue related to a reserved DB instance.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeReservedDBInstancesRequest withLeaseId(String leaseId) {
+        setLeaseId(leaseId);
+        return this;
     }
 
     /**
@@ -705,6 +778,8 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
             sb.append("OfferingType: ").append(getOfferingType()).append(",");
         if (getMultiAZ() != null)
             sb.append("MultiAZ: ").append(getMultiAZ()).append(",");
+        if (getLeaseId() != null)
+            sb.append("LeaseId: ").append(getLeaseId()).append(",");
         if (getFilters() != null)
             sb.append("Filters: ").append(getFilters()).append(",");
         if (getMaxRecords() != null)
@@ -754,6 +829,10 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
             return false;
         if (other.getMultiAZ() != null && other.getMultiAZ().equals(this.getMultiAZ()) == false)
             return false;
+        if (other.getLeaseId() == null ^ this.getLeaseId() == null)
+            return false;
+        if (other.getLeaseId() != null && other.getLeaseId().equals(this.getLeaseId()) == false)
+            return false;
         if (other.getFilters() == null ^ this.getFilters() == null)
             return false;
         if (other.getFilters() != null && other.getFilters().equals(this.getFilters()) == false)
@@ -781,6 +860,7 @@ public class DescribeReservedDBInstancesRequest extends com.amazonaws.AmazonWebS
         hashCode = prime * hashCode + ((getProductDescription() == null) ? 0 : getProductDescription().hashCode());
         hashCode = prime * hashCode + ((getOfferingType() == null) ? 0 : getOfferingType().hashCode());
         hashCode = prime * hashCode + ((getMultiAZ() == null) ? 0 : getMultiAZ().hashCode());
+        hashCode = prime * hashCode + ((getLeaseId() == null) ? 0 : getLeaseId().hashCode());
         hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());
         hashCode = prime * hashCode + ((getMaxRecords() == null) ? 0 : getMaxRecords().hashCode());
         hashCode = prime * hashCode + ((getMarker() == null) ? 0 : getMarker().hashCode());

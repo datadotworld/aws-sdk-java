@@ -132,7 +132,7 @@ public interface AWSCognitoIdentityProvider {
      * Adds the specified user to the specified group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminAddUserToGroupRequest
@@ -160,7 +160,7 @@ public interface AWSCognitoIdentityProvider {
      * Confirms user registration as an admin without using a confirmation code. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminConfirmSignUpRequest
@@ -273,7 +273,7 @@ public interface AWSCognitoIdentityProvider {
      * Deletes a user as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminDeleteUserRequest
@@ -302,7 +302,7 @@ public interface AWSCognitoIdentityProvider {
      * Deletes the user attributes in a user pool as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminDeleteUserAttributesRequest
@@ -385,10 +385,10 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
-     * Disables the specified user as an administrator. Works on any user.
+     * Disables the specified user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminDisableUserRequest
@@ -417,7 +417,7 @@ public interface AWSCognitoIdentityProvider {
      * Enables the specified user as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminEnableUserRequest
@@ -446,7 +446,7 @@ public interface AWSCognitoIdentityProvider {
      * Forgets the device, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminForgetDeviceRequest
@@ -477,7 +477,7 @@ public interface AWSCognitoIdentityProvider {
      * Gets the device, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminGetDeviceRequest
@@ -506,7 +506,7 @@ public interface AWSCognitoIdentityProvider {
      * Gets the specified user by user name in a user pool as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminGetUserRequest
@@ -535,7 +535,7 @@ public interface AWSCognitoIdentityProvider {
      * Initiates the authentication flow, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminInitiateAuthRequest
@@ -637,7 +637,7 @@ public interface AWSCognitoIdentityProvider {
      * Lists devices, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminListDevicesRequest
@@ -666,7 +666,7 @@ public interface AWSCognitoIdentityProvider {
      * Lists the groups that the user belongs to.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminListGroupsForUserRequest
@@ -721,7 +721,7 @@ public interface AWSCognitoIdentityProvider {
      * Removes the specified user from the specified group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminRemoveUserFromGroupRequest
@@ -757,7 +757,7 @@ public interface AWSCognitoIdentityProvider {
      * message to the end user with the code to change their password.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminResetUserPasswordRequest
@@ -806,7 +806,7 @@ public interface AWSCognitoIdentityProvider {
      * Responds to an authentication challenge, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminRespondToAuthChallengeRequest
@@ -868,7 +868,10 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
-     * Sets the user's multi-factor authentication (MFA) preference.
+     * Sets the user's multi-factor authentication (MFA) preference, including which MFA options are enabled and if any
+     * are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a
+     * user if multiple factors are enabled. If multiple options are enabled and no preference is set, a challenge to
+     * choose an MFA option will be returned during sign in.
      * </p>
      * 
      * @param adminSetUserMFAPreferenceRequest
@@ -895,14 +898,50 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
-     * Sets all the user settings for a specified user name. Works on any user.
+     * Sets the specified user's password in a user pool as an administrator. Works on any user.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * The password can be temporary or permanent. If it is temporary, the user status will be placed into the
+     * <code>FORCE_CHANGE_PASSWORD</code> state. When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth
+     * response will contain the <code>NEW_PASSWORD_REQUIRED</code> challenge. If the user does not sign in before it
+     * expires, the user will not be able to sign in and their password will need to be reset by an administrator.
+     * </p>
+     * <p>
+     * Once the user has set a new password, or the password is permanent, the user status will be set to
+     * <code>Confirmed</code>.
+     * </p>
+     * 
+     * @param adminSetUserPasswordRequest
+     * @return Result of the AdminSetUserPassword operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws NotAuthorizedException
+     *         This exception is thrown when a user is not authorized.
+     * @throws UserNotFoundException
+     *         This exception is thrown when a user is not found.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws TooManyRequestsException
+     *         This exception is thrown when the user has made too many requests for a given operation.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws InvalidPasswordException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid password.
+     * @sample AWSCognitoIdentityProvider.AdminSetUserPassword
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminSetUserPassword"
+     *      target="_top">AWS API Documentation</a>
+     */
+    AdminSetUserPasswordResult adminSetUserPassword(AdminSetUserPasswordRequest adminSetUserPasswordRequest);
+
+    /**
+     * <p>
+     * <i>This action is no longer supported.</i> You can use it to configure only SMS MFA. You can't use it to
+     * configure TOTP software token MFA. To configure either type of MFA, use the <a>AdminSetUserMFAPreference</a>
+     * action instead.
      * </p>
      * 
      * @param adminSetUserSettingsRequest
-     *        Represents the request to set user settings as an administrator.
+     *        You can use this parameter to set an MFA configuration that uses the SMS delivery medium.
      * @return Result of the AdminSetUserSettings operation returned by the service.
      * @throws ResourceNotFoundException
      *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
@@ -953,7 +992,7 @@ public interface AWSCognitoIdentityProvider {
      * Updates the device status as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminUpdateDeviceStatusRequest
@@ -990,7 +1029,7 @@ public interface AWSCognitoIdentityProvider {
      * In addition to updating user attributes, this API can also be used to mark phone and email as verified.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminUpdateUserAttributesRequest
@@ -1020,6 +1059,16 @@ public interface AWSCognitoIdentityProvider {
      *         This exception is thrown when a user is not found.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws InvalidSmsRoleAccessPolicyException
+     *         This exception is returned when the role provided for SMS configuration does not have permission to
+     *         publish using Amazon SNS.
+     * @throws InvalidEmailRoleAccessPolicyException
+     *         This exception is thrown when Amazon Cognito is not allowed to use your email identity. HTTP status code:
+     *         400.
+     * @throws InvalidSmsRoleTrustRelationshipException
+     *         This exception is thrown when the trust relationship is invalid for the role provided for SMS
+     *         configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID
+     *         provided in the role does not match what is provided in the SMS configuration for the user pool.
      * @sample AWSCognitoIdentityProvider.AdminUpdateUserAttributes
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/AdminUpdateUserAttributes"
      *      target="_top">AWS API Documentation</a>
@@ -1031,7 +1080,7 @@ public interface AWSCognitoIdentityProvider {
      * Signs out users from all devices, as an administrator.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param adminUserGlobalSignOutRequest
@@ -1251,7 +1300,7 @@ public interface AWSCognitoIdentityProvider {
      * Creates a new group in the specified user pool.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param createGroupRequest
@@ -1450,7 +1499,7 @@ public interface AWSCognitoIdentityProvider {
      * Deletes a group. Currently only groups with no members can be deleted.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param deleteGroupRequest
@@ -1965,7 +2014,7 @@ public interface AWSCognitoIdentityProvider {
      * Gets a group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param getGroupRequest
@@ -2019,6 +2068,8 @@ public interface AWSCognitoIdentityProvider {
      * @return Result of the GetSigningCertificate operation returned by the service.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
      * @throws ResourceNotFoundException
      *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
      * @sample AWSCognitoIdentityProvider.GetSigningCertificate
@@ -2219,6 +2270,13 @@ public interface AWSCognitoIdentityProvider {
      *         This exception is thrown when a user is not confirmed successfully.
      * @throws InternalErrorException
      *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @throws InvalidSmsRoleAccessPolicyException
+     *         This exception is returned when the role provided for SMS configuration does not have permission to
+     *         publish using Amazon SNS.
+     * @throws InvalidSmsRoleTrustRelationshipException
+     *         This exception is thrown when the trust relationship is invalid for the role provided for SMS
+     *         configuration. This can happen if you do not trust <b>cognito-idp.amazonaws.com</b> or the external ID
+     *         provided in the role does not match what is provided in the SMS configuration for the user pool.
      * @sample AWSCognitoIdentityProvider.InitiateAuth
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/InitiateAuth" target="_top">AWS API
      *      Documentation</a>
@@ -2262,7 +2320,7 @@ public interface AWSCognitoIdentityProvider {
      * Lists the groups associated with a user pool.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param listGroupsRequest
@@ -2328,6 +2386,36 @@ public interface AWSCognitoIdentityProvider {
      *      target="_top">AWS API Documentation</a>
      */
     ListResourceServersResult listResourceServers(ListResourceServersRequest listResourceServersRequest);
+
+    /**
+     * <p>
+     * Lists the tags that are assigned to an Amazon Cognito user pool.
+     * </p>
+     * <p>
+     * A tag is a label that you can apply to user pools to categorize and manage them in different ways, such as by
+     * purpose, owner, environment, or other criteria.
+     * </p>
+     * <p>
+     * You can use this action up to 10 times per second, per account.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws NotAuthorizedException
+     *         This exception is thrown when a user is not authorized.
+     * @throws TooManyRequestsException
+     *         This exception is thrown when the user has made too many requests for a given operation.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
 
     /**
      * <p>
@@ -2428,7 +2516,7 @@ public interface AWSCognitoIdentityProvider {
      * Lists the users in the specified group.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param listUsersInGroupRequest
@@ -2635,7 +2723,10 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
-     * Set the user's multi-factor authentication (MFA) method preference.
+     * Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are enabled and
+     * if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to
+     * authenticate a user if multiple factors are enabled. If multiple options are enabled and no preference is set, a
+     * challenge to choose an MFA option will be returned during sign in.
      * </p>
      * 
      * @param setUserMFAPreferenceRequest
@@ -2662,7 +2753,7 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
-     * Set the user pool MFA configuration.
+     * Set the user pool multi-factor authentication (MFA) configuration.
      * </p>
      * 
      * @param setUserPoolMfaConfigRequest
@@ -2692,8 +2783,9 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
-     * Sets the user settings like multi-factor authentication (MFA). If MFA is to be removed for a particular attribute
-     * pass the attribute with code delivery as null. If null list is passed, all MFA options are removed.
+     * <i>This action is no longer supported.</i> You can use it to configure only SMS MFA. You can't use it to
+     * configure TOTP software token MFA. To configure either type of MFA, use the <a>SetUserMFAPreference</a> action
+     * instead.
      * </p>
      * 
      * @param setUserSettingsRequest
@@ -2821,6 +2913,68 @@ public interface AWSCognitoIdentityProvider {
 
     /**
      * <p>
+     * Assigns a set of tags to an Amazon Cognito user pool. A tag is a label that you can use to categorize and manage
+     * user pools in different ways, such as by purpose, owner, environment, or other criteria.
+     * </p>
+     * <p>
+     * Each tag consists of a key and value, both of which you define. A key is a general category for more specific
+     * values. For example, if you have two versions of a user pool, one for testing and another for production, you
+     * might assign an <code>Environment</code> tag key to both user pools. The value of this key might be
+     * <code>Test</code> for one user pool and <code>Production</code> for the other.
+     * </p>
+     * <p>
+     * Tags are useful for cost tracking and access control. You can activate your tags so that they appear on the
+     * Billing and Cost Management console, where you can track the costs associated with your user pools. In an IAM
+     * policy, you can constrain permissions for user pools based on specific tags or tag values.
+     * </p>
+     * <p>
+     * You can use this action up to 5 times per second, per account. A user pool can have as many as 50 tags.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws NotAuthorizedException
+     *         This exception is thrown when a user is not authorized.
+     * @throws TooManyRequestsException
+     *         This exception is thrown when the user has made too many requests for a given operation.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Removes the specified tags from an Amazon Cognito user pool. You can use this action up to 5 times per second,
+     * per account
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws ResourceNotFoundException
+     *         This exception is thrown when the Amazon Cognito service cannot find the requested resource.
+     * @throws NotAuthorizedException
+     *         This exception is thrown when a user is not authorized.
+     * @throws TooManyRequestsException
+     *         This exception is thrown when the user has made too many requests for a given operation.
+     * @throws InvalidParameterException
+     *         This exception is thrown when the Amazon Cognito service encounters an invalid parameter.
+     * @throws InternalErrorException
+     *         This exception is thrown when Amazon Cognito encounters an internal error.
+     * @sample AWSCognitoIdentityProvider.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cognito-idp-2016-04-18/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
      * Provides the feedback for an authentication event whether it was from a valid user or not. This feedback is used
      * for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
      * </p>
@@ -2884,7 +3038,7 @@ public interface AWSCognitoIdentityProvider {
      * Updates the specified group with the specified attributes.
      * </p>
      * <p>
-     * Requires developer credentials.
+     * Calling this action requires developer credentials.
      * </p>
      * 
      * @param updateGroupRequest
@@ -3117,7 +3271,7 @@ public interface AWSCognitoIdentityProvider {
      * </p>
      * <p>
      * For more information about adding a custom domain to your user pool, see <a
-     * href="http://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html">Using
+     * href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-add-custom-domain.html">Using
      * Your Own Domain for the Hosted UI</a>.
      * </p>
      * 

@@ -62,6 +62,19 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
      * </p>
      */
     private Boolean requireSymbols;
+    /**
+     * <p>
+     * In the password policy you have set, refers to the number of days a temporary password is valid. If the user does
+     * not sign-in during this time, their password will need to be reset by an administrator.
+     * </p>
+     * <note>
+     * <p>
+     * When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to set the
+     * deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     * </p>
+     * </note>
+     */
+    private Integer temporaryPasswordValidityDays;
 
     /**
      * <p>
@@ -344,6 +357,85 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
     }
 
     /**
+     * <p>
+     * In the password policy you have set, refers to the number of days a temporary password is valid. If the user does
+     * not sign-in during this time, their password will need to be reset by an administrator.
+     * </p>
+     * <note>
+     * <p>
+     * When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to set the
+     * deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     * </p>
+     * </note>
+     * 
+     * @param temporaryPasswordValidityDays
+     *        In the password policy you have set, refers to the number of days a temporary password is valid. If the
+     *        user does not sign-in during this time, their password will need to be reset by an administrator.</p>
+     *        <note>
+     *        <p>
+     *        When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to set
+     *        the deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     *        </p>
+     */
+
+    public void setTemporaryPasswordValidityDays(Integer temporaryPasswordValidityDays) {
+        this.temporaryPasswordValidityDays = temporaryPasswordValidityDays;
+    }
+
+    /**
+     * <p>
+     * In the password policy you have set, refers to the number of days a temporary password is valid. If the user does
+     * not sign-in during this time, their password will need to be reset by an administrator.
+     * </p>
+     * <note>
+     * <p>
+     * When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to set the
+     * deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     * </p>
+     * </note>
+     * 
+     * @return In the password policy you have set, refers to the number of days a temporary password is valid. If the
+     *         user does not sign-in during this time, their password will need to be reset by an administrator.</p>
+     *         <note>
+     *         <p>
+     *         When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to
+     *         set the deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     *         </p>
+     */
+
+    public Integer getTemporaryPasswordValidityDays() {
+        return this.temporaryPasswordValidityDays;
+    }
+
+    /**
+     * <p>
+     * In the password policy you have set, refers to the number of days a temporary password is valid. If the user does
+     * not sign-in during this time, their password will need to be reset by an administrator.
+     * </p>
+     * <note>
+     * <p>
+     * When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to set the
+     * deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     * </p>
+     * </note>
+     * 
+     * @param temporaryPasswordValidityDays
+     *        In the password policy you have set, refers to the number of days a temporary password is valid. If the
+     *        user does not sign-in during this time, their password will need to be reset by an administrator.</p>
+     *        <note>
+     *        <p>
+     *        When you set <code>TemporaryPasswordValidityDays</code> for a user pool, you will no longer be able to set
+     *        the deprecated <code>UnusedAccountValidityDays</code> value for that user pool.
+     *        </p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PasswordPolicyType withTemporaryPasswordValidityDays(Integer temporaryPasswordValidityDays) {
+        setTemporaryPasswordValidityDays(temporaryPasswordValidityDays);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -364,7 +456,9 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
         if (getRequireNumbers() != null)
             sb.append("RequireNumbers: ").append(getRequireNumbers()).append(",");
         if (getRequireSymbols() != null)
-            sb.append("RequireSymbols: ").append(getRequireSymbols());
+            sb.append("RequireSymbols: ").append(getRequireSymbols()).append(",");
+        if (getTemporaryPasswordValidityDays() != null)
+            sb.append("TemporaryPasswordValidityDays: ").append(getTemporaryPasswordValidityDays());
         sb.append("}");
         return sb.toString();
     }
@@ -399,6 +493,11 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
             return false;
         if (other.getRequireSymbols() != null && other.getRequireSymbols().equals(this.getRequireSymbols()) == false)
             return false;
+        if (other.getTemporaryPasswordValidityDays() == null ^ this.getTemporaryPasswordValidityDays() == null)
+            return false;
+        if (other.getTemporaryPasswordValidityDays() != null
+                && other.getTemporaryPasswordValidityDays().equals(this.getTemporaryPasswordValidityDays()) == false)
+            return false;
         return true;
     }
 
@@ -412,6 +511,7 @@ public class PasswordPolicyType implements Serializable, Cloneable, StructuredPo
         hashCode = prime * hashCode + ((getRequireLowercase() == null) ? 0 : getRequireLowercase().hashCode());
         hashCode = prime * hashCode + ((getRequireNumbers() == null) ? 0 : getRequireNumbers().hashCode());
         hashCode = prime * hashCode + ((getRequireSymbols() == null) ? 0 : getRequireSymbols().hashCode());
+        hashCode = prime * hashCode + ((getTemporaryPasswordValidityDays() == null) ? 0 : getTemporaryPasswordValidityDays().hashCode());
         return hashCode;
     }
 

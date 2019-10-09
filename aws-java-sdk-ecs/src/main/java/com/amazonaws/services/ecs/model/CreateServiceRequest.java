@@ -34,9 +34,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String cluster;
     /**
      * <p>
-     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
-     * allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple
-     * clusters within a Region or across multiple Regions.
+     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed. Service
+     * names must be unique within a cluster, but you can have similarly named services in multiple clusters within a
+     * Region or across multiple Regions.
      * </p>
      */
     private String serviceName;
@@ -46,15 +46,24 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      */
     private String taskDefinition;
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service. The service-linked role is required for services that make use of multiple target groups. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -71,15 +80,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -93,12 +102,12 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The details of the service discovery registries to assign to this service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
      * </p>
      * <note>
      * <p>
      * Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For more
-     * information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
+     * information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
      * Fargate Platform Versions</a>.
      * </p>
      * </note>
@@ -107,6 +116,10 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
+     * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      * </p>
      */
     private Integer desiredCount;
@@ -127,8 +140,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String launchType;
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
@@ -146,8 +159,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * If your account has already created the Amazon ECS service-linked role, that role is used by default for your
      * service unless you specify a role here. The service-linked role is required if your task definition uses the
-     * <code>awsvpc</code> network mode, in which case you should not specify a role here. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * <code>awsvpc</code> network mode or if the service is configured to use service discovery, an external deployment
+     * controller, or multiple target groups in which case you should not specify a role here. For more information, see
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </important>
@@ -187,8 +201,8 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The network configuration for the service. This parameter is required for task definitions that use the
      * <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported for
      * other network modes. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in the
-     * <i>Amazon Elastic Container Service Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
     private NetworkConfiguration networkConfiguration;
@@ -206,7 +220,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The scheduling strategy to use for the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
      * </p>
      * <p>
      * There are two service scheduler strategies available:
@@ -216,21 +230,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
@@ -245,16 +259,58 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      */
@@ -316,15 +372,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
-     * allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple
-     * clusters within a Region or across multiple Regions.
+     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed. Service
+     * names must be unique within a cluster, but you can have similarly named services in multiple clusters within a
+     * Region or across multiple Regions.
      * </p>
      * 
      * @param serviceName
-     *        The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores
-     *        are allowed. Service names must be unique within a cluster, but you can have similarly named services in
-     *        multiple clusters within a Region or across multiple Regions.
+     *        The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed.
+     *        Service names must be unique within a cluster, but you can have similarly named services in multiple
+     *        clusters within a Region or across multiple Regions.
      */
 
     public void setServiceName(String serviceName) {
@@ -333,14 +389,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
-     * allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple
-     * clusters within a Region or across multiple Regions.
+     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed. Service
+     * names must be unique within a cluster, but you can have similarly named services in multiple clusters within a
+     * Region or across multiple Regions.
      * </p>
      * 
-     * @return The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores
-     *         are allowed. Service names must be unique within a cluster, but you can have similarly named services in
-     *         multiple clusters within a Region or across multiple Regions.
+     * @return The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed.
+     *         Service names must be unique within a cluster, but you can have similarly named services in multiple
+     *         clusters within a Region or across multiple Regions.
      */
 
     public String getServiceName() {
@@ -349,15 +405,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are
-     * allowed. Service names must be unique within a cluster, but you can have similarly named services in multiple
-     * clusters within a Region or across multiple Regions.
+     * The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed. Service
+     * names must be unique within a cluster, but you can have similarly named services in multiple clusters within a
+     * Region or across multiple Regions.
      * </p>
      * 
      * @param serviceName
-     *        The name of your service. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores
-     *        are allowed. Service names must be unique within a cluster, but you can have similarly named services in
-     *        multiple clusters within a Region or across multiple Regions.
+     *        The name of your service. Up to 255 letters (uppercase and lowercase), numbers, and hyphens are allowed.
+     *        Service names must be unique within a cluster, but you can have similarly named services in multiple
+     *        clusters within a Region or across multiple Regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -372,11 +428,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      * 
      * @param taskDefinition
      *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
      *        definition to run in your service. If a <code>revision</code> is not specified, the latest
-     *        <code>ACTIVE</code> revision is used.
+     *        <code>ACTIVE</code> revision is used.</p>
+     *        <p>
+     *        A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
      */
 
     public void setTaskDefinition(String taskDefinition) {
@@ -389,10 +450,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      * 
      * @return The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
      *         definition to run in your service. If a <code>revision</code> is not specified, the latest
-     *         <code>ACTIVE</code> revision is used.
+     *         <code>ACTIVE</code> revision is used.</p>
+     *         <p>
+     *         A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
      */
 
     public String getTaskDefinition() {
@@ -405,11 +471,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * definition to run in your service. If a <code>revision</code> is not specified, the latest <code>ACTIVE</code>
      * revision is used.
      * </p>
+     * <p>
+     * A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
+     * </p>
      * 
      * @param taskDefinition
      *        The <code>family</code> and <code>revision</code> (<code>family:revision</code>) or full ARN of the task
      *        definition to run in your service. If a <code>revision</code> is not specified, the latest
-     *        <code>ACTIVE</code> revision is used.
+     *        <code>ACTIVE</code> revision is used.</p>
+     *        <p>
+     *        A task definition must be specified if the service is using the <code>ECS</code> deployment controller.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -420,11 +491,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service. The service-linked role is required for services that make use of multiple target groups. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -441,15 +518,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -459,10 +536,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * associated with an elastic network interface, not an Amazon EC2 instance.
      * </p>
      * 
-     * @return A load balancer object representing the load balancer to use with your service.</p>
+     * @return A load balancer object representing the load balancers to use with your service. For more information,
+     *         see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *         Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *         <p>
-     *         If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *         or target group.
+     *         If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *         Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *         the service. The service-linked role is required for services that make use of multiple target groups.
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *         Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *         </p>
      *         <p>
      *         If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to
@@ -481,16 +565,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         updating the service.
      *         </p>
      *         <p>
-     *         For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *         appears in a container definition), and the container port to access from the load balancer. When a task
-     *         from this service is placed on a container instance, the container instance is registered with the load
-     *         balancer specified here.
-     *         </p>
-     *         <p>
      *         For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *         target group ARN, the container name (as it appears in a container definition), and the container port to
      *         access from the load balancer. When a task from this service is placed on a container instance, the
      *         container instance and port combination is registered as a target in the target group specified here.
+     *         </p>
+     *         <p>
+     *         For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *         appears in a container definition), and the container port to access from the load balancer. When a task
+     *         from this service is placed on a container instance, the container instance is registered with the load
+     *         balancer specified here.
      *         </p>
      *         <p>
      *         Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -510,11 +594,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service. The service-linked role is required for services that make use of multiple target groups. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -531,15 +621,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -550,10 +640,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param loadBalancers
-     *        A load balancer object representing the load balancer to use with your service.</p>
+     *        A load balancer object representing the load balancers to use with your service. For more information, see
+     *        <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *        Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *        <p>
-     *        If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *        or target group.
+     *        If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *        Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *        the service. The service-linked role is required for services that make use of multiple target groups. For
+     *        more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *        Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        <p>
      *        If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use
@@ -572,16 +668,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        updating the service.
      *        </p>
      *        <p>
-     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *        appears in a container definition), and the container port to access from the load balancer. When a task
-     *        from this service is placed on a container instance, the container instance is registered with the load
-     *        balancer specified here.
-     *        </p>
-     *        <p>
      *        For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *        target group ARN, the container name (as it appears in a container definition), and the container port to
      *        access from the load balancer. When a task from this service is placed on a container instance, the
      *        container instance and port combination is registered as a target in the target group specified here.
+     *        </p>
+     *        <p>
+     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *        appears in a container definition), and the container port to access from the load balancer. When a task
+     *        from this service is placed on a container instance, the container instance is registered with the load
+     *        balancer specified here.
      *        </p>
      *        <p>
      *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -603,11 +699,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service. The service-linked role is required for services that make use of multiple target groups. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -624,15 +726,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -648,10 +750,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param loadBalancers
-     *        A load balancer object representing the load balancer to use with your service.</p>
+     *        A load balancer object representing the load balancers to use with your service. For more information, see
+     *        <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *        Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *        <p>
-     *        If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *        or target group.
+     *        If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *        Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *        the service. The service-linked role is required for services that make use of multiple target groups. For
+     *        more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *        Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        <p>
      *        If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use
@@ -670,16 +778,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        updating the service.
      *        </p>
      *        <p>
-     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *        appears in a container definition), and the container port to access from the load balancer. When a task
-     *        from this service is placed on a container instance, the container instance is registered with the load
-     *        balancer specified here.
-     *        </p>
-     *        <p>
      *        For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *        target group ARN, the container name (as it appears in a container definition), and the container port to
      *        access from the load balancer. When a task from this service is placed on a container instance, the
      *        container instance and port combination is registered as a target in the target group specified here.
+     *        </p>
+     *        <p>
+     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *        appears in a container definition), and the container port to access from the load balancer. When a task
+     *        from this service is placed on a container instance, the container instance is registered with the load
+     *        balancer specified here.
      *        </p>
      *        <p>
      *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -703,11 +811,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * A load balancer object representing the load balancer to use with your service.
+     * A load balancer object representing the load balancers to use with your service. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service Load
+     * Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
-     * If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer or
-     * target group.
+     * If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     * Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to the
+     * service. The service-linked role is required for services that make use of multiple target groups. For more
+     * information, see <a
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * <p>
      * If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use either
@@ -724,15 +838,15 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * the <code>CODE_DEPLOY</code> deployment controller, these values can be changed when updating the service.
      * </p>
      * <p>
-     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
-     * a container definition), and the container port to access from the load balancer. When a task from this service
-     * is placed on a container instance, the container instance is registered with the load balancer specified here.
-     * </p>
-     * <p>
      * For Application Load Balancers and Network Load Balancers, this object must contain the load balancer target
      * group ARN, the container name (as it appears in a container definition), and the container port to access from
      * the load balancer. When a task from this service is placed on a container instance, the container instance and
      * port combination is registered as a target in the target group specified here.
+     * </p>
+     * <p>
+     * For Classic Load Balancers, this object must contain the load balancer name, the container name (as it appears in
+     * a container definition), and the container port to access from the load balancer. When a task from this service
+     * is placed on a container instance, the container instance is registered with the load balancer specified here.
      * </p>
      * <p>
      * Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate launch
@@ -743,10 +857,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * </p>
      * 
      * @param loadBalancers
-     *        A load balancer object representing the load balancer to use with your service.</p>
+     *        A load balancer object representing the load balancers to use with your service. For more information, see
+     *        <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html">Service
+     *        Load Balancing</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.</p>
      *        <p>
-     *        If the service is using the <code>ECS</code> deployment controller, you are limited to one load balancer
-     *        or target group.
+     *        If the service is using the rolling update (<code>ECS</code>) deployment controller and using either an
+     *        Application Load Balancer or Network Load Balancer, you can specify multiple target groups to attach to
+     *        the service. The service-linked role is required for services that make use of multiple target groups. For
+     *        more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *        Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        <p>
      *        If the service is using the <code>CODE_DEPLOY</code> deployment controller, the service is required to use
@@ -765,16 +885,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        updating the service.
      *        </p>
      *        <p>
-     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
-     *        appears in a container definition), and the container port to access from the load balancer. When a task
-     *        from this service is placed on a container instance, the container instance is registered with the load
-     *        balancer specified here.
-     *        </p>
-     *        <p>
      *        For Application Load Balancers and Network Load Balancers, this object must contain the load balancer
      *        target group ARN, the container name (as it appears in a container definition), and the container port to
      *        access from the load balancer. When a task from this service is placed on a container instance, the
      *        container instance and port combination is registered as a target in the target group specified here.
+     *        </p>
+     *        <p>
+     *        For Classic Load Balancers, this object must contain the load balancer name, the container name (as it
+     *        appears in a container definition), and the container port to access from the load balancer. When a task
+     *        from this service is placed on a container instance, the container instance is registered with the load
+     *        balancer specified here.
      *        </p>
      *        <p>
      *        Services with tasks that use the <code>awsvpc</code> network mode (for example, those with the Fargate
@@ -794,23 +914,23 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The details of the service discovery registries to assign to this service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
      * </p>
      * <note>
      * <p>
      * Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For more
-     * information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
+     * information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
      * Fargate Platform Versions</a>.
      * </p>
      * </note>
      * 
      * @return The details of the service discovery registries to assign to this service. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
      *         Discovery</a>.</p> <note>
      *         <p>
      *         Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For
      *         more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *         Platform Versions</a>.
      *         </p>
      */
@@ -825,24 +945,24 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The details of the service discovery registries to assign to this service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
      * </p>
      * <note>
      * <p>
      * Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For more
-     * information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
+     * information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
      * Fargate Platform Versions</a>.
      * </p>
      * </note>
      * 
      * @param serviceRegistries
      *        The details of the service discovery registries to assign to this service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
      *        Discovery</a>.</p> <note>
      *        <p>
      *        Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For
      *        more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a>.
      *        </p>
      */
@@ -859,12 +979,12 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The details of the service discovery registries to assign to this service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
      * </p>
      * <note>
      * <p>
      * Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For more
-     * information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
+     * information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
      * Fargate Platform Versions</a>.
      * </p>
      * </note>
@@ -876,12 +996,12 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * 
      * @param serviceRegistries
      *        The details of the service discovery registries to assign to this service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
      *        Discovery</a>.</p> <note>
      *        <p>
      *        Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For
      *        more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -900,24 +1020,24 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The details of the service discovery registries to assign to this service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service Discovery</a>.
      * </p>
      * <note>
      * <p>
      * Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For more
-     * information, see <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
+     * information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS
      * Fargate Platform Versions</a>.
      * </p>
      * </note>
      * 
      * @param serviceRegistries
      *        The details of the service discovery registries to assign to this service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">Service
      *        Discovery</a>.</p> <note>
      *        <p>
      *        Service discovery is supported for Fargate tasks if you are using platform version v1.1.0 or later. For
      *        more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -932,9 +1052,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
      * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
+     * </p>
      * 
      * @param desiredCount
-     *        The number of instantiations of the specified task definition to place and keep running on your cluster.
+     *        The number of instantiations of the specified task definition to place and keep running on your
+     *        cluster.</p>
+     *        <p>
+     *        This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     *        <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      */
 
     public void setDesiredCount(Integer desiredCount) {
@@ -945,8 +1073,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
      * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
+     * </p>
      * 
-     * @return The number of instantiations of the specified task definition to place and keep running on your cluster.
+     * @return The number of instantiations of the specified task definition to place and keep running on your
+     *         cluster.</p>
+     *         <p>
+     *         This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     *         <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      */
 
     public Integer getDesiredCount() {
@@ -957,9 +1093,17 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * The number of instantiations of the specified task definition to place and keep running on your cluster.
      * </p>
+     * <p>
+     * This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     * <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
+     * </p>
      * 
      * @param desiredCount
-     *        The number of instantiations of the specified task definition to place and keep running on your cluster.
+     *        The number of instantiations of the specified task definition to place and keep running on your
+     *        cluster.</p>
+     *        <p>
+     *        This is required if <code>schedulingStrategy</code> is <code>REPLICA</code> or is not specified. If
+     *        <code>schedulingStrategy</code> is <code>DAEMON</code> then this is not required.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1091,16 +1235,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param platformVersion
-     *        The platform version on which your tasks in the service are running. A platform version is only specified
-     *        for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version
+     *        The platform version that your tasks in the service are running on. A platform version is specified only
+     *        for tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version
      *        is used by default. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
@@ -1112,16 +1256,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
-     * @return The platform version on which your tasks in the service are running. A platform version is only specified
-     *         for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform
-     *         version is used by default. For more information, see <a
+     * @return The platform version that your tasks in the service are running on. A platform version is specified only
+     *         for tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version
+     *         is used by default. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *         Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
@@ -1132,16 +1276,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The platform version on which your tasks in the service are running. A platform version is only specified for
-     * tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version is used by
+     * The platform version that your tasks in the service are running on. A platform version is specified only for
+     * tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version is used by
      * default. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate Platform
      * Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param platformVersion
-     *        The platform version on which your tasks in the service are running. A platform version is only specified
-     *        for tasks using the Fargate launch type. If one is not specified, the <code>LATEST</code> platform version
+     *        The platform version that your tasks in the service are running on. A platform version is specified only
+     *        for tasks using the Fargate launch type. If one isn't specified, the <code>LATEST</code> platform version
      *        is used by default. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html">AWS Fargate
      *        Platform Versions</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
@@ -1164,8 +1308,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * If your account has already created the Amazon ECS service-linked role, that role is used by default for your
      * service unless you specify a role here. The service-linked role is required if your task definition uses the
-     * <code>awsvpc</code> network mode, in which case you should not specify a role here. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * <code>awsvpc</code> network mode or if the service is configured to use service discovery, an external deployment
+     * controller, or multiple target groups in which case you should not specify a role here. For more information, see
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </important>
@@ -1187,9 +1332,10 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <p>
      *        If your account has already created the Amazon ECS service-linked role, that role is used by default for
      *        your service unless you specify a role here. The service-linked role is required if your task definition
-     *        uses the <code>awsvpc</code> network mode, in which case you should not specify a role here. For more
-     *        information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *        uses the <code>awsvpc</code> network mode or if the service is configured to use service discovery, an
+     *        external deployment controller, or multiple target groups in which case you should not specify a role
+     *        here. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      *        Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        </important>
@@ -1217,8 +1363,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * If your account has already created the Amazon ECS service-linked role, that role is used by default for your
      * service unless you specify a role here. The service-linked role is required if your task definition uses the
-     * <code>awsvpc</code> network mode, in which case you should not specify a role here. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * <code>awsvpc</code> network mode or if the service is configured to use service discovery, an external deployment
+     * controller, or multiple target groups in which case you should not specify a role here. For more information, see
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </important>
@@ -1239,9 +1386,10 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         <p>
      *         If your account has already created the Amazon ECS service-linked role, that role is used by default for
      *         your service unless you specify a role here. The service-linked role is required if your task definition
-     *         uses the <code>awsvpc</code> network mode, in which case you should not specify a role here. For more
-     *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *         uses the <code>awsvpc</code> network mode or if the service is configured to use service discovery, an
+     *         external deployment controller, or multiple target groups in which case you should not specify a role
+     *         here. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      *         Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *         </p>
      *         </important>
@@ -1269,8 +1417,9 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * If your account has already created the Amazon ECS service-linked role, that role is used by default for your
      * service unless you specify a role here. The service-linked role is required if your task definition uses the
-     * <code>awsvpc</code> network mode, in which case you should not specify a role here. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     * <code>awsvpc</code> network mode or if the service is configured to use service discovery, an external deployment
+     * controller, or multiple target groups in which case you should not specify a role here. For more information, see
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      * Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * </important>
@@ -1292,9 +1441,10 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <p>
      *        If your account has already created the Amazon ECS service-linked role, that role is used by default for
      *        your service unless you specify a role here. The service-linked role is required if your task definition
-     *        uses the <code>awsvpc</code> network mode, in which case you should not specify a role here. For more
-     *        information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
+     *        uses the <code>awsvpc</code> network mode or if the service is configured to use service discovery, an
+     *        external deployment controller, or multiple target groups in which case you should not specify a role
+     *        here. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html">Using
      *        Service-Linked Roles for Amazon ECS</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      *        </p>
      *        </important>
@@ -1530,16 +1680,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The network configuration for the service. This parameter is required for task definitions that use the
      * <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported for
      * other network modes. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in the
-     * <i>Amazon Elastic Container Service Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param networkConfiguration
      *        The network configuration for the service. This parameter is required for task definitions that use the
      *        <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported
      *        for other network modes. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a>
-     *        in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task
+     *        Networking</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public void setNetworkConfiguration(NetworkConfiguration networkConfiguration) {
@@ -1551,14 +1701,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The network configuration for the service. This parameter is required for task definitions that use the
      * <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported for
      * other network modes. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in the
-     * <i>Amazon Elastic Container Service Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return The network configuration for the service. This parameter is required for task definitions that use the
      *         <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported
      *         for other network modes. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task
      *         Networking</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -1571,16 +1721,16 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * The network configuration for the service. This parameter is required for task definitions that use the
      * <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported for
      * other network modes. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in the
-     * <i>Amazon Elastic Container Service Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a> in
+     * the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param networkConfiguration
      *        The network configuration for the service. This parameter is required for task definitions that use the
      *        <code>awsvpc</code> network mode to receive their own elastic network interface, and it is not supported
      *        for other network modes. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task Networking</a>
-     *        in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking.html">Task
+     *        Networking</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1663,7 +1813,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The scheduling strategy to use for the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
      * </p>
      * <p>
      * There are two service scheduler strategies available:
@@ -1673,28 +1823,28 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
      * 
      * @param schedulingStrategy
      *        The scheduling strategy to use for the service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
      *        <p>
      *        There are two service scheduler strategies available:
      *        </p>
@@ -1704,20 +1854,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *        across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *        use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *        strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *        strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *        deployment controller types.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *        instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *        using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *        instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *        using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *        use Service Auto Scaling policies.
      *        </p>
      *        <note>
      *        <p>
-     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *        the <code>DAEMON</code> scheduling strategy.
+     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *        controller types don't support the <code>DAEMON</code> scheduling strategy.
      *        </p>
      *        </note></li>
      * @see SchedulingStrategy
@@ -1730,7 +1881,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The scheduling strategy to use for the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
      * </p>
      * <p>
      * There are two service scheduler strategies available:
@@ -1740,27 +1891,27 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
      * 
      * @return The scheduling strategy to use for the service. For more information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
      *         <p>
      *         There are two service scheduler strategies available:
      *         </p>
@@ -1770,20 +1921,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *         across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *         use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *         strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *         strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *         deployment controller types.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
      *         <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *         instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *         using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *         instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *         using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *         use Service Auto Scaling policies.
      *         </p>
      *         <note>
      *         <p>
-     *         Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *         the <code>DAEMON</code> scheduling strategy.
+     *         Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *         controller types don't support the <code>DAEMON</code> scheduling strategy.
      *         </p>
      *         </note></li>
      * @see SchedulingStrategy
@@ -1796,7 +1948,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The scheduling strategy to use for the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
      * </p>
      * <p>
      * There are two service scheduler strategies available:
@@ -1806,28 +1958,28 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
      * 
      * @param schedulingStrategy
      *        The scheduling strategy to use for the service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
      *        <p>
      *        There are two service scheduler strategies available:
      *        </p>
@@ -1837,20 +1989,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *        across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *        use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *        strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *        strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *        deployment controller types.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *        instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *        using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *        instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *        using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *        use Service Auto Scaling policies.
      *        </p>
      *        <note>
      *        <p>
-     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *        the <code>DAEMON</code> scheduling strategy.
+     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *        controller types don't support the <code>DAEMON</code> scheduling strategy.
      *        </p>
      *        </note></li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1865,7 +2018,7 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The scheduling strategy to use for the service. For more information, see <a
-     * href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.
      * </p>
      * <p>
      * There are two service scheduler strategies available:
@@ -1875,28 +2028,28 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * <p>
      * <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks across your
      * cluster. By default, the service scheduler spreads tasks across Availability Zones. You can use task placement
-     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if using
-     * the <code>CODE_DEPLOY</code> deployment controller.
+     * strategies and constraints to customize task placement decisions. This scheduler strategy is required if the
+     * service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment controller types.
      * </p>
      * </li>
      * <li>
      * <p>
      * <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container instance
-     * that meets all of the task placement constraints that you specify in your cluster. When you are using this
-     * strategy, there is no need to specify a desired number of tasks, a task placement strategy, or use Service Auto
+     * that meets all of the task placement constraints that you specify in your cluster. When you're using this
+     * strategy, you don't need to specify a desired number of tasks, a task placement strategy, or use Service Auto
      * Scaling policies.
      * </p>
      * <note>
      * <p>
-     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support the
-     * <code>DAEMON</code> scheduling strategy.
+     * Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     * controller types don't support the <code>DAEMON</code> scheduling strategy.
      * </p>
      * </note></li>
      * </ul>
      * 
      * @param schedulingStrategy
      *        The scheduling strategy to use for the service. For more information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html">Services</a>.</p>
      *        <p>
      *        There are two service scheduler strategies available:
      *        </p>
@@ -1906,20 +2059,21 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        <code>REPLICA</code>-The replica scheduling strategy places and maintains the desired number of tasks
      *        across your cluster. By default, the service scheduler spreads tasks across Availability Zones. You can
      *        use task placement strategies and constraints to customize task placement decisions. This scheduler
-     *        strategy is required if using the <code>CODE_DEPLOY</code> deployment controller.
+     *        strategy is required if the service is using the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code>
+     *        deployment controller types.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
      *        <code>DAEMON</code>-The daemon scheduling strategy deploys exactly one task on each active container
-     *        instance that meets all of the task placement constraints that you specify in your cluster. When you are
-     *        using this strategy, there is no need to specify a desired number of tasks, a task placement strategy, or
+     *        instance that meets all of the task placement constraints that you specify in your cluster. When you're
+     *        using this strategy, you don't need to specify a desired number of tasks, a task placement strategy, or
      *        use Service Auto Scaling policies.
      *        </p>
      *        <note>
      *        <p>
-     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> deploymenet controller do not support
-     *        the <code>DAEMON</code> scheduling strategy.
+     *        Tasks using the Fargate launch type or the <code>CODE_DEPLOY</code> or <code>EXTERNAL</code> deployment
+     *        controller types don't support the <code>DAEMON</code> scheduling strategy.
      *        </p>
      *        </note></li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1974,15 +2128,99 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *         a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *         well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *         length of 256 characters.
+     *         well.</p>
+     *         <p>
+     *         The following basic restrictions apply to tags:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Maximum number of tags per resource - 50
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For each resource, each tag key must be unique, and each tag key can have only one value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum key length - 128 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum value length - 256 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If your tagging schema is used across multiple services and resources, remember that other services may
+     *         have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *         representable in UTF-8, and the following characters: + - = . _ : / @.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Tag keys and values are case-sensitive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a
+     *         prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or
+     *         values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Tag> getTags() {
@@ -1995,16 +2233,100 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *        well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *        length of 256 characters.
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -2019,10 +2341,52 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
@@ -2032,8 +2396,50 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *        well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *        length of 256 characters.
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2050,16 +2456,100 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The metadata that you apply to the service to help you categorize and organize them. Each tag consists of a key
-     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well. Tag
-     * keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256
-     * characters.
+     * and an optional value, both of which you define. When a service is deleted, the tags are deleted as well.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the service to help you categorize and organize them. Each tag consists of
      *        a key and an optional value, both of which you define. When a service is deleted, the tags are deleted as
-     *        well. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum
-     *        length of 256 characters.
+     *        well.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2071,14 +2561,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
      *        ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
@@ -2089,14 +2579,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
-     *         ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your
+     *         Amazon ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public Boolean getEnableECSManagedTags() {
@@ -2106,14 +2596,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @param enableECSManagedTags
      *        Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *        information, see <a
-     *        href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
      *        ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2126,14 +2616,14 @@ public class CreateServiceRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more information, see
-     * <a href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
+     * <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon ECS
      * Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      * </p>
      * 
      * @return Specifies whether to enable Amazon ECS managed tags for the tasks within the service. For more
      *         information, see <a
-     *         href="http://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your Amazon
-     *         ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html">Tagging Your
+     *         Amazon ECS Resources</a> in the <i>Amazon Elastic Container Service Developer Guide</i>.
      */
 
     public Boolean isEnableECSManagedTags() {

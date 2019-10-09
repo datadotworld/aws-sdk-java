@@ -72,10 +72,26 @@ public class StepJsonUnmarshaller implements Unmarshaller<Step, JsonUnmarshaller
                     context.nextToken();
                     step.setArtifactsUrl(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("testArtifactsUrl", targetDepth)) {
+                    context.nextToken();
+                    step.setTestArtifactsUrl(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("testConfigUrl", targetDepth)) {
+                    context.nextToken();
+                    step.setTestConfigUrl(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("screenshots", targetDepth)) {
                     context.nextToken();
                     step.setScreenshots(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
                             .unmarshall(context));
+                }
+                if (context.testExpression("statusReason", targetDepth)) {
+                    context.nextToken();
+                    step.setStatusReason(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("context", targetDepth)) {
+                    context.nextToken();
+                    step.setContext(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

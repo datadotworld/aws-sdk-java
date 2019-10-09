@@ -56,6 +56,10 @@ public class CreateSimulationJobResultJsonUnmarshaller implements Unmarshaller<C
                     context.nextToken();
                     createSimulationJobResult.setStatus(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("lastStartedAt", targetDepth)) {
+                    context.nextToken();
+                    createSimulationJobResult.setLastStartedAt(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
+                }
                 if (context.testExpression("lastUpdatedAt", targetDepth)) {
                     context.nextToken();
                     createSimulationJobResult.setLastUpdatedAt(DateJsonUnmarshallerFactory.getInstance("unixTimestamp").unmarshall(context));
@@ -75,6 +79,10 @@ public class CreateSimulationJobResultJsonUnmarshaller implements Unmarshaller<C
                 if (context.testExpression("outputLocation", targetDepth)) {
                     context.nextToken();
                     createSimulationJobResult.setOutputLocation(OutputLocationJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("loggingConfig", targetDepth)) {
+                    context.nextToken();
+                    createSimulationJobResult.setLoggingConfig(LoggingConfigJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("maxJobDurationInSeconds", targetDepth)) {
                     context.nextToken();
@@ -97,6 +105,10 @@ public class CreateSimulationJobResultJsonUnmarshaller implements Unmarshaller<C
                     context.nextToken();
                     createSimulationJobResult.setSimulationApplications(new ListUnmarshaller<SimulationApplicationConfig>(
                             SimulationApplicationConfigJsonUnmarshaller.getInstance()).unmarshall(context));
+                }
+                if (context.testExpression("dataSources", targetDepth)) {
+                    context.nextToken();
+                    createSimulationJobResult.setDataSources(new ListUnmarshaller<DataSource>(DataSourceJsonUnmarshaller.getInstance()).unmarshall(context));
                 }
                 if (context.testExpression("tags", targetDepth)) {
                     context.nextToken();

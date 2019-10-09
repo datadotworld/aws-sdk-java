@@ -12,6 +12,7 @@
  */
 package com.amazonaws.services.glue.model.transform;
 
+import java.util.Map;
 import java.util.List;
 import javax.annotation.Generated;
 
@@ -46,6 +47,12 @@ public class DevEndpointMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("PublicAddress").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Status").build();
+    private static final MarshallingInfo<String> WORKERTYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("WorkerType").build();
+    private static final MarshallingInfo<String> GLUEVERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GlueVersion").build();
+    private static final MarshallingInfo<Integer> NUMBEROFWORKERS_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NumberOfWorkers").build();
     private static final MarshallingInfo<Integer> NUMBEROFNODES_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("NumberOfNodes").build();
     private static final MarshallingInfo<String> AVAILABILITYZONE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -70,6 +77,8 @@ public class DevEndpointMarshaller {
             .marshallLocationName("PublicKeys").build();
     private static final MarshallingInfo<String> SECURITYCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SecurityConfiguration").build();
+    private static final MarshallingInfo<Map> ARGUMENTS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("Arguments").build();
 
     private static final DevEndpointMarshaller instance = new DevEndpointMarshaller();
 
@@ -96,6 +105,9 @@ public class DevEndpointMarshaller {
             protocolMarshaller.marshall(devEndpoint.getZeppelinRemoteSparkInterpreterPort(), ZEPPELINREMOTESPARKINTERPRETERPORT_BINDING);
             protocolMarshaller.marshall(devEndpoint.getPublicAddress(), PUBLICADDRESS_BINDING);
             protocolMarshaller.marshall(devEndpoint.getStatus(), STATUS_BINDING);
+            protocolMarshaller.marshall(devEndpoint.getWorkerType(), WORKERTYPE_BINDING);
+            protocolMarshaller.marshall(devEndpoint.getGlueVersion(), GLUEVERSION_BINDING);
+            protocolMarshaller.marshall(devEndpoint.getNumberOfWorkers(), NUMBEROFWORKERS_BINDING);
             protocolMarshaller.marshall(devEndpoint.getNumberOfNodes(), NUMBEROFNODES_BINDING);
             protocolMarshaller.marshall(devEndpoint.getAvailabilityZone(), AVAILABILITYZONE_BINDING);
             protocolMarshaller.marshall(devEndpoint.getVpcId(), VPCID_BINDING);
@@ -108,6 +120,7 @@ public class DevEndpointMarshaller {
             protocolMarshaller.marshall(devEndpoint.getPublicKey(), PUBLICKEY_BINDING);
             protocolMarshaller.marshall(devEndpoint.getPublicKeys(), PUBLICKEYS_BINDING);
             protocolMarshaller.marshall(devEndpoint.getSecurityConfiguration(), SECURITYCONFIGURATION_BINDING);
+            protocolMarshaller.marshall(devEndpoint.getArguments(), ARGUMENTS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

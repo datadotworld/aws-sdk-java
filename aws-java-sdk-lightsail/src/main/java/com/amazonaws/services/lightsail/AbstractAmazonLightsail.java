@@ -148,6 +148,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
     }
 
     @Override
+    public DeleteAutoSnapshotResult deleteAutoSnapshot(DeleteAutoSnapshotRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteDiskResult deleteDisk(DeleteDiskRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -179,6 +184,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public DeleteKeyPairResult deleteKeyPair(DeleteKeyPairRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeleteKnownHostKeysResult deleteKnownHostKeys(DeleteKnownHostKeysRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -218,7 +228,17 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
     }
 
     @Override
+    public DisableAddOnResult disableAddOn(DisableAddOnRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DownloadDefaultKeyPairResult downloadDefaultKeyPair(DownloadDefaultKeyPairRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public EnableAddOnResult enableAddOn(EnableAddOnRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -229,6 +249,11 @@ public class AbstractAmazonLightsail implements AmazonLightsail {
 
     @Override
     public GetActiveNamesResult getActiveNames(GetActiveNamesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public GetAutoSnapshotsResult getAutoSnapshots(GetAutoSnapshotsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

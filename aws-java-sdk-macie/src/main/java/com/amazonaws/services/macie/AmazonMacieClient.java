@@ -82,17 +82,17 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.macie.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.macie.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withModeledClass(
-                                    com.amazonaws.services.macie.model.InvalidInputException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidInputException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.macie.model.transform.InvalidInputExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withModeledClass(
-                                    com.amazonaws.services.macie.model.InternalException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.macie.model.transform.InternalExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.macie.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.macie.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.macie.model.AmazonMacieException.class));
 
     public static AmazonMacieClientBuilder builder() {
@@ -184,6 +184,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateMemberAccount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -249,6 +250,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AssociateS3Resources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -306,6 +308,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateMemberAccount");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -368,6 +371,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisassociateS3Resources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -425,6 +429,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListMemberAccounts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -485,6 +490,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListS3Resources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -546,6 +552,7 @@ public class AmazonMacieClient extends AmazonWebServiceClient implements AmazonM
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Macie");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateS3Resources");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

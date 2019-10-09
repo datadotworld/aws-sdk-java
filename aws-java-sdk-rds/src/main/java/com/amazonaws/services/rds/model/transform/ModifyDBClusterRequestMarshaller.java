@@ -143,6 +143,14 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
             request.addParameter("EngineVersion", StringUtils.fromString(modifyDBClusterRequest.getEngineVersion()));
         }
 
+        if (modifyDBClusterRequest.getAllowMajorVersionUpgrade() != null) {
+            request.addParameter("AllowMajorVersionUpgrade", StringUtils.fromBoolean(modifyDBClusterRequest.getAllowMajorVersionUpgrade()));
+        }
+
+        if (modifyDBClusterRequest.getDBInstanceParameterGroupName() != null) {
+            request.addParameter("DBInstanceParameterGroupName", StringUtils.fromString(modifyDBClusterRequest.getDBInstanceParameterGroupName()));
+        }
+
         {
             ScalingConfiguration scalingConfiguration = modifyDBClusterRequest.getScalingConfiguration();
             if (scalingConfiguration != null) {
@@ -161,6 +169,10 @@ public class ModifyDBClusterRequestMarshaller implements Marshaller<Request<Modi
 
                 if (scalingConfiguration.getSecondsUntilAutoPause() != null) {
                     request.addParameter("ScalingConfiguration.SecondsUntilAutoPause", StringUtils.fromInteger(scalingConfiguration.getSecondsUntilAutoPause()));
+                }
+
+                if (scalingConfiguration.getTimeoutAction() != null) {
+                    request.addParameter("ScalingConfiguration.TimeoutAction", StringUtils.fromString(scalingConfiguration.getTimeoutAction()));
                 }
             }
         }

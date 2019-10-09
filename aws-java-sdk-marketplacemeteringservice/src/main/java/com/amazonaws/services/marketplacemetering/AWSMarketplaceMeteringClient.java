@@ -96,7 +96,7 @@ import com.amazonaws.services.marketplacemetering.model.transform.*;
  * containers running outside of Amazon Elastic Container Service (Amazon ECR) isn't supported. Free and BYOL products
  * for ECS aren't required to call RegisterUsage, but you can do so if you want to receive usage data in your seller
  * reports. For more information on using the RegisterUsage operation, see <a
- * href="https://docs.aws.amazon.com/latest/userguide/entitlement-and-metering-for-paid-products.html">Container-Based
+ * href="https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html">Container-Based
  * Products</a>.
  * </p>
  * </li>
@@ -132,50 +132,50 @@ public class AWSMarketplaceMeteringClient extends AmazonWebServiceClient impleme
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTokenException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ExpiredTokenException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.ExpiredTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ExpiredTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.ExpiredTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidEndpointRegionException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidEndpointRegionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEndpointRegionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidEndpointRegionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("PlatformNotSupportedException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.PlatformNotSupportedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("PlatformNotSupportedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.PlatformNotSupportedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TimestampOutOfBoundsException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.TimestampOutOfBoundsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TimestampOutOfBoundsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.TimestampOutOfBoundsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceErrorException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InternalServiceErrorException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalServiceErrorException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InternalServiceErrorExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidUsageDimensionException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidUsageDimensionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidUsageDimensionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidUsageDimensionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequestException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.DuplicateRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicateRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.DuplicateRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPublicKeyVersionException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidPublicKeyVersionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPublicKeyVersionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidPublicKeyVersionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRegionException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidRegionException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRegionException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidRegionExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("CustomerNotEntitledException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.CustomerNotEntitledException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("CustomerNotEntitledException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.CustomerNotEntitledExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DisabledApiException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.DisabledApiException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DisabledApiException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.DisabledApiExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.ThrottlingException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ThrottlingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.ThrottlingExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidCustomerIdentifierException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidCustomerIdentifierException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidCustomerIdentifierException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidCustomerIdentifierExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidProductCodeException").withModeledClass(
-                                    com.amazonaws.services.marketplacemetering.model.InvalidProductCodeException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidProductCodeException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.marketplacemetering.model.transform.InvalidProductCodeExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.marketplacemetering.model.AWSMarketplaceMeteringException.class));
 
     /**
@@ -443,6 +443,7 @@ public class AWSMarketplaceMeteringClient extends AmazonWebServiceClient impleme
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Marketplace Metering");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "BatchMeterUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -517,6 +518,7 @@ public class AWSMarketplaceMeteringClient extends AmazonWebServiceClient impleme
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Marketplace Metering");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "MeterUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -617,6 +619,7 @@ public class AWSMarketplaceMeteringClient extends AmazonWebServiceClient impleme
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Marketplace Metering");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterUsage");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -686,6 +689,7 @@ public class AWSMarketplaceMeteringClient extends AmazonWebServiceClient impleme
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Marketplace Metering");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ResolveCustomer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

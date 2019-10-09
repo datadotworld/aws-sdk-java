@@ -91,74 +91,74 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryAlreadySharedException").withModeledClass(
-                                    com.amazonaws.services.directory.model.DirectoryAlreadySharedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryAlreadySharedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.DirectoryAlreadySharedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryUnavailableException").withModeledClass(
-                                    com.amazonaws.services.directory.model.DirectoryUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.DirectoryUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withModeledClass(
-                                    com.amazonaws.services.directory.model.InvalidParameterException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidParameterException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.InvalidParameterExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNotSharedException").withModeledClass(
-                                    com.amazonaws.services.directory.model.DirectoryNotSharedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryNotSharedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.DirectoryNotSharedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceException").withModeledClass(
-                                    com.amazonaws.services.directory.model.ServiceException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.ServiceExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("SnapshotLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.directory.model.SnapshotLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("SnapshotLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.SnapshotLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EntityAlreadyExistsException").withModeledClass(
-                                    com.amazonaws.services.directory.model.EntityAlreadyExistsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EntityAlreadyExistsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.EntityAlreadyExistsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("EntityDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.directory.model.EntityDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("EntityDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.EntityDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DirectoryLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.directory.model.DirectoryLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DirectoryLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.DirectoryLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withModeledClass(
-                                    com.amazonaws.services.directory.model.InvalidNextTokenException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidNextTokenException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.InvalidNextTokenExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withModeledClass(
-                                    com.amazonaws.services.directory.model.AccessDeniedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccessDeniedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.AccessDeniedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("DomainControllerLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.directory.model.DomainControllerLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("DomainControllerLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.DomainControllerLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UserDoesNotExistException").withModeledClass(
-                                    com.amazonaws.services.directory.model.UserDoesNotExistException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UserDoesNotExistException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.UserDoesNotExistExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidPasswordException").withModeledClass(
-                                    com.amazonaws.services.directory.model.InvalidPasswordException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidPasswordException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.InvalidPasswordExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperationException").withModeledClass(
-                                    com.amazonaws.services.directory.model.UnsupportedOperationException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnsupportedOperationException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.UnsupportedOperationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetException").withModeledClass(
-                                    com.amazonaws.services.directory.model.InvalidTargetException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidTargetException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.InvalidTargetExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ClientException").withModeledClass(
-                                    com.amazonaws.services.directory.model.ClientException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ClientException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.ClientExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("IpRouteLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.directory.model.IpRouteLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("IpRouteLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.IpRouteLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AuthenticationFailedException").withModeledClass(
-                                    com.amazonaws.services.directory.model.AuthenticationFailedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AuthenticationFailedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.AuthenticationFailedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InsufficientPermissionsException").withModeledClass(
-                                    com.amazonaws.services.directory.model.InsufficientPermissionsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InsufficientPermissionsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.InsufficientPermissionsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TagLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.directory.model.TagLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TagLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.TagLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ShareLimitExceededException").withModeledClass(
-                                    com.amazonaws.services.directory.model.ShareLimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ShareLimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.ShareLimitExceededExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("OrganizationsException").withModeledClass(
-                                    com.amazonaws.services.directory.model.OrganizationsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("OrganizationsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.directory.model.transform.OrganizationsExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.directory.model.AWSDirectoryServiceException.class));
 
     /**
@@ -407,6 +407,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AcceptSharedDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -484,6 +485,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddIpRoutes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -547,6 +549,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "AddTagsToResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -608,6 +611,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CancelSchemaExtension");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -678,6 +682,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ConnectDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -748,6 +753,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateAlias");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -817,6 +823,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateComputer");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -888,6 +895,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateConditionalForwarder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -958,6 +966,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1023,6 +1032,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateLogSubscription");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1095,6 +1105,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateMicrosoftAD");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1164,6 +1175,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1242,6 +1254,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateTrust");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1308,6 +1321,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteConditionalForwarder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1375,6 +1389,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1435,6 +1450,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteLogSubscription");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1497,6 +1513,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1561,6 +1578,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteTrust");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1622,6 +1640,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeregisterEventTopic");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1692,6 +1711,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeConditionalForwarders");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1768,6 +1788,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDirectories");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1838,6 +1859,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeDomainControllers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1904,6 +1926,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeEventTopics");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -1969,6 +1992,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSharedDirectories");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2041,6 +2065,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeSnapshots");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2117,6 +2142,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeTrusts");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2177,6 +2203,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableRadius");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2240,6 +2267,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DisableSso");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2304,6 +2332,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableRadius");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2367,6 +2396,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "EnableSso");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2426,6 +2456,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetDirectoryLimits");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2490,6 +2521,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "GetSnapshotLimits");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2552,6 +2584,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListIpRoutes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2612,6 +2645,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListLogSubscriptions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2672,6 +2706,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListSchemaExtensions");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2734,6 +2769,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListTagsForResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2798,6 +2834,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RegisterEventTopic");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2860,6 +2897,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RejectSharedDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2923,6 +2961,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveIpRoutes");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -2983,6 +3022,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RemoveTagsFromResource");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3051,6 +3091,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ResetUserPassword");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3121,6 +3162,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "RestoreFromSnapshot");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3209,6 +3251,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ShareDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3274,6 +3317,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StartSchemaExtension");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3336,6 +3380,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UnshareDirectory");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3402,6 +3447,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateConditionalForwarder");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3475,6 +3521,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateNumberOfDomainControllers");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3538,6 +3585,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateRadius");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3599,6 +3647,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateTrust");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -3666,6 +3715,7 @@ public class AWSDirectoryServiceClient extends AmazonWebServiceClient implements
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Directory Service");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "VerifyTrust");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

@@ -27,31 +27,38 @@ import java.util.concurrent.ExecutorService;
  * <p>
  * <fullname>Amazon Pinpoint Email Service</fullname>
  * <p>
- * This document contains reference information for the <a href="https://aws.amazon.com/pinpoint">Amazon Pinpoint</a>
- * Email API, version 1.0. This document is best used in conjunction with the <a
- * href="http://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer Guide</a>.
+ * Welcome to the <i>Amazon Pinpoint Email API Reference</i>. This guide provides information about the Amazon Pinpoint
+ * Email API (version 1.0), including supported operations, data types, parameters, and schemas.
  * </p>
  * <p>
- * The Amazon Pinpoint Email API is available in the US East (N. Virginia), US West (Oregon) and the EU (Ireland)
- * Regions at the following endpoints:
+ * <a href="https://aws.amazon.com/pinpoint">Amazon Pinpoint</a> is an AWS service that you can use to engage with your
+ * customers across multiple messaging channels. You can use Amazon Pinpoint to send email, SMS text messages, voice
+ * messages, and push notifications. The Amazon Pinpoint Email API provides programmatic access to options that are
+ * unique to the email channel and supplement the options provided by the Amazon Pinpoint API.
  * </p>
- * <ul>
- * <li>
  * <p>
- * <b>US East (N. Virginia)</b>: <code>email.us-east-1.amazonaws.com</code>
+ * If you're new to Amazon Pinpoint, you might find it helpful to also review the <a
+ * href="https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html">Amazon Pinpoint Developer Guide</a>.
+ * The <i>Amazon Pinpoint Developer Guide</i> provides tutorials, code samples, and procedures that demonstrate how to
+ * use Amazon Pinpoint features programmatically and how to integrate Amazon Pinpoint functionality into mobile apps and
+ * other types of applications. The guide also provides information about key topics such as Amazon Pinpoint integration
+ * with other AWS services and the limits that apply to using the service.
  * </p>
- * </li>
- * <li>
  * <p>
- * <b>US West (Oregon)</b>: <code>email.us-west-2.amazonaws.com</code>
+ * The Amazon Pinpoint Email API is available in several AWS Regions and it provides an endpoint for each of these
+ * Regions. For a list of all the Regions and endpoints where the API is currently available, see <a
+ * href="https://docs.aws.amazon.com/general/latest/gr/rande.html#pinpoint_region">AWS Service Endpoints</a> in the
+ * <i>Amazon Web Services General Reference</i>. To learn more about AWS Regions, see <a
+ * href="https://docs.aws.amazon.com/general/latest/gr/rande-manage.html">Managing AWS Regions</a> in the <i>Amazon Web
+ * Services General Reference</i>.
  * </p>
- * </li>
- * <li>
  * <p>
- * <b>EU (Ireland)</b>: <code>email.eu-west-1.amazonaws.com</code>
+ * In each Region, AWS maintains multiple Availability Zones. These Availability Zones are physically isolated from each
+ * other, but are united by private, low-latency, high-throughput, and highly redundant network connections. These
+ * Availability Zones enable us to provide very high levels of availability and redundancy, while also minimizing
+ * latency. To learn more about the number of Availability Zones that are available in each Region, see <a
+ * href="http://aws.amazon.com/about-aws/global-infrastructure/">AWS Global Infrastructure</a>.
  * </p>
- * </li>
- * </ul>
  */
 @ThreadSafe
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -656,6 +663,41 @@ public class AmazonPinpointEmailAsyncClient extends AmazonPinpointEmailClient im
     }
 
     @Override
+    public java.util.concurrent.Future<GetDomainDeliverabilityCampaignResult> getDomainDeliverabilityCampaignAsync(
+            GetDomainDeliverabilityCampaignRequest request) {
+
+        return getDomainDeliverabilityCampaignAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetDomainDeliverabilityCampaignResult> getDomainDeliverabilityCampaignAsync(
+            final GetDomainDeliverabilityCampaignRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetDomainDeliverabilityCampaignRequest, GetDomainDeliverabilityCampaignResult> asyncHandler) {
+        final GetDomainDeliverabilityCampaignRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetDomainDeliverabilityCampaignResult>() {
+            @Override
+            public GetDomainDeliverabilityCampaignResult call() throws Exception {
+                GetDomainDeliverabilityCampaignResult result = null;
+
+                try {
+                    result = executeGetDomainDeliverabilityCampaign(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<GetDomainStatisticsReportResult> getDomainStatisticsReportAsync(GetDomainStatisticsReportRequest request) {
 
         return getDomainStatisticsReportAsync(request, null);
@@ -822,6 +864,41 @@ public class AmazonPinpointEmailAsyncClient extends AmazonPinpointEmailClient im
     }
 
     @Override
+    public java.util.concurrent.Future<ListDomainDeliverabilityCampaignsResult> listDomainDeliverabilityCampaignsAsync(
+            ListDomainDeliverabilityCampaignsRequest request) {
+
+        return listDomainDeliverabilityCampaignsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListDomainDeliverabilityCampaignsResult> listDomainDeliverabilityCampaignsAsync(
+            final ListDomainDeliverabilityCampaignsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListDomainDeliverabilityCampaignsRequest, ListDomainDeliverabilityCampaignsResult> asyncHandler) {
+        final ListDomainDeliverabilityCampaignsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListDomainDeliverabilityCampaignsResult>() {
+            @Override
+            public ListDomainDeliverabilityCampaignsResult call() throws Exception {
+                ListDomainDeliverabilityCampaignsResult result = null;
+
+                try {
+                    result = executeListDomainDeliverabilityCampaigns(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListEmailIdentitiesResult> listEmailIdentitiesAsync(ListEmailIdentitiesRequest request) {
 
         return listEmailIdentitiesAsync(request, null);
@@ -839,6 +916,39 @@ public class AmazonPinpointEmailAsyncClient extends AmazonPinpointEmailClient im
 
                 try {
                     result = executeListEmailIdentities(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest request) {
+
+        return listTagsForResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(final ListTagsForResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler) {
+        final ListTagsForResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListTagsForResourceResult>() {
+            @Override
+            public ListTagsForResourceResult call() throws Exception {
+                ListTagsForResourceResult result = null;
+
+                try {
+                    result = executeListTagsForResource(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1286,6 +1396,72 @@ public class AmazonPinpointEmailAsyncClient extends AmazonPinpointEmailClient im
 
                 try {
                     result = executeSendEmail(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest request) {
+
+        return tagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(final TagResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler) {
+        final TagResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<TagResourceResult>() {
+            @Override
+            public TagResourceResult call() throws Exception {
+                TagResourceResult result = null;
+
+                try {
+                    result = executeTagResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest request) {
+
+        return untagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(final UntagResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler) {
+        final UntagResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UntagResourceResult>() {
+            @Override
+            public UntagResourceResult call() throws Exception {
+                UntagResourceResult result = null;
+
+                try {
+                    result = executeUntagResource(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

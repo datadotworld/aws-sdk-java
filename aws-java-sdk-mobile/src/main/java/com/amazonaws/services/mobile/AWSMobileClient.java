@@ -80,29 +80,29 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                     .withSupportsIon(false)
                     .withContentTypeOverride("")
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.NotFoundException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("NotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.NotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.ServiceUnavailableException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("AccountActionRequiredException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.AccountActionRequiredException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("AccountActionRequiredException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.AccountActionRequiredExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.InternalFailureException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("InternalFailureException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.InternalFailureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.UnauthorizedException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("UnauthorizedException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.UnauthorizedExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.TooManyRequestsException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.BadRequestException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("BadRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.BadRequestExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withModeledClass(
-                                    com.amazonaws.services.mobile.model.LimitExceededException.class))
+                            new JsonErrorShapeMetadata().withErrorCode("LimitExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.mobile.model.transform.LimitExceededExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.mobile.model.AWSMobileException.class));
 
     public static AWSMobileClientBuilder builder() {
@@ -206,6 +206,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "CreateProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -270,6 +271,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DeleteProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -337,6 +339,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeBundle");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -404,6 +407,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "DescribeProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -473,6 +477,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ExportBundle");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -542,6 +547,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ExportProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -607,6 +613,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListBundles");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -672,6 +679,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "ListProjects");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
@@ -745,6 +753,7 @@ public class AWSMobileClient extends AmazonWebServiceClient implements AWSMobile
                 request.addHandlerContext(HandlerContextKey.SERVICE_ID, "Mobile");
                 request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "UpdateProject");
                 request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
             } finally {
                 awsRequestMetrics.endEvent(Field.RequestMarshallTime);
             }

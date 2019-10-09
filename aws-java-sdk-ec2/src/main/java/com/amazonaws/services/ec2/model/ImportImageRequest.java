@@ -20,9 +20,7 @@ import com.amazonaws.Request;
 import com.amazonaws.services.ec2.model.transform.ImportImageRequestMarshaller;
 
 /**
- * <p>
- * Contains the parameters for ImportImage.
- * </p>
+ * 
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class ImportImageRequest extends AmazonWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<ImportImageRequest> {
@@ -32,7 +30,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The architecture of the virtual machine.
      * </p>
      * <p>
-     * Valid values: <code>i386</code> | <code>x86_64</code>
+     * Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      * </p>
      */
     private String architecture;
@@ -96,19 +94,21 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK, the
+     * AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
+     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
+     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK,
      * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
+     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
      * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
@@ -119,7 +119,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the AMI is being copied to.
+     * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
      */
     private String kmsKeyId;
@@ -128,33 +128,15 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The license type to be used for the Amazon Machine Image (AMI) after importing.
      * </p>
      * <p>
-     * <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a third
-     * party cloud like AWS. For more information, see <a
+     * By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     * <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     * <code>BYOL</code> to retain the source-system license, if appropriate.
+     * </p>
+     * <p>
+     * To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third party
+     * cloud, such as AWS. For more information, see <a
      * href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      * >Prerequisites</a> in the VM Import/Export User Guide.
-     * </p>
-     * <p>
-     * Valid values include:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>BYOL</code> - Retains the source-system license, if appropriate.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Default value: <code>Auto</code>
      * </p>
      */
     private String licenseType;
@@ -179,13 +161,13 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The architecture of the virtual machine.
      * </p>
      * <p>
-     * Valid values: <code>i386</code> | <code>x86_64</code>
+     * Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      * </p>
      * 
      * @param architecture
      *        The architecture of the virtual machine.</p>
      *        <p>
-     *        Valid values: <code>i386</code> | <code>x86_64</code>
+     *        Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      */
 
     public void setArchitecture(String architecture) {
@@ -197,12 +179,12 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The architecture of the virtual machine.
      * </p>
      * <p>
-     * Valid values: <code>i386</code> | <code>x86_64</code>
+     * Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      * </p>
      * 
      * @return The architecture of the virtual machine.</p>
      *         <p>
-     *         Valid values: <code>i386</code> | <code>x86_64</code>
+     *         Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      */
 
     public String getArchitecture() {
@@ -214,13 +196,13 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The architecture of the virtual machine.
      * </p>
      * <p>
-     * Valid values: <code>i386</code> | <code>x86_64</code>
+     * Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      * </p>
      * 
      * @param architecture
      *        The architecture of the virtual machine.</p>
      *        <p>
-     *        Valid values: <code>i386</code> | <code>x86_64</code>
+     *        Valid values: <code>i386</code> | <code>x86_64</code> | <code>arm64</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -575,19 +557,21 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK, the
+     * AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
+     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
+     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK,
      * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
+     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
      * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
@@ -598,7 +582,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the AMI is being copied to.
+     * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
      * 
      * @param kmsKeyId
@@ -617,19 +601,21 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *        </li>
      *        <li>
      *        <p>
-     *        Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     *        Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
+     *        CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For
+     *        example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of
+     *        ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of
      *        the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For
      *        example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region
+     *        ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region
      *        of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias.
      *        For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      *        </p>
@@ -640,7 +626,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *        even though you provided an invalid identifier. This action will eventually report failure.
      *        </p>
      *        <p>
-     *        The specified CMK must exist in the region that the AMI is being copied to.
+     *        The specified CMK must exist in the Region that the AMI is being copied to.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -665,19 +651,21 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK, the
+     * AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
+     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
+     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK,
      * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
+     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
      * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
@@ -688,7 +676,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the AMI is being copied to.
+     * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
      * 
      * @return An identifier for the AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating
@@ -706,12 +694,14 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *         </li>
      *         <li>
      *         <p>
-     *         Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     *         Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
+     *         CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For
+     *         example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of
+     *         ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of
      *         the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For
      *         example,
      *         arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
@@ -720,7 +710,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *         <li>
      *         <p>
      *         ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the
-     *         region of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the
+     *         Region of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the
      *         CMK alias. For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      *         </p>
      *         </li>
@@ -730,7 +720,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *         even though you provided an invalid identifier. This action will eventually report failure.
      *         </p>
      *         <p>
-     *         The specified CMK must exist in the region that the AMI is being copied to.
+     *         The specified CMK must exist in the Region that the AMI is being copied to.
      */
 
     public String getKmsKeyId() {
@@ -755,19 +745,21 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * </li>
      * <li>
      * <p>
-     * Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     * Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK, the
+     * AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
+     * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the CMK,
+     * ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the CMK,
      * the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of the
+     * ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
      * CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For example,
      * arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      * </p>
@@ -778,7 +770,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * though you provided an invalid identifier. This action will eventually report failure.
      * </p>
      * <p>
-     * The specified CMK must exist in the region that the AMI is being copied to.
+     * The specified CMK must exist in the Region that the AMI is being copied to.
      * </p>
      * 
      * @param kmsKeyId
@@ -797,19 +789,21 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *        </li>
      *        <li>
      *        <p>
-     *        Key alias, in the form <code>alias/<i>ExampleAlias</i> </code>
+     *        Key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of the
+     *        CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias. For
+     *        example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the region of
+     *        ARN using key ID. The ID ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region of
      *        the CMK, the AWS account ID of the CMK owner, the <code>key</code> namespace, and then the CMK ID. For
      *        example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:key/<i>abcd1234-a123-456a-a12b-a123b4cd56ef</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the region
+     *        ARN using key alias. The alias ARN contains the <code>arn:aws:kms</code> namespace, followed by the Region
      *        of the CMK, the AWS account ID of the CMK owner, the <code>alias</code> namespace, and then the CMK alias.
      *        For example, arn:aws:kms:<i>us-east-1</i>:<i>012345678910</i>:alias/<i>ExampleAlias</i>.
      *        </p>
@@ -820,7 +814,7 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      *        even though you provided an invalid identifier. This action will eventually report failure.
      *        </p>
      *        <p>
-     *        The specified CMK must exist in the region that the AMI is being copied to.
+     *        The specified CMK must exist in the Region that the AMI is being copied to.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -834,65 +828,29 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The license type to be used for the Amazon Machine Image (AMI) after importing.
      * </p>
      * <p>
-     * <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a third
-     * party cloud like AWS. For more information, see <a
+     * By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     * <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     * <code>BYOL</code> to retain the source-system license, if appropriate.
+     * </p>
+     * <p>
+     * To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third party
+     * cloud, such as AWS. For more information, see <a
      * href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      * >Prerequisites</a> in the VM Import/Export User Guide.
-     * </p>
-     * <p>
-     * Valid values include:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>BYOL</code> - Retains the source-system license, if appropriate.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Default value: <code>Auto</code>
      * </p>
      * 
      * @param licenseType
      *        The license type to be used for the Amazon Machine Image (AMI) after importing.</p>
      *        <p>
-     *        <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a
-     *        third party cloud like AWS. For more information, see <a href=
+     *        By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     *        <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     *        <code>BYOL</code> to retain the source-system license, if appropriate.
+     *        </p>
+     *        <p>
+     *        To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third
+     *        party cloud, such as AWS. For more information, see <a href=
      *        "https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      *        >Prerequisites</a> in the VM Import/Export User Guide.
-     *        </p>
-     *        <p>
-     *        Valid values include:
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>BYOL</code> - Retains the source-system license, if appropriate.
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        Default value: <code>Auto</code>
      */
 
     public void setLicenseType(String licenseType) {
@@ -904,64 +862,28 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The license type to be used for the Amazon Machine Image (AMI) after importing.
      * </p>
      * <p>
-     * <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a third
-     * party cloud like AWS. For more information, see <a
+     * By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     * <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     * <code>BYOL</code> to retain the source-system license, if appropriate.
+     * </p>
+     * <p>
+     * To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third party
+     * cloud, such as AWS. For more information, see <a
      * href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      * >Prerequisites</a> in the VM Import/Export User Guide.
-     * </p>
-     * <p>
-     * Valid values include:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>BYOL</code> - Retains the source-system license, if appropriate.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Default value: <code>Auto</code>
      * </p>
      * 
      * @return The license type to be used for the Amazon Machine Image (AMI) after importing.</p>
      *         <p>
-     *         <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a
-     *         third party cloud like AWS. For more information, see <a href=
+     *         By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     *         <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     *         <code>BYOL</code> to retain the source-system license, if appropriate.
+     *         </p>
+     *         <p>
+     *         To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third
+     *         party cloud, such as AWS. For more information, see <a href=
      *         "https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      *         >Prerequisites</a> in the VM Import/Export User Guide.
-     *         </p>
-     *         <p>
-     *         Valid values include:
-     *         </p>
-     *         <ul>
-     *         <li>
-     *         <p>
-     *         <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         <code>BYOL</code> - Retains the source-system license, if appropriate.
-     *         </p>
-     *         </li>
-     *         </ul>
-     *         <p>
-     *         Default value: <code>Auto</code>
      */
 
     public String getLicenseType() {
@@ -973,65 +895,29 @@ public class ImportImageRequest extends AmazonWebServiceRequest implements Seria
      * The license type to be used for the Amazon Machine Image (AMI) after importing.
      * </p>
      * <p>
-     * <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a third
-     * party cloud like AWS. For more information, see <a
+     * By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     * <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     * <code>BYOL</code> to retain the source-system license, if appropriate.
+     * </p>
+     * <p>
+     * To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third party
+     * cloud, such as AWS. For more information, see <a
      * href="https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      * >Prerequisites</a> in the VM Import/Export User Guide.
-     * </p>
-     * <p>
-     * Valid values include:
-     * </p>
-     * <ul>
-     * <li>
-     * <p>
-     * <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * <code>BYOL</code> - Retains the source-system license, if appropriate.
-     * </p>
-     * </li>
-     * </ul>
-     * <p>
-     * Default value: <code>Auto</code>
      * </p>
      * 
      * @param licenseType
      *        The license type to be used for the Amazon Machine Image (AMI) after importing.</p>
      *        <p>
-     *        <b>Note:</b> You may only use BYOL if you have existing licenses with rights to use these licenses in a
-     *        third party cloud like AWS. For more information, see <a href=
+     *        By default, we detect the source-system operating system (OS) and apply the appropriate license. Specify
+     *        <code>AWS</code> to replace the source-system license with an AWS license, if appropriate. Specify
+     *        <code>BYOL</code> to retain the source-system license, if appropriate.
+     *        </p>
+     *        <p>
+     *        To use <code>BYOL</code>, you must have existing licenses with rights to use these licenses in a third
+     *        party cloud, such as AWS. For more information, see <a href=
      *        "https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image"
      *        >Prerequisites</a> in the VM Import/Export User Guide.
-     *        </p>
-     *        <p>
-     *        Valid values include:
-     *        </p>
-     *        <ul>
-     *        <li>
-     *        <p>
-     *        <code>Auto</code> - Detects the source-system operating system (OS) and applies the appropriate license.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>AWS</code> - Replaces the source-system license with an AWS license, if appropriate.
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        <code>BYOL</code> - Retains the source-system license, if appropriate.
-     *        </p>
-     *        </li>
-     *        </ul>
-     *        <p>
-     *        Default value: <code>Auto</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

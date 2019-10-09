@@ -18,7 +18,9 @@ import com.amazonaws.protocol.StructuredPojo;
 import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
- * City information of the remote IP address.
+ * <p>
+ * Contains information about the city associated with the IP address.
+ * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28/City" target="_top">AWS API
  *      Documentation</a>
@@ -26,11 +28,17 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class City implements Serializable, Cloneable, StructuredPojo {
 
-    /** City name of the remote IP address. */
+    /**
+     * <p>
+     * City name of the remote IP address.
+     * </p>
+     */
     private String cityName;
 
     /**
+     * <p>
      * City name of the remote IP address.
+     * </p>
      * 
      * @param cityName
      *        City name of the remote IP address.
@@ -41,7 +49,9 @@ public class City implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * City name of the remote IP address.
+     * </p>
      * 
      * @return City name of the remote IP address.
      */
@@ -51,7 +61,9 @@ public class City implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * <p>
      * City name of the remote IP address.
+     * </p>
      * 
      * @param cityName
      *        City name of the remote IP address.

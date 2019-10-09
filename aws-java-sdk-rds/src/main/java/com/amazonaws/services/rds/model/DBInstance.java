@@ -20,7 +20,7 @@ import javax.annotation.Generated;
  * Contains the details of an Amazon RDS DB instance.
  * </p>
  * <p>
- * This data type is used as a response element in the <a>DescribeDBInstances</a> action.
+ * This data type is used as a response element in the <code>DescribeDBInstances</code> action.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/rds-2014-10-31/DBInstance" target="_top">AWS API
@@ -61,9 +61,7 @@ public class DBInstance implements Serializable, Cloneable {
     private String masterUsername;
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -117,7 +115,7 @@ public class DBInstance implements Serializable, Cloneable {
     private Integer backupRetentionPeriod;
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      */
@@ -320,7 +318,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
-     * instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * </p>
      */
     private Boolean copyTagsToSnapshot;
@@ -431,8 +429,8 @@ public class DBInstance implements Serializable, Cloneable {
     private com.amazonaws.internal.SdkInternalList<ProcessorFeature> processorFeatures;
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
@@ -450,6 +448,12 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      */
     private Endpoint listenerEndpoint;
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     */
+    private Integer maxAllocatedStorage;
 
     /**
      * <p>
@@ -656,9 +660,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -679,9 +681,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBName
-     *        The meaning of this parameter differs according to the database engine you use. For example, this value
-     *        returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
-     *        since Read Replicas are only supported for these engines.</p>
+     *        The meaning of this parameter differs according to the database engine you use.</p>
      *        <p>
      *        <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *        </p>
@@ -706,9 +706,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -728,9 +726,7 @@ public class DBInstance implements Serializable, Cloneable {
      * apply to an Oracle DB instance.
      * </p>
      * 
-     * @return The meaning of this parameter differs according to the database engine you use. For example, this value
-     *         returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
-     *         since Read Replicas are only supported for these engines.</p>
+     * @return The meaning of this parameter differs according to the database engine you use.</p>
      *         <p>
      *         <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *         </p>
@@ -755,9 +751,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The meaning of this parameter differs according to the database engine you use. For example, this value returns
-     * MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read
-     * Replicas are only supported for these engines.
+     * The meaning of this parameter differs according to the database engine you use.
      * </p>
      * <p>
      * <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
@@ -778,9 +772,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBName
-     *        The meaning of this parameter differs according to the database engine you use. For example, this value
-     *        returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica
-     *        since Read Replicas are only supported for these engines.</p>
+     *        The meaning of this parameter differs according to the database engine you use.</p>
      *        <p>
      *        <b>MySQL, MariaDB, SQL Server, PostgreSQL</b>
      *        </p>
@@ -1013,11 +1005,11 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
-     * @return Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * @return A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *         <code>DBSecurityGroup.Status</code> subelements.
      */
 
@@ -1030,12 +1022,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     *        A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      */
 
@@ -1050,7 +1042,7 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * <p>
@@ -1060,7 +1052,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     *        A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1077,12 +1069,12 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     * A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      * <code>DBSecurityGroup.Status</code> subelements.
      * </p>
      * 
      * @param dBSecurityGroups
-     *        Provides List of DB security group elements containing only <code>DBSecurityGroup.Name</code> and
+     *        A list of DB security group elements containing <code>DBSecurityGroup.Name</code> and
      *        <code>DBSecurityGroup.Status</code> subelements.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2646,7 +2638,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
-     * instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * </p>
      * 
      * @param copyTagsToSnapshot
@@ -2656,7 +2648,7 @@ public class DBInstance implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
-     *        DB instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     *        DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      */
 
     public void setCopyTagsToSnapshot(Boolean copyTagsToSnapshot) {
@@ -2672,7 +2664,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
-     * instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * </p>
      * 
      * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
@@ -2681,7 +2673,7 @@ public class DBInstance implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
-     *         DB instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     *         DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      */
 
     public Boolean getCopyTagsToSnapshot() {
@@ -2697,7 +2689,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
-     * instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * </p>
      * 
      * @param copyTagsToSnapshot
@@ -2707,7 +2699,7 @@ public class DBInstance implements Serializable, Cloneable {
      *        </p>
      *        <p>
      *        Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
-     *        DB instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     *        DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2725,7 +2717,7 @@ public class DBInstance implements Serializable, Cloneable {
      * </p>
      * <p>
      * Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB
-     * instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     * instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      * </p>
      * 
      * @return Specifies whether tags are copied from the DB instance to snapshots of the DB instance.</p>
@@ -2734,7 +2726,7 @@ public class DBInstance implements Serializable, Cloneable {
      *         </p>
      *         <p>
      *         Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora
-     *         DB instance has no effect on the DB cluster setting. For more information, see <a>DBCluster</a>.
+     *         DB instance has no effect on the DB cluster setting. For more information, see <code>DBCluster</code>.
      */
 
     public Boolean isCopyTagsToSnapshot() {
@@ -3558,15 +3550,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *        value is set to true. For more information, see <a
+     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *        protection is enabled. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *        Instance</a>.
      */
@@ -3577,14 +3569,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
-     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *         value is set to true. For more information, see <a
+     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *         protection is enabled. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *         Instance</a>.
      */
@@ -3595,15 +3587,15 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
      * @param deletionProtection
-     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *        value is set to true. For more information, see <a
+     *        Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *        protection is enabled. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *        Instance</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -3616,14 +3608,14 @@ public class DBInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this value is
-     * set to true. For more information, see <a
+     * Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     * protection is enabled. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
      * 
-     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when this
-     *         value is set to true. For more information, see <a
+     * @return Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion
+     *         protection is enabled. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      *         Instance</a>.
      */
@@ -3742,6 +3734,46 @@ public class DBInstance implements Serializable, Cloneable {
 
     public DBInstance withListenerEndpoint(Endpoint listenerEndpoint) {
         setListenerEndpoint(listenerEndpoint);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     * 
+     * @param maxAllocatedStorage
+     *        The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     */
+
+    public void setMaxAllocatedStorage(Integer maxAllocatedStorage) {
+        this.maxAllocatedStorage = maxAllocatedStorage;
+    }
+
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     * 
+     * @return The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     */
+
+    public Integer getMaxAllocatedStorage() {
+        return this.maxAllocatedStorage;
+    }
+
+    /**
+     * <p>
+     * The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * </p>
+     * 
+     * @param maxAllocatedStorage
+     *        The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DBInstance withMaxAllocatedStorage(Integer maxAllocatedStorage) {
+        setMaxAllocatedStorage(maxAllocatedStorage);
         return this;
     }
 
@@ -3870,7 +3902,9 @@ public class DBInstance implements Serializable, Cloneable {
         if (getAssociatedRoles() != null)
             sb.append("AssociatedRoles: ").append(getAssociatedRoles()).append(",");
         if (getListenerEndpoint() != null)
-            sb.append("ListenerEndpoint: ").append(getListenerEndpoint());
+            sb.append("ListenerEndpoint: ").append(getListenerEndpoint()).append(",");
+        if (getMaxAllocatedStorage() != null)
+            sb.append("MaxAllocatedStorage: ").append(getMaxAllocatedStorage());
         sb.append("}");
         return sb.toString();
     }
@@ -4119,6 +4153,10 @@ public class DBInstance implements Serializable, Cloneable {
             return false;
         if (other.getListenerEndpoint() != null && other.getListenerEndpoint().equals(this.getListenerEndpoint()) == false)
             return false;
+        if (other.getMaxAllocatedStorage() == null ^ this.getMaxAllocatedStorage() == null)
+            return false;
+        if (other.getMaxAllocatedStorage() != null && other.getMaxAllocatedStorage().equals(this.getMaxAllocatedStorage()) == false)
+            return false;
         return true;
     }
 
@@ -4184,6 +4222,7 @@ public class DBInstance implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
         hashCode = prime * hashCode + ((getAssociatedRoles() == null) ? 0 : getAssociatedRoles().hashCode());
         hashCode = prime * hashCode + ((getListenerEndpoint() == null) ? 0 : getListenerEndpoint().hashCode());
+        hashCode = prime * hashCode + ((getMaxAllocatedStorage() == null) ? 0 : getMaxAllocatedStorage().hashCode());
         return hashCode;
     }
 

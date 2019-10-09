@@ -28,7 +28,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * The name of the SSM document that contains the configuration information for the instance. You can specify
-     * Command, Policy, or Automation documents.
+     * Command or Automation documents.
      * </p>
      * <p>
      * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
@@ -63,17 +63,27 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The instance ID.
      * </p>
+     * <note>
+     * <p>
+     * <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     * <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the parameters
+     * <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>, <code>MaxConcurrency</code>,
+     * <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use these parameters, you must use the
+     * <code>Targets</code> parameter.
+     * </p>
+     * </note>
      */
     private String instanceId;
     /**
      * <p>
-     * The parameters for the documents runtime configuration.
+     * The parameters for the runtime configuration of the document.
      * </p>
      */
     private java.util.Map<String, java.util.List<String>> parameters;
     /**
      * <p>
-     * The targets (either instances or tags) for the association.
+     * The targets (either instances or tags) for the association. You must specify a value for <code>Targets</code> if
+     * you don't specify a value for <code>InstanceId</code>.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<Target> targets;
@@ -125,7 +135,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -141,7 +151,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * The name of the SSM document that contains the configuration information for the instance. You can specify
-     * Command, Policy, or Automation documents.
+     * Command or Automation documents.
      * </p>
      * <p>
      * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
@@ -167,7 +177,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * 
      * @param name
      *        The name of the SSM document that contains the configuration information for the instance. You can specify
-     *        Command, Policy, or Automation documents.</p>
+     *        Command or Automation documents.</p>
      *        <p>
      *        You can specify AWS-predefined documents, documents you created, or a document that is shared with you
      *        from another account.
@@ -197,7 +207,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * The name of the SSM document that contains the configuration information for the instance. You can specify
-     * Command, Policy, or Automation documents.
+     * Command or Automation documents.
      * </p>
      * <p>
      * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
@@ -222,7 +232,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * 
      * @return The name of the SSM document that contains the configuration information for the instance. You can
-     *         specify Command, Policy, or Automation documents.</p>
+     *         specify Command or Automation documents.</p>
      *         <p>
      *         You can specify AWS-predefined documents, documents you created, or a document that is shared with you
      *         from another account.
@@ -252,7 +262,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
     /**
      * <p>
      * The name of the SSM document that contains the configuration information for the instance. You can specify
-     * Command, Policy, or Automation documents.
+     * Command or Automation documents.
      * </p>
      * <p>
      * You can specify AWS-predefined documents, documents you created, or a document that is shared with you from
@@ -278,7 +288,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * 
      * @param name
      *        The name of the SSM document that contains the configuration information for the instance. You can specify
-     *        Command, Policy, or Automation documents.</p>
+     *        Command or Automation documents.</p>
      *        <p>
      *        You can specify AWS-predefined documents, documents you created, or a document that is shared with you
      *        from another account.
@@ -354,9 +364,25 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The instance ID.
      * </p>
+     * <note>
+     * <p>
+     * <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     * <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the parameters
+     * <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>, <code>MaxConcurrency</code>,
+     * <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use these parameters, you must use the
+     * <code>Targets</code> parameter.
+     * </p>
+     * </note>
      * 
      * @param instanceId
-     *        The instance ID.
+     *        The instance ID.</p> <note>
+     *        <p>
+     *        <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     *        <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the
+     *        parameters <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>,
+     *        <code>MaxConcurrency</code>, <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use these
+     *        parameters, you must use the <code>Targets</code> parameter.
+     *        </p>
      */
 
     public void setInstanceId(String instanceId) {
@@ -367,8 +393,24 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The instance ID.
      * </p>
+     * <note>
+     * <p>
+     * <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     * <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the parameters
+     * <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>, <code>MaxConcurrency</code>,
+     * <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use these parameters, you must use the
+     * <code>Targets</code> parameter.
+     * </p>
+     * </note>
      * 
-     * @return The instance ID.
+     * @return The instance ID.</p> <note>
+     *         <p>
+     *         <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     *         <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the
+     *         parameters <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>,
+     *         <code>MaxConcurrency</code>, <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use
+     *         these parameters, you must use the <code>Targets</code> parameter.
+     *         </p>
      */
 
     public String getInstanceId() {
@@ -379,9 +421,25 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * <p>
      * The instance ID.
      * </p>
+     * <note>
+     * <p>
+     * <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     * <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the parameters
+     * <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>, <code>MaxConcurrency</code>,
+     * <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use these parameters, you must use the
+     * <code>Targets</code> parameter.
+     * </p>
+     * </note>
      * 
      * @param instanceId
-     *        The instance ID.
+     *        The instance ID.</p> <note>
+     *        <p>
+     *        <code>InstanceId</code> has been deprecated. To specify an instance ID for an association, use the
+     *        <code>Targets</code> parameter. If you use the parameter <code>InstanceId</code>, you cannot use the
+     *        parameters <code>AssociationName</code>, <code>DocumentVersion</code>, <code>MaxErrors</code>,
+     *        <code>MaxConcurrency</code>, <code>OutputLocation</code>, or <code>ScheduleExpression</code>. To use these
+     *        parameters, you must use the <code>Targets</code> parameter.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -392,10 +450,10 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The parameters for the documents runtime configuration.
+     * The parameters for the runtime configuration of the document.
      * </p>
      * 
-     * @return The parameters for the documents runtime configuration.
+     * @return The parameters for the runtime configuration of the document.
      */
 
     public java.util.Map<String, java.util.List<String>> getParameters() {
@@ -404,11 +462,11 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The parameters for the documents runtime configuration.
+     * The parameters for the runtime configuration of the document.
      * </p>
      * 
      * @param parameters
-     *        The parameters for the documents runtime configuration.
+     *        The parameters for the runtime configuration of the document.
      */
 
     public void setParameters(java.util.Map<String, java.util.List<String>> parameters) {
@@ -417,11 +475,11 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The parameters for the documents runtime configuration.
+     * The parameters for the runtime configuration of the document.
      * </p>
      * 
      * @param parameters
-     *        The parameters for the documents runtime configuration.
+     *        The parameters for the runtime configuration of the document.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -453,10 +511,12 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The targets (either instances or tags) for the association.
+     * The targets (either instances or tags) for the association. You must specify a value for <code>Targets</code> if
+     * you don't specify a value for <code>InstanceId</code>.
      * </p>
      * 
-     * @return The targets (either instances or tags) for the association.
+     * @return The targets (either instances or tags) for the association. You must specify a value for
+     *         <code>Targets</code> if you don't specify a value for <code>InstanceId</code>.
      */
 
     public java.util.List<Target> getTargets() {
@@ -468,11 +528,13 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The targets (either instances or tags) for the association.
+     * The targets (either instances or tags) for the association. You must specify a value for <code>Targets</code> if
+     * you don't specify a value for <code>InstanceId</code>.
      * </p>
      * 
      * @param targets
-     *        The targets (either instances or tags) for the association.
+     *        The targets (either instances or tags) for the association. You must specify a value for
+     *        <code>Targets</code> if you don't specify a value for <code>InstanceId</code>.
      */
 
     public void setTargets(java.util.Collection<Target> targets) {
@@ -486,7 +548,8 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The targets (either instances or tags) for the association.
+     * The targets (either instances or tags) for the association. You must specify a value for <code>Targets</code> if
+     * you don't specify a value for <code>InstanceId</code>.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -495,7 +558,8 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * </p>
      * 
      * @param targets
-     *        The targets (either instances or tags) for the association.
+     *        The targets (either instances or tags) for the association. You must specify a value for
+     *        <code>Targets</code> if you don't specify a value for <code>InstanceId</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -511,11 +575,13 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
 
     /**
      * <p>
-     * The targets (either instances or tags) for the association.
+     * The targets (either instances or tags) for the association. You must specify a value for <code>Targets</code> if
+     * you don't specify a value for <code>InstanceId</code>.
      * </p>
      * 
      * @param targets
-     *        The targets (either instances or tags) for the association.
+     *        The targets (either instances or tags) for the association. You must specify a value for
+     *        <code>Targets</code> if you don't specify a value for <code>InstanceId</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -794,7 +860,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -804,7 +870,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      *        for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which means
      *        all targets run the association at the same time.</p>
      *        <p>
-     *        If a new instance starts and attempts to execute an association while Systems Manager is executing
+     *        If a new instance starts and attempts to run an association while Systems Manager is running
      *        MaxConcurrency associations, the association is allowed to run. During the next association interval, the
      *        new instance will process its association within the limit specified for MaxConcurrency.
      */
@@ -820,7 +886,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -829,7 +895,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      *         for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which
      *         means all targets run the association at the same time.</p>
      *         <p>
-     *         If a new instance starts and attempts to execute an association while Systems Manager is executing
+     *         If a new instance starts and attempts to run an association while Systems Manager is running
      *         MaxConcurrency associations, the association is allowed to run. During the next association interval, the
      *         new instance will process its association within the limit specified for MaxConcurrency.
      */
@@ -845,7 +911,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      * targets run the association at the same time.
      * </p>
      * <p>
-     * If a new instance starts and attempts to execute an association while Systems Manager is executing MaxConcurrency
+     * If a new instance starts and attempts to run an association while Systems Manager is running MaxConcurrency
      * associations, the association is allowed to run. During the next association interval, the new instance will
      * process its association within the limit specified for MaxConcurrency.
      * </p>
@@ -855,7 +921,7 @@ public class CreateAssociationRequest extends com.amazonaws.AmazonWebServiceRequ
      *        for example 10, or a percentage of the target set, for example 10%. The default value is 100%, which means
      *        all targets run the association at the same time.</p>
      *        <p>
-     *        If a new instance starts and attempts to execute an association while Systems Manager is executing
+     *        If a new instance starts and attempts to run an association while Systems Manager is running
      *        MaxConcurrency associations, the association is allowed to run. During the next association interval, the
      *        new instance will process its association within the limit specified for MaxConcurrency.
      * @return Returns a reference to this object so that method calls can be chained together.

@@ -34,9 +34,11 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
     private String taskArn;
     /**
      * <p>
-     * The status of the task that was described. For detailed information about sync statuses, see <a
-     * href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html">Understanding
-     * Sync Task Statuses</a>.
+     * The status of the task that was described.
+     * </p>
+     * <p>
+     * For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS DataSync
+     * User Guide.</i>
      * </p>
      */
     private String status;
@@ -67,12 +69,27 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events in the
-     * task. For more information on these groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     * task.
+     * </p>
+     * <p>
+     * For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon CloudWatch
+     * User Guide</i>.
      * </p>
      */
     private String cloudWatchLogGroupArn;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your subnet.
+     * </p>
+     */
+    private java.util.List<String> sourceNetworkInterfaceArns;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for your
+     * subnet.
+     * </p>
+     */
+    private java.util.List<String> destinationNetworkInterfaceArns;
     /**
      * <p>
      * The set of configuration options that control the behavior of a single execution of the task that occurs when you
@@ -85,6 +102,16 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
      * </p>
      */
     private Options options;
+    /**
+     * <p>
+     * A list of filter rules that determines which files to exclude from a task. The list should contain a single
+     * filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for
+     * example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     */
+    private java.util.List<FilterRule> excludes;
     /**
      * <p>
      * Errors that AWS DataSync encountered during execution of the task. You can use this error code to help
@@ -148,15 +175,18 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The status of the task that was described. For detailed information about sync statuses, see <a
-     * href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html">Understanding
-     * Sync Task Statuses</a>.
+     * The status of the task that was described.
+     * </p>
+     * <p>
+     * For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS DataSync
+     * User Guide.</i>
      * </p>
      * 
      * @param status
-     *        The status of the task that was described. For detailed information about sync statuses, see <a
-     *        href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html"
-     *        >Understanding Sync Task Statuses</a>.
+     *        The status of the task that was described.</p>
+     *        <p>
+     *        For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS
+     *        DataSync User Guide.</i>
      * @see TaskStatus
      */
 
@@ -166,14 +196,17 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The status of the task that was described. For detailed information about sync statuses, see <a
-     * href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html">Understanding
-     * Sync Task Statuses</a>.
+     * The status of the task that was described.
+     * </p>
+     * <p>
+     * For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS DataSync
+     * User Guide.</i>
      * </p>
      * 
-     * @return The status of the task that was described. For detailed information about sync statuses, see <a
-     *         href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html"
-     *         >Understanding Sync Task Statuses</a>.
+     * @return The status of the task that was described.</p>
+     *         <p>
+     *         For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS
+     *         DataSync User Guide.</i>
      * @see TaskStatus
      */
 
@@ -183,15 +216,18 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The status of the task that was described. For detailed information about sync statuses, see <a
-     * href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html">Understanding
-     * Sync Task Statuses</a>.
+     * The status of the task that was described.
+     * </p>
+     * <p>
+     * For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS DataSync
+     * User Guide.</i>
      * </p>
      * 
      * @param status
-     *        The status of the task that was described. For detailed information about sync statuses, see <a
-     *        href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html"
-     *        >Understanding Sync Task Statuses</a>.
+     *        The status of the task that was described.</p>
+     *        <p>
+     *        For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS
+     *        DataSync User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TaskStatus
      */
@@ -203,15 +239,18 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
 
     /**
      * <p>
-     * The status of the task that was described. For detailed information about sync statuses, see <a
-     * href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html">Understanding
-     * Sync Task Statuses</a>.
+     * The status of the task that was described.
+     * </p>
+     * <p>
+     * For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS DataSync
+     * User Guide.</i>
      * </p>
      * 
      * @param status
-     *        The status of the task that was described. For detailed information about sync statuses, see <a
-     *        href="https://docs.aws.amazon.com/sync-service/latest/userguide/understand-sync-task-statuses.html"
-     *        >Understanding Sync Task Statuses</a>.
+     *        The status of the task that was described.</p>
+     *        <p>
+     *        For detailed information about task execution statuses, see Understanding Task Statuses in the <i>AWS
+     *        DataSync User Guide.</i>
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TaskStatus
      */
@@ -384,16 +423,19 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events in the
-     * task. For more information on these groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     * task.
+     * </p>
+     * <p>
+     * For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon CloudWatch
+     * User Guide</i>.
      * </p>
      * 
      * @param cloudWatchLogGroupArn
      *        The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events
-     *        in the task. For more information on these groups, see <a
-     *        href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
-     *        >Working with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     *        in the task.</p>
+     *        <p>
+     *        For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon
+     *        CloudWatch User Guide</i>.
      */
 
     public void setCloudWatchLogGroupArn(String cloudWatchLogGroupArn) {
@@ -403,15 +445,18 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events in the
-     * task. For more information on these groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     * task.
+     * </p>
+     * <p>
+     * For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon CloudWatch
+     * User Guide</i>.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events
-     *         in the task. For more information on these groups, see <a href=
-     *         "https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
-     *         >Working with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     *         in the task.</p>
+     *         <p>
+     *         For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon
+     *         CloudWatch User Guide</i>.
      */
 
     public String getCloudWatchLogGroupArn() {
@@ -421,21 +466,176 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
     /**
      * <p>
      * The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events in the
-     * task. For more information on these groups, see <a
-     * href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html">Working
-     * with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     * task.
+     * </p>
+     * <p>
+     * For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon CloudWatch
+     * User Guide</i>.
      * </p>
      * 
      * @param cloudWatchLogGroupArn
      *        The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that was used to monitor and log events
-     *        in the task. For more information on these groups, see <a
-     *        href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html"
-     *        >Working with Log Groups and Log Streams</a> in the <i>Amazon CloudWatch User Guide.</i>
+     *        in the task.</p>
+     *        <p>
+     *        For more information on these groups, see Working with Log Groups and Log Streams in the <i>Amazon
+     *        CloudWatch User Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public DescribeTaskResult withCloudWatchLogGroupArn(String cloudWatchLogGroupArn) {
         setCloudWatchLogGroupArn(cloudWatchLogGroupArn);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your subnet.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your
+     *         subnet.
+     */
+
+    public java.util.List<String> getSourceNetworkInterfaceArns() {
+        return sourceNetworkInterfaceArns;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your subnet.
+     * </p>
+     * 
+     * @param sourceNetworkInterfaceArns
+     *        The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your
+     *        subnet.
+     */
+
+    public void setSourceNetworkInterfaceArns(java.util.Collection<String> sourceNetworkInterfaceArns) {
+        if (sourceNetworkInterfaceArns == null) {
+            this.sourceNetworkInterfaceArns = null;
+            return;
+        }
+
+        this.sourceNetworkInterfaceArns = new java.util.ArrayList<String>(sourceNetworkInterfaceArns);
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your subnet.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSourceNetworkInterfaceArns(java.util.Collection)} or
+     * {@link #withSourceNetworkInterfaceArns(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param sourceNetworkInterfaceArns
+     *        The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your
+     *        subnet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTaskResult withSourceNetworkInterfaceArns(String... sourceNetworkInterfaceArns) {
+        if (this.sourceNetworkInterfaceArns == null) {
+            setSourceNetworkInterfaceArns(new java.util.ArrayList<String>(sourceNetworkInterfaceArns.length));
+        }
+        for (String ele : sourceNetworkInterfaceArns) {
+            this.sourceNetworkInterfaceArns.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your subnet.
+     * </p>
+     * 
+     * @param sourceNetworkInterfaceArns
+     *        The Amazon Resource Name (ARN) of the source ENIs (Elastic Network Interface) that was created for your
+     *        subnet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTaskResult withSourceNetworkInterfaceArns(java.util.Collection<String> sourceNetworkInterfaceArns) {
+        setSourceNetworkInterfaceArns(sourceNetworkInterfaceArns);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for your
+     * subnet.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for
+     *         your subnet.
+     */
+
+    public java.util.List<String> getDestinationNetworkInterfaceArns() {
+        return destinationNetworkInterfaceArns;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for your
+     * subnet.
+     * </p>
+     * 
+     * @param destinationNetworkInterfaceArns
+     *        The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for
+     *        your subnet.
+     */
+
+    public void setDestinationNetworkInterfaceArns(java.util.Collection<String> destinationNetworkInterfaceArns) {
+        if (destinationNetworkInterfaceArns == null) {
+            this.destinationNetworkInterfaceArns = null;
+            return;
+        }
+
+        this.destinationNetworkInterfaceArns = new java.util.ArrayList<String>(destinationNetworkInterfaceArns);
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for your
+     * subnet.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setDestinationNetworkInterfaceArns(java.util.Collection)} or
+     * {@link #withDestinationNetworkInterfaceArns(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param destinationNetworkInterfaceArns
+     *        The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for
+     *        your subnet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTaskResult withDestinationNetworkInterfaceArns(String... destinationNetworkInterfaceArns) {
+        if (this.destinationNetworkInterfaceArns == null) {
+            setDestinationNetworkInterfaceArns(new java.util.ArrayList<String>(destinationNetworkInterfaceArns.length));
+        }
+        for (String ele : destinationNetworkInterfaceArns) {
+            this.destinationNetworkInterfaceArns.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for your
+     * subnet.
+     * </p>
+     * 
+     * @param destinationNetworkInterfaceArns
+     *        The Amazon Resource Name (ARN) of the destination ENIs (Elastic Network Interface) that was created for
+     *        your subnet.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTaskResult withDestinationNetworkInterfaceArns(java.util.Collection<String> destinationNetworkInterfaceArns) {
+        setDestinationNetworkInterfaceArns(destinationNetworkInterfaceArns);
         return this;
     }
 
@@ -509,6 +709,104 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
 
     public DescribeTaskResult withOptions(Options options) {
         setOptions(options);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to exclude from a task. The list should contain a single
+     * filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for
+     * example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * 
+     * @return A list of filter rules that determines which files to exclude from a task. The list should contain a
+     *         single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that
+     *         is, a pipe), for example: <code>"/folder1|/folder2"</code> </p>
+     *         <p>
+     */
+
+    public java.util.List<FilterRule> getExcludes() {
+        return excludes;
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to exclude from a task. The list should contain a single
+     * filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for
+     * example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * 
+     * @param excludes
+     *        A list of filter rules that determines which files to exclude from a task. The list should contain a
+     *        single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is,
+     *        a pipe), for example: <code>"/folder1|/folder2"</code> </p>
+     *        <p>
+     */
+
+    public void setExcludes(java.util.Collection<FilterRule> excludes) {
+        if (excludes == null) {
+            this.excludes = null;
+            return;
+        }
+
+        this.excludes = new java.util.ArrayList<FilterRule>(excludes);
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to exclude from a task. The list should contain a single
+     * filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for
+     * example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setExcludes(java.util.Collection)} or {@link #withExcludes(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param excludes
+     *        A list of filter rules that determines which files to exclude from a task. The list should contain a
+     *        single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is,
+     *        a pipe), for example: <code>"/folder1|/folder2"</code> </p>
+     *        <p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTaskResult withExcludes(FilterRule... excludes) {
+        if (this.excludes == null) {
+            setExcludes(new java.util.ArrayList<FilterRule>(excludes.length));
+        }
+        for (FilterRule ele : excludes) {
+            this.excludes.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * A list of filter rules that determines which files to exclude from a task. The list should contain a single
+     * filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for
+     * example: <code>"/folder1|/folder2"</code>
+     * </p>
+     * <p>
+     * </p>
+     * 
+     * @param excludes
+     *        A list of filter rules that determines which files to exclude from a task. The list should contain a
+     *        single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is,
+     *        a pipe), for example: <code>"/folder1|/folder2"</code> </p>
+     *        <p>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeTaskResult withExcludes(java.util.Collection<FilterRule> excludes) {
+        setExcludes(excludes);
         return this;
     }
 
@@ -670,8 +968,14 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
             sb.append("DestinationLocationArn: ").append(getDestinationLocationArn()).append(",");
         if (getCloudWatchLogGroupArn() != null)
             sb.append("CloudWatchLogGroupArn: ").append(getCloudWatchLogGroupArn()).append(",");
+        if (getSourceNetworkInterfaceArns() != null)
+            sb.append("SourceNetworkInterfaceArns: ").append(getSourceNetworkInterfaceArns()).append(",");
+        if (getDestinationNetworkInterfaceArns() != null)
+            sb.append("DestinationNetworkInterfaceArns: ").append(getDestinationNetworkInterfaceArns()).append(",");
         if (getOptions() != null)
             sb.append("Options: ").append(getOptions()).append(",");
+        if (getExcludes() != null)
+            sb.append("Excludes: ").append(getExcludes()).append(",");
         if (getErrorCode() != null)
             sb.append("ErrorCode: ").append(getErrorCode()).append(",");
         if (getErrorDetail() != null)
@@ -720,9 +1024,22 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
             return false;
         if (other.getCloudWatchLogGroupArn() != null && other.getCloudWatchLogGroupArn().equals(this.getCloudWatchLogGroupArn()) == false)
             return false;
+        if (other.getSourceNetworkInterfaceArns() == null ^ this.getSourceNetworkInterfaceArns() == null)
+            return false;
+        if (other.getSourceNetworkInterfaceArns() != null && other.getSourceNetworkInterfaceArns().equals(this.getSourceNetworkInterfaceArns()) == false)
+            return false;
+        if (other.getDestinationNetworkInterfaceArns() == null ^ this.getDestinationNetworkInterfaceArns() == null)
+            return false;
+        if (other.getDestinationNetworkInterfaceArns() != null
+                && other.getDestinationNetworkInterfaceArns().equals(this.getDestinationNetworkInterfaceArns()) == false)
+            return false;
         if (other.getOptions() == null ^ this.getOptions() == null)
             return false;
         if (other.getOptions() != null && other.getOptions().equals(this.getOptions()) == false)
+            return false;
+        if (other.getExcludes() == null ^ this.getExcludes() == null)
+            return false;
+        if (other.getExcludes() != null && other.getExcludes().equals(this.getExcludes()) == false)
             return false;
         if (other.getErrorCode() == null ^ this.getErrorCode() == null)
             return false;
@@ -751,7 +1068,10 @@ public class DescribeTaskResult extends com.amazonaws.AmazonWebServiceResult<com
         hashCode = prime * hashCode + ((getSourceLocationArn() == null) ? 0 : getSourceLocationArn().hashCode());
         hashCode = prime * hashCode + ((getDestinationLocationArn() == null) ? 0 : getDestinationLocationArn().hashCode());
         hashCode = prime * hashCode + ((getCloudWatchLogGroupArn() == null) ? 0 : getCloudWatchLogGroupArn().hashCode());
+        hashCode = prime * hashCode + ((getSourceNetworkInterfaceArns() == null) ? 0 : getSourceNetworkInterfaceArns().hashCode());
+        hashCode = prime * hashCode + ((getDestinationNetworkInterfaceArns() == null) ? 0 : getDestinationNetworkInterfaceArns().hashCode());
         hashCode = prime * hashCode + ((getOptions() == null) ? 0 : getOptions().hashCode());
+        hashCode = prime * hashCode + ((getExcludes() == null) ? 0 : getExcludes().hashCode());
         hashCode = prime * hashCode + ((getErrorCode() == null) ? 0 : getErrorCode().hashCode());
         hashCode = prime * hashCode + ((getErrorDetail() == null) ? 0 : getErrorDetail().hashCode());
         hashCode = prime * hashCode + ((getCreationTime() == null) ? 0 : getCreationTime().hashCode());

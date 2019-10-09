@@ -60,14 +60,14 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The last known status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      */
     private String lastStatus;
     /**
      * <p>
      * The desired status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      */
     private String desiredStatus;
@@ -181,7 +181,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
@@ -307,11 +307,60 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a key and
-     * an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and
-     * tag values can have a maximum length of 256 characters.
+     * an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      */
     private com.amazonaws.internal.SdkInternalList<Tag> tags;
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<InferenceAccelerator> inferenceAccelerators;
 
     /**
      * <p>
@@ -516,13 +565,12 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The last known status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      * 
      * @param lastStatus
      *        The last known status of the task. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task
-     *        Lifecycle</a>.
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      */
 
     public void setLastStatus(String lastStatus) {
@@ -532,11 +580,11 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The last known status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      * 
      * @return The last known status of the task. For more information, see <a
-     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task
      *         Lifecycle</a>.
      */
 
@@ -547,13 +595,12 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The last known status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      * 
      * @param lastStatus
      *        The last known status of the task. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task
-     *        Lifecycle</a>.
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -565,13 +612,12 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The desired status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      * 
      * @param desiredStatus
      *        The desired status of the task. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task
-     *        Lifecycle</a>.
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      */
 
     public void setDesiredStatus(String desiredStatus) {
@@ -581,11 +627,11 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The desired status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      * 
      * @return The desired status of the task. For more information, see <a
-     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task
+     *         href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task
      *         Lifecycle</a>.
      */
 
@@ -596,13 +642,12 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The desired status of the task. For more information, see <a
-     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task Lifecycle</a>.
+     * href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * </p>
      * 
      * @param desiredStatus
      *        The desired status of the task. For more information, see <a
-     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_life_cycle.html">Task
-     *        Lifecycle</a>.
+     *        href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-lifecycle.html">Task Lifecycle</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1297,7 +1342,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
@@ -1305,7 +1350,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * @param version
      *        The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event,
      *        the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch
-     *        Events, you can compare the version of a task reported by the Amazon ECS API actionss with the version
+     *        Events, you can compare the version of a task reported by the Amazon ECS API actions with the version
      *        reported in CloudWatch Events for the task (inside the <code>detail</code> object) to verify that the
      *        version in your event stream is current.
      */
@@ -1318,14 +1363,14 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
      * 
      * @return The version counter for the task. Every time a task experiences a change that triggers a CloudWatch
      *         event, the version counter is incremented. If you are replicating your Amazon ECS task state with
-     *         CloudWatch Events, you can compare the version of a task reported by the Amazon ECS API actionss with the
+     *         CloudWatch Events, you can compare the version of a task reported by the Amazon ECS API actions with the
      *         version reported in CloudWatch Events for the task (inside the <code>detail</code> object) to verify that
      *         the version in your event stream is current.
      */
@@ -1338,7 +1383,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * <p>
      * The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event, the
      * version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch Events, you can
-     * compare the version of a task reported by the Amazon ECS API actionss with the version reported in CloudWatch
+     * compare the version of a task reported by the Amazon ECS API actions with the version reported in CloudWatch
      * Events for the task (inside the <code>detail</code> object) to verify that the version in your event stream is
      * current.
      * </p>
@@ -1346,7 +1391,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * @param version
      *        The version counter for the task. Every time a task experiences a change that triggers a CloudWatch event,
      *        the version counter is incremented. If you are replicating your Amazon ECS task state with CloudWatch
-     *        Events, you can compare the version of a task reported by the Amazon ECS API actionss with the version
+     *        Events, you can compare the version of a task reported by the Amazon ECS API actions with the version
      *        reported in CloudWatch Events for the task (inside the <code>detail</code> object) to verify that the
      *        version in your event stream is current.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2263,13 +2308,98 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a key and
-     * an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and
-     * tag values can have a maximum length of 256 characters.
+     * an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @return The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a
-     *         key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *         characters, and tag values can have a maximum length of 256 characters.
+     *         key and an optional value, both of which you define.</p>
+     *         <p>
+     *         The following basic restrictions apply to tags:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Maximum number of tags per resource - 50
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For each resource, each tag key must be unique, and each tag key can have only one value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum key length - 128 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Maximum value length - 256 Unicode characters in UTF-8
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If your tagging schema is used across multiple services and resources, remember that other services may
+     *         have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *         representable in UTF-8, and the following characters: + - = . _ : / @.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Tag keys and values are case-sensitive.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a
+     *         prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or
+     *         values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *         </p>
+     *         </li>
      */
 
     public java.util.List<Tag> getTags() {
@@ -2282,14 +2412,99 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a key and
-     * an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and
-     * tag values can have a maximum length of 256 characters.
+     * an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a
-     *        key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *        characters, and tag values can have a maximum length of 256 characters.
+     *        key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      */
 
     public void setTags(java.util.Collection<Tag> tags) {
@@ -2304,9 +2519,52 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a key and
-     * an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and
-     * tag values can have a maximum length of 256 characters.
+     * an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setTags(java.util.Collection)} or {@link #withTags(java.util.Collection)} if you want to override the
@@ -2315,8 +2573,50 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
      * 
      * @param tags
      *        The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a
-     *        key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *        characters, and tag values can have a maximum length of 256 characters.
+     *        key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2333,19 +2633,177 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
     /**
      * <p>
      * The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a key and
-     * an optional value, both of which you define. Tag keys can have a maximum character length of 128 characters, and
-     * tag values can have a maximum length of 256 characters.
+     * an optional value, both of which you define.
      * </p>
+     * <p>
+     * The following basic restrictions apply to tags:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Maximum number of tags per resource - 50
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For each resource, each tag key must be unique, and each tag key can have only one value.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum key length - 128 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Maximum value length - 256 Unicode characters in UTF-8
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If your tagging schema is used across multiple services and resources, remember that other services may have
+     * restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable
+     * in UTF-8, and the following characters: + - = . _ : / @.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Tag keys and values are case-sensitive.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix for
+     * either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this
+     * prefix. Tags with this prefix do not count against your tags per resource limit.
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param tags
      *        The metadata that you apply to the task to help you categorize and organize them. Each tag consists of a
-     *        key and an optional value, both of which you define. Tag keys can have a maximum character length of 128
-     *        characters, and tag values can have a maximum length of 256 characters.
+     *        key and an optional value, both of which you define.</p>
+     *        <p>
+     *        The following basic restrictions apply to tags:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Maximum number of tags per resource - 50
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For each resource, each tag key must be unique, and each tag key can have only one value.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum key length - 128 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Maximum value length - 256 Unicode characters in UTF-8
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If your tagging schema is used across multiple services and resources, remember that other services may
+     *        have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces
+     *        representable in UTF-8, and the following characters: + - = . _ : / @.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Tag keys and values are case-sensitive.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Do not use <code>aws:</code>, <code>AWS:</code>, or any upper or lowercase combination of such as a prefix
+     *        for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with
+     *        this prefix. Tags with this prefix do not count against your tags per resource limit.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public Task withTags(java.util.Collection<Tag> tags) {
         setTags(tags);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * 
+     * @return The Elastic Inference accelerator associated with the task.
+     */
+
+    public java.util.List<InferenceAccelerator> getInferenceAccelerators() {
+        if (inferenceAccelerators == null) {
+            inferenceAccelerators = new com.amazonaws.internal.SdkInternalList<InferenceAccelerator>();
+        }
+        return inferenceAccelerators;
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * 
+     * @param inferenceAccelerators
+     *        The Elastic Inference accelerator associated with the task.
+     */
+
+    public void setInferenceAccelerators(java.util.Collection<InferenceAccelerator> inferenceAccelerators) {
+        if (inferenceAccelerators == null) {
+            this.inferenceAccelerators = null;
+            return;
+        }
+
+        this.inferenceAccelerators = new com.amazonaws.internal.SdkInternalList<InferenceAccelerator>(inferenceAccelerators);
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setInferenceAccelerators(java.util.Collection)} or
+     * {@link #withInferenceAccelerators(java.util.Collection)} if you want to override the existing values.
+     * </p>
+     * 
+     * @param inferenceAccelerators
+     *        The Elastic Inference accelerator associated with the task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Task withInferenceAccelerators(InferenceAccelerator... inferenceAccelerators) {
+        if (this.inferenceAccelerators == null) {
+            setInferenceAccelerators(new com.amazonaws.internal.SdkInternalList<InferenceAccelerator>(inferenceAccelerators.length));
+        }
+        for (InferenceAccelerator ele : inferenceAccelerators) {
+            this.inferenceAccelerators.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The Elastic Inference accelerator associated with the task.
+     * </p>
+     * 
+     * @param inferenceAccelerators
+     *        The Elastic Inference accelerator associated with the task.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Task withInferenceAccelerators(java.util.Collection<InferenceAccelerator> inferenceAccelerators) {
+        setInferenceAccelerators(inferenceAccelerators);
         return this;
     }
 
@@ -2418,7 +2876,9 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
         if (getHealthStatus() != null)
             sb.append("HealthStatus: ").append(getHealthStatus()).append(",");
         if (getTags() != null)
-            sb.append("Tags: ").append(getTags());
+            sb.append("Tags: ").append(getTags()).append(",");
+        if (getInferenceAccelerators() != null)
+            sb.append("InferenceAccelerators: ").append(getInferenceAccelerators());
         sb.append("}");
         return sb.toString();
     }
@@ -2549,6 +3009,10 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
             return false;
+        if (other.getInferenceAccelerators() == null ^ this.getInferenceAccelerators() == null)
+            return false;
+        if (other.getInferenceAccelerators() != null && other.getInferenceAccelerators().equals(this.getInferenceAccelerators()) == false)
+            return false;
         return true;
     }
 
@@ -2586,6 +3050,7 @@ public class Task implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getAttachments() == null) ? 0 : getAttachments().hashCode());
         hashCode = prime * hashCode + ((getHealthStatus() == null) ? 0 : getHealthStatus().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getInferenceAccelerators() == null) ? 0 : getInferenceAccelerators().hashCode());
         return hashCode;
     }
 

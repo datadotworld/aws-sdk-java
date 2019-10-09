@@ -27,10 +27,22 @@ import com.amazonaws.services.securityhub.model.*;
  * </p>
  * <p>
  * <p>
- * AWS Security Hub provides you with a comprehensive view of your security state within AWS and your compliance with
- * the security industry standards and best practices. Security Hub collects security data from across AWS accounts,
- * services, and supported third-party partners and helps you analyze your security trends and identify the highest
- * priority security issues. For more information, see <a href="">AWS Security Hub User Guide</a>.
+ * Security Hub provides you with a comprehensive view of the security state of your AWS environment and resources. It
+ * also provides you with the compliance status of your environment based on CIS AWS Foundations compliance checks.
+ * Security Hub collects security data from AWS accounts, services, and integrated third-party products and helps you
+ * analyze security trends in your environment to identify the highest priority security issues. For more information
+ * about Security Hub, see the <i> <a
+ * href="https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html">AWS Security Hub User
+ * Guide</a> </i>.
+ * </p>
+ * <p>
+ * When you use operations in the Security Hub API, the requests are executed only in the AWS Region that is currently
+ * active or in the specific AWS Region that you specify in your request. Any configuration or settings change that
+ * results from the operation is applied only to that Region. To make the same change in other Regions, execute the same
+ * command for each Region to apply the change to. For example, if your Region is set to <code>us-west-2</code>, when
+ * you use <code>CreateMembers</code> to add a member account to Security Hub, the association of the member account
+ * with the master account is created only in the us-west-2 Region. Security Hub must be enabled for the member account
+ * in the same Region that the invite was sent from.
  * </p>
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
@@ -46,7 +58,9 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Accepts the invitation to be monitored by a master SecurityHub account.
+     * Accepts the invitation to be a member account and be monitored by the Security Hub master account that the
+     * invitation was sent from. When the member account accepts the invitation, permission is granted to the master
+     * account to view findings generated in the member account.
      * </p>
      * 
      * @param acceptInvitationRequest
@@ -54,12 +68,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @sample AWSSecurityHub.AcceptInvitation
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/AcceptInvitation" target="_top">AWS
      *      API Documentation</a>
@@ -68,9 +84,9 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Disables the standards specified by the standards subscription ARNs. In the context of Security Hub, supported
-     * standards (for example, CIS AWS Foundations) are automated and continuous checks that help determine your
-     * compliance status against security industry (including AWS) best practices.
+     * Disables the standards specified by the provided <code>StandardsSubscriptionArns</code>. For more information,
+     * see <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html">Standards
+     * Supported in AWS Security Hub</a>.
      * </p>
      * 
      * @param batchDisableStandardsRequest
@@ -78,7 +94,9 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -90,9 +108,10 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Enables the standards specified by the standards ARNs. In the context of Security Hub, supported standards (for
-     * example, CIS AWS Foundations) are automated and continuous checks that help determine your compliance status
-     * against security industry (including AWS) best practices.
+     * Enables the standards specified by the provided <code>standardsArn</code>. In this release, only CIS AWS
+     * Foundations standards are supported. For more information, see <a
+     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html">Standards Supported in
+     * AWS Security Hub</a>.
      * </p>
      * 
      * @param batchEnableStandardsRequest
@@ -100,7 +119,9 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -112,7 +133,9 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Imports security findings that are generated by the integrated third-party products into Security Hub.
+     * Imports security findings generated from an integrated third-party product into Security Hub. This action is
+     * requested by the integrated product to import its findings into Security Hub. The maximum allowed size for a
+     * finding is 240 Kb. An error is returned for any finding larger than 240 Kb.
      * </p>
      * 
      * @param batchImportFindingsRequest
@@ -120,10 +143,12 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @sample AWSSecurityHub.BatchImportFindings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/BatchImportFindings"
      *      target="_top">AWS API Documentation</a>
@@ -132,8 +157,34 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Creates an insight, which is a consolidation of findings that identifies a security area that requires attention
-     * or intervention.
+     * Creates a custom action target in Security Hub. You can use custom actions on findings and insights in Security
+     * Hub to trigger target actions in Amazon CloudWatch Events.
+     * </p>
+     * 
+     * @param createActionTargetRequest
+     * @return Result of the CreateActionTarget operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
+     * @sample AWSSecurityHub.CreateActionTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/CreateActionTarget" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateActionTargetResult createActionTarget(CreateActionTargetRequest createActionTargetRequest);
+
+    /**
+     * <p>
+     * Creates a custom insight in Security Hub. An insight is a consolidation of findings that relate to a security
+     * issue that requires attention or remediation. Use the <code>GroupByAttribute</code> to group the related findings
+     * in the insight.
      * </p>
      * 
      * @param createInsightRequest
@@ -141,10 +192,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
      * @sample AWSSecurityHub.CreateInsight
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/CreateInsight" target="_top">AWS API
      *      Documentation</a>
@@ -153,8 +208,21 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Creates member Security Hub accounts in the current AWS account (which becomes the master Security Hub account)
-     * that has Security Hub enabled.
+     * Creates a member association in Security Hub between the specified accounts and the account used to make the
+     * request, which is the master account. To successfully create a member, you must use this action from an account
+     * that already has Security Hub enabled. You can use the <a>EnableSecurityHub</a> to enable Security Hub.
+     * </p>
+     * <p>
+     * After you use <code>CreateMembers</code> to create member account associations in Security Hub, you need to use
+     * the <a>InviteMembers</a> action, which invites the accounts to enable Security Hub and become member accounts in
+     * Security Hub. If the invitation is accepted by the account owner, the account becomes a member account in
+     * Security Hub, and a permission policy is added that permits the master account to view the findings generated in
+     * the member account. When Security Hub is enabled in the invited account, findings start being sent to both the
+     * member and master accounts.
+     * </p>
+     * <p>
+     * You can remove the association between the master and member accounts by using the
+     * <a>DisassociateFromMasterAccount</a> or <a>DisassociateMembers</a> operation.
      * </p>
      * 
      * @param createMembersRequest
@@ -162,10 +230,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
      * @sample AWSSecurityHub.CreateMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/CreateMembers" target="_top">AWS API
      *      Documentation</a>
@@ -174,8 +246,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Declines invitations that are sent to this AWS account (invitee) by the AWS accounts (inviters) that are
-     * specified by the account IDs.
+     * Declines invitations to become a member account.
      * </p>
      * 
      * @param declineInvitationsRequest
@@ -183,12 +254,11 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
-     * @throws LimitExceededException
-     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
-     *         The error code describes the limit exceeded.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.DeclineInvitations
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeclineInvitations" target="_top">AWS
      *      API Documentation</a>
@@ -197,7 +267,29 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Deletes an insight that is specified by the insight ARN.
+     * Deletes a custom action target from Security Hub. Deleting a custom action target doesn't affect any findings or
+     * insights that were already sent to Amazon CloudWatch Events using the custom action.
+     * </p>
+     * 
+     * @param deleteActionTargetRequest
+     * @return Result of the DeleteActionTarget operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.DeleteActionTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeleteActionTarget" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteActionTargetResult deleteActionTarget(DeleteActionTargetRequest deleteActionTargetRequest);
+
+    /**
+     * <p>
+     * Deletes the insight specified by the <code>InsightArn</code>.
      * </p>
      * 
      * @param deleteInsightRequest
@@ -205,10 +297,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.DeleteInsight
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeleteInsight" target="_top">AWS API
      *      Documentation</a>
@@ -217,8 +313,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Deletes invitations that are sent to this AWS account (invitee) by the AWS accounts (inviters) that are specified
-     * by their account IDs.
+     * Deletes invitations received by the AWS account to become a member account.
      * </p>
      * 
      * @param deleteInvitationsRequest
@@ -226,12 +321,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @sample AWSSecurityHub.DeleteInvitations
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeleteInvitations" target="_top">AWS
      *      API Documentation</a>
@@ -240,7 +337,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Deletes the Security Hub member accounts that are specified by the account IDs.
+     * Deletes the specified member accounts from Security Hub.
      * </p>
      * 
      * @param deleteMembersRequest
@@ -248,12 +345,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.DeleteMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DeleteMembers" target="_top">AWS API
      *      Documentation</a>
@@ -262,7 +361,77 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Stops you from being able to import findings generated by integrated third-party providers into Security Hub.
+     * Returns a list of the custom action targets in Security Hub in your account.
+     * </p>
+     * 
+     * @param describeActionTargetsRequest
+     * @return Result of the DescribeActionTargets operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.DescribeActionTargets
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DescribeActionTargets"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeActionTargetsResult describeActionTargets(DescribeActionTargetsRequest describeActionTargetsRequest);
+
+    /**
+     * <p>
+     * Returns details about the Hub resource in your account, including the <code>HubArn</code> and the time when you
+     * enabled Security Hub.
+     * </p>
+     * 
+     * @param describeHubRequest
+     * @return Result of the DescribeHub operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.DescribeHub
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DescribeHub" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DescribeHubResult describeHub(DescribeHubRequest describeHubRequest);
+
+    /**
+     * <p>
+     * Returns information about the products available that you can subscribe to and integrate with Security Hub to
+     * consolidate findings.
+     * </p>
+     * 
+     * @param describeProductsRequest
+     * @return Result of the DescribeProducts operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @sample AWSSecurityHub.DescribeProducts
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DescribeProducts" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DescribeProductsResult describeProducts(DescribeProductsRequest describeProductsRequest);
+
+    /**
+     * <p>
+     * Disables the integration of the specified product with Security Hub. Findings from that product are no longer
+     * sent to Security Hub after the integration is disabled.
      * </p>
      * 
      * @param disableImportFindingsForProductRequest
@@ -270,9 +439,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
      * @sample AWSSecurityHub.DisableImportFindingsForProduct
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DisableImportFindingsForProduct"
      *      target="_top">AWS API Documentation</a>
@@ -281,7 +455,15 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Disables the AWS Security Hub Service.
+     * Disables Security Hub in your account only in the current Region. To disable Security Hub in all Regions, you
+     * must submit one request per Region where you have enabled Security Hub. When you disable Security Hub for a
+     * master account, it doesn't disable Security Hub for any associated member accounts.
+     * </p>
+     * <p>
+     * When you disable Security Hub, your existing findings and insights and any Security Hub configuration settings
+     * are deleted after 90 days and can't be recovered. Any standards that were enabled are disabled, and your master
+     * and member account associations are removed. If you want to save your existing findings, you must export them
+     * before you disable Security Hub.
      * </p>
      * 
      * @param disableSecurityHubRequest
@@ -291,6 +473,10 @@ public interface AWSSecurityHub {
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.DisableSecurityHub
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DisableSecurityHub" target="_top">AWS
      *      API Documentation</a>
@@ -299,7 +485,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Disassociates the current Security Hub member account from its master account.
+     * Disassociates the current Security Hub member account from the associated master account.
      * </p>
      * 
      * @param disassociateFromMasterAccountRequest
@@ -307,12 +493,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.DisassociateFromMasterAccount
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DisassociateFromMasterAccount"
      *      target="_top">AWS API Documentation</a>
@@ -321,7 +509,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Disassociates the Security Hub member accounts that are specified by the account IDs from their master account.
+     * Disassociates the specified member accounts from the associated master account.
      * </p>
      * 
      * @param disassociateMembersRequest
@@ -329,12 +517,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.DisassociateMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/DisassociateMembers"
      *      target="_top">AWS API Documentation</a>
@@ -343,7 +533,9 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Enables you to import findings generated by integrated third-party providers into Security Hub.
+     * Enables the integration of a partner product with Security Hub. Integrated products send findings to Security
+     * Hub. When you enable a product integration, a permission policy that grants permission for the product to send
+     * findings to Security Hub is applied.
      * </p>
      * 
      * @param enableImportFindingsForProductRequest
@@ -351,7 +543,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
+     * @throws LimitExceededException
+     *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
+     *         The error code describes the limit exceeded.
      * @sample AWSSecurityHub.EnableImportFindingsForProduct
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/EnableImportFindingsForProduct"
      *      target="_top">AWS API Documentation</a>
@@ -360,7 +559,11 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Enables the AWS Security Hub service.
+     * Enables Security Hub for your account in the current Region or the Region you specify in the request. When you
+     * enable Security Hub, you grant to Security Hub the permissions necessary to gather findings from AWS Config,
+     * Amazon GuardDuty, Amazon Inspector, and Amazon Macie. To learn more, see <a
+     * href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html">Setting Up AWS
+     * Security Hub</a>.
      * </p>
      * 
      * @param enableSecurityHubRequest
@@ -370,6 +573,12 @@ public interface AWSSecurityHub {
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceConflictException
+     *         The resource specified in the request conflicts with an existing resource.
+     * @throws AccessDeniedException
+     *         You don't have permission to perform the action specified in the request.
      * @sample AWSSecurityHub.EnableSecurityHub
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/EnableSecurityHub" target="_top">AWS
      *      API Documentation</a>
@@ -378,7 +587,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Lists and describes enabled standards.
+     * Returns a list of the standards that are currently enabled.
      * </p>
      * 
      * @param getEnabledStandardsRequest
@@ -386,7 +595,9 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
@@ -398,7 +609,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Lists and describes Security Hub-aggregated findings that are specified by filter attributes.
+     * Returns a list of findings that match the specified criteria.
      * </p>
      * 
      * @param getFindingsRequest
@@ -406,12 +617,12 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.GetFindings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetFindings" target="_top">AWS API
      *      Documentation</a>
@@ -420,7 +631,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Lists the results of the Security Hub insight specified by the insight ARN.
+     * Lists the results of the Security Hub insight that the insight ARN specifies.
      * </p>
      * 
      * @param getInsightResultsRequest
@@ -428,10 +639,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.GetInsightResults
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetInsightResults" target="_top">AWS
      *      API Documentation</a>
@@ -440,7 +655,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Lists and describes insights that are specified by insight ARNs.
+     * Lists and describes insights that insight ARNs specify.
      * </p>
      * 
      * @param getInsightsRequest
@@ -448,10 +663,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.GetInsights
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetInsights" target="_top">AWS API
      *      Documentation</a>
@@ -469,12 +688,12 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.GetInvitationsCount
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetInvitationsCount"
      *      target="_top">AWS API Documentation</a>
@@ -491,12 +710,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.GetMasterAccount
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetMasterAccount" target="_top">AWS
      *      API Documentation</a>
@@ -505,7 +726,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Returns the details on the Security Hub member accounts that are specified by the account IDs.
+     * Returns the details on the Security Hub member accounts that the account IDs specify.
      * </p>
      * 
      * @param getMembersRequest
@@ -513,12 +734,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.GetMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/GetMembers" target="_top">AWS API
      *      Documentation</a>
@@ -527,9 +750,10 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Invites other AWS accounts to enable Security Hub and become Security Hub member accounts. When an account
-     * accepts the invitation and becomes a member account, the master account can view Security Hub findings of the
-     * member account.
+     * Invites other AWS accounts to become member accounts for the Security Hub master account that the invitation is
+     * sent from. Before you can use this action to invite a member, you must first create the member account in
+     * Security Hub by using the <a>CreateMembers</a> action. When the account owner accepts the invitation to become a
+     * member account and enables Security Hub, the master account can view the findings generated from member account.
      * </p>
      * 
      * @param inviteMembersRequest
@@ -537,12 +761,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.InviteMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/InviteMembers" target="_top">AWS API
      *      Documentation</a>
@@ -551,7 +777,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Lists all Security Hub-integrated third-party findings providers.
+     * Lists all findings-generating solutions (products) whose findings you have subscribed to receive in Security Hub.
      * </p>
      * 
      * @param listEnabledProductsForImportRequest
@@ -561,6 +787,8 @@ public interface AWSSecurityHub {
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @sample AWSSecurityHub.ListEnabledProductsForImport
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListEnabledProductsForImport"
      *      target="_top">AWS API Documentation</a>
@@ -577,12 +805,12 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.ListInvitations
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListInvitations" target="_top">AWS
      *      API Documentation</a>
@@ -599,12 +827,12 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
-     * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
      * @sample AWSSecurityHub.ListMembers
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListMembers" target="_top">AWS API
      *      Documentation</a>
@@ -613,7 +841,88 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Updates the AWS Security Hub-aggregated findings specified by the filter attributes.
+     * Returns a list of tags associated with a resource.
+     * </p>
+     * 
+     * @param listTagsForResourceRequest
+     * @return Result of the ListTagsForResource operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.ListTagsForResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/ListTagsForResource"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest listTagsForResourceRequest);
+
+    /**
+     * <p>
+     * Adds one or more tags to a resource.
+     * </p>
+     * 
+     * @param tagResourceRequest
+     * @return Result of the TagResource operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.TagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/TagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    TagResourceResult tagResource(TagResourceRequest tagResourceRequest);
+
+    /**
+     * <p>
+     * Removes one or more tags from a resource.
+     * </p>
+     * 
+     * @param untagResourceRequest
+     * @return Result of the UntagResource operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.UntagResource
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/UntagResource" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest);
+
+    /**
+     * <p>
+     * Updates the name and description of a custom action target in Security Hub.
+     * </p>
+     * 
+     * @param updateActionTargetRequest
+     * @return Result of the UpdateActionTarget operation returned by the service.
+     * @throws InternalException
+     *         Internal server error.
+     * @throws InvalidInputException
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
+     * @throws ResourceNotFoundException
+     *         The request was rejected because we can't find the specified resource.
+     * @sample AWSSecurityHub.UpdateActionTarget
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/UpdateActionTarget" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateActionTargetResult updateActionTarget(UpdateActionTargetRequest updateActionTargetRequest);
+
+    /**
+     * <p>
+     * Updates the <code>Note</code> and <code>RecordState</code> of the Security Hub-aggregated findings that the
+     * filter attributes specify. Any member account that can view the finding also sees the update to the finding.
      * </p>
      * 
      * @param updateFindingsRequest
@@ -621,12 +930,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.UpdateFindings
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/UpdateFindings" target="_top">AWS API
      *      Documentation</a>
@@ -635,7 +946,7 @@ public interface AWSSecurityHub {
 
     /**
      * <p>
-     * Updates the AWS Security Hub insight specified by the insight ARN.
+     * Updates the Security Hub insight that the insight ARN specifies.
      * </p>
      * 
      * @param updateInsightRequest
@@ -643,12 +954,14 @@ public interface AWSSecurityHub {
      * @throws InternalException
      *         Internal server error.
      * @throws InvalidInputException
-     *         The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
+     *         The request was rejected because you supplied an invalid or out-of-range value for an input parameter.
+     * @throws InvalidAccessException
+     *         AWS Security Hub isn't enabled for the account used to make this request.
      * @throws LimitExceededException
      *         The request was rejected because it attempted to create resources beyond the current AWS account limits.
      *         The error code describes the limit exceeded.
      * @throws ResourceNotFoundException
-     *         The request was rejected because the specified resource cannot be found.
+     *         The request was rejected because we can't find the specified resource.
      * @sample AWSSecurityHub.UpdateInsight
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/securityhub-2018-10-26/UpdateInsight" target="_top">AWS API
      *      Documentation</a>

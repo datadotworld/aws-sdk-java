@@ -15,13 +15,14 @@ package com.amazonaws.services.mediaconvert.model;
 import javax.annotation.Generated;
 
 /**
- * Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web
- * interface also disables encryption.
+ * Specify the encryption scheme that you want the service to use when encrypting your CMAF segments. Choose AES-CBC
+ * subsample (SAMPLE-AES) or AES_CTR (AES-CTR).
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum CmafEncryptionType {
 
-    SAMPLE_AES("SAMPLE_AES");
+    SAMPLE_AES("SAMPLE_AES"),
+    AES_CTR("AES_CTR");
 
     private String value;
 

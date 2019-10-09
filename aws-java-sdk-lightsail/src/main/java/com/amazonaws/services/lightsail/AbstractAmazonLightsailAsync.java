@@ -322,6 +322,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteAutoSnapshotResult> deleteAutoSnapshotAsync(DeleteAutoSnapshotRequest request) {
+
+        return deleteAutoSnapshotAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteAutoSnapshotResult> deleteAutoSnapshotAsync(DeleteAutoSnapshotRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteAutoSnapshotRequest, DeleteAutoSnapshotResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteDiskResult> deleteDiskAsync(DeleteDiskRequest request) {
 
         return deleteDiskAsync(request, null);
@@ -408,6 +421,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<DeleteKeyPairResult> deleteKeyPairAsync(DeleteKeyPairRequest request,
             com.amazonaws.handlers.AsyncHandler<DeleteKeyPairRequest, DeleteKeyPairResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteKnownHostKeysResult> deleteKnownHostKeysAsync(DeleteKnownHostKeysRequest request) {
+
+        return deleteKnownHostKeysAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteKnownHostKeysResult> deleteKnownHostKeysAsync(DeleteKnownHostKeysRequest request,
+            com.amazonaws.handlers.AsyncHandler<DeleteKnownHostKeysRequest, DeleteKnownHostKeysResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -510,6 +536,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     }
 
     @Override
+    public java.util.concurrent.Future<DisableAddOnResult> disableAddOnAsync(DisableAddOnRequest request) {
+
+        return disableAddOnAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DisableAddOnResult> disableAddOnAsync(DisableAddOnRequest request,
+            com.amazonaws.handlers.AsyncHandler<DisableAddOnRequest, DisableAddOnResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public java.util.concurrent.Future<DownloadDefaultKeyPairResult> downloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest request) {
 
         return downloadDefaultKeyPairAsync(request, null);
@@ -518,6 +557,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<DownloadDefaultKeyPairResult> downloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest request,
             com.amazonaws.handlers.AsyncHandler<DownloadDefaultKeyPairRequest, DownloadDefaultKeyPairResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<EnableAddOnResult> enableAddOnAsync(EnableAddOnRequest request) {
+
+        return enableAddOnAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<EnableAddOnResult> enableAddOnAsync(EnableAddOnRequest request,
+            com.amazonaws.handlers.AsyncHandler<EnableAddOnRequest, EnableAddOnResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }
@@ -544,6 +596,19 @@ public class AbstractAmazonLightsailAsync extends AbstractAmazonLightsail implem
     @Override
     public java.util.concurrent.Future<GetActiveNamesResult> getActiveNamesAsync(GetActiveNamesRequest request,
             com.amazonaws.handlers.AsyncHandler<GetActiveNamesRequest, GetActiveNamesResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAutoSnapshotsResult> getAutoSnapshotsAsync(GetAutoSnapshotsRequest request) {
+
+        return getAutoSnapshotsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetAutoSnapshotsResult> getAutoSnapshotsAsync(GetAutoSnapshotsRequest request,
+            com.amazonaws.handlers.AsyncHandler<GetAutoSnapshotsRequest, GetAutoSnapshotsResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

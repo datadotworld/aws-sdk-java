@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Represents the context of an action within the stage of a pipeline to a job worker.
+ * Represents the context of an action in the stage of a pipeline to a job worker.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/ActionContext" target="_top">AWS API
@@ -30,18 +30,24 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the action within the context of a job.
+     * The name of the action in the context of a job.
      * </p>
      */
     private String name;
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     */
+    private String actionExecutionId;
 
     /**
      * <p>
-     * The name of the action within the context of a job.
+     * The name of the action in the context of a job.
      * </p>
      * 
      * @param name
-     *        The name of the action within the context of a job.
+     *        The name of the action in the context of a job.
      */
 
     public void setName(String name) {
@@ -50,10 +56,10 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the action within the context of a job.
+     * The name of the action in the context of a job.
      * </p>
      * 
-     * @return The name of the action within the context of a job.
+     * @return The name of the action in the context of a job.
      */
 
     public String getName() {
@@ -62,16 +68,56 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The name of the action within the context of a job.
+     * The name of the action in the context of a job.
      * </p>
      * 
      * @param name
-     *        The name of the action within the context of a job.
+     *        The name of the action in the context of a job.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public ActionContext withName(String name) {
         setName(name);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     * 
+     * @param actionExecutionId
+     *        The system-generated unique ID that corresponds to an action's execution.
+     */
+
+    public void setActionExecutionId(String actionExecutionId) {
+        this.actionExecutionId = actionExecutionId;
+    }
+
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     * 
+     * @return The system-generated unique ID that corresponds to an action's execution.
+     */
+
+    public String getActionExecutionId() {
+        return this.actionExecutionId;
+    }
+
+    /**
+     * <p>
+     * The system-generated unique ID that corresponds to an action's execution.
+     * </p>
+     * 
+     * @param actionExecutionId
+     *        The system-generated unique ID that corresponds to an action's execution.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ActionContext withActionExecutionId(String actionExecutionId) {
+        setActionExecutionId(actionExecutionId);
         return this;
     }
 
@@ -88,7 +134,9 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         if (getName() != null)
-            sb.append("Name: ").append(getName());
+            sb.append("Name: ").append(getName()).append(",");
+        if (getActionExecutionId() != null)
+            sb.append("ActionExecutionId: ").append(getActionExecutionId());
         sb.append("}");
         return sb.toString();
     }
@@ -107,6 +155,10 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getName() != null && other.getName().equals(this.getName()) == false)
             return false;
+        if (other.getActionExecutionId() == null ^ this.getActionExecutionId() == null)
+            return false;
+        if (other.getActionExecutionId() != null && other.getActionExecutionId().equals(this.getActionExecutionId()) == false)
+            return false;
         return true;
     }
 
@@ -116,6 +168,7 @@ public class ActionContext implements Serializable, Cloneable, StructuredPojo {
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
+        hashCode = prime * hashCode + ((getActionExecutionId() == null) ? 0 : getActionExecutionId().hashCode());
         return hashCode;
     }
 
