@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.amazonaws</groupId>
     <artifactId>aws-java-sdk-pom</artifactId>
-    <version>1.11.648-dw2-SNAPSHOT</version>
+    <version>1.11.648-dw2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <groupId>com.amazonaws</groupId>
