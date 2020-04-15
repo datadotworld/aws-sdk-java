@@ -16,6 +16,7 @@ package com.amazonaws.services.dynamodbv2.datamodeling;
 
 import com.amazonaws.metrics.RequestMetricCollector;
 import com.amazonaws.services.dynamodbv2.model.KeysAndAttributes;
+import com.amazonaws.services.dynamodbv2.model.ReturnConsumedCapacity;
 import com.amazonaws.services.dynamodbv2.model.WriteRequest;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,7 @@ public class DynamoDBMapperConfig {
         .withBatchLoadRetryStrategy(DefaultBatchLoadRetryStrategy.INSTANCE)
         .withTypeConverterFactory(DynamoDBTypeConverterFactory.standard())
         .withConversionSchema(ConversionSchemas.DEFAULT)
+        .withDefaultReturnConsumedCapacity(ReturnConsumedCapacity.NONE)
         .build();
 
     /**
@@ -89,6 +91,7 @@ public class DynamoDBMapperConfig {
         private BatchWriteRetryStrategy batchWriteRetryStrategy;
         private BatchLoadRetryStrategy batchLoadRetryStrategy;
         private DynamoDBTypeConverterFactory typeConverterFactory;
+        private ReturnConsumedCapacity defaultReturnConsumedCapacity;
 
         /**
          * Creates a new builder initialized with the {@link #DEFAULT} values.
@@ -108,6 +111,7 @@ public class DynamoDBMapperConfig {
                 conversionSchema = DEFAULT.getConversionSchema();
                 batchWriteRetryStrategy = DEFAULT.getBatchWriteRetryStrategy();
                 batchLoadRetryStrategy = DEFAULT.getBatchLoadRetryStrategy();
+                defaultReturnConsumedCapacity = null;
             }
         }
 
@@ -127,6 +131,7 @@ public class DynamoDBMapperConfig {
             if (o.batchWriteRetryStrategy != null) batchWriteRetryStrategy = o.batchWriteRetryStrategy;
             if (o.batchLoadRetryStrategy != null) batchLoadRetryStrategy = o.batchLoadRetryStrategy;
             if (o.typeConverterFactory != null) typeConverterFactory = o.typeConverterFactory;
+            if (o.defaultReturnConsumedCapacity != null) defaultReturnConsumedCapacity = o.defaultReturnConsumedCapacity;
             return this;
         }
 
@@ -419,6 +424,29 @@ public class DynamoDBMapperConfig {
          */
         public final Builder withTypeConverterFactory(DynamoDBTypeConverterFactory value) {
             setTypeConverterFactory(value);
+            return this;
+        }
+
+        /**
+         * @return the current default {@link ReturnConsumedCapacity}.
+         */
+        public ReturnConsumedCapacity getDefaultReturnConsumedCapacity() {
+            return defaultReturnConsumedCapacity;
+        }
+
+        /**
+         * @param value the new default {@link ReturnConsumedCapacity}.
+         */
+        public void setDefaultReturnConsumedCapacity(ReturnConsumedCapacity value) {
+            defaultReturnConsumedCapacity = value;
+        }
+
+        /**
+         * @param value the new default {@link ReturnConsumedCapacity}.
+         * @return this builder
+         */
+        public Builder withDefaultReturnConsumedCapacity(ReturnConsumedCapacity value) {
+            setDefaultReturnConsumedCapacity(value);
             return this;
         }
 
@@ -896,6 +924,7 @@ public class DynamoDBMapperConfig {
     private final BatchWriteRetryStrategy batchWriteRetryStrategy;
     private final BatchLoadRetryStrategy batchLoadRetryStrategy;
     private final DynamoDBTypeConverterFactory typeConverterFactory;
+    private final ReturnConsumedCapacity defaultReturnConsumedCapacity;
 
     /**
      * Internal constructor; builds from the builder.
@@ -912,6 +941,7 @@ public class DynamoDBMapperConfig {
         this.batchWriteRetryStrategy = builder.batchWriteRetryStrategy;
         this.batchLoadRetryStrategy = builder.batchLoadRetryStrategy;
         this.typeConverterFactory = builder.typeConverterFactory;
+        this.defaultReturnConsumedCapacity = builder.defaultReturnConsumedCapacity;
     }
 
     /**
@@ -997,7 +1027,8 @@ public class DynamoDBMapperConfig {
                 requestMetricCollector,
                 DEFAULT.getConversionSchema(),
                 DEFAULT.getBatchWriteRetryStrategy(),
-                DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getBatchLoadRetryStrategy(),
+                DEFAULT.getDefaultReturnConsumedCapacity());
     }
 
     private DynamoDBMapperConfig(
@@ -1010,7 +1041,8 @@ public class DynamoDBMapperConfig {
             RequestMetricCollector requestMetricCollector,
             ConversionSchema conversionSchema,
             BatchWriteRetryStrategy batchWriteRetryStrategy,
-            BatchLoadRetryStrategy batchLoadRetryStrategy) {
+            BatchLoadRetryStrategy batchLoadRetryStrategy,
+            ReturnConsumedCapacity defaultReturnConsumedCapacity) {
 
         this.saveBehavior = saveBehavior;
         this.consistentReads = consistentReads;
@@ -1023,6 +1055,7 @@ public class DynamoDBMapperConfig {
         this.batchWriteRetryStrategy = batchWriteRetryStrategy;
         this.batchLoadRetryStrategy = batchLoadRetryStrategy;
         this.typeConverterFactory = null;
+        this.defaultReturnConsumedCapacity = defaultReturnConsumedCapacity;
     }
 
     /**
@@ -1032,7 +1065,8 @@ public class DynamoDBMapperConfig {
     @Deprecated
     public DynamoDBMapperConfig(SaveBehavior saveBehavior) {
         this(saveBehavior, null, null, null, null, null, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1043,7 +1077,8 @@ public class DynamoDBMapperConfig {
     @Deprecated
     public DynamoDBMapperConfig(ConsistentReads consistentReads) {
         this(null, consistentReads, null, null, null, null, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1053,7 +1088,8 @@ public class DynamoDBMapperConfig {
     @Deprecated
     public DynamoDBMapperConfig(TableNameOverride tableNameOverride) {
         this(null, null, tableNameOverride, null, null, null, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1063,7 +1099,8 @@ public class DynamoDBMapperConfig {
     @Deprecated
     public DynamoDBMapperConfig(TableNameResolver tableNameResolver) {
         this(null, null, null, tableNameResolver, null, null, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1073,7 +1110,8 @@ public class DynamoDBMapperConfig {
     @Deprecated
     public DynamoDBMapperConfig(ObjectTableNameResolver objectTableNameResolver) {
         this(null, null, null, null, objectTableNameResolver, null, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1083,7 +1121,8 @@ public class DynamoDBMapperConfig {
     @Deprecated
     public DynamoDBMapperConfig(TableNameResolver tableNameResolver, ObjectTableNameResolver objectTableNameResolver) {
         this(null, null, null, tableNameResolver, objectTableNameResolver, null, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1096,7 +1135,8 @@ public class DynamoDBMapperConfig {
             PaginationLoadingStrategy paginationLoadingStrategy) {
 
         this(null, null, null, null, null, paginationLoadingStrategy, null,
-                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+                DEFAULT.getConversionSchema(), DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1105,7 +1145,8 @@ public class DynamoDBMapperConfig {
      */
     @Deprecated
     public DynamoDBMapperConfig(ConversionSchema conversionSchema) {
-        this(null, null, null, null, null, null, null, conversionSchema, DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy());
+        this(null, null, null, null, null, null, null, conversionSchema, DEFAULT.getBatchWriteRetryStrategy(), DEFAULT.getBatchLoadRetryStrategy(),
+                null);
     }
 
     /**
@@ -1219,6 +1260,13 @@ public class DynamoDBMapperConfig {
      */
     public final DynamoDBTypeConverterFactory getTypeConverterFactory() {
         return typeConverterFactory;
+    }
+
+    /**
+     * @return the current default {@link ReturnConsumedCapacity}.
+     */
+    public final ReturnConsumedCapacity getDefaultReturnConsumedCapacity() {
+        return defaultReturnConsumedCapacity;
     }
 
 }

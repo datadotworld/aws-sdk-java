@@ -21,7 +21,6 @@ import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.retry.RetryUtils;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.BatchLoadRetryStrategy;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.BatchWriteRetryStrategy;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.ConsistentReads;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig.SaveBehavior;
 import com.amazonaws.services.dynamodbv2.model.AttributeAction;
@@ -71,7 +70,6 @@ import com.amazonaws.services.dynamodbv2.model.UpdateItemResult;
 import com.amazonaws.services.dynamodbv2.model.WriteRequest;
 import com.amazonaws.services.s3.model.Region;
 import com.amazonaws.util.VersionInfoUtils;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -420,7 +418,8 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         String tableName = getTableName(clazz, keyObject, config);
 
         GetItemRequest rq = new GetItemRequest()
-            .withRequestMetricCollector(config.getRequestMetricCollector());
+                .withReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity())
+                .withRequestMetricCollector(config.getRequestMetricCollector());
 
         Map<String, AttributeValue> key = model.convertKey(keyObject);
 
@@ -1065,7 +1064,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         }
 
         DeleteItemRequest req = new DeleteItemRequest().withKey(key)
-                .withTableName(tableName).withExpected(internalAssertions)
+                .withTableName(tableName)
+                .withExpected(internalAssertions)
+                .withReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity())
                 .withRequestMetricCollector(config.getRequestMetricCollector());
 
         if (deleteExpression != null) {
@@ -1243,7 +1244,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         // Break into chunks of 25 items and make service requests to DynamoDB
         for (final StringListMap<WriteRequest> batch : requestItems.subMaps(MAX_ITEMS_PER_BATCH, true)) {
-            List<FailedBatch> failedBatches = writeOneBatch(batch, config.getBatchWriteRetryStrategy());
+            List<FailedBatch> failedBatches = writeOneBatch(batch, config);
             if (failedBatches != null) {
                 totalFailedBatches.addAll(failedBatches);
 
@@ -1269,10 +1270,10 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
      */
     private List<FailedBatch> writeOneBatch(
             StringListMap<WriteRequest> batch,
-            BatchWriteRetryStrategy batchWriteRetryStrategy) {
+            DynamoDBMapperConfig config) {
 
         List<FailedBatch> failedBatches = new LinkedList<FailedBatch>();
-        FailedBatch failedBatch = doBatchWriteItemWithRetry(batch, batchWriteRetryStrategy);
+        FailedBatch failedBatch = doBatchWriteItemWithRetry(batch, config);
 
         if (failedBatch != null) {
             // If the exception is request entity too large, we divide the batch
@@ -1287,7 +1288,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
                     failedBatches.add(failedBatch);
                 } else {
                     for (final StringListMap<WriteRequest> subBatch : batch.subMaps(2, false)) {
-                        failedBatches.addAll(writeOneBatch(subBatch, batchWriteRetryStrategy));
+                        failedBatches.addAll(writeOneBatch(subBatch, config));
                     }
                 }
 
@@ -1317,11 +1318,11 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
      */
     private FailedBatch doBatchWriteItemWithRetry(
             Map<String, List<WriteRequest>> batch,
-            BatchWriteRetryStrategy batchWriteRetryStrategy) {
+            DynamoDBMapperConfig config) {
 
         BatchWriteItemResult result = null;
         int retries = 0;
-        int maxRetries = batchWriteRetryStrategy
+        int maxRetries = config.getBatchWriteRetryStrategy()
                 .getMaxRetryOnUnprocessedItems(Collections
                         .unmodifiableMap(batch));
 
@@ -1330,8 +1331,10 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         while (true) {
             try {
-                result = db.batchWriteItem(applyBatchOperationUserAgent(
-                        new BatchWriteItemRequest().withRequestItems(pendingItems)));
+                BatchWriteItemRequest req = new BatchWriteItemRequest()
+                        .withReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity())
+                        .withRequestItems(pendingItems);
+                result = db.batchWriteItem(applyBatchOperationUserAgent(req));
             } catch (Exception e) {
                 failedBatch = new FailedBatch();
                 failedBatch.setUnprocessedItems(pendingItems);
@@ -1350,7 +1353,7 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
                     return failedBatch;
                 }
 
-                pause(batchWriteRetryStrategy.getDelayBeforeRetryUnprocessedItems(
+                pause(config.getBatchWriteRetryStrategy().getDelayBeforeRetryUnprocessedItems(
                         Collections.unmodifiableMap(pendingItems), retries));
                 retries++;
             } else {
@@ -1433,8 +1436,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         BatchGetItemResult batchGetItemResult = null;
         BatchGetItemRequest batchGetItemRequest = new BatchGetItemRequest()
-            .withRequestMetricCollector(config.getRequestMetricCollector());
-        batchGetItemRequest.setRequestItems(requestItems);
+                .withReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity())
+                .withRequestItems(requestItems)
+                .withRequestMetricCollector(config.getRequestMetricCollector());
 
         BatchLoadRetryStrategy batchLoadStrategy = config.getBatchLoadRetryStrategy();
 
@@ -1566,6 +1570,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         config = mergeConfig(config);
 
         ScanRequest scanRequest = createScanRequestFromExpression(clazz, scanExpression, config);
+        if (scanExpression.getReturnConsumedCapacity() == null) {
+            scanExpression.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+        }
 
         ScanResult scanResult = db.scan(applyUserAgent(scanRequest));
         return new PaginatedScanList<T>(this, clazz, db, scanRequest, scanResult, config.getPaginationLoadingStrategy(), config);
@@ -1592,6 +1599,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         config = mergeConfig(config);
 
         ScanRequest scanRequest = createScanRequestFromExpression(clazz, scanExpression, config);
+        if (scanRequest.getReturnConsumedCapacity() == null) {
+            scanRequest.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+        }
 
         ScanResult scanResult = db.scan(applyUserAgent(scanRequest));
         ScanResultPage<T> result = new ScanResultPage<T>();
@@ -1614,6 +1624,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         config = mergeConfig(config);
 
         QueryRequest queryRequest = createQueryRequestFromExpression(clazz, queryExpression, config);
+        if (queryRequest.getReturnConsumedCapacity() == null) {
+            queryRequest.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+        }
 
         QueryResult queryResult = db.query(applyUserAgent(queryRequest));
         return new PaginatedQueryList<T>(this, clazz, db, queryRequest, queryResult, config.getPaginationLoadingStrategy(), config);
@@ -1626,6 +1639,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         config = mergeConfig(config);
 
         QueryRequest queryRequest = createQueryRequestFromExpression(clazz, queryExpression, config);
+        if (queryRequest.getReturnConsumedCapacity() == null) {
+            queryRequest.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+        }
 
         QueryResult queryResult = db.query(applyUserAgent(queryRequest));
         QueryResultPage<T> result = new QueryResultPage<T>();
@@ -1648,6 +1664,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         ScanRequest scanRequest = createScanRequestFromExpression(clazz, scanExpression, config);
         scanRequest.setSelect(Select.COUNT);
+        if (scanRequest.getReturnConsumedCapacity() == null) {
+            scanRequest.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+        }
 
         // Count scans can also be truncated for large datasets
         int count = 0;
@@ -1667,6 +1686,9 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
 
         QueryRequest queryRequest = createQueryRequestFromExpression(clazz, queryExpression, config);
         queryRequest.setSelect(Select.COUNT);
+        if (queryRequest.getReturnConsumedCapacity() == null) {
+            queryRequest.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+        }
 
         // Count queries can also be truncated for large datasets
         int count = 0;
@@ -1726,6 +1748,10 @@ public class DynamoDBMapper extends AbstractDynamoDBMapper {
         List<ScanRequest> parallelScanRequests= new LinkedList<ScanRequest>();
         for (int segment = 0; segment < totalSegments; segment++) {
             ScanRequest scanRequest = createScanRequestFromExpression(clazz, scanExpression, config);
+            if (scanRequest.getReturnConsumedCapacity() == null) {
+                scanRequest.setReturnConsumedCapacity(config.getDefaultReturnConsumedCapacity());
+            }
+
             parallelScanRequests.add(scanRequest
                     .withSegment(segment).withTotalSegments(totalSegments)
                     .withExclusiveStartKey(null));
