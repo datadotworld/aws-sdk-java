@@ -29,7 +29,7 @@
                     </snapshots>
                     <id>central</id>
                     <name>libs-release</name>
-                    <url>https://dataworld.artifactoryonline.com/dataworld/libs-release</url>
+                    <url>https://dataworld.jfrog.io/dataworld/libs-release</url>
                 </repository>
                 <repository>
                     <snapshots>
@@ -37,7 +37,7 @@
                     </snapshots>
                     <id>releases</id>
                     <name>libs-release-local</name>
-                    <url>https://dataworld.artifactoryonline.com/dataworld/libs-release-local</url>
+                    <url>https://dataworld.jfrog.io/dataworld/libs-release-local</url>
                 </repository>
                 <repository>
                     <snapshots/>
@@ -46,7 +46,7 @@
                     </releases>
                     <id>snapshots</id>
                     <name>libs-snapshot</name>
-                    <url>https://dataworld.artifactoryonline.com/dataworld/libs-snapshot</url>
+                    <url>https://dataworld.jfrog.io/dataworld/libs-snapshot</url>
                 </repository>
             </repositories>
             <pluginRepositories>
@@ -56,13 +56,13 @@
                     </snapshots>
                     <id>central</id>
                     <name>plugins-release</name>
-                    <url>https://dataworld.artifactoryonline.com/dataworld/plugins-release</url>
+                    <url>https://dataworld.jfrog.io/dataworld/plugins-release</url>
                 </pluginRepository>
                 <pluginRepository>
                     <snapshots/>
                     <id>snapshots</id>
                     <name>plugins-snapshot</name>
-                    <url>https://dataworld.artifactoryonline.com/dataworld/plugins-snapshot</url>
+                    <url>https://dataworld.jfrog.io/dataworld/plugins-snapshot</url>
                 </pluginRepository>
             </pluginRepositories>
         </profile>

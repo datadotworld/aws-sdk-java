@@ -371,7 +371,7 @@
               <configuration>
                 <publisher>
                   <contextUrl>
-                    {{ARTIFACTORY_CONTEXT_URL|"https://dataworld.artifactoryonline.com/dataworld"}}
+                    {{ARTIFACTORY_CONTEXT_URL|"https://dataworld.jfrog.io/dataworld"}}
                   </contextUrl>
                   <username>{{ARTIFACTORY_USERNAME|"maven"}}</username>
                   <password>{{ARTIFACTORY_PASSWORD}}</password>
