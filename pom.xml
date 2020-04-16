@@ -263,7 +263,7 @@
   </scm>
   <properties>
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
-      <awsjavasdk-stable.version>1.11.648</awsjavasdk-stable.version>
+      <awsjavasdk-stable.version>1.11.762</awsjavasdk-stable.version>
       <!-- The SDK requires Jackson 2.6 to support Java 6 customers. Feel free to override in your own application -->
       <jackson.version>2.6.7</jackson.version>
       <jackson.databind.version>2.6.7.3</jackson.databind.version>
