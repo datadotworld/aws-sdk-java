@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -16,9 +16,9 @@ import javax.annotation.Generated;
 
 /**
  * Specify the color space you want for this output. The service supports conversion between HDR formats, between SDR
- * formats, and from SDR to HDR. The service doesn't support conversion from HDR to SDR. SDR to HDR conversion doesn't
- * upgrade the dynamic range. The converted video has an HDR format, but visually appears the same as an unconverted
- * output.
+ * formats, from SDR to HDR, and from HDR to SDR. SDR to HDR conversion doesn't upgrade the dynamic range. The converted
+ * video has an HDR format, but visually appears the same as an unconverted output. HDR to SDR conversion uses Elemental
+ * tone mapping technology to approximate the outcome of manually regrading from HDR to SDR.
  */
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public enum ColorSpaceConversion {

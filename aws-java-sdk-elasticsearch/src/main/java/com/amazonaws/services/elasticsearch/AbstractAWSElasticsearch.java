@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,11 @@ public class AbstractAWSElasticsearch implements AWSElasticsearch {
     }
 
     @Override
+    public AssociatePackageResult associatePackage(AssociatePackageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CancelElasticsearchServiceSoftwareUpdateResult cancelElasticsearchServiceSoftwareUpdate(CancelElasticsearchServiceSoftwareUpdateRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -53,12 +58,22 @@ public class AbstractAWSElasticsearch implements AWSElasticsearch {
     }
 
     @Override
+    public CreatePackageResult createPackage(CreatePackageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteElasticsearchDomainResult deleteElasticsearchDomain(DeleteElasticsearchDomainRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public DeleteElasticsearchServiceRoleResult deleteElasticsearchServiceRole(DeleteElasticsearchServiceRoleRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeletePackageResult deletePackage(DeletePackageRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -83,6 +98,11 @@ public class AbstractAWSElasticsearch implements AWSElasticsearch {
     }
 
     @Override
+    public DescribePackagesResult describePackages(DescribePackagesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DescribeReservedElasticsearchInstanceOfferingsResult describeReservedElasticsearchInstanceOfferings(
             DescribeReservedElasticsearchInstanceOfferingsRequest request) {
         throw new java.lang.UnsupportedOperationException();
@@ -90,6 +110,11 @@ public class AbstractAWSElasticsearch implements AWSElasticsearch {
 
     @Override
     public DescribeReservedElasticsearchInstancesResult describeReservedElasticsearchInstances(DescribeReservedElasticsearchInstancesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DissociatePackageResult dissociatePackage(DissociatePackageRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -114,12 +139,22 @@ public class AbstractAWSElasticsearch implements AWSElasticsearch {
     }
 
     @Override
+    public ListDomainsForPackageResult listDomainsForPackage(ListDomainsForPackageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListElasticsearchInstanceTypesResult listElasticsearchInstanceTypes(ListElasticsearchInstanceTypesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public ListElasticsearchVersionsResult listElasticsearchVersions(ListElasticsearchVersionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListPackagesForDomainResult listPackagesForDomain(ListPackagesForDomainRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

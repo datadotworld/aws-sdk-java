@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -105,6 +105,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -133,6 +136,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -151,7 +157,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Creates a message template that you can use in messages that are sent through the email channel.
+     * Creates a message template for messages that are sent through the email channel.
      * </p>
      * 
      * @param createEmailTemplateRequest
@@ -187,6 +193,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -215,6 +224,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -233,7 +245,38 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Creates a message template that you can use in messages that are sent through a push notification channel.
+     * Creates a journey for an application.
+     * </p>
+     * 
+     * @param createJourneyRequest
+     * @return Result of the CreateJourney operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.CreateJourney
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateJourney" target="_top">AWS API
+     *      Documentation</a>
+     */
+    CreateJourneyResult createJourney(CreateJourneyRequest createJourneyRequest);
+
+    /**
+     * <p>
+     * Creates a message template for messages that are sent through a push notification channel.
      * </p>
      * 
      * @param createPushTemplateRequest
@@ -259,6 +302,37 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Creates an Amazon Pinpoint configuration for a recommender model.
+     * </p>
+     * 
+     * @param createRecommenderConfigurationRequest
+     * @return Result of the CreateRecommenderConfiguration operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.CreateRecommenderConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateRecommenderConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    CreateRecommenderConfigurationResult createRecommenderConfiguration(CreateRecommenderConfigurationRequest createRecommenderConfigurationRequest);
+
+    /**
+     * <p>
      * Creates a new segment for an application or updates the configuration, dimension, and other settings for an
      * existing segment that's associated with an application.
      * </p>
@@ -270,6 +344,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -288,7 +365,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Creates a message template that you can use in messages that are sent through the SMS channel.
+     * Creates a message template for messages that are sent through the SMS channel.
      * </p>
      * 
      * @param createSmsTemplateRequest
@@ -314,6 +391,32 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Creates a message template for messages that are sent through the voice channel.
+     * </p>
+     * 
+     * @param createVoiceTemplateRequest
+     * @return Result of the CreateVoiceTemplate operation returned by the service.
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @sample AmazonPinpoint.CreateVoiceTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/CreateVoiceTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    CreateVoiceTemplateResult createVoiceTemplate(CreateVoiceTemplateRequest createVoiceTemplateRequest);
+
+    /**
+     * <p>
      * Disables the ADM channel for an application and deletes any existing settings for the channel.
      * </p>
      * 
@@ -324,6 +427,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -352,6 +458,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -380,6 +489,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -408,6 +520,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -436,6 +551,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -464,6 +582,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -492,6 +613,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -520,6 +644,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -548,6 +675,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -566,7 +696,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Deletes a message template that was designed for use in messages that were sent through the email channel.
+     * Deletes a message template for messages that were sent through the email channel.
      * </p>
      * 
      * @param deleteEmailTemplateRequest
@@ -576,6 +706,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -604,6 +737,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -632,6 +768,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -660,6 +799,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -678,8 +820,38 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Deletes a message template that was designed for use in messages that were sent through a push notification
-     * channel.
+     * Deletes a journey from an application.
+     * </p>
+     * 
+     * @param deleteJourneyRequest
+     * @return Result of the DeleteJourney operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.DeleteJourney
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteJourney" target="_top">AWS API
+     *      Documentation</a>
+     */
+    DeleteJourneyResult deleteJourney(DeleteJourneyRequest deleteJourneyRequest);
+
+    /**
+     * <p>
+     * Deletes a message template for messages that were sent through a push notification channel.
      * </p>
      * 
      * @param deletePushTemplateRequest
@@ -689,6 +861,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -707,6 +882,37 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Deletes an Amazon Pinpoint configuration for a recommender model.
+     * </p>
+     * 
+     * @param deleteRecommenderConfigurationRequest
+     * @return Result of the DeleteRecommenderConfiguration operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.DeleteRecommenderConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteRecommenderConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeleteRecommenderConfigurationResult deleteRecommenderConfiguration(DeleteRecommenderConfigurationRequest deleteRecommenderConfigurationRequest);
+
+    /**
+     * <p>
      * Deletes a segment from an application.
      * </p>
      * 
@@ -717,6 +923,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -745,6 +954,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -763,7 +975,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Deletes a message template that was designed for use in messages that were sent through the SMS channel.
+     * Deletes a message template for messages that were sent through the SMS channel.
      * </p>
      * 
      * @param deleteSmsTemplateRequest
@@ -773,6 +985,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -801,6 +1016,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -829,6 +1047,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -847,6 +1068,37 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Deletes a message template for messages that were sent through the voice channel.
+     * </p>
+     * 
+     * @param deleteVoiceTemplateRequest
+     * @return Result of the DeleteVoiceTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.DeleteVoiceTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/DeleteVoiceTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    DeleteVoiceTemplateResult deleteVoiceTemplate(DeleteVoiceTemplateRequest deleteVoiceTemplateRequest);
+
+    /**
+     * <p>
      * Retrieves information about the status and settings of the ADM channel for an application.
      * </p>
      * 
@@ -857,6 +1109,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -885,6 +1140,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -913,6 +1171,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -941,6 +1202,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -969,6 +1233,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -997,6 +1264,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1025,6 +1295,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1053,6 +1326,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1071,7 +1347,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves information about all of your applications.
+     * Retrieves information about all the applications that are associated with your Amazon Pinpoint account.
      * </p>
      * 
      * @param getAppsRequest
@@ -1081,6 +1357,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1109,6 +1388,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1137,6 +1419,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1155,7 +1440,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves information about the activity performed by a campaign.
+     * Retrieves information about all the activities for a campaign.
      * </p>
      * 
      * @param getCampaignActivitiesRequest
@@ -1165,6 +1450,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1193,6 +1481,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1221,6 +1512,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1239,8 +1533,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves information about the status, configuration, and other settings for all versions of a specific
-     * campaign.
+     * Retrieves information about the status, configuration, and other settings for all versions of a campaign.
      * </p>
      * 
      * @param getCampaignVersionsRequest
@@ -1250,6 +1543,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1279,6 +1575,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1307,6 +1606,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1335,6 +1637,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1353,8 +1658,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves the content and settings for a message template that you can use in messages that are sent through the
-     * email channel.
+     * Retrieves the content and settings of a message template for messages that are sent through the email channel.
      * </p>
      * 
      * @param getEmailTemplateRequest
@@ -1364,6 +1668,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1392,6 +1699,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1420,6 +1730,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1448,6 +1761,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1476,6 +1792,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1504,6 +1823,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1532,6 +1854,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1560,6 +1885,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1578,8 +1906,133 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves the content and settings for a message template that you can use in messages that are sent through a
-     * push notification channel.
+     * Retrieves information about the status, configuration, and other settings for a journey.
+     * </p>
+     * 
+     * @param getJourneyRequest
+     * @return Result of the GetJourney operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetJourney
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourney" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetJourneyResult getJourney(GetJourneyRequest getJourneyRequest);
+
+    /**
+     * <p>
+     * Retrieves (queries) pre-aggregated data for a standard engagement metric that applies to a journey.
+     * </p>
+     * 
+     * @param getJourneyDateRangeKpiRequest
+     * @return Result of the GetJourneyDateRangeKpi operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetJourneyDateRangeKpi
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourneyDateRangeKpi"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetJourneyDateRangeKpiResult getJourneyDateRangeKpi(GetJourneyDateRangeKpiRequest getJourneyDateRangeKpiRequest);
+
+    /**
+     * <p>
+     * Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey activity.
+     * </p>
+     * 
+     * @param getJourneyExecutionActivityMetricsRequest
+     * @return Result of the GetJourneyExecutionActivityMetrics operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetJourneyExecutionActivityMetrics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourneyExecutionActivityMetrics"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetJourneyExecutionActivityMetricsResult getJourneyExecutionActivityMetrics(
+            GetJourneyExecutionActivityMetricsRequest getJourneyExecutionActivityMetricsRequest);
+
+    /**
+     * <p>
+     * Retrieves (queries) pre-aggregated data for a standard execution metric that applies to a journey.
+     * </p>
+     * 
+     * @param getJourneyExecutionMetricsRequest
+     * @return Result of the GetJourneyExecutionMetrics operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetJourneyExecutionMetrics
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetJourneyExecutionMetrics"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetJourneyExecutionMetricsResult getJourneyExecutionMetrics(GetJourneyExecutionMetricsRequest getJourneyExecutionMetricsRequest);
+
+    /**
+     * <p>
+     * Retrieves the content and settings of a message template for messages that are sent through a push notification
+     * channel.
      * </p>
      * 
      * @param getPushTemplateRequest
@@ -1589,6 +2042,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1607,6 +2063,69 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Retrieves information about an Amazon Pinpoint configuration for a recommender model.
+     * </p>
+     * 
+     * @param getRecommenderConfigurationRequest
+     * @return Result of the GetRecommenderConfiguration operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetRecommenderConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetRecommenderConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetRecommenderConfigurationResult getRecommenderConfiguration(GetRecommenderConfigurationRequest getRecommenderConfigurationRequest);
+
+    /**
+     * <p>
+     * Retrieves information about all the recommender model configurations that are associated with your Amazon
+     * Pinpoint account.
+     * </p>
+     * 
+     * @param getRecommenderConfigurationsRequest
+     * @return Result of the GetRecommenderConfigurations operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetRecommenderConfigurations
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetRecommenderConfigurations"
+     *      target="_top">AWS API Documentation</a>
+     */
+    GetRecommenderConfigurationsResult getRecommenderConfigurations(GetRecommenderConfigurationsRequest getRecommenderConfigurationsRequest);
+
+    /**
+     * <p>
      * Retrieves information about the configuration, dimension, and other settings for a specific segment that's
      * associated with an application.
      * </p>
@@ -1618,6 +2137,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1646,6 +2168,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1674,6 +2199,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1703,6 +2231,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1721,7 +2252,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves information about the configuration, dimension, and other settings for all versions of a specific
+     * Retrieves information about the configuration, dimension, and other settings for all the versions of a specific
      * segment that's associated with an application.
      * </p>
      * 
@@ -1732,6 +2263,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1761,6 +2295,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1789,6 +2326,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1807,8 +2347,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves the content and settings for a message template that you can use in messages that are sent through the
-     * SMS channel.
+     * Retrieves the content and settings of a message template for messages that are sent through the SMS channel.
      * </p>
      * 
      * @param getSmsTemplateRequest
@@ -1818,6 +2357,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1846,6 +2388,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1874,6 +2419,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1892,6 +2440,69 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Retrieves the content and settings of a message template for messages that are sent through the voice channel.
+     * </p>
+     * 
+     * @param getVoiceTemplateRequest
+     * @return Result of the GetVoiceTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.GetVoiceTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/GetVoiceTemplate" target="_top">AWS API
+     *      Documentation</a>
+     */
+    GetVoiceTemplateResult getVoiceTemplate(GetVoiceTemplateRequest getVoiceTemplateRequest);
+
+    /**
+     * <p>
+     * Retrieves information about the status, configuration, and other settings for all the journeys that are
+     * associated with an application.
+     * </p>
+     * 
+     * @param listJourneysRequest
+     * @return Result of the ListJourneys operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.ListJourneys
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ListJourneys" target="_top">AWS API
+     *      Documentation</a>
+     */
+    ListJourneysResult listJourneys(ListJourneysRequest listJourneysRequest);
+
+    /**
+     * <p>
      * Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or
      * segment.
      * </p>
@@ -1906,16 +2517,19 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
+     * Retrieves information about all the versions of a specific message template.
      * </p>
      * 
-     * @param listTemplatesRequest
-     * @return Result of the ListTemplates operation returned by the service.
+     * @param listTemplateVersionsRequest
+     * @return Result of the ListTemplateVersions operation returned by the service.
      * @throws BadRequestException
      *         The request contains a syntax error (BadRequestException).
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1926,6 +2540,32 @@ public interface AmazonPinpoint {
      * @throws TooManyRequestsException
      *         The request failed because too many requests were sent during a certain amount of time
      *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.ListTemplateVersions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ListTemplateVersions" target="_top">AWS
+     *      API Documentation</a>
+     */
+    ListTemplateVersionsResult listTemplateVersions(ListTemplateVersionsRequest listTemplateVersionsRequest);
+
+    /**
+     * <p>
+     * Retrieves information about all the message templates that are associated with your Amazon Pinpoint account.
+     * </p>
+     * 
+     * @param listTemplatesRequest
+     * @return Result of the ListTemplates operation returned by the service.
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @sample AmazonPinpoint.ListTemplates
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/ListTemplates" target="_top">AWS API
      *      Documentation</a>
@@ -1944,6 +2584,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -1973,6 +2616,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2002,6 +2648,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2031,6 +2680,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2059,6 +2711,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2087,6 +2742,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2142,6 +2800,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2171,6 +2832,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2200,6 +2864,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2229,6 +2896,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2258,6 +2928,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2286,6 +2959,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2315,6 +2991,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2333,7 +3012,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Updates the settings for a campaign.
+     * Updates the configuration and other settings for a campaign.
      * </p>
      * 
      * @param updateCampaignRequest
@@ -2343,6 +3022,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2372,6 +3054,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2390,7 +3075,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Updates an existing message template that you can use in messages that are sent through the email channel.
+     * Updates an existing message template for messages that are sent through the email channel.
      * </p>
      * 
      * @param updateEmailTemplateRequest
@@ -2400,6 +3085,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2430,6 +3118,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2460,6 +3151,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2489,6 +3183,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2507,8 +3204,69 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Updates an existing message template that you can use in messages that are sent through a push notification
-     * channel.
+     * Updates the configuration and other settings for a journey.
+     * </p>
+     * 
+     * @param updateJourneyRequest
+     * @return Result of the UpdateJourney operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateJourney
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateJourney" target="_top">AWS API
+     *      Documentation</a>
+     */
+    UpdateJourneyResult updateJourney(UpdateJourneyRequest updateJourneyRequest);
+
+    /**
+     * <p>
+     * Cancels (stops) an active journey.
+     * </p>
+     * 
+     * @param updateJourneyStateRequest
+     * @return Result of the UpdateJourneyState operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateJourneyState
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateJourneyState" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateJourneyStateResult updateJourneyState(UpdateJourneyStateRequest updateJourneyStateRequest);
+
+    /**
+     * <p>
+     * Updates an existing message template for messages that are sent through a push notification channel.
      * </p>
      * 
      * @param updatePushTemplateRequest
@@ -2518,6 +3276,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2536,6 +3297,37 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Updates an Amazon Pinpoint configuration for a recommender model.
+     * </p>
+     * 
+     * @param updateRecommenderConfigurationRequest
+     * @return Result of the UpdateRecommenderConfiguration operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateRecommenderConfiguration
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateRecommenderConfiguration"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateRecommenderConfigurationResult updateRecommenderConfiguration(UpdateRecommenderConfigurationRequest updateRecommenderConfigurationRequest);
+
+    /**
+     * <p>
      * Creates a new segment for an application or updates the configuration, dimension, and other settings for an
      * existing segment that's associated with an application.
      * </p>
@@ -2547,6 +3339,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2576,6 +3371,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2594,7 +3392,7 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
-     * Updates an existing message template that you can use in messages that are sent through the SMS channel.
+     * Updates an existing message template for messages that are sent through the SMS channel.
      * </p>
      * 
      * @param updateSmsTemplateRequest
@@ -2604,6 +3402,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2622,6 +3423,37 @@ public interface AmazonPinpoint {
 
     /**
      * <p>
+     * Changes the status of a specific version of a message template to <i>active</i>.
+     * </p>
+     * 
+     * @param updateTemplateActiveVersionRequest
+     * @return Result of the UpdateTemplateActiveVersion operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateTemplateActiveVersion
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateTemplateActiveVersion"
+     *      target="_top">AWS API Documentation</a>
+     */
+    UpdateTemplateActiveVersionResult updateTemplateActiveVersion(UpdateTemplateActiveVersionRequest updateTemplateActiveVersionRequest);
+
+    /**
+     * <p>
      * Enables the voice channel for an application or updates the status and settings of the voice channel for an
      * application.
      * </p>
@@ -2633,6 +3465,9 @@ public interface AmazonPinpoint {
      * @throws InternalServerErrorException
      *         The request failed due to an unknown internal server error, exception, or failure
      *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
      * @throws ForbiddenException
      *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
      * @throws NotFoundException
@@ -2648,6 +3483,37 @@ public interface AmazonPinpoint {
      *      API Documentation</a>
      */
     UpdateVoiceChannelResult updateVoiceChannel(UpdateVoiceChannelRequest updateVoiceChannelRequest);
+
+    /**
+     * <p>
+     * Updates an existing message template for messages that are sent through the voice channel.
+     * </p>
+     * 
+     * @param updateVoiceTemplateRequest
+     * @return Result of the UpdateVoiceTemplate operation returned by the service.
+     * @throws BadRequestException
+     *         The request contains a syntax error (BadRequestException).
+     * @throws InternalServerErrorException
+     *         The request failed due to an unknown internal server error, exception, or failure
+     *         (InternalServerErrorException).
+     * @throws PayloadTooLargeException
+     *         The request failed because the payload for the body of the request is too large
+     *         (RequestEntityTooLargeException).
+     * @throws ForbiddenException
+     *         The request was denied because access to the specified resource is forbidden (ForbiddenException).
+     * @throws NotFoundException
+     *         The request failed because the specified resource was not found (NotFoundException).
+     * @throws MethodNotAllowedException
+     *         The request failed because the method is not allowed for the specified resource
+     *         (MethodNotAllowedException).
+     * @throws TooManyRequestsException
+     *         The request failed because too many requests were sent during a certain amount of time
+     *         (TooManyRequestsException).
+     * @sample AmazonPinpoint.UpdateVoiceTemplate
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/UpdateVoiceTemplate" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateVoiceTemplateResult updateVoiceTemplate(UpdateVoiceTemplateRequest updateVoiceTemplateRequest);
 
     /**
      * Shuts down this client object, releasing any resources that might be held open. This is an optional method, and

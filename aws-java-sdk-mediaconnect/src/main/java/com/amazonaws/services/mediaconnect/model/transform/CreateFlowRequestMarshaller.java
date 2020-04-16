@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,12 @@ public class CreateFlowRequestMarshaller {
             .marshallLocationName("outputs").build();
     private static final MarshallingInfo<StructuredPojo> SOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("source").build();
+    private static final MarshallingInfo<StructuredPojo> SOURCEFAILOVERCONFIG_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("sourceFailoverConfig").build();
+    private static final MarshallingInfo<List> SOURCES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("sources").build();
+    private static final MarshallingInfo<List> VPCINTERFACES_BINDING = MarshallingInfo.builder(MarshallingType.LIST).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("vpcInterfaces").build();
 
     private static final CreateFlowRequestMarshaller instance = new CreateFlowRequestMarshaller();
 
@@ -60,6 +66,9 @@ public class CreateFlowRequestMarshaller {
             protocolMarshaller.marshall(createFlowRequest.getName(), NAME_BINDING);
             protocolMarshaller.marshall(createFlowRequest.getOutputs(), OUTPUTS_BINDING);
             protocolMarshaller.marshall(createFlowRequest.getSource(), SOURCE_BINDING);
+            protocolMarshaller.marshall(createFlowRequest.getSourceFailoverConfig(), SOURCEFAILOVERCONFIG_BINDING);
+            protocolMarshaller.marshall(createFlowRequest.getSources(), SOURCES_BINDING);
+            protocolMarshaller.marshall(createFlowRequest.getVpcInterfaces(), VPCINTERFACES_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

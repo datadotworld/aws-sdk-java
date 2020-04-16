@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,7 +32,10 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * <p>
      * An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the
      * Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP
-     * address allocation ID.
+     * address allocation ID. For EC2 instances, this is the EC2 instance ID.
+     * </p>
+     * <p>
+     * An Application Load Balancer can be either internal or internet-facing.
      * </p>
      */
     private String endpointId;
@@ -58,8 +61,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * </p>
      * <p>
      * For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html"> Viewing
-     * Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve Client
+     * IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      * </p>
      */
     private Boolean clientIPPreservationEnabled;
@@ -68,13 +71,18 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * <p>
      * An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the
      * Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP
-     * address allocation ID.
+     * address allocation ID. For EC2 instances, this is the EC2 instance ID.
+     * </p>
+     * <p>
+     * An Application Load Balancer can be either internal or internet-facing.
      * </p>
      * 
      * @param endpointId
      *        An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is
      *        the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the
-     *        Elastic IP address allocation ID.
+     *        Elastic IP address allocation ID. For EC2 instances, this is the EC2 instance ID. </p>
+     *        <p>
+     *        An Application Load Balancer can be either internal or internet-facing.
      */
 
     public void setEndpointId(String endpointId) {
@@ -85,12 +93,17 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * <p>
      * An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the
      * Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP
-     * address allocation ID.
+     * address allocation ID. For EC2 instances, this is the EC2 instance ID.
+     * </p>
+     * <p>
+     * An Application Load Balancer can be either internal or internet-facing.
      * </p>
      * 
      * @return An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is
      *         the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the
-     *         Elastic IP address allocation ID.
+     *         Elastic IP address allocation ID. For EC2 instances, this is the EC2 instance ID. </p>
+     *         <p>
+     *         An Application Load Balancer can be either internal or internet-facing.
      */
 
     public String getEndpointId() {
@@ -101,13 +114,18 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * <p>
      * An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is the
      * Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the Elastic IP
-     * address allocation ID.
+     * address allocation ID. For EC2 instances, this is the EC2 instance ID.
+     * </p>
+     * <p>
+     * An Application Load Balancer can be either internal or internet-facing.
      * </p>
      * 
      * @param endpointId
      *        An ID for the endpoint. If the endpoint is a Network Load Balancer or Application Load Balancer, this is
      *        the Amazon Resource Name (ARN) of the resource. If the endpoint is an Elastic IP address, this is the
-     *        Elastic IP address allocation ID.
+     *        Elastic IP address allocation ID. For EC2 instances, this is the EC2 instance ID. </p>
+     *        <p>
+     *        An Application Load Balancer can be either internal or internet-facing.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -200,8 +218,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * </p>
      * <p>
      * For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html"> Viewing
-     * Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve Client
+     * IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      * </p>
      * 
      * @param clientIPPreservationEnabled
@@ -214,9 +232,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      *        </p>
      *        <p>
      *        For more information, see <a
-     *        href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html">
-     *        Viewing Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer
-     *        Guide</i>.
+     *        href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve
+     *        Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      */
 
     public void setClientIPPreservationEnabled(Boolean clientIPPreservationEnabled) {
@@ -234,8 +251,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * </p>
      * <p>
      * For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html"> Viewing
-     * Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve Client
+     * IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      * </p>
      * 
      * @return Indicates whether client IP address preservation is enabled for an Application Load Balancer endpoint.
@@ -246,10 +263,9 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      *         the accelerator.
      *         </p>
      *         <p>
-     *         For more information, see <a href=
-     *         "https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html">
-     *         Viewing Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer
-     *         Guide</i>.
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve
+     *         Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      */
 
     public Boolean getClientIPPreservationEnabled() {
@@ -267,8 +283,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * </p>
      * <p>
      * For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html"> Viewing
-     * Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve Client
+     * IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      * </p>
      * 
      * @param clientIPPreservationEnabled
@@ -281,9 +297,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      *        </p>
      *        <p>
      *        For more information, see <a
-     *        href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html">
-     *        Viewing Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer
-     *        Guide</i>.
+     *        href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve
+     *        Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -303,8 +318,8 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      * </p>
      * <p>
      * For more information, see <a
-     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html"> Viewing
-     * Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
+     * href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve Client
+     * IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      * </p>
      * 
      * @return Indicates whether client IP address preservation is enabled for an Application Load Balancer endpoint.
@@ -315,10 +330,9 @@ public class EndpointConfiguration implements Serializable, Cloneable, Structure
      *         the accelerator.
      *         </p>
      *         <p>
-     *         For more information, see <a href=
-     *         "https://docs.aws.amazon.com/global-accelerator/latest/dg/introduction-how-it-works-client-ip.html">
-     *         Viewing Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer
-     *         Guide</i>.
+     *         For more information, see <a
+     *         href="https://docs.aws.amazon.com/global-accelerator/latest/dg/preserve-client-ip-address.html"> Preserve
+     *         Client IP Addresses in AWS Global Accelerator</a> in the <i>AWS Global Accelerator Developer Guide</i>.
      */
 
     public Boolean isClientIPPreservationEnabled() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2013-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -14,10 +14,9 @@
  */
 package com.amazonaws.regions;
 
-import com.amazonaws.SdkClientException;
 import com.amazonaws.ClientConfiguration;
+import com.amazonaws.SdkClientException;
 import com.amazonaws.util.SdkHttpUtils;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;

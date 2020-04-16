@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -240,7 +240,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Modifies the settings for a list of snapshots.
+     * Modifies the settings for a set of cluster snapshots.
      * </p>
      * 
      * @param batchModifyClusterSnapshotsRequest
@@ -254,7 +254,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Modifies the settings for a list of snapshots.
+     * Modifies the settings for a set of cluster snapshots.
      * </p>
      * 
      * @param batchModifyClusterSnapshotsRequest
@@ -273,7 +273,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Cancels a resize operation.
+     * Cancels a resize operation for a cluster.
      * </p>
      * 
      * @param cancelResizeRequest
@@ -286,7 +286,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Cancels a resize operation.
+     * Cancels a resize operation for a cluster.
      * </p>
      * 
      * @param cancelResizeRequest
@@ -359,7 +359,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Creates a new cluster.
+     * Creates a new cluster with the specified parameters.
      * </p>
      * <p>
      * To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet group name. The cluster
@@ -379,7 +379,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Creates a new cluster.
+     * Creates a new cluster with the specified parameters.
      * </p>
      * <p>
      * To create a cluster in Virtual Private Cloud (VPC), you must provide a cluster subnet group name. The cluster
@@ -741,6 +741,39 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
+     * Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For
+     * example, you can create a schedule of when to run the <code>ResizeCluster</code> API operation.
+     * </p>
+     * 
+     * @param createScheduledActionRequest
+     * @return A Java Future containing the result of the CreateScheduledAction operation returned by the service.
+     * @sample AmazonRedshiftAsync.CreateScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateScheduledActionResult> createScheduledActionAsync(CreateScheduledActionRequest createScheduledActionRequest);
+
+    /**
+     * <p>
+     * Creates a scheduled action. A scheduled action contains a schedule and an Amazon Redshift API action. For
+     * example, you can create a schedule of when to run the <code>ResizeCluster</code> API operation.
+     * </p>
+     * 
+     * @param createScheduledActionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the CreateScheduledAction operation returned by the service.
+     * @sample AmazonRedshiftAsyncHandler.CreateScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/CreateScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<CreateScheduledActionResult> createScheduledActionAsync(CreateScheduledActionRequest createScheduledActionRequest,
+            com.amazonaws.handlers.AsyncHandler<CreateScheduledActionRequest, CreateScheduledActionResult> asyncHandler);
+
+    /**
+     * <p>
      * Creates a snapshot copy grant that permits Amazon Redshift to use a customer master key (CMK) from AWS Key
      * Management Service (AWS KMS) to encrypt copied snapshots in a destination region.
      * </p>
@@ -786,7 +819,8 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Creates a new snapshot schedule.
+     * Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup
+     * schedule.
      * </p>
      * 
      * @param createSnapshotScheduleRequest
@@ -799,7 +833,8 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Creates a new snapshot schedule.
+     * Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup
+     * schedule.
      * </p>
      * 
      * @param createSnapshotScheduleRequest
@@ -817,7 +852,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Adds one or more tags to a specified resource.
+     * Adds tags to a cluster.
      * </p>
      * <p>
      * A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, you will receive an
@@ -839,7 +874,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Adds one or more tags to a specified resource.
+     * Adds tags to a cluster.
      * </p>
      * <p>
      * A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, you will receive an
@@ -866,9 +901,10 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Deletes a previously provisioned cluster. A successful response from the web service indicates that the request
-     * was received correctly. Use <a>DescribeClusters</a> to monitor the status of the deletion. The delete operation
-     * cannot be canceled or reverted once submitted. For more information about managing clusters, go to <a
+     * Deletes a previously provisioned cluster without its final snapshot being created. A successful response from the
+     * web service indicates that the request was received correctly. Use <a>DescribeClusters</a> to monitor the status
+     * of the deletion. The delete operation cannot be canceled or reverted once submitted. For more information about
+     * managing clusters, go to <a
      * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
      * in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
@@ -895,9 +931,10 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Deletes a previously provisioned cluster. A successful response from the web service indicates that the request
-     * was received correctly. Use <a>DescribeClusters</a> to monitor the status of the deletion. The delete operation
-     * cannot be canceled or reverted once submitted. For more information about managing clusters, go to <a
+     * Deletes a previously provisioned cluster without its final snapshot being created. A successful response from the
+     * web service indicates that the request was received correctly. Use <a>DescribeClusters</a> to monitor the status
+     * of the deletion. The delete operation cannot be canceled or reverted once submitted. For more information about
+     * managing clusters, go to <a
      * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
      * in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
@@ -1198,6 +1235,37 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
+     * Deletes a scheduled action.
+     * </p>
+     * 
+     * @param deleteScheduledActionRequest
+     * @return A Java Future containing the result of the DeleteScheduledAction operation returned by the service.
+     * @sample AmazonRedshiftAsync.DeleteScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteScheduledActionResult> deleteScheduledActionAsync(DeleteScheduledActionRequest deleteScheduledActionRequest);
+
+    /**
+     * <p>
+     * Deletes a scheduled action.
+     * </p>
+     * 
+     * @param deleteScheduledActionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeleteScheduledAction operation returned by the service.
+     * @sample AmazonRedshiftAsyncHandler.DeleteScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DeleteScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<DeleteScheduledActionResult> deleteScheduledActionAsync(DeleteScheduledActionRequest deleteScheduledActionRequest,
+            com.amazonaws.handlers.AsyncHandler<DeleteScheduledActionRequest, DeleteScheduledActionResult> asyncHandler);
+
+    /**
+     * <p>
      * Deletes the specified snapshot copy grant.
      * </p>
      * 
@@ -1262,8 +1330,8 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the
-     * tag or tags.
+     * Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or
+     * tags.
      * </p>
      * 
      * @param deleteTagsRequest
@@ -1277,8 +1345,8 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the
-     * tag or tags.
+     * Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or
+     * tags.
      * </p>
      * 
      * @param deleteTagsRequest
@@ -2540,6 +2608,37 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
+     * Describes properties of scheduled actions.
+     * </p>
+     * 
+     * @param describeScheduledActionsRequest
+     * @return A Java Future containing the result of the DescribeScheduledActions operation returned by the service.
+     * @sample AmazonRedshiftAsync.DescribeScheduledActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeScheduledActions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeScheduledActionsResult> describeScheduledActionsAsync(DescribeScheduledActionsRequest describeScheduledActionsRequest);
+
+    /**
+     * <p>
+     * Describes properties of scheduled actions.
+     * </p>
+     * 
+     * @param describeScheduledActionsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeScheduledActions operation returned by the service.
+     * @sample AmazonRedshiftAsyncHandler.DescribeScheduledActions
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/DescribeScheduledActions"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeScheduledActionsResult> describeScheduledActionsAsync(DescribeScheduledActionsRequest describeScheduledActionsRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeScheduledActionsRequest, DescribeScheduledActionsResult> asyncHandler);
+
+    /**
+     * <p>
      * Returns a list of snapshot copy grants owned by the AWS account in the destination region.
      * </p>
      * <p>
@@ -2633,7 +2732,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Returns the total amount of snapshot usage and provisioned storage in megabytes.
+     * Returns account level backups storage size and provisional storage.
      * </p>
      * 
      * @param describeStorageRequest
@@ -2646,7 +2745,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Returns the total amount of snapshot usage and provisioned storage in megabytes.
+     * Returns account level backups storage size and provisional storage.
      * </p>
      * 
      * @param describeStorageRequest
@@ -3083,16 +3182,18 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Modifies the settings for a cluster. For example, you can add another security or parameter group, update the
-     * preferred maintenance window, or change the master user password. Resetting a cluster password or modifying the
-     * security groups associated with a cluster do not need a reboot. However, modifying a parameter group requires a
-     * reboot for parameters to take effect. For more information about managing clusters, go to <a
-     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
-     * in the <i>Amazon Redshift Cluster Management Guide</i>.
+     * Modifies the settings for a cluster.
      * </p>
      * <p>
      * You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster,
      * you must specify both the number of nodes and the node type even if one of the parameters does not change.
+     * </p>
+     * <p>
+     * You can add another security or parameter group, or change the master user password. Resetting a cluster password
+     * or modifying the security groups associated with a cluster do not need a reboot. However, modifying a parameter
+     * group requires a reboot for parameters to take effect. For more information about managing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
+     * in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * 
      * @param modifyClusterRequest
@@ -3105,16 +3206,18 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Modifies the settings for a cluster. For example, you can add another security or parameter group, update the
-     * preferred maintenance window, or change the master user password. Resetting a cluster password or modifying the
-     * security groups associated with a cluster do not need a reboot. However, modifying a parameter group requires a
-     * reboot for parameters to take effect. For more information about managing clusters, go to <a
-     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
-     * in the <i>Amazon Redshift Cluster Management Guide</i>.
+     * Modifies the settings for a cluster.
      * </p>
      * <p>
      * You can also change node type and the number of nodes to scale up or down the cluster. When resizing a cluster,
      * you must specify both the number of nodes and the node type even if one of the parameters does not change.
+     * </p>
+     * <p>
+     * You can add another security or parameter group, or change the master user password. Resetting a cluster password
+     * or modifying the security groups associated with a cluster do not need a reboot. However, modifying a parameter
+     * group requires a reboot for parameters to take effect. For more information about managing clusters, go to <a
+     * href="https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html">Amazon Redshift Clusters</a>
+     * in the <i>Amazon Redshift Cluster Management Guide</i>.
      * </p>
      * 
      * @param modifyClusterRequest
@@ -3204,8 +3307,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Modifies the maintenance settings of a cluster. For example, you can defer a maintenance window. You can also
-     * update or cancel a deferment.
+     * Modifies the maintenance settings of a cluster.
      * </p>
      * 
      * @param modifyClusterMaintenanceRequest
@@ -3218,8 +3320,7 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
-     * Modifies the maintenance settings of a cluster. For example, you can defer a maintenance window. You can also
-     * update or cancel a deferment.
+     * Modifies the maintenance settings of a cluster.
      * </p>
      * 
      * @param modifyClusterMaintenanceRequest
@@ -3282,6 +3383,9 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
      * <p>
      * Modifies the settings for a snapshot.
      * </p>
+     * <p>
+     * This exanmple modifies the manual retention period setting for a cluster snapshot.
+     * </p>
      * 
      * @param modifyClusterSnapshotRequest
      * @return A Java Future containing the result of the ModifyClusterSnapshot operation returned by the service.
@@ -3294,6 +3398,9 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
     /**
      * <p>
      * Modifies the settings for a snapshot.
+     * </p>
+     * <p>
+     * This exanmple modifies the manual retention period setting for a cluster snapshot.
      * </p>
      * 
      * @param modifyClusterSnapshotRequest
@@ -3410,6 +3517,37 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
 
     /**
      * <p>
+     * Modifies a scheduled action.
+     * </p>
+     * 
+     * @param modifyScheduledActionRequest
+     * @return A Java Future containing the result of the ModifyScheduledAction operation returned by the service.
+     * @sample AmazonRedshiftAsync.ModifyScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyScheduledActionResult> modifyScheduledActionAsync(ModifyScheduledActionRequest modifyScheduledActionRequest);
+
+    /**
+     * <p>
+     * Modifies a scheduled action.
+     * </p>
+     * 
+     * @param modifyScheduledActionRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ModifyScheduledAction operation returned by the service.
+     * @sample AmazonRedshiftAsyncHandler.ModifyScheduledAction
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ModifyScheduledAction" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<ModifyScheduledActionResult> modifyScheduledActionAsync(ModifyScheduledActionRequest modifyScheduledActionRequest,
+            com.amazonaws.handlers.AsyncHandler<ModifyScheduledActionRequest, ModifyScheduledActionResult> asyncHandler);
+
+    /**
+     * <p>
      * Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the
      * source AWS Region. By default, this operation only changes the retention period of copied automated snapshots.
      * The retention periods for both new and existing copied automated snapshots are updated with the new retention
@@ -3481,6 +3619,37 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
      */
     java.util.concurrent.Future<ModifySnapshotScheduleResult> modifySnapshotScheduleAsync(ModifySnapshotScheduleRequest modifySnapshotScheduleRequest,
             com.amazonaws.handlers.AsyncHandler<ModifySnapshotScheduleRequest, ModifySnapshotScheduleResult> asyncHandler);
+
+    /**
+     * <p>
+     * Pauses a cluster.
+     * </p>
+     * 
+     * @param pauseClusterRequest
+     * @return A Java Future containing the result of the PauseCluster operation returned by the service.
+     * @sample AmazonRedshiftAsync.PauseCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/PauseCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<Cluster> pauseClusterAsync(PauseClusterRequest pauseClusterRequest);
+
+    /**
+     * <p>
+     * Pauses a cluster.
+     * </p>
+     * 
+     * @param pauseClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the PauseCluster operation returned by the service.
+     * @sample AmazonRedshiftAsyncHandler.PauseCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/PauseCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<Cluster> pauseClusterAsync(PauseClusterRequest pauseClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<PauseClusterRequest, Cluster> asyncHandler);
 
     /**
      * <p>
@@ -3644,6 +3813,16 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
      * ds2.8xlarge
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * ra3.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ra3.16xlarge
+     * </p>
+     * </li>
      * </ul>
      * </li>
      * <li>
@@ -3694,6 +3873,16 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
      * <li>
      * <p>
      * ds2.8xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ra3.4xlarge
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * ra3.16xlarge
      * </p>
      * </li>
      * </ul>
@@ -3829,6 +4018,37 @@ public interface AmazonRedshiftAsync extends AmazonRedshift {
     java.util.concurrent.Future<TableRestoreStatus> restoreTableFromClusterSnapshotAsync(
             RestoreTableFromClusterSnapshotRequest restoreTableFromClusterSnapshotRequest,
             com.amazonaws.handlers.AsyncHandler<RestoreTableFromClusterSnapshotRequest, TableRestoreStatus> asyncHandler);
+
+    /**
+     * <p>
+     * Resumes a paused cluster.
+     * </p>
+     * 
+     * @param resumeClusterRequest
+     * @return A Java Future containing the result of the ResumeCluster operation returned by the service.
+     * @sample AmazonRedshiftAsync.ResumeCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ResumeCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<Cluster> resumeClusterAsync(ResumeClusterRequest resumeClusterRequest);
+
+    /**
+     * <p>
+     * Resumes a paused cluster.
+     * </p>
+     * 
+     * @param resumeClusterRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ResumeCluster operation returned by the service.
+     * @sample AmazonRedshiftAsyncHandler.ResumeCluster
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/redshift-2012-12-01/ResumeCluster" target="_top">AWS API
+     *      Documentation</a>
+     */
+    java.util.concurrent.Future<Cluster> resumeClusterAsync(ResumeClusterRequest resumeClusterRequest,
+            com.amazonaws.handlers.AsyncHandler<ResumeClusterRequest, Cluster> asyncHandler);
 
     /**
      * <p>

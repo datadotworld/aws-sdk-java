@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -612,6 +612,72 @@ public class AmazonManagedBlockchainAsyncClient extends AmazonManagedBlockchainC
 
                 try {
                     result = executeRejectInvitation(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMemberResult> updateMemberAsync(UpdateMemberRequest request) {
+
+        return updateMemberAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMemberResult> updateMemberAsync(final UpdateMemberRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateMemberRequest, UpdateMemberResult> asyncHandler) {
+        final UpdateMemberRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateMemberResult>() {
+            @Override
+            public UpdateMemberResult call() throws Exception {
+                UpdateMemberResult result = null;
+
+                try {
+                    result = executeUpdateMember(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateNodeResult> updateNodeAsync(UpdateNodeRequest request) {
+
+        return updateNodeAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateNodeResult> updateNodeAsync(final UpdateNodeRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateNodeRequest, UpdateNodeResult> asyncHandler) {
+        final UpdateNodeRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateNodeResult>() {
+            @Override
+            public UpdateNodeResult call() throws Exception {
+                UpdateNodeResult result = null;
+
+                try {
+                    result = executeUpdateNode(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

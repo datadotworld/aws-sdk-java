@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -22,6 +22,57 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * An object representing a container health check. Health check parameters that are specified in a container definition
  * override any Docker health checks that exist in the container image (such as those specified in a parent image or
  * from the image's Dockerfile).
+ * </p>
+ * <p>
+ * You can view the health status of both individual containers and a task with the DescribeTasks API operation or when
+ * viewing the task details in the console.
+ * </p>
+ * <p>
+ * The following describes the possible <code>healthStatus</code> values for a container:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <code>HEALTHY</code>-The container health check has passed successfully.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UNHEALTHY</code>-The container health check has failed.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UNKNOWN</code>-The container health check is being evaluated or there is no container health check defined.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * The following describes the possible <code>healthStatus</code> values for a task. The container health check status
+ * of nonessential containers do not have an effect on the health status of a task.
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * <code>HEALTHY</code>-All essential containers within the task have passed their health checks.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UNHEALTHY</code>-One or more essential containers have failed their health check.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <code>UNKNOWN</code>-The essential containers within the task are still having their health checks evaluated or there
+ * are no container health checks defined.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * If a task is run manually, and not as part of a service, the task will continue its lifecycle regardless of its
+ * health status. For tasks that are part of a service, if the task reports as unhealthy then the task will be stopped
+ * and the service scheduler will replace it.
  * </p>
  * <p>
  * The following are notes about container health check support:

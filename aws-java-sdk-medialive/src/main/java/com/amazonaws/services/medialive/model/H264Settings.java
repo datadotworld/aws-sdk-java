@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -58,6 +58,14 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     /** If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames. */
     private String flickerAq;
     /**
+     * This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis or a
+     * frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always code on a
+     * field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields
+     * separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF), depending on what is most
+     * appropriate for the content.
+     */
+    private String forceFieldPictures;
+    /**
      * This field indicates how the output video frame rate is specified. If "specified" is selected then the output
      * video frame rate is determined by framerateNumerator and framerateDenominator, else if "initializeFromSource" is
      * selected then the output video frame rate will be set equal to the input video frame rate of the first input.
@@ -77,7 +85,11 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     private Integer gopClosedCadence;
     /** Number of B-frames between reference frames. */
     private Integer gopNumBFrames;
-    /** GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than zero. */
+    /**
+     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames,
+     * gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be
+     * greater than 0, but need not be an integer.
+     */
     private Double gopSize;
     /**
      * Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a
@@ -98,11 +110,11 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      */
     private Integer maxBitrate;
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence) I-frames
-     * and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a
-     * cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling
-     * lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch =
-     * GOP size + Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used. Enforces
+     * separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change
+     * I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the
+     * next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      */
     private Integer minIInterval;
     /**
@@ -141,6 +153,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * 
      * CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices
      * that cannot handle variable bitrates.
+     * 
+     * Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a
+     * MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the
+     * Multiplex Program.
      */
     private String rateControlMode;
     /** Sets the scan type of the output to progressive or top-field-first interlaced. */
@@ -656,6 +672,89 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis or a
+     * frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always code on a
+     * field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields
+     * separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF), depending on what is most
+     * appropriate for the content.
+     * 
+     * @param forceFieldPictures
+     *        This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis
+     *        or a frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always
+     *        code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two
+     *        sets of fields separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF),
+     *        depending on what is most appropriate for the content.
+     * @see H264ForceFieldPictures
+     */
+
+    public void setForceFieldPictures(String forceFieldPictures) {
+        this.forceFieldPictures = forceFieldPictures;
+    }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis or a
+     * frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always code on a
+     * field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields
+     * separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF), depending on what is most
+     * appropriate for the content.
+     * 
+     * @return This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis
+     *         or a frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always
+     *         code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two
+     *         sets of fields separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF),
+     *         depending on what is most appropriate for the content.
+     * @see H264ForceFieldPictures
+     */
+
+    public String getForceFieldPictures() {
+        return this.forceFieldPictures;
+    }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis or a
+     * frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always code on a
+     * field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields
+     * separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF), depending on what is most
+     * appropriate for the content.
+     * 
+     * @param forceFieldPictures
+     *        This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis
+     *        or a frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always
+     *        code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two
+     *        sets of fields separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF),
+     *        depending on what is most appropriate for the content.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see H264ForceFieldPictures
+     */
+
+    public H264Settings withForceFieldPictures(String forceFieldPictures) {
+        setForceFieldPictures(forceFieldPictures);
+        return this;
+    }
+
+    /**
+     * This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis or a
+     * frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always code on a
+     * field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields
+     * separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF), depending on what is most
+     * appropriate for the content.
+     * 
+     * @param forceFieldPictures
+     *        This setting applies only when scan type is "interlaced." It controls whether coding is on a field basis
+     *        or a frame basis. (When the video is progressive, the coding is always on a frame basis.) enabled: Always
+     *        code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two
+     *        sets of fields separately (on a field basis) or together (on a frame basis, using PAFF or MBAFF),
+     *        depending on what is most appropriate for the content.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see H264ForceFieldPictures
+     */
+
+    public H264Settings withForceFieldPictures(H264ForceFieldPictures forceFieldPictures) {
+        this.forceFieldPictures = forceFieldPictures.toString();
+        return this;
+    }
+
+    /**
      * This field indicates how the output video frame rate is specified. If "specified" is selected then the output
      * video frame rate is determined by framerateNumerator and framerateDenominator, else if "initializeFromSource" is
      * selected then the output video frame rate will be set equal to the input video frame rate of the first input.
@@ -926,11 +1025,14 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than zero.
+     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames,
+     * gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be
+     * greater than 0, but need not be an integer.
      * 
      * @param gopSize
-     *        GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than
-     *        zero.
+     *        GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is
+     *        frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds,
+     *        gopSize must be greater than 0, but need not be an integer.
      */
 
     public void setGopSize(Double gopSize) {
@@ -938,10 +1040,13 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than zero.
+     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames,
+     * gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be
+     * greater than 0, but need not be an integer.
      * 
-     * @return GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than
-     *         zero.
+     * @return GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is
+     *         frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds,
+     *         gopSize must be greater than 0, but need not be an integer.
      */
 
     public Double getGopSize() {
@@ -949,11 +1054,14 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than zero.
+     * GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames,
+     * gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be
+     * greater than 0, but need not be an integer.
      * 
      * @param gopSize
-     *        GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than
-     *        zero.
+     *        GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is
+     *        frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds,
+     *        gopSize must be greater than 0, but need not be an integer.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1178,18 +1286,19 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence) I-frames
-     * and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a
-     * cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling
-     * lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch =
-     * GOP size + Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used. Enforces
+     * separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change
+     * I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the
+     * next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      * 
      * @param minIInterval
-     *        Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence)
-     *        I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval
-     *        frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch
-     *        requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP.
-     *        Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+     *        Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used.
+     *        Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection.
+     *        If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or
+     *        stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting
+     *        I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
+     *        Min-I-interval - 1
      */
 
     public void setMinIInterval(Integer minIInterval) {
@@ -1197,17 +1306,18 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence) I-frames
-     * and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a
-     * cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling
-     * lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch =
-     * GOP size + Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used. Enforces
+     * separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change
+     * I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the
+     * next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      * 
-     * @return Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence)
-     *         I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval
-     *         frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch
-     *         requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP.
-     *         Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+     * @return Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used.
+     *         Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection.
+     *         If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or
+     *         stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting
+     *         I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
+     *         Min-I-interval - 1
      */
 
     public Integer getMinIInterval() {
@@ -1215,18 +1325,19 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence) I-frames
-     * and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a
-     * cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling
-     * lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch =
-     * GOP size + Min-I-interval - 1
+     * Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used. Enforces
+     * separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change
+     * I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change
+     * I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the
+     * next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
      * 
      * @param minIInterval
-     *        Only meaningful if sceneChangeDetect is set to enabled. Enforces separation between repeated (cadence)
-     *        I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval
-     *        frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch
-     *        requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP.
-     *        Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+     *        Only meaningful if sceneChangeDetect is set to enabled. Defaults to 5 if multiplex rate control is used.
+     *        Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection.
+     *        If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or
+     *        stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting
+     *        I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size +
+     *        Min-I-interval - 1
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1533,6 +1644,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices
      * that cannot handle variable bitrates.
      * 
+     * Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a
+     * MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the
+     * Multiplex Program.
+     * 
      * @param rateControlMode
      *        Rate control mode.
      * 
@@ -1544,6 +1659,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * 
      *        CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to
      *        devices that cannot handle variable bitrates.
+     * 
+     *        Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to
+     *        a MediaLive Multiplex in which case the rate control configuration is controlled by the properties within
+     *        the Multiplex Program.
      * @see H264RateControlMode
      */
 
@@ -1563,6 +1682,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices
      * that cannot handle variable bitrates.
      * 
+     * Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a
+     * MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the
+     * Multiplex Program.
+     * 
      * @return Rate control mode.
      * 
      *         QVBR: Quality will match the specified quality level except when it is constrained by the maximum
@@ -1573,6 +1696,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * 
      *         CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to
      *         devices that cannot handle variable bitrates.
+     * 
+     *         Multiplex: This rate control mode is only supported (and is required) when the video is being delivered
+     *         to a MediaLive Multiplex in which case the rate control configuration is controlled by the properties
+     *         within the Multiplex Program.
      * @see H264RateControlMode
      */
 
@@ -1592,6 +1719,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices
      * that cannot handle variable bitrates.
      * 
+     * Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a
+     * MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the
+     * Multiplex Program.
+     * 
      * @param rateControlMode
      *        Rate control mode.
      * 
@@ -1603,6 +1734,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * 
      *        CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to
      *        devices that cannot handle variable bitrates.
+     * 
+     *        Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to
+     *        a MediaLive Multiplex in which case the rate control configuration is controlled by the properties within
+     *        the Multiplex Program.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see H264RateControlMode
      */
@@ -1624,6 +1759,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices
      * that cannot handle variable bitrates.
      * 
+     * Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a
+     * MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the
+     * Multiplex Program.
+     * 
      * @param rateControlMode
      *        Rate control mode.
      * 
@@ -1635,6 +1774,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
      * 
      *        CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to
      *        devices that cannot handle variable bitrates.
+     * 
+     *        Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to
+     *        a MediaLive Multiplex in which case the rate control configuration is controlled by the properties within
+     *        the Multiplex Program.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see H264RateControlMode
      */
@@ -2165,6 +2308,8 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
             sb.append("FixedAfd: ").append(getFixedAfd()).append(",");
         if (getFlickerAq() != null)
             sb.append("FlickerAq: ").append(getFlickerAq()).append(",");
+        if (getForceFieldPictures() != null)
+            sb.append("ForceFieldPictures: ").append(getForceFieldPictures()).append(",");
         if (getFramerateControl() != null)
             sb.append("FramerateControl: ").append(getFramerateControl()).append(",");
         if (getFramerateDenominator() != null)
@@ -2274,6 +2419,10 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
         if (other.getFlickerAq() == null ^ this.getFlickerAq() == null)
             return false;
         if (other.getFlickerAq() != null && other.getFlickerAq().equals(this.getFlickerAq()) == false)
+            return false;
+        if (other.getForceFieldPictures() == null ^ this.getForceFieldPictures() == null)
+            return false;
+        if (other.getForceFieldPictures() != null && other.getForceFieldPictures().equals(this.getForceFieldPictures()) == false)
             return false;
         if (other.getFramerateControl() == null ^ this.getFramerateControl() == null)
             return false;
@@ -2405,6 +2554,7 @@ public class H264Settings implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getEntropyEncoding() == null) ? 0 : getEntropyEncoding().hashCode());
         hashCode = prime * hashCode + ((getFixedAfd() == null) ? 0 : getFixedAfd().hashCode());
         hashCode = prime * hashCode + ((getFlickerAq() == null) ? 0 : getFlickerAq().hashCode());
+        hashCode = prime * hashCode + ((getForceFieldPictures() == null) ? 0 : getForceFieldPictures().hashCode());
         hashCode = prime * hashCode + ((getFramerateControl() == null) ? 0 : getFramerateControl().hashCode());
         hashCode = prime * hashCode + ((getFramerateDenominator() == null) ? 0 : getFramerateDenominator().hashCode());
         hashCode = prime * hashCode + ((getFramerateNumerator() == null) ? 0 : getFramerateNumerator().hashCode());

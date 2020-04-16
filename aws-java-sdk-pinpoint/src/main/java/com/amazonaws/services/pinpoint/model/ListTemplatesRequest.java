@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,15 +27,15 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the Application Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      */
     private String nextToken;
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the Application Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      */
     private String pageSize;
@@ -48,21 +48,21 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
     private String prefix;
     /**
      * <p>
-     * The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To include all
-     * types of templates in the results, don't include this parameter in your request.
+     * The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To include
+     * all types of templates in the results, don't include this parameter in your request.
      * </p>
      */
     private String templateType;
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the Application Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param nextToken
-     *        The NextToken string that specifies which page of results to return in a paginated response. This
-     *        parameter is currently not supported by the Application Metrics and Campaign Metrics resources.
+     *        The string that specifies which page of results to return in a paginated response. This parameter is
+     *        currently not supported for application, campaign, and journey metrics.
      */
 
     public void setNextToken(String nextToken) {
@@ -71,12 +71,12 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the Application Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      * 
-     * @return The NextToken string that specifies which page of results to return in a paginated response. This
-     *         parameter is currently not supported by the Application Metrics and Campaign Metrics resources.
+     * @return The string that specifies which page of results to return in a paginated response. This parameter is
+     *         currently not supported for application, campaign, and journey metrics.
      */
 
     public String getNextToken() {
@@ -85,13 +85,13 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The NextToken string that specifies which page of results to return in a paginated response. This parameter is
-     * currently not supported by the Application Metrics and Campaign Metrics resources.
+     * The string that specifies which page of results to return in a paginated response. This parameter is currently
+     * not supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param nextToken
-     *        The NextToken string that specifies which page of results to return in a paginated response. This
-     *        parameter is currently not supported by the Application Metrics and Campaign Metrics resources.
+     *        The string that specifies which page of results to return in a paginated response. This parameter is
+     *        currently not supported for application, campaign, and journey metrics.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -103,12 +103,12 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the Application Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param pageSize
      *        The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *        not supported by the Application Metrics and Campaign Metrics resources.
+     *        not supported for application, campaign, and journey metrics.
      */
 
     public void setPageSize(String pageSize) {
@@ -118,11 +118,11 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the Application Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @return The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *         not supported by the Application Metrics and Campaign Metrics resources.
+     *         not supported for application, campaign, and journey metrics.
      */
 
     public String getPageSize() {
@@ -132,12 +132,12 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
     /**
      * <p>
      * The maximum number of items to include in each page of a paginated response. This parameter is currently not
-     * supported by the Application Metrics and Campaign Metrics resources.
+     * supported for application, campaign, and journey metrics.
      * </p>
      * 
      * @param pageSize
      *        The maximum number of items to include in each page of a paginated response. This parameter is currently
-     *        not supported by the Application Metrics and Campaign Metrics resources.
+     *        not supported for application, campaign, and journey metrics.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -197,13 +197,13 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To include all
-     * types of templates in the results, don't include this parameter in your request.
+     * The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To include
+     * all types of templates in the results, don't include this parameter in your request.
      * </p>
      * 
      * @param templateType
-     *        The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To include
-     *        all types of templates in the results, don't include this parameter in your request.
+     *        The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To
+     *        include all types of templates in the results, don't include this parameter in your request.
      */
 
     public void setTemplateType(String templateType) {
@@ -212,11 +212,11 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To include all
-     * types of templates in the results, don't include this parameter in your request.
+     * The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To include
+     * all types of templates in the results, don't include this parameter in your request.
      * </p>
      * 
-     * @return The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To
+     * @return The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To
      *         include all types of templates in the results, don't include this parameter in your request.
      */
 
@@ -226,13 +226,13 @@ public class ListTemplatesRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To include all
-     * types of templates in the results, don't include this parameter in your request.
+     * The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To include
+     * all types of templates in the results, don't include this parameter in your request.
      * </p>
      * 
      * @param templateType
-     *        The type of message template to include in the results. Valid values are: EMAIL, SMS, and PUSH. To include
-     *        all types of templates in the results, don't include this parameter in your request.
+     *        The type of message template to include in the results. Valid values are: EMAIL, PUSH, SMS, and VOICE. To
+     *        include all types of templates in the results, don't include this parameter in your request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

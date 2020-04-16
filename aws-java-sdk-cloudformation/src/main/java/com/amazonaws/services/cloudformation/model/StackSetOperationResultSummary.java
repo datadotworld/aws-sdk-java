@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,7 +17,7 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * The structure that contains information about a specified operation's results for a given account in a given region.
+ * The structure that contains information about a specified operation's results for a given account in a given Region.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/StackSetOperationResultSummary"
@@ -28,50 +28,50 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS account for this operation result.
+     * [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      * </p>
      */
     private String account;
     /**
      * <p>
-     * The name of the AWS region for this operation result.
+     * The name of the AWS Region for this operation result.
      * </p>
      */
     private String region;
     /**
      * <p>
-     * The result status of the stack set operation for the given account in the given region.
+     * The result status of the stack set operation for the given account in the given Region.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is either
+     * <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is either
      * because a user has stopped the stack set operation, or because the failure tolerance of the stack set operation
      * has been exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code>: The operation in the specified account and region failed.
+     * <code>FAILED</code>: The operation in the specified account and Region failed.
      * </p>
      * <p>
-     * If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack set
+     * If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack set
      * operation as a whole might be exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     * <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     * <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     * <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      * </p>
      * </li>
      * </ul>
@@ -90,14 +90,20 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
      * </p>
      */
     private AccountGateResult accountGateResult;
+    /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     */
+    private String organizationalUnitId;
 
     /**
      * <p>
-     * The name of the AWS account for this operation result.
+     * [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      * </p>
      * 
      * @param account
-     *        The name of the AWS account for this operation result.
+     *        [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      */
 
     public void setAccount(String account) {
@@ -106,10 +112,10 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS account for this operation result.
+     * [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      * </p>
      * 
-     * @return The name of the AWS account for this operation result.
+     * @return [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      */
 
     public String getAccount() {
@@ -118,11 +124,11 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS account for this operation result.
+     * [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      * </p>
      * 
      * @param account
-     *        The name of the AWS account for this operation result.
+     *        [<code>Self-managed</code> permissions] The name of the AWS account for this operation result.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -133,11 +139,11 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS region for this operation result.
+     * The name of the AWS Region for this operation result.
      * </p>
      * 
      * @param region
-     *        The name of the AWS region for this operation result.
+     *        The name of the AWS Region for this operation result.
      */
 
     public void setRegion(String region) {
@@ -146,10 +152,10 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS region for this operation result.
+     * The name of the AWS Region for this operation result.
      * </p>
      * 
-     * @return The name of the AWS region for this operation result.
+     * @return The name of the AWS Region for this operation result.
      */
 
     public String getRegion() {
@@ -158,11 +164,11 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS region for this operation result.
+     * The name of the AWS Region for this operation result.
      * </p>
      * 
      * @param region
-     *        The name of the AWS region for this operation result.
+     *        The name of the AWS Region for this operation result.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -173,74 +179,74 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The result status of the stack set operation for the given account in the given region.
+     * The result status of the stack set operation for the given account in the given Region.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is either
+     * <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is either
      * because a user has stopped the stack set operation, or because the failure tolerance of the stack set operation
      * has been exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code>: The operation in the specified account and region failed.
+     * <code>FAILED</code>: The operation in the specified account and Region failed.
      * </p>
      * <p>
-     * If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack set
+     * If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack set
      * operation as a whole might be exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     * <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     * <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     * <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      * </p>
      * </li>
      * </ul>
      * 
      * @param status
-     *        The result status of the stack set operation for the given account in the given region.</p>
+     *        The result status of the stack set operation for the given account in the given Region.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is
+     *        <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is
      *        either because a user has stopped the stack set operation, or because the failure tolerance of the stack
      *        set operation has been exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code>: The operation in the specified account and region failed.
+     *        <code>FAILED</code>: The operation in the specified account and Region failed.
      *        </p>
      *        <p>
-     *        If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack
+     *        If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack
      *        set operation as a whole might be exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     *        <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     *        <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     *        <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      *        </p>
      *        </li>
      * @see StackSetOperationResultStatus
@@ -252,73 +258,73 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The result status of the stack set operation for the given account in the given region.
+     * The result status of the stack set operation for the given account in the given Region.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is either
+     * <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is either
      * because a user has stopped the stack set operation, or because the failure tolerance of the stack set operation
      * has been exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code>: The operation in the specified account and region failed.
+     * <code>FAILED</code>: The operation in the specified account and Region failed.
      * </p>
      * <p>
-     * If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack set
+     * If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack set
      * operation as a whole might be exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     * <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     * <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     * <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The result status of the stack set operation for the given account in the given region.</p>
+     * @return The result status of the stack set operation for the given account in the given Region.</p>
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is
+     *         <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is
      *         either because a user has stopped the stack set operation, or because the failure tolerance of the stack
      *         set operation has been exceeded.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>FAILED</code>: The operation in the specified account and region failed.
+     *         <code>FAILED</code>: The operation in the specified account and Region failed.
      *         </p>
      *         <p>
-     *         If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack
+     *         If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack
      *         set operation as a whole might be exceeded.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     *         <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     *         <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     *         <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      *         </p>
      *         </li>
      * @see StackSetOperationResultStatus
@@ -330,74 +336,74 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The result status of the stack set operation for the given account in the given region.
+     * The result status of the stack set operation for the given account in the given Region.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is either
+     * <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is either
      * because a user has stopped the stack set operation, or because the failure tolerance of the stack set operation
      * has been exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code>: The operation in the specified account and region failed.
+     * <code>FAILED</code>: The operation in the specified account and Region failed.
      * </p>
      * <p>
-     * If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack set
+     * If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack set
      * operation as a whole might be exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     * <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     * <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     * <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      * </p>
      * </li>
      * </ul>
      * 
      * @param status
-     *        The result status of the stack set operation for the given account in the given region.</p>
+     *        The result status of the stack set operation for the given account in the given Region.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is
+     *        <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is
      *        either because a user has stopped the stack set operation, or because the failure tolerance of the stack
      *        set operation has been exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code>: The operation in the specified account and region failed.
+     *        <code>FAILED</code>: The operation in the specified account and Region failed.
      *        </p>
      *        <p>
-     *        If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack
+     *        If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack
      *        set operation as a whole might be exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     *        <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     *        <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     *        <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -411,74 +417,74 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The result status of the stack set operation for the given account in the given region.
+     * The result status of the stack set operation for the given account in the given Region.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is either
+     * <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is either
      * because a user has stopped the stack set operation, or because the failure tolerance of the stack set operation
      * has been exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code>: The operation in the specified account and region failed.
+     * <code>FAILED</code>: The operation in the specified account and Region failed.
      * </p>
      * <p>
-     * If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack set
+     * If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack set
      * operation as a whole might be exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     * <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     * <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     * <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      * </p>
      * </li>
      * </ul>
      * 
      * @param status
-     *        The result status of the stack set operation for the given account in the given region.</p>
+     *        The result status of the stack set operation for the given account in the given Region.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is
+     *        <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is
      *        either because a user has stopped the stack set operation, or because the failure tolerance of the stack
      *        set operation has been exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code>: The operation in the specified account and region failed.
+     *        <code>FAILED</code>: The operation in the specified account and Region failed.
      *        </p>
      *        <p>
-     *        If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack
+     *        If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack
      *        set operation as a whole might be exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     *        <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     *        <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     *        <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      *        </p>
      *        </li>
      * @see StackSetOperationResultStatus
@@ -490,74 +496,74 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The result status of the stack set operation for the given account in the given region.
+     * The result status of the stack set operation for the given account in the given Region.
      * </p>
      * <ul>
      * <li>
      * <p>
-     * <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is either
+     * <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is either
      * because a user has stopped the stack set operation, or because the failure tolerance of the stack set operation
      * has been exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>FAILED</code>: The operation in the specified account and region failed.
+     * <code>FAILED</code>: The operation in the specified account and Region failed.
      * </p>
      * <p>
-     * If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack set
+     * If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack set
      * operation as a whole might be exceeded.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     * <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     * <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      * </p>
      * </li>
      * <li>
      * <p>
-     * <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     * <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      * </p>
      * </li>
      * </ul>
      * 
      * @param status
-     *        The result status of the stack set operation for the given account in the given region.</p>
+     *        The result status of the stack set operation for the given account in the given Region.</p>
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>CANCELLED</code>: The operation in the specified account and region has been cancelled. This is
+     *        <code>CANCELLED</code>: The operation in the specified account and Region has been cancelled. This is
      *        either because a user has stopped the stack set operation, or because the failure tolerance of the stack
      *        set operation has been exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>FAILED</code>: The operation in the specified account and region failed.
+     *        <code>FAILED</code>: The operation in the specified account and Region failed.
      *        </p>
      *        <p>
-     *        If the stack set operation fails in enough accounts within a region, the failure tolerance for the stack
+     *        If the stack set operation fails in enough accounts within a Region, the failure tolerance for the stack
      *        set operation as a whole might be exceeded.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>RUNNING</code>: The operation in the specified account and region is currently in progress.
+     *        <code>RUNNING</code>: The operation in the specified account and Region is currently in progress.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>PENDING</code>: The operation in the specified account and region has yet to start.
+     *        <code>PENDING</code>: The operation in the specified account and Region has yet to start.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        <code>SUCCEEDED</code>: The operation in the specified account and region completed successfully.
+     *        <code>SUCCEEDED</code>: The operation in the specified account and Region completed successfully.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -656,6 +662,46 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     * 
+     * @param organizationalUnitId
+     *        Reserved for internal use. No data returned.
+     */
+
+    public void setOrganizationalUnitId(String organizationalUnitId) {
+        this.organizationalUnitId = organizationalUnitId;
+    }
+
+    /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     * 
+     * @return Reserved for internal use. No data returned.
+     */
+
+    public String getOrganizationalUnitId() {
+        return this.organizationalUnitId;
+    }
+
+    /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     * 
+     * @param organizationalUnitId
+     *        Reserved for internal use. No data returned.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StackSetOperationResultSummary withOrganizationalUnitId(String organizationalUnitId) {
+        setOrganizationalUnitId(organizationalUnitId);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -676,7 +722,9 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
         if (getStatusReason() != null)
             sb.append("StatusReason: ").append(getStatusReason()).append(",");
         if (getAccountGateResult() != null)
-            sb.append("AccountGateResult: ").append(getAccountGateResult());
+            sb.append("AccountGateResult: ").append(getAccountGateResult()).append(",");
+        if (getOrganizationalUnitId() != null)
+            sb.append("OrganizationalUnitId: ").append(getOrganizationalUnitId());
         sb.append("}");
         return sb.toString();
     }
@@ -711,6 +759,10 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
             return false;
         if (other.getAccountGateResult() != null && other.getAccountGateResult().equals(this.getAccountGateResult()) == false)
             return false;
+        if (other.getOrganizationalUnitId() == null ^ this.getOrganizationalUnitId() == null)
+            return false;
+        if (other.getOrganizationalUnitId() != null && other.getOrganizationalUnitId().equals(this.getOrganizationalUnitId()) == false)
+            return false;
         return true;
     }
 
@@ -724,6 +776,7 @@ public class StackSetOperationResultSummary implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getStatusReason() == null) ? 0 : getStatusReason().hashCode());
         hashCode = prime * hashCode + ((getAccountGateResult() == null) ? 0 : getAccountGateResult().hashCode());
+        hashCode = prime * hashCode + ((getOrganizationalUnitId() == null) ? 0 : getOrganizationalUnitId().hashCode());
         return hashCode;
     }
 

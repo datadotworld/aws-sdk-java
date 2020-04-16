@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,11 +25,6 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreatePushTemplateRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
-    /**
-     * <p>
-     * Creates a message template that you can use in messages that are sent through a push notification channel.
-     * </p>
-     */
     private PushNotificationTemplateRequest pushNotificationTemplateRequest;
     /**
      * <p>
@@ -41,12 +36,7 @@ public class CreatePushTemplateRequest extends com.amazonaws.AmazonWebServiceReq
     private String templateName;
 
     /**
-     * <p>
-     * Creates a message template that you can use in messages that are sent through a push notification channel.
-     * </p>
-     * 
      * @param pushNotificationTemplateRequest
-     *        Creates a message template that you can use in messages that are sent through a push notification channel.
      */
 
     public void setPushNotificationTemplateRequest(PushNotificationTemplateRequest pushNotificationTemplateRequest) {
@@ -54,12 +44,7 @@ public class CreatePushTemplateRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
-     * <p>
-     * Creates a message template that you can use in messages that are sent through a push notification channel.
-     * </p>
-     * 
-     * @return Creates a message template that you can use in messages that are sent through a push notification
-     *         channel.
+     * @return
      */
 
     public PushNotificationTemplateRequest getPushNotificationTemplateRequest() {
@@ -67,12 +52,7 @@ public class CreatePushTemplateRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
-     * <p>
-     * Creates a message template that you can use in messages that are sent through a push notification channel.
-     * </p>
-     * 
      * @param pushNotificationTemplateRequest
-     *        Creates a message template that you can use in messages that are sent through a push notification channel.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

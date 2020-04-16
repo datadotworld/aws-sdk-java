@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -1195,7 +1195,9 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Signs out users from all devices, as an administrator.
+     * Signs out users from all devices, as an administrator. It also invalidates all refresh tokens issued to a user.
+     * The user's current access and Id tokens remain valid until their expiry. Access and Id tokens expire one hour
+     * after they are issued.
      * </p>
      * <p>
      * Calling this action requires developer credentials.
@@ -1212,7 +1214,9 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Signs out users from all devices, as an administrator.
+     * Signs out users from all devices, as an administrator. It also invalidates all refresh tokens issued to a user.
+     * The user's current access and Id tokens remain valid until their expiry. Access and Id tokens expire one hour
+     * after they are issued.
      * </p>
      * <p>
      * Calling this action requires developer credentials.
@@ -2149,11 +2153,11 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
     /**
      * <p>
      * Calling this API causes a message to be sent to the end user with a confirmation code that is required to change
-     * the user's password. For the <code>Username</code> parameter, you can use the username or user alias. If a
-     * verified phone number exists for the user, the confirmation code is sent to the phone number. Otherwise, if a
-     * verified email exists, the confirmation code is sent to the email. If neither a verified phone number nor a
-     * verified email exists, <code>InvalidParameterException</code> is thrown. To use the confirmation code for
-     * resetting the password, call .
+     * the user's password. For the <code>Username</code> parameter, you can use the username or user alias. The method
+     * used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more
+     * information, see <a href="">Recovering User Accounts</a> in the <i>Amazon Cognito Developer Guide</i>. If neither
+     * a verified phone number nor a verified email exists, an <code>InvalidParameterException</code> is thrown. To use
+     * the confirmation code for resetting the password, call .
      * </p>
      * 
      * @param forgotPasswordRequest
@@ -2168,11 +2172,11 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
     /**
      * <p>
      * Calling this API causes a message to be sent to the end user with a confirmation code that is required to change
-     * the user's password. For the <code>Username</code> parameter, you can use the username or user alias. If a
-     * verified phone number exists for the user, the confirmation code is sent to the phone number. Otherwise, if a
-     * verified email exists, the confirmation code is sent to the email. If neither a verified phone number nor a
-     * verified email exists, <code>InvalidParameterException</code> is thrown. To use the confirmation code for
-     * resetting the password, call .
+     * the user's password. For the <code>Username</code> parameter, you can use the username or user alias. The method
+     * used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more
+     * information, see <a href="">Recovering User Accounts</a> in the <i>Amazon Cognito Developer Guide</i>. If neither
+     * a verified phone number nor a verified email exists, an <code>InvalidParameterException</code> is thrown. To use
+     * the confirmation code for resetting the password, call .
      * </p>
      * 
      * @param forgotPasswordRequest
@@ -2498,7 +2502,8 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Signs out users from all devices.
+     * Signs out users from all devices. It also invalidates all refresh tokens issued to a user. The user's current
+     * access and Id tokens remain valid until their expiry. Access and Id tokens expire one hour after they are issued.
      * </p>
      * 
      * @param globalSignOutRequest
@@ -2512,7 +2517,8 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Signs out users from all devices.
+     * Signs out users from all devices. It also invalidates all refresh tokens issued to a user. The user's current
+     * access and Id tokens remain valid until their expiry. Access and Id tokens expire one hour after they are issued.
      * </p>
      * 
      * @param globalSignOutRequest
@@ -3449,6 +3455,11 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
      * <p>
      * Calling this action requires developer credentials.
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateGroupRequest
      * @return A Java Future containing the result of the UpdateGroup operation returned by the service.
@@ -3465,6 +3476,11 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
      * <p>
      * Calling this action requires developer credentials.
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateGroupRequest
      * @param asyncHandler
@@ -3514,6 +3530,11 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
      * <p>
      * Updates the name and scopes of resource server. All other fields are read-only.
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateResourceServerRequest
      * @return A Java Future containing the result of the UpdateResourceServer operation returned by the service.
@@ -3527,6 +3548,11 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
      * <p>
      * Updates the name and scopes of resource server. All other fields are read-only.
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateResourceServerRequest
      * @param asyncHandler
@@ -3576,9 +3602,14 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Updates the specified user pool with the specified attributes. If you don't provide a value for an attribute, it
-     * will be set to the default value. You can get a list of the current user pool settings with .
+     * Updates the specified user pool with the specified attributes. You can get a list of the current user pool
+     * settings with .
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateUserPoolRequest
      *        Represents the request to update the user pool.
@@ -3591,9 +3622,14 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Updates the specified user pool with the specified attributes. If you don't provide a value for an attribute, it
-     * will be set to the default value. You can get a list of the current user pool settings with .
+     * Updates the specified user pool with the specified attributes. You can get a list of the current user pool
+     * settings with .
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateUserPoolRequest
      *        Represents the request to update the user pool.
@@ -3611,10 +3647,14 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Updates the specified user pool app client with the specified attributes. If you don't provide a value for an
-     * attribute, it will be set to the default value. You can get a list of the current user pool app client settings
-     * with .
+     * Updates the specified user pool app client with the specified attributes. You can get a list of the current user
+     * pool app client settings with .
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateUserPoolClientRequest
      *        Represents the request to update the user pool client.
@@ -3627,10 +3667,14 @@ public interface AWSCognitoIdentityProviderAsync extends AWSCognitoIdentityProvi
 
     /**
      * <p>
-     * Updates the specified user pool app client with the specified attributes. If you don't provide a value for an
-     * attribute, it will be set to the default value. You can get a list of the current user pool app client settings
-     * with .
+     * Updates the specified user pool app client with the specified attributes. You can get a list of the current user
+     * pool app client settings with .
      * </p>
+     * <important>
+     * <p>
+     * If you don't provide a value for an attribute, it will be set to the default value.
+     * </p>
+     * </important>
      * 
      * @param updateUserPoolClientRequest
      *        Represents the request to update the user pool client.

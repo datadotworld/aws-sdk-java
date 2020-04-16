@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -92,6 +92,16 @@ import com.amazonaws.services.applicationautoscaling.model.transform.*;
  * <li>
  * <p>
  * Custom resources provided by your own applications or services
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Amazon Comprehend document classification endpoints
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * AWS Lambda function provisioned concurrency
  * </p>
  * </li>
  * </ul>
@@ -370,7 +380,7 @@ public class AWSApplicationAutoScalingClient extends AmazonWebServiceClient impl
         setServiceNameIntern(DEFAULT_SIGNING_NAME);
         setEndpointPrefix(ENDPOINT_PREFIX);
         // calling this.setEndPoint(...) will also modify the signer accordingly
-        setEndpoint("https://autoscaling.us-east-1.amazonaws.com");
+        setEndpoint("https://application-autoscaling.us-east-1.amazonaws.com");
         HandlerChainFactory chainFactory = new HandlerChainFactory();
         requestHandler2s.addAll(chainFactory.newRequestHandlerChain("/com/amazonaws/services/applicationautoscaling/request.handlers"));
         requestHandler2s.addAll(chainFactory.newRequestHandler2Chain("/com/amazonaws/services/applicationautoscaling/request.handler2s"));

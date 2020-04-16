@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -89,8 +89,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * permission to request, launch, terminate, and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
      * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can terminate Spot
-     * Instances on your behalf when you cancel its Spot Fleet request using <a>CancelSpotFleetRequests</a> or when the
-     * Spot Fleet request expires, if you set <code>TerminateInstancesWithExpiration</code>.
+     * Instances on your behalf when you cancel its Spot Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     * >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.
      * </p>
      */
     private String iamFleetRole;
@@ -222,6 +224,21 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * </p>
      */
     private Integer instancePoolsToUseCount;
+    /**
+     * <p>
+     * The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code> must
+     * be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at launch, specify
+     * the tags in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     * >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     * information about tagging after launch, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     * Resources</a>.
+     * </p>
+     */
+    private com.amazonaws.internal.SdkInternalList<TagSpecification> tagSpecifications;
 
     /**
      * <p>
@@ -764,8 +781,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * permission to request, launch, terminate, and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
      * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can terminate Spot
-     * Instances on your behalf when you cancel its Spot Fleet request using <a>CancelSpotFleetRequests</a> or when the
-     * Spot Fleet request expires, if you set <code>TerminateInstancesWithExpiration</code>.
+     * Instances on your behalf when you cancel its Spot Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     * >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.
      * </p>
      * 
      * @param iamFleetRole
@@ -774,8 +793,9 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      *        information, see <a href=
      *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites"
      *        >Spot Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can
-     *        terminate Spot Instances on your behalf when you cancel its Spot Fleet request using
-     *        <a>CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     *        terminate Spot Instances on your behalf when you cancel its Spot Fleet request using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     *        >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
      *        <code>TerminateInstancesWithExpiration</code>.
      */
 
@@ -789,8 +809,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * permission to request, launch, terminate, and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
      * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can terminate Spot
-     * Instances on your behalf when you cancel its Spot Fleet request using <a>CancelSpotFleetRequests</a> or when the
-     * Spot Fleet request expires, if you set <code>TerminateInstancesWithExpiration</code>.
+     * Instances on your behalf when you cancel its Spot Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     * >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.
      * </p>
      * 
      * @return The Amazon Resource Name (ARN) of an AWS Identity and Access Management (IAM) role that grants the Spot
@@ -798,8 +820,9 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      *         information, see <a href=
      *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites"
      *         >Spot Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can
-     *         terminate Spot Instances on your behalf when you cancel its Spot Fleet request using
-     *         <a>CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     *         terminate Spot Instances on your behalf when you cancel its Spot Fleet request using <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     *         >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
      *         <code>TerminateInstancesWithExpiration</code>.
      */
 
@@ -813,8 +836,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      * permission to request, launch, terminate, and tag instances on your behalf. For more information, see <a
      * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites">Spot
      * Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can terminate Spot
-     * Instances on your behalf when you cancel its Spot Fleet request using <a>CancelSpotFleetRequests</a> or when the
-     * Spot Fleet request expires, if you set <code>TerminateInstancesWithExpiration</code>.
+     * Instances on your behalf when you cancel its Spot Fleet request using <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     * >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     * <code>TerminateInstancesWithExpiration</code>.
      * </p>
      * 
      * @param iamFleetRole
@@ -823,8 +848,9 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
      *        information, see <a href=
      *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html#spot-fleet-prerequisites"
      *        >Spot Fleet Prerequisites</a> in the <i>Amazon EC2 User Guide for Linux Instances</i>. Spot Fleet can
-     *        terminate Spot Instances on your behalf when you cancel its Spot Fleet request using
-     *        <a>CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
+     *        terminate Spot Instances on your behalf when you cancel its Spot Fleet request using <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests"
+     *        >CancelSpotFleetRequests</a> or when the Spot Fleet request expires, if you set
      *        <code>TerminateInstancesWithExpiration</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1851,6 +1877,151 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code> must
+     * be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at launch, specify
+     * the tags in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     * >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     * information about tagging after launch, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     * Resources</a>.
+     * </p>
+     * 
+     * @return The key-value pair for tagging the Spot Fleet request on creation. The value for
+     *         <code>ResourceType</code> must be <code>spot-fleet-request</code>, otherwise the Spot Fleet request
+     *         fails. To tag instances at launch, specify the tags in the <a href=
+     *         "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     *         >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     *         <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>).
+     *         For information about tagging after launch, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     *         Resources</a>.
+     */
+
+    public java.util.List<TagSpecification> getTagSpecifications() {
+        if (tagSpecifications == null) {
+            tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>();
+        }
+        return tagSpecifications;
+    }
+
+    /**
+     * <p>
+     * The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code> must
+     * be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at launch, specify
+     * the tags in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     * >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     * information about tagging after launch, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     * Resources</a>.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code>
+     *        must be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at
+     *        launch, specify the tags in the <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     *        >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     *        <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     *        information about tagging after launch, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     *        Resources</a>.
+     */
+
+    public void setTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        if (tagSpecifications == null) {
+            this.tagSpecifications = null;
+            return;
+        }
+
+        this.tagSpecifications = new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications);
+    }
+
+    /**
+     * <p>
+     * The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code> must
+     * be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at launch, specify
+     * the tags in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     * >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     * information about tagging after launch, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     * Resources</a>.
+     * </p>
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setTagSpecifications(java.util.Collection)} or {@link #withTagSpecifications(java.util.Collection)} if
+     * you want to override the existing values.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code>
+     *        must be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at
+     *        launch, specify the tags in the <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     *        >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     *        <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     *        information about tagging after launch, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     *        Resources</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SpotFleetRequestConfigData withTagSpecifications(TagSpecification... tagSpecifications) {
+        if (this.tagSpecifications == null) {
+            setTagSpecifications(new com.amazonaws.internal.SdkInternalList<TagSpecification>(tagSpecifications.length));
+        }
+        for (TagSpecification ele : tagSpecifications) {
+            this.tagSpecifications.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * <p>
+     * The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code> must
+     * be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at launch, specify
+     * the tags in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     * >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     * <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     * information about tagging after launch, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     * Resources</a>.
+     * </p>
+     * 
+     * @param tagSpecifications
+     *        The key-value pair for tagging the Spot Fleet request on creation. The value for <code>ResourceType</code>
+     *        must be <code>spot-fleet-request</code>, otherwise the Spot Fleet request fails. To tag instances at
+     *        launch, specify the tags in the <a href=
+     *        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template"
+     *        >launch template</a> (valid only if you use <code>LaunchTemplateConfigs</code>) or in the <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html">
+     *        <code>SpotFleetTagSpecification</code> </a> (valid only if you use <code>LaunchSpecifications</code>). For
+     *        information about tagging after launch, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources">Tagging Your
+     *        Resources</a>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SpotFleetRequestConfigData withTagSpecifications(java.util.Collection<TagSpecification> tagSpecifications) {
+        setTagSpecifications(tagSpecifications);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1905,7 +2076,9 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         if (getLoadBalancersConfig() != null)
             sb.append("LoadBalancersConfig: ").append(getLoadBalancersConfig()).append(",");
         if (getInstancePoolsToUseCount() != null)
-            sb.append("InstancePoolsToUseCount: ").append(getInstancePoolsToUseCount());
+            sb.append("InstancePoolsToUseCount: ").append(getInstancePoolsToUseCount()).append(",");
+        if (getTagSpecifications() != null)
+            sb.append("TagSpecifications: ").append(getTagSpecifications());
         sb.append("}");
         return sb.toString();
     }
@@ -2010,6 +2183,10 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
             return false;
         if (other.getInstancePoolsToUseCount() != null && other.getInstancePoolsToUseCount().equals(this.getInstancePoolsToUseCount()) == false)
             return false;
+        if (other.getTagSpecifications() == null ^ this.getTagSpecifications() == null)
+            return false;
+        if (other.getTagSpecifications() != null && other.getTagSpecifications().equals(this.getTagSpecifications()) == false)
+            return false;
         return true;
     }
 
@@ -2040,6 +2217,7 @@ public class SpotFleetRequestConfigData implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getInstanceInterruptionBehavior() == null) ? 0 : getInstanceInterruptionBehavior().hashCode());
         hashCode = prime * hashCode + ((getLoadBalancersConfig() == null) ? 0 : getLoadBalancersConfig().hashCode());
         hashCode = prime * hashCode + ((getInstancePoolsToUseCount() == null) ? 0 : getInstancePoolsToUseCount().hashCode());
+        hashCode = prime * hashCode + ((getTagSpecifications() == null) ? 0 : getTagSpecifications().hashCode());
         return hashCode;
     }
 

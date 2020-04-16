@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,6 +28,8 @@ import com.amazonaws.annotation.SdkInternalApi;
 @SdkInternalApi
 public class UpdateOriginEndpointRequestMarshaller {
 
+    private static final MarshallingInfo<StructuredPojo> AUTHORIZATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("authorization").build();
     private static final MarshallingInfo<StructuredPojo> CMAFPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("cmafPackage").build();
     private static final MarshallingInfo<StructuredPojo> DASHPACKAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
@@ -67,6 +69,7 @@ public class UpdateOriginEndpointRequestMarshaller {
         }
 
         try {
+            protocolMarshaller.marshall(updateOriginEndpointRequest.getAuthorization(), AUTHORIZATION_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getCmafPackage(), CMAFPACKAGE_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getDashPackage(), DASHPACKAGE_BINDING);
             protocolMarshaller.marshall(updateOriginEndpointRequest.getDescription(), DESCRIPTION_BINDING);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -1098,13 +1098,17 @@ public interface AmazonElasticLoadBalancingAsync extends AmazonElasticLoadBalanc
 
     /**
      * <p>
-     * Modifies the specified properties of the specified listener.
+     * Replaces the specified properties of the specified listener. Any properties that you do not specify remain
+     * unchanged.
      * </p>
      * <p>
-     * Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to
-     * HTTP, or from TLS to TCP, removes the security policy and default certificate properties. If you change the
-     * protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy and default certificate
-     * properties.
+     * Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and default certificate
+     * properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy
+     * and default certificate properties.
+     * </p>
+     * <p>
+     * To add an item to a list, remove an item from a list, or update an item in a list, you must provide the entire
+     * list. For example, to add an action, specify a list with the current actions plus the new action.
      * </p>
      * 
      * @param modifyListenerRequest
@@ -1117,13 +1121,17 @@ public interface AmazonElasticLoadBalancingAsync extends AmazonElasticLoadBalanc
 
     /**
      * <p>
-     * Modifies the specified properties of the specified listener.
+     * Replaces the specified properties of the specified listener. Any properties that you do not specify remain
+     * unchanged.
      * </p>
      * <p>
-     * Any properties that you do not specify retain their current values. However, changing the protocol from HTTPS to
-     * HTTP, or from TLS to TCP, removes the security policy and default certificate properties. If you change the
-     * protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy and default certificate
-     * properties.
+     * Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes the security policy and default certificate
+     * properties. If you change the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the security policy
+     * and default certificate properties.
+     * </p>
+     * <p>
+     * To add an item to a list, remove an item from a list, or update an item in a list, you must provide the entire
+     * list. For example, to add an action, specify a list with the current actions plus the new action.
      * </p>
      * 
      * @param modifyListenerRequest
@@ -1186,10 +1194,11 @@ public interface AmazonElasticLoadBalancingAsync extends AmazonElasticLoadBalanc
 
     /**
      * <p>
-     * Modifies the specified rule.
+     * Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.
      * </p>
      * <p>
-     * Any existing properties that you do not modify retain their current values.
+     * To add an item to a list, remove an item from a list, or update an item in a list, you must provide the entire
+     * list. For example, to add an action, specify a list with the current actions plus the new action.
      * </p>
      * <p>
      * To modify the actions for the default rule, use <a>ModifyListener</a>.
@@ -1205,10 +1214,11 @@ public interface AmazonElasticLoadBalancingAsync extends AmazonElasticLoadBalanc
 
     /**
      * <p>
-     * Modifies the specified rule.
+     * Replaces the specified properties of the specified rule. Any properties that you do not specify are unchanged.
      * </p>
      * <p>
-     * Any existing properties that you do not modify retain their current values.
+     * To add an item to a list, remove an item from a list, or update an item in a list, you must provide the entire
+     * list. For example, to add an action, specify a list with the current actions plus the new action.
      * </p>
      * <p>
      * To modify the actions for the default rule, use <a>ModifyListener</a>.
@@ -1561,11 +1571,12 @@ public interface AmazonElasticLoadBalancingAsync extends AmazonElasticLoadBalanc
 
     /**
      * <p>
-     * Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer. The
-     * specified subnets replace the previously enabled subnets.
+     * Enables the Availability Zones for the specified public subnets for the specified load balancer. The specified
+     * subnets replace the previously enabled subnets.
      * </p>
      * <p>
-     * You can't change the subnets for a Network Load Balancer.
+     * When you specify subnets for a Network Load Balancer, you must include all subnets that were enabled previously,
+     * with their existing configurations, plus any additional subnets.
      * </p>
      * 
      * @param setSubnetsRequest
@@ -1578,11 +1589,12 @@ public interface AmazonElasticLoadBalancingAsync extends AmazonElasticLoadBalanc
 
     /**
      * <p>
-     * Enables the Availability Zone for the specified public subnets for the specified Application Load Balancer. The
-     * specified subnets replace the previously enabled subnets.
+     * Enables the Availability Zones for the specified public subnets for the specified load balancer. The specified
+     * subnets replace the previously enabled subnets.
      * </p>
      * <p>
-     * You can't change the subnets for a Network Load Balancer.
+     * When you specify subnets for a Network Load Balancer, you must include all subnets that were enabled previously,
+     * with their existing configurations, plus any additional subnets.
      * </p>
      * 
      * @param setSubnetsRequest

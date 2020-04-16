@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,17 +47,21 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
      * </p>
      */
     private Integer sizePercent;
-
+    /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     */
     private TemplateConfiguration templateConfiguration;
     /**
      * <p>
-     * The custom description of the treatment.
+     * A custom description of the treatment.
      * </p>
      */
     private String treatmentDescription;
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      */
@@ -184,7 +188,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
      * @param templateConfiguration
+     *        The message template to use for the treatment.
      */
 
     public void setTemplateConfiguration(TemplateConfiguration templateConfiguration) {
@@ -192,7 +201,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
-     * @return
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @return The message template to use for the treatment.
      */
 
     public TemplateConfiguration getTemplateConfiguration() {
@@ -200,7 +213,12 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
     }
 
     /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
      * @param templateConfiguration
+     *        The message template to use for the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -211,11 +229,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom description of the treatment.
+     * A custom description of the treatment.
      * </p>
      * 
      * @param treatmentDescription
-     *        The custom description of the treatment.
+     *        A custom description of the treatment.
      */
 
     public void setTreatmentDescription(String treatmentDescription) {
@@ -224,10 +242,10 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom description of the treatment.
+     * A custom description of the treatment.
      * </p>
      * 
-     * @return The custom description of the treatment.
+     * @return A custom description of the treatment.
      */
 
     public String getTreatmentDescription() {
@@ -236,11 +254,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom description of the treatment.
+     * A custom description of the treatment.
      * </p>
      * 
      * @param treatmentDescription
-     *        The custom description of the treatment.
+     *        A custom description of the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -251,13 +269,13 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      * 
      * @param treatmentName
-     *        The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
-     *        a campaign.
+     *        A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     *        campaign.
      */
 
     public void setTreatmentName(String treatmentName) {
@@ -266,11 +284,11 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      * 
-     * @return The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
+     * @return A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of
      *         a campaign.
      */
 
@@ -280,13 +298,13 @@ public class WriteTreatmentResource implements Serializable, Cloneable, Structur
 
     /**
      * <p>
-     * The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     * A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
      * campaign.
      * </p>
      * 
      * @param treatmentName
-     *        The custom name of the treatment. A treatment is a variation of a campaign that's used for A/B testing of
-     *        a campaign.
+     *        A custom name for the treatment. A treatment is a variation of a campaign that's used for A/B testing of a
+     *        campaign.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

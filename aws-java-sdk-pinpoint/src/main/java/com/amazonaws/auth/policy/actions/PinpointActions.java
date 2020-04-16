@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,12 +35,18 @@ public enum PinpointActions implements Action {
     CreateExportJob("pinpoint:CreateExportJob"),
     /** Action for the CreateImportJob operation. */
     CreateImportJob("pinpoint:CreateImportJob"),
+    /** Action for the CreateJourney operation. */
+    CreateJourney("pinpoint:CreateJourney"),
     /** Action for the CreatePushTemplate operation. */
     CreatePushTemplate("pinpoint:CreatePushTemplate"),
+    /** Action for the CreateRecommenderConfiguration operation. */
+    CreateRecommenderConfiguration("pinpoint:CreateRecommenderConfiguration"),
     /** Action for the CreateSegment operation. */
     CreateSegment("pinpoint:CreateSegment"),
     /** Action for the CreateSmsTemplate operation. */
     CreateSmsTemplate("pinpoint:CreateSmsTemplate"),
+    /** Action for the CreateVoiceTemplate operation. */
+    CreateVoiceTemplate("pinpoint:CreateVoiceTemplate"),
     /** Action for the DeleteAdmChannel operation. */
     DeleteAdmChannel("pinpoint:DeleteAdmChannel"),
     /** Action for the DeleteApnsChannel operation. */
@@ -67,8 +73,12 @@ public enum PinpointActions implements Action {
     DeleteEventStream("pinpoint:DeleteEventStream"),
     /** Action for the DeleteGcmChannel operation. */
     DeleteGcmChannel("pinpoint:DeleteGcmChannel"),
+    /** Action for the DeleteJourney operation. */
+    DeleteJourney("pinpoint:DeleteJourney"),
     /** Action for the DeletePushTemplate operation. */
     DeletePushTemplate("pinpoint:DeletePushTemplate"),
+    /** Action for the DeleteRecommenderConfiguration operation. */
+    DeleteRecommenderConfiguration("pinpoint:DeleteRecommenderConfiguration"),
     /** Action for the DeleteSegment operation. */
     DeleteSegment("pinpoint:DeleteSegment"),
     /** Action for the DeleteSmsChannel operation. */
@@ -79,6 +89,8 @@ public enum PinpointActions implements Action {
     DeleteUserEndpoints("pinpoint:DeleteUserEndpoints"),
     /** Action for the DeleteVoiceChannel operation. */
     DeleteVoiceChannel("pinpoint:DeleteVoiceChannel"),
+    /** Action for the DeleteVoiceTemplate operation. */
+    DeleteVoiceTemplate("pinpoint:DeleteVoiceTemplate"),
     /** Action for the GetAdmChannel operation. */
     GetAdmChannel("pinpoint:GetAdmChannel"),
     /** Action for the GetApnsChannel operation. */
@@ -131,8 +143,20 @@ public enum PinpointActions implements Action {
     GetImportJob("pinpoint:GetImportJob"),
     /** Action for the GetImportJobs operation. */
     GetImportJobs("pinpoint:GetImportJobs"),
+    /** Action for the GetJourney operation. */
+    GetJourney("pinpoint:GetJourney"),
+    /** Action for the GetJourneyDateRangeKpi operation. */
+    GetJourneyDateRangeKpi("pinpoint:GetJourneyDateRangeKpi"),
+    /** Action for the GetJourneyExecutionActivityMetrics operation. */
+    GetJourneyExecutionActivityMetrics("pinpoint:GetJourneyExecutionActivityMetrics"),
+    /** Action for the GetJourneyExecutionMetrics operation. */
+    GetJourneyExecutionMetrics("pinpoint:GetJourneyExecutionMetrics"),
     /** Action for the GetPushTemplate operation. */
     GetPushTemplate("pinpoint:GetPushTemplate"),
+    /** Action for the GetRecommenderConfiguration operation. */
+    GetRecommenderConfiguration("pinpoint:GetRecommenderConfiguration"),
+    /** Action for the GetRecommenderConfigurations operation. */
+    GetRecommenderConfigurations("pinpoint:GetRecommenderConfigurations"),
     /** Action for the GetSegment operation. */
     GetSegment("pinpoint:GetSegment"),
     /** Action for the GetSegmentExportJobs operation. */
@@ -153,8 +177,14 @@ public enum PinpointActions implements Action {
     GetUserEndpoints("pinpoint:GetUserEndpoints"),
     /** Action for the GetVoiceChannel operation. */
     GetVoiceChannel("pinpoint:GetVoiceChannel"),
+    /** Action for the GetVoiceTemplate operation. */
+    GetVoiceTemplate("pinpoint:GetVoiceTemplate"),
+    /** Action for the ListJourneys operation. */
+    ListJourneys("pinpoint:ListJourneys"),
     /** Action for the ListTagsForResource operation. */
     ListTagsForResource("pinpoint:ListTagsForResource"),
+    /** Action for the ListTemplateVersions operation. */
+    ListTemplateVersions("pinpoint:ListTemplateVersions"),
     /** Action for the ListTemplates operation. */
     ListTemplates("pinpoint:ListTemplates"),
     /** Action for the PhoneNumberValidate operation. */
@@ -199,16 +229,26 @@ public enum PinpointActions implements Action {
     UpdateEndpointsBatch("pinpoint:UpdateEndpointsBatch"),
     /** Action for the UpdateGcmChannel operation. */
     UpdateGcmChannel("pinpoint:UpdateGcmChannel"),
+    /** Action for the UpdateJourney operation. */
+    UpdateJourney("pinpoint:UpdateJourney"),
+    /** Action for the UpdateJourneyState operation. */
+    UpdateJourneyState("pinpoint:UpdateJourneyState"),
     /** Action for the UpdatePushTemplate operation. */
     UpdatePushTemplate("pinpoint:UpdatePushTemplate"),
+    /** Action for the UpdateRecommenderConfiguration operation. */
+    UpdateRecommenderConfiguration("pinpoint:UpdateRecommenderConfiguration"),
     /** Action for the UpdateSegment operation. */
     UpdateSegment("pinpoint:UpdateSegment"),
     /** Action for the UpdateSmsChannel operation. */
     UpdateSmsChannel("pinpoint:UpdateSmsChannel"),
     /** Action for the UpdateSmsTemplate operation. */
     UpdateSmsTemplate("pinpoint:UpdateSmsTemplate"),
+    /** Action for the UpdateTemplateActiveVersion operation. */
+    UpdateTemplateActiveVersion("pinpoint:UpdateTemplateActiveVersion"),
     /** Action for the UpdateVoiceChannel operation. */
     UpdateVoiceChannel("pinpoint:UpdateVoiceChannel"),
+    /** Action for the UpdateVoiceTemplate operation. */
+    UpdateVoiceTemplate("pinpoint:UpdateVoiceTemplate"),
 
     ;
 

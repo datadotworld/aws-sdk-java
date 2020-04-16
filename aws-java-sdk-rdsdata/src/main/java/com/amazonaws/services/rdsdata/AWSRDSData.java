@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -128,6 +128,8 @@ public interface AWSRDSData {
      * @return Result of the CommitTransaction operation returned by the service.
      * @throws BadRequestException
      *         There is an error in the call or in a SQL statement.
+     * @throws StatementTimeoutException
+     *         The execution of the SQL statement timed out.
      * @throws InternalServerErrorException
      *         An internal error occurred.
      * @throws ForbiddenException
@@ -182,8 +184,7 @@ public interface AWSRDSData {
      * </p>
      * </important>
      * <p>
-     * The response size limit is 1 MB or 1,000 records. If the call returns more than 1 MB of response data or over
-     * 1,000 records, the call is terminated.
+     * The response size limit is 1 MB. If the call returns more than 1 MB of response data, the call is terminated.
      * </p>
      * 
      * @param executeStatementRequest
@@ -215,6 +216,8 @@ public interface AWSRDSData {
      * @return Result of the RollbackTransaction operation returned by the service.
      * @throws BadRequestException
      *         There is an error in the call or in a SQL statement.
+     * @throws StatementTimeoutException
+     *         The execution of the SQL statement timed out.
      * @throws InternalServerErrorException
      *         An internal error occurred.
      * @throws ForbiddenException

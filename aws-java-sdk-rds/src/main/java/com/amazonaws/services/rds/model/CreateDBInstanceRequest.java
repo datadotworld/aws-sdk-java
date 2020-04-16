@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -34,7 +34,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MySQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -56,7 +56,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -78,7 +78,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>PostgreSQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, the
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, the
      * default "postgres" database is created in the DB instance.
      * </p>
      * <p>
@@ -132,8 +132,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>Amazon Aurora</b>
      * </p>
      * <p>
-     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter is
-     * not specified, no database is created in the DB instance.
+     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter
+     * isn't specified, no database is created in the DB instance.
      * </p>
      * <p>
      * Constraints:
@@ -672,6 +672,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      */
     private String availabilityZone;
     /**
@@ -707,9 +718,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String preferredMaintenanceWindow;
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
-     * used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value, then the
+     * default DB parameter group for the specified DB engine and version is used.
      * </p>
      * <p>
      * Constraints:
@@ -758,7 +768,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -821,7 +831,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -833,7 +843,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -845,7 +855,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -857,7 +867,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -866,8 +876,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -876,7 +886,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -974,7 +984,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * <p>
-     * Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and 50 of the
+     * storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1 and 50 of the
+     * storage amount for the DB instance.
      * </p>
      */
     private Integer iops;
@@ -984,7 +996,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
-     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
+     * group. Also, that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      */
     private String optionGroupName;
@@ -1005,14 +1017,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      * </p>
      * <p>
-     * If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -1029,7 +1041,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * <p>
-     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -1088,7 +1100,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     private String tdeCredentialPassword;
     /**
      * <p>
-     * A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.
+     * A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -1134,12 +1146,11 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Guide</i>.
      * </p>
      * <p>
-     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
      * instance. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
-     * <p/>
      */
     private String domain;
     /**
@@ -1325,6 +1336,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * when deletion protection is enabled. By default, deletion protection is disabled. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
+     * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. You can enable or disable deletion protection for the DB cluster. For more information, see
+     * <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion protection is
+     * enabled for the DB cluster.
      * </p>
      */
     private Boolean deletionProtection;
@@ -1817,7 +1836,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MySQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -1839,7 +1858,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -1861,7 +1880,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>PostgreSQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, the
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, the
      * default "postgres" database is created in the DB instance.
      * </p>
      * <p>
@@ -1915,8 +1934,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>Amazon Aurora</b>
      * </p>
      * <p>
-     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter is
-     * not specified, no database is created in the DB instance.
+     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter
+     * isn't specified, no database is created in the DB instance.
      * </p>
      * <p>
      * Constraints:
@@ -1940,7 +1959,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <b>MySQL</b>
      *        </p>
      *        <p>
-     *        The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     *        The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      *        database is created in the DB instance.
      *        </p>
      *        <p>
@@ -1962,7 +1981,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <b>MariaDB</b>
      *        </p>
      *        <p>
-     *        The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     *        The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      *        database is created in the DB instance.
      *        </p>
      *        <p>
@@ -1984,8 +2003,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <b>PostgreSQL</b>
      *        </p>
      *        <p>
-     *        The name of the database to create when the DB instance is created. If this parameter is not specified,
-     *        the default "postgres" database is created in the DB instance.
+     *        The name of the database to create when the DB instance is created. If this parameter isn't specified, the
+     *        default "postgres" database is created in the DB instance.
      *        </p>
      *        <p>
      *        Constraints:
@@ -2040,7 +2059,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </p>
      *        <p>
      *        The name of the database to create when the primary instance of the DB cluster is created. If this
-     *        parameter is not specified, no database is created in the DB instance.
+     *        parameter isn't specified, no database is created in the DB instance.
      *        </p>
      *        <p>
      *        Constraints:
@@ -2070,7 +2089,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MySQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -2092,7 +2111,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -2114,7 +2133,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>PostgreSQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, the
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, the
      * default "postgres" database is created in the DB instance.
      * </p>
      * <p>
@@ -2168,8 +2187,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>Amazon Aurora</b>
      * </p>
      * <p>
-     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter is
-     * not specified, no database is created in the DB instance.
+     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter
+     * isn't specified, no database is created in the DB instance.
      * </p>
      * <p>
      * Constraints:
@@ -2192,8 +2211,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <b>MySQL</b>
      *         </p>
      *         <p>
-     *         The name of the database to create when the DB instance is created. If this parameter is not specified,
-     *         no database is created in the DB instance.
+     *         The name of the database to create when the DB instance is created. If this parameter isn't specified, no
+     *         database is created in the DB instance.
      *         </p>
      *         <p>
      *         Constraints:
@@ -2214,8 +2233,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <b>MariaDB</b>
      *         </p>
      *         <p>
-     *         The name of the database to create when the DB instance is created. If this parameter is not specified,
-     *         no database is created in the DB instance.
+     *         The name of the database to create when the DB instance is created. If this parameter isn't specified, no
+     *         database is created in the DB instance.
      *         </p>
      *         <p>
      *         Constraints:
@@ -2236,7 +2255,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         <b>PostgreSQL</b>
      *         </p>
      *         <p>
-     *         The name of the database to create when the DB instance is created. If this parameter is not specified,
+     *         The name of the database to create when the DB instance is created. If this parameter isn't specified,
      *         the default "postgres" database is created in the DB instance.
      *         </p>
      *         <p>
@@ -2292,7 +2311,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </p>
      *         <p>
      *         The name of the database to create when the primary instance of the DB cluster is created. If this
-     *         parameter is not specified, no database is created in the DB instance.
+     *         parameter isn't specified, no database is created in the DB instance.
      *         </p>
      *         <p>
      *         Constraints:
@@ -2322,7 +2341,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MySQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -2344,7 +2363,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>MariaDB</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      * database is created in the DB instance.
      * </p>
      * <p>
@@ -2366,7 +2385,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>PostgreSQL</b>
      * </p>
      * <p>
-     * The name of the database to create when the DB instance is created. If this parameter is not specified, the
+     * The name of the database to create when the DB instance is created. If this parameter isn't specified, the
      * default "postgres" database is created in the DB instance.
      * </p>
      * <p>
@@ -2420,8 +2439,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <b>Amazon Aurora</b>
      * </p>
      * <p>
-     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter is
-     * not specified, no database is created in the DB instance.
+     * The name of the database to create when the primary instance of the DB cluster is created. If this parameter
+     * isn't specified, no database is created in the DB instance.
      * </p>
      * <p>
      * Constraints:
@@ -2445,7 +2464,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <b>MySQL</b>
      *        </p>
      *        <p>
-     *        The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     *        The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      *        database is created in the DB instance.
      *        </p>
      *        <p>
@@ -2467,7 +2486,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <b>MariaDB</b>
      *        </p>
      *        <p>
-     *        The name of the database to create when the DB instance is created. If this parameter is not specified, no
+     *        The name of the database to create when the DB instance is created. If this parameter isn't specified, no
      *        database is created in the DB instance.
      *        </p>
      *        <p>
@@ -2489,8 +2508,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        <b>PostgreSQL</b>
      *        </p>
      *        <p>
-     *        The name of the database to create when the DB instance is created. If this parameter is not specified,
-     *        the default "postgres" database is created in the DB instance.
+     *        The name of the database to create when the DB instance is created. If this parameter isn't specified, the
+     *        default "postgres" database is created in the DB instance.
      *        </p>
      *        <p>
      *        Constraints:
@@ -2545,7 +2564,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </p>
      *        <p>
      *        The name of the database to create when the primary instance of the DB cluster is created. If this
-     *        parameter is not specified, no database is created in the DB instance.
+     *        parameter isn't specified, no database is created in the DB instance.
      *        </p>
      *        <p>
      *        Constraints:
@@ -5706,6 +5725,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      * 
      * @param availabilityZone
      *        The Availability Zone (AZ) where the database will be created. For information on AWS Regions and
@@ -5722,6 +5752,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a
      *        Multi-AZ deployment. The specified Availability Zone must be in the same AWS Region as the current
      *        endpoint.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     *        Availability Zone to create the DB instance in.
+     *        </p>
+     *        <p>
+     *        For more information about RDS on VMware, see the <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on
+     *        VMware User Guide.</i> </a>
+     *        </p>
      */
 
     public void setAvailabilityZone(String availabilityZone) {
@@ -5745,6 +5786,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      * 
      * @return The Availability Zone (AZ) where the database will be created. For information on AWS Regions and
      *         Availability Zones, see <a
@@ -5760,6 +5812,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a
      *         Multi-AZ deployment. The specified Availability Zone must be in the same AWS Region as the current
      *         endpoint.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     *         Availability Zone to create the DB instance in.
+     *         </p>
+     *         <p>
+     *         For more information about RDS on VMware, see the <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on
+     *         VMware User Guide.</i> </a>
+     *         </p>
      */
 
     public String getAvailabilityZone() {
@@ -5783,6 +5846,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a Multi-AZ
      * deployment. The specified Availability Zone must be in the same AWS Region as the current endpoint.
      * </p>
+     * <note>
+     * <p>
+     * If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     * Availability Zone to create the DB instance in.
+     * </p>
+     * <p>
+     * For more information about RDS on VMware, see the <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on VMware
+     * User Guide.</i> </a>
+     * </p>
+     * </note>
      * 
      * @param availabilityZone
      *        The Availability Zone (AZ) where the database will be created. For information on AWS Regions and
@@ -5799,6 +5873,17 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Constraint: The <code>AvailabilityZone</code> parameter can't be specified if the DB instance is a
      *        Multi-AZ deployment. The specified Availability Zone must be in the same AWS Region as the current
      *        endpoint.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you're creating a DB instance in an RDS on VMware environment, specify the identifier of the custom
+     *        Availability Zone to create the DB instance in.
+     *        </p>
+     *        <p>
+     *        For more information about RDS on VMware, see the <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html"> <i>RDS on
+     *        VMware User Guide.</i> </a>
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -5997,9 +6082,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
-     * used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value, then the
+     * default DB parameter group for the specified DB engine and version is used.
      * </p>
      * <p>
      * Constraints:
@@ -6023,9 +6107,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </ul>
      * 
      * @param dBParameterGroupName
-     *        The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     *        <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB
-     *        engine is used.</p>
+     *        The name of the DB parameter group to associate with this DB instance. If you do not specify a value, then
+     *        the default DB parameter group for the specified DB engine and version is used.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -6053,9 +6136,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
-     * used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value, then the
+     * default DB parameter group for the specified DB engine and version is used.
      * </p>
      * <p>
      * Constraints:
@@ -6078,9 +6160,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * 
-     * @return The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     *         <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB
-     *         engine is used.</p>
+     * @return The name of the DB parameter group to associate with this DB instance. If you do not specify a value,
+     *         then the default DB parameter group for the specified DB engine and version is used.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -6108,9 +6189,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     * <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB engine is
-     * used.
+     * The name of the DB parameter group to associate with this DB instance. If you do not specify a value, then the
+     * default DB parameter group for the specified DB engine and version is used.
      * </p>
      * <p>
      * Constraints:
@@ -6134,9 +6214,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </ul>
      * 
      * @param dBParameterGroupName
-     *        The name of the DB parameter group to associate with this DB instance. If you do not specify a value for
-     *        <code>DBParameterGroupName</code>, then the default <code>DBParameterGroup</code> for the specified DB
-     *        engine is used.</p>
+     *        The name of the DB parameter group to associate with this DB instance. If you do not specify a value, then
+     *        the default DB parameter group for the specified DB engine and version is used.</p>
      *        <p>
      *        Constraints:
      *        </p>
@@ -6189,7 +6268,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -6217,7 +6296,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Can't be set to 0 if the DB instance is a source to Read Replicas
+     *        Can't be set to 0 if the DB instance is a source to read replicas
      *        </p>
      *        </li>
      */
@@ -6251,7 +6330,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -6278,7 +6357,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </li>
      *         <li>
      *         <p>
-     *         Can't be set to 0 if the DB instance is a source to Read Replicas
+     *         Can't be set to 0 if the DB instance is a source to read replicas
      *         </p>
      *         </li>
      */
@@ -6312,7 +6391,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -6340,7 +6419,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Can't be set to 0 if the DB instance is a source to Read Replicas
+     *        Can't be set to 0 if the DB instance is a source to read replicas
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -6639,7 +6718,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6651,7 +6730,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6663,7 +6742,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6675,7 +6754,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -6684,8 +6763,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -6694,7 +6773,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6709,7 +6788,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -6721,7 +6800,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -6733,7 +6812,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>5432</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -6745,7 +6824,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1521</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>SQL Server</b>
@@ -6754,8 +6833,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1433</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     *        <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     *        Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     *        <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      *        </p>
      *        <p>
      *        <b>Amazon Aurora</b>
@@ -6764,7 +6843,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -6785,7 +6864,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6797,7 +6876,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6809,7 +6888,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6821,7 +6900,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -6830,8 +6909,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -6840,7 +6919,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6854,7 +6933,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>3306</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         Type: Integer
@@ -6866,7 +6945,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>3306</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         Type: Integer
@@ -6878,7 +6957,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>5432</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         Type: Integer
@@ -6890,7 +6969,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>1521</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         <b>SQL Server</b>
@@ -6899,7 +6978,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>1433</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>, <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     *         Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     *         <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      *         </p>
      *         <p>
      *         <b>Amazon Aurora</b>
@@ -6908,7 +6988,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>3306</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         Type: Integer
@@ -6929,7 +7009,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6941,7 +7021,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6953,7 +7033,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6965,7 +7045,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -6974,8 +7054,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -6984,7 +7064,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -6999,7 +7079,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -7011,7 +7091,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -7023,7 +7103,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>5432</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -7035,7 +7115,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1521</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>SQL Server</b>
@@ -7044,8 +7124,8 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1433</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     *        <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     *        Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     *        <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      *        </p>
      *        <p>
      *        <b>Amazon Aurora</b>
@@ -7054,7 +7134,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -7613,7 +7693,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * <p>
-     * Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and 50 of the
+     * storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1 and 50 of the
+     * storage amount for the DB instance.
      * </p>
      * 
      * @param iops
@@ -7622,7 +7704,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS">Amazon RDS
      *        Provisioned IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>. </p>
      *        <p>
-     *        Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     *        Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and 50
+     *        of the storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1 and
+     *        50 of the storage amount for the DB instance.
      */
 
     public void setIops(Integer iops) {
@@ -7637,7 +7721,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * <p>
-     * Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and 50 of the
+     * storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1 and 50 of the
+     * storage amount for the DB instance.
      * </p>
      * 
      * @return The amount of Provisioned IOPS (input/output operations per second) to be initially allocated for the DB
@@ -7645,7 +7731,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS">Amazon RDS
      *         Provisioned IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>. </p>
      *         <p>
-     *         Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     *         Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and
+     *         50 of the storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1
+     *         and 50 of the storage amount for the DB instance.
      */
 
     public Integer getIops() {
@@ -7660,7 +7748,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * <p>
-     * Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     * Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and 50 of the
+     * storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1 and 50 of the
+     * storage amount for the DB instance.
      * </p>
      * 
      * @param iops
@@ -7669,7 +7759,9 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#USER_PIOPS">Amazon RDS
      *        Provisioned IOPS Storage to Improve Performance</a> in the <i>Amazon RDS User Guide</i>. </p>
      *        <p>
-     *        Constraints: Must be a multiple between 1 and 50 of the storage amount for the DB instance.
+     *        Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances, must be a multiple between .5 and 50
+     *        of the storage amount for the DB instance. For SQL Server DB instances, must be a multiple between 1 and
+     *        50 of the storage amount for the DB instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -7684,14 +7776,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
-     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
+     * group. Also, that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      * 
      * @param optionGroupName
      *        Indicates that the DB instance should be associated with the specified option group.</p>
      *        <p>
      *        Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an
-     *        option group, and that option group can't be removed from a DB instance once it is associated with a DB
+     *        option group. Also, that option group can't be removed from a DB instance once it is associated with a DB
      *        instance
      */
 
@@ -7705,13 +7797,13 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
-     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
+     * group. Also, that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      * 
      * @return Indicates that the DB instance should be associated with the specified option group.</p>
      *         <p>
      *         Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an
-     *         option group, and that option group can't be removed from a DB instance once it is associated with a DB
+     *         option group. Also, that option group can't be removed from a DB instance once it is associated with a DB
      *         instance
      */
 
@@ -7725,14 +7817,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * <p>
      * Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an option
-     * group, and that option group can't be removed from a DB instance once it is associated with a DB instance
+     * group. Also, that option group can't be removed from a DB instance once it is associated with a DB instance
      * </p>
      * 
      * @param optionGroupName
      *        Indicates that the DB instance should be associated with the specified option group.</p>
      *        <p>
      *        Permanent options, such as the TDE option for Oracle Advanced Security TDE, can't be removed from an
-     *        option group, and that option group can't be removed from a DB instance once it is associated with a DB
+     *        option group. Also, that option group can't be removed from a DB instance once it is associated with a DB
      *        instance
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -7828,14 +7920,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      * </p>
      * <p>
-     * If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -7852,7 +7944,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * <p>
-     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -7872,13 +7964,13 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @param publiclyAccessible
      *        A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *        accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *        public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *        public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *        name that resolves to a private IP address.</p>
      *        <p>
      *        Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      *        </p>
      *        <p>
-     *        If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified,
+     *        If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified,
      *        the following applies:
      *        </p>
      *        <ul>
@@ -7895,7 +7987,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        </ul>
      *        <p>
-     *        If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     *        If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      *        following applies:
      *        </p>
      *        <ul>
@@ -7920,14 +8012,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      * </p>
      * <p>
-     * If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -7944,7 +8036,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * <p>
-     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -7963,13 +8055,13 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @return A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *         accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *         public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *         public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *         name that resolves to a private IP address.</p>
      *         <p>
      *         Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      *         </p>
      *         <p>
-     *         If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified,
+     *         If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified,
      *         the following applies:
      *         </p>
      *         <ul>
@@ -7987,7 +8079,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </li>
      *         </ul>
      *         <p>
-     *         If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     *         If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      *         following applies:
      *         </p>
      *         <ul>
@@ -8012,14 +8104,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      * </p>
      * <p>
-     * If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -8036,7 +8128,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * <p>
-     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -8056,13 +8148,13 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @param publiclyAccessible
      *        A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *        accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *        public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *        public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *        name that resolves to a private IP address.</p>
      *        <p>
      *        Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      *        </p>
      *        <p>
-     *        If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified,
+     *        If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified,
      *        the following applies:
      *        </p>
      *        <ul>
@@ -8079,7 +8171,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        </ul>
      *        <p>
-     *        If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     *        If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      *        following applies:
      *        </p>
      *        <ul>
@@ -8106,14 +8198,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      * </p>
      * <p>
-     * If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -8130,7 +8222,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * </ul>
      * <p>
-     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     * If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      * following applies:
      * </p>
      * <ul>
@@ -8149,13 +8241,13 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @return A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *         accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *         public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *         public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *         name that resolves to a private IP address.</p>
      *         <p>
      *         Default: The default behavior varies depending on whether <code>DBSubnetGroupName</code> is specified.
      *         </p>
      *         <p>
-     *         If <code>DBSubnetGroupName</code> is not specified, and <code>PubliclyAccessible</code> is not specified,
+     *         If <code>DBSubnetGroupName</code> isn't specified, and <code>PubliclyAccessible</code> isn't specified,
      *         the following applies:
      *         </p>
      *         <ul>
@@ -8173,7 +8265,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </li>
      *         </ul>
      *         <p>
-     *         If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> is not specified, the
+     *         If <code>DBSubnetGroupName</code> is specified, and <code>PubliclyAccessible</code> isn't specified, the
      *         following applies:
      *         </p>
      *         <ul>
@@ -8480,7 +8572,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.
+     * A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -8490,7 +8582,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param storageEncrypted
-     *        A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.</p>
+     *        A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.</p>
      *        <p>
      *        <b>Amazon Aurora</b>
      *        </p>
@@ -8504,7 +8596,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.
+     * A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -8513,7 +8605,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Not applicable. The encryption for DB instances is managed by the DB cluster.
      * </p>
      * 
-     * @return A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.</p>
+     * @return A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.</p>
      *         <p>
      *         <b>Amazon Aurora</b>
      *         </p>
@@ -8527,7 +8619,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.
+     * A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -8537,7 +8629,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param storageEncrypted
-     *        A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.</p>
+     *        A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.</p>
      *        <p>
      *        <b>Amazon Aurora</b>
      *        </p>
@@ -8553,7 +8645,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.
+     * A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -8562,7 +8654,7 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Not applicable. The encryption for DB instances is managed by the DB cluster.
      * </p>
      * 
-     * @return A value that indicates whether the DB instance is encrypted. By default, it is not encrypted.</p>
+     * @return A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.</p>
      *         <p>
      *         <b>Amazon Aurora</b>
      *         </p>
@@ -8726,17 +8818,15 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Guide</i>.
      * </p>
      * <p>
-     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
      * instance. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
-     * <p/>
      * 
      * @param domain
      *        The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and
-     *        Oracle DB instances can be created in an Active Directory Domain.
-     *        </p>
+     *        Oracle DB instances can be created in an Active Directory Domain.</p>
      *        <p>
      *        For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
      *        that connect to the DB instance. For more information, see <a
@@ -8745,11 +8835,10 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Guide</i>.
      *        </p>
      *        <p>
-     *        For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *        For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
      *        the DB instance. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
      *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
-     *        </p>
      */
 
     public void setDomain(String domain) {
@@ -8769,16 +8858,14 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Guide</i>.
      * </p>
      * <p>
-     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
      * instance. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
-     * <p/>
      * 
      * @return The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and
-     *         Oracle DB instances can be created in an Active Directory Domain.
-     *         </p>
+     *         Oracle DB instances can be created in an Active Directory Domain.</p>
      *         <p>
      *         For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
      *         that connect to the DB instance. For more information, see <a
@@ -8787,11 +8874,10 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Guide</i>.
      *         </p>
      *         <p>
-     *         For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *         For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
      *         the DB instance. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
      *         Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
-     *         </p>
      */
 
     public String getDomain() {
@@ -8811,17 +8897,15 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Guide</i>.
      * </p>
      * <p>
-     * For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
+     * For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to the DB
      * instance. For more information, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
-     * <p/>
      * 
      * @param domain
      *        The Active Directory directory ID to create the DB instance in. Currently, only Microsoft SQL Server and
-     *        Oracle DB instances can be created in an Active Directory Domain.
-     *        </p>
+     *        Oracle DB instances can be created in an Active Directory Domain.</p>
      *        <p>
      *        For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
      *        that connect to the DB instance. For more information, see <a
@@ -8830,11 +8914,10 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Guide</i>.
      *        </p>
      *        <p>
-     *        For Oracle DB instance, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
+     *        For Oracle DB instances, Amazon RDS can use Kerberos Authentication to authenticate users that connect to
      *        the DB instance. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
      *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
-     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -10182,13 +10265,28 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. You can enable or disable deletion protection for the DB cluster. For more information, see
+     * <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion protection is
+     * enabled for the DB cluster.
+     * </p>
      * 
      * @param deletionProtection
      *        A value that indicates whether the DB instance has deletion protection enabled. The database can't be
      *        deleted when deletion protection is enabled. By default, deletion protection is disabled. For more
      *        information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
-     *        Instance</a>.
+     *        Instance</a>. </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. You can enable or disable deletion protection for the DB cluster. For more information,
+     *        see <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion
+     *        protection is enabled for the DB cluster.
      */
 
     public void setDeletionProtection(Boolean deletionProtection) {
@@ -10202,12 +10300,27 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. You can enable or disable deletion protection for the DB cluster. For more information, see
+     * <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion protection is
+     * enabled for the DB cluster.
+     * </p>
      * 
      * @return A value that indicates whether the DB instance has deletion protection enabled. The database can't be
      *         deleted when deletion protection is enabled. By default, deletion protection is disabled. For more
      *         information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
-     *         Instance</a>.
+     *         Instance</a>. </p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. You can enable or disable deletion protection for the DB cluster. For more information,
+     *         see <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion
+     *         protection is enabled for the DB cluster.
      */
 
     public Boolean getDeletionProtection() {
@@ -10221,13 +10334,28 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. You can enable or disable deletion protection for the DB cluster. For more information, see
+     * <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion protection is
+     * enabled for the DB cluster.
+     * </p>
      * 
      * @param deletionProtection
      *        A value that indicates whether the DB instance has deletion protection enabled. The database can't be
      *        deleted when deletion protection is enabled. By default, deletion protection is disabled. For more
      *        information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
-     *        Instance</a>.
+     *        Instance</a>. </p>
+     *        <p>
+     *        <b>Amazon Aurora</b>
+     *        </p>
+     *        <p>
+     *        Not applicable. You can enable or disable deletion protection for the DB cluster. For more information,
+     *        see <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion
+     *        protection is enabled for the DB cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -10243,12 +10371,27 @@ public class CreateDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
      * Instance</a>.
      * </p>
+     * <p>
+     * <b>Amazon Aurora</b>
+     * </p>
+     * <p>
+     * Not applicable. You can enable or disable deletion protection for the DB cluster. For more information, see
+     * <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion protection is
+     * enabled for the DB cluster.
+     * </p>
      * 
      * @return A value that indicates whether the DB instance has deletion protection enabled. The database can't be
      *         deleted when deletion protection is enabled. By default, deletion protection is disabled. For more
      *         information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html"> Deleting a DB
-     *         Instance</a>.
+     *         Instance</a>. </p>
+     *         <p>
+     *         <b>Amazon Aurora</b>
+     *         </p>
+     *         <p>
+     *         Not applicable. You can enable or disable deletion protection for the DB cluster. For more information,
+     *         see <code>CreateDBCluster</code>. DB instances in a DB cluster can be deleted even when deletion
+     *         protection is enabled for the DB cluster.
      */
 
     public Boolean isDeletionProtection() {

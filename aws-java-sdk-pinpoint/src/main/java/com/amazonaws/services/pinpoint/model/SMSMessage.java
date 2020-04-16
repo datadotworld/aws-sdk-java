@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,12 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private String keyword;
+    /**
+     * <p>
+     * The URL of an image or video to display in the SMS message.
+     * </p>
+     */
+    private String mediaUrl;
     /**
      * <p>
      * The SMS message type. Valid values are: TRANSACTIONAL, the message is critical or time-sensitive, such as a
@@ -148,6 +154,46 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
 
     public SMSMessage withKeyword(String keyword) {
         setKeyword(keyword);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The URL of an image or video to display in the SMS message.
+     * </p>
+     * 
+     * @param mediaUrl
+     *        The URL of an image or video to display in the SMS message.
+     */
+
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
+    }
+
+    /**
+     * <p>
+     * The URL of an image or video to display in the SMS message.
+     * </p>
+     * 
+     * @return The URL of an image or video to display in the SMS message.
+     */
+
+    public String getMediaUrl() {
+        return this.mediaUrl;
+    }
+
+    /**
+     * <p>
+     * The URL of an image or video to display in the SMS message.
+     * </p>
+     * 
+     * @param mediaUrl
+     *        The URL of an image or video to display in the SMS message.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SMSMessage withMediaUrl(String mediaUrl) {
+        setMediaUrl(mediaUrl);
         return this;
     }
 
@@ -388,6 +434,13 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Substitutions entry
+     *
+     * @see SMSMessage#withSubstitutions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public SMSMessage addSubstitutionsEntry(String key, java.util.List<String> value) {
         if (null == this.substitutions) {
             this.substitutions = new java.util.HashMap<String, java.util.List<String>>();
@@ -425,6 +478,8 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
             sb.append("Body: ").append(getBody()).append(",");
         if (getKeyword() != null)
             sb.append("Keyword: ").append(getKeyword()).append(",");
+        if (getMediaUrl() != null)
+            sb.append("MediaUrl: ").append(getMediaUrl()).append(",");
         if (getMessageType() != null)
             sb.append("MessageType: ").append(getMessageType()).append(",");
         if (getOriginationNumber() != null)
@@ -455,6 +510,10 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getKeyword() != null && other.getKeyword().equals(this.getKeyword()) == false)
             return false;
+        if (other.getMediaUrl() == null ^ this.getMediaUrl() == null)
+            return false;
+        if (other.getMediaUrl() != null && other.getMediaUrl().equals(this.getMediaUrl()) == false)
+            return false;
         if (other.getMessageType() == null ^ this.getMessageType() == null)
             return false;
         if (other.getMessageType() != null && other.getMessageType().equals(this.getMessageType()) == false)
@@ -481,6 +540,7 @@ public class SMSMessage implements Serializable, Cloneable, StructuredPojo {
 
         hashCode = prime * hashCode + ((getBody() == null) ? 0 : getBody().hashCode());
         hashCode = prime * hashCode + ((getKeyword() == null) ? 0 : getKeyword().hashCode());
+        hashCode = prime * hashCode + ((getMediaUrl() == null) ? 0 : getMediaUrl().hashCode());
         hashCode = prime * hashCode + ((getMessageType() == null) ? 0 : getMessageType().hashCode());
         hashCode = prime * hashCode + ((getOriginationNumber() == null) ? 0 : getOriginationNumber().hashCode());
         hashCode = prime * hashCode + ((getSenderId() == null) ? 0 : getSenderId().hashCode());

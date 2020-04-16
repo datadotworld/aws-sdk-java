@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -29,6 +29,8 @@ public class DeleteEmailTemplateRequestMarshaller {
 
     private static final MarshallingInfo<String> TEMPLATENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PATH)
             .marshallLocationName("template-name").build();
+    private static final MarshallingInfo<String> VERSION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.QUERY_PARAM).marshallLocationName("version").build();
 
     private static final DeleteEmailTemplateRequestMarshaller instance = new DeleteEmailTemplateRequestMarshaller();
 
@@ -47,6 +49,7 @@ public class DeleteEmailTemplateRequestMarshaller {
 
         try {
             protocolMarshaller.marshall(deleteEmailTemplateRequest.getTemplateName(), TEMPLATENAME_BINDING);
+            protocolMarshaller.marshall(deleteEmailTemplateRequest.getVersion(), VERSION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

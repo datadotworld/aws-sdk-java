@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -244,6 +244,32 @@ public class AbstractAmazonManagedBlockchainAsync extends AbstractAmazonManagedB
     @Override
     public java.util.concurrent.Future<RejectInvitationResult> rejectInvitationAsync(RejectInvitationRequest request,
             com.amazonaws.handlers.AsyncHandler<RejectInvitationRequest, RejectInvitationResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMemberResult> updateMemberAsync(UpdateMemberRequest request) {
+
+        return updateMemberAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateMemberResult> updateMemberAsync(UpdateMemberRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateMemberRequest, UpdateMemberResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateNodeResult> updateNodeAsync(UpdateNodeRequest request) {
+
+        return updateNodeAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateNodeResult> updateNodeAsync(UpdateNodeRequest request,
+            com.amazonaws.handlers.AsyncHandler<UpdateNodeRequest, UpdateNodeResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

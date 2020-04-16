@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,7 +19,7 @@ import com.amazonaws.protocol.ProtocolMarshaller;
 
 /**
  * <p>
- * Specifies the objects that define configuration and other settings for a message.
+ * Specifies the configuration and other settings for a message.
  * </p>
  * 
  * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/pinpoint-2016-12-01/MessageRequest" target="_top">AWS API
@@ -55,7 +55,7 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
     private java.util.Map<String, EndpointSendConfiguration> endpoints;
     /**
      * <p>
-     * The set of properties that defines the configuration settings for the message.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      */
     private DirectMessageConfiguration messageConfiguration;
@@ -130,6 +130,13 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Addresses entry
+     *
+     * @see MessageRequest#withAddresses
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public MessageRequest addAddressesEntry(String key, AddressConfiguration value) {
         if (null == this.addresses) {
             this.addresses = new java.util.HashMap<String, AddressConfiguration>();
@@ -202,6 +209,13 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
         setContext(context);
         return this;
     }
+
+    /**
+     * Add a single Context entry
+     *
+     * @see MessageRequest#withContext
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public MessageRequest addContextEntry(String key, String value) {
         if (null == this.context) {
@@ -276,6 +290,13 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Endpoints entry
+     *
+     * @see MessageRequest#withEndpoints
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public MessageRequest addEndpointsEntry(String key, EndpointSendConfiguration value) {
         if (null == this.endpoints) {
             this.endpoints = new java.util.HashMap<String, EndpointSendConfiguration>();
@@ -299,11 +320,12 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The set of properties that defines the configuration settings for the message.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      * 
      * @param messageConfiguration
-     *        The set of properties that defines the configuration settings for the message.
+     *        The settings and content for the default message and any default messages that you defined for specific
+     *        channels.
      */
 
     public void setMessageConfiguration(DirectMessageConfiguration messageConfiguration) {
@@ -312,10 +334,11 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The set of properties that defines the configuration settings for the message.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      * 
-     * @return The set of properties that defines the configuration settings for the message.
+     * @return The settings and content for the default message and any default messages that you defined for specific
+     *         channels.
      */
 
     public DirectMessageConfiguration getMessageConfiguration() {
@@ -324,11 +347,12 @@ public class MessageRequest implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * The set of properties that defines the configuration settings for the message.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      * 
      * @param messageConfiguration
-     *        The set of properties that defines the configuration settings for the message.
+     *        The settings and content for the default message and any default messages that you defined for specific
+     *        channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

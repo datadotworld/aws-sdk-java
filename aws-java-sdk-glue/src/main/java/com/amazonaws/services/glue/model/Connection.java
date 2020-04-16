@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -120,7 +120,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     * <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      * </p>
      * </li>
      * <li>
@@ -151,6 +151,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * <code>CUSTOM_JDBC_CERT_STRING</code> - A custom JDBC certificate string which is used for domain match or
      * distinguished name match to prevent a man-in-the-middle attack. In Oracle database, this is used as the
      * <code>SSL_SERVER_CERT_DN</code>; in Microsoft SQL Server, this is used as the <code>hostNameInCertificate</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
      * </p>
      * </li>
      * </ul>
@@ -459,7 +464,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     * <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      * </p>
      * </li>
      * <li>
@@ -490,6 +495,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * <code>CUSTOM_JDBC_CERT_STRING</code> - A custom JDBC certificate string which is used for domain match or
      * distinguished name match to prevent a man-in-the-middle attack. In Oracle database, this is used as the
      * <code>SSL_SERVER_CERT_DN</code>; in Microsoft SQL Server, this is used as the <code>hostNameInCertificate</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
      * </p>
      * </li>
      * </ul>
@@ -559,7 +569,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      *         </li>
      *         <li>
      *         <p>
-     *         <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     *         <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      *         </p>
      *         </li>
      *         <li>
@@ -591,6 +601,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      *         distinguished name match to prevent a man-in-the-middle attack. In Oracle database, this is used as the
      *         <code>SSL_SERVER_CERT_DN</code>; in Microsoft SQL Server, this is used as the
      *         <code>hostNameInCertificate</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
      *         </p>
      *         </li>
      */
@@ -667,7 +682,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     * <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      * </p>
      * </li>
      * <li>
@@ -698,6 +713,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * <code>CUSTOM_JDBC_CERT_STRING</code> - A custom JDBC certificate string which is used for domain match or
      * distinguished name match to prevent a man-in-the-middle attack. In Oracle database, this is used as the
      * <code>SSL_SERVER_CERT_DN</code>; in Microsoft SQL Server, this is used as the <code>hostNameInCertificate</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
      * </p>
      * </li>
      * </ul>
@@ -768,7 +788,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     *        <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      *        </p>
      *        </li>
      *        <li>
@@ -800,6 +820,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      *        distinguished name match to prevent a man-in-the-middle attack. In Oracle database, this is used as the
      *        <code>SSL_SERVER_CERT_DN</code>; in Microsoft SQL Server, this is used as the
      *        <code>hostNameInCertificate</code>.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
      *        </p>
      *        </li>
      */
@@ -876,7 +901,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * </li>
      * <li>
      * <p>
-     * <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     * <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      * </p>
      * </li>
      * <li>
@@ -907,6 +932,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      * <code>CUSTOM_JDBC_CERT_STRING</code> - A custom JDBC certificate string which is used for domain match or
      * distinguished name match to prevent a man-in-the-middle attack. In Oracle database, this is used as the
      * <code>SSL_SERVER_CERT_DN</code>; in Microsoft SQL Server, this is used as the <code>hostNameInCertificate</code>.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
      * </p>
      * </li>
      * </ul>
@@ -977,7 +1007,7 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      *        </li>
      *        <li>
      *        <p>
-     *        <code>JDBC_CONNECTION_URL</code> - The URL for the JDBC connection.
+     *        <code>JDBC_CONNECTION_URL</code> - The URL for connecting to a JDBC data source.
      *        </p>
      *        </li>
      *        <li>
@@ -1011,6 +1041,11 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
      *        <code>hostNameInCertificate</code>.
      *        </p>
      *        </li>
+     *        <li>
+     *        <p>
+     *        <code>CONNECTION_URL</code> - The URL for connecting to a general (non-JDBC) data source.
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1018,6 +1053,13 @@ public class Connection implements Serializable, Cloneable, StructuredPojo {
         setConnectionProperties(connectionProperties);
         return this;
     }
+
+    /**
+     * Add a single ConnectionProperties entry
+     *
+     * @see Connection#withConnectionProperties
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Connection addConnectionPropertiesEntry(String key, String value) {
         if (null == this.connectionProperties) {

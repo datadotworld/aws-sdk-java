@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,10 +27,19 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     * The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration
+     * combinations based on an existing snapshot. Specify "recommend-node-config" to get configuration recommendations
+     * based on an existing cluster or snapshot. Specify "resize-cluster" to get configuration combinations for elastic
+     * resize based on an existing cluster.
      * </p>
      */
     private String actionType;
+    /**
+     * <p>
+     * The identifier of the cluster to evaluate for possible node configurations.
+     * </p>
+     */
+    private String clusterIdentifier;
     /**
      * <p>
      * The identifier of the snapshot to evaluate for possible node configurations.
@@ -76,11 +85,17 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     * The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration
+     * combinations based on an existing snapshot. Specify "recommend-node-config" to get configuration recommendations
+     * based on an existing cluster or snapshot. Specify "resize-cluster" to get configuration combinations for elastic
+     * resize based on an existing cluster.
      * </p>
      * 
      * @param actionType
-     *        The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     *        The action type to evaluate for possible node configurations. Specify "restore-cluster" to get
+     *        configuration combinations based on an existing snapshot. Specify "recommend-node-config" to get
+     *        configuration recommendations based on an existing cluster or snapshot. Specify "resize-cluster" to get
+     *        configuration combinations for elastic resize based on an existing cluster.
      * @see ActionType
      */
 
@@ -90,10 +105,16 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     * The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration
+     * combinations based on an existing snapshot. Specify "recommend-node-config" to get configuration recommendations
+     * based on an existing cluster or snapshot. Specify "resize-cluster" to get configuration combinations for elastic
+     * resize based on an existing cluster.
      * </p>
      * 
-     * @return The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     * @return The action type to evaluate for possible node configurations. Specify "restore-cluster" to get
+     *         configuration combinations based on an existing snapshot. Specify "recommend-node-config" to get
+     *         configuration recommendations based on an existing cluster or snapshot. Specify "resize-cluster" to get
+     *         configuration combinations for elastic resize based on an existing cluster.
      * @see ActionType
      */
 
@@ -103,11 +124,17 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     * The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration
+     * combinations based on an existing snapshot. Specify "recommend-node-config" to get configuration recommendations
+     * based on an existing cluster or snapshot. Specify "resize-cluster" to get configuration combinations for elastic
+     * resize based on an existing cluster.
      * </p>
      * 
      * @param actionType
-     *        The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     *        The action type to evaluate for possible node configurations. Specify "restore-cluster" to get
+     *        configuration combinations based on an existing snapshot. Specify "recommend-node-config" to get
+     *        configuration recommendations based on an existing cluster or snapshot. Specify "resize-cluster" to get
+     *        configuration combinations for elastic resize based on an existing cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ActionType
      */
@@ -119,17 +146,63 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
 
     /**
      * <p>
-     * The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     * The action type to evaluate for possible node configurations. Specify "restore-cluster" to get configuration
+     * combinations based on an existing snapshot. Specify "recommend-node-config" to get configuration recommendations
+     * based on an existing cluster or snapshot. Specify "resize-cluster" to get configuration combinations for elastic
+     * resize based on an existing cluster.
      * </p>
      * 
      * @param actionType
-     *        The action type to evaluate for possible node configurations. Currently, it must be "restore-cluster".
+     *        The action type to evaluate for possible node configurations. Specify "restore-cluster" to get
+     *        configuration combinations based on an existing snapshot. Specify "recommend-node-config" to get
+     *        configuration recommendations based on an existing cluster or snapshot. Specify "resize-cluster" to get
+     *        configuration combinations for elastic resize based on an existing cluster.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ActionType
      */
 
     public DescribeNodeConfigurationOptionsRequest withActionType(ActionType actionType) {
         this.actionType = actionType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * The identifier of the cluster to evaluate for possible node configurations.
+     * </p>
+     * 
+     * @param clusterIdentifier
+     *        The identifier of the cluster to evaluate for possible node configurations.
+     */
+
+    public void setClusterIdentifier(String clusterIdentifier) {
+        this.clusterIdentifier = clusterIdentifier;
+    }
+
+    /**
+     * <p>
+     * The identifier of the cluster to evaluate for possible node configurations.
+     * </p>
+     * 
+     * @return The identifier of the cluster to evaluate for possible node configurations.
+     */
+
+    public String getClusterIdentifier() {
+        return this.clusterIdentifier;
+    }
+
+    /**
+     * <p>
+     * The identifier of the cluster to evaluate for possible node configurations.
+     * </p>
+     * 
+     * @param clusterIdentifier
+     *        The identifier of the cluster to evaluate for possible node configurations.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public DescribeNodeConfigurationOptionsRequest withClusterIdentifier(String clusterIdentifier) {
+        setClusterIdentifier(clusterIdentifier);
         return this;
     }
 
@@ -455,6 +528,8 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
         sb.append("{");
         if (getActionType() != null)
             sb.append("ActionType: ").append(getActionType()).append(",");
+        if (getClusterIdentifier() != null)
+            sb.append("ClusterIdentifier: ").append(getClusterIdentifier()).append(",");
         if (getSnapshotIdentifier() != null)
             sb.append("SnapshotIdentifier: ").append(getSnapshotIdentifier()).append(",");
         if (getOwnerAccount() != null)
@@ -482,6 +557,10 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
         if (other.getActionType() == null ^ this.getActionType() == null)
             return false;
         if (other.getActionType() != null && other.getActionType().equals(this.getActionType()) == false)
+            return false;
+        if (other.getClusterIdentifier() == null ^ this.getClusterIdentifier() == null)
+            return false;
+        if (other.getClusterIdentifier() != null && other.getClusterIdentifier().equals(this.getClusterIdentifier()) == false)
             return false;
         if (other.getSnapshotIdentifier() == null ^ this.getSnapshotIdentifier() == null)
             return false;
@@ -512,6 +591,7 @@ public class DescribeNodeConfigurationOptionsRequest extends com.amazonaws.Amazo
         int hashCode = 1;
 
         hashCode = prime * hashCode + ((getActionType() == null) ? 0 : getActionType().hashCode());
+        hashCode = prime * hashCode + ((getClusterIdentifier() == null) ? 0 : getClusterIdentifier().hashCode());
         hashCode = prime * hashCode + ((getSnapshotIdentifier() == null) ? 0 : getSnapshotIdentifier().hashCode());
         hashCode = prime * hashCode + ((getOwnerAccount() == null) ? 0 : getOwnerAccount().hashCode());
         hashCode = prime * hashCode + ((getFilters() == null) ? 0 : getFilters().hashCode());

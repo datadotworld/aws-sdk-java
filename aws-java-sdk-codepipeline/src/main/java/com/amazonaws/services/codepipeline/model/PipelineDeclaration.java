@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,7 +43,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
     private String roleArn;
     /**
      * <p>
-     * Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.
+     * Represents information about the S3 bucket where artifacts are stored for the pipeline.
      * </p>
      * <note>
      * <p>
@@ -168,7 +168,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.
+     * Represents information about the S3 bucket where artifacts are stored for the pipeline.
      * </p>
      * <note>
      * <p>
@@ -178,7 +178,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
      * </note>
      * 
      * @param artifactStore
-     *        Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.</p> <note>
+     *        Represents information about the S3 bucket where artifacts are stored for the pipeline.</p> <note>
      *        <p>
      *        You must include either <code>artifactStore</code> or <code>artifactStores</code> in your pipeline, but
      *        you cannot use both. If you create a cross-region action in your pipeline, you must use
@@ -192,7 +192,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.
+     * Represents information about the S3 bucket where artifacts are stored for the pipeline.
      * </p>
      * <note>
      * <p>
@@ -201,7 +201,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
      * </p>
      * </note>
      * 
-     * @return Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.</p> <note>
+     * @return Represents information about the S3 bucket where artifacts are stored for the pipeline.</p> <note>
      *         <p>
      *         You must include either <code>artifactStore</code> or <code>artifactStores</code> in your pipeline, but
      *         you cannot use both. If you create a cross-region action in your pipeline, you must use
@@ -215,7 +215,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
 
     /**
      * <p>
-     * Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.
+     * Represents information about the S3 bucket where artifacts are stored for the pipeline.
      * </p>
      * <note>
      * <p>
@@ -225,7 +225,7 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
      * </note>
      * 
      * @param artifactStore
-     *        Represents information about the Amazon S3 bucket where artifacts are stored for the pipeline.</p> <note>
+     *        Represents information about the S3 bucket where artifacts are stored for the pipeline.</p> <note>
      *        <p>
      *        You must include either <code>artifactStore</code> or <code>artifactStores</code> in your pipeline, but
      *        you cannot use both. If you create a cross-region action in your pipeline, you must use
@@ -317,6 +317,13 @@ public class PipelineDeclaration implements Serializable, Cloneable, StructuredP
         setArtifactStores(artifactStores);
         return this;
     }
+
+    /**
+     * Add a single ArtifactStores entry
+     *
+     * @see PipelineDeclaration#withArtifactStores
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public PipelineDeclaration addArtifactStoresEntry(String key, ArtifactStore value) {
         if (null == this.artifactStores) {

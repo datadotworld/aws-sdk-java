@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -580,6 +580,68 @@ public interface AmazonManagedBlockchainAsync extends AmazonManagedBlockchain {
      */
     java.util.concurrent.Future<RejectInvitationResult> rejectInvitationAsync(RejectInvitationRequest rejectInvitationRequest,
             com.amazonaws.handlers.AsyncHandler<RejectInvitationRequest, RejectInvitationResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates a member configuration with new parameters.
+     * </p>
+     * 
+     * @param updateMemberRequest
+     * @return A Java Future containing the result of the UpdateMember operation returned by the service.
+     * @sample AmazonManagedBlockchainAsync.UpdateMember
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/UpdateMember" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateMemberResult> updateMemberAsync(UpdateMemberRequest updateMemberRequest);
+
+    /**
+     * <p>
+     * Updates a member configuration with new parameters.
+     * </p>
+     * 
+     * @param updateMemberRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateMember operation returned by the service.
+     * @sample AmazonManagedBlockchainAsyncHandler.UpdateMember
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/UpdateMember" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateMemberResult> updateMemberAsync(UpdateMemberRequest updateMemberRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateMemberRequest, UpdateMemberResult> asyncHandler);
+
+    /**
+     * <p>
+     * Updates a node configuration with new parameters.
+     * </p>
+     * 
+     * @param updateNodeRequest
+     * @return A Java Future containing the result of the UpdateNode operation returned by the service.
+     * @sample AmazonManagedBlockchainAsync.UpdateNode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/UpdateNode" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNodeResult> updateNodeAsync(UpdateNodeRequest updateNodeRequest);
+
+    /**
+     * <p>
+     * Updates a node configuration with new parameters.
+     * </p>
+     * 
+     * @param updateNodeRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the UpdateNode operation returned by the service.
+     * @sample AmazonManagedBlockchainAsyncHandler.UpdateNode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/UpdateNode" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<UpdateNodeResult> updateNodeAsync(UpdateNodeRequest updateNodeRequest,
+            com.amazonaws.handlers.AsyncHandler<UpdateNodeRequest, UpdateNodeResult> asyncHandler);
 
     /**
      * <p>

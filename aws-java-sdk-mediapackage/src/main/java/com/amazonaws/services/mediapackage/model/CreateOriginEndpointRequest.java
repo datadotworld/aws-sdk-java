@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -26,6 +26,7 @@ import com.amazonaws.AmazonWebServiceRequest;
 @Generated("com.amazonaws:aws-java-sdk-code-generator")
 public class CreateOriginEndpointRequest extends com.amazonaws.AmazonWebServiceRequest implements Serializable, Cloneable {
 
+    private Authorization authorization;
     /**
      * The ID of the Channel that the OriginEndpoint will be associated with. This cannot be changed after the
      * OriginEndpoint is created.
@@ -68,6 +69,32 @@ public class CreateOriginEndpointRequest extends com.amazonaws.AmazonWebServiceR
     private Integer timeDelaySeconds;
     /** A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint. */
     private java.util.List<String> whitelist;
+
+    /**
+     * @param authorization
+     */
+
+    public void setAuthorization(Authorization authorization) {
+        this.authorization = authorization;
+    }
+
+    /**
+     * @return
+     */
+
+    public Authorization getAuthorization() {
+        return this.authorization;
+    }
+
+    /**
+     * @param authorization
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateOriginEndpointRequest withAuthorization(Authorization authorization) {
+        setAuthorization(authorization);
+        return this;
+    }
 
     /**
      * The ID of the Channel that the OriginEndpoint will be associated with. This cannot be changed after the
@@ -458,6 +485,13 @@ public class CreateOriginEndpointRequest extends com.amazonaws.AmazonWebServiceR
         return this;
     }
 
+    /**
+     * Add a single Tags entry
+     *
+     * @see CreateOriginEndpointRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public CreateOriginEndpointRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {
             this.tags = new java.util.HashMap<String, String>();
@@ -593,6 +627,8 @@ public class CreateOriginEndpointRequest extends com.amazonaws.AmazonWebServiceR
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getAuthorization() != null)
+            sb.append("Authorization: ").append(getAuthorization()).append(",");
         if (getChannelId() != null)
             sb.append("ChannelId: ").append(getChannelId()).append(",");
         if (getCmafPackage() != null)
@@ -633,6 +669,10 @@ public class CreateOriginEndpointRequest extends com.amazonaws.AmazonWebServiceR
         if (obj instanceof CreateOriginEndpointRequest == false)
             return false;
         CreateOriginEndpointRequest other = (CreateOriginEndpointRequest) obj;
+        if (other.getAuthorization() == null ^ this.getAuthorization() == null)
+            return false;
+        if (other.getAuthorization() != null && other.getAuthorization().equals(this.getAuthorization()) == false)
+            return false;
         if (other.getChannelId() == null ^ this.getChannelId() == null)
             return false;
         if (other.getChannelId() != null && other.getChannelId().equals(this.getChannelId()) == false)
@@ -693,6 +733,7 @@ public class CreateOriginEndpointRequest extends com.amazonaws.AmazonWebServiceR
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getAuthorization() == null) ? 0 : getAuthorization().hashCode());
         hashCode = prime * hashCode + ((getChannelId() == null) ? 0 : getChannelId().hashCode());
         hashCode = prime * hashCode + ((getCmafPackage() == null) ? 0 : getCmafPackage().hashCode());
         hashCode = prime * hashCode + ((getDashPackage() == null) ? 0 : getDashPackage().hashCode());

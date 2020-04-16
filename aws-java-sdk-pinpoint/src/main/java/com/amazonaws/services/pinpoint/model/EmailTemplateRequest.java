@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,12 +31,29 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
 
     /**
      * <p>
+     * A JSON object that specifies the default values to use for message variables in the message template. This object
+     * is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable. When you create a message that's based on the template, you can override
+     * these defaults with message-specific and address-specific variables and values.
+     * </p>
+     */
+    private String defaultSubstitutions;
+    /**
+     * <p>
      * The message body, in HTML format, to use in email messages that are based on the message template. We recommend
-     * using HTML format for email clients that support HTML. You can include links, formatted text, and more in an HTML
-     * message.
+     * using HTML format for email clients that render HTML content. You can include links, formatted text, and more in
+     * an HTML message.
      * </p>
      */
     private String htmlPart;
+    /**
+     * <p>
+     * The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value
+     * to determine how to retrieve and process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation data.
+     * </p>
+     */
+    private String recommenderId;
     /**
      * <p>
      * The subject line, or title, to use in email messages that are based on the message template.
@@ -52,24 +69,89 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
     private java.util.Map<String, String> tags;
     /**
      * <p>
-     * The message body, in text format, to use in email messages that are based on the message template. We recommend
-     * using text format for email clients that don't support HTML and clients that are connected to high-latency
-     * networks, such as mobile devices.
+     * A custom description of the message template.
+     * </p>
+     */
+    private String templateDescription;
+    /**
+     * <p>
+     * The message body, in plain text format, to use in email messages that are based on the message template. We
+     * recommend using plain text format for email clients that don't render HTML content and clients that are connected
+     * to high-latency networks, such as mobile devices.
      * </p>
      */
     private String textPart;
 
     /**
      * <p>
+     * A JSON object that specifies the default values to use for message variables in the message template. This object
+     * is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable. When you create a message that's based on the template, you can override
+     * these defaults with message-specific and address-specific variables and values.
+     * </p>
+     * 
+     * @param defaultSubstitutions
+     *        A JSON object that specifies the default values to use for message variables in the message template. This
+     *        object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding
+     *        value defines the default value for that variable. When you create a message that's based on the template,
+     *        you can override these defaults with message-specific and address-specific variables and values.
+     */
+
+    public void setDefaultSubstitutions(String defaultSubstitutions) {
+        this.defaultSubstitutions = defaultSubstitutions;
+    }
+
+    /**
+     * <p>
+     * A JSON object that specifies the default values to use for message variables in the message template. This object
+     * is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable. When you create a message that's based on the template, you can override
+     * these defaults with message-specific and address-specific variables and values.
+     * </p>
+     * 
+     * @return A JSON object that specifies the default values to use for message variables in the message template.
+     *         This object is a set of key-value pairs. Each key defines a message variable in the template. The
+     *         corresponding value defines the default value for that variable. When you create a message that's based
+     *         on the template, you can override these defaults with message-specific and address-specific variables and
+     *         values.
+     */
+
+    public String getDefaultSubstitutions() {
+        return this.defaultSubstitutions;
+    }
+
+    /**
+     * <p>
+     * A JSON object that specifies the default values to use for message variables in the message template. This object
+     * is a set of key-value pairs. Each key defines a message variable in the template. The corresponding value defines
+     * the default value for that variable. When you create a message that's based on the template, you can override
+     * these defaults with message-specific and address-specific variables and values.
+     * </p>
+     * 
+     * @param defaultSubstitutions
+     *        A JSON object that specifies the default values to use for message variables in the message template. This
+     *        object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding
+     *        value defines the default value for that variable. When you create a message that's based on the template,
+     *        you can override these defaults with message-specific and address-specific variables and values.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EmailTemplateRequest withDefaultSubstitutions(String defaultSubstitutions) {
+        setDefaultSubstitutions(defaultSubstitutions);
+        return this;
+    }
+
+    /**
+     * <p>
      * The message body, in HTML format, to use in email messages that are based on the message template. We recommend
-     * using HTML format for email clients that support HTML. You can include links, formatted text, and more in an HTML
-     * message.
+     * using HTML format for email clients that render HTML content. You can include links, formatted text, and more in
+     * an HTML message.
      * </p>
      * 
      * @param htmlPart
      *        The message body, in HTML format, to use in email messages that are based on the message template. We
-     *        recommend using HTML format for email clients that support HTML. You can include links, formatted text,
-     *        and more in an HTML message.
+     *        recommend using HTML format for email clients that render HTML content. You can include links, formatted
+     *        text, and more in an HTML message.
      */
 
     public void setHtmlPart(String htmlPart) {
@@ -79,13 +161,13 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The message body, in HTML format, to use in email messages that are based on the message template. We recommend
-     * using HTML format for email clients that support HTML. You can include links, formatted text, and more in an HTML
-     * message.
+     * using HTML format for email clients that render HTML content. You can include links, formatted text, and more in
+     * an HTML message.
      * </p>
      * 
      * @return The message body, in HTML format, to use in email messages that are based on the message template. We
-     *         recommend using HTML format for email clients that support HTML. You can include links, formatted text,
-     *         and more in an HTML message.
+     *         recommend using HTML format for email clients that render HTML content. You can include links, formatted
+     *         text, and more in an HTML message.
      */
 
     public String getHtmlPart() {
@@ -95,19 +177,71 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
     /**
      * <p>
      * The message body, in HTML format, to use in email messages that are based on the message template. We recommend
-     * using HTML format for email clients that support HTML. You can include links, formatted text, and more in an HTML
-     * message.
+     * using HTML format for email clients that render HTML content. You can include links, formatted text, and more in
+     * an HTML message.
      * </p>
      * 
      * @param htmlPart
      *        The message body, in HTML format, to use in email messages that are based on the message template. We
-     *        recommend using HTML format for email clients that support HTML. You can include links, formatted text,
-     *        and more in an HTML message.
+     *        recommend using HTML format for email clients that render HTML content. You can include links, formatted
+     *        text, and more in an HTML message.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public EmailTemplateRequest withHtmlPart(String htmlPart) {
         setHtmlPart(htmlPart);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value
+     * to determine how to retrieve and process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation data.
+     * </p>
+     * 
+     * @param recommenderId
+     *        The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this
+     *        value to determine how to retrieve and process data from a recommender model when it sends messages that
+     *        use the template, if the template contains message variables for recommendation data.
+     */
+
+    public void setRecommenderId(String recommenderId) {
+        this.recommenderId = recommenderId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value
+     * to determine how to retrieve and process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation data.
+     * </p>
+     * 
+     * @return The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses
+     *         this value to determine how to retrieve and process data from a recommender model when it sends messages
+     *         that use the template, if the template contains message variables for recommendation data.
+     */
+
+    public String getRecommenderId() {
+        return this.recommenderId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value
+     * to determine how to retrieve and process data from a recommender model when it sends messages that use the
+     * template, if the template contains message variables for recommendation data.
+     * </p>
+     * 
+     * @param recommenderId
+     *        The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this
+     *        value to determine how to retrieve and process data from a recommender model when it sends messages that
+     *        use the template, if the template contains message variables for recommendation data.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EmailTemplateRequest withRecommenderId(String recommenderId) {
+        setRecommenderId(recommenderId);
         return this;
     }
 
@@ -197,6 +331,13 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
         return this;
     }
 
+    /**
+     * Add a single Tags entry
+     *
+     * @see EmailTemplateRequest#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public EmailTemplateRequest addTagsEntry(String key, String value) {
         if (null == this.tags) {
             this.tags = new java.util.HashMap<String, String>();
@@ -220,15 +361,55 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The message body, in text format, to use in email messages that are based on the message template. We recommend
-     * using text format for email clients that don't support HTML and clients that are connected to high-latency
-     * networks, such as mobile devices.
+     * A custom description of the message template.
+     * </p>
+     * 
+     * @param templateDescription
+     *        A custom description of the message template.
+     */
+
+    public void setTemplateDescription(String templateDescription) {
+        this.templateDescription = templateDescription;
+    }
+
+    /**
+     * <p>
+     * A custom description of the message template.
+     * </p>
+     * 
+     * @return A custom description of the message template.
+     */
+
+    public String getTemplateDescription() {
+        return this.templateDescription;
+    }
+
+    /**
+     * <p>
+     * A custom description of the message template.
+     * </p>
+     * 
+     * @param templateDescription
+     *        A custom description of the message template.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public EmailTemplateRequest withTemplateDescription(String templateDescription) {
+        setTemplateDescription(templateDescription);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The message body, in plain text format, to use in email messages that are based on the message template. We
+     * recommend using plain text format for email clients that don't render HTML content and clients that are connected
+     * to high-latency networks, such as mobile devices.
      * </p>
      * 
      * @param textPart
-     *        The message body, in text format, to use in email messages that are based on the message template. We
-     *        recommend using text format for email clients that don't support HTML and clients that are connected to
-     *        high-latency networks, such as mobile devices.
+     *        The message body, in plain text format, to use in email messages that are based on the message template.
+     *        We recommend using plain text format for email clients that don't render HTML content and clients that are
+     *        connected to high-latency networks, such as mobile devices.
      */
 
     public void setTextPart(String textPart) {
@@ -237,14 +418,14 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The message body, in text format, to use in email messages that are based on the message template. We recommend
-     * using text format for email clients that don't support HTML and clients that are connected to high-latency
-     * networks, such as mobile devices.
+     * The message body, in plain text format, to use in email messages that are based on the message template. We
+     * recommend using plain text format for email clients that don't render HTML content and clients that are connected
+     * to high-latency networks, such as mobile devices.
      * </p>
      * 
-     * @return The message body, in text format, to use in email messages that are based on the message template. We
-     *         recommend using text format for email clients that don't support HTML and clients that are connected to
-     *         high-latency networks, such as mobile devices.
+     * @return The message body, in plain text format, to use in email messages that are based on the message template.
+     *         We recommend using plain text format for email clients that don't render HTML content and clients that
+     *         are connected to high-latency networks, such as mobile devices.
      */
 
     public String getTextPart() {
@@ -253,15 +434,15 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
 
     /**
      * <p>
-     * The message body, in text format, to use in email messages that are based on the message template. We recommend
-     * using text format for email clients that don't support HTML and clients that are connected to high-latency
-     * networks, such as mobile devices.
+     * The message body, in plain text format, to use in email messages that are based on the message template. We
+     * recommend using plain text format for email clients that don't render HTML content and clients that are connected
+     * to high-latency networks, such as mobile devices.
      * </p>
      * 
      * @param textPart
-     *        The message body, in text format, to use in email messages that are based on the message template. We
-     *        recommend using text format for email clients that don't support HTML and clients that are connected to
-     *        high-latency networks, such as mobile devices.
+     *        The message body, in plain text format, to use in email messages that are based on the message template.
+     *        We recommend using plain text format for email clients that don't render HTML content and clients that are
+     *        connected to high-latency networks, such as mobile devices.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -282,12 +463,18 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
+        if (getDefaultSubstitutions() != null)
+            sb.append("DefaultSubstitutions: ").append(getDefaultSubstitutions()).append(",");
         if (getHtmlPart() != null)
             sb.append("HtmlPart: ").append(getHtmlPart()).append(",");
+        if (getRecommenderId() != null)
+            sb.append("RecommenderId: ").append(getRecommenderId()).append(",");
         if (getSubject() != null)
             sb.append("Subject: ").append(getSubject()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
+        if (getTemplateDescription() != null)
+            sb.append("TemplateDescription: ").append(getTemplateDescription()).append(",");
         if (getTextPart() != null)
             sb.append("TextPart: ").append(getTextPart());
         sb.append("}");
@@ -304,9 +491,17 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
         if (obj instanceof EmailTemplateRequest == false)
             return false;
         EmailTemplateRequest other = (EmailTemplateRequest) obj;
+        if (other.getDefaultSubstitutions() == null ^ this.getDefaultSubstitutions() == null)
+            return false;
+        if (other.getDefaultSubstitutions() != null && other.getDefaultSubstitutions().equals(this.getDefaultSubstitutions()) == false)
+            return false;
         if (other.getHtmlPart() == null ^ this.getHtmlPart() == null)
             return false;
         if (other.getHtmlPart() != null && other.getHtmlPart().equals(this.getHtmlPart()) == false)
+            return false;
+        if (other.getRecommenderId() == null ^ this.getRecommenderId() == null)
+            return false;
+        if (other.getRecommenderId() != null && other.getRecommenderId().equals(this.getRecommenderId()) == false)
             return false;
         if (other.getSubject() == null ^ this.getSubject() == null)
             return false;
@@ -315,6 +510,10 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getTemplateDescription() == null ^ this.getTemplateDescription() == null)
+            return false;
+        if (other.getTemplateDescription() != null && other.getTemplateDescription().equals(this.getTemplateDescription()) == false)
             return false;
         if (other.getTextPart() == null ^ this.getTextPart() == null)
             return false;
@@ -328,9 +527,12 @@ public class EmailTemplateRequest implements Serializable, Cloneable, Structured
         final int prime = 31;
         int hashCode = 1;
 
+        hashCode = prime * hashCode + ((getDefaultSubstitutions() == null) ? 0 : getDefaultSubstitutions().hashCode());
         hashCode = prime * hashCode + ((getHtmlPart() == null) ? 0 : getHtmlPart().hashCode());
+        hashCode = prime * hashCode + ((getRecommenderId() == null) ? 0 : getRecommenderId().hashCode());
         hashCode = prime * hashCode + ((getSubject() == null) ? 0 : getSubject().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getTemplateDescription() == null) ? 0 : getTemplateDescription().hashCode());
         hashCode = prime * hashCode + ((getTextPart() == null) ? 0 : getTextPart().hashCode());
         return hashCode;
     }

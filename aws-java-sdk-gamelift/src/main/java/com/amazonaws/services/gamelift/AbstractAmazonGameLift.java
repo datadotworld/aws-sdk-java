@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -43,6 +43,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public ClaimGameServerResult claimGameServer(ClaimGameServerRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public CreateAliasResult createAlias(CreateAliasRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -54,6 +59,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public CreateFleetResult createFleet(CreateFleetRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public CreateGameServerGroupResult createGameServerGroup(CreateGameServerGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -118,6 +128,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public DeleteGameServerGroupResult deleteGameServerGroup(DeleteGameServerGroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public DeleteGameSessionQueueResult deleteGameSessionQueue(DeleteGameSessionQueueRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -149,6 +164,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeregisterGameServerResult deregisterGameServer(DeregisterGameServerRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -189,6 +209,16 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public DescribeFleetUtilizationResult describeFleetUtilization(DescribeFleetUtilizationRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeGameServerResult describeGameServer(DescribeGameServerRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DescribeGameServerGroupResult describeGameServerGroup(DescribeGameServerGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -288,12 +318,32 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public ListGameServerGroupsResult listGameServerGroups(ListGameServerGroupsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ListGameServersResult listGameServers(ListGameServersRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ListScriptsResult listScripts(ListScriptsRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
+    public ListTagsForResourceResult listTagsForResource(ListTagsForResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public PutScalingPolicyResult putScalingPolicy(PutScalingPolicyRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public RegisterGameServerResult registerGameServer(RegisterGameServerRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -304,6 +354,11 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public ResolveAliasResult resolveAlias(ResolveAliasRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ResumeGameServerGroupResult resumeGameServerGroup(ResumeGameServerGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -348,6 +403,21 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
     }
 
     @Override
+    public SuspendGameServerGroupResult suspendGameServerGroup(SuspendGameServerGroupRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public TagResourceResult tagResource(TagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public UpdateAliasResult updateAlias(UpdateAliasRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
@@ -369,6 +439,16 @@ public class AbstractAmazonGameLift implements AmazonGameLift {
 
     @Override
     public UpdateFleetPortSettingsResult updateFleetPortSettings(UpdateFleetPortSettingsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateGameServerResult updateGameServer(UpdateGameServerRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public UpdateGameServerGroupResult updateGameServerGroup(UpdateGameServerGroupRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

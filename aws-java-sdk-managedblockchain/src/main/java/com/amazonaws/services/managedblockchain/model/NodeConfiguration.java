@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -40,6 +40,8 @@ public class NodeConfiguration implements Serializable, Cloneable, StructuredPoj
      * </p>
      */
     private String availabilityZone;
+    /** <p/> */
+    private NodeLogPublishingConfiguration logPublishingConfiguration;
 
     /**
      * <p>
@@ -122,6 +124,38 @@ public class NodeConfiguration implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p/>
+     * 
+     * @param logPublishingConfiguration
+     */
+
+    public void setLogPublishingConfiguration(NodeLogPublishingConfiguration logPublishingConfiguration) {
+        this.logPublishingConfiguration = logPublishingConfiguration;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @return
+     */
+
+    public NodeLogPublishingConfiguration getLogPublishingConfiguration() {
+        return this.logPublishingConfiguration;
+    }
+
+    /**
+     * <p/>
+     * 
+     * @param logPublishingConfiguration
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public NodeConfiguration withLogPublishingConfiguration(NodeLogPublishingConfiguration logPublishingConfiguration) {
+        setLogPublishingConfiguration(logPublishingConfiguration);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -136,7 +170,9 @@ public class NodeConfiguration implements Serializable, Cloneable, StructuredPoj
         if (getInstanceType() != null)
             sb.append("InstanceType: ").append(getInstanceType()).append(",");
         if (getAvailabilityZone() != null)
-            sb.append("AvailabilityZone: ").append(getAvailabilityZone());
+            sb.append("AvailabilityZone: ").append(getAvailabilityZone()).append(",");
+        if (getLogPublishingConfiguration() != null)
+            sb.append("LogPublishingConfiguration: ").append(getLogPublishingConfiguration());
         sb.append("}");
         return sb.toString();
     }
@@ -159,6 +195,10 @@ public class NodeConfiguration implements Serializable, Cloneable, StructuredPoj
             return false;
         if (other.getAvailabilityZone() != null && other.getAvailabilityZone().equals(this.getAvailabilityZone()) == false)
             return false;
+        if (other.getLogPublishingConfiguration() == null ^ this.getLogPublishingConfiguration() == null)
+            return false;
+        if (other.getLogPublishingConfiguration() != null && other.getLogPublishingConfiguration().equals(this.getLogPublishingConfiguration()) == false)
+            return false;
         return true;
     }
 
@@ -169,6 +209,7 @@ public class NodeConfiguration implements Serializable, Cloneable, StructuredPoj
 
         hashCode = prime * hashCode + ((getInstanceType() == null) ? 0 : getInstanceType().hashCode());
         hashCode = prime * hashCode + ((getAvailabilityZone() == null) ? 0 : getAvailabilityZone().hashCode());
+        hashCode = prime * hashCode + ((getLogPublishingConfiguration() == null) ? 0 : getLogPublishingConfiguration().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,14 +64,26 @@ public class PushNotificationTemplateRequestJsonUnmarshaller implements Unmarsha
                     context.nextToken();
                     pushNotificationTemplateRequest.setDefault(DefaultPushNotificationTemplateJsonUnmarshaller.getInstance().unmarshall(context));
                 }
+                if (context.testExpression("DefaultSubstitutions", targetDepth)) {
+                    context.nextToken();
+                    pushNotificationTemplateRequest.setDefaultSubstitutions(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("GCM", targetDepth)) {
                     context.nextToken();
                     pushNotificationTemplateRequest.setGCM(AndroidPushNotificationTemplateJsonUnmarshaller.getInstance().unmarshall(context));
+                }
+                if (context.testExpression("RecommenderId", targetDepth)) {
+                    context.nextToken();
+                    pushNotificationTemplateRequest.setRecommenderId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("tags", targetDepth)) {
                     context.nextToken();
                     pushNotificationTemplateRequest.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context
                             .getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("TemplateDescription", targetDepth)) {
+                    context.nextToken();
+                    pushNotificationTemplateRequest.setTemplateDescription(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

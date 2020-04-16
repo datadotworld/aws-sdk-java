@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,19 +45,19 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is deleted. If
-     * skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is created before the DB
-     * instance is deleted. By default, skip is not specified, and the DB snapshot is created.
+     * skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is created before the DB
+     * instance is deleted. By default, skip isn't specified, and the DB snapshot is created.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     * When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
      * 'incompatible-network', it can only be deleted when skip is specified.
      * </p>
      * <p>
-     * Specify skip when deleting a Read Replica.
+     * Specify skip when deleting a read replica.
      * </p>
      * <note>
      * <p>
-     * The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     * The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      * </p>
      * </note>
      */
@@ -94,7 +94,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be specified when deleting a Read Replica.
+     * Can't be specified when deleting a read replica.
      * </p>
      * </li>
      * </ul>
@@ -236,37 +236,37 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is deleted. If
-     * skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is created before the DB
-     * instance is deleted. By default, skip is not specified, and the DB snapshot is created.
+     * skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is created before the DB
+     * instance is deleted. By default, skip isn't specified, and the DB snapshot is created.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     * When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
      * 'incompatible-network', it can only be deleted when skip is specified.
      * </p>
      * <p>
-     * Specify skip when deleting a Read Replica.
+     * Specify skip when deleting a read replica.
      * </p>
      * <note>
      * <p>
-     * The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     * The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      * </p>
      * </note>
      * 
      * @param skipFinalSnapshot
      *        A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is
-     *        deleted. If skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is
-     *        created before the DB instance is deleted. By default, skip is not specified, and the DB snapshot is
+     *        deleted. If skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is
+     *        created before the DB instance is deleted. By default, skip isn't specified, and the DB snapshot is
      *        created.</p>
      *        <p>
-     *        Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore',
-     *        or 'incompatible-network', it can only be deleted when skip is specified.
+     *        When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     *        'incompatible-network', it can only be deleted when skip is specified.
      *        </p>
      *        <p>
-     *        Specify skip when deleting a Read Replica.
+     *        Specify skip when deleting a read replica.
      *        </p>
      *        <note>
      *        <p>
-     *        The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     *        The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      *        </p>
      */
 
@@ -277,36 +277,36 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is deleted. If
-     * skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is created before the DB
-     * instance is deleted. By default, skip is not specified, and the DB snapshot is created.
+     * skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is created before the DB
+     * instance is deleted. By default, skip isn't specified, and the DB snapshot is created.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     * When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
      * 'incompatible-network', it can only be deleted when skip is specified.
      * </p>
      * <p>
-     * Specify skip when deleting a Read Replica.
+     * Specify skip when deleting a read replica.
      * </p>
      * <note>
      * <p>
-     * The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     * The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      * </p>
      * </note>
      * 
      * @return A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is
-     *         deleted. If skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is
-     *         created before the DB instance is deleted. By default, skip is not specified, and the DB snapshot is
+     *         deleted. If skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is
+     *         created before the DB instance is deleted. By default, skip isn't specified, and the DB snapshot is
      *         created.</p>
      *         <p>
-     *         Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore',
-     *         or 'incompatible-network', it can only be deleted when skip is specified.
+     *         When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     *         'incompatible-network', it can only be deleted when skip is specified.
      *         </p>
      *         <p>
-     *         Specify skip when deleting a Read Replica.
+     *         Specify skip when deleting a read replica.
      *         </p>
      *         <note>
      *         <p>
-     *         The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     *         The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      *         </p>
      */
 
@@ -317,37 +317,37 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is deleted. If
-     * skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is created before the DB
-     * instance is deleted. By default, skip is not specified, and the DB snapshot is created.
+     * skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is created before the DB
+     * instance is deleted. By default, skip isn't specified, and the DB snapshot is created.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     * When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
      * 'incompatible-network', it can only be deleted when skip is specified.
      * </p>
      * <p>
-     * Specify skip when deleting a Read Replica.
+     * Specify skip when deleting a read replica.
      * </p>
      * <note>
      * <p>
-     * The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     * The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      * </p>
      * </note>
      * 
      * @param skipFinalSnapshot
      *        A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is
-     *        deleted. If skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is
-     *        created before the DB instance is deleted. By default, skip is not specified, and the DB snapshot is
+     *        deleted. If skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is
+     *        created before the DB instance is deleted. By default, skip isn't specified, and the DB snapshot is
      *        created.</p>
      *        <p>
-     *        Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore',
-     *        or 'incompatible-network', it can only be deleted when skip is specified.
+     *        When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     *        'incompatible-network', it can only be deleted when skip is specified.
      *        </p>
      *        <p>
-     *        Specify skip when deleting a Read Replica.
+     *        Specify skip when deleting a read replica.
      *        </p>
      *        <note>
      *        <p>
-     *        The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     *        The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -360,36 +360,36 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is deleted. If
-     * skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is created before the DB
-     * instance is deleted. By default, skip is not specified, and the DB snapshot is created.
+     * skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is created before the DB
+     * instance is deleted. By default, skip isn't specified, and the DB snapshot is created.
      * </p>
      * <p>
-     * Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     * When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
      * 'incompatible-network', it can only be deleted when skip is specified.
      * </p>
      * <p>
-     * Specify skip when deleting a Read Replica.
+     * Specify skip when deleting a read replica.
      * </p>
      * <note>
      * <p>
-     * The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     * The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      * </p>
      * </note>
      * 
      * @return A value that indicates whether to skip the creation of a final DB snapshot before the DB instance is
-     *         deleted. If skip is specified, no DB snapshot is created. If skip is not specified, a DB snapshot is
-     *         created before the DB instance is deleted. By default, skip is not specified, and the DB snapshot is
+     *         deleted. If skip is specified, no DB snapshot is created. If skip isn't specified, a DB snapshot is
+     *         created before the DB instance is deleted. By default, skip isn't specified, and the DB snapshot is
      *         created.</p>
      *         <p>
-     *         Note that when a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore',
-     *         or 'incompatible-network', it can only be deleted when skip is specified.
+     *         When a DB instance is in a failure state and has a status of 'failed', 'incompatible-restore', or
+     *         'incompatible-network', it can only be deleted when skip is specified.
      *         </p>
      *         <p>
-     *         Specify skip when deleting a Read Replica.
+     *         Specify skip when deleting a read replica.
      *         </p>
      *         <note>
      *         <p>
-     *         The FinalDBSnapshotIdentifier parameter must be specified if skip is not specified.
+     *         The FinalDBSnapshotIdentifier parameter must be specified if skip isn't specified.
      *         </p>
      */
 
@@ -429,7 +429,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be specified when deleting a Read Replica.
+     * Can't be specified when deleting a read replica.
      * </p>
      * </li>
      * </ul>
@@ -463,7 +463,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Can't be specified when deleting a Read Replica.
+     *        Can't be specified when deleting a read replica.
      *        </p>
      *        </li>
      */
@@ -504,7 +504,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be specified when deleting a Read Replica.
+     * Can't be specified when deleting a read replica.
      * </p>
      * </li>
      * </ul>
@@ -537,7 +537,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </li>
      *         <li>
      *         <p>
-     *         Can't be specified when deleting a Read Replica.
+     *         Can't be specified when deleting a read replica.
      *         </p>
      *         </li>
      */
@@ -578,7 +578,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can't be specified when deleting a Read Replica.
+     * Can't be specified when deleting a read replica.
      * </p>
      * </li>
      * </ul>
@@ -612,7 +612,7 @@ public class DeleteDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Can't be specified when deleting a Read Replica.
+     *        Can't be specified when deleting a read replica.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.

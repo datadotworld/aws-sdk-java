@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -103,6 +103,18 @@ public class ArnTest {
         Arn arn2 = Arn.fromString(arnString);
         assertThat(arn1.equals(arn2), equalTo(true));
         assertThat(arn1.getResource().equals(arn2.getResource()), equalTo(true));
+    }
+
+    @Test
+    public void hashCodeEquals_minimalProperties() {
+        Arn arn = Arn.builder()
+                     .withPartition("aws")
+                     .withService("foobar")
+                     .withResource("resource")
+                     .build();
+        Arn anotherArn = arn.toBuilder().build();
+        assertThat(arn.equals(anotherArn), equalTo(true));
+        assertThat(arn.hashCode(), equalTo(anotherArn.hashCode()));
     }
 
     @Test

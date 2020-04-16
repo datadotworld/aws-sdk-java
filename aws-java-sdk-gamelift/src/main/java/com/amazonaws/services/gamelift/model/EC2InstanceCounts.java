@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,51 +41,9 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * <li>
  * <p>
- * Describe fleets:
- * </p>
- * <ul>
- * <li>
- * <p>
  * <a>DescribeFleetAttributes</a>
  * </p>
  * </li>
- * <li>
- * <p>
- * <a>DescribeFleetCapacity</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeFleetPortSettings</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeFleetUtilization</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeRuntimeConfiguration</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeEC2InstanceLimits</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>DescribeFleetEvents</a>
- * </p>
- * </li>
- * </ul>
- * </li>
- * <li>
- * <p>
- * Update fleets:
- * </p>
- * <ul>
  * <li>
  * <p>
  * <a>UpdateFleetAttributes</a>
@@ -93,37 +51,8 @@ import com.amazonaws.protocol.ProtocolMarshaller;
  * </li>
  * <li>
  * <p>
- * <a>UpdateFleetCapacity</a>
+ * <a>StartFleetActions</a> or <a>StopFleetActions</a>
  * </p>
- * </li>
- * <li>
- * <p>
- * <a>UpdateFleetPortSettings</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>UpdateRuntimeConfiguration</a>
- * </p>
- * </li>
- * </ul>
- * </li>
- * <li>
- * <p>
- * Manage fleet actions:
- * </p>
- * <ul>
- * <li>
- * <p>
- * <a>StartFleetActions</a>
- * </p>
- * </li>
- * <li>
- * <p>
- * <a>StopFleetActions</a>
- * </p>
- * </li>
- * </ul>
  * </li>
  * </ul>
  * 
@@ -141,13 +70,13 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
     private Integer dESIRED;
     /**
      * <p>
-     * Minimum value allowed for the fleet's instance count.
+     * The minimum value allowed for the fleet's instance count.
      * </p>
      */
     private Integer mINIMUM;
     /**
      * <p>
-     * Maximum value allowed for the fleet's instance count.
+     * The maximum value allowed for the fleet's instance count.
      * </p>
      */
     private Integer mAXIMUM;
@@ -218,11 +147,11 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Minimum value allowed for the fleet's instance count.
+     * The minimum value allowed for the fleet's instance count.
      * </p>
      * 
      * @param mINIMUM
-     *        Minimum value allowed for the fleet's instance count.
+     *        The minimum value allowed for the fleet's instance count.
      */
 
     public void setMINIMUM(Integer mINIMUM) {
@@ -231,10 +160,10 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Minimum value allowed for the fleet's instance count.
+     * The minimum value allowed for the fleet's instance count.
      * </p>
      * 
-     * @return Minimum value allowed for the fleet's instance count.
+     * @return The minimum value allowed for the fleet's instance count.
      */
 
     public Integer getMINIMUM() {
@@ -243,11 +172,11 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Minimum value allowed for the fleet's instance count.
+     * The minimum value allowed for the fleet's instance count.
      * </p>
      * 
      * @param mINIMUM
-     *        Minimum value allowed for the fleet's instance count.
+     *        The minimum value allowed for the fleet's instance count.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -258,11 +187,11 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Maximum value allowed for the fleet's instance count.
+     * The maximum value allowed for the fleet's instance count.
      * </p>
      * 
      * @param mAXIMUM
-     *        Maximum value allowed for the fleet's instance count.
+     *        The maximum value allowed for the fleet's instance count.
      */
 
     public void setMAXIMUM(Integer mAXIMUM) {
@@ -271,10 +200,10 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Maximum value allowed for the fleet's instance count.
+     * The maximum value allowed for the fleet's instance count.
      * </p>
      * 
-     * @return Maximum value allowed for the fleet's instance count.
+     * @return The maximum value allowed for the fleet's instance count.
      */
 
     public Integer getMAXIMUM() {
@@ -283,11 +212,11 @@ public class EC2InstanceCounts implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * Maximum value allowed for the fleet's instance count.
+     * The maximum value allowed for the fleet's instance count.
      * </p>
      * 
      * @param mAXIMUM
-     *        Maximum value allowed for the fleet's instance count.
+     *        The maximum value allowed for the fleet's instance count.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

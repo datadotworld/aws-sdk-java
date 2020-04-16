@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -30,22 +30,23 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
-     * build. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a specified
+     * build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a BuildId and ScriptID
+     * parameter.
      * </p>
      */
     private String buildId;
     /**
      * <p>
-     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
-     * specified script. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using a
+     * specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this parameter empty.
      * </p>
      */
     private String scriptId;
     /**
      * <p>
-     * Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of
-     * sequential pages.
+     * The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set
+     * of sequential pages.
      * </p>
      */
     private Integer limit;
@@ -59,13 +60,15 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
-     * build. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a specified
+     * build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a BuildId and ScriptID
+     * parameter.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the
-     *        specified build. To retrieve all fleets, leave this parameter empty.
+     *        A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a
+     *        specified build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a
+     *        BuildId and ScriptID parameter.
      */
 
     public void setBuildId(String buildId) {
@@ -74,12 +77,14 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
-     * build. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a specified
+     * build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a BuildId and ScriptID
+     * parameter.
      * </p>
      * 
-     * @return Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the
-     *         specified build. To retrieve all fleets, leave this parameter empty.
+     * @return A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a
+     *         specified build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a
+     *         BuildId and ScriptID parameter.
      */
 
     public String getBuildId() {
@@ -88,13 +93,15 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified
-     * build. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a specified
+     * build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a BuildId and ScriptID
+     * parameter.
      * </p>
      * 
      * @param buildId
-     *        Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the
-     *        specified build. To retrieve all fleets, leave this parameter empty.
+     *        A unique identifier for a build to return fleets for. Use this parameter to return only fleets using a
+     *        specified build. Use either the build ID or ARN value. To retrieve all fleets, do not include either a
+     *        BuildId and ScriptID parameter.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -105,13 +112,14 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
-     * specified script. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using a
+     * specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this parameter empty.
      * </p>
      * 
      * @param scriptId
-     *        Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
-     *        using the specified script. To retrieve all fleets, leave this parameter empty.
+     *        A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
+     *        using a specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this
+     *        parameter empty.
      */
 
     public void setScriptId(String scriptId) {
@@ -120,12 +128,13 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
-     * specified script. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using a
+     * specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this parameter empty.
      * </p>
      * 
-     * @return Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
-     *         using the specified script. To retrieve all fleets, leave this parameter empty.
+     * @return A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
+     *         using a specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this
+     *         parameter empty.
      */
 
     public String getScriptId() {
@@ -134,13 +143,14 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using the
-     * specified script. To retrieve all fleets, leave this parameter empty.
+     * A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets using a
+     * specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this parameter empty.
      * </p>
      * 
      * @param scriptId
-     *        Unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
-     *        using the specified script. To retrieve all fleets, leave this parameter empty.
+     *        A unique identifier for a Realtime script to return fleets for. Use this parameter to return only fleets
+     *        using a specified script. Use either the script ID or ARN value. To retrieve all fleets, leave this
+     *        parameter empty.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -151,13 +161,13 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of
-     * sequential pages.
+     * The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set
+     * of sequential pages.
      * </p>
      * 
      * @param limit
-     *        Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a
-     *        set of sequential pages.
+     *        The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as
+     *        a set of sequential pages.
      */
 
     public void setLimit(Integer limit) {
@@ -166,12 +176,12 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of
-     * sequential pages.
+     * The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set
+     * of sequential pages.
      * </p>
      * 
-     * @return Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a
-     *         set of sequential pages.
+     * @return The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as
+     *         a set of sequential pages.
      */
 
     public Integer getLimit() {
@@ -180,13 +190,13 @@ public class ListFleetsRequest extends com.amazonaws.AmazonWebServiceRequest imp
 
     /**
      * <p>
-     * Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of
-     * sequential pages.
+     * The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set
+     * of sequential pages.
      * </p>
      * 
      * @param limit
-     *        Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a
-     *        set of sequential pages.
+     *        The maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as
+     *        a set of sequential pages.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

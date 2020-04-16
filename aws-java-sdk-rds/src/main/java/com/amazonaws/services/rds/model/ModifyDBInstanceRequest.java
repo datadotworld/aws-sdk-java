@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -76,8 +76,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a different
-     * VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB instance into a VPC.
-     * For more information, see <a href=
+     * VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB instance into a VPC. For
+     * more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      * >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
@@ -256,17 +256,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     * Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     * Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -409,7 +409,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -483,7 +483,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -580,7 +580,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>MariaDB</b>
@@ -589,7 +589,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>PostgreSQL</b>
@@ -598,7 +598,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -610,7 +610,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -619,8 +619,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -629,7 +629,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      */
     private Integer dBPortNumber;
@@ -637,8 +637,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a public
@@ -765,6 +765,41 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      */
     private Integer maxAllocatedStorage;
+    /**
+     * <p>
+     * A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.
+     * </p>
+     * <p>
+     * By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not updated
+     * until the DB instance is restarted.
+     * </p>
+     * <important>
+     * <p>
+     * Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     * </p>
+     * </important>
+     * <p>
+     * If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB engine to
+     * rotate your SSL/TLS certificate:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private Boolean certificateRotationRestart;
 
     /**
      * Default constructor for ModifyDBInstanceRequest object. Callers should use the setter or fluent setter (with...)
@@ -1081,8 +1116,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a different
-     * VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB instance into a VPC.
-     * For more information, see <a href=
+     * VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB instance into a VPC. For
+     * more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      * >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
@@ -1099,7 +1134,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @param dBSubnetGroupName
      *        The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a
-     *        different VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB
+     *        different VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB
      *        instance into a VPC. For more information, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      *        >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i> </p>
@@ -1121,8 +1156,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a different
-     * VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB instance into a VPC.
-     * For more information, see <a href=
+     * VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB instance into a VPC. For
+     * more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      * >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
@@ -1138,7 +1173,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @return The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a
-     *         different VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB
+     *         different VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB
      *         instance into a VPC. For more information, see <a href=
      *         "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      *         >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i> </p>
@@ -1160,8 +1195,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     /**
      * <p>
      * The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a different
-     * VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB instance into a VPC.
-     * For more information, see <a href=
+     * VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB instance into a VPC. For
+     * more information, see <a href=
      * "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      * >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i>
      * </p>
@@ -1178,7 +1213,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @param dBSubnetGroupName
      *        The new DB subnet group for the DB instance. You can use this parameter to move your DB instance to a
-     *        different VPC. If your DB instance is not in a VPC, you can also use this parameter to move your DB
+     *        different VPC. If your DB instance isn't in a VPC, you can also use this parameter to move your DB
      *        instance into a VPC. For more information, see <a href=
      *        "http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC"
      *        >Updating the VPC for a DB Instance</a> in the <i>Amazon RDS User Guide.</i> </p>
@@ -2180,17 +2215,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     * Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     * Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -2225,17 +2260,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     *        Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     *        Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can't be set to 0 if the DB instance is a source to Read Replicas
+     *        Can't be set to 0 if the DB instance is a source to read replicas
      *        </p>
      *        </li>
      */
@@ -2276,17 +2311,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     * Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     * Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -2320,17 +2355,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         </li>
      *         <li>
      *         <p>
-     *         Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     *         Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     *         Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Can't be set to 0 if the DB instance is a source to Read Replicas
+     *         Can't be set to 0 if the DB instance is a source to read replicas
      *         </p>
      *         </li>
      */
@@ -2371,17 +2406,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * </li>
      * <li>
      * <p>
-     * Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     * Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     * Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can't be set to 0 if the DB instance is a source to Read Replicas
+     * Can't be set to 0 if the DB instance is a source to read replicas
      * </p>
      * </li>
      * </ul>
@@ -2416,17 +2451,17 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        </li>
      *        <li>
      *        <p>
-     *        Can be specified for a MySQL Read Replica only if the source is running MySQL 5.6 or later
+     *        Can be specified for a MySQL read replica only if the source is running MySQL 5.6 or later
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can be specified for a PostgreSQL Read Replica only if the source is running PostgreSQL 9.3.5
+     *        Can be specified for a PostgreSQL read replica only if the source is running PostgreSQL 9.3.5
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can't be set to 0 if the DB instance is a source to Read Replicas
+     *        Can't be set to 0 if the DB instance is a source to read replicas
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -3239,7 +3274,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -3268,7 +3303,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        migration, the DB instance is available for use, but might experience performance degradation. While the
      *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
      *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
-     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        instance, creating a read replica for the instance, and creating a DB snapshot of the instance.
      *        </p>
      *        <p>
      *        Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater
@@ -3301,7 +3336,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -3329,7 +3364,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         During the migration, the DB instance is available for use, but might experience performance degradation.
      *         While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS
      *         operations can take place for the instance, including modifying the instance, rebooting the instance,
-     *         deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
+     *         deleting the instance, creating a read replica for the instance, and creating a DB snapshot of the
      *         instance.
      *         </p>
      *         <p>
@@ -3363,7 +3398,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -3392,7 +3427,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        migration, the DB instance is available for use, but might experience performance degradation. While the
      *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
      *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
-     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        instance, creating a read replica for the instance, and creating a DB snapshot of the instance.
      *        </p>
      *        <p>
      *        Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be at least 10% greater
@@ -3706,7 +3741,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -3731,7 +3766,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        migration, the DB instance is available for use, but might experience performance degradation. While the
      *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
      *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
-     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        instance, creating a read replica for the instance, and creating a DB snapshot of the instance.
      *        </p>
      *        <p>
      *        Valid values: <code>standard | gp2 | io1</code>
@@ -3760,7 +3795,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -3784,7 +3819,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         During the migration, the DB instance is available for use, but might experience performance degradation.
      *         While the migration takes place, nightly backups for the instance are suspended. No other Amazon RDS
      *         operations can take place for the instance, including modifying the instance, rebooting the instance,
-     *         deleting the instance, creating a Read Replica for the instance, and creating a DB snapshot of the
+     *         deleting the instance, creating a read replica for the instance, and creating a DB snapshot of the
      *         instance.
      *         </p>
      *         <p>
@@ -3814,7 +3849,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * hours, but the process can take up to several days in some cases. During the migration, the DB instance is
      * available for use, but might experience performance degradation. While the migration takes place, nightly backups
      * for the instance are suspended. No other Amazon RDS operations can take place for the instance, including
-     * modifying the instance, rebooting the instance, deleting the instance, creating a Read Replica for the instance,
+     * modifying the instance, rebooting the instance, deleting the instance, creating a read replica for the instance,
      * and creating a DB snapshot of the instance.
      * </p>
      * <p>
@@ -3839,7 +3874,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        migration, the DB instance is available for use, but might experience performance degradation. While the
      *        migration takes place, nightly backups for the instance are suspended. No other Amazon RDS operations can
      *        take place for the instance, including modifying the instance, rebooting the instance, deleting the
-     *        instance, creating a Read Replica for the instance, and creating a DB snapshot of the instance.
+     *        instance, creating a read replica for the instance, and creating a DB snapshot of the instance.
      *        </p>
      *        <p>
      *        Valid values: <code>standard | gp2 | io1</code>
@@ -4321,7 +4356,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>MariaDB</b>
@@ -4330,7 +4365,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>PostgreSQL</b>
@@ -4339,7 +4374,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -4351,7 +4386,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -4360,8 +4395,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -4370,7 +4405,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * 
      * @param dBPortNumber
@@ -4390,7 +4425,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>MariaDB</b>
@@ -4399,7 +4434,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>PostgreSQL</b>
@@ -4408,7 +4443,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>5432</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -4420,7 +4455,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1521</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>SQL Server</b>
@@ -4429,8 +4464,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1433</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     *        <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     *        Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     *        <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      *        </p>
      *        <p>
      *        <b>Amazon Aurora</b>
@@ -4439,7 +4474,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      */
 
     public void setDBPortNumber(Integer dBPortNumber) {
@@ -4465,7 +4500,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>MariaDB</b>
@@ -4474,7 +4509,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>PostgreSQL</b>
@@ -4483,7 +4518,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -4495,7 +4530,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -4504,8 +4539,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -4514,7 +4549,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * 
      * @return The port number on which the database accepts connections.</p>
@@ -4533,7 +4568,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>3306</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         <b>MariaDB</b>
@@ -4542,7 +4577,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>3306</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         <b>PostgreSQL</b>
@@ -4551,7 +4586,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>5432</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         Type: Integer
@@ -4563,7 +4598,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>1521</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      *         </p>
      *         <p>
      *         <b>SQL Server</b>
@@ -4572,7 +4607,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>1433</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>, <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     *         Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     *         <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      *         </p>
      *         <p>
      *         <b>Amazon Aurora</b>
@@ -4581,7 +4617,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *         Default: <code>3306</code>
      *         </p>
      *         <p>
-     *         Valid Values: <code>1150-65535</code>
+     *         Valid values: <code>1150-65535</code>
      */
 
     public Integer getDBPortNumber() {
@@ -4607,7 +4643,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>MariaDB</b>
@@ -4616,7 +4652,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>PostgreSQL</b>
@@ -4625,7 +4661,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>5432</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * Type: Integer
@@ -4637,7 +4673,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1521</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * <p>
      * <b>SQL Server</b>
@@ -4646,8 +4682,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>1433</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     * <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     * Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     * <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      * </p>
      * <p>
      * <b>Amazon Aurora</b>
@@ -4656,7 +4692,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * Default: <code>3306</code>
      * </p>
      * <p>
-     * Valid Values: <code>1150-65535</code>
+     * Valid values: <code>1150-65535</code>
      * </p>
      * 
      * @param dBPortNumber
@@ -4676,7 +4712,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>MariaDB</b>
@@ -4685,7 +4721,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>PostgreSQL</b>
@@ -4694,7 +4730,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>5432</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        Type: Integer
@@ -4706,7 +4742,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1521</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      *        </p>
      *        <p>
      *        <b>SQL Server</b>
@@ -4715,8 +4751,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>1433</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code> except for <code>1434</code>, <code>3389</code>, <code>47001</code>,
-     *        <code>49152</code>, and <code>49152</code> through <code>49156</code>.
+     *        Valid values: <code>1150-65535</code> except <code>1234</code>, <code>1434</code>, <code>3260</code>,
+     *        <code>3343</code>, <code>3389</code>, <code>47001</code>, and <code>49152-49156</code>.
      *        </p>
      *        <p>
      *        <b>Amazon Aurora</b>
@@ -4725,7 +4761,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      *        Default: <code>3306</code>
      *        </p>
      *        <p>
-     *        Valid Values: <code>1150-65535</code>
+     *        Valid values: <code>1150-65535</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -4738,8 +4774,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a public
@@ -4753,7 +4789,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @param publiclyAccessible
      *        A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *        accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *        public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *        public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *        name that resolves to a private IP address. </p>
      *        <p>
      *        <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a
@@ -4772,8 +4808,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a public
@@ -4786,7 +4822,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @return A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *         accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *         public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *         public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *         name that resolves to a private IP address. </p>
      *         <p>
      *         <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a
@@ -4805,8 +4841,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a public
@@ -4820,7 +4856,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * @param publiclyAccessible
      *        A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *        accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *        public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *        public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *        name that resolves to a private IP address. </p>
      *        <p>
      *        <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a
@@ -4841,8 +4877,8 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address.
      * </p>
      * <p>
      * <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a public
@@ -4855,7 +4891,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
      * 
      * @return A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *         accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *         public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *         public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *         name that resolves to a private IP address. </p>
      *         <p>
      *         <code>PubliclyAccessible</code> only applies to DB instances in a VPC. The DB instance must be part of a
@@ -5708,6 +5744,286 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
     }
 
     /**
+     * <p>
+     * A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.
+     * </p>
+     * <p>
+     * By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not updated
+     * until the DB instance is restarted.
+     * </p>
+     * <important>
+     * <p>
+     * Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     * </p>
+     * </important>
+     * <p>
+     * If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB engine to
+     * rotate your SSL/TLS certificate:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param certificateRotationRestart
+     *        A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.</p>
+     *        <p>
+     *        By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not
+     *        updated until the DB instance is restarted.
+     *        </p>
+     *        <important>
+     *        <p>
+     *        Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     *        </p>
+     *        </important>
+     *        <p>
+     *        If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB
+     *        engine to rotate your SSL/TLS certificate:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     *        Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a href=
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     *        Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     *        </p>
+     *        </li>
+     */
+
+    public void setCertificateRotationRestart(Boolean certificateRotationRestart) {
+        this.certificateRotationRestart = certificateRotationRestart;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.
+     * </p>
+     * <p>
+     * By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not updated
+     * until the DB instance is restarted.
+     * </p>
+     * <important>
+     * <p>
+     * Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     * </p>
+     * </important>
+     * <p>
+     * If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB engine to
+     * rotate your SSL/TLS certificate:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.</p>
+     *         <p>
+     *         By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not
+     *         updated until the DB instance is restarted.
+     *         </p>
+     *         <important>
+     *         <p>
+     *         Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     *         </p>
+     *         </important>
+     *         <p>
+     *         If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB
+     *         engine to rotate your SSL/TLS certificate:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a href=
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     *         Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a href=
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html"
+     *         > Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean getCertificateRotationRestart() {
+        return this.certificateRotationRestart;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.
+     * </p>
+     * <p>
+     * By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not updated
+     * until the DB instance is restarted.
+     * </p>
+     * <important>
+     * <p>
+     * Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     * </p>
+     * </important>
+     * <p>
+     * If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB engine to
+     * rotate your SSL/TLS certificate:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param certificateRotationRestart
+     *        A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.</p>
+     *        <p>
+     *        By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not
+     *        updated until the DB instance is restarted.
+     *        </p>
+     *        <important>
+     *        <p>
+     *        Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     *        </p>
+     *        </important>
+     *        <p>
+     *        If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB
+     *        engine to rotate your SSL/TLS certificate:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     *        Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a href=
+     *        "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     *        Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ModifyDBInstanceRequest withCertificateRotationRestart(Boolean certificateRotationRestart) {
+        setCertificateRotationRestart(certificateRotationRestart);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.
+     * </p>
+     * <p>
+     * By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not updated
+     * until the DB instance is restarted.
+     * </p>
+     * <important>
+     * <p>
+     * Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     * </p>
+     * </important>
+     * <p>
+     * If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB engine to
+     * rotate your SSL/TLS certificate:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     * Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.</p>
+     *         <p>
+     *         By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not
+     *         updated until the DB instance is restarted.
+     *         </p>
+     *         <important>
+     *         <p>
+     *         Set this parameter only if you are <i>not</i> using SSL/TLS to connect to the DB instance.
+     *         </p>
+     *         </important>
+     *         <p>
+     *         If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB
+     *         engine to rotate your SSL/TLS certificate:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         For more information about rotating your SSL/TLS certificate for RDS DB engines, see <a href=
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL-certificate-rotation.html">
+     *         Rotating Your SSL/TLS Certificate.</a> in the <i>Amazon RDS User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For more information about rotating your SSL/TLS certificate for Aurora DB engines, see <a href=
+     *         "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL-certificate-rotation.html"
+     *         > Rotating Your SSL/TLS Certificate</a> in the <i>Amazon Aurora User Guide.</i>
+     *         </p>
+     *         </li>
+     */
+
+    public Boolean isCertificateRotationRestart() {
+        return this.certificateRotationRestart;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -5800,7 +6116,9 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         if (getDeletionProtection() != null)
             sb.append("DeletionProtection: ").append(getDeletionProtection()).append(",");
         if (getMaxAllocatedStorage() != null)
-            sb.append("MaxAllocatedStorage: ").append(getMaxAllocatedStorage());
+            sb.append("MaxAllocatedStorage: ").append(getMaxAllocatedStorage()).append(",");
+        if (getCertificateRotationRestart() != null)
+            sb.append("CertificateRotationRestart: ").append(getCertificateRotationRestart());
         sb.append("}");
         return sb.toString();
     }
@@ -5982,6 +6300,10 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getMaxAllocatedStorage() != null && other.getMaxAllocatedStorage().equals(this.getMaxAllocatedStorage()) == false)
             return false;
+        if (other.getCertificateRotationRestart() == null ^ this.getCertificateRotationRestart() == null)
+            return false;
+        if (other.getCertificateRotationRestart() != null && other.getCertificateRotationRestart().equals(this.getCertificateRotationRestart()) == false)
+            return false;
         return true;
     }
 
@@ -6031,6 +6353,7 @@ public class ModifyDBInstanceRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getUseDefaultProcessorFeatures() == null) ? 0 : getUseDefaultProcessorFeatures().hashCode());
         hashCode = prime * hashCode + ((getDeletionProtection() == null) ? 0 : getDeletionProtection().hashCode());
         hashCode = prime * hashCode + ((getMaxAllocatedStorage() == null) ? 0 : getMaxAllocatedStorage().hashCode());
+        hashCode = prime * hashCode + ((getCertificateRotationRestart() == null) ? 0 : getCertificateRotationRestart().hashCode());
         return hashCode;
     }
 

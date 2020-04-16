@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,6 +55,10 @@ public class BehaviorJsonUnmarshaller implements Unmarshaller<Behavior, JsonUnma
                 if (context.testExpression("metric", targetDepth)) {
                     context.nextToken();
                     behavior.setMetric(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("metricDimension", targetDepth)) {
+                    context.nextToken();
+                    behavior.setMetricDimension(MetricDimensionJsonUnmarshaller.getInstance().unmarshall(context));
                 }
                 if (context.testExpression("criteria", targetDepth)) {
                     context.nextToken();

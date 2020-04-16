@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -47,7 +47,7 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
      * these attributes as filter criteria when you create segments.
      * </p>
      */
@@ -246,12 +246,12 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
      * these attributes as filter criteria when you create segments.
      * </p>
      * 
      * @return One or more custom attributes that describe the endpoint by associating a name with an array of values.
-     *         For example, the value of a custom attribute named Interests might be: ["science", "music", "travel"].
+     *         For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"].
      *         You can use these attributes as filter criteria when you create segments.
      */
 
@@ -262,13 +262,13 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
      * these attributes as filter criteria when you create segments.
      * </p>
      * 
      * @param attributes
      *        One or more custom attributes that describe the endpoint by associating a name with an array of values.
-     *        For example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You
+     *        For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You
      *        can use these attributes as filter criteria when you create segments.
      */
 
@@ -279,13 +279,13 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
     /**
      * <p>
      * One or more custom attributes that describe the endpoint by associating a name with an array of values. For
-     * example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You can use
+     * example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use
      * these attributes as filter criteria when you create segments.
      * </p>
      * 
      * @param attributes
      *        One or more custom attributes that describe the endpoint by associating a name with an array of values.
-     *        For example, the value of a custom attribute named Interests might be: ["science", "music", "travel"]. You
+     *        For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You
      *        can use these attributes as filter criteria when you create segments.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -294,6 +294,13 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
         setAttributes(attributes);
         return this;
     }
+
+    /**
+     * Add a single Attributes entry
+     *
+     * @see EndpointResponse#withAttributes
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointResponse addAttributesEntry(String key, java.util.List<String> value) {
         if (null == this.attributes) {
@@ -765,6 +772,13 @@ public class EndpointResponse implements Serializable, Cloneable, StructuredPojo
         setMetrics(metrics);
         return this;
     }
+
+    /**
+     * Add a single Metrics entry
+     *
+     * @see EndpointResponse#withMetrics
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public EndpointResponse addMetricsEntry(String key, Double value) {
         if (null == this.metrics) {

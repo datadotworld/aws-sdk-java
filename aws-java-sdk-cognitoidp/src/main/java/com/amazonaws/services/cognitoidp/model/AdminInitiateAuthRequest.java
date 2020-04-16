@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -94,6 +94,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      * <code>USER_PASSWORD_AUTH</code>: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly. If a
      * user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME is not
      * found in the user pool.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     * <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the request
+     * instead of using the SRP process to verify passwords.
      * </p>
      * </li>
      * </ul>
@@ -382,6 +389,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      * found in the user pool.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     * <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the request
+     * instead of using the SRP process to verify passwords.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param authFlow
@@ -437,6 +451,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      *        <code>USER_PASSWORD_AUTH</code>: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly.
      *        If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME
      *        is not found in the user pool.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     *        <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the
+     *        request instead of using the SRP process to verify passwords.
      *        </p>
      *        </li>
      * @see AuthFlowType
@@ -502,6 +523,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      * found in the user pool.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     * <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the request
+     * instead of using the SRP process to verify passwords.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @return The authentication flow for this call to execute. The API action will depend on this value. For
@@ -556,6 +584,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      *         <code>USER_PASSWORD_AUTH</code>: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly.
      *         If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the
      *         USERNAME is not found in the user pool.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     *         <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the
+     *         request instead of using the SRP process to verify passwords.
      *         </p>
      *         </li>
      * @see AuthFlowType
@@ -621,6 +656,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      * found in the user pool.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     * <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the request
+     * instead of using the SRP process to verify passwords.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param authFlow
@@ -676,6 +718,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      *        <code>USER_PASSWORD_AUTH</code>: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly.
      *        If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME
      *        is not found in the user pool.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     *        <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the
+     *        request instead of using the SRP process to verify passwords.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -743,6 +792,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      * found in the user pool.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     * <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the request
+     * instead of using the SRP process to verify passwords.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param authFlow
@@ -798,6 +854,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      *        <code>USER_PASSWORD_AUTH</code>: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly.
      *        If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME
      *        is not found in the user pool.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     *        <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the
+     *        request instead of using the SRP process to verify passwords.
      *        </p>
      *        </li>
      * @see AuthFlowType
@@ -863,6 +926,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      * found in the user pool.
      * </p>
      * </li>
+     * <li>
+     * <p>
+     * <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     * <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the request
+     * instead of using the SRP process to verify passwords.
+     * </p>
+     * </li>
      * </ul>
      * 
      * @param authFlow
@@ -918,6 +988,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
      *        <code>USER_PASSWORD_AUTH</code>: Non-SRP authentication flow; USERNAME and PASSWORD are passed directly.
      *        If a user migration Lambda trigger is set, this flow will invoke the user migration Lambda if the USERNAME
      *        is not found in the user pool.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>ADMIN_USER_PASSWORD_AUTH</code>: Admin-based user password authentication. This replaces the
+     *        <code>ADMIN_NO_SRP_AUTH</code> authentication flow. In this flow, Cognito receives the password in the
+     *        request instead of using the SRP process to verify passwords.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -1133,6 +1210,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
         setAuthParameters(authParameters);
         return this;
     }
+
+    /**
+     * Add a single AuthParameters entry
+     *
+     * @see AdminInitiateAuthRequest#withAuthParameters
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public AdminInitiateAuthRequest addAuthParametersEntry(String key, String value) {
         if (null == this.authParameters) {
@@ -1765,6 +1849,13 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
         return this;
     }
 
+    /**
+     * Add a single ClientMetadata entry
+     *
+     * @see AdminInitiateAuthRequest#withClientMetadata
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public AdminInitiateAuthRequest addClientMetadataEntry(String key, String value) {
         if (null == this.clientMetadata) {
             this.clientMetadata = new java.util.HashMap<String, String>();
@@ -1891,7 +1982,7 @@ public class AdminInitiateAuthRequest extends com.amazonaws.AmazonWebServiceRequ
         if (getAuthFlow() != null)
             sb.append("AuthFlow: ").append(getAuthFlow()).append(",");
         if (getAuthParameters() != null)
-            sb.append("AuthParameters: ").append(getAuthParameters()).append(",");
+            sb.append("AuthParameters: ").append("***Sensitive Data Redacted***").append(",");
         if (getClientMetadata() != null)
             sb.append("ClientMetadata: ").append(getClientMetadata()).append(",");
         if (getAnalyticsMetadata() != null)

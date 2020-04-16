@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -17,8 +17,8 @@ import javax.annotation.Generated;
 
 /**
  * <p>
- * An AWS CloudFormation stack, in a specific account and region, that's part of a stack set operation. A stack instance
- * is a reference to an attempted or actual stack in a given account within a given region. A stack instance can exist
+ * An AWS CloudFormation stack, in a specific account and Region, that's part of a stack set operation. A stack instance
+ * is a reference to an attempted or actual stack in a given account within a given Region. A stack instance can exist
  * without a stack—for example, if the stack couldn't be created for some reason. A stack instance is associated with
  * only one stack set. Each stack instance contains the ID of its associated stack set, as well as the ID of the actual
  * stack and the stack status.
@@ -38,13 +38,13 @@ public class StackInstance implements Serializable, Cloneable {
     private String stackSetId;
     /**
      * <p>
-     * The name of the AWS region that the stack instance is associated with.
+     * The name of the AWS Region that the stack instance is associated with.
      * </p>
      */
     private String region;
     /**
      * <p>
-     * The name of the AWS account that the stack instance is associated with.
+     * [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated with.
      * </p>
      */
     private String account;
@@ -105,6 +105,51 @@ public class StackInstance implements Serializable, Cloneable {
      * </p>
      */
     private String statusReason;
+    /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     */
+    private String organizationalUnitId;
+    /**
+     * <p>
+     * Status of the stack instance's actual configuration compared to the expected template and parameter configuration
+     * of the stack set to which it belongs.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the stack set
+     * to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the
+     * associated stack have drifted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its expected
+     * stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>UNKNOWN</code>: This value is reserved for future use.
+     * </p>
+     * </li>
+     * </ul>
+     */
+    private String driftStatus;
+    /**
+     * <p>
+     * Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will
+     * be <code>NULL</code> for any stack instance on which drift detection has not yet been performed.
+     * </p>
+     */
+    private java.util.Date lastDriftCheckTimestamp;
 
     /**
      * <p>
@@ -148,11 +193,11 @@ public class StackInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS region that the stack instance is associated with.
+     * The name of the AWS Region that the stack instance is associated with.
      * </p>
      * 
      * @param region
-     *        The name of the AWS region that the stack instance is associated with.
+     *        The name of the AWS Region that the stack instance is associated with.
      */
 
     public void setRegion(String region) {
@@ -161,10 +206,10 @@ public class StackInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS region that the stack instance is associated with.
+     * The name of the AWS Region that the stack instance is associated with.
      * </p>
      * 
-     * @return The name of the AWS region that the stack instance is associated with.
+     * @return The name of the AWS Region that the stack instance is associated with.
      */
 
     public String getRegion() {
@@ -173,11 +218,11 @@ public class StackInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS region that the stack instance is associated with.
+     * The name of the AWS Region that the stack instance is associated with.
      * </p>
      * 
      * @param region
-     *        The name of the AWS region that the stack instance is associated with.
+     *        The name of the AWS Region that the stack instance is associated with.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -188,11 +233,12 @@ public class StackInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS account that the stack instance is associated with.
+     * [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated with.
      * </p>
      * 
      * @param account
-     *        The name of the AWS account that the stack instance is associated with.
+     *        [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated
+     *        with.
      */
 
     public void setAccount(String account) {
@@ -201,10 +247,11 @@ public class StackInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS account that the stack instance is associated with.
+     * [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated with.
      * </p>
      * 
-     * @return The name of the AWS account that the stack instance is associated with.
+     * @return [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated
+     *         with.
      */
 
     public String getAccount() {
@@ -213,11 +260,12 @@ public class StackInstance implements Serializable, Cloneable {
 
     /**
      * <p>
-     * The name of the AWS account that the stack instance is associated with.
+     * [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated with.
      * </p>
      * 
      * @param account
-     *        The name of the AWS account that the stack instance is associated with.
+     *        [<code>Self-managed</code> permissions] The name of the AWS account that the stack instance is associated
+     *        with.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -780,6 +828,428 @@ public class StackInstance implements Serializable, Cloneable {
     }
 
     /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     * 
+     * @param organizationalUnitId
+     *        Reserved for internal use. No data returned.
+     */
+
+    public void setOrganizationalUnitId(String organizationalUnitId) {
+        this.organizationalUnitId = organizationalUnitId;
+    }
+
+    /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     * 
+     * @return Reserved for internal use. No data returned.
+     */
+
+    public String getOrganizationalUnitId() {
+        return this.organizationalUnitId;
+    }
+
+    /**
+     * <p>
+     * Reserved for internal use. No data returned.
+     * </p>
+     * 
+     * @param organizationalUnitId
+     *        Reserved for internal use. No data returned.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StackInstance withOrganizationalUnitId(String organizationalUnitId) {
+        setOrganizationalUnitId(organizationalUnitId);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Status of the stack instance's actual configuration compared to the expected template and parameter configuration
+     * of the stack set to which it belongs.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the stack set
+     * to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the
+     * associated stack have drifted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its expected
+     * stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>UNKNOWN</code>: This value is reserved for future use.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param driftStatus
+     *        Status of the stack instance's actual configuration compared to the expected template and parameter
+     *        configuration of the stack set to which it belongs. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the
+     *        stack set to which it belongs. A stack instance is considered to have drifted if one or more of the
+     *        resources in the associated stack have drifted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its
+     *        expected stack set configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set
+     *        configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>UNKNOWN</code>: This value is reserved for future use.
+     *        </p>
+     *        </li>
+     * @see StackDriftStatus
+     */
+
+    public void setDriftStatus(String driftStatus) {
+        this.driftStatus = driftStatus;
+    }
+
+    /**
+     * <p>
+     * Status of the stack instance's actual configuration compared to the expected template and parameter configuration
+     * of the stack set to which it belongs.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the stack set
+     * to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the
+     * associated stack have drifted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its expected
+     * stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>UNKNOWN</code>: This value is reserved for future use.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @return Status of the stack instance's actual configuration compared to the expected template and parameter
+     *         configuration of the stack set to which it belongs. </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the
+     *         stack set to which it belongs. A stack instance is considered to have drifted if one or more of the
+     *         resources in the associated stack have drifted.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its
+     *         expected stack set configuration.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set
+     *         configuration.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>UNKNOWN</code>: This value is reserved for future use.
+     *         </p>
+     *         </li>
+     * @see StackDriftStatus
+     */
+
+    public String getDriftStatus() {
+        return this.driftStatus;
+    }
+
+    /**
+     * <p>
+     * Status of the stack instance's actual configuration compared to the expected template and parameter configuration
+     * of the stack set to which it belongs.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the stack set
+     * to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the
+     * associated stack have drifted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its expected
+     * stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>UNKNOWN</code>: This value is reserved for future use.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param driftStatus
+     *        Status of the stack instance's actual configuration compared to the expected template and parameter
+     *        configuration of the stack set to which it belongs. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the
+     *        stack set to which it belongs. A stack instance is considered to have drifted if one or more of the
+     *        resources in the associated stack have drifted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its
+     *        expected stack set configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set
+     *        configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>UNKNOWN</code>: This value is reserved for future use.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StackDriftStatus
+     */
+
+    public StackInstance withDriftStatus(String driftStatus) {
+        setDriftStatus(driftStatus);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Status of the stack instance's actual configuration compared to the expected template and parameter configuration
+     * of the stack set to which it belongs.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the stack set
+     * to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the
+     * associated stack have drifted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its expected
+     * stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>UNKNOWN</code>: This value is reserved for future use.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param driftStatus
+     *        Status of the stack instance's actual configuration compared to the expected template and parameter
+     *        configuration of the stack set to which it belongs. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the
+     *        stack set to which it belongs. A stack instance is considered to have drifted if one or more of the
+     *        resources in the associated stack have drifted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its
+     *        expected stack set configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set
+     *        configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>UNKNOWN</code>: This value is reserved for future use.
+     *        </p>
+     *        </li>
+     * @see StackDriftStatus
+     */
+
+    public void setDriftStatus(StackDriftStatus driftStatus) {
+        withDriftStatus(driftStatus);
+    }
+
+    /**
+     * <p>
+     * Status of the stack instance's actual configuration compared to the expected template and parameter configuration
+     * of the stack set to which it belongs.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the stack set
+     * to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the
+     * associated stack have drifted.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its expected
+     * stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set configuration.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>UNKNOWN</code>: This value is reserved for future use.
+     * </p>
+     * </li>
+     * </ul>
+     * 
+     * @param driftStatus
+     *        Status of the stack instance's actual configuration compared to the expected template and parameter
+     *        configuration of the stack set to which it belongs. </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>DRIFTED</code>: The stack differs from the expected template and parameter configuration of the
+     *        stack set to which it belongs. A stack instance is considered to have drifted if one or more of the
+     *        resources in the associated stack have drifted.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>NOT_CHECKED</code>: AWS CloudFormation has not checked if the stack instance differs from its
+     *        expected stack set configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>IN_SYNC</code>: The stack instance's actual configuration matches its expected stack set
+     *        configuration.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>UNKNOWN</code>: This value is reserved for future use.
+     *        </p>
+     *        </li>
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StackDriftStatus
+     */
+
+    public StackInstance withDriftStatus(StackDriftStatus driftStatus) {
+        this.driftStatus = driftStatus.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will
+     * be <code>NULL</code> for any stack instance on which drift detection has not yet been performed.
+     * </p>
+     * 
+     * @param lastDriftCheckTimestamp
+     *        Most recent time when CloudFormation performed a drift detection operation on the stack instance. This
+     *        value will be <code>NULL</code> for any stack instance on which drift detection has not yet been
+     *        performed.
+     */
+
+    public void setLastDriftCheckTimestamp(java.util.Date lastDriftCheckTimestamp) {
+        this.lastDriftCheckTimestamp = lastDriftCheckTimestamp;
+    }
+
+    /**
+     * <p>
+     * Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will
+     * be <code>NULL</code> for any stack instance on which drift detection has not yet been performed.
+     * </p>
+     * 
+     * @return Most recent time when CloudFormation performed a drift detection operation on the stack instance. This
+     *         value will be <code>NULL</code> for any stack instance on which drift detection has not yet been
+     *         performed.
+     */
+
+    public java.util.Date getLastDriftCheckTimestamp() {
+        return this.lastDriftCheckTimestamp;
+    }
+
+    /**
+     * <p>
+     * Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will
+     * be <code>NULL</code> for any stack instance on which drift detection has not yet been performed.
+     * </p>
+     * 
+     * @param lastDriftCheckTimestamp
+     *        Most recent time when CloudFormation performed a drift detection operation on the stack instance. This
+     *        value will be <code>NULL</code> for any stack instance on which drift detection has not yet been
+     *        performed.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public StackInstance withLastDriftCheckTimestamp(java.util.Date lastDriftCheckTimestamp) {
+        setLastDriftCheckTimestamp(lastDriftCheckTimestamp);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -804,7 +1274,13 @@ public class StackInstance implements Serializable, Cloneable {
         if (getStatus() != null)
             sb.append("Status: ").append(getStatus()).append(",");
         if (getStatusReason() != null)
-            sb.append("StatusReason: ").append(getStatusReason());
+            sb.append("StatusReason: ").append(getStatusReason()).append(",");
+        if (getOrganizationalUnitId() != null)
+            sb.append("OrganizationalUnitId: ").append(getOrganizationalUnitId()).append(",");
+        if (getDriftStatus() != null)
+            sb.append("DriftStatus: ").append(getDriftStatus()).append(",");
+        if (getLastDriftCheckTimestamp() != null)
+            sb.append("LastDriftCheckTimestamp: ").append(getLastDriftCheckTimestamp());
         sb.append("}");
         return sb.toString();
     }
@@ -847,6 +1323,18 @@ public class StackInstance implements Serializable, Cloneable {
             return false;
         if (other.getStatusReason() != null && other.getStatusReason().equals(this.getStatusReason()) == false)
             return false;
+        if (other.getOrganizationalUnitId() == null ^ this.getOrganizationalUnitId() == null)
+            return false;
+        if (other.getOrganizationalUnitId() != null && other.getOrganizationalUnitId().equals(this.getOrganizationalUnitId()) == false)
+            return false;
+        if (other.getDriftStatus() == null ^ this.getDriftStatus() == null)
+            return false;
+        if (other.getDriftStatus() != null && other.getDriftStatus().equals(this.getDriftStatus()) == false)
+            return false;
+        if (other.getLastDriftCheckTimestamp() == null ^ this.getLastDriftCheckTimestamp() == null)
+            return false;
+        if (other.getLastDriftCheckTimestamp() != null && other.getLastDriftCheckTimestamp().equals(this.getLastDriftCheckTimestamp()) == false)
+            return false;
         return true;
     }
 
@@ -862,6 +1350,9 @@ public class StackInstance implements Serializable, Cloneable {
         hashCode = prime * hashCode + ((getParameterOverrides() == null) ? 0 : getParameterOverrides().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
         hashCode = prime * hashCode + ((getStatusReason() == null) ? 0 : getStatusReason().hashCode());
+        hashCode = prime * hashCode + ((getOrganizationalUnitId() == null) ? 0 : getOrganizationalUnitId().hashCode());
+        hashCode = prime * hashCode + ((getDriftStatus() == null) ? 0 : getDriftStatus().hashCode());
+        hashCode = prime * hashCode + ((getLastDriftCheckTimestamp() == null) ? 0 : getLastDriftCheckTimestamp().hashCode());
         return hashCode;
     }
 

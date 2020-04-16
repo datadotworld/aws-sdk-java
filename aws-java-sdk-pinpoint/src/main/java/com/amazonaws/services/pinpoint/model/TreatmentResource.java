@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -55,11 +55,15 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
     private Integer sizePercent;
     /**
      * <p>
-     * The status of the treatment.
+     * The current status of the treatment.
      * </p>
      */
     private CampaignState state;
-
+    /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     */
     private TemplateConfiguration templateConfiguration;
     /**
      * <p>
@@ -237,11 +241,11 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The status of the treatment.
+     * The current status of the treatment.
      * </p>
      * 
      * @param state
-     *        The status of the treatment.
+     *        The current status of the treatment.
      */
 
     public void setState(CampaignState state) {
@@ -250,10 +254,10 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The status of the treatment.
+     * The current status of the treatment.
      * </p>
      * 
-     * @return The status of the treatment.
+     * @return The current status of the treatment.
      */
 
     public CampaignState getState() {
@@ -262,11 +266,11 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
 
     /**
      * <p>
-     * The status of the treatment.
+     * The current status of the treatment.
      * </p>
      * 
      * @param state
-     *        The status of the treatment.
+     *        The current status of the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -276,7 +280,12 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
      * @param templateConfiguration
+     *        The message template to use for the treatment.
      */
 
     public void setTemplateConfiguration(TemplateConfiguration templateConfiguration) {
@@ -284,7 +293,11 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
-     * @return
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
+     * @return The message template to use for the treatment.
      */
 
     public TemplateConfiguration getTemplateConfiguration() {
@@ -292,7 +305,12 @@ public class TreatmentResource implements Serializable, Cloneable, StructuredPoj
     }
 
     /**
+     * <p>
+     * The message template to use for the treatment.
+     * </p>
+     * 
      * @param templateConfiguration
+     *        The message template to use for the treatment.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

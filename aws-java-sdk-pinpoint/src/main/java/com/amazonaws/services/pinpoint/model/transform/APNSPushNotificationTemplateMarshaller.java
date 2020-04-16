@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class APNSPushNotificationTemplateMarshaller {
             .marshallLocationName("Body").build();
     private static final MarshallingInfo<String> MEDIAURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("MediaUrl").build();
+    private static final MarshallingInfo<String> RAWCONTENT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RawContent").build();
     private static final MarshallingInfo<String> SOUND_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Sound").build();
     private static final MarshallingInfo<String> TITLE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -59,6 +61,7 @@ public class APNSPushNotificationTemplateMarshaller {
             protocolMarshaller.marshall(aPNSPushNotificationTemplate.getAction(), ACTION_BINDING);
             protocolMarshaller.marshall(aPNSPushNotificationTemplate.getBody(), BODY_BINDING);
             protocolMarshaller.marshall(aPNSPushNotificationTemplate.getMediaUrl(), MEDIAURL_BINDING);
+            protocolMarshaller.marshall(aPNSPushNotificationTemplate.getRawContent(), RAWCONTENT_BINDING);
             protocolMarshaller.marshall(aPNSPushNotificationTemplate.getSound(), SOUND_BINDING);
             protocolMarshaller.marshall(aPNSPushNotificationTemplate.getTitle(), TITLE_BINDING);
             protocolMarshaller.marshall(aPNSPushNotificationTemplate.getUrl(), URL_BINDING);

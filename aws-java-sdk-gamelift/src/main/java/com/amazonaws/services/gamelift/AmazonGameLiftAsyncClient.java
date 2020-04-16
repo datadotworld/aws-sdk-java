@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -32,15 +32,44 @@ import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
  * <p>
  * <fullname>Amazon GameLift Service</fullname>
  * <p>
- * Amazon GameLift is a managed service for developers who need a scalable, dedicated server solution for their
- * multiplayer games. Use Amazon GameLift for these tasks: (1) set up computing resources and deploy your game servers,
- * (2) run game sessions and get players into games, (3) automatically scale your resources to meet player demand and
- * manage costs, and (4) track in-depth metrics on game server performance and player usage.
+ * Amazon GameLift provides a range of multiplayer game hosting solutions. As a fully managed service, GameLift helps
+ * you:
+ * </p>
+ * <ul>
+ * <li>
+ * <p>
+ * Set up EC2-based computing resources and use GameLift FleetIQ to and deploy your game servers on low-cost, reliable
+ * Spot instances.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Track game server availability and route players into game sessions to minimize latency.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Automatically scale your resources to meet player demand and manage costs
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * Optionally add FlexMatch matchmaking.
+ * </p>
+ * </li>
+ * </ul>
+ * <p>
+ * With GameLift as a managed service, you have the option to deploy your custom game server or use Amazon GameLift
+ * Realtime Servers to quickly stand up lightweight game servers for your game. Realtime Servers provides an efficient
+ * game server framework with core Amazon GameLift infrastructure already built in.
  * </p>
  * <p>
- * When setting up hosting resources, you can deploy your custom game server or use the Amazon GameLift Realtime
- * Servers. Realtime Servers gives you the ability to quickly stand up lightweight, efficient game servers with the core
- * Amazon GameLift infrastructure already built in.
+ * <b>Now in Public Preview:</b>
+ * </p>
+ * <p>
+ * Use GameLift FleetIQ as a standalone feature with EC2 instances and Auto Scaling groups. GameLift FleetIQ provides
+ * optimizations that make low-cost Spot instances viable for game hosting. This extension of GameLift FleetIQ gives you
+ * access to these optimizations while managing your EC2 instances and Auto Scaling groups within your own AWS account.
  * </p>
  * <p>
  * <b>Get Amazon GameLift Tools and Resources</b>
@@ -321,6 +350,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<ClaimGameServerResult> claimGameServerAsync(ClaimGameServerRequest request) {
+
+        return claimGameServerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ClaimGameServerResult> claimGameServerAsync(final ClaimGameServerRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ClaimGameServerRequest, ClaimGameServerResult> asyncHandler) {
+        final ClaimGameServerRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ClaimGameServerResult>() {
+            @Override
+            public ClaimGameServerResult call() throws Exception {
+                ClaimGameServerResult result = null;
+
+                try {
+                    result = executeClaimGameServer(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<CreateAliasResult> createAliasAsync(CreateAliasRequest request) {
 
         return createAliasAsync(request, null);
@@ -404,6 +466,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeCreateFleet(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateGameServerGroupResult> createGameServerGroupAsync(CreateGameServerGroupRequest request) {
+
+        return createGameServerGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateGameServerGroupResult> createGameServerGroupAsync(final CreateGameServerGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateGameServerGroupRequest, CreateGameServerGroupResult> asyncHandler) {
+        final CreateGameServerGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateGameServerGroupResult>() {
+            @Override
+            public CreateGameServerGroupResult call() throws Exception {
+                CreateGameServerGroupResult result = null;
+
+                try {
+                    result = executeCreateGameServerGroup(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -818,6 +913,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<DeleteGameServerGroupResult> deleteGameServerGroupAsync(DeleteGameServerGroupRequest request) {
+
+        return deleteGameServerGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteGameServerGroupResult> deleteGameServerGroupAsync(final DeleteGameServerGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteGameServerGroupRequest, DeleteGameServerGroupResult> asyncHandler) {
+        final DeleteGameServerGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteGameServerGroupResult>() {
+            @Override
+            public DeleteGameServerGroupResult call() throws Exception {
+                DeleteGameServerGroupResult result = null;
+
+                try {
+                    result = executeDeleteGameServerGroup(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteGameSessionQueueResult> deleteGameSessionQueueAsync(DeleteGameSessionQueueRequest request) {
 
         return deleteGameSessionQueueAsync(request, null);
@@ -1035,6 +1163,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeDeleteVpcPeeringConnection(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeregisterGameServerResult> deregisterGameServerAsync(DeregisterGameServerRequest request) {
+
+        return deregisterGameServerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeregisterGameServerResult> deregisterGameServerAsync(final DeregisterGameServerRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeregisterGameServerRequest, DeregisterGameServerResult> asyncHandler) {
+        final DeregisterGameServerRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeregisterGameServerResult>() {
+            @Override
+            public DeregisterGameServerResult call() throws Exception {
+                DeregisterGameServerResult result = null;
+
+                try {
+                    result = executeDeregisterGameServer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1299,6 +1460,72 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeDescribeFleetUtilization(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeGameServerResult> describeGameServerAsync(DescribeGameServerRequest request) {
+
+        return describeGameServerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeGameServerResult> describeGameServerAsync(final DescribeGameServerRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeGameServerRequest, DescribeGameServerResult> asyncHandler) {
+        final DescribeGameServerRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeGameServerResult>() {
+            @Override
+            public DescribeGameServerResult call() throws Exception {
+                DescribeGameServerResult result = null;
+
+                try {
+                    result = executeDescribeGameServer(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeGameServerGroupResult> describeGameServerGroupAsync(DescribeGameServerGroupRequest request) {
+
+        return describeGameServerGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DescribeGameServerGroupResult> describeGameServerGroupAsync(final DescribeGameServerGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DescribeGameServerGroupRequest, DescribeGameServerGroupResult> asyncHandler) {
+        final DescribeGameServerGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DescribeGameServerGroupResult>() {
+            @Override
+            public DescribeGameServerGroupResult call() throws Exception {
+                DescribeGameServerGroupResult result = null;
+
+                try {
+                    result = executeDescribeGameServerGroup(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -1947,6 +2174,72 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<ListGameServerGroupsResult> listGameServerGroupsAsync(ListGameServerGroupsRequest request) {
+
+        return listGameServerGroupsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListGameServerGroupsResult> listGameServerGroupsAsync(final ListGameServerGroupsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListGameServerGroupsRequest, ListGameServerGroupsResult> asyncHandler) {
+        final ListGameServerGroupsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListGameServerGroupsResult>() {
+            @Override
+            public ListGameServerGroupsResult call() throws Exception {
+                ListGameServerGroupsResult result = null;
+
+                try {
+                    result = executeListGameServerGroups(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListGameServersResult> listGameServersAsync(ListGameServersRequest request) {
+
+        return listGameServersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListGameServersResult> listGameServersAsync(final ListGameServersRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListGameServersRequest, ListGameServersResult> asyncHandler) {
+        final ListGameServersRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListGameServersResult>() {
+            @Override
+            public ListGameServersResult call() throws Exception {
+                ListGameServersResult result = null;
+
+                try {
+                    result = executeListGameServers(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListScriptsResult> listScriptsAsync(ListScriptsRequest request) {
 
         return listScriptsAsync(request, null);
@@ -1980,6 +2273,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(ListTagsForResourceRequest request) {
+
+        return listTagsForResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListTagsForResourceResult> listTagsForResourceAsync(final ListTagsForResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListTagsForResourceRequest, ListTagsForResourceResult> asyncHandler) {
+        final ListTagsForResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListTagsForResourceResult>() {
+            @Override
+            public ListTagsForResourceResult call() throws Exception {
+                ListTagsForResourceResult result = null;
+
+                try {
+                    result = executeListTagsForResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<PutScalingPolicyResult> putScalingPolicyAsync(PutScalingPolicyRequest request) {
 
         return putScalingPolicyAsync(request, null);
@@ -1997,6 +2323,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executePutScalingPolicy(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<RegisterGameServerResult> registerGameServerAsync(RegisterGameServerRequest request) {
+
+        return registerGameServerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<RegisterGameServerResult> registerGameServerAsync(final RegisterGameServerRequest request,
+            final com.amazonaws.handlers.AsyncHandler<RegisterGameServerRequest, RegisterGameServerResult> asyncHandler) {
+        final RegisterGameServerRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<RegisterGameServerResult>() {
+            @Override
+            public RegisterGameServerResult call() throws Exception {
+                RegisterGameServerResult result = null;
+
+                try {
+                    result = executeRegisterGameServer(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -2063,6 +2422,39 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeResolveAlias(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ResumeGameServerGroupResult> resumeGameServerGroupAsync(ResumeGameServerGroupRequest request) {
+
+        return resumeGameServerGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ResumeGameServerGroupResult> resumeGameServerGroupAsync(final ResumeGameServerGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ResumeGameServerGroupRequest, ResumeGameServerGroupResult> asyncHandler) {
+        final ResumeGameServerGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ResumeGameServerGroupResult>() {
+            @Override
+            public ResumeGameServerGroupResult call() throws Exception {
+                ResumeGameServerGroupResult result = null;
+
+                try {
+                    result = executeResumeGameServerGroup(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -2343,6 +2735,105 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
     }
 
     @Override
+    public java.util.concurrent.Future<SuspendGameServerGroupResult> suspendGameServerGroupAsync(SuspendGameServerGroupRequest request) {
+
+        return suspendGameServerGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<SuspendGameServerGroupResult> suspendGameServerGroupAsync(final SuspendGameServerGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<SuspendGameServerGroupRequest, SuspendGameServerGroupResult> asyncHandler) {
+        final SuspendGameServerGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<SuspendGameServerGroupResult>() {
+            @Override
+            public SuspendGameServerGroupResult call() throws Exception {
+                SuspendGameServerGroupResult result = null;
+
+                try {
+                    result = executeSuspendGameServerGroup(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(TagResourceRequest request) {
+
+        return tagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<TagResourceResult> tagResourceAsync(final TagResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<TagResourceRequest, TagResourceResult> asyncHandler) {
+        final TagResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<TagResourceResult>() {
+            @Override
+            public TagResourceResult call() throws Exception {
+                TagResourceResult result = null;
+
+                try {
+                    result = executeTagResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(UntagResourceRequest request) {
+
+        return untagResourceAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UntagResourceResult> untagResourceAsync(final UntagResourceRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UntagResourceRequest, UntagResourceResult> asyncHandler) {
+        final UntagResourceRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UntagResourceResult>() {
+            @Override
+            public UntagResourceResult call() throws Exception {
+                UntagResourceResult result = null;
+
+                try {
+                    result = executeUntagResource(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<UpdateAliasResult> updateAliasAsync(UpdateAliasRequest request) {
 
         return updateAliasAsync(request, null);
@@ -2492,6 +2983,72 @@ public class AmazonGameLiftAsyncClient extends AmazonGameLiftClient implements A
 
                 try {
                     result = executeUpdateFleetPortSettings(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateGameServerResult> updateGameServerAsync(UpdateGameServerRequest request) {
+
+        return updateGameServerAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateGameServerResult> updateGameServerAsync(final UpdateGameServerRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateGameServerRequest, UpdateGameServerResult> asyncHandler) {
+        final UpdateGameServerRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateGameServerResult>() {
+            @Override
+            public UpdateGameServerResult call() throws Exception {
+                UpdateGameServerResult result = null;
+
+                try {
+                    result = executeUpdateGameServer(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateGameServerGroupResult> updateGameServerGroupAsync(UpdateGameServerGroupRequest request) {
+
+        return updateGameServerGroupAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateGameServerGroupResult> updateGameServerGroupAsync(final UpdateGameServerGroupRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateGameServerGroupRequest, UpdateGameServerGroupResult> asyncHandler) {
+        final UpdateGameServerGroupRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateGameServerGroupResult>() {
+            @Override
+            public UpdateGameServerGroupResult call() throws Exception {
+                UpdateGameServerGroupResult result = null;
+
+                try {
+                    result = executeUpdateGameServerGroup(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

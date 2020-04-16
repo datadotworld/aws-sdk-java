@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -126,6 +126,12 @@ public class UpdateSMBFileShareRequest extends com.amazonaws.AmazonWebServiceReq
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> invalidUserList;
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     * </p>
+     */
+    private String auditDestinationARN;
 
     /**
      * <p>
@@ -976,6 +982,46 @@ public class UpdateSMBFileShareRequest extends com.amazonaws.AmazonWebServiceReq
     }
 
     /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     * </p>
+     * 
+     * @param auditDestinationARN
+     *        The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     */
+
+    public void setAuditDestinationARN(String auditDestinationARN) {
+        this.auditDestinationARN = auditDestinationARN;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     * </p>
+     * 
+     * @return The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     */
+
+    public String getAuditDestinationARN() {
+        return this.auditDestinationARN;
+    }
+
+    /**
+     * <p>
+     * The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     * </p>
+     * 
+     * @param auditDestinationARN
+     *        The Amazon Resource Name (ARN) of the storage used for the audit logs.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateSMBFileShareRequest withAuditDestinationARN(String auditDestinationARN) {
+        setAuditDestinationARN(auditDestinationARN);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1010,7 +1056,9 @@ public class UpdateSMBFileShareRequest extends com.amazonaws.AmazonWebServiceReq
         if (getValidUserList() != null)
             sb.append("ValidUserList: ").append(getValidUserList()).append(",");
         if (getInvalidUserList() != null)
-            sb.append("InvalidUserList: ").append(getInvalidUserList());
+            sb.append("InvalidUserList: ").append(getInvalidUserList()).append(",");
+        if (getAuditDestinationARN() != null)
+            sb.append("AuditDestinationARN: ").append(getAuditDestinationARN());
         sb.append("}");
         return sb.toString();
     }
@@ -1073,6 +1121,10 @@ public class UpdateSMBFileShareRequest extends com.amazonaws.AmazonWebServiceReq
             return false;
         if (other.getInvalidUserList() != null && other.getInvalidUserList().equals(this.getInvalidUserList()) == false)
             return false;
+        if (other.getAuditDestinationARN() == null ^ this.getAuditDestinationARN() == null)
+            return false;
+        if (other.getAuditDestinationARN() != null && other.getAuditDestinationARN().equals(this.getAuditDestinationARN()) == false)
+            return false;
         return true;
     }
 
@@ -1093,6 +1145,7 @@ public class UpdateSMBFileShareRequest extends com.amazonaws.AmazonWebServiceReq
         hashCode = prime * hashCode + ((getAdminUserList() == null) ? 0 : getAdminUserList().hashCode());
         hashCode = prime * hashCode + ((getValidUserList() == null) ? 0 : getValidUserList().hashCode());
         hashCode = prime * hashCode + ((getInvalidUserList() == null) ? 0 : getInvalidUserList().hashCode());
+        hashCode = prime * hashCode + ((getAuditDestinationARN() == null) ? 0 : getAuditDestinationARN().hashCode());
         return hashCode;
     }
 

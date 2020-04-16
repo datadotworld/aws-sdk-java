@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -42,7 +42,22 @@ public class ConnectionInput implements Serializable, Cloneable, StructuredPojo 
     private String description;
     /**
      * <p>
-     * The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     * The type of the connection. Currently, these types are supported:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * SFTP is not supported.
      * </p>
      */
     private String connectionType;
@@ -148,11 +163,40 @@ public class ConnectionInput implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     * The type of the connection. Currently, these types are supported:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * SFTP is not supported.
      * </p>
      * 
      * @param connectionType
-     *        The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     *        The type of the connection. Currently, these types are supported:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        SFTP is not supported.
      * @see ConnectionType
      */
 
@@ -162,10 +206,39 @@ public class ConnectionInput implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     * The type of the connection. Currently, these types are supported:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * SFTP is not supported.
      * </p>
      * 
-     * @return The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     * @return The type of the connection. Currently, these types are supported:</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         SFTP is not supported.
      * @see ConnectionType
      */
 
@@ -175,11 +248,40 @@ public class ConnectionInput implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     * The type of the connection. Currently, these types are supported:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * SFTP is not supported.
      * </p>
      * 
      * @param connectionType
-     *        The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     *        The type of the connection. Currently, these types are supported:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        SFTP is not supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ConnectionType
      */
@@ -191,11 +293,40 @@ public class ConnectionInput implements Serializable, Cloneable, StructuredPojo 
 
     /**
      * <p>
-     * The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     * The type of the connection. Currently, these types are supported:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * SFTP is not supported.
      * </p>
      * 
      * @param connectionType
-     *        The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+     *        The type of the connection. Currently, these types are supported:</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <code>JDBC</code> - Designates a connection to a database through Java Database Connectivity (JDBC).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        <code>MONGODB</code> - Designates a connection to a MongoDB document database.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        SFTP is not supported.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see ConnectionType
      */
@@ -314,6 +445,13 @@ public class ConnectionInput implements Serializable, Cloneable, StructuredPojo 
         setConnectionProperties(connectionProperties);
         return this;
     }
+
+    /**
+     * Add a single ConnectionProperties entry
+     *
+     * @see ConnectionInput#withConnectionProperties
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public ConnectionInput addConnectionPropertiesEntry(String key, String value) {
         if (null == this.connectionProperties) {

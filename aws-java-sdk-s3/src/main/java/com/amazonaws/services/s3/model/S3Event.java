@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2014-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -39,8 +39,17 @@ public enum S3Event {
 
     ObjectRestorePost("s3:ObjectRestore:Post"),
 
-    ObjectRestoreCompleted("s3:ObjectRestore:Completed")
+    ObjectRestoreCompleted("s3:ObjectRestore:Completed"),
 
+    Replication("s3:Replication:*"),
+
+    ReplicationOperationFailed("s3:Replication:OperationFailedReplication"),
+
+    ReplicationOperationNotTracked("s3:Replication:OperationNotTracked"),
+
+    ReplicationOperationMissedThreshold("s3:Replication:OperationMissedThreshold"),
+
+    ReplicationOperationReplicatedAfterThreshold("s3:Replication:OperationReplicationAfterThreshold")
     ;
 
     private final String event;

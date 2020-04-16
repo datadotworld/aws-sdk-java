@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -41,9 +41,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -51,21 +51,21 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
     private String childId;
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      */
     private String nextToken;
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
-     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
-     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
-     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
-     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
-     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
-     * you receive all of the results.
+     * The total number of results that you want included on each page of the response. If you do not include this
+     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
+     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
+     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
+     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
+     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
+     * results.
      * </p>
      */
     private Integer maxResults;
@@ -86,9 +86,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -108,9 +108,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
-     *        letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32
-     *        additional lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase
+     *        letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash
+     *        and from 8 to 32 additional lowercase letters or digits.
      *        </p>
      *        </li>
      */
@@ -135,9 +135,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -156,9 +156,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      *         </li>
      *         <li>
      *         <p>
-     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
-     *         letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to
-     *         32 additional lower-case letters or digits.
+     *         <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase
+     *         letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash
+     *         and from 8 to 32 additional lowercase letters or digits.
      *         </p>
      *         </li>
      */
@@ -183,9 +183,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * <li>
      * <p>
-     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case letters or
-     * digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional
-     * lower-case letters or digits.
+     * <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase letters or
+     * digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32
+     * additional lowercase letters or digits.
      * </p>
      * </li>
      * </ul>
@@ -205,9 +205,9 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
      *        </li>
      *        <li>
      *        <p>
-     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lower-case
-     *        letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32
-     *        additional lower-case letters or digits.
+     *        <b>Organizational unit (OU)</b> - A string that begins with "ou-" followed by from 4 to 32 lowercase
+     *        letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash
+     *        and from 8 to 32 additional lowercase letters or digits.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -220,15 +220,16 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      * 
      * @param nextToken
-     *        Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates
-     *        that there is more output available. Set it to the value of the previous call's <code>NextToken</code>
-     *        response to indicate where the output should continue from.
+     *        The parameter for receiving additional results if you receive a <code>NextToken</code> response in a
+     *        previous request. A <code>NextToken</code> response indicates that more output is available. Set this
+     *        parameter to the value of the previous call's <code>NextToken</code> response to indicate where the output
+     *        should continue from.
      */
 
     public void setNextToken(String nextToken) {
@@ -237,14 +238,15 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      * 
-     * @return Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates
-     *         that there is more output available. Set it to the value of the previous call's <code>NextToken</code>
-     *         response to indicate where the output should continue from.
+     * @return The parameter for receiving additional results if you receive a <code>NextToken</code> response in a
+     *         previous request. A <code>NextToken</code> response indicates that more output is available. Set this
+     *         parameter to the value of the previous call's <code>NextToken</code> response to indicate where the
+     *         output should continue from.
      */
 
     public String getNextToken() {
@@ -253,15 +255,16 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      * 
      * @param nextToken
-     *        Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates
-     *        that there is more output available. Set it to the value of the previous call's <code>NextToken</code>
-     *        response to indicate where the output should continue from.
+     *        The parameter for receiving additional results if you receive a <code>NextToken</code> response in a
+     *        previous request. A <code>NextToken</code> response indicates that more output is available. Set this
+     *        parameter to the value of the previous call's <code>NextToken</code> response to indicate where the output
+     *        should continue from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -272,23 +275,23 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
-     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
-     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
-     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
-     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
-     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
-     * you receive all of the results.
+     * The total number of results that you want included on each page of the response. If you do not include this
+     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
+     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
+     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
+     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
+     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
+     * results.
      * </p>
      * 
      * @param maxResults
-     *        (Optional) Use this to limit the number of results you want included per page in the response. If you do
-     *        not include this parameter, it defaults to a value that is specific to the operation. If additional items
-     *        exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
-     *        value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
-     *        to the operation to get the next part of the results. Note that Organizations might return fewer results
-     *        than the maximum even when there are more results available. You should check <code>NextToken</code> after
-     *        every operation to ensure that you receive all of the results.
+     *        The total number of results that you want included on each page of the response. If you do not include
+     *        this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond
+     *        the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     *        null). Include that value as the <code>NextToken</code> request parameter in the next call to the
+     *        operation to get the next part of the results. Note that Organizations might return fewer results than the
+     *        maximum even when there are more results available. You should check <code>NextToken</code> after every
+     *        operation to ensure that you receive all of the results.
      */
 
     public void setMaxResults(Integer maxResults) {
@@ -297,22 +300,22 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
-     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
-     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
-     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
-     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
-     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
-     * you receive all of the results.
+     * The total number of results that you want included on each page of the response. If you do not include this
+     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
+     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
+     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
+     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
+     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
+     * results.
      * </p>
      * 
-     * @return (Optional) Use this to limit the number of results you want included per page in the response. If you do
-     *         not include this parameter, it defaults to a value that is specific to the operation. If additional items
-     *         exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
-     *         value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
-     *         to the operation to get the next part of the results. Note that Organizations might return fewer results
-     *         than the maximum even when there are more results available. You should check <code>NextToken</code>
-     *         after every operation to ensure that you receive all of the results.
+     * @return The total number of results that you want included on each page of the response. If you do not include
+     *         this parameter, it defaults to a value that is specific to the operation. If additional items exist
+     *         beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value
+     *         (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the
+     *         operation to get the next part of the results. Note that Organizations might return fewer results than
+     *         the maximum even when there are more results available. You should check <code>NextToken</code> after
+     *         every operation to ensure that you receive all of the results.
      */
 
     public Integer getMaxResults() {
@@ -321,23 +324,23 @@ public class ListParentsRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * (Optional) Use this to limit the number of results you want included per page in the response. If you do not
-     * include this parameter, it defaults to a value that is specific to the operation. If additional items exist
-     * beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
-     * null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to
-     * get the next part of the results. Note that Organizations might return fewer results than the maximum even when
-     * there are more results available. You should check <code>NextToken</code> after every operation to ensure that
-     * you receive all of the results.
+     * The total number of results that you want included on each page of the response. If you do not include this
+     * parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum
+     * you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that
+     * value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of
+     * the results. Note that Organizations might return fewer results than the maximum even when there are more results
+     * available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the
+     * results.
      * </p>
      * 
      * @param maxResults
-     *        (Optional) Use this to limit the number of results you want included per page in the response. If you do
-     *        not include this parameter, it defaults to a value that is specific to the operation. If additional items
-     *        exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a
-     *        value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call
-     *        to the operation to get the next part of the results. Note that Organizations might return fewer results
-     *        than the maximum even when there are more results available. You should check <code>NextToken</code> after
-     *        every operation to ensure that you receive all of the results.
+     *        The total number of results that you want included on each page of the response. If you do not include
+     *        this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond
+     *        the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not
+     *        null). Include that value as the <code>NextToken</code> request parameter in the next call to the
+     *        operation to get the next part of the results. Note that Organizations might return fewer results than the
+     *        maximum even when there are more results available. You should check <code>NextToken</code> after every
+     *        operation to ensure that you receive all of the results.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

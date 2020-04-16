@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -96,6 +96,73 @@ public class AmazonTranscribeAsyncClient extends AmazonTranscribeClient implemen
     }
 
     @Override
+    public java.util.concurrent.Future<CreateVocabularyFilterResult> createVocabularyFilterAsync(CreateVocabularyFilterRequest request) {
+
+        return createVocabularyFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<CreateVocabularyFilterResult> createVocabularyFilterAsync(final CreateVocabularyFilterRequest request,
+            final com.amazonaws.handlers.AsyncHandler<CreateVocabularyFilterRequest, CreateVocabularyFilterResult> asyncHandler) {
+        final CreateVocabularyFilterRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<CreateVocabularyFilterResult>() {
+            @Override
+            public CreateVocabularyFilterResult call() throws Exception {
+                CreateVocabularyFilterResult result = null;
+
+                try {
+                    result = executeCreateVocabularyFilter(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteMedicalTranscriptionJobResult> deleteMedicalTranscriptionJobAsync(DeleteMedicalTranscriptionJobRequest request) {
+
+        return deleteMedicalTranscriptionJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteMedicalTranscriptionJobResult> deleteMedicalTranscriptionJobAsync(
+            final DeleteMedicalTranscriptionJobRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteMedicalTranscriptionJobRequest, DeleteMedicalTranscriptionJobResult> asyncHandler) {
+        final DeleteMedicalTranscriptionJobRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteMedicalTranscriptionJobResult>() {
+            @Override
+            public DeleteMedicalTranscriptionJobResult call() throws Exception {
+                DeleteMedicalTranscriptionJobResult result = null;
+
+                try {
+                    result = executeDeleteMedicalTranscriptionJob(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<DeleteTranscriptionJobResult> deleteTranscriptionJobAsync(DeleteTranscriptionJobRequest request) {
 
         return deleteTranscriptionJobAsync(request, null);
@@ -146,6 +213,72 @@ public class AmazonTranscribeAsyncClient extends AmazonTranscribeClient implemen
 
                 try {
                     result = executeDeleteVocabulary(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVocabularyFilterResult> deleteVocabularyFilterAsync(DeleteVocabularyFilterRequest request) {
+
+        return deleteVocabularyFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<DeleteVocabularyFilterResult> deleteVocabularyFilterAsync(final DeleteVocabularyFilterRequest request,
+            final com.amazonaws.handlers.AsyncHandler<DeleteVocabularyFilterRequest, DeleteVocabularyFilterResult> asyncHandler) {
+        final DeleteVocabularyFilterRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<DeleteVocabularyFilterResult>() {
+            @Override
+            public DeleteVocabularyFilterResult call() throws Exception {
+                DeleteVocabularyFilterResult result = null;
+
+                try {
+                    result = executeDeleteVocabularyFilter(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetMedicalTranscriptionJobResult> getMedicalTranscriptionJobAsync(GetMedicalTranscriptionJobRequest request) {
+
+        return getMedicalTranscriptionJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetMedicalTranscriptionJobResult> getMedicalTranscriptionJobAsync(final GetMedicalTranscriptionJobRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetMedicalTranscriptionJobRequest, GetMedicalTranscriptionJobResult> asyncHandler) {
+        final GetMedicalTranscriptionJobRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetMedicalTranscriptionJobResult>() {
+            @Override
+            public GetMedicalTranscriptionJobResult call() throws Exception {
+                GetMedicalTranscriptionJobResult result = null;
+
+                try {
+                    result = executeGetMedicalTranscriptionJob(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);
@@ -228,6 +361,72 @@ public class AmazonTranscribeAsyncClient extends AmazonTranscribeClient implemen
     }
 
     @Override
+    public java.util.concurrent.Future<GetVocabularyFilterResult> getVocabularyFilterAsync(GetVocabularyFilterRequest request) {
+
+        return getVocabularyFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<GetVocabularyFilterResult> getVocabularyFilterAsync(final GetVocabularyFilterRequest request,
+            final com.amazonaws.handlers.AsyncHandler<GetVocabularyFilterRequest, GetVocabularyFilterResult> asyncHandler) {
+        final GetVocabularyFilterRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<GetVocabularyFilterResult>() {
+            @Override
+            public GetVocabularyFilterResult call() throws Exception {
+                GetVocabularyFilterResult result = null;
+
+                try {
+                    result = executeGetVocabularyFilter(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListMedicalTranscriptionJobsResult> listMedicalTranscriptionJobsAsync(ListMedicalTranscriptionJobsRequest request) {
+
+        return listMedicalTranscriptionJobsAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListMedicalTranscriptionJobsResult> listMedicalTranscriptionJobsAsync(final ListMedicalTranscriptionJobsRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListMedicalTranscriptionJobsRequest, ListMedicalTranscriptionJobsResult> asyncHandler) {
+        final ListMedicalTranscriptionJobsRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListMedicalTranscriptionJobsResult>() {
+            @Override
+            public ListMedicalTranscriptionJobsResult call() throws Exception {
+                ListMedicalTranscriptionJobsResult result = null;
+
+                try {
+                    result = executeListMedicalTranscriptionJobs(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<ListTranscriptionJobsResult> listTranscriptionJobsAsync(ListTranscriptionJobsRequest request) {
 
         return listTranscriptionJobsAsync(request, null);
@@ -294,6 +493,72 @@ public class AmazonTranscribeAsyncClient extends AmazonTranscribeClient implemen
     }
 
     @Override
+    public java.util.concurrent.Future<ListVocabularyFiltersResult> listVocabularyFiltersAsync(ListVocabularyFiltersRequest request) {
+
+        return listVocabularyFiltersAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListVocabularyFiltersResult> listVocabularyFiltersAsync(final ListVocabularyFiltersRequest request,
+            final com.amazonaws.handlers.AsyncHandler<ListVocabularyFiltersRequest, ListVocabularyFiltersResult> asyncHandler) {
+        final ListVocabularyFiltersRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<ListVocabularyFiltersResult>() {
+            @Override
+            public ListVocabularyFiltersResult call() throws Exception {
+                ListVocabularyFiltersResult result = null;
+
+                try {
+                    result = executeListVocabularyFilters(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartMedicalTranscriptionJobResult> startMedicalTranscriptionJobAsync(StartMedicalTranscriptionJobRequest request) {
+
+        return startMedicalTranscriptionJobAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<StartMedicalTranscriptionJobResult> startMedicalTranscriptionJobAsync(final StartMedicalTranscriptionJobRequest request,
+            final com.amazonaws.handlers.AsyncHandler<StartMedicalTranscriptionJobRequest, StartMedicalTranscriptionJobResult> asyncHandler) {
+        final StartMedicalTranscriptionJobRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<StartMedicalTranscriptionJobResult>() {
+            @Override
+            public StartMedicalTranscriptionJobResult call() throws Exception {
+                StartMedicalTranscriptionJobResult result = null;
+
+                try {
+                    result = executeStartMedicalTranscriptionJob(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
     public java.util.concurrent.Future<StartTranscriptionJobResult> startTranscriptionJobAsync(StartTranscriptionJobRequest request) {
 
         return startTranscriptionJobAsync(request, null);
@@ -344,6 +609,39 @@ public class AmazonTranscribeAsyncClient extends AmazonTranscribeClient implemen
 
                 try {
                     result = executeUpdateVocabulary(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateVocabularyFilterResult> updateVocabularyFilterAsync(UpdateVocabularyFilterRequest request) {
+
+        return updateVocabularyFilterAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<UpdateVocabularyFilterResult> updateVocabularyFilterAsync(final UpdateVocabularyFilterRequest request,
+            final com.amazonaws.handlers.AsyncHandler<UpdateVocabularyFilterRequest, UpdateVocabularyFilterResult> asyncHandler) {
+        final UpdateVocabularyFilterRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<UpdateVocabularyFilterResult>() {
+            @Override
+            public UpdateVocabularyFilterResult call() throws Exception {
+                UpdateVocabularyFilterResult result = null;
+
+                try {
+                    result = executeUpdateVocabularyFilter(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,17 +52,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      * If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.
      * </p>
      * <p>
-     * For more information about how to use this role to access the member account, see <a href=
+     * For more information about how to use this role to access the member account, see the following links:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      * >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User
-     * Guide</i>, and steps 2 and 3 in <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
-     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     * Guide</i>
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * Steps 2 and 3 in <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
+     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      */
     private String roleName;
@@ -190,17 +202,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      * If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.
      * </p>
      * <p>
-     * For more information about how to use this role to access the member account, see <a href=
+     * For more information about how to use this role to access the member account, see the following links:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      * >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User
-     * Guide</i>, and steps 2 and 3 in <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
-     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     * Guide</i>
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * Steps 2 and 3 in <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
+     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      * 
      * @param roleName
@@ -214,17 +238,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.
      *        </p>
      *        <p>
-     *        For more information about how to use this role to access the member account, see <a href=
+     *        For more information about how to use this role to access the member account, see the following links:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a href=
      *        "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      *        >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User
-     *        Guide</i>, and steps 2 and 3 in <a
-     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial:
-     *        Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     *        Guide</i>
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is
-     *        a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces,
-     *        and any of the following characters: =,.@-
+     *        Steps 2 and 3 in <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial:
+     *        Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter.
+     *        The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the
+     *        following characters: =,.@-
      */
 
     public void setRoleName(String roleName) {
@@ -244,17 +280,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      * If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.
      * </p>
      * <p>
-     * For more information about how to use this role to access the member account, see <a href=
+     * For more information about how to use this role to access the member account, see the following links:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      * >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User
-     * Guide</i>, and steps 2 and 3 in <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
-     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     * Guide</i>
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * Steps 2 and 3 in <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
+     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      * 
      * @return (Optional)</p>
@@ -269,17 +317,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      *         .
      *         </p>
      *         <p>
-     *         For more information about how to use this role to access the member account, see <a href=
+     *         For more information about how to use this role to access the member account, see the following links:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         <a href=
      *         "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      *         >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations
-     *         User Guide</i>, and steps 2 and 3 in <a
-     *         href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial:
-     *         Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     *         User Guide</i>
      *         </p>
+     *         </li>
+     *         <li>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter
-     *         is a string of characters that can consist of uppercase letters, lowercase letters, digits with no
-     *         spaces, and any of the following characters: =,.@-
+     *         Steps 2 and 3 in <a
+     *         href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial:
+     *         Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter.
+     *         The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the
+     *         following characters: =,.@-
      */
 
     public String getRoleName() {
@@ -299,17 +359,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      * If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.
      * </p>
      * <p>
-     * For more information about how to use this role to access the member account, see <a href=
+     * For more information about how to use this role to access the member account, see the following links:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * <a href=
      * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      * >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User
-     * Guide</i>, and steps 2 and 3 in <a
-     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
-     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     * Guide</i>
      * </p>
+     * </li>
+     * <li>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * Steps 2 and 3 in <a
+     * href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate
+     * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      * 
      * @param roleName
@@ -323,17 +395,29 @@ public class CreateAccountRequest extends com.amazonaws.AmazonWebServiceRequest 
      *        If you don't specify this parameter, the role name defaults to <code>OrganizationAccountAccessRole</code>.
      *        </p>
      *        <p>
-     *        For more information about how to use this role to access the member account, see <a href=
+     *        For more information about how to use this role to access the member account, see the following links:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        <a href=
      *        "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role"
      *        >Accessing and Administering the Member Accounts in Your Organization</a> in the <i>AWS Organizations User
-     *        Guide</i>, and steps 2 and 3 in <a
-     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial:
-     *        Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
+     *        Guide</i>
      *        </p>
+     *        </li>
+     *        <li>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is
-     *        a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces,
-     *        and any of the following characters: =,.@-
+     *        Steps 2 and 3 in <a
+     *        href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial:
+     *        Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide</i>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter.
+     *        The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the
+     *        following characters: =,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

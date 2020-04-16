@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -64,9 +64,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      */
     private String roleName;
@@ -218,9 +218,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      * 
      * @param roleName
@@ -243,9 +243,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      *        Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      *        </p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is
-     *        a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces,
-     *        and any of the following characters: =,.@-
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter.
+     *        The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the
+     *        following characters: =,.@-
      */
 
     public void setRoleName(String roleName) {
@@ -274,9 +274,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      * 
      * @return (Optional)</p>
@@ -299,9 +299,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      *         Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      *         </p>
      *         <p>
-     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter
-     *         is a string of characters that can consist of uppercase letters, lowercase letters, digits with no
-     *         spaces, and any of the following characters: =,.@-
+     *         The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter.
+     *         The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the
+     *         following characters: =,.@-
      */
 
     public String getRoleName() {
@@ -330,9 +330,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      * Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      * </p>
      * <p>
-     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a
-     * string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces, and any of
-     * the following characters: =,.@-
+     * The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter. The
+     * pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the following
+     * characters: =,.@-
      * </p>
      * 
      * @param roleName
@@ -355,9 +355,9 @@ public class CreateGovCloudAccountRequest extends com.amazonaws.AmazonWebService
      *        Delegate Access Across AWS Accounts Using IAM Roles</a> in the <i>IAM User Guide.</i>
      *        </p>
      *        <p>
-     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is
-     *        a string of characters that can consist of uppercase letters, lowercase letters, digits with no spaces,
-     *        and any of the following characters: =,.@-
+     *        The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter.
+     *        The pattern can include uppercase letters, lowercase letters, digits with no spaces, and any of the
+     *        following characters: =,.@-
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

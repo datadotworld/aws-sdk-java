@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -472,6 +472,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -506,6 +524,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -689,6 +713,11 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.AttachPolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/AttachPolicy" target="_top">AWS API
      *      Documentation</a>
@@ -1015,6 +1044,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -1049,6 +1096,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -1453,6 +1506,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -1487,6 +1558,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -1686,7 +1763,7 @@ public interface AWSOrganizations {
      * created with all features enabled and service control policies automatically enabled in the root. If you instead
      * choose to create the organization supporting only the consolidated billing features by setting the
      * <code>FeatureSet</code> parameter to <code>CONSOLIDATED_BILLING"</code>, no policy types are enabled by default,
-     * and you can't use organization policies.
+     * and you can't use organization policies
      * </p>
      * 
      * @param createOrganizationRequest
@@ -1761,6 +1838,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -1795,6 +1890,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -2064,6 +2165,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -2098,6 +2217,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -2365,6 +2490,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -2399,6 +2542,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -2583,6 +2732,8 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.CreatePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/CreatePolicy" target="_top">AWS API
      *      Documentation</a>
@@ -3188,6 +3339,8 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.DeletePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeletePolicy" target="_top">AWS API
      *      Documentation</a>
@@ -3196,10 +3349,339 @@ public interface AWSOrganizations {
 
     /**
      * <p>
-     * Retrieves AWS Organizations-related information about the specified account.
+     * Removes the specified member AWS account as a delegated administrator for the specified AWS service.
+     * </p>
+     * <p>
+     * You can run this action only for AWS services that support this feature. For a current list of services that
+     * support it, see the column <i>Supports Delegated Administrator</i> in the table at <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html">AWS Services
+     * that you can use with AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
+     * </p>
+     * 
+     * @param deregisterDelegatedAdministratorRequest
+     * @return Result of the DeregisterDelegatedAdministrator operation returned by the service.
+     * @throws AccessDeniedException
+     *         You don't have permissions to perform the requested operation. The user or role that is making the
+     *         request must have at least one IAM permissions policy attached that grants the required permissions. For
+     *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
+     *         Management</a> in the <i>IAM User Guide.</i>
+     * @throws AccountNotFoundException
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         credentials you used to make this request isn't a member of an organization.
+     * @throws AccountNotRegisteredException
+     *         The specified account is not a delegated administrator for this AWS service.
+     * @throws AWSOrganizationsNotInUseException
+     *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
+     *         account that belongs to an organization.
+     * @throws ConcurrentModificationException
+     *         The target of the operation is currently being modified by a different request. Try again later.
+     * @throws ConstraintViolationException
+     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
+     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
+     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
+     *         that contains additional information about the violated limit.</p>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that doesn't
+     *         yet have enough information to exist as a standalone account. This account requires you to first agree to
+     *         the AWS Customer Agreement. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization
+     *         that doesn't yet have enough information to exist as a standalone account. This account requires you to
+     *         first complete phone verification. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create
+     *         in one day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an
+     *         organization. If you need more accounts, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a> to request an increase in your
+     *         limit.
+     *         </p>
+     *         <p>
+     *         Or the number of invitations that you tried to send would cause you to exceed the limit of accounts in
+     *         your organization. Send fewer invitations or contact AWS Support to request an increase in the number of
+     *         accounts.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Deleted and closed accounts still count toward your limit.
+     *         </p>
+     *         </note> <important>
+     *         <p>
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     *         </p>
+     *         </important></li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
+     *         day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first
+     *         must migrate the organization's master account to the marketplace that corresponds to the master
+     *         account's address. For example, accounts with India addresses must be associated with the AISPL
+     *         marketplace. All accounts in an organization must be associated with the same marketplace.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid
+     *         address and phone number for the master account. Then try the operation again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the master account must have an
+     *         associated account in the AWS GovCloud (US-West) Region. For more information, see <a
+     *         href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS
+     *         Organizations</a> in the <i>AWS GovCloud User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this master account, you first
+     *         must associate a valid payment instrument, such as a credit card, with the account. Follow the steps at
+     *         <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain
+     *         type that can be attached to an entity at one time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_TAG_LIMIT_EXCEEDED: You have exceeded the number of tags allowed on this resource.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you
+     *         first must associate a valid payment instrument, such as a credit card, with the account. Follow the
+     *         steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
+     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an OU tree that is too many levels deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports only consolidated
+     *         billing features can't perform this operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of OUs that you can have in an organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         organization.
+     *         </p>
+     *         </li>
+     * @throws InvalidInputException
+     *         The requested operation failed because you provided invalid values for one or more of the request
+     *         parameters. This exception includes a reason that contains additional information about the violated
+     *         limit:</p> <note>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         </note>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a
+     *         previous call of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved
+     *         prefix <code>AWSServiceRoleFor</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or
+     *         delete system tag keys because they're reserved for AWS use. System tags don’t count against your tags
+     *         per resource limit.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
+     *         </p>
+     *         </li>
+     * @throws TooManyRequestsException
+     *         You have sent too many requests in too short a period of time. The limit helps protect against
+     *         denial-of-service attacks. Try again later.</p>
+     *         <p>
+     *         For information on limits that affect AWS Organizations, see <a
+     *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
+     *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws ServiceException
+     *         AWS Organizations can't complete your request because of an internal service error. Try again later.
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @sample AWSOrganizations.DeregisterDelegatedAdministrator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeregisterDelegatedAdministrator"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DeregisterDelegatedAdministratorResult deregisterDelegatedAdministrator(DeregisterDelegatedAdministratorRequest deregisterDelegatedAdministratorRequest);
+
+    /**
+     * <p>
+     * Retrieves AWS Organizations-related information about the specified account.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeAccountRequest
@@ -3345,7 +3827,8 @@ public interface AWSOrganizations {
      * Retrieves the current status of an asynchronous request to create an account.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeCreateAccountStatusRequest
@@ -3486,6 +3969,339 @@ public interface AWSOrganizations {
      *      target="_top">AWS API Documentation</a>
      */
     DescribeCreateAccountStatusResult describeCreateAccountStatus(DescribeCreateAccountStatusRequest describeCreateAccountStatusRequest);
+
+    /**
+     * <p>
+     * Returns the contents of the effective tag policy for the account. The effective tag policy is the aggregation of
+     * any tag policies the account inherits, plus any policy directly that is attached to the account.
+     * </p>
+     * <p>
+     * This action returns information on tag policies only.
+     * </p>
+     * <p>
+     * For more information on policy inheritance, see <a
+     * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html">How Policy
+     * Inheritance Works</a> in the <i>AWS Organizations User Guide</i>.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param describeEffectivePolicyRequest
+     * @return Result of the DescribeEffectivePolicy operation returned by the service.
+     * @throws AccessDeniedException
+     *         You don't have permissions to perform the requested operation. The user or role that is making the
+     *         request must have at least one IAM permissions policy attached that grants the required permissions. For
+     *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
+     *         Management</a> in the <i>IAM User Guide.</i>
+     * @throws AWSOrganizationsNotInUseException
+     *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
+     *         account that belongs to an organization.
+     * @throws ConstraintViolationException
+     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
+     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
+     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
+     *         that contains additional information about the violated limit.</p>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that doesn't
+     *         yet have enough information to exist as a standalone account. This account requires you to first agree to
+     *         the AWS Customer Agreement. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization
+     *         that doesn't yet have enough information to exist as a standalone account. This account requires you to
+     *         first complete phone verification. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create
+     *         in one day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an
+     *         organization. If you need more accounts, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a> to request an increase in your
+     *         limit.
+     *         </p>
+     *         <p>
+     *         Or the number of invitations that you tried to send would cause you to exceed the limit of accounts in
+     *         your organization. Send fewer invitations or contact AWS Support to request an increase in the number of
+     *         accounts.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Deleted and closed accounts still count toward your limit.
+     *         </p>
+     *         </note> <important>
+     *         <p>
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     *         </p>
+     *         </important></li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
+     *         day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first
+     *         must migrate the organization's master account to the marketplace that corresponds to the master
+     *         account's address. For example, accounts with India addresses must be associated with the AISPL
+     *         marketplace. All accounts in an organization must be associated with the same marketplace.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid
+     *         address and phone number for the master account. Then try the operation again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the master account must have an
+     *         associated account in the AWS GovCloud (US-West) Region. For more information, see <a
+     *         href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS
+     *         Organizations</a> in the <i>AWS GovCloud User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this master account, you first
+     *         must associate a valid payment instrument, such as a credit card, with the account. Follow the steps at
+     *         <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain
+     *         type that can be attached to an entity at one time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_TAG_LIMIT_EXCEEDED: You have exceeded the number of tags allowed on this resource.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you
+     *         first must associate a valid payment instrument, such as a credit card, with the account. Follow the
+     *         steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
+     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an OU tree that is too many levels deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports only consolidated
+     *         billing features can't perform this operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of OUs that you can have in an organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         organization.
+     *         </p>
+     *         </li>
+     * @throws ServiceException
+     *         AWS Organizations can't complete your request because of an internal service error. Try again later.
+     * @throws TooManyRequestsException
+     *         You have sent too many requests in too short a period of time. The limit helps protect against
+     *         denial-of-service attacks. Try again later.</p>
+     *         <p>
+     *         For information on limits that affect AWS Organizations, see <a
+     *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
+     *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws TargetNotFoundException
+     *         We can't find a root, OU, or account with the <code>TargetId</code> that you specified.
+     * @throws EffectivePolicyNotFoundException
+     *         If you ran this action on the master account, this policy type is not enabled. If you ran the action on a
+     *         member account, the account doesn't have an effective policy of this type. Contact the administrator of
+     *         your organization about attaching a policy of this type to the account.
+     * @throws InvalidInputException
+     *         The requested operation failed because you provided invalid values for one or more of the request
+     *         parameters. This exception includes a reason that contains additional information about the violated
+     *         limit:
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         </note>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a
+     *         previous call of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved
+     *         prefix <code>AWSServiceRoleFor</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or
+     *         delete system tag keys because they're reserved for AWS use. System tags don’t count against your tags
+     *         per resource limit.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
+     *         </p>
+     *         </li>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @sample AWSOrganizations.DescribeEffectivePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeEffectivePolicy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    DescribeEffectivePolicyResult describeEffectivePolicy(DescribeEffectivePolicyRequest describeEffectivePolicyRequest);
 
     /**
      * <p>
@@ -3682,7 +4498,8 @@ public interface AWSOrganizations {
      * Retrieves information about an organizational unit (OU).
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeOrganizationalUnitRequest
@@ -3827,7 +4644,8 @@ public interface AWSOrganizations {
      * Retrieves information about a policy.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describePolicyRequest
@@ -3961,6 +4779,8 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.DescribePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribePolicy" target="_top">AWS
      *      API Documentation</a>
@@ -3976,14 +4796,14 @@ public interface AWSOrganizations {
      * <p>
      * <b>Note:</b> Every root, OU, and account must have at least one SCP attached. If you want to replace the default
      * <code>FullAWSAccess</code> policy with one that limits the permissions that can be delegated, you must attach the
-     * replacement policy before you can remove the default one. This is the authorization strategy of <a href=
-     * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist"
-     * >whitelisting</a>. If you instead attach a second SCP and leave the <code>FullAWSAccess</code> SCP still
-     * attached, and specify <code>"Effect": "Deny"</code> in the second SCP to override the
-     * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP), you're using
-     * the authorization strategy of <a href=
-     * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist"
-     * >blacklisting</a> .
+     * replacement policy before you can remove the default one. This is the authorization strategy of an
+     * "<a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#
+     * orgs_policies_whitelist">allow list</a>". If you instead attach a second SCP and leave the
+     * <code>FullAWSAccess</code> SCP still attached, and specify <code>"Effect": "Deny"</code> in the second SCP to
+     * override the <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP),
+     * you're using the authorization strategy of a
+     * "<a href="https://docs.aws.amazon.com/organizations/latest/userguide/
+     * orgs_manage_policies_about-scps.html#orgs_policies_blacklist">deny list</a>".
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -4061,6 +4881,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -4095,6 +4933,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -4272,6 +5116,11 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.DetachPolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DetachPolicy" target="_top">AWS API
      *      Documentation</a>
@@ -4384,6 +5233,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -4418,6 +5285,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -4688,6 +5561,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -4722,6 +5613,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -4901,6 +5798,11 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.DisablePolicyType
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DisablePolicyType"
      *      target="_top">AWS API Documentation</a>
@@ -5008,6 +5910,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -5042,6 +5962,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -5545,6 +6471,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -5579,6 +6523,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -5760,6 +6710,11 @@ public interface AWSOrganizations {
      *         information, see <a href=
      *         "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html#enable_policies_on_root"
      *         >Enabling and Disabling a Policy Type on a Root</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.EnablePolicyType
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/EnablePolicyType" target="_top">AWS
      *      API Documentation</a>
@@ -6025,7 +6980,7 @@ public interface AWSOrganizations {
      * <li>
      * <p>
      * The master account in an organization with all features enabled can set service control policies (SCPs) that can
-     * restrict what administrators of member accounts can do, including preventing them from successfully calling
+     * restrict what administrators of member accounts can do. This includes preventing them from successfully calling
      * <code>LeaveOrganization</code> and leaving the organization.
      * </p>
      * </li>
@@ -6034,10 +6989,33 @@ public interface AWSOrganizations {
      * You can leave an organization as a member account only if the account is configured with the information required
      * to operate as a standalone account. When you create an account in an organization using the AWS Organizations
      * console, API, or CLI commands, the information required of standalone accounts is <i>not</i> automatically
-     * collected. For each account that you want to make standalone, you must accept the end user license agreement
-     * (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment
-     * method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the
-     * account isn't attached to an organization. Follow the steps at <a href=
+     * collected. For each account that you want to make standalone, you must do the following steps:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Accept the end user license agreement (EULA)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Choose a support plan
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provide and verify the required contact information
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provide a current payment method
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account
+     * isn't attached to an organization. Follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      * > To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
      * Organizations User Guide.</i>
@@ -6130,6 +7108,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -6164,6 +7160,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -6357,7 +7359,8 @@ public interface AWSOrganizations {
      * Organizations with Other AWS Services</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAWSServiceAccessForOrganizationRequest
@@ -6430,6 +7433,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -6464,6 +7485,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -6657,7 +7684,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAccountsRequest
@@ -6811,7 +7839,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAccountsForParentRequest
@@ -6965,7 +7994,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listChildrenRequest
@@ -7119,7 +8149,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listCreateAccountStatusRequest
@@ -7261,6 +8292,643 @@ public interface AWSOrganizations {
 
     /**
      * <p>
+     * Lists the AWS accounts that are designated as delegated administrators in this organization.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param listDelegatedAdministratorsRequest
+     * @return Result of the ListDelegatedAdministrators operation returned by the service.
+     * @throws AccessDeniedException
+     *         You don't have permissions to perform the requested operation. The user or role that is making the
+     *         request must have at least one IAM permissions policy attached that grants the required permissions. For
+     *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
+     *         Management</a> in the <i>IAM User Guide.</i>
+     * @throws AWSOrganizationsNotInUseException
+     *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
+     *         account that belongs to an organization.
+     * @throws ConstraintViolationException
+     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
+     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
+     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
+     *         that contains additional information about the violated limit.</p>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that doesn't
+     *         yet have enough information to exist as a standalone account. This account requires you to first agree to
+     *         the AWS Customer Agreement. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization
+     *         that doesn't yet have enough information to exist as a standalone account. This account requires you to
+     *         first complete phone verification. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create
+     *         in one day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an
+     *         organization. If you need more accounts, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a> to request an increase in your
+     *         limit.
+     *         </p>
+     *         <p>
+     *         Or the number of invitations that you tried to send would cause you to exceed the limit of accounts in
+     *         your organization. Send fewer invitations or contact AWS Support to request an increase in the number of
+     *         accounts.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Deleted and closed accounts still count toward your limit.
+     *         </p>
+     *         </note> <important>
+     *         <p>
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     *         </p>
+     *         </important></li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
+     *         day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first
+     *         must migrate the organization's master account to the marketplace that corresponds to the master
+     *         account's address. For example, accounts with India addresses must be associated with the AISPL
+     *         marketplace. All accounts in an organization must be associated with the same marketplace.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid
+     *         address and phone number for the master account. Then try the operation again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the master account must have an
+     *         associated account in the AWS GovCloud (US-West) Region. For more information, see <a
+     *         href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS
+     *         Organizations</a> in the <i>AWS GovCloud User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this master account, you first
+     *         must associate a valid payment instrument, such as a credit card, with the account. Follow the steps at
+     *         <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain
+     *         type that can be attached to an entity at one time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_TAG_LIMIT_EXCEEDED: You have exceeded the number of tags allowed on this resource.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you
+     *         first must associate a valid payment instrument, such as a credit card, with the account. Follow the
+     *         steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
+     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an OU tree that is too many levels deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports only consolidated
+     *         billing features can't perform this operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of OUs that you can have in an organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         organization.
+     *         </p>
+     *         </li>
+     * @throws InvalidInputException
+     *         The requested operation failed because you provided invalid values for one or more of the request
+     *         parameters. This exception includes a reason that contains additional information about the violated
+     *         limit:</p> <note>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         </note>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a
+     *         previous call of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved
+     *         prefix <code>AWSServiceRoleFor</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or
+     *         delete system tag keys because they're reserved for AWS use. System tags don’t count against your tags
+     *         per resource limit.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
+     *         </p>
+     *         </li>
+     * @throws TooManyRequestsException
+     *         You have sent too many requests in too short a period of time. The limit helps protect against
+     *         denial-of-service attacks. Try again later.</p>
+     *         <p>
+     *         For information on limits that affect AWS Organizations, see <a
+     *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
+     *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws ServiceException
+     *         AWS Organizations can't complete your request because of an internal service error. Try again later.
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @sample AWSOrganizations.ListDelegatedAdministrators
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedAdministrators"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListDelegatedAdministratorsResult listDelegatedAdministrators(ListDelegatedAdministratorsRequest listDelegatedAdministratorsRequest);
+
+    /**
+     * <p>
+     * List the AWS services for which the specified account is a delegated administrator.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param listDelegatedServicesForAccountRequest
+     * @return Result of the ListDelegatedServicesForAccount operation returned by the service.
+     * @throws AccessDeniedException
+     *         You don't have permissions to perform the requested operation. The user or role that is making the
+     *         request must have at least one IAM permissions policy attached that grants the required permissions. For
+     *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
+     *         Management</a> in the <i>IAM User Guide.</i>
+     * @throws AccountNotFoundException
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         credentials you used to make this request isn't a member of an organization.
+     * @throws AccountNotRegisteredException
+     *         The specified account is not a delegated administrator for this AWS service.
+     * @throws AWSOrganizationsNotInUseException
+     *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
+     *         account that belongs to an organization.
+     * @throws ConstraintViolationException
+     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
+     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
+     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
+     *         that contains additional information about the violated limit.</p>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that doesn't
+     *         yet have enough information to exist as a standalone account. This account requires you to first agree to
+     *         the AWS Customer Agreement. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization
+     *         that doesn't yet have enough information to exist as a standalone account. This account requires you to
+     *         first complete phone verification. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create
+     *         in one day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an
+     *         organization. If you need more accounts, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a> to request an increase in your
+     *         limit.
+     *         </p>
+     *         <p>
+     *         Or the number of invitations that you tried to send would cause you to exceed the limit of accounts in
+     *         your organization. Send fewer invitations or contact AWS Support to request an increase in the number of
+     *         accounts.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Deleted and closed accounts still count toward your limit.
+     *         </p>
+     *         </note> <important>
+     *         <p>
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     *         </p>
+     *         </important></li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
+     *         day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first
+     *         must migrate the organization's master account to the marketplace that corresponds to the master
+     *         account's address. For example, accounts with India addresses must be associated with the AISPL
+     *         marketplace. All accounts in an organization must be associated with the same marketplace.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid
+     *         address and phone number for the master account. Then try the operation again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the master account must have an
+     *         associated account in the AWS GovCloud (US-West) Region. For more information, see <a
+     *         href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS
+     *         Organizations</a> in the <i>AWS GovCloud User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this master account, you first
+     *         must associate a valid payment instrument, such as a credit card, with the account. Follow the steps at
+     *         <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain
+     *         type that can be attached to an entity at one time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_TAG_LIMIT_EXCEEDED: You have exceeded the number of tags allowed on this resource.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you
+     *         first must associate a valid payment instrument, such as a credit card, with the account. Follow the
+     *         steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
+     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an OU tree that is too many levels deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports only consolidated
+     *         billing features can't perform this operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of OUs that you can have in an organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         organization.
+     *         </p>
+     *         </li>
+     * @throws InvalidInputException
+     *         The requested operation failed because you provided invalid values for one or more of the request
+     *         parameters. This exception includes a reason that contains additional information about the violated
+     *         limit:</p> <note>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         </note>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a
+     *         previous call of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved
+     *         prefix <code>AWSServiceRoleFor</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or
+     *         delete system tag keys because they're reserved for AWS use. System tags don’t count against your tags
+     *         per resource limit.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
+     *         </p>
+     *         </li>
+     * @throws TooManyRequestsException
+     *         You have sent too many requests in too short a period of time. The limit helps protect against
+     *         denial-of-service attacks. Try again later.</p>
+     *         <p>
+     *         For information on limits that affect AWS Organizations, see <a
+     *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
+     *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws ServiceException
+     *         AWS Organizations can't complete your request because of an internal service error. Try again later.
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @sample AWSOrganizations.ListDelegatedServicesForAccount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedServicesForAccount"
+     *      target="_top">AWS API Documentation</a>
+     */
+    ListDelegatedServicesForAccountResult listDelegatedServicesForAccount(ListDelegatedServicesForAccountRequest listDelegatedServicesForAccountRequest);
+
+    /**
+     * <p>
      * Lists the current handshakes that are associated with the account of the requesting user.
      * </p>
      * <p>
@@ -7276,7 +8944,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called from any account in the organization.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listHandshakesForAccountRequest
@@ -7432,7 +9101,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listHandshakesForOrganizationRequest
@@ -7585,7 +9255,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listOrganizationalUnitsForParentRequest
@@ -7740,7 +9411,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * <note>
      * <p>
@@ -7899,7 +9571,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listPoliciesRequest
@@ -8031,6 +9704,8 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.ListPolicies
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPolicies" target="_top">AWS API
      *      Documentation</a>
@@ -8051,7 +9726,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listPoliciesForTargetRequest
@@ -8185,6 +9861,8 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.ListPoliciesForTarget
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListPoliciesForTarget"
      *      target="_top">AWS API Documentation</a>
@@ -8204,7 +9882,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * <note>
      * <p>
@@ -8358,7 +10037,8 @@ public interface AWSOrganizations {
      * Currently, you can list tags on an account in AWS Organizations.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -8511,7 +10191,8 @@ public interface AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listTargetsForPolicyRequest
@@ -8645,6 +10326,8 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
      * @sample AWSOrganizations.ListTargetsForPolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListTargetsForPolicy"
      *      target="_top">AWS API Documentation</a>
@@ -8808,6 +10491,336 @@ public interface AWSOrganizations {
 
     /**
      * <p>
+     * Enables the specified member account to administer the Organizations features of the specified AWS service. It
+     * grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access
+     * and administer the AWS service.
+     * </p>
+     * <p>
+     * You can run this action only for AWS services that support this feature. For a current list of services that
+     * support it, see the column <i>Supports Delegated Administrator</i> in the table at <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html">AWS Services
+     * that you can use with AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
+     * 
+     * @param registerDelegatedAdministratorRequest
+     * @return Result of the RegisterDelegatedAdministrator operation returned by the service.
+     * @throws AccessDeniedException
+     *         You don't have permissions to perform the requested operation. The user or role that is making the
+     *         request must have at least one IAM permissions policy attached that grants the required permissions. For
+     *         more information, see <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html">Access
+     *         Management</a> in the <i>IAM User Guide.</i>
+     * @throws AccountAlreadyRegisteredException
+     *         The specified account is already a delegated administrator for this AWS service.
+     * @throws AccountNotFoundException
+     *         We can't find an AWS account with the <code>AccountId</code> that you specified, or the account whose
+     *         credentials you used to make this request isn't a member of an organization.
+     * @throws AWSOrganizationsNotInUseException
+     *         Your account isn't a member of an organization. To make this request, you must use the credentials of an
+     *         account that belongs to an organization.
+     * @throws ConcurrentModificationException
+     *         The target of the operation is currently being modified by a different request. Try again later.
+     * @throws ConstraintViolationException
+     *         Performing this operation violates a minimum or maximum value limit. For example, attempting to remove
+     *         the last service control policy (SCP) from an OU or root, inviting or creating too many accounts to the
+     *         organization, or attaching too many policies to an account, OU, or root. This exception includes a reason
+     *         that contains additional information about the violated limit.</p>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_EULA: You attempted to remove an account from the organization that doesn't
+     *         yet have enough information to exist as a standalone account. This account requires you to first agree to
+     *         the AWS Customer Agreement. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CANNOT_LEAVE_WITHOUT_PHONE_VERIFICATION: You attempted to remove an account from the organization
+     *         that doesn't yet have enough information to exist as a standalone account. This account requires you to
+     *         first complete phone verification. Follow the steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_CREATION_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of accounts that you can create
+     *         in one day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ACCOUNT_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the limit on the number of accounts in an
+     *         organization. If you need more accounts, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a> to request an increase in your
+     *         limit.
+     *         </p>
+     *         <p>
+     *         Or the number of invitations that you tried to send would cause you to exceed the limit of accounts in
+     *         your organization. Send fewer invitations or contact AWS Support to request an increase in the number of
+     *         accounts.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Deleted and closed accounts still count toward your limit.
+     *         </p>
+     *         </note> <important>
+     *         <p>
+     *         If you get receive this exception when running a command immediately after creating the organization,
+     *         wait one hour and try again. If after an hour it continues to fail with this error, contact <a
+     *         href="https://console.aws.amazon.com/support/home#/">AWS Support</a>.
+     *         </p>
+     *         </important></li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
+     *         day.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_ADDRESS_DOES_NOT_MATCH_MARKETPLACE: To create an account in this organization, you first
+     *         must migrate the organization's master account to the marketplace that corresponds to the master
+     *         account's address. For example, accounts with India addresses must be associated with the AISPL
+     *         marketplace. All accounts in an organization must be associated with the same marketplace.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_MISSING_CONTACT_INFO: To complete this operation, you must first provide contact a valid
+     *         address and phone number for the master account. Then try the operation again.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_NOT_GOVCLOUD_ENABLED: To complete this operation, the master account must have an
+     *         associated account in the AWS GovCloud (US-West) Region. For more information, see <a
+     *         href="http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html">AWS
+     *         Organizations</a> in the <i>AWS GovCloud User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MASTER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To create an organization with this master account, you first
+     *         must associate a valid payment instrument, such as a credit card, with the account. Follow the steps at
+     *         <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to exceed the number of policies of a certain
+     *         type that can be attached to an entity at one time.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_TAG_LIMIT_EXCEEDED: You have exceeded the number of tags allowed on this resource.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MEMBER_ACCOUNT_PAYMENT_INSTRUMENT_REQUIRED: To complete this operation with this member account, you
+     *         first must associate a valid payment instrument, such as a credit card, with the account. Follow the
+     *         steps at <a href=
+     *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
+     *         >To leave an organization when all required account information has not yet been provided</a> in the
+     *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_POLICY_TYPE_ATTACHMENT_LIMIT_EXCEEDED: You attempted to detach a policy from an entity that would
+     *         cause the entity to have fewer than the minimum number of policies of a certain type required.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_DEPTH_LIMIT_EXCEEDED: You attempted to create an OU tree that is too many levels deep.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         ORGANIZATION_NOT_IN_ALL_FEATURES_MODE: You attempted to perform an operation that requires the
+     *         organization to be configured to support all features. An organization that supports only consolidated
+     *         billing features can't perform this operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         OU_NUMBER_LIMIT_EXCEEDED: You attempted to exceed the number of OUs that you can have in an organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         POLICY_NUMBER_LIMIT_EXCEEDED. You attempted to exceed the number of policies that you can have in an
+     *         organization.
+     *         </p>
+     *         </li>
+     * @throws InvalidInputException
+     *         The requested operation failed because you provided invalid values for one or more of the request
+     *         parameters. This exception includes a reason that contains additional information about the violated
+     *         limit:</p> <note>
+     *         <p>
+     *         Some of the reasons in the following list might not be applicable to this specific API or operation:
+     *         </p>
+     *         </note>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         IMMUTABLE_POLICY: You specified a policy that is managed by AWS and can't be modified.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INPUT_REQUIRED: You must include a value for all required parameters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ENUM: You specified an invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_FULL_NAME_TARGET: You specified a full name that contains invalid characters.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_LIST_MEMBER: You provided a list to a parameter that contains at least one invalid value.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PAGINATION_TOKEN: Get the value for the <code>NextToken</code> parameter from the response to a
+     *         previous call of the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PARTY_TYPE_TARGET: You specified the wrong type of entity (account, organization, or email) as a
+     *         party.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN: You provided a value that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_PATTERN_TARGET_ID: You specified a policy target ID that doesn't match the required pattern.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_ROLE_NAME: You provided a role name that isn't valid. A role name can't begin with the reserved
+     *         prefix <code>AWSServiceRoleFor</code>.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_ORGANIZATION_ARN: You specified an invalid Amazon Resource Name (ARN) for the
+     *         organization.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYNTAX_POLICY_ID: You specified an invalid policy ID.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         INVALID_SYSTEM_TAGS_PARAMETER: You specified a tag key that is a system tag. You can’t add, edit, or
+     *         delete system tag keys because they're reserved for AWS use. System tags don’t count against your tags
+     *         per resource limit.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_FILTER_LIMIT_EXCEEDED: You can specify only one filter parameter for the operation.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_LENGTH_EXCEEDED: You provided a string parameter that is longer than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_VALUE_EXCEEDED: You provided a numeric parameter that has a larger value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_LENGTH_EXCEEDED: You provided a string parameter that is shorter than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MIN_VALUE_EXCEEDED: You provided a numeric parameter that has a smaller value than allowed.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MOVING_ACCOUNT_BETWEEN_DIFFERENT_ROOTS: You can move an account only between entities in the same root.
+     *         </p>
+     *         </li>
+     * @throws TooManyRequestsException
+     *         You have sent too many requests in too short a period of time. The limit helps protect against
+     *         denial-of-service attacks. Try again later.</p>
+     *         <p>
+     *         For information on limits that affect AWS Organizations, see <a
+     *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
+     *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws ServiceException
+     *         AWS Organizations can't complete your request because of an internal service error. Try again later.
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @sample AWSOrganizations.RegisterDelegatedAdministrator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/RegisterDelegatedAdministrator"
+     *      target="_top">AWS API Documentation</a>
+     */
+    RegisterDelegatedAdministratorResult registerDelegatedAdministrator(RegisterDelegatedAdministratorRequest registerDelegatedAdministratorRequest);
+
+    /**
+     * <p>
      * Removes the specified account from the organization.
      * </p>
      * <p>
@@ -8910,6 +10923,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -8944,6 +10975,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -9209,6 +11246,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -9243,6 +11298,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -9505,6 +11566,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -9539,6 +11618,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -9947,6 +12032,24 @@ public interface AWSOrganizations {
      *         </important></li>
      *         <li>
      *         <p>
+     *         CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+     *         administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister
+     *         this account as a delegated administrator.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister
+     *         all delegated administrators for this service.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
      *         HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one
      *         day.
      *         </p>
@@ -9981,6 +12084,12 @@ public interface AWSOrganizations {
      *         "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      *         >To leave an organization when all required account information has not yet been provided</a> in the
      *         <i>AWS Organizations User Guide.</i>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated
+     *         administrators than allowed for the service principal.
      *         </p>
      *         </li>
      *         <li>
@@ -10161,6 +12270,11 @@ public interface AWSOrganizations {
      *         For information on limits that affect AWS Organizations, see <a
      *         href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_limits.html">Limits of
      *         AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * @throws UnsupportedAPIEndpointException
+     *         This action isn't available in the current Region.
+     * @throws PolicyChangesInProgressException
+     *         Changes to the effective policy are in progress, and its contents can't be returned. Try the operation
+     *         again later.
      * @sample AWSOrganizations.UpdatePolicy
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/UpdatePolicy" target="_top">AWS API
      *      Documentation</a>

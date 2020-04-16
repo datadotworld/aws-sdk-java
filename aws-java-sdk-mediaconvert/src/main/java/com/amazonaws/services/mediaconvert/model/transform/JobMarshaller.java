@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public class JobMarshaller {
 
     private static final MarshallingInfo<StructuredPojo> ACCELERATIONSETTINGS_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("accelerationSettings").build();
+    private static final MarshallingInfo<String> ACCELERATIONSTATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("accelerationStatus").build();
     private static final MarshallingInfo<String> ARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("arn").build();
     private static final MarshallingInfo<String> BILLINGTAGSSOURCE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -43,18 +45,24 @@ public class JobMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("errorCode").build();
     private static final MarshallingInfo<String> ERRORMESSAGE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("errorMessage").build();
+    private static final MarshallingInfo<List> HOPDESTINATIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("hopDestinations").build();
     private static final MarshallingInfo<String> ID_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("id").build();
     private static final MarshallingInfo<Integer> JOBPERCENTCOMPLETE_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("jobPercentComplete").build();
     private static final MarshallingInfo<String> JOBTEMPLATE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("jobTemplate").build();
+    private static final MarshallingInfo<StructuredPojo> MESSAGES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("messages").build();
     private static final MarshallingInfo<List> OUTPUTGROUPDETAILS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("outputGroupDetails").build();
     private static final MarshallingInfo<Integer> PRIORITY_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("priority").build();
     private static final MarshallingInfo<String> QUEUE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("queue").build();
+    private static final MarshallingInfo<List> QUEUETRANSITIONS_BINDING = MarshallingInfo.builder(MarshallingType.LIST)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("queueTransitions").build();
     private static final MarshallingInfo<Integer> RETRYCOUNT_BINDING = MarshallingInfo.builder(MarshallingType.INTEGER)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("retryCount").build();
     private static final MarshallingInfo<String> ROLE_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -89,18 +97,22 @@ public class JobMarshaller {
 
         try {
             protocolMarshaller.marshall(job.getAccelerationSettings(), ACCELERATIONSETTINGS_BINDING);
+            protocolMarshaller.marshall(job.getAccelerationStatus(), ACCELERATIONSTATUS_BINDING);
             protocolMarshaller.marshall(job.getArn(), ARN_BINDING);
             protocolMarshaller.marshall(job.getBillingTagsSource(), BILLINGTAGSSOURCE_BINDING);
             protocolMarshaller.marshall(job.getCreatedAt(), CREATEDAT_BINDING);
             protocolMarshaller.marshall(job.getCurrentPhase(), CURRENTPHASE_BINDING);
             protocolMarshaller.marshall(job.getErrorCode(), ERRORCODE_BINDING);
             protocolMarshaller.marshall(job.getErrorMessage(), ERRORMESSAGE_BINDING);
+            protocolMarshaller.marshall(job.getHopDestinations(), HOPDESTINATIONS_BINDING);
             protocolMarshaller.marshall(job.getId(), ID_BINDING);
             protocolMarshaller.marshall(job.getJobPercentComplete(), JOBPERCENTCOMPLETE_BINDING);
             protocolMarshaller.marshall(job.getJobTemplate(), JOBTEMPLATE_BINDING);
+            protocolMarshaller.marshall(job.getMessages(), MESSAGES_BINDING);
             protocolMarshaller.marshall(job.getOutputGroupDetails(), OUTPUTGROUPDETAILS_BINDING);
             protocolMarshaller.marshall(job.getPriority(), PRIORITY_BINDING);
             protocolMarshaller.marshall(job.getQueue(), QUEUE_BINDING);
+            protocolMarshaller.marshall(job.getQueueTransitions(), QUEUETRANSITIONS_BINDING);
             protocolMarshaller.marshall(job.getRetryCount(), RETRYCOUNT_BINDING);
             protocolMarshaller.marshall(job.getRole(), ROLE_BINDING);
             protocolMarshaller.marshall(job.getSettings(), SETTINGS_BINDING);

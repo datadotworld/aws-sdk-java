@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -69,13 +69,12 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
     private java.util.List<Tag> tags;
     /**
      * <p>
-     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
-     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
-     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
-     * Using an Amazon Virtual Private Cloud</a> and <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
-     * Using an Amazon Virtual Private Cloud</a>.
+     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
+     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
+     * transform. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
+     * Private Cloud</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
+     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
      * </p>
      */
     private VpcConfig vpcConfig;
@@ -83,11 +82,6 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
      * </p>
-     * <note>
-     * <p>
-     * The Semantic Segmentation built-in algorithm does not support network isolation.
-     * </p>
-     * </note>
      */
     private Boolean enableNetworkIsolation;
 
@@ -426,21 +420,20 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
-     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
-     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
-     * Using an Amazon Virtual Private Cloud</a> and <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
-     * Using an Amazon Virtual Private Cloud</a>.
+     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
+     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
+     * transform. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
+     * Private Cloud</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
+     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
      * </p>
      * 
      * @param vpcConfig
-     *        A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     *        specifies the VPC that you want your model to connect to. Control access to and from your model container
-     *        by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For
-     *        more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect
-     *        Endpoints by Using an Amazon Virtual Private Cloud</a> and <a
+     *        A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to
+     *        and from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services
+     *        and in batch transform. For more information, see <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon
+     *        Virtual Private Cloud</a> and <a
      *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
      *        by Using an Amazon Virtual Private Cloud</a>.
      */
@@ -451,20 +444,19 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
-     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
-     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
-     * Using an Amazon Virtual Private Cloud</a> and <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
-     * Using an Amazon Virtual Private Cloud</a>.
+     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
+     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
+     * transform. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
+     * Private Cloud</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
+     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
      * </p>
      * 
-     * @return A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     *         specifies the VPC that you want your model to connect to. Control access to and from your model container
-     *         by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For
-     *         more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect
-     *         Endpoints by Using an Amazon Virtual Private Cloud</a> and <a
+     * @return A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access
+     *         to and from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting
+     *         services and in batch transform. For more information, see <a
+     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon
+     *         Virtual Private Cloud</a> and <a
      *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform
      *         Jobs by Using an Amazon Virtual Private Cloud</a>.
      */
@@ -475,21 +467,20 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     * specifies the VPC that you want your model to connect to. Control access to and from your model container by
-     * configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For more
-     * information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by
-     * Using an Amazon Virtual Private Cloud</a> and <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs by
-     * Using an Amazon Virtual Private Cloud</a>.
+     * A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to and
+     * from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch
+     * transform. For more information, see <a
+     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon Virtual
+     * Private Cloud</a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in
+     * Batch Transform Jobs by Using an Amazon Virtual Private Cloud</a>.
      * </p>
      * 
      * @param vpcConfig
-     *        A <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_VpcConfig.html">VpcConfig</a> object that
-     *        specifies the VPC that you want your model to connect to. Control access to and from your model container
-     *        by configuring the VPC. <code>VpcConfig</code> is used in hosting services and in batch transform. For
-     *        more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect
-     *        Endpoints by Using an Amazon Virtual Private Cloud</a> and <a
+     *        A <a>VpcConfig</a> object that specifies the VPC that you want your model to connect to. Control access to
+     *        and from your model container by configuring the VPC. <code>VpcConfig</code> is used in hosting services
+     *        and in batch transform. For more information, see <a
+     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html">Protect Endpoints by Using an Amazon
+     *        Virtual Private Cloud</a> and <a
      *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html">Protect Data in Batch Transform Jobs
      *        by Using an Amazon Virtual Private Cloud</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -504,18 +495,10 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
      * </p>
-     * <note>
-     * <p>
-     * The Semantic Segmentation built-in algorithm does not support network isolation.
-     * </p>
-     * </note>
      * 
      * @param enableNetworkIsolation
      *        Isolates the model container. No inbound or outbound network calls can be made to or from the model
-     *        container.</p> <note>
-     *        <p>
-     *        The Semantic Segmentation built-in algorithm does not support network isolation.
-     *        </p>
+     *        container.
      */
 
     public void setEnableNetworkIsolation(Boolean enableNetworkIsolation) {
@@ -526,17 +509,9 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
      * </p>
-     * <note>
-     * <p>
-     * The Semantic Segmentation built-in algorithm does not support network isolation.
-     * </p>
-     * </note>
      * 
      * @return Isolates the model container. No inbound or outbound network calls can be made to or from the model
-     *         container.</p> <note>
-     *         <p>
-     *         The Semantic Segmentation built-in algorithm does not support network isolation.
-     *         </p>
+     *         container.
      */
 
     public Boolean getEnableNetworkIsolation() {
@@ -547,18 +522,10 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
      * </p>
-     * <note>
-     * <p>
-     * The Semantic Segmentation built-in algorithm does not support network isolation.
-     * </p>
-     * </note>
      * 
      * @param enableNetworkIsolation
      *        Isolates the model container. No inbound or outbound network calls can be made to or from the model
-     *        container.</p> <note>
-     *        <p>
-     *        The Semantic Segmentation built-in algorithm does not support network isolation.
-     *        </p>
+     *        container.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -571,17 +538,9 @@ public class CreateModelRequest extends com.amazonaws.AmazonWebServiceRequest im
      * <p>
      * Isolates the model container. No inbound or outbound network calls can be made to or from the model container.
      * </p>
-     * <note>
-     * <p>
-     * The Semantic Segmentation built-in algorithm does not support network isolation.
-     * </p>
-     * </note>
      * 
      * @return Isolates the model container. No inbound or outbound network calls can be made to or from the model
-     *         container.</p> <note>
-     *         <p>
-     *         The Semantic Segmentation built-in algorithm does not support network isolation.
-     *         </p>
+     *         container.
      */
 
     public Boolean isEnableNetworkIsolation() {

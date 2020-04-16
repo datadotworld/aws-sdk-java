@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -52,6 +52,8 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
      * Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=NO
      */
     private String audioTrackType;
+    /** Specifies the segment type. */
+    private String segmentType;
 
     /**
      * Specifies the group to which the audio Rendition belongs.
@@ -293,6 +295,57 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
     }
 
     /**
+     * Specifies the segment type.
+     * 
+     * @param segmentType
+     *        Specifies the segment type.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public void setSegmentType(String segmentType) {
+        this.segmentType = segmentType;
+    }
+
+    /**
+     * Specifies the segment type.
+     * 
+     * @return Specifies the segment type.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public String getSegmentType() {
+        return this.segmentType;
+    }
+
+    /**
+     * Specifies the segment type.
+     * 
+     * @param segmentType
+     *        Specifies the segment type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public AudioOnlyHlsSettings withSegmentType(String segmentType) {
+        setSegmentType(segmentType);
+        return this;
+    }
+
+    /**
+     * Specifies the segment type.
+     * 
+     * @param segmentType
+     *        Specifies the segment type.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see AudioOnlyHlsSegmentType
+     */
+
+    public AudioOnlyHlsSettings withSegmentType(AudioOnlyHlsSegmentType segmentType) {
+        this.segmentType = segmentType.toString();
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -309,7 +362,9 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
         if (getAudioOnlyImage() != null)
             sb.append("AudioOnlyImage: ").append(getAudioOnlyImage()).append(",");
         if (getAudioTrackType() != null)
-            sb.append("AudioTrackType: ").append(getAudioTrackType());
+            sb.append("AudioTrackType: ").append(getAudioTrackType()).append(",");
+        if (getSegmentType() != null)
+            sb.append("SegmentType: ").append(getSegmentType());
         sb.append("}");
         return sb.toString();
     }
@@ -336,6 +391,10 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
             return false;
         if (other.getAudioTrackType() != null && other.getAudioTrackType().equals(this.getAudioTrackType()) == false)
             return false;
+        if (other.getSegmentType() == null ^ this.getSegmentType() == null)
+            return false;
+        if (other.getSegmentType() != null && other.getSegmentType().equals(this.getSegmentType()) == false)
+            return false;
         return true;
     }
 
@@ -347,6 +406,7 @@ public class AudioOnlyHlsSettings implements Serializable, Cloneable, Structured
         hashCode = prime * hashCode + ((getAudioGroupId() == null) ? 0 : getAudioGroupId().hashCode());
         hashCode = prime * hashCode + ((getAudioOnlyImage() == null) ? 0 : getAudioOnlyImage().hashCode());
         hashCode = prime * hashCode + ((getAudioTrackType() == null) ? 0 : getAudioTrackType().hashCode());
+        hashCode = prime * hashCode + ((getSegmentType() == null) ? 0 : getSegmentType().hashCode());
         return hashCode;
     }
 

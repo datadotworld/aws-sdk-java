@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class AndroidPushNotificationTemplateMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ImageIconUrl").build();
     private static final MarshallingInfo<String> IMAGEURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("ImageUrl").build();
+    private static final MarshallingInfo<String> RAWCONTENT_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RawContent").build();
     private static final MarshallingInfo<String> SMALLIMAGEICONURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("SmallImageIconUrl").build();
     private static final MarshallingInfo<String> SOUND_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
@@ -64,6 +66,7 @@ public class AndroidPushNotificationTemplateMarshaller {
             protocolMarshaller.marshall(androidPushNotificationTemplate.getBody(), BODY_BINDING);
             protocolMarshaller.marshall(androidPushNotificationTemplate.getImageIconUrl(), IMAGEICONURL_BINDING);
             protocolMarshaller.marshall(androidPushNotificationTemplate.getImageUrl(), IMAGEURL_BINDING);
+            protocolMarshaller.marshall(androidPushNotificationTemplate.getRawContent(), RAWCONTENT_BINDING);
             protocolMarshaller.marshall(androidPushNotificationTemplate.getSmallImageIconUrl(), SMALLIMAGEICONURL_BINDING);
             protocolMarshaller.marshall(androidPushNotificationTemplate.getSound(), SOUND_BINDING);
             protocolMarshaller.marshall(androidPushNotificationTemplate.getTitle(), TITLE_BINDING);

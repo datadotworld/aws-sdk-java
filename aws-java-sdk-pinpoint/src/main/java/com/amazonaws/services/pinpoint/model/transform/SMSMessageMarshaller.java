@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,6 +33,8 @@ public class SMSMessageMarshaller {
             .marshallLocationName("Body").build();
     private static final MarshallingInfo<String> KEYWORD_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Keyword").build();
+    private static final MarshallingInfo<String> MEDIAURL_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
+            .marshallLocationName("MediaUrl").build();
     private static final MarshallingInfo<String> MESSAGETYPE_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("MessageType").build();
     private static final MarshallingInfo<String> ORIGINATIONNUMBER_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
@@ -60,6 +62,7 @@ public class SMSMessageMarshaller {
         try {
             protocolMarshaller.marshall(sMSMessage.getBody(), BODY_BINDING);
             protocolMarshaller.marshall(sMSMessage.getKeyword(), KEYWORD_BINDING);
+            protocolMarshaller.marshall(sMSMessage.getMediaUrl(), MEDIAURL_BINDING);
             protocolMarshaller.marshall(sMSMessage.getMessageType(), MESSAGETYPE_BINDING);
             protocolMarshaller.marshall(sMSMessage.getOriginationNumber(), ORIGINATIONNUMBER_BINDING);
             protocolMarshaller.marshall(sMSMessage.getSenderId(), SENDERID_BINDING);

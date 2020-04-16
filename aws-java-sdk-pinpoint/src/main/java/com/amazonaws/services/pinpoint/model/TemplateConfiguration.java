@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -46,6 +46,12 @@ public class TemplateConfiguration implements Serializable, Cloneable, Structure
      * </p>
      */
     private Template sMSTemplate;
+    /**
+     * <p>
+     * The voice template to use for the message. This object isn't supported for campaigns.
+     * </p>
+     */
+    private Template voiceTemplate;
 
     /**
      * <p>
@@ -168,6 +174,46 @@ public class TemplateConfiguration implements Serializable, Cloneable, Structure
     }
 
     /**
+     * <p>
+     * The voice template to use for the message. This object isn't supported for campaigns.
+     * </p>
+     * 
+     * @param voiceTemplate
+     *        The voice template to use for the message. This object isn't supported for campaigns.
+     */
+
+    public void setVoiceTemplate(Template voiceTemplate) {
+        this.voiceTemplate = voiceTemplate;
+    }
+
+    /**
+     * <p>
+     * The voice template to use for the message. This object isn't supported for campaigns.
+     * </p>
+     * 
+     * @return The voice template to use for the message. This object isn't supported for campaigns.
+     */
+
+    public Template getVoiceTemplate() {
+        return this.voiceTemplate;
+    }
+
+    /**
+     * <p>
+     * The voice template to use for the message. This object isn't supported for campaigns.
+     * </p>
+     * 
+     * @param voiceTemplate
+     *        The voice template to use for the message. This object isn't supported for campaigns.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public TemplateConfiguration withVoiceTemplate(Template voiceTemplate) {
+        setVoiceTemplate(voiceTemplate);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -184,7 +230,9 @@ public class TemplateConfiguration implements Serializable, Cloneable, Structure
         if (getPushTemplate() != null)
             sb.append("PushTemplate: ").append(getPushTemplate()).append(",");
         if (getSMSTemplate() != null)
-            sb.append("SMSTemplate: ").append(getSMSTemplate());
+            sb.append("SMSTemplate: ").append(getSMSTemplate()).append(",");
+        if (getVoiceTemplate() != null)
+            sb.append("VoiceTemplate: ").append(getVoiceTemplate());
         sb.append("}");
         return sb.toString();
     }
@@ -211,6 +259,10 @@ public class TemplateConfiguration implements Serializable, Cloneable, Structure
             return false;
         if (other.getSMSTemplate() != null && other.getSMSTemplate().equals(this.getSMSTemplate()) == false)
             return false;
+        if (other.getVoiceTemplate() == null ^ this.getVoiceTemplate() == null)
+            return false;
+        if (other.getVoiceTemplate() != null && other.getVoiceTemplate().equals(this.getVoiceTemplate()) == false)
+            return false;
         return true;
     }
 
@@ -222,6 +274,7 @@ public class TemplateConfiguration implements Serializable, Cloneable, Structure
         hashCode = prime * hashCode + ((getEmailTemplate() == null) ? 0 : getEmailTemplate().hashCode());
         hashCode = prime * hashCode + ((getPushTemplate() == null) ? 0 : getPushTemplate().hashCode());
         hashCode = prime * hashCode + ((getSMSTemplate() == null) ? 0 : getSMSTemplate().hashCode());
+        hashCode = prime * hashCode + ((getVoiceTemplate() == null) ? 0 : getVoiceTemplate().hashCode());
         return hashCode;
     }
 

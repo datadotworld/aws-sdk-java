@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -25,6 +25,12 @@ public enum TrainingInstanceType {
     MlM44xlarge("ml.m4.4xlarge"),
     MlM410xlarge("ml.m4.10xlarge"),
     MlM416xlarge("ml.m4.16xlarge"),
+    MlG4dnXlarge("ml.g4dn.xlarge"),
+    MlG4dn2xlarge("ml.g4dn.2xlarge"),
+    MlG4dn4xlarge("ml.g4dn.4xlarge"),
+    MlG4dn8xlarge("ml.g4dn.8xlarge"),
+    MlG4dn12xlarge("ml.g4dn.12xlarge"),
+    MlG4dn16xlarge("ml.g4dn.16xlarge"),
     MlM5Large("ml.m5.large"),
     MlM5Xlarge("ml.m5.xlarge"),
     MlM52xlarge("ml.m5.2xlarge"),

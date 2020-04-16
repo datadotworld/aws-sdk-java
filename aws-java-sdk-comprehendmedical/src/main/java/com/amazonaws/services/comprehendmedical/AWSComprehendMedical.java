@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -130,7 +130,8 @@ public interface AWSComprehendMedical {
     /**
      * <p>
      * Inspects the clinical text for a variety of medical entities and returns specific information about them such as
-     * entity category, location, and confidence score on that information.
+     * entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation replaces the <a>DetectEntities</a> operation. This new action uses a
@@ -139,7 +140,7 @@ public interface AWSComprehendMedical {
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation returns the <code>Acuity</code> and <code>Direction</code> entities
-     * as attributes instead of types. It does not return the <code>Quality</code> or <code>Quantity</code> entities.
+     * as attributes instead of types.
      * </p>
      * 
      * @param detectEntitiesV2Request
@@ -168,8 +169,9 @@ public interface AWSComprehendMedical {
 
     /**
      * <p>
-     * Inspects the clinical text for protected health information (PHI) entities and entity category, location, and
-     * confidence score on that information.
+     * Inspects the clinical text for protected health information (PHI) entities and returns the entity category,
+     * location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English
+     * language texts.
      * </p>
      * 
      * @param detectPHIRequest
@@ -195,6 +197,68 @@ public interface AWSComprehendMedical {
      *      API Documentation</a>
      */
     DetectPHIResult detectPHI(DetectPHIRequest detectPHIRequest);
+
+    /**
+     * <p>
+     * InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to
+     * normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
+     * Comprehend Medical only detects medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferICD10CMRequest
+     * @return Result of the InferICD10CM operation returned by the service.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @throws ServiceUnavailableException
+     *         The Amazon Comprehend Medical service is temporarily unavailable. Please wait and then retry your
+     *         request.
+     * @throws TooManyRequestsException
+     *         You have made too many requests within a short period of time. Wait for a short time and then try your
+     *         request again. Contact customer support for more information about a service limit increase.
+     * @throws InvalidRequestException
+     *         The request that you made is invalid. Check your request to determine why it's invalid and then retry the
+     *         request.
+     * @throws InvalidEncodingException
+     *         The input text was not in valid UTF-8 character encoding. Check your text then retry your request.
+     * @throws TextSizeLimitExceededException
+     *         The size of the text you submitted exceeds the size limit. Reduce the size of the text or use a smaller
+     *         document and then retry your request.
+     * @sample AWSComprehendMedical.InferICD10CM
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferICD10CM" target="_top">AWS
+     *      API Documentation</a>
+     */
+    InferICD10CMResult inferICD10CM(InferICD10CMRequest inferICD10CMRequest);
+
+    /**
+     * <p>
+     * InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept
+     * identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferRxNormRequest
+     * @return Result of the InferRxNorm operation returned by the service.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @throws ServiceUnavailableException
+     *         The Amazon Comprehend Medical service is temporarily unavailable. Please wait and then retry your
+     *         request.
+     * @throws TooManyRequestsException
+     *         You have made too many requests within a short period of time. Wait for a short time and then try your
+     *         request again. Contact customer support for more information about a service limit increase.
+     * @throws InvalidRequestException
+     *         The request that you made is invalid. Check your request to determine why it's invalid and then retry the
+     *         request.
+     * @throws InvalidEncodingException
+     *         The input text was not in valid UTF-8 character encoding. Check your text then retry your request.
+     * @throws TextSizeLimitExceededException
+     *         The size of the text you submitted exceeds the size limit. Reduce the size of the text or use a smaller
+     *         document and then retry your request.
+     * @sample AWSComprehendMedical.InferRxNorm
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferRxNorm" target="_top">AWS
+     *      API Documentation</a>
+     */
+    InferRxNormResult inferRxNorm(InferRxNormRequest inferRxNormRequest);
 
     /**
      * <p>

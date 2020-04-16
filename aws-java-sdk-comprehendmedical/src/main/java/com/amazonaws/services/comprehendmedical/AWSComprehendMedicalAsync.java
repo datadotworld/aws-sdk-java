@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -149,7 +149,8 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
     /**
      * <p>
      * Inspects the clinical text for a variety of medical entities and returns specific information about them such as
-     * entity category, location, and confidence score on that information.
+     * entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation replaces the <a>DetectEntities</a> operation. This new action uses a
@@ -158,7 +159,7 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation returns the <code>Acuity</code> and <code>Direction</code> entities
-     * as attributes instead of types. It does not return the <code>Quality</code> or <code>Quantity</code> entities.
+     * as attributes instead of types.
      * </p>
      * 
      * @param detectEntitiesV2Request
@@ -172,7 +173,8 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
     /**
      * <p>
      * Inspects the clinical text for a variety of medical entities and returns specific information about them such as
-     * entity category, location, and confidence score on that information.
+     * entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation replaces the <a>DetectEntities</a> operation. This new action uses a
@@ -181,7 +183,7 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation returns the <code>Acuity</code> and <code>Direction</code> entities
-     * as attributes instead of types. It does not return the <code>Quality</code> or <code>Quantity</code> entities.
+     * as attributes instead of types.
      * </p>
      * 
      * @param detectEntitiesV2Request
@@ -199,8 +201,9 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
 
     /**
      * <p>
-     * Inspects the clinical text for protected health information (PHI) entities and entity category, location, and
-     * confidence score on that information.
+     * Inspects the clinical text for protected health information (PHI) entities and returns the entity category,
+     * location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English
+     * language texts.
      * </p>
      * 
      * @param detectPHIRequest
@@ -213,8 +216,9 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
 
     /**
      * <p>
-     * Inspects the clinical text for protected health information (PHI) entities and entity category, location, and
-     * confidence score on that information.
+     * Inspects the clinical text for protected health information (PHI) entities and returns the entity category,
+     * location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English
+     * language texts.
      * </p>
      * 
      * @param detectPHIRequest
@@ -229,6 +233,76 @@ public interface AWSComprehendMedicalAsync extends AWSComprehendMedical {
      */
     java.util.concurrent.Future<DetectPHIResult> detectPHIAsync(DetectPHIRequest detectPHIRequest,
             com.amazonaws.handlers.AsyncHandler<DetectPHIRequest, DetectPHIResult> asyncHandler);
+
+    /**
+     * <p>
+     * InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to
+     * normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
+     * Comprehend Medical only detects medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferICD10CMRequest
+     * @return A Java Future containing the result of the InferICD10CM operation returned by the service.
+     * @sample AWSComprehendMedicalAsync.InferICD10CM
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferICD10CM" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<InferICD10CMResult> inferICD10CMAsync(InferICD10CMRequest inferICD10CMRequest);
+
+    /**
+     * <p>
+     * InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to
+     * normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
+     * Comprehend Medical only detects medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferICD10CMRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the InferICD10CM operation returned by the service.
+     * @sample AWSComprehendMedicalAsyncHandler.InferICD10CM
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferICD10CM" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<InferICD10CMResult> inferICD10CMAsync(InferICD10CMRequest inferICD10CMRequest,
+            com.amazonaws.handlers.AsyncHandler<InferICD10CMRequest, InferICD10CMResult> asyncHandler);
+
+    /**
+     * <p>
+     * InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept
+     * identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferRxNormRequest
+     * @return A Java Future containing the result of the InferRxNorm operation returned by the service.
+     * @sample AWSComprehendMedicalAsync.InferRxNorm
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferRxNorm" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<InferRxNormResult> inferRxNormAsync(InferRxNormRequest inferRxNormRequest);
+
+    /**
+     * <p>
+     * InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept
+     * identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferRxNormRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the InferRxNorm operation returned by the service.
+     * @sample AWSComprehendMedicalAsyncHandler.InferRxNorm
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferRxNorm" target="_top">AWS
+     *      API Documentation</a>
+     */
+    java.util.concurrent.Future<InferRxNormResult> inferRxNormAsync(InferRxNormRequest inferRxNormRequest,
+            com.amazonaws.handlers.AsyncHandler<InferRxNormRequest, InferRxNormResult> asyncHandler);
 
     /**
      * <p>

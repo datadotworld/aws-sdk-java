@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,7 +27,7 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     * [Required] The ARN of a resource that can be tagged.
      * </p>
      */
     private String resourceArn;
@@ -40,11 +40,11 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     * [Required] The ARN of a resource that can be tagged.
      * </p>
      * 
      * @param resourceArn
-     *        [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     *        [Required] The ARN of a resource that can be tagged.
      */
 
     public void setResourceArn(String resourceArn) {
@@ -53,10 +53,10 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     * [Required] The ARN of a resource that can be tagged.
      * </p>
      * 
-     * @return [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     * @return [Required] The ARN of a resource that can be tagged.
      */
 
     public String getResourceArn() {
@@ -65,11 +65,11 @@ public class UntagResourceRequest extends com.amazonaws.AmazonWebServiceRequest 
 
     /**
      * <p>
-     * [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     * [Required] The ARN of a resource that can be tagged.
      * </p>
      * 
      * @param resourceArn
-     *        [Required] The ARN of a resource that can be tagged. The resource ARN must be URL-encoded.
+     *        [Required] The ARN of a resource that can be tagged.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -70,11 +70,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * </li>
      * <li>
      * <p>
-     * DATABASE_ENGINE
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * DEPLOYMENT_OPTION
      * </p>
      * </li>
@@ -121,7 +116,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * </ul>
      * <p>
      * <code>GetReservationUtilization</code> uses the same <a
-     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
+     * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
      * object as the other operations, but only <code>AND</code> is supported among each dimension, and nesting is
      * supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
      * </p>
@@ -391,11 +386,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * </li>
      * <li>
      * <p>
-     * DATABASE_ENGINE
-     * </p>
-     * </li>
-     * <li>
-     * <p>
      * DEPLOYMENT_OPTION
      * </p>
      * </li>
@@ -442,7 +432,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * </ul>
      * <p>
      * <code>GetReservationUtilization</code> uses the same <a
-     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
+     * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
      * object as the other operations, but only <code>AND</code> is supported among each dimension, and nesting is
      * supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
      * </p>
@@ -458,11 +448,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      *        <li>
      *        <p>
      *        CACHE_ENGINE
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        DATABASE_ENGINE
      *        </p>
      *        </li>
      *        <li>
@@ -513,7 +498,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      *        </ul>
      *        <p>
      *        <code>GetReservationUtilization</code> uses the same <a
-     *        href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
+     *        href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
      *        >Expression</a> object as the other operations, but only <code>AND</code> is supported among each
      *        dimension, and nesting is supported up to only one level deep. If there are multiple values for a
      *        dimension, they are OR'd together.
@@ -536,11 +521,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * <li>
      * <p>
      * CACHE_ENGINE
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * DATABASE_ENGINE
      * </p>
      * </li>
      * <li>
@@ -591,7 +571,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * </ul>
      * <p>
      * <code>GetReservationUtilization</code> uses the same <a
-     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
+     * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
      * object as the other operations, but only <code>AND</code> is supported among each dimension, and nesting is
      * supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
      * </p>
@@ -606,11 +586,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      *         <li>
      *         <p>
      *         CACHE_ENGINE
-     *         </p>
-     *         </li>
-     *         <li>
-     *         <p>
-     *         DATABASE_ENGINE
      *         </p>
      *         </li>
      *         <li>
@@ -661,7 +636,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      *         </ul>
      *         <p>
      *         <code>GetReservationUtilization</code> uses the same <a
-     *         href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
+     *         href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
      *         >Expression</a> object as the other operations, but only <code>AND</code> is supported among each
      *         dimension, and nesting is supported up to only one level deep. If there are multiple values for a
      *         dimension, they are OR'd together.
@@ -684,11 +659,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * <li>
      * <p>
      * CACHE_ENGINE
-     * </p>
-     * </li>
-     * <li>
-     * <p>
-     * DATABASE_ENGINE
      * </p>
      * </li>
      * <li>
@@ -739,7 +709,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      * </ul>
      * <p>
      * <code>GetReservationUtilization</code> uses the same <a
-     * href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
+     * href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html">Expression</a>
      * object as the other operations, but only <code>AND</code> is supported among each dimension, and nesting is
      * supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
      * </p>
@@ -755,11 +725,6 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      *        <li>
      *        <p>
      *        CACHE_ENGINE
-     *        </p>
-     *        </li>
-     *        <li>
-     *        <p>
-     *        DATABASE_ENGINE
      *        </p>
      *        </li>
      *        <li>
@@ -810,7 +775,7 @@ public class GetReservationUtilizationRequest extends com.amazonaws.AmazonWebSer
      *        </ul>
      *        <p>
      *        <code>GetReservationUtilization</code> uses the same <a
-     *        href="http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
+     *        href="https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html"
      *        >Expression</a> object as the other operations, but only <code>AND</code> is supported among each
      *        dimension, and nesting is supported up to only one level deep. If there are multiple values for a
      *        dimension, they are OR'd together.

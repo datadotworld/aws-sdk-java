@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -157,8 +157,18 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
      * </p>
      */
     private VPCConfigResponse vpcConfig;
-    /** <p/> */
+    /**
+     * <p>
+     * Information about a network interface.
+     * </p>
+     */
     private NetworkInterface networkInterface;
+    /**
+     * <p>
+     * Compute information for the simulation job
+     * </p>
+     */
+    private ComputeResponse compute;
 
     /**
      * <p>
@@ -1141,6 +1151,13 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single Tags entry
+     *
+     * @see SimulationJob#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public SimulationJob addTagsEntry(String key, String value) {
         if (null == this.tags) {
             this.tags = new java.util.HashMap<String, String>();
@@ -1203,9 +1220,12 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * Information about a network interface.
+     * </p>
      * 
      * @param networkInterface
+     *        Information about a network interface.
      */
 
     public void setNetworkInterface(NetworkInterface networkInterface) {
@@ -1213,9 +1233,11 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * Information about a network interface.
+     * </p>
      * 
-     * @return
+     * @return Information about a network interface.
      */
 
     public NetworkInterface getNetworkInterface() {
@@ -1223,14 +1245,57 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
-     * <p/>
+     * <p>
+     * Information about a network interface.
+     * </p>
      * 
      * @param networkInterface
+     *        Information about a network interface.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public SimulationJob withNetworkInterface(NetworkInterface networkInterface) {
         setNetworkInterface(networkInterface);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Compute information for the simulation job
+     * </p>
+     * 
+     * @param compute
+     *        Compute information for the simulation job
+     */
+
+    public void setCompute(ComputeResponse compute) {
+        this.compute = compute;
+    }
+
+    /**
+     * <p>
+     * Compute information for the simulation job
+     * </p>
+     * 
+     * @return Compute information for the simulation job
+     */
+
+    public ComputeResponse getCompute() {
+        return this.compute;
+    }
+
+    /**
+     * <p>
+     * Compute information for the simulation job
+     * </p>
+     * 
+     * @param compute
+     *        Compute information for the simulation job
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public SimulationJob withCompute(ComputeResponse compute) {
+        setCompute(compute);
         return this;
     }
 
@@ -1285,7 +1350,9 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
         if (getVpcConfig() != null)
             sb.append("VpcConfig: ").append(getVpcConfig()).append(",");
         if (getNetworkInterface() != null)
-            sb.append("NetworkInterface: ").append(getNetworkInterface());
+            sb.append("NetworkInterface: ").append(getNetworkInterface()).append(",");
+        if (getCompute() != null)
+            sb.append("Compute: ").append(getCompute());
         sb.append("}");
         return sb.toString();
     }
@@ -1380,6 +1447,10 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getNetworkInterface() != null && other.getNetworkInterface().equals(this.getNetworkInterface()) == false)
             return false;
+        if (other.getCompute() == null ^ this.getCompute() == null)
+            return false;
+        if (other.getCompute() != null && other.getCompute().equals(this.getCompute()) == false)
+            return false;
         return true;
     }
 
@@ -1408,6 +1479,7 @@ public class SimulationJob implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getVpcConfig() == null) ? 0 : getVpcConfig().hashCode());
         hashCode = prime * hashCode + ((getNetworkInterface() == null) ? 0 : getNetworkInterface().hashCode());
+        hashCode = prime * hashCode + ((getCompute() == null) ? 0 : getCompute().hashCode());
         return hashCode;
     }
 

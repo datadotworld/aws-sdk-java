@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -78,29 +78,29 @@ public class AWSComprehendMedicalClient extends AmazonWebServiceClient implement
                     .withSupportsCbor(false)
                     .withSupportsIon(false)
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehendmedical.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehendmedical.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("InvalidEncodingException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.comprehendmedical.model.transform.InvalidEncodingExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ValidationException").withExceptionUnmarshaller(
                                     com.amazonaws.services.comprehendmedical.model.transform.ValidationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("ServiceUnavailableException").withExceptionUnmarshaller(
                                     com.amazonaws.services.comprehendmedical.model.transform.ServiceUnavailableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidRequestException").withExceptionUnmarshaller(
-                                    com.amazonaws.services.comprehendmedical.model.transform.InvalidRequestExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("TextSizeLimitExceededException").withExceptionUnmarshaller(
                                     com.amazonaws.services.comprehendmedical.model.transform.TextSizeLimitExceededExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("ResourceNotFoundException").withExceptionUnmarshaller(
-                                    com.amazonaws.services.comprehendmedical.model.transform.ResourceNotFoundExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InternalServerException").withExceptionUnmarshaller(
                                     com.amazonaws.services.comprehendmedical.model.transform.InternalServerExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("TooManyRequestsException").withExceptionUnmarshaller(
                                     com.amazonaws.services.comprehendmedical.model.transform.TooManyRequestsExceptionUnmarshaller.getInstance()))
-                    .addErrorMetadata(
-                            new JsonErrorShapeMetadata().withErrorCode("InvalidEncodingException").withExceptionUnmarshaller(
-                                    com.amazonaws.services.comprehendmedical.model.transform.InvalidEncodingExceptionUnmarshaller.getInstance()))
                     .withBaseServiceExceptionClass(com.amazonaws.services.comprehendmedical.model.AWSComprehendMedicalException.class));
 
     public static AWSComprehendMedicalClientBuilder builder() {
@@ -361,7 +361,8 @@ public class AWSComprehendMedicalClient extends AmazonWebServiceClient implement
     /**
      * <p>
      * Inspects the clinical text for a variety of medical entities and returns specific information about them such as
-     * entity category, location, and confidence score on that information.
+     * entity category, location, and confidence score on that information. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation replaces the <a>DetectEntities</a> operation. This new action uses a
@@ -370,7 +371,7 @@ public class AWSComprehendMedicalClient extends AmazonWebServiceClient implement
      * </p>
      * <p>
      * The <code>DetectEntitiesV2</code> operation returns the <code>Acuity</code> and <code>Direction</code> entities
-     * as attributes instead of types. It does not return the <code>Quality</code> or <code>Quantity</code> entities.
+     * as attributes instead of types.
      * </p>
      * 
      * @param detectEntitiesV2Request
@@ -439,8 +440,9 @@ public class AWSComprehendMedicalClient extends AmazonWebServiceClient implement
 
     /**
      * <p>
-     * Inspects the clinical text for protected health information (PHI) entities and entity category, location, and
-     * confidence score on that information.
+     * Inspects the clinical text for protected health information (PHI) entities and returns the entity category,
+     * location, and confidence score for each entity. Amazon Comprehend Medical only detects entities in English
+     * language texts.
      * </p>
      * 
      * @param detectPHIRequest
@@ -497,6 +499,148 @@ public class AWSComprehendMedicalClient extends AmazonWebServiceClient implement
 
             HttpResponseHandler<AmazonWebServiceResponse<DetectPHIResult>> responseHandler = protocolFactory.createResponseHandler(new JsonOperationMetadata()
                     .withPayloadJson(true).withHasStreamingSuccessResponse(false), new DetectPHIResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to
+     * normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
+     * Comprehend Medical only detects medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferICD10CMRequest
+     * @return Result of the InferICD10CM operation returned by the service.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @throws ServiceUnavailableException
+     *         The Amazon Comprehend Medical service is temporarily unavailable. Please wait and then retry your
+     *         request.
+     * @throws TooManyRequestsException
+     *         You have made too many requests within a short period of time. Wait for a short time and then try your
+     *         request again. Contact customer support for more information about a service limit increase.
+     * @throws InvalidRequestException
+     *         The request that you made is invalid. Check your request to determine why it's invalid and then retry the
+     *         request.
+     * @throws InvalidEncodingException
+     *         The input text was not in valid UTF-8 character encoding. Check your text then retry your request.
+     * @throws TextSizeLimitExceededException
+     *         The size of the text you submitted exceeds the size limit. Reduce the size of the text or use a smaller
+     *         document and then retry your request.
+     * @sample AWSComprehendMedical.InferICD10CM
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferICD10CM" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public InferICD10CMResult inferICD10CM(InferICD10CMRequest request) {
+        request = beforeClientExecution(request);
+        return executeInferICD10CM(request);
+    }
+
+    @SdkInternalApi
+    final InferICD10CMResult executeInferICD10CM(InferICD10CMRequest inferICD10CMRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(inferICD10CMRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<InferICD10CMRequest> request = null;
+        Response<InferICD10CMResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new InferICD10CMRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(inferICD10CMRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ComprehendMedical");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "InferICD10CM");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<InferICD10CMResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new InferICD10CMResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * InferRxNorm detects medications as entities listed in a patient record and links to the normalized concept
+     * identifiers in the RxNorm database from the National Library of Medicine. Amazon Comprehend Medical only detects
+     * medical entities in English language texts.
+     * </p>
+     * 
+     * @param inferRxNormRequest
+     * @return Result of the InferRxNorm operation returned by the service.
+     * @throws InternalServerException
+     *         An internal server error occurred. Retry your request.
+     * @throws ServiceUnavailableException
+     *         The Amazon Comprehend Medical service is temporarily unavailable. Please wait and then retry your
+     *         request.
+     * @throws TooManyRequestsException
+     *         You have made too many requests within a short period of time. Wait for a short time and then try your
+     *         request again. Contact customer support for more information about a service limit increase.
+     * @throws InvalidRequestException
+     *         The request that you made is invalid. Check your request to determine why it's invalid and then retry the
+     *         request.
+     * @throws InvalidEncodingException
+     *         The input text was not in valid UTF-8 character encoding. Check your text then retry your request.
+     * @throws TextSizeLimitExceededException
+     *         The size of the text you submitted exceeds the size limit. Reduce the size of the text or use a smaller
+     *         document and then retry your request.
+     * @sample AWSComprehendMedical.InferRxNorm
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/comprehendmedical-2018-10-30/InferRxNorm" target="_top">AWS
+     *      API Documentation</a>
+     */
+    @Override
+    public InferRxNormResult inferRxNorm(InferRxNormRequest request) {
+        request = beforeClientExecution(request);
+        return executeInferRxNorm(request);
+    }
+
+    @SdkInternalApi
+    final InferRxNormResult executeInferRxNorm(InferRxNormRequest inferRxNormRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(inferRxNormRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<InferRxNormRequest> request = null;
+        Response<InferRxNormResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new InferRxNormRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(inferRxNormRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "ComprehendMedical");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "InferRxNorm");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<InferRxNormResult>> responseHandler = protocolFactory.createResponseHandler(
+                    new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false), new InferRxNormResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();

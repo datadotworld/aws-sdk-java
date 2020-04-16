@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -38,6 +38,27 @@ public class BatchExecuteStatementRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The parameter set for the batch operation.
      * </p>
+     * <p>
+     * The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL statement
+     * with no parameters, use one of the following options:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Specify one or more empty parameter sets.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code> operation.
+     * </p>
+     * </li>
+     * </ul>
+     * <note>
+     * <p>
+     * Array parameters are not supported.
+     * </p>
+     * </note>
      */
     private java.util.List<java.util.List<SqlParameter>> parameterSets;
     /**
@@ -119,8 +140,50 @@ public class BatchExecuteStatementRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The parameter set for the batch operation.
      * </p>
+     * <p>
+     * The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL statement
+     * with no parameters, use one of the following options:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Specify one or more empty parameter sets.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code> operation.
+     * </p>
+     * </li>
+     * </ul>
+     * <note>
+     * <p>
+     * Array parameters are not supported.
+     * </p>
+     * </note>
      * 
-     * @return The parameter set for the batch operation.
+     * @return The parameter set for the batch operation.</p>
+     *         <p>
+     *         The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL
+     *         statement with no parameters, use one of the following options:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Specify one or more empty parameter sets.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code>
+     *         operation.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <note>
+     *         <p>
+     *         Array parameters are not supported.
+     *         </p>
      */
 
     public java.util.List<java.util.List<SqlParameter>> getParameterSets() {
@@ -131,9 +194,51 @@ public class BatchExecuteStatementRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The parameter set for the batch operation.
      * </p>
+     * <p>
+     * The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL statement
+     * with no parameters, use one of the following options:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Specify one or more empty parameter sets.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code> operation.
+     * </p>
+     * </li>
+     * </ul>
+     * <note>
+     * <p>
+     * Array parameters are not supported.
+     * </p>
+     * </note>
      * 
      * @param parameterSets
-     *        The parameter set for the batch operation.
+     *        The parameter set for the batch operation.</p>
+     *        <p>
+     *        The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL
+     *        statement with no parameters, use one of the following options:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Specify one or more empty parameter sets.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code>
+     *        operation.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <note>
+     *        <p>
+     *        Array parameters are not supported.
+     *        </p>
      */
 
     public void setParameterSets(java.util.Collection<java.util.List<SqlParameter>> parameterSets) {
@@ -150,13 +255,55 @@ public class BatchExecuteStatementRequest extends com.amazonaws.AmazonWebService
      * The parameter set for the batch operation.
      * </p>
      * <p>
+     * The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL statement
+     * with no parameters, use one of the following options:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Specify one or more empty parameter sets.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code> operation.
+     * </p>
+     * </li>
+     * </ul>
+     * <note>
+     * <p>
+     * Array parameters are not supported.
+     * </p>
+     * </note>
+     * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
      * {@link #setParameterSets(java.util.Collection)} or {@link #withParameterSets(java.util.Collection)} if you want
      * to override the existing values.
      * </p>
      * 
      * @param parameterSets
-     *        The parameter set for the batch operation.
+     *        The parameter set for the batch operation.</p>
+     *        <p>
+     *        The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL
+     *        statement with no parameters, use one of the following options:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Specify one or more empty parameter sets.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code>
+     *        operation.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <note>
+     *        <p>
+     *        Array parameters are not supported.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -174,9 +321,51 @@ public class BatchExecuteStatementRequest extends com.amazonaws.AmazonWebService
      * <p>
      * The parameter set for the batch operation.
      * </p>
+     * <p>
+     * The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL statement
+     * with no parameters, use one of the following options:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Specify one or more empty parameter sets.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code> operation.
+     * </p>
+     * </li>
+     * </ul>
+     * <note>
+     * <p>
+     * Array parameters are not supported.
+     * </p>
+     * </note>
      * 
      * @param parameterSets
-     *        The parameter set for the batch operation.
+     *        The parameter set for the batch operation.</p>
+     *        <p>
+     *        The SQL statement is executed as many times as the number of parameter sets provided. To execute a SQL
+     *        statement with no parameters, use one of the following options:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Specify one or more empty parameter sets.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Use the <code>ExecuteStatement</code> operation instead of the <code>BatchExecuteStatement</code>
+     *        operation.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <note>
+     *        <p>
+     *        Array parameters are not supported.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

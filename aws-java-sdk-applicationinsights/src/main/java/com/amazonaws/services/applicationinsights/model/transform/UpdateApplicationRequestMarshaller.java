@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,6 +31,8 @@ public class UpdateApplicationRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("ResourceGroupName").build();
     private static final MarshallingInfo<Boolean> OPSCENTERENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OpsCenterEnabled").build();
+    private static final MarshallingInfo<Boolean> CWEMONITORENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CWEMonitorEnabled").build();
     private static final MarshallingInfo<String> OPSITEMSNSTOPICARN_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OpsItemSNSTopicArn").build();
     private static final MarshallingInfo<Boolean> REMOVESNSTOPIC_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
@@ -54,6 +56,7 @@ public class UpdateApplicationRequestMarshaller {
         try {
             protocolMarshaller.marshall(updateApplicationRequest.getResourceGroupName(), RESOURCEGROUPNAME_BINDING);
             protocolMarshaller.marshall(updateApplicationRequest.getOpsCenterEnabled(), OPSCENTERENABLED_BINDING);
+            protocolMarshaller.marshall(updateApplicationRequest.getCWEMonitorEnabled(), CWEMONITORENABLED_BINDING);
             protocolMarshaller.marshall(updateApplicationRequest.getOpsItemSNSTopicArn(), OPSITEMSNSTOPICARN_BINDING);
             protocolMarshaller.marshall(updateApplicationRequest.getRemoveSNSTopic(), REMOVESNSTOPIC_BINDING);
         } catch (Exception e) {

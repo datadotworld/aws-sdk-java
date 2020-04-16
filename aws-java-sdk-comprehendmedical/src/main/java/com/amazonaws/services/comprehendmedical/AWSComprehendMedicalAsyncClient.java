@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -216,6 +216,72 @@ public class AWSComprehendMedicalAsyncClient extends AWSComprehendMedicalClient 
 
                 try {
                     result = executeDetectPHI(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferICD10CMResult> inferICD10CMAsync(InferICD10CMRequest request) {
+
+        return inferICD10CMAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferICD10CMResult> inferICD10CMAsync(final InferICD10CMRequest request,
+            final com.amazonaws.handlers.AsyncHandler<InferICD10CMRequest, InferICD10CMResult> asyncHandler) {
+        final InferICD10CMRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<InferICD10CMResult>() {
+            @Override
+            public InferICD10CMResult call() throws Exception {
+                InferICD10CMResult result = null;
+
+                try {
+                    result = executeInferICD10CM(finalRequest);
+                } catch (Exception ex) {
+                    if (asyncHandler != null) {
+                        asyncHandler.onError(ex);
+                    }
+                    throw ex;
+                }
+
+                if (asyncHandler != null) {
+                    asyncHandler.onSuccess(finalRequest, result);
+                }
+                return result;
+            }
+        });
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferRxNormResult> inferRxNormAsync(InferRxNormRequest request) {
+
+        return inferRxNormAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferRxNormResult> inferRxNormAsync(final InferRxNormRequest request,
+            final com.amazonaws.handlers.AsyncHandler<InferRxNormRequest, InferRxNormResult> asyncHandler) {
+        final InferRxNormRequest finalRequest = beforeClientExecution(request);
+
+        return executorService.submit(new java.util.concurrent.Callable<InferRxNormResult>() {
+            @Override
+            public InferRxNormResult call() throws Exception {
+                InferRxNormResult result = null;
+
+                try {
+                    result = executeInferRxNorm(finalRequest);
                 } catch (Exception ex) {
                     if (asyncHandler != null) {
                         asyncHandler.onError(ex);

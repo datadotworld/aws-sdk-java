@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,9 +33,9 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
     private String resourceId;
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      */
     private String nextToken;
@@ -82,15 +82,16 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      * 
      * @param nextToken
-     *        Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates
-     *        that there is more output available. Set it to the value of the previous call's <code>NextToken</code>
-     *        response to indicate where the output should continue from.
+     *        The parameter for receiving additional results if you receive a <code>NextToken</code> response in a
+     *        previous request. A <code>NextToken</code> response indicates that more output is available. Set this
+     *        parameter to the value of the previous call's <code>NextToken</code> response to indicate where the output
+     *        should continue from.
      */
 
     public void setNextToken(String nextToken) {
@@ -99,14 +100,15 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      * 
-     * @return Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates
-     *         that there is more output available. Set it to the value of the previous call's <code>NextToken</code>
-     *         response to indicate where the output should continue from.
+     * @return The parameter for receiving additional results if you receive a <code>NextToken</code> response in a
+     *         previous request. A <code>NextToken</code> response indicates that more output is available. Set this
+     *         parameter to the value of the previous call's <code>NextToken</code> response to indicate where the
+     *         output should continue from.
      */
 
     public String getNextToken() {
@@ -115,15 +117,16 @@ public class ListTagsForResourceRequest extends com.amazonaws.AmazonWebServiceRe
 
     /**
      * <p>
-     * Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates that
-     * there is more output available. Set it to the value of the previous call's <code>NextToken</code> response to
-     * indicate where the output should continue from.
+     * The parameter for receiving additional results if you receive a <code>NextToken</code> response in a previous
+     * request. A <code>NextToken</code> response indicates that more output is available. Set this parameter to the
+     * value of the previous call's <code>NextToken</code> response to indicate where the output should continue from.
      * </p>
      * 
      * @param nextToken
-     *        Use this parameter if you receive a <code>NextToken</code> response in a previous request that indicates
-     *        that there is more output available. Set it to the value of the previous call's <code>NextToken</code>
-     *        response to indicate where the output should continue from.
+     *        The parameter for receiving additional results if you receive a <code>NextToken</code> response in a
+     *        previous request. A <code>NextToken</code> response indicates that more output is available. Set this
+     *        parameter to the value of the previous call's <code>NextToken</code> response to indicate where the output
+     *        should continue from.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -94,6 +94,12 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
      * </p>
      */
     private DomainEndpointOptions domainEndpointOptions;
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     */
+    private AdvancedSecurityOptionsInput advancedSecurityOptions;
 
     /**
      * <p>
@@ -423,6 +429,13 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
         return this;
     }
 
+    /**
+     * Add a single AdvancedOptions entry
+     *
+     * @see UpdateElasticsearchDomainConfigRequest#withAdvancedOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public UpdateElasticsearchDomainConfigRequest addAdvancedOptionsEntry(String key, String value) {
         if (null == this.advancedOptions) {
             this.advancedOptions = new java.util.HashMap<String, String>();
@@ -530,6 +543,13 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
         return this;
     }
 
+    /**
+     * Add a single LogPublishingOptions entry
+     *
+     * @see UpdateElasticsearchDomainConfigRequest#withLogPublishingOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public UpdateElasticsearchDomainConfigRequest addLogPublishingOptionsEntry(String key, LogPublishingOption value) {
         if (null == this.logPublishingOptions) {
             this.logPublishingOptions = new java.util.HashMap<String, LogPublishingOption>();
@@ -592,6 +612,46 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
     }
 
     /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        Specifies advanced security options.
+     */
+
+    public void setAdvancedSecurityOptions(AdvancedSecurityOptionsInput advancedSecurityOptions) {
+        this.advancedSecurityOptions = advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     * 
+     * @return Specifies advanced security options.
+     */
+
+    public AdvancedSecurityOptionsInput getAdvancedSecurityOptions() {
+        return this.advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * Specifies advanced security options.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        Specifies advanced security options.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateElasticsearchDomainConfigRequest withAdvancedSecurityOptions(AdvancedSecurityOptionsInput advancedSecurityOptions) {
+        setAdvancedSecurityOptions(advancedSecurityOptions);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -622,7 +682,9 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
         if (getLogPublishingOptions() != null)
             sb.append("LogPublishingOptions: ").append(getLogPublishingOptions()).append(",");
         if (getDomainEndpointOptions() != null)
-            sb.append("DomainEndpointOptions: ").append(getDomainEndpointOptions());
+            sb.append("DomainEndpointOptions: ").append(getDomainEndpointOptions()).append(",");
+        if (getAdvancedSecurityOptions() != null)
+            sb.append("AdvancedSecurityOptions: ").append(getAdvancedSecurityOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -677,6 +739,10 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
             return false;
         if (other.getDomainEndpointOptions() != null && other.getDomainEndpointOptions().equals(this.getDomainEndpointOptions()) == false)
             return false;
+        if (other.getAdvancedSecurityOptions() == null ^ this.getAdvancedSecurityOptions() == null)
+            return false;
+        if (other.getAdvancedSecurityOptions() != null && other.getAdvancedSecurityOptions().equals(this.getAdvancedSecurityOptions()) == false)
+            return false;
         return true;
     }
 
@@ -695,6 +761,7 @@ public class UpdateElasticsearchDomainConfigRequest extends com.amazonaws.Amazon
         hashCode = prime * hashCode + ((getAccessPolicies() == null) ? 0 : getAccessPolicies().hashCode());
         hashCode = prime * hashCode + ((getLogPublishingOptions() == null) ? 0 : getLogPublishingOptions().hashCode());
         hashCode = prime * hashCode + ((getDomainEndpointOptions() == null) ? 0 : getDomainEndpointOptions().hashCode());
+        hashCode = prime * hashCode + ((getAdvancedSecurityOptions() == null) ? 0 : getAdvancedSecurityOptions().hashCode());
         return hashCode;
     }
 

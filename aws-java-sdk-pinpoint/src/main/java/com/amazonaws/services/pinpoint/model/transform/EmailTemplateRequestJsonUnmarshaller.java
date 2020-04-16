@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,9 +48,17 @@ public class EmailTemplateRequestJsonUnmarshaller implements Unmarshaller<EmailT
                 break;
 
             if (token == FIELD_NAME || token == START_OBJECT) {
+                if (context.testExpression("DefaultSubstitutions", targetDepth)) {
+                    context.nextToken();
+                    emailTemplateRequest.setDefaultSubstitutions(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("HtmlPart", targetDepth)) {
                     context.nextToken();
                     emailTemplateRequest.setHtmlPart(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("RecommenderId", targetDepth)) {
+                    context.nextToken();
+                    emailTemplateRequest.setRecommenderId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("Subject", targetDepth)) {
                     context.nextToken();
@@ -60,6 +68,10 @@ public class EmailTemplateRequestJsonUnmarshaller implements Unmarshaller<EmailT
                     context.nextToken();
                     emailTemplateRequest.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context
                             .getUnmarshaller(String.class)).unmarshall(context));
+                }
+                if (context.testExpression("TemplateDescription", targetDepth)) {
+                    context.nextToken();
+                    emailTemplateRequest.setTemplateDescription(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("TextPart", targetDepth)) {
                     context.nextToken();

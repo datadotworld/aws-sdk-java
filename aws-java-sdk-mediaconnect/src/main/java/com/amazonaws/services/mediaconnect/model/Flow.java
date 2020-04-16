@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -48,8 +48,14 @@ public class Flow implements Serializable, Cloneable, StructuredPojo {
     private java.util.List<Output> outputs;
 
     private Source source;
+
+    private FailoverConfig sourceFailoverConfig;
+
+    private java.util.List<Source> sources;
     /** The current status of the flow. */
     private String status;
+    /** The VPC Interfaces for this flow. */
+    private java.util.List<VpcInterface> vpcInterfaces;
 
     /**
      * The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones
@@ -384,6 +390,84 @@ public class Flow implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * @param sourceFailoverConfig
+     */
+
+    public void setSourceFailoverConfig(FailoverConfig sourceFailoverConfig) {
+        this.sourceFailoverConfig = sourceFailoverConfig;
+    }
+
+    /**
+     * @return
+     */
+
+    public FailoverConfig getSourceFailoverConfig() {
+        return this.sourceFailoverConfig;
+    }
+
+    /**
+     * @param sourceFailoverConfig
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Flow withSourceFailoverConfig(FailoverConfig sourceFailoverConfig) {
+        setSourceFailoverConfig(sourceFailoverConfig);
+        return this;
+    }
+
+    /**
+     * @return
+     */
+
+    public java.util.List<Source> getSources() {
+        return sources;
+    }
+
+    /**
+     * @param sources
+     */
+
+    public void setSources(java.util.Collection<Source> sources) {
+        if (sources == null) {
+            this.sources = null;
+            return;
+        }
+
+        this.sources = new java.util.ArrayList<Source>(sources);
+    }
+
+    /**
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setSources(java.util.Collection)} or {@link #withSources(java.util.Collection)} if you want to override
+     * the existing values.
+     * </p>
+     * 
+     * @param sources
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Flow withSources(Source... sources) {
+        if (this.sources == null) {
+            setSources(new java.util.ArrayList<Source>(sources.length));
+        }
+        for (Source ele : sources) {
+            this.sources.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * @param sources
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Flow withSources(java.util.Collection<Source> sources) {
+        setSources(sources);
+        return this;
+    }
+
+    /**
      * The current status of the flow.
      * 
      * @param status
@@ -435,6 +519,68 @@ public class Flow implements Serializable, Cloneable, StructuredPojo {
     }
 
     /**
+     * The VPC Interfaces for this flow.
+     * 
+     * @return The VPC Interfaces for this flow.
+     */
+
+    public java.util.List<VpcInterface> getVpcInterfaces() {
+        return vpcInterfaces;
+    }
+
+    /**
+     * The VPC Interfaces for this flow.
+     * 
+     * @param vpcInterfaces
+     *        The VPC Interfaces for this flow.
+     */
+
+    public void setVpcInterfaces(java.util.Collection<VpcInterface> vpcInterfaces) {
+        if (vpcInterfaces == null) {
+            this.vpcInterfaces = null;
+            return;
+        }
+
+        this.vpcInterfaces = new java.util.ArrayList<VpcInterface>(vpcInterfaces);
+    }
+
+    /**
+     * The VPC Interfaces for this flow.
+     * <p>
+     * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
+     * {@link #setVpcInterfaces(java.util.Collection)} or {@link #withVpcInterfaces(java.util.Collection)} if you want
+     * to override the existing values.
+     * </p>
+     * 
+     * @param vpcInterfaces
+     *        The VPC Interfaces for this flow.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Flow withVpcInterfaces(VpcInterface... vpcInterfaces) {
+        if (this.vpcInterfaces == null) {
+            setVpcInterfaces(new java.util.ArrayList<VpcInterface>(vpcInterfaces.length));
+        }
+        for (VpcInterface ele : vpcInterfaces) {
+            this.vpcInterfaces.add(ele);
+        }
+        return this;
+    }
+
+    /**
+     * The VPC Interfaces for this flow.
+     * 
+     * @param vpcInterfaces
+     *        The VPC Interfaces for this flow.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public Flow withVpcInterfaces(java.util.Collection<VpcInterface> vpcInterfaces) {
+        setVpcInterfaces(vpcInterfaces);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -462,8 +608,14 @@ public class Flow implements Serializable, Cloneable, StructuredPojo {
             sb.append("Outputs: ").append(getOutputs()).append(",");
         if (getSource() != null)
             sb.append("Source: ").append(getSource()).append(",");
+        if (getSourceFailoverConfig() != null)
+            sb.append("SourceFailoverConfig: ").append(getSourceFailoverConfig()).append(",");
+        if (getSources() != null)
+            sb.append("Sources: ").append(getSources()).append(",");
         if (getStatus() != null)
-            sb.append("Status: ").append(getStatus());
+            sb.append("Status: ").append(getStatus()).append(",");
+        if (getVpcInterfaces() != null)
+            sb.append("VpcInterfaces: ").append(getVpcInterfaces());
         sb.append("}");
         return sb.toString();
     }
@@ -510,9 +662,21 @@ public class Flow implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getSource() != null && other.getSource().equals(this.getSource()) == false)
             return false;
+        if (other.getSourceFailoverConfig() == null ^ this.getSourceFailoverConfig() == null)
+            return false;
+        if (other.getSourceFailoverConfig() != null && other.getSourceFailoverConfig().equals(this.getSourceFailoverConfig()) == false)
+            return false;
+        if (other.getSources() == null ^ this.getSources() == null)
+            return false;
+        if (other.getSources() != null && other.getSources().equals(this.getSources()) == false)
+            return false;
         if (other.getStatus() == null ^ this.getStatus() == null)
             return false;
         if (other.getStatus() != null && other.getStatus().equals(this.getStatus()) == false)
+            return false;
+        if (other.getVpcInterfaces() == null ^ this.getVpcInterfaces() == null)
+            return false;
+        if (other.getVpcInterfaces() != null && other.getVpcInterfaces().equals(this.getVpcInterfaces()) == false)
             return false;
         return true;
     }
@@ -530,7 +694,10 @@ public class Flow implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getName() == null) ? 0 : getName().hashCode());
         hashCode = prime * hashCode + ((getOutputs() == null) ? 0 : getOutputs().hashCode());
         hashCode = prime * hashCode + ((getSource() == null) ? 0 : getSource().hashCode());
+        hashCode = prime * hashCode + ((getSourceFailoverConfig() == null) ? 0 : getSourceFailoverConfig().hashCode());
+        hashCode = prime * hashCode + ((getSources() == null) ? 0 : getSources().hashCode());
         hashCode = prime * hashCode + ((getStatus() == null) ? 0 : getStatus().hashCode());
+        hashCode = prime * hashCode + ((getVpcInterfaces() == null) ? 0 : getVpcInterfaces().hashCode());
         return hashCode;
     }
 

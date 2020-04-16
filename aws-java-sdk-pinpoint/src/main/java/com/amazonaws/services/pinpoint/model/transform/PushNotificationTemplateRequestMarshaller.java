@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,10 +37,16 @@ public class PushNotificationTemplateRequestMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Baidu").build();
     private static final MarshallingInfo<StructuredPojo> DEFAULT_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("Default").build();
+    private static final MarshallingInfo<String> DEFAULTSUBSTITUTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DefaultSubstitutions").build();
     private static final MarshallingInfo<StructuredPojo> GCM_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("GCM").build();
+    private static final MarshallingInfo<String> RECOMMENDERID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RecommenderId").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("tags").build();
+    private static final MarshallingInfo<String> TEMPLATEDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TemplateDescription").build();
 
     private static final PushNotificationTemplateRequestMarshaller instance = new PushNotificationTemplateRequestMarshaller();
 
@@ -62,8 +68,11 @@ public class PushNotificationTemplateRequestMarshaller {
             protocolMarshaller.marshall(pushNotificationTemplateRequest.getAPNS(), APNS_BINDING);
             protocolMarshaller.marshall(pushNotificationTemplateRequest.getBaidu(), BAIDU_BINDING);
             protocolMarshaller.marshall(pushNotificationTemplateRequest.getDefault(), DEFAULT_BINDING);
+            protocolMarshaller.marshall(pushNotificationTemplateRequest.getDefaultSubstitutions(), DEFAULTSUBSTITUTIONS_BINDING);
             protocolMarshaller.marshall(pushNotificationTemplateRequest.getGCM(), GCM_BINDING);
+            protocolMarshaller.marshall(pushNotificationTemplateRequest.getRecommenderId(), RECOMMENDERID_BINDING);
             protocolMarshaller.marshall(pushNotificationTemplateRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(pushNotificationTemplateRequest.getTemplateDescription(), TEMPLATEDESCRIPTION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

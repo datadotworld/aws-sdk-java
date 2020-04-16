@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -19,6 +19,15 @@
  * communicate with, configure rules for data processing and integration with other services, organize resources
  * associated with each device (Registry), configure logging, and create and manage policies and credentials to
  * authenticate devices.
+ * </p>
+ * <p>
+ * The service endpoints that expose this API are listed in <a
+ * href="https://docs.aws.amazon.com/general/latest/gr/iot-core.html">AWS IoT Core Endpoints and Quotas</a>. You must
+ * use the endpoint for the region that has the resources you want to access.
+ * </p>
+ * <p>
+ * The service name used by <a href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">AWS
+ * Signature Version 4</a> to sign the request is: <i>execute-api</i>.
  * </p>
  * <p>
  * For more information about how AWS IoT works, see the <a

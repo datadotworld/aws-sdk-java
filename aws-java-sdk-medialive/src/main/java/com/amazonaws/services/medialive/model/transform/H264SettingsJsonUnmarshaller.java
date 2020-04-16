@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -87,6 +87,10 @@ public class H264SettingsJsonUnmarshaller implements Unmarshaller<H264Settings, 
                 if (context.testExpression("flickerAq", targetDepth)) {
                     context.nextToken();
                     h264Settings.setFlickerAq(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("forceFieldPictures", targetDepth)) {
+                    context.nextToken();
+                    h264Settings.setForceFieldPictures(context.getUnmarshaller(String.class).unmarshall(context));
                 }
                 if (context.testExpression("framerateControl", targetDepth)) {
                     context.nextToken();

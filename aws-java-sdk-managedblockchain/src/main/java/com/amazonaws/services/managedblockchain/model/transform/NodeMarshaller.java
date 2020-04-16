@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,6 +39,8 @@ public class NodeMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("AvailabilityZone").build();
     private static final MarshallingInfo<StructuredPojo> FRAMEWORKATTRIBUTES_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("FrameworkAttributes").build();
+    private static final MarshallingInfo<StructuredPojo> LOGPUBLISHINGCONFIGURATION_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("LogPublishingConfiguration").build();
     private static final MarshallingInfo<String> STATUS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Status").build();
     private static final MarshallingInfo<java.util.Date> CREATIONDATE_BINDING = MarshallingInfo.builder(MarshallingType.DATE)
@@ -66,6 +68,7 @@ public class NodeMarshaller {
             protocolMarshaller.marshall(node.getInstanceType(), INSTANCETYPE_BINDING);
             protocolMarshaller.marshall(node.getAvailabilityZone(), AVAILABILITYZONE_BINDING);
             protocolMarshaller.marshall(node.getFrameworkAttributes(), FRAMEWORKATTRIBUTES_BINDING);
+            protocolMarshaller.marshall(node.getLogPublishingConfiguration(), LOGPUBLISHINGCONFIGURATION_BINDING);
             protocolMarshaller.marshall(node.getStatus(), STATUS_BINDING);
             protocolMarshaller.marshall(node.getCreationDate(), CREATIONDATE_BINDING);
         } catch (Exception e) {

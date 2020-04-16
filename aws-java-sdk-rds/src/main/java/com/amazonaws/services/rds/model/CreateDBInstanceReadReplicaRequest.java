@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,15 +27,15 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance.
+     * The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB instance.
      * This parameter is stored as a lowercase string.
      * </p>
      */
     private String dBInstanceIdentifier;
     /**
      * <p>
-     * The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up
-     * to five Read Replicas.
+     * The identifier of the DB instance that will act as the source for the read replica. Each DB instance can have up
+     * to five read replicas.
      * </p>
      * <p>
      * Constraints:
@@ -43,44 +43,52 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     * Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     * Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the limitations of Oracle Read Replicas, see <a
+     * For the limitations of Oracle read replicas, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica Limitations
      * with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or
-     * later (9.4.7 and higher for cross-region replication).
+     * For the limitations of SQL Server read replicas, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     * Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The specified DB instance must have automatic backups enabled, its backup retention period must be greater than
-     * 0.
+     * Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher
+     * for cross-region replication).
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance identifier.
+     * The specified DB instance must have automatic backups enabled, that is, its backup retention period must be
+     * greater than 0.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance ARN.
-     * For more information, go to <a href=
-     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
-     * Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     * If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance identifier.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance ARN.
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     * >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL Server,
+     * which doesn't support cross-region replicas.
      * </p>
      * </li>
      * </ul>
@@ -88,7 +96,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private String sourceDBInstanceIdentifier;
     /**
      * <p>
-     * The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB instance
+     * The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB instance
      * classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes,
      * and availability for your engine, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
@@ -101,7 +109,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private String dBInstanceClass;
     /**
      * <p>
-     * The Availability Zone (AZ) where the Read Replica will be created.
+     * The Availability Zone (AZ) where the read replica will be created.
      * </p>
      * <p>
      * Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
@@ -125,18 +133,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private Integer port;
     /**
      * <p>
-     * A value that indicates whether the Read Replica is in a Multi-AZ deployment.
+     * A value that indicates whether the read replica is in a Multi-AZ deployment.
      * </p>
      * <p>
-     * You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     * Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB instance is
+     * You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     * Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB instance is
      * independent of whether the source database is a Multi-AZ DB instance.
      * </p>
      */
     private Boolean multiAZ;
     /**
      * <p>
-     * A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during the
+     * A value that indicates whether minor engine upgrades are applied automatically to the read replica during the
      * maintenance window.
      * </p>
      * <p>
@@ -156,6 +164,11 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * The option group the DB instance is associated with. If omitted, the option group associated with the source
      * instance is used.
      * </p>
+     * <note>
+     * <p>
+     * For SQL Server, you must use the option group associated with the source instance.
+     * </p>
+     * </note>
      */
     private String optionGroupName;
     /**
@@ -164,9 +177,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * <p>
      * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      * </p>
+     * <note>
+     * <p>
+     * Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     * </p>
+     * </note>
      * <p>
      * Constraints:
      * </p>
@@ -193,8 +211,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address. For more information, see <a>CreateDBInstance</a>.
      * </p>
      */
     private Boolean publiclyAccessible;
@@ -203,7 +221,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with the DB
-     * subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.
+     * subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a VPC.
      * </p>
      * <p>
      * Constraints:
@@ -226,17 +244,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     * All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     * Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     * Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      * </p>
      * </li>
      * </ul>
@@ -249,7 +267,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private String dBSubnetGroupName;
     /**
      * <p>
-     * A list of EC2 VPC security groups to associate with the Read Replica.
+     * A list of EC2 VPC security groups to associate with the read replica.
      * </p>
      * <p>
      * Default: The default EC2 VPC security group for the DB subnet group's VPC.
@@ -258,7 +276,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private com.amazonaws.internal.SdkInternalList<String> vpcSecurityGroupIds;
     /**
      * <p>
-     * Specifies the storage type to be associated with the Read Replica.
+     * Specifies the storage type to be associated with the read replica.
      * </p>
      * <p>
      * Valid values: <code>standard | gp2 | io1</code>
@@ -273,14 +291,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private String storageType;
     /**
      * <p>
-     * A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     * A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      * default, tags are not copied.
      * </p>
      */
     private Boolean copyTagsToSnapshot;
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read replica. To
      * disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
      * </p>
      * <p>
@@ -308,21 +326,21 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private String monitoringRoleArn;
     /**
      * <p>
-     * The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
+     * The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
      * identifier, or the KMS key alias for the KMS encryption key.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to
-     * specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB
+     * If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not have to
+     * specify a value for this parameter. The read replica is encrypted with the same KMS key as the source DB
      * instance.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the
+     * If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the
      * destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you
      * can't use encryption keys from one AWS Region in another AWS Region.
      * </p>
      * <p>
-     * You can't create an encrypted Read Replica from an unencrypted DB instance.
+     * You can't create an encrypted read replica from an unencrypted DB instance.
      * </p>
      */
     private String kmsKeyId;
@@ -332,9 +350,9 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * action in the source AWS Region that contains the source DB instance.
      * </p>
      * <p>
-     * You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the
-     * Amazon RDS API. You can specify the <code>--source-region</code> option instead of this parameter when you create
-     * an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     * You must specify this parameter when you create an encrypted read replica from another AWS Region by using the
+     * Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read replica in the
+     * same AWS Region.
      * </p>
      * <p>
      * The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be
@@ -344,7 +362,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS Region is
+     * <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS Region is
      * the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned
      * URL.
      * </p>
@@ -358,7 +376,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      * destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action
      * that is called in the destination AWS Region, and the action contained in the presigned URL.
      * </p>
@@ -367,7 +385,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      * replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For
-     * example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region, then your
+     * example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS Region, then your
      * <code>SourceDBInstanceIdentifier</code> looks like the following example:
      * <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      * </p>
@@ -380,6 +398,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      * Process</a>.
      * </p>
+     * <note>
+     * <p>
+     * If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     * <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     * Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the operation that
+     * can be executed in the source AWS Region.
+     * </p>
+     * <p>
+     * <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't support
+     * cross-region read replicas.
+     * </p>
+     * </note>
      */
     private String preSignedUrl;
     /**
@@ -397,7 +427,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     private Boolean enableIAMDatabaseAuthentication;
     /**
      * <p>
-     * A value that indicates whether to enable Performance Insights for the Read Replica.
+     * A value that indicates whether to enable Performance Insights for the read replica.
      * </p>
      * <p>
      * For more information, see <a
@@ -464,6 +494,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     * Guide</i>.
+     * </p>
      */
     private String domain;
     /**
@@ -487,56 +524,64 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * (with...) methods to initialize any additional object members.
      * 
      * @param dBInstanceIdentifier
-     *        The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB
+     *        The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB
      *        instance. This parameter is stored as a lowercase string.
      * @param sourceDBInstanceIdentifier
-     *        The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can
-     *        have up to five Read Replicas.</p>
+     *        The identifier of the DB instance that will act as the source for the read replica. Each DB instance can
+     *        have up to five read replicas.</p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     *        Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     *        Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the limitations of Oracle Read Replicas, see <a
+     *        For the limitations of Oracle read replicas, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica
      *        Limitations with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5
-     *        or later (9.4.7 and higher for cross-region replication).
+     *        For the limitations of SQL Server read replicas, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     *        Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The specified DB instance must have automatic backups enabled, its backup retention period must be greater
-     *        than 0.
+     *        Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and
+     *        higher for cross-region replication).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance
+     *        The specified DB instance must have automatic backups enabled, that is, its backup retention period must
+     *        be greater than 0.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance
      *        identifier.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance
-     *        ARN. For more information, go to <a href=
+     *        If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance
+     *        ARN. For more information, see <a href=
      *        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     *        > Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     *        >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL
+     *        Server, which doesn't support cross-region replicas.
      *        </p>
      *        </li>
      */
@@ -547,12 +592,12 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance.
+     * The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB instance.
      * This parameter is stored as a lowercase string.
      * </p>
      * 
      * @param dBInstanceIdentifier
-     *        The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB
+     *        The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB
      *        instance. This parameter is stored as a lowercase string.
      */
 
@@ -562,11 +607,11 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance.
+     * The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB instance.
      * This parameter is stored as a lowercase string.
      * </p>
      * 
-     * @return The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB
+     * @return The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB
      *         instance. This parameter is stored as a lowercase string.
      */
 
@@ -576,12 +621,12 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB instance.
+     * The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB instance.
      * This parameter is stored as a lowercase string.
      * </p>
      * 
      * @param dBInstanceIdentifier
-     *        The DB instance identifier of the Read Replica. This identifier is the unique key that identifies a DB
+     *        The DB instance identifier of the read replica. This identifier is the unique key that identifies a DB
      *        instance. This parameter is stored as a lowercase string.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -593,8 +638,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up
-     * to five Read Replicas.
+     * The identifier of the DB instance that will act as the source for the read replica. Each DB instance can have up
+     * to five read replicas.
      * </p>
      * <p>
      * Constraints:
@@ -602,96 +647,112 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     * Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     * Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the limitations of Oracle Read Replicas, see <a
+     * For the limitations of Oracle read replicas, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica Limitations
      * with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or
-     * later (9.4.7 and higher for cross-region replication).
+     * For the limitations of SQL Server read replicas, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     * Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The specified DB instance must have automatic backups enabled, its backup retention period must be greater than
-     * 0.
+     * Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher
+     * for cross-region replication).
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance identifier.
+     * The specified DB instance must have automatic backups enabled, that is, its backup retention period must be
+     * greater than 0.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance ARN.
-     * For more information, go to <a href=
-     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
-     * Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     * If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance identifier.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance ARN.
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     * >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL Server,
+     * which doesn't support cross-region replicas.
      * </p>
      * </li>
      * </ul>
      * 
      * @param sourceDBInstanceIdentifier
-     *        The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can
-     *        have up to five Read Replicas.</p>
+     *        The identifier of the DB instance that will act as the source for the read replica. Each DB instance can
+     *        have up to five read replicas.</p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     *        Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     *        Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the limitations of Oracle Read Replicas, see <a
+     *        For the limitations of Oracle read replicas, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica
      *        Limitations with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5
-     *        or later (9.4.7 and higher for cross-region replication).
+     *        For the limitations of SQL Server read replicas, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     *        Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The specified DB instance must have automatic backups enabled, its backup retention period must be greater
-     *        than 0.
+     *        Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and
+     *        higher for cross-region replication).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance
+     *        The specified DB instance must have automatic backups enabled, that is, its backup retention period must
+     *        be greater than 0.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance
      *        identifier.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance
-     *        ARN. For more information, go to <a href=
+     *        If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance
+     *        ARN. For more information, see <a href=
      *        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     *        > Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     *        >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL
+     *        Server, which doesn't support cross-region replicas.
      *        </p>
      *        </li>
      */
@@ -702,8 +763,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up
-     * to five Read Replicas.
+     * The identifier of the DB instance that will act as the source for the read replica. Each DB instance can have up
+     * to five read replicas.
      * </p>
      * <p>
      * Constraints:
@@ -711,95 +772,111 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     * Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     * Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the limitations of Oracle Read Replicas, see <a
+     * For the limitations of Oracle read replicas, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica Limitations
      * with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or
-     * later (9.4.7 and higher for cross-region replication).
+     * For the limitations of SQL Server read replicas, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     * Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The specified DB instance must have automatic backups enabled, its backup retention period must be greater than
-     * 0.
+     * Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher
+     * for cross-region replication).
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance identifier.
+     * The specified DB instance must have automatic backups enabled, that is, its backup retention period must be
+     * greater than 0.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance ARN.
-     * For more information, go to <a href=
-     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
-     * Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     * If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance identifier.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance ARN.
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     * >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL Server,
+     * which doesn't support cross-region replicas.
      * </p>
      * </li>
      * </ul>
      * 
-     * @return The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can
-     *         have up to five Read Replicas.</p>
+     * @return The identifier of the DB instance that will act as the source for the read replica. Each DB instance can
+     *         have up to five read replicas.</p>
      *         <p>
      *         Constraints:
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     *         Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     *         Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         For the limitations of Oracle Read Replicas, see <a
+     *         For the limitations of Oracle read replicas, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica
      *         Limitations with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5
-     *         or later (9.4.7 and higher for cross-region replication).
+     *         For the limitations of SQL Server read replicas, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html"
+     *         >Read Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         The specified DB instance must have automatic backups enabled, its backup retention period must be
-     *         greater than 0.
+     *         Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and
+     *         higher for cross-region replication).
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance
+     *         The specified DB instance must have automatic backups enabled, that is, its backup retention period must
+     *         be greater than 0.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance
      *         identifier.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance
-     *         ARN. For more information, go to <a href=
+     *         If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance
+     *         ARN. For more information, see <a href=
      *         "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     *         > Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     *         >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL
+     *         Server, which doesn't support cross-region replicas.
      *         </p>
      *         </li>
      */
@@ -810,8 +887,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can have up
-     * to five Read Replicas.
+     * The identifier of the DB instance that will act as the source for the read replica. Each DB instance can have up
+     * to five read replicas.
      * </p>
      * <p>
      * Constraints:
@@ -819,96 +896,112 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     * Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     * Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      * </p>
      * </li>
      * <li>
      * <p>
-     * For the limitations of Oracle Read Replicas, see <a
+     * For the limitations of Oracle read replicas, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica Limitations
      * with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or
-     * later (9.4.7 and higher for cross-region replication).
+     * For the limitations of SQL Server read replicas, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     * Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * </li>
      * <li>
      * <p>
-     * The specified DB instance must have automatic backups enabled, its backup retention period must be greater than
-     * 0.
+     * Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and higher
+     * for cross-region replication).
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance identifier.
+     * The specified DB instance must have automatic backups enabled, that is, its backup retention period must be
+     * greater than 0.
      * </p>
      * </li>
      * <li>
      * <p>
-     * If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance ARN.
-     * For more information, go to <a href=
-     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing">
-     * Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     * If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance identifier.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance ARN.
+     * For more information, see <a href=
+     * "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
+     * >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL Server,
+     * which doesn't support cross-region replicas.
      * </p>
      * </li>
      * </ul>
      * 
      * @param sourceDBInstanceIdentifier
-     *        The identifier of the DB instance that will act as the source for the Read Replica. Each DB instance can
-     *        have up to five Read Replicas.</p>
+     *        The identifier of the DB instance that will act as the source for the read replica. Each DB instance can
+     *        have up to five read replicas.</p>
      *        <p>
      *        Constraints:
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Must be the identifier of an existing MySQL, MariaDB, Oracle, or PostgreSQL DB instance.
+     *        Must be the identifier of an existing MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server DB instance.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can specify a DB instance that is a MySQL Read Replica only if the source is running MySQL 5.6 or later.
+     *        Can specify a DB instance that is a MySQL read replica only if the source is running MySQL 5.6 or later.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        For the limitations of Oracle Read Replicas, see <a
+     *        For the limitations of Oracle read replicas, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html">Read Replica
      *        Limitations with Oracle</a> in the <i>Amazon RDS User Guide</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Can specify a DB instance that is a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5
-     *        or later (9.4.7 and higher for cross-region replication).
+     *        For the limitations of SQL Server read replicas, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html">Read
+     *        Replica Limitations with Microsoft SQL Server</a> in the <i>Amazon RDS User Guide</i>.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        The specified DB instance must have automatic backups enabled, its backup retention period must be greater
-     *        than 0.
+     *        Can specify a PostgreSQL DB instance only if the source is running PostgreSQL 9.3.5 or later (9.4.7 and
+     *        higher for cross-region replication).
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source DB instance is in the same AWS Region as the Read Replica, specify a valid DB instance
+     *        The specified DB instance must have automatic backups enabled, that is, its backup retention period must
+     *        be greater than 0.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If the source DB instance is in the same AWS Region as the read replica, specify a valid DB instance
      *        identifier.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        If the source DB instance is in a different AWS Region than the Read Replica, specify a valid DB instance
-     *        ARN. For more information, go to <a href=
+     *        If the source DB instance is in a different AWS Region from the read replica, specify a valid DB instance
+     *        ARN. For more information, see <a href=
      *        "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing"
-     *        > Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>.
+     *        >Constructing an ARN for Amazon RDS</a> in the <i>Amazon RDS User Guide</i>. This doesn't apply to SQL
+     *        Server, which doesn't support cross-region replicas.
      *        </p>
      *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -921,7 +1014,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB instance
+     * The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB instance
      * classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes,
      * and availability for your engine, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
@@ -932,7 +1025,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param dBInstanceClass
-     *        The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB
+     *        The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB
      *        instance classes are available in all AWS Regions, or for all database engines. For the full list of DB
      *        instance classes, and availability for your engine, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance
@@ -947,7 +1040,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB instance
+     * The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB instance
      * classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes,
      * and availability for your engine, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
@@ -957,7 +1050,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * Default: Inherits from the source DB instance.
      * </p>
      * 
-     * @return The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB
+     * @return The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB
      *         instance classes are available in all AWS Regions, or for all database engines. For the full list of DB
      *         instance classes, and availability for your engine, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance
@@ -972,7 +1065,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB instance
+     * The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB instance
      * classes are available in all AWS Regions, or for all database engines. For the full list of DB instance classes,
      * and availability for your engine, see <a
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance Class</a>
@@ -983,7 +1076,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param dBInstanceClass
-     *        The compute and memory capacity of the Read Replica, for example, <code>db.m4.large</code>. Not all DB
+     *        The compute and memory capacity of the read replica, for example, <code>db.m4.large</code>. Not all DB
      *        instance classes are available in all AWS Regions, or for all database engines. For the full list of DB
      *        instance classes, and availability for your engine, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html">DB Instance
@@ -1000,7 +1093,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Availability Zone (AZ) where the Read Replica will be created.
+     * The Availability Zone (AZ) where the read replica will be created.
      * </p>
      * <p>
      * Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
@@ -1010,7 +1103,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param availabilityZone
-     *        The Availability Zone (AZ) where the Read Replica will be created.</p>
+     *        The Availability Zone (AZ) where the read replica will be created.</p>
      *        <p>
      *        Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
      *        </p>
@@ -1024,7 +1117,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Availability Zone (AZ) where the Read Replica will be created.
+     * The Availability Zone (AZ) where the read replica will be created.
      * </p>
      * <p>
      * Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
@@ -1033,7 +1126,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * Example: <code>us-east-1d</code>
      * </p>
      * 
-     * @return The Availability Zone (AZ) where the Read Replica will be created.</p>
+     * @return The Availability Zone (AZ) where the read replica will be created.</p>
      *         <p>
      *         Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
      *         </p>
@@ -1047,7 +1140,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The Availability Zone (AZ) where the Read Replica will be created.
+     * The Availability Zone (AZ) where the read replica will be created.
      * </p>
      * <p>
      * Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
@@ -1057,7 +1150,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param availabilityZone
-     *        The Availability Zone (AZ) where the Read Replica will be created.</p>
+     *        The Availability Zone (AZ) where the read replica will be created.</p>
      *        <p>
      *        Default: A random, system-chosen Availability Zone in the endpoint's AWS Region.
      *        </p>
@@ -1146,19 +1239,19 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether the Read Replica is in a Multi-AZ deployment.
+     * A value that indicates whether the read replica is in a Multi-AZ deployment.
      * </p>
      * <p>
-     * You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     * Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB instance is
+     * You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     * Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB instance is
      * independent of whether the source database is a Multi-AZ DB instance.
      * </p>
      * 
      * @param multiAZ
-     *        A value that indicates whether the Read Replica is in a Multi-AZ deployment. </p>
+     *        A value that indicates whether the read replica is in a Multi-AZ deployment. </p>
      *        <p>
-     *        You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     *        Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB
+     *        You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     *        Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB
      *        instance is independent of whether the source database is a Multi-AZ DB instance.
      */
 
@@ -1168,18 +1261,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether the Read Replica is in a Multi-AZ deployment.
+     * A value that indicates whether the read replica is in a Multi-AZ deployment.
      * </p>
      * <p>
-     * You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     * Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB instance is
+     * You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     * Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB instance is
      * independent of whether the source database is a Multi-AZ DB instance.
      * </p>
      * 
-     * @return A value that indicates whether the Read Replica is in a Multi-AZ deployment. </p>
+     * @return A value that indicates whether the read replica is in a Multi-AZ deployment. </p>
      *         <p>
-     *         You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     *         Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB
+     *         You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     *         Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB
      *         instance is independent of whether the source database is a Multi-AZ DB instance.
      */
 
@@ -1189,19 +1282,19 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether the Read Replica is in a Multi-AZ deployment.
+     * A value that indicates whether the read replica is in a Multi-AZ deployment.
      * </p>
      * <p>
-     * You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     * Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB instance is
+     * You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     * Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB instance is
      * independent of whether the source database is a Multi-AZ DB instance.
      * </p>
      * 
      * @param multiAZ
-     *        A value that indicates whether the Read Replica is in a Multi-AZ deployment. </p>
+     *        A value that indicates whether the read replica is in a Multi-AZ deployment. </p>
      *        <p>
-     *        You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     *        Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB
+     *        You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     *        Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB
      *        instance is independent of whether the source database is a Multi-AZ DB instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1213,18 +1306,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether the Read Replica is in a Multi-AZ deployment.
+     * A value that indicates whether the read replica is in a Multi-AZ deployment.
      * </p>
      * <p>
-     * You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     * Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB instance is
+     * You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     * Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB instance is
      * independent of whether the source database is a Multi-AZ DB instance.
      * </p>
      * 
-     * @return A value that indicates whether the Read Replica is in a Multi-AZ deployment. </p>
+     * @return A value that indicates whether the read replica is in a Multi-AZ deployment. </p>
      *         <p>
-     *         You can create a Read Replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
-     *         Availability Zone for failover support for the replica. Creating your Read Replica as a Multi-AZ DB
+     *         You can create a read replica as a Multi-AZ DB instance. RDS creates a standby of your replica in another
+     *         Availability Zone for failover support for the replica. Creating your read replica as a Multi-AZ DB
      *         instance is independent of whether the source database is a Multi-AZ DB instance.
      */
 
@@ -1234,7 +1327,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during the
+     * A value that indicates whether minor engine upgrades are applied automatically to the read replica during the
      * maintenance window.
      * </p>
      * <p>
@@ -1242,7 +1335,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during
+     *        A value that indicates whether minor engine upgrades are applied automatically to the read replica during
      *        the maintenance window.</p>
      *        <p>
      *        Default: Inherits from the source DB instance
@@ -1254,14 +1347,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during the
+     * A value that indicates whether minor engine upgrades are applied automatically to the read replica during the
      * maintenance window.
      * </p>
      * <p>
      * Default: Inherits from the source DB instance
      * </p>
      * 
-     * @return A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during
+     * @return A value that indicates whether minor engine upgrades are applied automatically to the read replica during
      *         the maintenance window.</p>
      *         <p>
      *         Default: Inherits from the source DB instance
@@ -1273,7 +1366,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during the
+     * A value that indicates whether minor engine upgrades are applied automatically to the read replica during the
      * maintenance window.
      * </p>
      * <p>
@@ -1281,7 +1374,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param autoMinorVersionUpgrade
-     *        A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during
+     *        A value that indicates whether minor engine upgrades are applied automatically to the read replica during
      *        the maintenance window.</p>
      *        <p>
      *        Default: Inherits from the source DB instance
@@ -1295,14 +1388,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during the
+     * A value that indicates whether minor engine upgrades are applied automatically to the read replica during the
      * maintenance window.
      * </p>
      * <p>
      * Default: Inherits from the source DB instance
      * </p>
      * 
-     * @return A value that indicates whether minor engine upgrades are applied automatically to the Read Replica during
+     * @return A value that indicates whether minor engine upgrades are applied automatically to the read replica during
      *         the maintenance window.</p>
      *         <p>
      *         Default: Inherits from the source DB instance
@@ -1363,10 +1456,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * The option group the DB instance is associated with. If omitted, the option group associated with the source
      * instance is used.
      * </p>
+     * <note>
+     * <p>
+     * For SQL Server, you must use the option group associated with the source instance.
+     * </p>
+     * </note>
      * 
      * @param optionGroupName
      *        The option group the DB instance is associated with. If omitted, the option group associated with the
-     *        source instance is used.
+     *        source instance is used.</p> <note>
+     *        <p>
+     *        For SQL Server, you must use the option group associated with the source instance.
+     *        </p>
      */
 
     public void setOptionGroupName(String optionGroupName) {
@@ -1378,9 +1479,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * The option group the DB instance is associated with. If omitted, the option group associated with the source
      * instance is used.
      * </p>
+     * <note>
+     * <p>
+     * For SQL Server, you must use the option group associated with the source instance.
+     * </p>
+     * </note>
      * 
      * @return The option group the DB instance is associated with. If omitted, the option group associated with the
-     *         source instance is used.
+     *         source instance is used.</p> <note>
+     *         <p>
+     *         For SQL Server, you must use the option group associated with the source instance.
+     *         </p>
      */
 
     public String getOptionGroupName() {
@@ -1392,10 +1501,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * The option group the DB instance is associated with. If omitted, the option group associated with the source
      * instance is used.
      * </p>
+     * <note>
+     * <p>
+     * For SQL Server, you must use the option group associated with the source instance.
+     * </p>
+     * </note>
      * 
      * @param optionGroupName
      *        The option group the DB instance is associated with. If omitted, the option group associated with the
-     *        source instance is used.
+     *        source instance is used.</p> <note>
+     *        <p>
+     *        For SQL Server, you must use the option group associated with the source instance.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -1410,9 +1527,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * <p>
      * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      * </p>
+     * <note>
+     * <p>
+     * Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     * </p>
+     * </note>
      * <p>
      * Constraints:
      * </p>
@@ -1438,9 +1560,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        The name of the DB parameter group to associate with this DB instance.</p>
      *        <p>
      *        If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     *        <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     *        <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     *        <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     *        <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      *        </p>
+     *        <note>
+     *        <p>
+     *        Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     *        </p>
+     *        </note>
      *        <p>
      *        Constraints:
      *        </p>
@@ -1472,9 +1599,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * <p>
      * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      * </p>
+     * <note>
+     * <p>
+     * Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     * </p>
+     * </note>
      * <p>
      * Constraints:
      * </p>
@@ -1499,9 +1631,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * @return The name of the DB parameter group to associate with this DB instance.</p>
      *         <p>
      *         If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     *         <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     *         <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     *         <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     *         <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      *         </p>
+     *         <note>
+     *         <p>
+     *         Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     *         </p>
+     *         </note>
      *         <p>
      *         Constraints:
      *         </p>
@@ -1533,9 +1670,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * <p>
      * If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     * <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     * <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     * <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     * <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      * </p>
+     * <note>
+     * <p>
+     * Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     * </p>
+     * </note>
      * <p>
      * Constraints:
      * </p>
@@ -1561,9 +1703,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        The name of the DB parameter group to associate with this DB instance.</p>
      *        <p>
      *        If you do not specify a value for <code>DBParameterGroupName</code>, then Amazon RDS uses the
-     *        <code>DBParameterGroup</code> of source DB instance for a same region Read Replica, or the default
-     *        <code>DBParameterGroup</code> for the specified DB engine for a cross region Read Replica.
+     *        <code>DBParameterGroup</code> of source DB instance for a same region read replica, or the default
+     *        <code>DBParameterGroup</code> for the specified DB engine for a cross region read replica.
      *        </p>
+     *        <note>
+     *        <p>
+     *        Currently, specifying a parameter group for this operation is only supported for Oracle DB instances.
+     *        </p>
+     *        </note>
      *        <p>
      *        Constraints:
      *        </p>
@@ -1595,14 +1742,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address. For more information, see <a>CreateDBInstance</a>.
      * </p>
      * 
      * @param publiclyAccessible
      *        A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *        accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *        public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *        public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *        name that resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
      */
 
@@ -1614,13 +1761,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address. For more information, see <a>CreateDBInstance</a>.
      * </p>
      * 
      * @return A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *         accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *         public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *         public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *         name that resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
      */
 
@@ -1632,14 +1779,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address. For more information, see <a>CreateDBInstance</a>.
      * </p>
      * 
      * @param publiclyAccessible
      *        A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *        accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *        public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *        public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *        name that resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -1653,13 +1800,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      * accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP
-     * address. When the DB instance is not publicly accessible, it is an internal instance with a DNS name that
-     * resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
+     * address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS name that resolves
+     * to a private IP address. For more information, see <a>CreateDBInstance</a>.
      * </p>
      * 
      * @return A value that indicates whether the DB instance is publicly accessible. When the DB instance is publicly
      *         accessible, it is an Internet-facing instance with a publicly resolvable DNS name, which resolves to a
-     *         public IP address. When the DB instance is not publicly accessible, it is an internal instance with a DNS
+     *         public IP address. When the DB instance isn't publicly accessible, it is an internal instance with a DNS
      *         name that resolves to a private IP address. For more information, see <a>CreateDBInstance</a>.
      */
 
@@ -1725,7 +1872,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with the DB
-     * subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.
+     * subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a VPC.
      * </p>
      * <p>
      * Constraints:
@@ -1748,17 +1895,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     * All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     * Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     * Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      * </p>
      * </li>
      * </ul>
@@ -1770,7 +1917,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * 
      * @param dBSubnetGroupName
      *        Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with
-     *        the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a
+     *        the DB subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a
      *        VPC.</p>
      *        <p>
      *        Constraints:
@@ -1793,17 +1940,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        </li>
      *        <li>
      *        <p>
-     *        All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     *        All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     *        Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     *        Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      *        </p>
      *        </li>
      *        </ul>
@@ -1820,7 +1967,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with the DB
-     * subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.
+     * subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a VPC.
      * </p>
      * <p>
      * Constraints:
@@ -1843,17 +1990,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     * All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     * Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     * Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      * </p>
      * </li>
      * </ul>
@@ -1864,8 +2011,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @return Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated
-     *         with the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in
-     *         a VPC.</p>
+     *         with the DB subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a
+     *         VPC.</p>
      *         <p>
      *         Constraints:
      *         </p>
@@ -1887,17 +2034,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *         </li>
      *         <li>
      *         <p>
-     *         All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     *         All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      *         </p>
      *         <ul>
      *         <li>
      *         <p>
-     *         Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     *         Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      *         </p>
      *         </li>
      *         <li>
      *         <p>
-     *         Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     *         Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      *         </p>
      *         </li>
      *         </ul>
@@ -1914,7 +2061,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
     /**
      * <p>
      * Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with the DB
-     * subnet group. If no DB subnet group is specified, then the new DB instance is not created in a VPC.
+     * subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a VPC.
      * </p>
      * <p>
      * Constraints:
@@ -1937,17 +2084,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     * All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      * </p>
      * <ul>
      * <li>
      * <p>
-     * Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     * Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      * </p>
      * </li>
      * <li>
      * <p>
-     * Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     * Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      * </p>
      * </li>
      * </ul>
@@ -1959,7 +2106,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * 
      * @param dBSubnetGroupName
      *        Specifies a DB subnet group for the DB instance. The new DB instance is created in the VPC associated with
-     *        the DB subnet group. If no DB subnet group is specified, then the new DB instance is not created in a
+     *        the DB subnet group. If no DB subnet group is specified, then the new DB instance isn't created in a
      *        VPC.</p>
      *        <p>
      *        Constraints:
@@ -1982,17 +2129,17 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        </li>
      *        <li>
      *        <p>
-     *        All Read Replicas in one AWS Region that are created from the same source DB instance must either:&gt;
+     *        All read replicas in one AWS Region that are created from the same source DB instance must either:&gt;
      *        </p>
      *        <ul>
      *        <li>
      *        <p>
-     *        Specify DB subnet groups from the same VPC. All these Read Replicas are created in the same VPC.
+     *        Specify DB subnet groups from the same VPC. All these read replicas are created in the same VPC.
      *        </p>
      *        </li>
      *        <li>
      *        <p>
-     *        Not specify a DB subnet group. All these Read Replicas are created outside of any VPC.
+     *        Not specify a DB subnet group. All these read replicas are created outside of any VPC.
      *        </p>
      *        </li>
      *        </ul>
@@ -2010,13 +2157,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of EC2 VPC security groups to associate with the Read Replica.
+     * A list of EC2 VPC security groups to associate with the read replica.
      * </p>
      * <p>
      * Default: The default EC2 VPC security group for the DB subnet group's VPC.
      * </p>
      * 
-     * @return A list of EC2 VPC security groups to associate with the Read Replica. </p>
+     * @return A list of EC2 VPC security groups to associate with the read replica. </p>
      *         <p>
      *         Default: The default EC2 VPC security group for the DB subnet group's VPC.
      */
@@ -2030,14 +2177,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of EC2 VPC security groups to associate with the Read Replica.
+     * A list of EC2 VPC security groups to associate with the read replica.
      * </p>
      * <p>
      * Default: The default EC2 VPC security group for the DB subnet group's VPC.
      * </p>
      * 
      * @param vpcSecurityGroupIds
-     *        A list of EC2 VPC security groups to associate with the Read Replica. </p>
+     *        A list of EC2 VPC security groups to associate with the read replica. </p>
      *        <p>
      *        Default: The default EC2 VPC security group for the DB subnet group's VPC.
      */
@@ -2053,7 +2200,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of EC2 VPC security groups to associate with the Read Replica.
+     * A list of EC2 VPC security groups to associate with the read replica.
      * </p>
      * <p>
      * Default: The default EC2 VPC security group for the DB subnet group's VPC.
@@ -2065,7 +2212,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param vpcSecurityGroupIds
-     *        A list of EC2 VPC security groups to associate with the Read Replica. </p>
+     *        A list of EC2 VPC security groups to associate with the read replica. </p>
      *        <p>
      *        Default: The default EC2 VPC security group for the DB subnet group's VPC.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2083,14 +2230,14 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A list of EC2 VPC security groups to associate with the Read Replica.
+     * A list of EC2 VPC security groups to associate with the read replica.
      * </p>
      * <p>
      * Default: The default EC2 VPC security group for the DB subnet group's VPC.
      * </p>
      * 
      * @param vpcSecurityGroupIds
-     *        A list of EC2 VPC security groups to associate with the Read Replica. </p>
+     *        A list of EC2 VPC security groups to associate with the read replica. </p>
      *        <p>
      *        Default: The default EC2 VPC security group for the DB subnet group's VPC.
      * @return Returns a reference to this object so that method calls can be chained together.
@@ -2103,7 +2250,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Specifies the storage type to be associated with the Read Replica.
+     * Specifies the storage type to be associated with the read replica.
      * </p>
      * <p>
      * Valid values: <code>standard | gp2 | io1</code>
@@ -2116,7 +2263,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param storageType
-     *        Specifies the storage type to be associated with the Read Replica.</p>
+     *        Specifies the storage type to be associated with the read replica.</p>
      *        <p>
      *        Valid values: <code>standard | gp2 | io1</code>
      *        </p>
@@ -2133,7 +2280,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Specifies the storage type to be associated with the Read Replica.
+     * Specifies the storage type to be associated with the read replica.
      * </p>
      * <p>
      * Valid values: <code>standard | gp2 | io1</code>
@@ -2145,7 +2292,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * Default: <code>io1</code> if the <code>Iops</code> parameter is specified, otherwise <code>gp2</code>
      * </p>
      * 
-     * @return Specifies the storage type to be associated with the Read Replica.</p>
+     * @return Specifies the storage type to be associated with the read replica.</p>
      *         <p>
      *         Valid values: <code>standard | gp2 | io1</code>
      *         </p>
@@ -2162,7 +2309,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * Specifies the storage type to be associated with the Read Replica.
+     * Specifies the storage type to be associated with the read replica.
      * </p>
      * <p>
      * Valid values: <code>standard | gp2 | io1</code>
@@ -2175,7 +2322,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param storageType
-     *        Specifies the storage type to be associated with the Read Replica.</p>
+     *        Specifies the storage type to be associated with the read replica.</p>
      *        <p>
      *        Valid values: <code>standard | gp2 | io1</code>
      *        </p>
@@ -2194,12 +2341,12 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     * A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      * default, tags are not copied.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     *        A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      *        default, tags are not copied.
      */
 
@@ -2209,11 +2356,11 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     * A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      * default, tags are not copied.
      * </p>
      * 
-     * @return A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica.
+     * @return A value that indicates whether to copy all tags from the read replica to snapshots of the read replica.
      *         By default, tags are not copied.
      */
 
@@ -2223,12 +2370,12 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     * A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      * default, tags are not copied.
      * </p>
      * 
      * @param copyTagsToSnapshot
-     *        A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     *        A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      *        default, tags are not copied.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -2240,11 +2387,11 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica. By
+     * A value that indicates whether to copy all tags from the read replica to snapshots of the read replica. By
      * default, tags are not copied.
      * </p>
      * 
-     * @return A value that indicates whether to copy all tags from the Read Replica to snapshots of the Read Replica.
+     * @return A value that indicates whether to copy all tags from the read replica to snapshots of the read replica.
      *         By default, tags are not copied.
      */
 
@@ -2254,7 +2401,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read replica. To
      * disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
      * </p>
      * <p>
@@ -2266,8 +2413,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param monitoringInterval
-     *        The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read
-     *        Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p>
+     *        The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read
+     *        replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p>
      *        <p>
      *        If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to
      *        a value other than 0.
@@ -2282,7 +2429,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read replica. To
      * disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
      * </p>
      * <p>
@@ -2293,8 +2440,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * Valid Values: <code>0, 1, 5, 10, 15, 30, 60</code>
      * </p>
      * 
-     * @return The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read
-     *         Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p>
+     * @return The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read
+     *         replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p>
      *         <p>
      *         If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to
      *         a value other than 0.
@@ -2309,7 +2456,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read Replica. To
+     * The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read replica. To
      * disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.
      * </p>
      * <p>
@@ -2321,8 +2468,8 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param monitoringInterval
-     *        The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the Read
-     *        Replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p>
+     *        The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the read
+     *        replica. To disable collecting Enhanced Monitoring metrics, specify 0. The default is 0.</p>
      *        <p>
      *        If <code>MonitoringRoleArn</code> is specified, then you must also set <code>MonitoringInterval</code> to
      *        a value other than 0.
@@ -2424,38 +2571,38 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
+     * The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
      * identifier, or the KMS key alias for the KMS encryption key.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to
-     * specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB
+     * If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not have to
+     * specify a value for this parameter. The read replica is encrypted with the same KMS key as the source DB
      * instance.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the
+     * If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the
      * destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you
      * can't use encryption keys from one AWS Region in another AWS Region.
      * </p>
      * <p>
-     * You can't create an encrypted Read Replica from an unencrypted DB instance.
+     * You can't create an encrypted read replica from an unencrypted DB instance.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS
-     *        key identifier, or the KMS key alias for the KMS encryption key. </p>
+     *        The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS
+     *        key identifier, or the KMS key alias for the KMS encryption key.</p>
      *        <p>
-     *        If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not
-     *        have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the
+     *        If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not
+     *        have to specify a value for this parameter. The read replica is encrypted with the same KMS key as the
      *        source DB instance.
      *        </p>
      *        <p>
-     *        If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the
+     *        If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the
      *        destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and
      *        you can't use encryption keys from one AWS Region in another AWS Region.
      *        </p>
      *        <p>
-     *        You can't create an encrypted Read Replica from an unencrypted DB instance.
+     *        You can't create an encrypted read replica from an unencrypted DB instance.
      */
 
     public void setKmsKeyId(String kmsKeyId) {
@@ -2464,37 +2611,37 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
+     * The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
      * identifier, or the KMS key alias for the KMS encryption key.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to
-     * specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB
+     * If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not have to
+     * specify a value for this parameter. The read replica is encrypted with the same KMS key as the source DB
      * instance.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the
+     * If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the
      * destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you
      * can't use encryption keys from one AWS Region in another AWS Region.
      * </p>
      * <p>
-     * You can't create an encrypted Read Replica from an unencrypted DB instance.
+     * You can't create an encrypted read replica from an unencrypted DB instance.
      * </p>
      * 
-     * @return The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS
-     *         key identifier, or the KMS key alias for the KMS encryption key. </p>
+     * @return The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS
+     *         key identifier, or the KMS key alias for the KMS encryption key.</p>
      *         <p>
-     *         If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not
-     *         have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the
+     *         If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not
+     *         have to specify a value for this parameter. The read replica is encrypted with the same KMS key as the
      *         source DB instance.
      *         </p>
      *         <p>
-     *         If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for
+     *         If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for
      *         the destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in,
      *         and you can't use encryption keys from one AWS Region in another AWS Region.
      *         </p>
      *         <p>
-     *         You can't create an encrypted Read Replica from an unencrypted DB instance.
+     *         You can't create an encrypted read replica from an unencrypted DB instance.
      */
 
     public String getKmsKeyId() {
@@ -2503,38 +2650,38 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
+     * The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS key
      * identifier, or the KMS key alias for the KMS encryption key.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not have to
-     * specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the source DB
+     * If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not have to
+     * specify a value for this parameter. The read replica is encrypted with the same KMS key as the source DB
      * instance.
      * </p>
      * <p>
-     * If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the
+     * If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the
      * destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and you
      * can't use encryption keys from one AWS Region in another AWS Region.
      * </p>
      * <p>
-     * You can't create an encrypted Read Replica from an unencrypted DB instance.
+     * You can't create an encrypted read replica from an unencrypted DB instance.
      * </p>
      * 
      * @param kmsKeyId
-     *        The AWS KMS key ID for an encrypted Read Replica. The KMS key ID is the Amazon Resource Name (ARN), KMS
-     *        key identifier, or the KMS key alias for the KMS encryption key. </p>
+     *        The AWS KMS key ID for an encrypted read replica. The KMS key ID is the Amazon Resource Name (ARN), KMS
+     *        key identifier, or the KMS key alias for the KMS encryption key.</p>
      *        <p>
-     *        If you create an encrypted Read Replica in the same AWS Region as the source DB instance, then you do not
-     *        have to specify a value for this parameter. The Read Replica is encrypted with the same KMS key as the
+     *        If you create an encrypted read replica in the same AWS Region as the source DB instance, then you do not
+     *        have to specify a value for this parameter. The read replica is encrypted with the same KMS key as the
      *        source DB instance.
      *        </p>
      *        <p>
-     *        If you create an encrypted Read Replica in a different AWS Region, then you must specify a KMS key for the
+     *        If you create an encrypted read replica in a different AWS Region, then you must specify a KMS key for the
      *        destination AWS Region. KMS encryption keys are specific to the AWS Region that they are created in, and
      *        you can't use encryption keys from one AWS Region in another AWS Region.
      *        </p>
      *        <p>
-     *        You can't create an encrypted Read Replica from an unencrypted DB instance.
+     *        You can't create an encrypted read replica from an unencrypted DB instance.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2549,9 +2696,9 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * action in the source AWS Region that contains the source DB instance.
      * </p>
      * <p>
-     * You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the
-     * Amazon RDS API. You can specify the <code>--source-region</code> option instead of this parameter when you create
-     * an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     * You must specify this parameter when you create an encrypted read replica from another AWS Region by using the
+     * Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read replica in the
+     * same AWS Region.
      * </p>
      * <p>
      * The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be
@@ -2561,7 +2708,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS Region is
+     * <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS Region is
      * the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned
      * URL.
      * </p>
@@ -2575,7 +2722,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      * destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action
      * that is called in the destination AWS Region, and the action contained in the presigned URL.
      * </p>
@@ -2584,7 +2731,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      * replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For
-     * example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region, then your
+     * example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS Region, then your
      * <code>SourceDBInstanceIdentifier</code> looks like the following example:
      * <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      * </p>
@@ -2597,15 +2744,27 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      * Process</a>.
      * </p>
+     * <note>
+     * <p>
+     * If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     * <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     * Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the operation that
+     * can be executed in the source AWS Region.
+     * </p>
+     * <p>
+     * <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't support
+     * cross-region read replicas.
+     * </p>
+     * </note>
      * 
      * @param preSignedUrl
      *        The URL that contains a Signature Version 4 signed request for the
      *        <code>CreateDBInstanceReadReplica</code> API action in the source AWS Region that contains the source DB
      *        instance. </p>
      *        <p>
-     *        You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using
-     *        the Amazon RDS API. You can specify the <code>--source-region</code> option instead of this parameter when
-     *        you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     *        You must specify this parameter when you create an encrypted read replica from another AWS Region by using
+     *        the Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read
+     *        replica in the same AWS Region.
      *        </p>
      *        <p>
      *        The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that
@@ -2615,7 +2774,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS
+     *        <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS
      *        Region is the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains
      *        this presigned URL.
      *        </p>
@@ -2629,7 +2788,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        </li>
      *        <li>
      *        <p>
-     *        <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     *        <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      *        destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code>
      *        action that is called in the destination AWS Region, and the action contained in the presigned URL.
      *        </p>
@@ -2638,7 +2797,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      *        replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region.
-     *        For example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region,
+     *        For example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS Region,
      *        then your <code>SourceDBInstanceIdentifier</code> looks like the following example:
      *        <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      *        </p>
@@ -2650,6 +2809,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a
      *        href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      *        Process</a>.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     *        <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     *        Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the
+     *        operation that can be executed in the source AWS Region.
+     *        </p>
+     *        <p>
+     *        <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't support
+     *        cross-region read replicas.
+     *        </p>
      */
 
     public void setPreSignedUrl(String preSignedUrl) {
@@ -2662,9 +2833,9 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * action in the source AWS Region that contains the source DB instance.
      * </p>
      * <p>
-     * You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the
-     * Amazon RDS API. You can specify the <code>--source-region</code> option instead of this parameter when you create
-     * an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     * You must specify this parameter when you create an encrypted read replica from another AWS Region by using the
+     * Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read replica in the
+     * same AWS Region.
      * </p>
      * <p>
      * The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be
@@ -2674,7 +2845,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS Region is
+     * <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS Region is
      * the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned
      * URL.
      * </p>
@@ -2688,7 +2859,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      * destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action
      * that is called in the destination AWS Region, and the action contained in the presigned URL.
      * </p>
@@ -2697,7 +2868,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      * replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For
-     * example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region, then your
+     * example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS Region, then your
      * <code>SourceDBInstanceIdentifier</code> looks like the following example:
      * <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      * </p>
@@ -2710,14 +2881,26 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      * Process</a>.
      * </p>
+     * <note>
+     * <p>
+     * If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     * <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     * Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the operation that
+     * can be executed in the source AWS Region.
+     * </p>
+     * <p>
+     * <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't support
+     * cross-region read replicas.
+     * </p>
+     * </note>
      * 
      * @return The URL that contains a Signature Version 4 signed request for the
      *         <code>CreateDBInstanceReadReplica</code> API action in the source AWS Region that contains the source DB
      *         instance. </p>
      *         <p>
-     *         You must specify this parameter when you create an encrypted Read Replica from another AWS Region by
-     *         using the Amazon RDS API. You can specify the <code>--source-region</code> option instead of this
-     *         parameter when you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     *         You must specify this parameter when you create an encrypted read replica from another AWS Region by
+     *         using the Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read
+     *         replica in the same AWS Region.
      *         </p>
      *         <p>
      *         The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action
@@ -2727,7 +2910,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *         <ul>
      *         <li>
      *         <p>
-     *         <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS
+     *         <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS
      *         Region is the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains
      *         this presigned URL.
      *         </p>
@@ -2741,7 +2924,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *         </li>
      *         <li>
      *         <p>
-     *         <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     *         <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      *         destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code>
      *         action that is called in the destination AWS Region, and the action contained in the presigned URL.
      *         </p>
@@ -2750,7 +2933,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *         <p>
      *         <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      *         replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region.
-     *         For example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS
+     *         For example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS
      *         Region, then your <code>SourceDBInstanceIdentifier</code> looks like the following example:
      *         <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      *         </p>
@@ -2762,6 +2945,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *         Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a
      *         href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      *         Process</a>.
+     *         </p>
+     *         <note>
+     *         <p>
+     *         If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     *         <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     *         Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the
+     *         operation that can be executed in the source AWS Region.
+     *         </p>
+     *         <p>
+     *         <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't
+     *         support cross-region read replicas.
+     *         </p>
      */
 
     public String getPreSignedUrl() {
@@ -2774,9 +2969,9 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * action in the source AWS Region that contains the source DB instance.
      * </p>
      * <p>
-     * You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using the
-     * Amazon RDS API. You can specify the <code>--source-region</code> option instead of this parameter when you create
-     * an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     * You must specify this parameter when you create an encrypted read replica from another AWS Region by using the
+     * Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read replica in the
+     * same AWS Region.
      * </p>
      * <p>
      * The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that can be
@@ -2786,7 +2981,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <ul>
      * <li>
      * <p>
-     * <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS Region is
+     * <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS Region is
      * the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains this presigned
      * URL.
      * </p>
@@ -2800,7 +2995,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </li>
      * <li>
      * <p>
-     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     * <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      * destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code> action
      * that is called in the destination AWS Region, and the action contained in the presigned URL.
      * </p>
@@ -2809,7 +3004,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * <p>
      * <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      * replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region. For
-     * example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region, then your
+     * example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS Region, then your
      * <code>SourceDBInstanceIdentifier</code> looks like the following example:
      * <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      * </p>
@@ -2822,15 +3017,27 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      * Process</a>.
      * </p>
+     * <note>
+     * <p>
+     * If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     * <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     * Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the operation that
+     * can be executed in the source AWS Region.
+     * </p>
+     * <p>
+     * <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't support
+     * cross-region read replicas.
+     * </p>
+     * </note>
      * 
      * @param preSignedUrl
      *        The URL that contains a Signature Version 4 signed request for the
      *        <code>CreateDBInstanceReadReplica</code> API action in the source AWS Region that contains the source DB
      *        instance. </p>
      *        <p>
-     *        You must specify this parameter when you create an encrypted Read Replica from another AWS Region by using
-     *        the Amazon RDS API. You can specify the <code>--source-region</code> option instead of this parameter when
-     *        you create an encrypted Read Replica from another AWS Region by using the AWS CLI.
+     *        You must specify this parameter when you create an encrypted read replica from another AWS Region by using
+     *        the Amazon RDS API. Don't specify <code>PreSignedUrl</code> when you are creating an encrypted read
+     *        replica in the same AWS Region.
      *        </p>
      *        <p>
      *        The presigned URL must be a valid request for the <code>CreateDBInstanceReadReplica</code> API action that
@@ -2840,7 +3047,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        <ul>
      *        <li>
      *        <p>
-     *        <code>DestinationRegion</code> - The AWS Region that the encrypted Read Replica is created in. This AWS
+     *        <code>DestinationRegion</code> - The AWS Region that the encrypted read replica is created in. This AWS
      *        Region is the same one where the <code>CreateDBInstanceReadReplica</code> action is called that contains
      *        this presigned URL.
      *        </p>
@@ -2854,7 +3061,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        </li>
      *        <li>
      *        <p>
-     *        <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the Read Replica in the
+     *        <code>KmsKeyId</code> - The AWS KMS key identifier for the key to use to encrypt the read replica in the
      *        destination AWS Region. This is the same identifier for both the <code>CreateDBInstanceReadReplica</code>
      *        action that is called in the destination AWS Region, and the action contained in the presigned URL.
      *        </p>
@@ -2863,7 +3070,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        <p>
      *        <code>SourceDBInstanceIdentifier</code> - The DB instance identifier for the encrypted DB instance to be
      *        replicated. This identifier must be in the Amazon Resource Name (ARN) format for the source AWS Region.
-     *        For example, if you are creating an encrypted Read Replica from a DB instance in the us-west-2 AWS Region,
+     *        For example, if you are creating an encrypted read replica from a DB instance in the us-west-2 AWS Region,
      *        then your <code>SourceDBInstanceIdentifier</code> looks like the following example:
      *        <code>arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115</code>.
      *        </p>
@@ -2875,6 +3082,18 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        Requests: Using Query Parameters (AWS Signature Version 4)</a> and <a
      *        href="https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html">Signature Version 4 Signing
      *        Process</a>.
+     *        </p>
+     *        <note>
+     *        <p>
+     *        If you are using an AWS SDK tool or the AWS CLI, you can specify <code>SourceRegion</code> (or
+     *        <code>--source-region</code> for the AWS CLI) instead of specifying <code>PreSignedUrl</code> manually.
+     *        Specifying <code>SourceRegion</code> autogenerates a presigned URL that is a valid request for the
+     *        operation that can be executed in the source AWS Region.
+     *        </p>
+     *        <p>
+     *        <code>SourceRegion</code> isn't supported for SQL Server, because SQL Server on Amazon RDS doesn't support
+     *        cross-region read replicas.
+     *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -2989,7 +3208,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to enable Performance Insights for the Read Replica.
+     * A value that indicates whether to enable Performance Insights for the read replica.
      * </p>
      * <p>
      * For more information, see <a
@@ -2998,7 +3217,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param enablePerformanceInsights
-     *        A value that indicates whether to enable Performance Insights for the Read Replica. </p>
+     *        A value that indicates whether to enable Performance Insights for the read replica. </p>
      *        <p>
      *        For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">Using Amazon
@@ -3011,7 +3230,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to enable Performance Insights for the Read Replica.
+     * A value that indicates whether to enable Performance Insights for the read replica.
      * </p>
      * <p>
      * For more information, see <a
@@ -3019,7 +3238,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * Insights</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * 
-     * @return A value that indicates whether to enable Performance Insights for the Read Replica. </p>
+     * @return A value that indicates whether to enable Performance Insights for the read replica. </p>
      *         <p>
      *         For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">Using Amazon
@@ -3032,7 +3251,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to enable Performance Insights for the Read Replica.
+     * A value that indicates whether to enable Performance Insights for the read replica.
      * </p>
      * <p>
      * For more information, see <a
@@ -3041,7 +3260,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * </p>
      * 
      * @param enablePerformanceInsights
-     *        A value that indicates whether to enable Performance Insights for the Read Replica. </p>
+     *        A value that indicates whether to enable Performance Insights for the read replica. </p>
      *        <p>
      *        For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">Using Amazon
@@ -3056,7 +3275,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
 
     /**
      * <p>
-     * A value that indicates whether to enable Performance Insights for the Read Replica.
+     * A value that indicates whether to enable Performance Insights for the read replica.
      * </p>
      * <p>
      * For more information, see <a
@@ -3064,7 +3283,7 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * Insights</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
      * 
-     * @return A value that indicates whether to enable Performance Insights for the Read Replica. </p>
+     * @return A value that indicates whether to enable Performance Insights for the read replica. </p>
      *         <p>
      *         For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html">Using Amazon
@@ -3504,6 +3723,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     * Guide</i>.
+     * </p>
      * 
      * @param domain
      *        The Active Directory directory ID to create the DB instance in.</p>
@@ -3512,6 +3738,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        the DB instance. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
      *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     *        </p>
+     *        <p>
+     *        For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
+     *        that connect to the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     *        Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     *        Guide</i>.
      */
 
     public void setDomain(String domain) {
@@ -3528,6 +3761,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     * Guide</i>.
+     * </p>
      * 
      * @return The Active Directory directory ID to create the DB instance in.</p>
      *         <p>
@@ -3535,6 +3775,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *         the DB instance. For more information, see <a
      *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
      *         Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     *         </p>
+     *         <p>
+     *         For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
+     *         that connect to the DB instance. For more information, see <a
+     *         href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     *         Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     *         Guide</i>.
      */
 
     public String getDomain() {
@@ -3551,6 +3798,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos Authentication
      * with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
      * </p>
+     * <p>
+     * For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users that
+     * connect to the DB instance. For more information, see <a
+     * href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     * Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     * Guide</i>.
+     * </p>
      * 
      * @param domain
      *        The Active Directory directory ID to create the DB instance in.</p>
@@ -3559,6 +3813,13 @@ public class CreateDBInstanceReadReplicaRequest extends com.amazonaws.AmazonWebS
      *        the DB instance. For more information, see <a
      *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html"> Using Kerberos
      *        Authentication with Amazon RDS for Oracle</a> in the <i>Amazon RDS User Guide</i>.
+     *        </p>
+     *        <p>
+     *        For Microsoft SQL Server DB instances, Amazon RDS can use Windows Authentication to authenticate users
+     *        that connect to the DB instance. For more information, see <a
+     *        href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html"> Using Windows
+     *        Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server</a> in the <i>Amazon RDS User
+     *        Guide</i>.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

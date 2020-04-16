@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights
+ * Copyright 2010-2020 Amazon.com, Inc. or its affiliates. All Rights
  * Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
@@ -21,7 +21,6 @@ package com.amazonaws.regions;
 import static com.amazonaws.SDKGlobalConfiguration.REGIONS_FILE_OVERRIDE_SYSTEM_PROPERTY;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;

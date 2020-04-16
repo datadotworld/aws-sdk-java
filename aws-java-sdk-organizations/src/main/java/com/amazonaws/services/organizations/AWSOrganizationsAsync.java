@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -855,7 +855,7 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * created with all features enabled and service control policies automatically enabled in the root. If you instead
      * choose to create the organization supporting only the consolidated billing features by setting the
      * <code>FeatureSet</code> parameter to <code>CONSOLIDATED_BILLING"</code>, no policy types are enabled by default,
-     * and you can't use organization policies.
+     * and you can't use organization policies
      * </p>
      * 
      * @param createOrganizationRequest
@@ -882,7 +882,7 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * created with all features enabled and service control policies automatically enabled in the root. If you instead
      * choose to create the organization supporting only the consolidated billing features by setting the
      * <code>FeatureSet</code> parameter to <code>CONSOLIDATED_BILLING"</code>, no policy types are enabled by default,
-     * and you can't use organization policies.
+     * and you can't use organization policies
      * </p>
      * 
      * @param createOrganizationRequest
@@ -1164,10 +1164,64 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
 
     /**
      * <p>
-     * Retrieves AWS Organizations-related information about the specified account.
+     * Removes the specified member AWS account as a delegated administrator for the specified AWS service.
+     * </p>
+     * <p>
+     * You can run this action only for AWS services that support this feature. For a current list of services that
+     * support it, see the column <i>Supports Delegated Administrator</i> in the table at <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html">AWS Services
+     * that you can use with AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
+     * </p>
+     * 
+     * @param deregisterDelegatedAdministratorRequest
+     * @return A Java Future containing the result of the DeregisterDelegatedAdministrator operation returned by the
+     *         service.
+     * @sample AWSOrganizationsAsync.DeregisterDelegatedAdministrator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeregisterDelegatedAdministrator"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeregisterDelegatedAdministratorResult> deregisterDelegatedAdministratorAsync(
+            DeregisterDelegatedAdministratorRequest deregisterDelegatedAdministratorRequest);
+
+    /**
+     * <p>
+     * Removes the specified member AWS account as a delegated administrator for the specified AWS service.
+     * </p>
+     * <p>
+     * You can run this action only for AWS services that support this feature. For a current list of services that
+     * support it, see the column <i>Supports Delegated Administrator</i> in the table at <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html">AWS Services
+     * that you can use with AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
+     * 
+     * @param deregisterDelegatedAdministratorRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DeregisterDelegatedAdministrator operation returned by the
+     *         service.
+     * @sample AWSOrganizationsAsyncHandler.DeregisterDelegatedAdministrator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DeregisterDelegatedAdministrator"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DeregisterDelegatedAdministratorResult> deregisterDelegatedAdministratorAsync(
+            DeregisterDelegatedAdministratorRequest deregisterDelegatedAdministratorRequest,
+            com.amazonaws.handlers.AsyncHandler<DeregisterDelegatedAdministratorRequest, DeregisterDelegatedAdministratorResult> asyncHandler);
+
+    /**
+     * <p>
+     * Retrieves AWS Organizations-related information about the specified account.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeAccountRequest
@@ -1183,7 +1237,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves AWS Organizations-related information about the specified account.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeAccountRequest
@@ -1204,7 +1259,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves the current status of an asynchronous request to create an account.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeCreateAccountStatusRequest
@@ -1221,7 +1277,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves the current status of an asynchronous request to create an account.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeCreateAccountStatusRequest
@@ -1237,6 +1294,63 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
     java.util.concurrent.Future<DescribeCreateAccountStatusResult> describeCreateAccountStatusAsync(
             DescribeCreateAccountStatusRequest describeCreateAccountStatusRequest,
             com.amazonaws.handlers.AsyncHandler<DescribeCreateAccountStatusRequest, DescribeCreateAccountStatusResult> asyncHandler);
+
+    /**
+     * <p>
+     * Returns the contents of the effective tag policy for the account. The effective tag policy is the aggregation of
+     * any tag policies the account inherits, plus any policy directly that is attached to the account.
+     * </p>
+     * <p>
+     * This action returns information on tag policies only.
+     * </p>
+     * <p>
+     * For more information on policy inheritance, see <a
+     * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html">How Policy
+     * Inheritance Works</a> in the <i>AWS Organizations User Guide</i>.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param describeEffectivePolicyRequest
+     * @return A Java Future containing the result of the DescribeEffectivePolicy operation returned by the service.
+     * @sample AWSOrganizationsAsync.DescribeEffectivePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeEffectivePolicy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeEffectivePolicyResult> describeEffectivePolicyAsync(DescribeEffectivePolicyRequest describeEffectivePolicyRequest);
+
+    /**
+     * <p>
+     * Returns the contents of the effective tag policy for the account. The effective tag policy is the aggregation of
+     * any tag policies the account inherits, plus any policy directly that is attached to the account.
+     * </p>
+     * <p>
+     * This action returns information on tag policies only.
+     * </p>
+     * <p>
+     * For more information on policy inheritance, see <a
+     * href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies-inheritance.html">How Policy
+     * Inheritance Works</a> in the <i>AWS Organizations User Guide</i>.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param describeEffectivePolicyRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the DescribeEffectivePolicy operation returned by the service.
+     * @sample AWSOrganizationsAsyncHandler.DescribeEffectivePolicy
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/DescribeEffectivePolicy"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<DescribeEffectivePolicyResult> describeEffectivePolicyAsync(DescribeEffectivePolicyRequest describeEffectivePolicyRequest,
+            com.amazonaws.handlers.AsyncHandler<DescribeEffectivePolicyRequest, DescribeEffectivePolicyResult> asyncHandler);
 
     /**
      * <p>
@@ -1339,7 +1453,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves information about an organizational unit (OU).
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeOrganizationalUnitRequest
@@ -1356,7 +1471,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves information about an organizational unit (OU).
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describeOrganizationalUnitRequest
@@ -1378,7 +1494,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves information about a policy.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describePolicyRequest
@@ -1394,7 +1511,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Retrieves information about a policy.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param describePolicyRequest
@@ -1419,14 +1537,14 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * <p>
      * <b>Note:</b> Every root, OU, and account must have at least one SCP attached. If you want to replace the default
      * <code>FullAWSAccess</code> policy with one that limits the permissions that can be delegated, you must attach the
-     * replacement policy before you can remove the default one. This is the authorization strategy of <a href=
-     * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist"
-     * >whitelisting</a>. If you instead attach a second SCP and leave the <code>FullAWSAccess</code> SCP still
-     * attached, and specify <code>"Effect": "Deny"</code> in the second SCP to override the
-     * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP), you're using
-     * the authorization strategy of <a href=
-     * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist"
-     * >blacklisting</a> .
+     * replacement policy before you can remove the default one. This is the authorization strategy of an
+     * "<a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#
+     * orgs_policies_whitelist">allow list</a>". If you instead attach a second SCP and leave the
+     * <code>FullAWSAccess</code> SCP still attached, and specify <code>"Effect": "Deny"</code> in the second SCP to
+     * override the <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP),
+     * you're using the authorization strategy of a
+     * "<a href="https://docs.aws.amazon.com/organizations/latest/userguide/
+     * orgs_manage_policies_about-scps.html#orgs_policies_blacklist">deny list</a>".
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -1449,14 +1567,14 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * <p>
      * <b>Note:</b> Every root, OU, and account must have at least one SCP attached. If you want to replace the default
      * <code>FullAWSAccess</code> policy with one that limits the permissions that can be delegated, you must attach the
-     * replacement policy before you can remove the default one. This is the authorization strategy of <a href=
-     * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_whitelist"
-     * >whitelisting</a>. If you instead attach a second SCP and leave the <code>FullAWSAccess</code> SCP still
-     * attached, and specify <code>"Effect": "Deny"</code> in the second SCP to override the
-     * <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP), you're using
-     * the authorization strategy of <a href=
-     * "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#orgs_policies_blacklist"
-     * >blacklisting</a> .
+     * replacement policy before you can remove the default one. This is the authorization strategy of an
+     * "<a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_about-scps.html#
+     * orgs_policies_whitelist">allow list</a>". If you instead attach a second SCP and leave the
+     * <code>FullAWSAccess</code> SCP still attached, and specify <code>"Effect": "Deny"</code> in the second SCP to
+     * override the <code>"Effect": "Allow"</code> in the <code>FullAWSAccess</code> policy (or any other attached SCP),
+     * you're using the authorization strategy of a
+     * "<a href="https://docs.aws.amazon.com/organizations/latest/userguide/
+     * orgs_manage_policies_about-scps.html#orgs_policies_blacklist">deny list</a>".
      * </p>
      * <p>
      * This operation can be called only from the organization's master account.
@@ -1955,7 +2073,7 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * <li>
      * <p>
      * The master account in an organization with all features enabled can set service control policies (SCPs) that can
-     * restrict what administrators of member accounts can do, including preventing them from successfully calling
+     * restrict what administrators of member accounts can do. This includes preventing them from successfully calling
      * <code>LeaveOrganization</code> and leaving the organization.
      * </p>
      * </li>
@@ -1964,10 +2082,33 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * You can leave an organization as a member account only if the account is configured with the information required
      * to operate as a standalone account. When you create an account in an organization using the AWS Organizations
      * console, API, or CLI commands, the information required of standalone accounts is <i>not</i> automatically
-     * collected. For each account that you want to make standalone, you must accept the end user license agreement
-     * (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment
-     * method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the
-     * account isn't attached to an organization. Follow the steps at <a href=
+     * collected. For each account that you want to make standalone, you must do the following steps:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Accept the end user license agreement (EULA)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Choose a support plan
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provide and verify the required contact information
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provide a current payment method
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account
+     * isn't attached to an organization. Follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      * > To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
      * Organizations User Guide.</i>
@@ -2007,7 +2148,7 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * <li>
      * <p>
      * The master account in an organization with all features enabled can set service control policies (SCPs) that can
-     * restrict what administrators of member accounts can do, including preventing them from successfully calling
+     * restrict what administrators of member accounts can do. This includes preventing them from successfully calling
      * <code>LeaveOrganization</code> and leaving the organization.
      * </p>
      * </li>
@@ -2016,10 +2157,33 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * You can leave an organization as a member account only if the account is configured with the information required
      * to operate as a standalone account. When you create an account in an organization using the AWS Organizations
      * console, API, or CLI commands, the information required of standalone accounts is <i>not</i> automatically
-     * collected. For each account that you want to make standalone, you must accept the end user license agreement
-     * (EULA), choose a support plan, provide and verify the required contact information, and provide a current payment
-     * method. AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the
-     * account isn't attached to an organization. Follow the steps at <a href=
+     * collected. For each account that you want to make standalone, you must do the following steps:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Accept the end user license agreement (EULA)
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Choose a support plan
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provide and verify the required contact information
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Provide a current payment method
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * AWS uses the payment method to charge for any billable (not free tier) AWS activity that occurs while the account
+     * isn't attached to an organization. Follow the steps at <a href=
      * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
      * > To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
      * Organizations User Guide.</i>
@@ -2063,7 +2227,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Organizations with Other AWS Services</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAWSServiceAccessForOrganizationRequest
@@ -2090,7 +2255,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Organizations with Other AWS Services</a> in the <i>AWS Organizations User Guide.</i>
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAWSServiceAccessForOrganizationRequest
@@ -2123,7 +2289,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAccountsRequest
@@ -2148,7 +2315,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAccountsRequest
@@ -2180,7 +2348,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAccountsForParentRequest
@@ -2207,7 +2376,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listAccountsForParentRequest
@@ -2237,7 +2407,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listChildrenRequest
@@ -2262,7 +2433,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listChildrenRequest
@@ -2292,7 +2464,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listCreateAccountStatusRequest
@@ -2317,7 +2490,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listCreateAccountStatusRequest
@@ -2332,6 +2506,90 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      */
     java.util.concurrent.Future<ListCreateAccountStatusResult> listCreateAccountStatusAsync(ListCreateAccountStatusRequest listCreateAccountStatusRequest,
             com.amazonaws.handlers.AsyncHandler<ListCreateAccountStatusRequest, ListCreateAccountStatusResult> asyncHandler);
+
+    /**
+     * <p>
+     * Lists the AWS accounts that are designated as delegated administrators in this organization.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param listDelegatedAdministratorsRequest
+     * @return A Java Future containing the result of the ListDelegatedAdministrators operation returned by the service.
+     * @sample AWSOrganizationsAsync.ListDelegatedAdministrators
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedAdministrators"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListDelegatedAdministratorsResult> listDelegatedAdministratorsAsync(
+            ListDelegatedAdministratorsRequest listDelegatedAdministratorsRequest);
+
+    /**
+     * <p>
+     * Lists the AWS accounts that are designated as delegated administrators in this organization.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param listDelegatedAdministratorsRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListDelegatedAdministrators operation returned by the service.
+     * @sample AWSOrganizationsAsyncHandler.ListDelegatedAdministrators
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedAdministrators"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListDelegatedAdministratorsResult> listDelegatedAdministratorsAsync(
+            ListDelegatedAdministratorsRequest listDelegatedAdministratorsRequest,
+            com.amazonaws.handlers.AsyncHandler<ListDelegatedAdministratorsRequest, ListDelegatedAdministratorsResult> asyncHandler);
+
+    /**
+     * <p>
+     * List the AWS services for which the specified account is a delegated administrator.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param listDelegatedServicesForAccountRequest
+     * @return A Java Future containing the result of the ListDelegatedServicesForAccount operation returned by the
+     *         service.
+     * @sample AWSOrganizationsAsync.ListDelegatedServicesForAccount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedServicesForAccount"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListDelegatedServicesForAccountResult> listDelegatedServicesForAccountAsync(
+            ListDelegatedServicesForAccountRequest listDelegatedServicesForAccountRequest);
+
+    /**
+     * <p>
+     * List the AWS services for which the specified account is a delegated administrator.
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
+     * </p>
+     * 
+     * @param listDelegatedServicesForAccountRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the ListDelegatedServicesForAccount operation returned by the
+     *         service.
+     * @sample AWSOrganizationsAsyncHandler.ListDelegatedServicesForAccount
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/ListDelegatedServicesForAccount"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<ListDelegatedServicesForAccountResult> listDelegatedServicesForAccountAsync(
+            ListDelegatedServicesForAccountRequest listDelegatedServicesForAccountRequest,
+            com.amazonaws.handlers.AsyncHandler<ListDelegatedServicesForAccountRequest, ListDelegatedServicesForAccountResult> asyncHandler);
 
     /**
      * <p>
@@ -2350,7 +2608,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called from any account in the organization.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listHandshakesForAccountRequest
@@ -2378,7 +2637,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called from any account in the organization.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listHandshakesForAccountRequest
@@ -2413,7 +2673,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listHandshakesForOrganizationRequest
@@ -2445,7 +2706,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listHandshakesForOrganizationRequest
@@ -2476,7 +2738,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listOrganizationalUnitsForParentRequest
@@ -2502,7 +2765,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listOrganizationalUnitsForParentRequest
@@ -2535,7 +2799,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * <note>
      * <p>
@@ -2566,7 +2831,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * <note>
      * <p>
@@ -2600,7 +2866,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listPoliciesRequest
@@ -2624,7 +2891,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listPoliciesRequest
@@ -2654,7 +2922,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listPoliciesForTargetRequest
@@ -2679,7 +2948,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listPoliciesForTargetRequest
@@ -2708,7 +2978,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * <note>
      * <p>
@@ -2740,7 +3011,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * <note>
      * <p>
@@ -2772,7 +3044,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Currently, you can list tags on an account in AWS Organizations.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -2791,7 +3064,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * Currently, you can list tags on an account in AWS Organizations.
      * </p>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listTagsForResourceRequest
@@ -2820,7 +3094,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listTargetsForPolicyRequest
@@ -2844,7 +3119,8 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      * </p>
      * </note>
      * <p>
-     * This operation can be called only from the organization's master account.
+     * This operation can be called only from the organization's master account or by a member account that is a
+     * delegated administrator for an AWS service.
      * </p>
      * 
      * @param listTargetsForPolicyRequest
@@ -2898,6 +3174,63 @@ public interface AWSOrganizationsAsync extends AWSOrganizations {
      */
     java.util.concurrent.Future<MoveAccountResult> moveAccountAsync(MoveAccountRequest moveAccountRequest,
             com.amazonaws.handlers.AsyncHandler<MoveAccountRequest, MoveAccountResult> asyncHandler);
+
+    /**
+     * <p>
+     * Enables the specified member account to administer the Organizations features of the specified AWS service. It
+     * grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access
+     * and administer the AWS service.
+     * </p>
+     * <p>
+     * You can run this action only for AWS services that support this feature. For a current list of services that
+     * support it, see the column <i>Supports Delegated Administrator</i> in the table at <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html">AWS Services
+     * that you can use with AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
+     * 
+     * @param registerDelegatedAdministratorRequest
+     * @return A Java Future containing the result of the RegisterDelegatedAdministrator operation returned by the
+     *         service.
+     * @sample AWSOrganizationsAsync.RegisterDelegatedAdministrator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/RegisterDelegatedAdministrator"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<RegisterDelegatedAdministratorResult> registerDelegatedAdministratorAsync(
+            RegisterDelegatedAdministratorRequest registerDelegatedAdministratorRequest);
+
+    /**
+     * <p>
+     * Enables the specified member account to administer the Organizations features of the specified AWS service. It
+     * grants read-only access to AWS Organizations service data. The account still requires IAM permissions to access
+     * and administer the AWS service.
+     * </p>
+     * <p>
+     * You can run this action only for AWS services that support this feature. For a current list of services that
+     * support it, see the column <i>Supports Delegated Administrator</i> in the table at <a
+     * href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrated-services-list.html">AWS Services
+     * that you can use with AWS Organizations</a> in the <i>AWS Organizations User Guide.</i>
+     * </p>
+     * <p>
+     * This operation can be called only from the organization's master account.
+     * </p>
+     * 
+     * @param registerDelegatedAdministratorRequest
+     * @param asyncHandler
+     *        Asynchronous callback handler for events in the lifecycle of the request. Users can provide an
+     *        implementation of the callback methods in this interface to receive notification of successful or
+     *        unsuccessful completion of the operation.
+     * @return A Java Future containing the result of the RegisterDelegatedAdministrator operation returned by the
+     *         service.
+     * @sample AWSOrganizationsAsyncHandler.RegisterDelegatedAdministrator
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/organizations-2016-11-28/RegisterDelegatedAdministrator"
+     *      target="_top">AWS API Documentation</a>
+     */
+    java.util.concurrent.Future<RegisterDelegatedAdministratorResult> registerDelegatedAdministratorAsync(
+            RegisterDelegatedAdministratorRequest registerDelegatedAdministratorRequest,
+            com.amazonaws.handlers.AsyncHandler<RegisterDelegatedAdministratorRequest, RegisterDelegatedAdministratorResult> asyncHandler);
 
     /**
      * <p>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -45,6 +45,8 @@ public class SourceMarshaller {
             .marshallLocationName("sourceArn").build();
     private static final MarshallingInfo<StructuredPojo> TRANSPORT_BINDING = MarshallingInfo.builder(MarshallingType.STRUCTURED)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("transport").build();
+    private static final MarshallingInfo<String> VPCINTERFACENAME_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("vpcInterfaceName").build();
     private static final MarshallingInfo<String> WHITELISTCIDR_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("whitelistCidr").build();
 
@@ -73,6 +75,7 @@ public class SourceMarshaller {
             protocolMarshaller.marshall(source.getName(), NAME_BINDING);
             protocolMarshaller.marshall(source.getSourceArn(), SOURCEARN_BINDING);
             protocolMarshaller.marshall(source.getTransport(), TRANSPORT_BINDING);
+            protocolMarshaller.marshall(source.getVpcInterfaceName(), VPCINTERFACENAME_BINDING);
             protocolMarshaller.marshall(source.getWhitelistCidr(), WHITELISTCIDR_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -90,6 +90,32 @@ public class AbstractAWSComprehendMedicalAsync extends AbstractAWSComprehendMedi
     @Override
     public java.util.concurrent.Future<DetectPHIResult> detectPHIAsync(DetectPHIRequest request,
             com.amazonaws.handlers.AsyncHandler<DetectPHIRequest, DetectPHIResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferICD10CMResult> inferICD10CMAsync(InferICD10CMRequest request) {
+
+        return inferICD10CMAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferICD10CMResult> inferICD10CMAsync(InferICD10CMRequest request,
+            com.amazonaws.handlers.AsyncHandler<InferICD10CMRequest, InferICD10CMResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferRxNormResult> inferRxNormAsync(InferRxNormRequest request) {
+
+        return inferRxNormAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<InferRxNormResult> inferRxNormAsync(InferRxNormRequest request,
+            com.amazonaws.handlers.AsyncHandler<InferRxNormRequest, InferRxNormResult> asyncHandler) {
 
         throw new java.lang.UnsupportedOperationException();
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -33,15 +33,31 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
     private String stackSetName;
     /**
      * <p>
-     * The names of one or more AWS accounts for which you want to update parameter values for stack instances. The
-     * overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     * parameter values for stack instances. The overridden parameter values will be applied to all stack instances in
+     * the specified accounts and Regions.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> accounts;
     /**
      * <p>
-     * The names of one or more regions in which you want to update parameter values for stack instances. The overridden
-     * parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update parameter
+     * values for stack instances. If your update targets OUs, the overridden parameter values only apply to the
+     * accounts that are currently in the target OUs and their child OUs. Accounts added to the target OUs and their
+     * child OUs in the future won't use the overridden values.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
+     * </p>
+     */
+    private DeploymentTargets deploymentTargets;
+    /**
+     * <p>
+     * The names of one or more Regions in which you want to update parameter values for stack instances. The overridden
+     * parameter values will be applied to all stack instances in the specified accounts and Regions.
      * </p>
      */
     private com.amazonaws.internal.SdkInternalList<String> regions;
@@ -50,7 +66,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * A list of input parameters whose values you want to update for the specified stack instances.
      * </p>
      * <p>
-     * Any overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * Any overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during
      * stack instance update operations:
      * </p>
@@ -168,13 +184,19 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more AWS accounts for which you want to update parameter values for stack instances. The
-     * overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     * parameter values for stack instances. The overridden parameter values will be applied to all stack instances in
+     * the specified accounts and Regions.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * </p>
      * 
-     * @return The names of one or more AWS accounts for which you want to update parameter values for stack instances.
-     *         The overridden parameter values will be applied to all stack instances in the specified accounts and
-     *         regions.
+     * @return [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to
+     *         update parameter values for stack instances. The overridden parameter values will be applied to all stack
+     *         instances in the specified accounts and Regions.</p>
+     *         <p>
+     *         You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      */
 
     public java.util.List<String> getAccounts() {
@@ -186,14 +208,20 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more AWS accounts for which you want to update parameter values for stack instances. The
-     * overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     * parameter values for stack instances. The overridden parameter values will be applied to all stack instances in
+     * the specified accounts and Regions.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * </p>
      * 
      * @param accounts
-     *        The names of one or more AWS accounts for which you want to update parameter values for stack instances.
-     *        The overridden parameter values will be applied to all stack instances in the specified accounts and
-     *        regions.
+     *        [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     *        parameter values for stack instances. The overridden parameter values will be applied to all stack
+     *        instances in the specified accounts and Regions.</p>
+     *        <p>
+     *        You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      */
 
     public void setAccounts(java.util.Collection<String> accounts) {
@@ -207,8 +235,12 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more AWS accounts for which you want to update parameter values for stack instances. The
-     * overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     * parameter values for stack instances. The overridden parameter values will be applied to all stack instances in
+     * the specified accounts and Regions.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -217,9 +249,11 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param accounts
-     *        The names of one or more AWS accounts for which you want to update parameter values for stack instances.
-     *        The overridden parameter values will be applied to all stack instances in the specified accounts and
-     *        regions.
+     *        [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     *        parameter values for stack instances. The overridden parameter values will be applied to all stack
+     *        instances in the specified accounts and Regions.</p>
+     *        <p>
+     *        You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -235,14 +269,20 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more AWS accounts for which you want to update parameter values for stack instances. The
-     * overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     * parameter values for stack instances. The overridden parameter values will be applied to all stack instances in
+     * the specified accounts and Regions.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * </p>
      * 
      * @param accounts
-     *        The names of one or more AWS accounts for which you want to update parameter values for stack instances.
-     *        The overridden parameter values will be applied to all stack instances in the specified accounts and
-     *        regions.
+     *        [<code>Self-managed</code> permissions] The names of one or more AWS accounts for which you want to update
+     *        parameter values for stack instances. The overridden parameter values will be applied to all stack
+     *        instances in the specified accounts and Regions.</p>
+     *        <p>
+     *        You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -253,12 +293,85 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more regions in which you want to update parameter values for stack instances. The overridden
-     * parameter values will be applied to all stack instances in the specified accounts and regions.
+     * [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update parameter
+     * values for stack instances. If your update targets OUs, the overridden parameter values only apply to the
+     * accounts that are currently in the target OUs and their child OUs. Accounts added to the target OUs and their
+     * child OUs in the future won't use the overridden values.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
      * </p>
      * 
-     * @return The names of one or more regions in which you want to update parameter values for stack instances. The
-     *         overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * @param deploymentTargets
+     *        [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update
+     *        parameter values for stack instances. If your update targets OUs, the overridden parameter values only
+     *        apply to the accounts that are currently in the target OUs and their child OUs. Accounts added to the
+     *        target OUs and their child OUs in the future won't use the overridden values.</p>
+     *        <p>
+     *        You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
+     */
+
+    public void setDeploymentTargets(DeploymentTargets deploymentTargets) {
+        this.deploymentTargets = deploymentTargets;
+    }
+
+    /**
+     * <p>
+     * [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update parameter
+     * values for stack instances. If your update targets OUs, the overridden parameter values only apply to the
+     * accounts that are currently in the target OUs and their child OUs. Accounts added to the target OUs and their
+     * child OUs in the future won't use the overridden values.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
+     * </p>
+     * 
+     * @return [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update
+     *         parameter values for stack instances. If your update targets OUs, the overridden parameter values only
+     *         apply to the accounts that are currently in the target OUs and their child OUs. Accounts added to the
+     *         target OUs and their child OUs in the future won't use the overridden values.</p>
+     *         <p>
+     *         You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
+     */
+
+    public DeploymentTargets getDeploymentTargets() {
+        return this.deploymentTargets;
+    }
+
+    /**
+     * <p>
+     * [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update parameter
+     * values for stack instances. If your update targets OUs, the overridden parameter values only apply to the
+     * accounts that are currently in the target OUs and their child OUs. Accounts added to the target OUs and their
+     * child OUs in the future won't use the overridden values.
+     * </p>
+     * <p>
+     * You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
+     * </p>
+     * 
+     * @param deploymentTargets
+     *        [<code>Service-managed</code> permissions] The AWS Organizations accounts for which you want to update
+     *        parameter values for stack instances. If your update targets OUs, the overridden parameter values only
+     *        apply to the accounts that are currently in the target OUs and their child OUs. Accounts added to the
+     *        target OUs and their child OUs in the future won't use the overridden values.</p>
+     *        <p>
+     *        You can specify <code>Accounts</code> or <code>DeploymentTargets</code>, but not both.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public UpdateStackInstancesRequest withDeploymentTargets(DeploymentTargets deploymentTargets) {
+        setDeploymentTargets(deploymentTargets);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The names of one or more Regions in which you want to update parameter values for stack instances. The overridden
+     * parameter values will be applied to all stack instances in the specified accounts and Regions.
+     * </p>
+     * 
+     * @return The names of one or more Regions in which you want to update parameter values for stack instances. The
+     *         overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      */
 
     public java.util.List<String> getRegions() {
@@ -270,13 +383,13 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more regions in which you want to update parameter values for stack instances. The overridden
-     * parameter values will be applied to all stack instances in the specified accounts and regions.
+     * The names of one or more Regions in which you want to update parameter values for stack instances. The overridden
+     * parameter values will be applied to all stack instances in the specified accounts and Regions.
      * </p>
      * 
      * @param regions
-     *        The names of one or more regions in which you want to update parameter values for stack instances. The
-     *        overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     *        The names of one or more Regions in which you want to update parameter values for stack instances. The
+     *        overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      */
 
     public void setRegions(java.util.Collection<String> regions) {
@@ -290,8 +403,8 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more regions in which you want to update parameter values for stack instances. The overridden
-     * parameter values will be applied to all stack instances in the specified accounts and regions.
+     * The names of one or more Regions in which you want to update parameter values for stack instances. The overridden
+     * parameter values will be applied to all stack instances in the specified accounts and Regions.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -300,8 +413,8 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      * 
      * @param regions
-     *        The names of one or more regions in which you want to update parameter values for stack instances. The
-     *        overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     *        The names of one or more Regions in which you want to update parameter values for stack instances. The
+     *        overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -317,13 +430,13 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The names of one or more regions in which you want to update parameter values for stack instances. The overridden
-     * parameter values will be applied to all stack instances in the specified accounts and regions.
+     * The names of one or more Regions in which you want to update parameter values for stack instances. The overridden
+     * parameter values will be applied to all stack instances in the specified accounts and Regions.
      * </p>
      * 
      * @param regions
-     *        The names of one or more regions in which you want to update parameter values for stack instances. The
-     *        overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     *        The names of one or more Regions in which you want to update parameter values for stack instances. The
+     *        overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,7 +450,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * A list of input parameters whose values you want to update for the specified stack instances.
      * </p>
      * <p>
-     * Any overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * Any overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during
      * stack instance update operations:
      * </p>
@@ -394,7 +507,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * @return A list of input parameters whose values you want to update for the specified stack instances. </p>
      *         <p>
      *         Any overridden parameter values will be applied to all stack instances in the specified accounts and
-     *         regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
+     *         Regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
      *         values during stack instance update operations:
      *         </p>
      *         <ul>
@@ -460,7 +573,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * A list of input parameters whose values you want to update for the specified stack instances.
      * </p>
      * <p>
-     * Any overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * Any overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during
      * stack instance update operations:
      * </p>
@@ -518,7 +631,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      *        A list of input parameters whose values you want to update for the specified stack instances. </p>
      *        <p>
      *        Any overridden parameter values will be applied to all stack instances in the specified accounts and
-     *        regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
+     *        Regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
      *        values during stack instance update operations:
      *        </p>
      *        <ul>
@@ -585,7 +698,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * A list of input parameters whose values you want to update for the specified stack instances.
      * </p>
      * <p>
-     * Any overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * Any overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during
      * stack instance update operations:
      * </p>
@@ -648,7 +761,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      *        A list of input parameters whose values you want to update for the specified stack instances. </p>
      *        <p>
      *        Any overridden parameter values will be applied to all stack instances in the specified accounts and
-     *        regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
+     *        Regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
      *        values during stack instance update operations:
      *        </p>
      *        <ul>
@@ -717,7 +830,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      * A list of input parameters whose values you want to update for the specified stack instances.
      * </p>
      * <p>
-     * Any overridden parameter values will be applied to all stack instances in the specified accounts and regions.
+     * Any overridden parameter values will be applied to all stack instances in the specified accounts and Regions.
      * When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter values during
      * stack instance update operations:
      * </p>
@@ -775,7 +888,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
      *        A list of input parameters whose values you want to update for the specified stack instances. </p>
      *        <p>
      *        Any overridden parameter values will be applied to all stack instances in the specified accounts and
-     *        regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
+     *        Regions. When specifying parameters and their values, be aware of how AWS CloudFormation sets parameter
      *        values during stack instance update operations:
      *        </p>
      *        <ul>
@@ -975,6 +1088,8 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
             sb.append("StackSetName: ").append(getStackSetName()).append(",");
         if (getAccounts() != null)
             sb.append("Accounts: ").append(getAccounts()).append(",");
+        if (getDeploymentTargets() != null)
+            sb.append("DeploymentTargets: ").append(getDeploymentTargets()).append(",");
         if (getRegions() != null)
             sb.append("Regions: ").append(getRegions()).append(",");
         if (getParameterOverrides() != null)
@@ -1005,6 +1120,10 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
             return false;
         if (other.getAccounts() != null && other.getAccounts().equals(this.getAccounts()) == false)
             return false;
+        if (other.getDeploymentTargets() == null ^ this.getDeploymentTargets() == null)
+            return false;
+        if (other.getDeploymentTargets() != null && other.getDeploymentTargets().equals(this.getDeploymentTargets()) == false)
+            return false;
         if (other.getRegions() == null ^ this.getRegions() == null)
             return false;
         if (other.getRegions() != null && other.getRegions().equals(this.getRegions()) == false)
@@ -1031,6 +1150,7 @@ public class UpdateStackInstancesRequest extends com.amazonaws.AmazonWebServiceR
 
         hashCode = prime * hashCode + ((getStackSetName() == null) ? 0 : getStackSetName().hashCode());
         hashCode = prime * hashCode + ((getAccounts() == null) ? 0 : getAccounts().hashCode());
+        hashCode = prime * hashCode + ((getDeploymentTargets() == null) ? 0 : getDeploymentTargets().hashCode());
         hashCode = prime * hashCode + ((getRegions() == null) ? 0 : getRegions().hashCode());
         hashCode = prime * hashCode + ((getParameterOverrides() == null) ? 0 : getParameterOverrides().hashCode());
         hashCode = prime * hashCode + ((getOperationPreferences() == null) ? 0 : getOperationPreferences().hashCode());

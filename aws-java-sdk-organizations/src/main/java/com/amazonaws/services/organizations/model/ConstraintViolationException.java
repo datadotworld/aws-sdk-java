@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -73,6 +73,24 @@ import javax.annotation.Generated;
  * </important></li>
  * <li>
  * <p>
+ * CANNOT_REGISTER_MASTER_AS_DELEGATED_ADMINISTRATOR: You can designate only a member account as a delegated
+ * administrator.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * CANNOT_REMOVE_DELEGATED_ADMINISTRATOR_FROM_ORG: To complete this operation, you must first deregister this account as
+ * a delegated administrator.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * DELEGATED_ADMINISTRATOR_EXISTS_FOR_THIS_SERVICE: To complete this operation, you must first deregister all delegated
+ * administrators for this service.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
  * HANDSHAKE_RATE_LIMIT_EXCEEDED: You attempted to exceed the number of handshakes that you can send in one day.
  * </p>
  * </li>
@@ -105,6 +123,12 @@ import javax.annotation.Generated;
  * "http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info"
  * >To leave an organization when all required account information has not yet been provided</a> in the <i>AWS
  * Organizations User Guide.</i>
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * MAX_DELEGATED_ADMINISTRATORS_FOR_SERVICE_LIMIT_EXCEEDED: You attempted to register more delegated administrators than
+ * allowed for the service principal.
  * </p>
  * </li>
  * <li>

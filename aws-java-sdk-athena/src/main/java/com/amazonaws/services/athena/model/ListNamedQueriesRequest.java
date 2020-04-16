@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,8 @@ public class ListNamedQueriesRequest extends com.amazonaws.AmazonWebServiceReque
     private Integer maxResults;
     /**
      * <p>
-     * The name of the workgroup from which the named queries are being returned.
+     * The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the saved
+     * queries for the primary workgroup are returned.
      * </p>
      */
     private String workGroup;
@@ -126,11 +127,13 @@ public class ListNamedQueriesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the workgroup from which the named queries are being returned.
+     * The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the saved
+     * queries for the primary workgroup are returned.
      * </p>
      * 
      * @param workGroup
-     *        The name of the workgroup from which the named queries are being returned.
+     *        The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the
+     *        saved queries for the primary workgroup are returned.
      */
 
     public void setWorkGroup(String workGroup) {
@@ -139,10 +142,12 @@ public class ListNamedQueriesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the workgroup from which the named queries are being returned.
+     * The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the saved
+     * queries for the primary workgroup are returned.
      * </p>
      * 
-     * @return The name of the workgroup from which the named queries are being returned.
+     * @return The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the
+     *         saved queries for the primary workgroup are returned.
      */
 
     public String getWorkGroup() {
@@ -151,11 +156,13 @@ public class ListNamedQueriesRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The name of the workgroup from which the named queries are being returned.
+     * The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the saved
+     * queries for the primary workgroup are returned.
      * </p>
      * 
      * @param workGroup
-     *        The name of the workgroup from which the named queries are being returned.
+     *        The name of the workgroup from which the named queries are returned. If a workgroup is not specified, the
+     *        saved queries for the primary workgroup are returned.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

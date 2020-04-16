@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -217,15 +217,23 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
     private Long bytesPerSecond;
     /**
      * <p>
-     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>Enabled</code>
-     * , the tasks will queued. The default is <code>Enabled</code>.
+     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>ENABLED</code>
+     * , the tasks will be queued. The default is <code>ENABLED</code>.
      * </p>
      * <p>
      * If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more information
-     * see <a>task-queue</a>.
+     * see <a>queue-task-execution</a>.
      * </p>
      */
     private String taskQueueing;
+    /**
+     * <p>
+     * A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     * <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer operation
+     * and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is transferred.
+     * </p>
+     */
+    private String logLevel;
 
     /**
      * <p>
@@ -1730,20 +1738,20 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>Enabled</code>
-     * , the tasks will queued. The default is <code>Enabled</code>.
+     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>ENABLED</code>
+     * , the tasks will be queued. The default is <code>ENABLED</code>.
      * </p>
      * <p>
      * If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more information
-     * see <a>task-queue</a>.
+     * see <a>queue-task-execution</a>.
      * </p>
      * 
      * @param taskQueueing
      *        A value that determines whether tasks should be queued before executing the tasks. If set to
-     *        <code>Enabled</code>, the tasks will queued. The default is <code>Enabled</code>.</p>
+     *        <code>ENABLED</code>, the tasks will be queued. The default is <code>ENABLED</code>.</p>
      *        <p>
      *        If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more
-     *        information see <a>task-queue</a>.
+     *        information see <a>queue-task-execution</a>.
      * @see TaskQueueing
      */
 
@@ -1753,19 +1761,19 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>Enabled</code>
-     * , the tasks will queued. The default is <code>Enabled</code>.
+     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>ENABLED</code>
+     * , the tasks will be queued. The default is <code>ENABLED</code>.
      * </p>
      * <p>
      * If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more information
-     * see <a>task-queue</a>.
+     * see <a>queue-task-execution</a>.
      * </p>
      * 
      * @return A value that determines whether tasks should be queued before executing the tasks. If set to
-     *         <code>Enabled</code>, the tasks will queued. The default is <code>Enabled</code>.</p>
+     *         <code>ENABLED</code>, the tasks will be queued. The default is <code>ENABLED</code>.</p>
      *         <p>
      *         If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more
-     *         information see <a>task-queue</a>.
+     *         information see <a>queue-task-execution</a>.
      * @see TaskQueueing
      */
 
@@ -1775,20 +1783,20 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>Enabled</code>
-     * , the tasks will queued. The default is <code>Enabled</code>.
+     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>ENABLED</code>
+     * , the tasks will be queued. The default is <code>ENABLED</code>.
      * </p>
      * <p>
      * If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more information
-     * see <a>task-queue</a>.
+     * see <a>queue-task-execution</a>.
      * </p>
      * 
      * @param taskQueueing
      *        A value that determines whether tasks should be queued before executing the tasks. If set to
-     *        <code>Enabled</code>, the tasks will queued. The default is <code>Enabled</code>.</p>
+     *        <code>ENABLED</code>, the tasks will be queued. The default is <code>ENABLED</code>.</p>
      *        <p>
      *        If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more
-     *        information see <a>task-queue</a>.
+     *        information see <a>queue-task-execution</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TaskQueueing
      */
@@ -1800,26 +1808,105 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
 
     /**
      * <p>
-     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>Enabled</code>
-     * , the tasks will queued. The default is <code>Enabled</code>.
+     * A value that determines whether tasks should be queued before executing the tasks. If set to <code>ENABLED</code>
+     * , the tasks will be queued. The default is <code>ENABLED</code>.
      * </p>
      * <p>
      * If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more information
-     * see <a>task-queue</a>.
+     * see <a>queue-task-execution</a>.
      * </p>
      * 
      * @param taskQueueing
      *        A value that determines whether tasks should be queued before executing the tasks. If set to
-     *        <code>Enabled</code>, the tasks will queued. The default is <code>Enabled</code>.</p>
+     *        <code>ENABLED</code>, the tasks will be queued. The default is <code>ENABLED</code>.</p>
      *        <p>
      *        If you use the same agent to run multiple tasks you can enable the tasks to run in series. For more
-     *        information see <a>task-queue</a>.
+     *        information see <a>queue-task-execution</a>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see TaskQueueing
      */
 
     public Options withTaskQueueing(TaskQueueing taskQueueing) {
         this.taskQueueing = taskQueueing.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     * <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer operation
+     * and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is transferred.
+     * </p>
+     * 
+     * @param logLevel
+     *        A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     *        <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer
+     *        operation and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is
+     *        transferred.
+     * @see LogLevel
+     */
+
+    public void setLogLevel(String logLevel) {
+        this.logLevel = logLevel;
+    }
+
+    /**
+     * <p>
+     * A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     * <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer operation
+     * and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is transferred.
+     * </p>
+     * 
+     * @return A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set
+     *         to <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer
+     *         operation and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is
+     *         transferred.
+     * @see LogLevel
+     */
+
+    public String getLogLevel() {
+        return this.logLevel;
+    }
+
+    /**
+     * <p>
+     * A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     * <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer operation
+     * and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is transferred.
+     * </p>
+     * 
+     * @param logLevel
+     *        A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     *        <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer
+     *        operation and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is
+     *        transferred.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LogLevel
+     */
+
+    public Options withLogLevel(String logLevel) {
+        setLogLevel(logLevel);
+        return this;
+    }
+
+    /**
+     * <p>
+     * A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     * <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer operation
+     * and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is transferred.
+     * </p>
+     * 
+     * @param logLevel
+     *        A value that determines the type of logs DataSync will deliver to your AWS CloudWatch Logs file. If set to
+     *        <code>OFF</code>, no logs will be delivered. <code>BASIC</code> will deliver a few logs per transfer
+     *        operation and <code>TRANSFER</code> will deliver a verbose log that contains logs for every file that is
+     *        transferred.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see LogLevel
+     */
+
+    public Options withLogLevel(LogLevel logLevel) {
+        this.logLevel = logLevel.toString();
         return this;
     }
 
@@ -1856,7 +1943,9 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
         if (getBytesPerSecond() != null)
             sb.append("BytesPerSecond: ").append(getBytesPerSecond()).append(",");
         if (getTaskQueueing() != null)
-            sb.append("TaskQueueing: ").append(getTaskQueueing());
+            sb.append("TaskQueueing: ").append(getTaskQueueing()).append(",");
+        if (getLogLevel() != null)
+            sb.append("LogLevel: ").append(getLogLevel());
         sb.append("}");
         return sb.toString();
     }
@@ -1915,6 +2004,10 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
             return false;
         if (other.getTaskQueueing() != null && other.getTaskQueueing().equals(this.getTaskQueueing()) == false)
             return false;
+        if (other.getLogLevel() == null ^ this.getLogLevel() == null)
+            return false;
+        if (other.getLogLevel() != null && other.getLogLevel().equals(this.getLogLevel()) == false)
+            return false;
         return true;
     }
 
@@ -1934,6 +2027,7 @@ public class Options implements Serializable, Cloneable, StructuredPojo {
         hashCode = prime * hashCode + ((getPosixPermissions() == null) ? 0 : getPosixPermissions().hashCode());
         hashCode = prime * hashCode + ((getBytesPerSecond() == null) ? 0 : getBytesPerSecond().hashCode());
         hashCode = prime * hashCode + ((getTaskQueueing() == null) ? 0 : getTaskQueueing().hashCode());
+        hashCode = prime * hashCode + ((getLogLevel() == null) ? 0 : getLogLevel().hashCode());
         return hashCode;
     }
 

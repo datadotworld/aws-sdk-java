@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -35,6 +35,8 @@ public class ApplicationInfoMarshaller {
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OpsItemSNSTopicArn").build();
     private static final MarshallingInfo<Boolean> OPSCENTERENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
             .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("OpsCenterEnabled").build();
+    private static final MarshallingInfo<Boolean> CWEMONITORENABLED_BINDING = MarshallingInfo.builder(MarshallingType.BOOLEAN)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("CWEMonitorEnabled").build();
     private static final MarshallingInfo<String> REMARKS_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Remarks").build();
 
@@ -58,6 +60,7 @@ public class ApplicationInfoMarshaller {
             protocolMarshaller.marshall(applicationInfo.getLifeCycle(), LIFECYCLE_BINDING);
             protocolMarshaller.marshall(applicationInfo.getOpsItemSNSTopicArn(), OPSITEMSNSTOPICARN_BINDING);
             protocolMarshaller.marshall(applicationInfo.getOpsCenterEnabled(), OPSCENTERENABLED_BINDING);
+            protocolMarshaller.marshall(applicationInfo.getCWEMonitorEnabled(), CWEMONITORENABLED_BINDING);
             protocolMarshaller.marshall(applicationInfo.getRemarks(), REMARKS_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);

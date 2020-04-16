@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -39,7 +39,7 @@ public class SendUsersMessageRequest implements Serializable, Cloneable, Structu
     private java.util.Map<String, String> context;
     /**
      * <p>
-     * The message definitions for the default message and any default messages that you defined for specific channels.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      */
     private DirectMessageConfiguration messageConfiguration;
@@ -115,6 +115,13 @@ public class SendUsersMessageRequest implements Serializable, Cloneable, Structu
         return this;
     }
 
+    /**
+     * Add a single Context entry
+     *
+     * @see SendUsersMessageRequest#withContext
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public SendUsersMessageRequest addContextEntry(String key, String value) {
         if (null == this.context) {
             this.context = new java.util.HashMap<String, String>();
@@ -138,11 +145,11 @@ public class SendUsersMessageRequest implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * The message definitions for the default message and any default messages that you defined for specific channels.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      * 
      * @param messageConfiguration
-     *        The message definitions for the default message and any default messages that you defined for specific
+     *        The settings and content for the default message and any default messages that you defined for specific
      *        channels.
      */
 
@@ -152,10 +159,10 @@ public class SendUsersMessageRequest implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * The message definitions for the default message and any default messages that you defined for specific channels.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      * 
-     * @return The message definitions for the default message and any default messages that you defined for specific
+     * @return The settings and content for the default message and any default messages that you defined for specific
      *         channels.
      */
 
@@ -165,11 +172,11 @@ public class SendUsersMessageRequest implements Serializable, Cloneable, Structu
 
     /**
      * <p>
-     * The message definitions for the default message and any default messages that you defined for specific channels.
+     * The settings and content for the default message and any default messages that you defined for specific channels.
      * </p>
      * 
      * @param messageConfiguration
-     *        The message definitions for the default message and any default messages that you defined for specific
+     *        The settings and content for the default message and any default messages that you defined for specific
      *        channels.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -307,6 +314,13 @@ public class SendUsersMessageRequest implements Serializable, Cloneable, Structu
         setUsers(users);
         return this;
     }
+
+    /**
+     * Add a single Users entry
+     *
+     * @see SendUsersMessageRequest#withUsers
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public SendUsersMessageRequest addUsersEntry(String key, EndpointSendConfiguration value) {
         if (null == this.users) {

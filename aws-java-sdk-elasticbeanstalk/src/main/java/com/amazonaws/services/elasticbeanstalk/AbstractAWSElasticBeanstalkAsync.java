@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -567,6 +567,19 @@ public class AbstractAWSElasticBeanstalkAsync extends AbstractAWSElasticBeanstal
             com.amazonaws.handlers.AsyncHandler<ListAvailableSolutionStacksRequest, ListAvailableSolutionStacksResult> asyncHandler) {
 
         return listAvailableSolutionStacksAsync(new ListAvailableSolutionStacksRequest(), asyncHandler);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListPlatformBranchesResult> listPlatformBranchesAsync(ListPlatformBranchesRequest request) {
+
+        return listPlatformBranchesAsync(request, null);
+    }
+
+    @Override
+    public java.util.concurrent.Future<ListPlatformBranchesResult> listPlatformBranchesAsync(ListPlatformBranchesRequest request,
+            com.amazonaws.handlers.AsyncHandler<ListPlatformBranchesRequest, ListPlatformBranchesResult> asyncHandler) {
+
+        throw new java.lang.UnsupportedOperationException();
     }
 
     @Override

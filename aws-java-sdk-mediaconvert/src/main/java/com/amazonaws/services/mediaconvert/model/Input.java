@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -183,6 +183,13 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single AudioSelectorGroups entry
+     *
+     * @see Input#withAudioSelectorGroups
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public Input addAudioSelectorGroupsEntry(String key, AudioSelectorGroup value) {
         if (null == this.audioSelectorGroups) {
             this.audioSelectorGroups = new java.util.HashMap<String, AudioSelectorGroup>();
@@ -244,6 +251,13 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
         return this;
     }
 
+    /**
+     * Add a single AudioSelectors entry
+     *
+     * @see Input#withAudioSelectors
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public Input addAudioSelectorsEntry(String key, AudioSelector value) {
         if (null == this.audioSelectors) {
             this.audioSelectors = new java.util.HashMap<String, AudioSelector>();
@@ -304,6 +318,13 @@ public class Input implements Serializable, Cloneable, StructuredPojo {
         setCaptionSelectors(captionSelectors);
         return this;
     }
+
+    /**
+     * Add a single CaptionSelectors entry
+     *
+     * @see Input#withCaptionSelectors
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public Input addCaptionSelectorsEntry(String key, CaptionSelector value) {
         if (null == this.captionSelectors) {

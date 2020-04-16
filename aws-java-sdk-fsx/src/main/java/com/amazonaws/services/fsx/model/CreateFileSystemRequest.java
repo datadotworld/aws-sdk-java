@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -37,27 +37,82 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
     private String clientRequestToken;
     /**
      * <p>
-     * The type of Amazon FSx file system to create.
+     * The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * </p>
      */
     private String fileSystemType;
     /**
      * <p>
-     * The storage capacity of the file system being created.
+     * Sets the storage capacity of the file system that you're creating.
      * </p>
      * <p>
-     * For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     * For Lustre file systems:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned in
-     * increments of 3,600 GiB.
+     * For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     * increments of 2.4 TiB.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For Windows file systems:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * </ul>
      */
     private Integer storageCapacity;
     /**
      * <p>
-     * The IDs of the subnets that the file system will be accessible from. File systems support only one subnet. The
-     * file server is also launched in that subnet's Availability Zone.
+     * Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     * <code>SSD</code> and <code>HDD</code>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment types.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     * <code>MULTI_AZ_1</code> Windows file system deployment types.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Default value is <code>SSD</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type"> Storage
+     * Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * </p>
+     */
+    private String storageType;
+    /**
+     * <p>
+     * Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     * <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the preferred file
+     * server and one for the standby file server. You specify one of these subnets as the preferred subnet using the
+     * <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.
+     * </p>
+     * <p>
+     * For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre file
+     * systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
      * </p>
      */
     private java.util.List<String> subnetIds;
@@ -79,8 +134,7 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
     private String kmsKeyId;
     /**
      * <p>
-     * The Microsoft Windows configuration for the file system being created. This value is required if
-     * <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     * The Microsoft Windows configuration for the file system being created.
      * </p>
      */
     private CreateFileSystemWindowsConfiguration windowsConfiguration;
@@ -138,11 +192,11 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The type of Amazon FSx file system to create.
+     * The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * </p>
      * 
      * @param fileSystemType
-     *        The type of Amazon FSx file system to create.
+     *        The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * @see FileSystemType
      */
 
@@ -152,10 +206,10 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The type of Amazon FSx file system to create.
+     * The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * </p>
      * 
-     * @return The type of Amazon FSx file system to create.
+     * @return The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * @see FileSystemType
      */
 
@@ -165,11 +219,11 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The type of Amazon FSx file system to create.
+     * The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * </p>
      * 
      * @param fileSystemType
-     *        The type of Amazon FSx file system to create.
+     *        The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see FileSystemType
      */
@@ -181,11 +235,11 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The type of Amazon FSx file system to create.
+     * The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * </p>
      * 
      * @param fileSystemType
-     *        The type of Amazon FSx file system to create.
+     *        The type of Amazon FSx file system to create, either <code>WINDOWS</code> or <code>LUSTRE</code>.
      * @return Returns a reference to this object so that method calls can be chained together.
      * @see FileSystemType
      */
@@ -197,24 +251,72 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The storage capacity of the file system being created.
+     * Sets the storage capacity of the file system that you're creating.
      * </p>
      * <p>
-     * For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     * For Lustre file systems:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned in
-     * increments of 3,600 GiB.
+     * For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     * increments of 2.4 TiB.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For Windows file systems:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param storageCapacity
-     *        The storage capacity of the file system being created.</p>
+     *        Sets the storage capacity of the file system that you're creating.</p>
      *        <p>
-     *        For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     *        For Lustre file systems:
      *        </p>
+     *        <ul>
+     *        <li>
      *        <p>
-     *        For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned
-     *        in increments of 3,600 GiB.
+     *        For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     *        increments of 2.4 TiB.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        For Windows file systems:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     *        </p>
+     *        </li>
      */
 
     public void setStorageCapacity(Integer storageCapacity) {
@@ -223,23 +325,71 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The storage capacity of the file system being created.
+     * Sets the storage capacity of the file system that you're creating.
      * </p>
      * <p>
-     * For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     * For Lustre file systems:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned in
-     * increments of 3,600 GiB.
+     * For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     * increments of 2.4 TiB.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For Windows file systems:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * </ul>
      * 
-     * @return The storage capacity of the file system being created.</p>
+     * @return Sets the storage capacity of the file system that you're creating.</p>
      *         <p>
-     *         For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     *         For Lustre file systems:
      *         </p>
+     *         <ul>
+     *         <li>
      *         <p>
-     *         For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned
-     *         in increments of 3,600 GiB.
+     *         For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     *         increments of 2.4 TiB.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         For Windows file systems:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     *         </p>
+     *         </li>
      */
 
     public Integer getStorageCapacity() {
@@ -248,24 +398,72 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The storage capacity of the file system being created.
+     * Sets the storage capacity of the file system that you're creating.
      * </p>
      * <p>
-     * For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     * For Lustre file systems:
      * </p>
+     * <ul>
+     * <li>
      * <p>
-     * For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned in
-     * increments of 3,600 GiB.
+     * For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     * increments of 2.4 TiB.
      * </p>
+     * </li>
+     * <li>
+     * <p>
+     * For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * For Windows file systems:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     * </p>
+     * </li>
+     * </ul>
      * 
      * @param storageCapacity
-     *        The storage capacity of the file system being created.</p>
+     *        Sets the storage capacity of the file system that you're creating.</p>
      *        <p>
-     *        For Windows file systems, the storage capacity has a minimum of 300 GiB, and a maximum of 65,536 GiB.
+     *        For Lustre file systems:
      *        </p>
+     *        <ul>
+     *        <li>
      *        <p>
-     *        For Lustre file systems, the storage capacity has a minimum of 3,600 GiB. Storage capacity is provisioned
-     *        in increments of 3,600 GiB.
+     *        For <code>SCRATCH_2</code> and <code>PERSISTENT_1</code> deployment types, valid values are 1.2, 2.4, and
+     *        increments of 2.4 TiB.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        For <code>SCRATCH_1</code> deployment type, valid values are 1.2, 2.4, and increments of 3.6 TiB.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        For Windows file systems:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        If <code>StorageType=SSD</code>, valid values are 32 GiB - 65,536 GiB (64 TiB).
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        If <code>StorageType=HDD</code>, valid values are 2000 GiB - 65,536 GiB (64 TiB).
+     *        </p>
+     *        </li>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -276,12 +474,235 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The IDs of the subnets that the file system will be accessible from. File systems support only one subnet. The
-     * file server is also launched in that subnet's Availability Zone.
+     * Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     * <code>SSD</code> and <code>HDD</code>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment types.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     * <code>MULTI_AZ_1</code> Windows file system deployment types.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Default value is <code>SSD</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type"> Storage
+     * Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
      * </p>
      * 
-     * @return The IDs of the subnets that the file system will be accessible from. File systems support only one
-     *         subnet. The file server is also launched in that subnet's Availability Zone.
+     * @param storageType
+     *        Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     *        <code>SSD</code> and <code>HDD</code>.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment
+     *        types.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     *        <code>MULTI_AZ_1</code> Windows file system deployment types.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Default value is <code>SSD</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type">
+     *        Storage Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * @see StorageType
+     */
+
+    public void setStorageType(String storageType) {
+        this.storageType = storageType;
+    }
+
+    /**
+     * <p>
+     * Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     * <code>SSD</code> and <code>HDD</code>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment types.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     * <code>MULTI_AZ_1</code> Windows file system deployment types.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Default value is <code>SSD</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type"> Storage
+     * Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * </p>
+     * 
+     * @return Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     *         <code>SSD</code> and <code>HDD</code>.</p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment
+     *         types.
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     *         <code>MULTI_AZ_1</code> Windows file system deployment types.
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         Default value is <code>SSD</code>. For more information, see <a
+     *         href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type">
+     *         Storage Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * @see StorageType
+     */
+
+    public String getStorageType() {
+        return this.storageType;
+    }
+
+    /**
+     * <p>
+     * Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     * <code>SSD</code> and <code>HDD</code>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment types.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     * <code>MULTI_AZ_1</code> Windows file system deployment types.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Default value is <code>SSD</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type"> Storage
+     * Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * </p>
+     * 
+     * @param storageType
+     *        Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     *        <code>SSD</code> and <code>HDD</code>.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment
+     *        types.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     *        <code>MULTI_AZ_1</code> Windows file system deployment types.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Default value is <code>SSD</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type">
+     *        Storage Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StorageType
+     */
+
+    public CreateFileSystemRequest withStorageType(String storageType) {
+        setStorageType(storageType);
+        return this;
+    }
+
+    /**
+     * <p>
+     * Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     * <code>SSD</code> and <code>HDD</code>.
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment types.
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     * <code>MULTI_AZ_1</code> Windows file system deployment types.
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * Default value is <code>SSD</code>. For more information, see <a
+     * href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type"> Storage
+     * Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * </p>
+     * 
+     * @param storageType
+     *        Sets the storage type for the Amazon FSx for Windows file system you're creating. Valid values are
+     *        <code>SSD</code> and <code>HDD</code>.</p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Set to <code>SSD</code> to use solid state drive storage. SSD is supported on all Windows deployment
+     *        types.
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Set to <code>HDD</code> to use hard disk drive storage. HDD is supported on <code>SINGLE_AZ_2</code> and
+     *        <code>MULTI_AZ_1</code> Windows file system deployment types.
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        Default value is <code>SSD</code>. For more information, see <a
+     *        href="https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-tco.html#saz-maz-storage-type">
+     *        Storage Type Options</a> in the <i>Amazon FSx for Windows User Guide</i>.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     * @see StorageType
+     */
+
+    public CreateFileSystemRequest withStorageType(StorageType storageType) {
+        this.storageType = storageType.toString();
+        return this;
+    }
+
+    /**
+     * <p>
+     * Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     * <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the preferred file
+     * server and one for the standby file server. You specify one of these subnets as the preferred subnet using the
+     * <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.
+     * </p>
+     * <p>
+     * For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre file
+     * systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
+     * </p>
+     * 
+     * @return Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     *         <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the
+     *         preferred file server and one for the standby file server. You specify one of these subnets as the
+     *         preferred subnet using the <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.</p>
+     *         <p>
+     *         For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre
+     *         file systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability
+     *         Zone.
      */
 
     public java.util.List<String> getSubnetIds() {
@@ -290,13 +711,25 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The IDs of the subnets that the file system will be accessible from. File systems support only one subnet. The
-     * file server is also launched in that subnet's Availability Zone.
+     * Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     * <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the preferred file
+     * server and one for the standby file server. You specify one of these subnets as the preferred subnet using the
+     * <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.
+     * </p>
+     * <p>
+     * For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre file
+     * systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
      * </p>
      * 
      * @param subnetIds
-     *        The IDs of the subnets that the file system will be accessible from. File systems support only one subnet.
-     *        The file server is also launched in that subnet's Availability Zone.
+     *        Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     *        <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the
+     *        preferred file server and one for the standby file server. You specify one of these subnets as the
+     *        preferred subnet using the <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.</p>
+     *        <p>
+     *        For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre
+     *        file systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability
+     *        Zone.
      */
 
     public void setSubnetIds(java.util.Collection<String> subnetIds) {
@@ -310,8 +743,14 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The IDs of the subnets that the file system will be accessible from. File systems support only one subnet. The
-     * file server is also launched in that subnet's Availability Zone.
+     * Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     * <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the preferred file
+     * server and one for the standby file server. You specify one of these subnets as the preferred subnet using the
+     * <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.
+     * </p>
+     * <p>
+     * For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre file
+     * systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
      * </p>
      * <p>
      * <b>NOTE:</b> This method appends the values to the existing list (if any). Use
@@ -320,8 +759,14 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
      * </p>
      * 
      * @param subnetIds
-     *        The IDs of the subnets that the file system will be accessible from. File systems support only one subnet.
-     *        The file server is also launched in that subnet's Availability Zone.
+     *        Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     *        <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the
+     *        preferred file server and one for the standby file server. You specify one of these subnets as the
+     *        preferred subnet using the <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.</p>
+     *        <p>
+     *        For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre
+     *        file systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability
+     *        Zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -337,13 +782,25 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The IDs of the subnets that the file system will be accessible from. File systems support only one subnet. The
-     * file server is also launched in that subnet's Availability Zone.
+     * Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     * <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the preferred file
+     * server and one for the standby file server. You specify one of these subnets as the preferred subnet using the
+     * <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.
+     * </p>
+     * <p>
+     * For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre file
+     * systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability Zone.
      * </p>
      * 
      * @param subnetIds
-     *        The IDs of the subnets that the file system will be accessible from. File systems support only one subnet.
-     *        The file server is also launched in that subnet's Availability Zone.
+     *        Specifies the IDs of the subnets that the file system will be accessible from. For Windows
+     *        <code>MULTI_AZ_1</code> file system deployment types, provide exactly two subnet IDs, one for the
+     *        preferred file server and one for the standby file server. You specify one of these subnets as the
+     *        preferred subnet using the <code>WindowsConfiguration &gt; PreferredSubnetID</code> property.</p>
+     *        <p>
+     *        For Windows <code>SINGLE_AZ_1</code> and <code>SINGLE_AZ_2</code> file system deployment types and Lustre
+     *        file systems, provide exactly one subnet ID. The file server is launched in that subnet's Availability
+     *        Zone.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -536,13 +993,11 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Microsoft Windows configuration for the file system being created. This value is required if
-     * <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     * The Microsoft Windows configuration for the file system being created.
      * </p>
      * 
      * @param windowsConfiguration
-     *        The Microsoft Windows configuration for the file system being created. This value is required if
-     *        <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     *        The Microsoft Windows configuration for the file system being created.
      */
 
     public void setWindowsConfiguration(CreateFileSystemWindowsConfiguration windowsConfiguration) {
@@ -551,12 +1006,10 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Microsoft Windows configuration for the file system being created. This value is required if
-     * <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     * The Microsoft Windows configuration for the file system being created.
      * </p>
      * 
-     * @return The Microsoft Windows configuration for the file system being created. This value is required if
-     *         <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     * @return The Microsoft Windows configuration for the file system being created.
      */
 
     public CreateFileSystemWindowsConfiguration getWindowsConfiguration() {
@@ -565,13 +1018,11 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
 
     /**
      * <p>
-     * The Microsoft Windows configuration for the file system being created. This value is required if
-     * <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     * The Microsoft Windows configuration for the file system being created.
      * </p>
      * 
      * @param windowsConfiguration
-     *        The Microsoft Windows configuration for the file system being created. This value is required if
-     *        <code>FileSystemType</code> is set to <code>WINDOWS</code>.
+     *        The Microsoft Windows configuration for the file system being created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -624,6 +1075,8 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
             sb.append("FileSystemType: ").append(getFileSystemType()).append(",");
         if (getStorageCapacity() != null)
             sb.append("StorageCapacity: ").append(getStorageCapacity()).append(",");
+        if (getStorageType() != null)
+            sb.append("StorageType: ").append(getStorageType()).append(",");
         if (getSubnetIds() != null)
             sb.append("SubnetIds: ").append(getSubnetIds()).append(",");
         if (getSecurityGroupIds() != null)
@@ -662,6 +1115,10 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
             return false;
         if (other.getStorageCapacity() != null && other.getStorageCapacity().equals(this.getStorageCapacity()) == false)
             return false;
+        if (other.getStorageType() == null ^ this.getStorageType() == null)
+            return false;
+        if (other.getStorageType() != null && other.getStorageType().equals(this.getStorageType()) == false)
+            return false;
         if (other.getSubnetIds() == null ^ this.getSubnetIds() == null)
             return false;
         if (other.getSubnetIds() != null && other.getSubnetIds().equals(this.getSubnetIds()) == false)
@@ -697,6 +1154,7 @@ public class CreateFileSystemRequest extends com.amazonaws.AmazonWebServiceReque
         hashCode = prime * hashCode + ((getClientRequestToken() == null) ? 0 : getClientRequestToken().hashCode());
         hashCode = prime * hashCode + ((getFileSystemType() == null) ? 0 : getFileSystemType().hashCode());
         hashCode = prime * hashCode + ((getStorageCapacity() == null) ? 0 : getStorageCapacity().hashCode());
+        hashCode = prime * hashCode + ((getStorageType() == null) ? 0 : getStorageType().hashCode());
         hashCode = prime * hashCode + ((getSubnetIds() == null) ? 0 : getSubnetIds().hashCode());
         hashCode = prime * hashCode + ((getSecurityGroupIds() == null) ? 0 : getSecurityGroupIds().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());

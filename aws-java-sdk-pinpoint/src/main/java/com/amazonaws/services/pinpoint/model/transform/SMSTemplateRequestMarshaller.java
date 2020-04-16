@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -31,8 +31,14 @@ public class SMSTemplateRequestMarshaller {
 
     private static final MarshallingInfo<String> BODY_BINDING = MarshallingInfo.builder(MarshallingType.STRING).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("Body").build();
+    private static final MarshallingInfo<String> DEFAULTSUBSTITUTIONS_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("DefaultSubstitutions").build();
+    private static final MarshallingInfo<String> RECOMMENDERID_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("RecommenderId").build();
     private static final MarshallingInfo<Map> TAGS_BINDING = MarshallingInfo.builder(MarshallingType.MAP).marshallLocation(MarshallLocation.PAYLOAD)
             .marshallLocationName("tags").build();
+    private static final MarshallingInfo<String> TEMPLATEDESCRIPTION_BINDING = MarshallingInfo.builder(MarshallingType.STRING)
+            .marshallLocation(MarshallLocation.PAYLOAD).marshallLocationName("TemplateDescription").build();
 
     private static final SMSTemplateRequestMarshaller instance = new SMSTemplateRequestMarshaller();
 
@@ -51,7 +57,10 @@ public class SMSTemplateRequestMarshaller {
 
         try {
             protocolMarshaller.marshall(sMSTemplateRequest.getBody(), BODY_BINDING);
+            protocolMarshaller.marshall(sMSTemplateRequest.getDefaultSubstitutions(), DEFAULTSUBSTITUTIONS_BINDING);
+            protocolMarshaller.marshall(sMSTemplateRequest.getRecommenderId(), RECOMMENDERID_BINDING);
             protocolMarshaller.marshall(sMSTemplateRequest.getTags(), TAGS_BINDING);
+            protocolMarshaller.marshall(sMSTemplateRequest.getTemplateDescription(), TEMPLATEDESCRIPTION_BINDING);
         } catch (Exception e) {
             throw new SdkClientException("Unable to marshall request to JSON: " + e.getMessage(), e);
         }

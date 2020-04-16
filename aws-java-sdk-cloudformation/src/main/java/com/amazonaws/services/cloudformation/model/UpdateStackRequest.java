@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -84,7 +84,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max size:
-     * 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     * 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      * <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -104,8 +104,8 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     private com.amazonaws.internal.SdkInternalList<Parameter> parameters;
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to update the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to update the stack.
      * </p>
      * <ul>
      * <li>
@@ -283,7 +283,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB) located
-     * in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the
+     * in an S3 bucket in the same Region as the stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -684,7 +684,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max size:
-     * 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     * 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      * <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -694,7 +694,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param stackPolicyDuringUpdateURL
      *        Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max
-     *        size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     *        size: 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      *        <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not
      *        both.</p>
      *        <p>
@@ -709,7 +709,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max size:
-     * 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     * 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      * <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -718,7 +718,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @return Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max
-     *         size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     *         size: 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      *         <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but
      *         not both.</p>
      *         <p>
@@ -734,7 +734,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max size:
-     * 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     * 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      * <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -744,7 +744,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param stackPolicyDuringUpdateURL
      *        Location of a file containing the temporary overriding stack policy. The URL must point to a policy (max
-     *        size: 16KB) located in an S3 bucket in the same region as the stack. You can specify either the
+     *        size: 16KB) located in an S3 bucket in the same Region as the stack. You can specify either the
      *        <code>StackPolicyDuringUpdateBody</code> or the <code>StackPolicyDuringUpdateURL</code> parameter, but not
      *        both.</p>
      *        <p>
@@ -857,8 +857,8 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to update the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to update the stack.
      * </p>
      * <ul>
      * <li>
@@ -985,7 +985,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </li>
      * </ul>
      * 
-     * @return In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     * @return In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *         order for AWS CloudFormation to update the stack.</p>
      *         <ul>
      *         <li>
@@ -1126,8 +1126,8 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to update the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to update the stack.
      * </p>
      * <ul>
      * <li>
@@ -1255,7 +1255,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to update the stack.</p>
      *        <ul>
      *        <li>
@@ -1398,8 +1398,8 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to update the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to update the stack.
      * </p>
      * <ul>
      * <li>
@@ -1532,7 +1532,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to update the stack.</p>
      *        <ul>
      *        <li>
@@ -1677,8 +1677,8 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to update the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to update the stack.
      * </p>
      * <ul>
      * <li>
@@ -1806,7 +1806,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to update the stack.</p>
      *        <ul>
      *        <li>
@@ -1946,8 +1946,8 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
 
     /**
      * <p>
-     * In some cases, you must explicity acknowledge that your stack template contains certain capabilities in order for
-     * AWS CloudFormation to update the stack.
+     * In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in order
+     * for AWS CloudFormation to update the stack.
      * </p>
      * <ul>
      * <li>
@@ -2075,7 +2075,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </ul>
      * 
      * @param capabilities
-     *        In some cases, you must explicity acknowledge that your stack template contains certain capabilities in
+     *        In some cases, you must explicitly acknowledge that your stack template contains certain capabilities in
      *        order for AWS CloudFormation to update the stack.</p>
      *        <ul>
      *        <li>
@@ -2568,7 +2568,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB) located
-     * in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the
+     * in an S3 bucket in the same Region as the stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -2579,7 +2579,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param stackPolicyURL
      *        Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB)
-     *        located in an S3 bucket in the same region as the stack. You can specify either the
+     *        located in an S3 bucket in the same Region as the stack. You can specify either the
      *        <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
      *        <p>
      *        You might update the stack policy, for example, in order to protect a new resource that you created during
@@ -2594,7 +2594,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB) located
-     * in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the
+     * in an S3 bucket in the same Region as the stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -2604,7 +2604,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * </p>
      * 
      * @return Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB)
-     *         located in an S3 bucket in the same region as the stack. You can specify either the
+     *         located in an S3 bucket in the same Region as the stack. You can specify either the
      *         <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
      *         <p>
      *         You might update the stack policy, for example, in order to protect a new resource that you created
@@ -2619,7 +2619,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
     /**
      * <p>
      * Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB) located
-     * in an S3 bucket in the same region as the stack. You can specify either the <code>StackPolicyBody</code> or the
+     * in an S3 bucket in the same Region as the stack. You can specify either the <code>StackPolicyBody</code> or the
      * <code>StackPolicyURL</code> parameter, but not both.
      * </p>
      * <p>
@@ -2630,7 +2630,7 @@ public class UpdateStackRequest extends com.amazonaws.AmazonWebServiceRequest im
      * 
      * @param stackPolicyURL
      *        Location of a file containing the updated stack policy. The URL must point to a policy (max size: 16KB)
-     *        located in an S3 bucket in the same region as the stack. You can specify either the
+     *        located in an S3 bucket in the same Region as the stack. You can specify either the
      *        <code>StackPolicyBody</code> or the <code>StackPolicyURL</code> parameter, but not both.</p>
      *        <p>
      *        You might update the stack policy, for example, in order to protect a new resource that you created during

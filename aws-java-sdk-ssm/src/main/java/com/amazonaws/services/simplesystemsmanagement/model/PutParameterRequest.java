@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -28,7 +28,9 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
-     * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
+     * the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must include a leading
+     * forward slash character (/) when you create or reference a parameter. For example:
+     * <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
      * <p>
      * Naming Constraints:
@@ -73,7 +75,11 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
-     * of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     * of the name. The maximum length for a parameter name, including the full length of the parameter ARN, is 1011
+     * characters. For example, the length of the following parameter name is 65 characters, not 20 characters:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      * </p>
      * </note>
      */
@@ -303,7 +309,9 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
-     * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
+     * the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must include a leading
+     * forward slash character (/) when you create or reference a parameter. For example:
+     * <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
      * <p>
      * Naming Constraints:
@@ -348,13 +356,18 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
-     * of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     * of the name. The maximum length for a parameter name, including the full length of the parameter ARN, is 1011
+     * characters. For example, the length of the following parameter name is 65 characters, not 20 characters:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      * </p>
      * </note>
      * 
      * @param name
      *        The fully qualified name of the parameter that you want to add to the system. The fully qualified name
-     *        includes the complete hierarchy of the parameter path and name. For example:
+     *        includes the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must
+     *        include a leading forward slash character (/) when you create or reference a parameter. For example:
      *        <code>/Dev/DBServer/MySQL/db-string13</code> </p>
      *        <p>
      *        Naming Constraints:
@@ -399,7 +412,12 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <note>
      *        <p>
      *        The maximum length constraint listed below includes capacity for additional system attributes that are not
-     *        part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     *        part of the name. The maximum length for a parameter name, including the full length of the parameter ARN,
+     *        is 1011 characters. For example, the length of the following parameter name is 65 characters, not 20
+     *        characters:
+     *        </p>
+     *        <p>
+     *        <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      *        </p>
      */
 
@@ -410,7 +428,9 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
-     * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
+     * the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must include a leading
+     * forward slash character (/) when you create or reference a parameter. For example:
+     * <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
      * <p>
      * Naming Constraints:
@@ -455,12 +475,17 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
-     * of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     * of the name. The maximum length for a parameter name, including the full length of the parameter ARN, is 1011
+     * characters. For example, the length of the following parameter name is 65 characters, not 20 characters:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      * </p>
      * </note>
      * 
      * @return The fully qualified name of the parameter that you want to add to the system. The fully qualified name
-     *         includes the complete hierarchy of the parameter path and name. For example:
+     *         includes the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must
+     *         include a leading forward slash character (/) when you create or reference a parameter. For example:
      *         <code>/Dev/DBServer/MySQL/db-string13</code> </p>
      *         <p>
      *         Naming Constraints:
@@ -505,7 +530,12 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      *         <note>
      *         <p>
      *         The maximum length constraint listed below includes capacity for additional system attributes that are
-     *         not part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     *         not part of the name. The maximum length for a parameter name, including the full length of the parameter
+     *         ARN, is 1011 characters. For example, the length of the following parameter name is 65 characters, not 20
+     *         characters:
+     *         </p>
+     *         <p>
+     *         <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      *         </p>
      */
 
@@ -516,7 +546,9 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
     /**
      * <p>
      * The fully qualified name of the parameter that you want to add to the system. The fully qualified name includes
-     * the complete hierarchy of the parameter path and name. For example: <code>/Dev/DBServer/MySQL/db-string13</code>
+     * the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must include a leading
+     * forward slash character (/) when you create or reference a parameter. For example:
+     * <code>/Dev/DBServer/MySQL/db-string13</code>
      * </p>
      * <p>
      * Naming Constraints:
@@ -561,13 +593,18 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      * <note>
      * <p>
      * The maximum length constraint listed below includes capacity for additional system attributes that are not part
-     * of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     * of the name. The maximum length for a parameter name, including the full length of the parameter ARN, is 1011
+     * characters. For example, the length of the following parameter name is 65 characters, not 20 characters:
+     * </p>
+     * <p>
+     * <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      * </p>
      * </note>
      * 
      * @param name
      *        The fully qualified name of the parameter that you want to add to the system. The fully qualified name
-     *        includes the complete hierarchy of the parameter path and name. For example:
+     *        includes the complete hierarchy of the parameter path and name. For parameters in a hierarchy, you must
+     *        include a leading forward slash character (/) when you create or reference a parameter. For example:
      *        <code>/Dev/DBServer/MySQL/db-string13</code> </p>
      *        <p>
      *        Naming Constraints:
@@ -612,7 +649,12 @@ public class PutParameterRequest extends com.amazonaws.AmazonWebServiceRequest i
      *        <note>
      *        <p>
      *        The maximum length constraint listed below includes capacity for additional system attributes that are not
-     *        part of the name. The maximum length for the fully qualified parameter name is 1011 characters.
+     *        part of the name. The maximum length for a parameter name, including the full length of the parameter ARN,
+     *        is 1011 characters. For example, the length of the following parameter name is 65 characters, not 20
+     *        characters:
+     *        </p>
+     *        <p>
+     *        <code>arn:aws:ssm:us-east-2:111122223333:parameter/ExampleParameterName</code>
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -58,7 +58,7 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
     private AndroidPushNotificationTemplate baidu;
     /**
      * <p>
-     * The date when the message template was created.
+     * The date, in ISO 8601 format, when the message template was created.
      * </p>
      */
     private String creationDate;
@@ -70,6 +70,14 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
     private DefaultPushNotificationTemplate defaultValue;
     /**
      * <p>
+     * The JSON object that specifies the default values that are used for message variables in the message template.
+     * This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding
+     * value defines the default value for that variable.
+     * </p>
+     */
+    private String defaultSubstitutions;
+    /**
+     * <p>
      * The message template that's used for the GCM channel, which is used to send notifications through the Firebase
      * Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message template overrides the
      * default template for push notification channels (DefaultPushNotificationTemplate).
@@ -78,10 +86,16 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
     private AndroidPushNotificationTemplate gCM;
     /**
      * <p>
-     * The date when the message template was last modified.
+     * The date, in ISO 8601 format, when the message template was last modified.
      * </p>
      */
     private String lastModifiedDate;
+    /**
+     * <p>
+     * The unique identifier for the recommender model that's used by the message template.
+     * </p>
+     */
+    private String recommenderId;
     /**
      * <p>
      * A string-to-string map of key-value pairs that identifies the tags that are associated with the message template.
@@ -89,6 +103,12 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
      * </p>
      */
     private java.util.Map<String, String> tags;
+    /**
+     * <p>
+     * The custom description of the message template.
+     * </p>
+     */
+    private String templateDescription;
     /**
      * <p>
      * The name of the message template.
@@ -102,6 +122,13 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
      * </p>
      */
     private String templateType;
+    /**
+     * <p>
+     * The unique identifier, as an integer, for the active version of the message template, or the version of the
+     * template that you specified by using the version parameter in your request.
+     * </p>
+     */
+    private String version;
 
     /**
      * <p>
@@ -283,11 +310,11 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     /**
      * <p>
-     * The date when the message template was created.
+     * The date, in ISO 8601 format, when the message template was created.
      * </p>
      * 
      * @param creationDate
-     *        The date when the message template was created.
+     *        The date, in ISO 8601 format, when the message template was created.
      */
 
     public void setCreationDate(String creationDate) {
@@ -296,10 +323,10 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     /**
      * <p>
-     * The date when the message template was created.
+     * The date, in ISO 8601 format, when the message template was created.
      * </p>
      * 
-     * @return The date when the message template was created.
+     * @return The date, in ISO 8601 format, when the message template was created.
      */
 
     public String getCreationDate() {
@@ -308,11 +335,11 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     /**
      * <p>
-     * The date when the message template was created.
+     * The date, in ISO 8601 format, when the message template was created.
      * </p>
      * 
      * @param creationDate
-     *        The date when the message template was created.
+     *        The date, in ISO 8601 format, when the message template was created.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -358,6 +385,58 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     public PushNotificationTemplateResponse withDefault(DefaultPushNotificationTemplate defaultValue) {
         setDefault(defaultValue);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The JSON object that specifies the default values that are used for message variables in the message template.
+     * This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding
+     * value defines the default value for that variable.
+     * </p>
+     * 
+     * @param defaultSubstitutions
+     *        The JSON object that specifies the default values that are used for message variables in the message
+     *        template. This object is a set of key-value pairs. Each key defines a message variable in the template.
+     *        The corresponding value defines the default value for that variable.
+     */
+
+    public void setDefaultSubstitutions(String defaultSubstitutions) {
+        this.defaultSubstitutions = defaultSubstitutions;
+    }
+
+    /**
+     * <p>
+     * The JSON object that specifies the default values that are used for message variables in the message template.
+     * This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding
+     * value defines the default value for that variable.
+     * </p>
+     * 
+     * @return The JSON object that specifies the default values that are used for message variables in the message
+     *         template. This object is a set of key-value pairs. Each key defines a message variable in the template.
+     *         The corresponding value defines the default value for that variable.
+     */
+
+    public String getDefaultSubstitutions() {
+        return this.defaultSubstitutions;
+    }
+
+    /**
+     * <p>
+     * The JSON object that specifies the default values that are used for message variables in the message template.
+     * This object is a set of key-value pairs. Each key defines a message variable in the template. The corresponding
+     * value defines the default value for that variable.
+     * </p>
+     * 
+     * @param defaultSubstitutions
+     *        The JSON object that specifies the default values that are used for message variables in the message
+     *        template. This object is a set of key-value pairs. Each key defines a message variable in the template.
+     *        The corresponding value defines the default value for that variable.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PushNotificationTemplateResponse withDefaultSubstitutions(String defaultSubstitutions) {
+        setDefaultSubstitutions(defaultSubstitutions);
         return this;
     }
 
@@ -415,11 +494,11 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     /**
      * <p>
-     * The date when the message template was last modified.
+     * The date, in ISO 8601 format, when the message template was last modified.
      * </p>
      * 
      * @param lastModifiedDate
-     *        The date when the message template was last modified.
+     *        The date, in ISO 8601 format, when the message template was last modified.
      */
 
     public void setLastModifiedDate(String lastModifiedDate) {
@@ -428,10 +507,10 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     /**
      * <p>
-     * The date when the message template was last modified.
+     * The date, in ISO 8601 format, when the message template was last modified.
      * </p>
      * 
-     * @return The date when the message template was last modified.
+     * @return The date, in ISO 8601 format, when the message template was last modified.
      */
 
     public String getLastModifiedDate() {
@@ -440,16 +519,56 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     /**
      * <p>
-     * The date when the message template was last modified.
+     * The date, in ISO 8601 format, when the message template was last modified.
      * </p>
      * 
      * @param lastModifiedDate
-     *        The date when the message template was last modified.
+     *        The date, in ISO 8601 format, when the message template was last modified.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
     public PushNotificationTemplateResponse withLastModifiedDate(String lastModifiedDate) {
         setLastModifiedDate(lastModifiedDate);
+        return this;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the recommender model that's used by the message template.
+     * </p>
+     * 
+     * @param recommenderId
+     *        The unique identifier for the recommender model that's used by the message template.
+     */
+
+    public void setRecommenderId(String recommenderId) {
+        this.recommenderId = recommenderId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the recommender model that's used by the message template.
+     * </p>
+     * 
+     * @return The unique identifier for the recommender model that's used by the message template.
+     */
+
+    public String getRecommenderId() {
+        return this.recommenderId;
+    }
+
+    /**
+     * <p>
+     * The unique identifier for the recommender model that's used by the message template.
+     * </p>
+     * 
+     * @param recommenderId
+     *        The unique identifier for the recommender model that's used by the message template.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PushNotificationTemplateResponse withRecommenderId(String recommenderId) {
+        setRecommenderId(recommenderId);
         return this;
     }
 
@@ -499,6 +618,13 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
         return this;
     }
 
+    /**
+     * Add a single Tags entry
+     *
+     * @see PushNotificationTemplateResponse#withTags
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public PushNotificationTemplateResponse addTagsEntry(String key, String value) {
         if (null == this.tags) {
             this.tags = new java.util.HashMap<String, String>();
@@ -517,6 +643,46 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
 
     public PushNotificationTemplateResponse clearTagsEntries() {
         this.tags = null;
+        return this;
+    }
+
+    /**
+     * <p>
+     * The custom description of the message template.
+     * </p>
+     * 
+     * @param templateDescription
+     *        The custom description of the message template.
+     */
+
+    public void setTemplateDescription(String templateDescription) {
+        this.templateDescription = templateDescription;
+    }
+
+    /**
+     * <p>
+     * The custom description of the message template.
+     * </p>
+     * 
+     * @return The custom description of the message template.
+     */
+
+    public String getTemplateDescription() {
+        return this.templateDescription;
+    }
+
+    /**
+     * <p>
+     * The custom description of the message template.
+     * </p>
+     * 
+     * @param templateDescription
+     *        The custom description of the message template.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PushNotificationTemplateResponse withTemplateDescription(String templateDescription) {
+        setTemplateDescription(templateDescription);
         return this;
     }
 
@@ -628,6 +794,52 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
     }
 
     /**
+     * <p>
+     * The unique identifier, as an integer, for the active version of the message template, or the version of the
+     * template that you specified by using the version parameter in your request.
+     * </p>
+     * 
+     * @param version
+     *        The unique identifier, as an integer, for the active version of the message template, or the version of
+     *        the template that you specified by using the version parameter in your request.
+     */
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    /**
+     * <p>
+     * The unique identifier, as an integer, for the active version of the message template, or the version of the
+     * template that you specified by using the version parameter in your request.
+     * </p>
+     * 
+     * @return The unique identifier, as an integer, for the active version of the message template, or the version of
+     *         the template that you specified by using the version parameter in your request.
+     */
+
+    public String getVersion() {
+        return this.version;
+    }
+
+    /**
+     * <p>
+     * The unique identifier, as an integer, for the active version of the message template, or the version of the
+     * template that you specified by using the version parameter in your request.
+     * </p>
+     * 
+     * @param version
+     *        The unique identifier, as an integer, for the active version of the message template, or the version of
+     *        the template that you specified by using the version parameter in your request.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public PushNotificationTemplateResponse withVersion(String version) {
+        setVersion(version);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -651,16 +863,24 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
             sb.append("CreationDate: ").append(getCreationDate()).append(",");
         if (getDefault() != null)
             sb.append("Default: ").append(getDefault()).append(",");
+        if (getDefaultSubstitutions() != null)
+            sb.append("DefaultSubstitutions: ").append(getDefaultSubstitutions()).append(",");
         if (getGCM() != null)
             sb.append("GCM: ").append(getGCM()).append(",");
         if (getLastModifiedDate() != null)
             sb.append("LastModifiedDate: ").append(getLastModifiedDate()).append(",");
+        if (getRecommenderId() != null)
+            sb.append("RecommenderId: ").append(getRecommenderId()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
+        if (getTemplateDescription() != null)
+            sb.append("TemplateDescription: ").append(getTemplateDescription()).append(",");
         if (getTemplateName() != null)
             sb.append("TemplateName: ").append(getTemplateName()).append(",");
         if (getTemplateType() != null)
-            sb.append("TemplateType: ").append(getTemplateType());
+            sb.append("TemplateType: ").append(getTemplateType()).append(",");
+        if (getVersion() != null)
+            sb.append("Version: ").append(getVersion());
         sb.append("}");
         return sb.toString();
     }
@@ -699,6 +919,10 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
             return false;
         if (other.getDefault() != null && other.getDefault().equals(this.getDefault()) == false)
             return false;
+        if (other.getDefaultSubstitutions() == null ^ this.getDefaultSubstitutions() == null)
+            return false;
+        if (other.getDefaultSubstitutions() != null && other.getDefaultSubstitutions().equals(this.getDefaultSubstitutions()) == false)
+            return false;
         if (other.getGCM() == null ^ this.getGCM() == null)
             return false;
         if (other.getGCM() != null && other.getGCM().equals(this.getGCM()) == false)
@@ -707,9 +931,17 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
             return false;
         if (other.getLastModifiedDate() != null && other.getLastModifiedDate().equals(this.getLastModifiedDate()) == false)
             return false;
+        if (other.getRecommenderId() == null ^ this.getRecommenderId() == null)
+            return false;
+        if (other.getRecommenderId() != null && other.getRecommenderId().equals(this.getRecommenderId()) == false)
+            return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
+            return false;
+        if (other.getTemplateDescription() == null ^ this.getTemplateDescription() == null)
+            return false;
+        if (other.getTemplateDescription() != null && other.getTemplateDescription().equals(this.getTemplateDescription()) == false)
             return false;
         if (other.getTemplateName() == null ^ this.getTemplateName() == null)
             return false;
@@ -718,6 +950,10 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
         if (other.getTemplateType() == null ^ this.getTemplateType() == null)
             return false;
         if (other.getTemplateType() != null && other.getTemplateType().equals(this.getTemplateType()) == false)
+            return false;
+        if (other.getVersion() == null ^ this.getVersion() == null)
+            return false;
+        if (other.getVersion() != null && other.getVersion().equals(this.getVersion()) == false)
             return false;
         return true;
     }
@@ -733,11 +969,15 @@ public class PushNotificationTemplateResponse implements Serializable, Cloneable
         hashCode = prime * hashCode + ((getBaidu() == null) ? 0 : getBaidu().hashCode());
         hashCode = prime * hashCode + ((getCreationDate() == null) ? 0 : getCreationDate().hashCode());
         hashCode = prime * hashCode + ((getDefault() == null) ? 0 : getDefault().hashCode());
+        hashCode = prime * hashCode + ((getDefaultSubstitutions() == null) ? 0 : getDefaultSubstitutions().hashCode());
         hashCode = prime * hashCode + ((getGCM() == null) ? 0 : getGCM().hashCode());
         hashCode = prime * hashCode + ((getLastModifiedDate() == null) ? 0 : getLastModifiedDate().hashCode());
+        hashCode = prime * hashCode + ((getRecommenderId() == null) ? 0 : getRecommenderId().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
+        hashCode = prime * hashCode + ((getTemplateDescription() == null) ? 0 : getTemplateDescription().hashCode());
         hashCode = prime * hashCode + ((getTemplateName() == null) ? 0 : getTemplateName().hashCode());
         hashCode = prime * hashCode + ((getTemplateType() == null) ? 0 : getTemplateType().hashCode());
+        hashCode = prime * hashCode + ((getVersion() == null) ? 0 : getVersion().hashCode());
         return hashCode;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -171,6 +171,12 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
      * </p>
      */
     private DomainEndpointOptions domainEndpointOptions;
+    /**
+     * <p>
+     * The current status of the Elasticsearch domain's advanced security options.
+     * </p>
+     */
+    private AdvancedSecurityOptions advancedSecurityOptions;
 
     /**
      * <p>
@@ -541,6 +547,13 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
         setEndpoints(endpoints);
         return this;
     }
+
+    /**
+     * Add a single Endpoints entry
+     *
+     * @see ElasticsearchDomainStatus#withEndpoints
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public ElasticsearchDomainStatus addEndpointsEntry(String key, String value) {
         if (null == this.endpoints) {
@@ -1105,6 +1118,13 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
         return this;
     }
 
+    /**
+     * Add a single AdvancedOptions entry
+     *
+     * @see ElasticsearchDomainStatus#withAdvancedOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
+
     public ElasticsearchDomainStatus addAdvancedOptionsEntry(String key, String value) {
         if (null == this.advancedOptions) {
             this.advancedOptions = new java.util.HashMap<String, String>();
@@ -1165,6 +1185,13 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
         setLogPublishingOptions(logPublishingOptions);
         return this;
     }
+
+    /**
+     * Add a single LogPublishingOptions entry
+     *
+     * @see ElasticsearchDomainStatus#withLogPublishingOptions
+     * @returns a reference to this object so that method calls can be chained together.
+     */
 
     public ElasticsearchDomainStatus addLogPublishingOptionsEntry(String key, LogPublishingOption value) {
         if (null == this.logPublishingOptions) {
@@ -1268,6 +1295,46 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
     }
 
     /**
+     * <p>
+     * The current status of the Elasticsearch domain's advanced security options.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        The current status of the Elasticsearch domain's advanced security options.
+     */
+
+    public void setAdvancedSecurityOptions(AdvancedSecurityOptions advancedSecurityOptions) {
+        this.advancedSecurityOptions = advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * The current status of the Elasticsearch domain's advanced security options.
+     * </p>
+     * 
+     * @return The current status of the Elasticsearch domain's advanced security options.
+     */
+
+    public AdvancedSecurityOptions getAdvancedSecurityOptions() {
+        return this.advancedSecurityOptions;
+    }
+
+    /**
+     * <p>
+     * The current status of the Elasticsearch domain's advanced security options.
+     * </p>
+     * 
+     * @param advancedSecurityOptions
+     *        The current status of the Elasticsearch domain's advanced security options.
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public ElasticsearchDomainStatus withAdvancedSecurityOptions(AdvancedSecurityOptions advancedSecurityOptions) {
+        setAdvancedSecurityOptions(advancedSecurityOptions);
+        return this;
+    }
+
+    /**
      * Returns a string representation of this object. This is useful for testing and debugging. Sensitive data will be
      * redacted from this string using a placeholder value.
      *
@@ -1322,7 +1389,9 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
         if (getServiceSoftwareOptions() != null)
             sb.append("ServiceSoftwareOptions: ").append(getServiceSoftwareOptions()).append(",");
         if (getDomainEndpointOptions() != null)
-            sb.append("DomainEndpointOptions: ").append(getDomainEndpointOptions());
+            sb.append("DomainEndpointOptions: ").append(getDomainEndpointOptions()).append(",");
+        if (getAdvancedSecurityOptions() != null)
+            sb.append("AdvancedSecurityOptions: ").append(getAdvancedSecurityOptions());
         sb.append("}");
         return sb.toString();
     }
@@ -1425,6 +1494,10 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
             return false;
         if (other.getDomainEndpointOptions() != null && other.getDomainEndpointOptions().equals(this.getDomainEndpointOptions()) == false)
             return false;
+        if (other.getAdvancedSecurityOptions() == null ^ this.getAdvancedSecurityOptions() == null)
+            return false;
+        if (other.getAdvancedSecurityOptions() != null && other.getAdvancedSecurityOptions().equals(this.getAdvancedSecurityOptions()) == false)
+            return false;
         return true;
     }
 
@@ -1455,6 +1528,7 @@ public class ElasticsearchDomainStatus implements Serializable, Cloneable, Struc
         hashCode = prime * hashCode + ((getLogPublishingOptions() == null) ? 0 : getLogPublishingOptions().hashCode());
         hashCode = prime * hashCode + ((getServiceSoftwareOptions() == null) ? 0 : getServiceSoftwareOptions().hashCode());
         hashCode = prime * hashCode + ((getDomainEndpointOptions() == null) ? 0 : getDomainEndpointOptions().hashCode());
+        hashCode = prime * hashCode + ((getAdvancedSecurityOptions() == null) ? 0 : getAdvancedSecurityOptions().hashCode());
         return hashCode;
     }
 

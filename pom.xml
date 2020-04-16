@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.amazonaws</groupId>
   <artifactId>aws-java-sdk-pom</artifactId>
-  <version>1.11.648-dw3-SNAPSHOT</version>
+  <version>1.11.762-dw3-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>AWS SDK for Java</name>
   <description>The Amazon Web Services SDK for Java provides Java APIs
@@ -32,127 +32,155 @@
   </developers>
   <!-- The module section in pom.xml is auto generated. No manual changes are allowed -->
   <modules>
-    <!--<module>aws-java-sdk-workmailmessageflow</module>-->
-    <!--<module>aws-java-sdk-qldbsession</module>-->
-    <!--<module>aws-java-sdk-qldb</module>-->
-    <!--<module>aws-java-sdk-forecastquery</module>-->
-    <!--<module>aws-java-sdk-forecast</module>-->
-    <!--<module>aws-java-sdk-lakeformation</module>-->
-    <!--<module>aws-java-sdk-eventbridge</module>-->
-    <!--<module>aws-java-sdk-ec2instanceconnect</module>-->
-    <!--<module>aws-java-sdk-applicationinsights</module>-->
-    <!--<module>aws-java-sdk-servicequotas</module>-->
-    <!--<module>aws-java-sdk-personalizeevents</module>-->
-    <!--<module>aws-java-sdk-personalize</module>-->
-    <!--<module>aws-java-sdk-personalizeruntime</module>-->
-    <!--<module>aws-java-sdk-ioteventsdata</module>-->
-    <!--<module>aws-java-sdk-iotevents</module>-->
-    <!--<module>aws-java-sdk-iotthingsgraph</module>-->
-    <!--<module>aws-java-sdk-groundstation</module>-->
-    <!--<module>aws-java-sdk-mediapackagevod</module>-->
-    <!--<module>aws-java-sdk-managedblockchain</module>-->
-    <!--<module>aws-java-sdk-textract</module>-->
-    <!--<module>aws-java-sdk-worklink</module>-->
-    <!--<module>aws-java-sdk-backup</module>-->
-    <!--<module>aws-java-sdk-docdb</module>-->
-    <!--<module>aws-java-sdk-apigatewayv2</module>-->
-    <!--<module>aws-java-sdk-apigatewaymanagementapi</module>-->
-    <!--<module>aws-java-sdk-kafka</module>-->
-    <!--<module>aws-java-sdk-appmesh</module>-->
-    <!--<module>aws-java-sdk-licensemanager</module>-->
-    <!--<module>aws-java-sdk-securityhub</module>-->
-    <!--<module>aws-java-sdk-fsx</module>-->
-    <!--<module>aws-java-sdk-mediaconnect</module>-->
-    <!--<module>aws-java-sdk-kinesisanalyticsv2</module>-->
-    <!--<module>aws-java-sdk-comprehendmedical</module>-->
-    <!--<module>aws-java-sdk-globalaccelerator</module>-->
-    <!--<module>aws-java-sdk-transfer</module>-->
-    <!--<module>aws-java-sdk-datasync</module>-->
-    <!--<module>aws-java-sdk-robomaker</module>-->
-    <!--<module>aws-java-sdk-amplify</module>-->
-    <!--<module>aws-java-sdk-quicksight</module>-->
-    <!--<module>aws-java-sdk-rdsdata</module>-->
-    <!--<module>aws-java-sdk-route53resolver</module>-->
-    <!--<module>aws-java-sdk-ram</module>-->
-    <!--<module>aws-java-sdk-s3control</module>-->
-    <!--<module>aws-java-sdk-pinpointsmsvoice</module>-->
-    <!--<module>aws-java-sdk-pinpointemail</module>-->
-    <!--<module>aws-java-sdk-chime</module>-->
-    <!--<module>aws-java-sdk-signer</module>-->
-    <!--<module>aws-java-sdk-dlm</module>-->
-    <!--<module>aws-java-sdk-macie</module>-->
-    <!--<module>aws-java-sdk-eks</module>-->
-    <!--<module>aws-java-sdk-mediatailor</module>-->
-    <!--<module>aws-java-sdk-neptune</module>-->
-    <!--<module>aws-java-sdk-pi</module>-->
-    <!--<module>aws-java-sdk-iot1clickprojects</module>-->
-    <!--<module>aws-java-sdk-iot1clickdevices</module>-->
-    <!--<module>aws-java-sdk-iotanalytics</module>-->
-    <!--<module>aws-java-sdk-acmpca</module>-->
-    <!--<module>aws-java-sdk-secretsmanager</module>-->
-    <!--<module>aws-java-sdk-fms</module>-->
-    <!--<module>aws-java-sdk-connect</module>-->
-    <!--<module>aws-java-sdk-transcribe</module>-->
-    <!--<module>aws-java-sdk-autoscalingplans</module>-->
-    <!--<module>aws-java-sdk-workmail</module>-->
-    <!--<module>aws-java-sdk-servicediscovery</module>-->
-    <!--<module>aws-java-sdk-cloud9</module>-->
-    <!--<module>aws-java-sdk-serverlessapplicationrepository</module>-->
-    <!--<module>aws-java-sdk-alexaforbusiness</module>-->
-    <!--<module>aws-java-sdk-resourcegroups</module>-->
-    <!--<module>aws-java-sdk-comprehend</module>-->
-    <!--<module>aws-java-sdk-translate</module>-->
-    <!--<module>aws-java-sdk-sagemaker</module>-->
-    <!--<module>aws-java-sdk-iotjobsdataplane</module>-->
-    <!--<module>aws-java-sdk-sagemakerruntime</module>-->
-    <!--<module>aws-java-sdk-kinesisvideo</module>-->
-    <!--<module>aws-java-sdk-appsync</module>-->
-    <!--<module>aws-java-sdk-guardduty</module>-->
-    <!--<module>aws-java-sdk-mq</module>-->
-    <!--<module>aws-java-sdk-mediaconvert</module>-->
-    <!--<module>aws-java-sdk-mediastore</module>-->
-    <!--<module>aws-java-sdk-mediastoredata</module>-->
-    <!--<module>aws-java-sdk-medialive</module>-->
-    <!--<module>aws-java-sdk-mediapackage</module>-->
-    <!--<module>aws-java-sdk-costexplorer</module>-->
-    <!--<module>aws-java-sdk-pricing</module>-->
-    <!--<module>aws-java-sdk-mobile</module>-->
-    <!--<module>aws-java-sdk-cloudhsmv2</module>-->
-    <!--<module>aws-java-sdk-glue</module>-->
-    <!--<module>aws-java-sdk-migrationhub</module>-->
-    <!--<module>aws-java-sdk-dax</module>-->
-    <!--<module>aws-java-sdk-greengrass</module>-->
-    <!--<module>aws-java-sdk-athena</module>-->
-    <!--<module>aws-java-sdk-marketplaceentitlement</module>-->
-    <!--<module>aws-java-sdk-codestar</module>-->
-    <!--<module>aws-java-sdk-lexmodelbuilding</module>-->
-    <!--<module>aws-java-sdk-resourcegroupstaggingapi</module>-->
-    <!--<module>aws-java-sdk-pinpoint</module>-->
-    <!--<module>aws-java-sdk-xray</module>-->
-    <!--<module>aws-java-sdk-opsworkscm</module>-->
-    <!--<module>aws-java-sdk-support</module>-->
-    <!--<module>aws-java-sdk-simpledb</module>-->
-    <!--<module>aws-java-sdk-servicecatalog</module>-->
-    <!--<module>aws-java-sdk-servermigration</module>-->
-    <!--<module>aws-java-sdk-simpleworkflow</module>-->
-    <!--<module>aws-java-sdk-storagegateway</module>-->
-    <!--<module>aws-java-sdk-route53</module>-->
-    <!--<module>aws-java-sdk-s3</module>-->
-    <!--<module>aws-java-sdk-importexport</module>-->
-    <!--<module>aws-java-sdk-sts</module>-->
-    <!--<module>aws-java-sdk-sqs</module>-->
-    <!--<module>aws-java-sdk-rds</module>-->
-    <!--<module>aws-java-sdk-redshift</module>-->
-    <!--<module>aws-java-sdk-elasticbeanstalk</module>-->
-    <!--<module>aws-java-sdk-glacier</module>-->
-    <!--<module>aws-java-sdk-iam</module>-->
-    <!--<module>aws-java-sdk-datapipeline</module>-->
-    <!--<module>aws-java-sdk-elasticloadbalancing</module>-->
-    <!--<module>aws-java-sdk-elasticloadbalancingv2</module>-->
-    <!--<module>aws-java-sdk-emr</module>-->
-    <!--<module>aws-java-sdk-elasticache</module>-->
-    <!--<module>aws-java-sdk-elastictranscoder</module>-->
-    <!--<module>aws-java-sdk-ec2</module>-->
+    <!-- <module>aws-java-sdk-codestarconnections</module> -->
+    <!-- <module>aws-java-sdk-detective</module> -->
+    <!-- <module>aws-java-sdk-kinesisvideosignalingchannels</module> -->
+    <!-- <module>aws-java-sdk-ebs</module> -->
+    <!-- <module>aws-java-sdk-augmentedairuntime</module> -->
+    <!-- <module>aws-java-sdk-outposts</module> -->
+    <!-- <module>aws-java-sdk-codeguruprofiler</module> -->
+    <!-- <module>aws-java-sdk-codegurureviewer</module> -->
+    <!-- <module>aws-java-sdk-frauddetector</module> -->
+    <!-- <module>aws-java-sdk-kendra</module> -->
+    <!-- <module>aws-java-sdk-networkmanager</module> -->
+    <!-- <module>aws-java-sdk-computeoptimizer</module> -->
+    <!-- <module>aws-java-sdk-accessanalyzer</module> -->
+    <!-- <module>aws-java-sdk-schemas</module> -->
+    <!-- <module>aws-java-sdk-imagebuilder</module> -->
+    <!-- <module>aws-java-sdk-elasticinference</module> -->
+    <!-- <module>aws-java-sdk-iotsecuretunneling</module> -->
+    <!-- <module>aws-java-sdk-appconfig</module> -->
+    <!-- <module>aws-java-sdk-wafv2</module> -->
+    <!-- <module>aws-java-sdk-connectparticipant</module> -->
+    <!-- <module>aws-java-sdk-migrationhubconfig</module> -->
+    <!-- <module>aws-java-sdk-dataexchange</module> -->
+    <!-- <module>aws-java-sdk-sesv2</module>/ -->
+    <!-- <module>aws-java-sdk-marketplacecatalog</module> -->
+    <!-- <module>aws-java-sdk-ssooidc</module> -->
+    <!-- <module>aws-java-sdk-sso</module> -->
+    <!-- <module>aws-java-sdk-savingsplans</module> -->
+    <!-- <module>aws-java-sdk-codestarnotifications</module> -->
+    <!-- <module>aws-java-sdk-workmailmessageflow</module> -->
+    <!-- <module>aws-java-sdk-qldbsession</module> -->
+    <!-- <module>aws-java-sdk-qldb</module> -->
+    <!-- <module>aws-java-sdk-forecastquery</module> -->
+    <!-- <module>aws-java-sdk-forecast</module> -->
+    <!-- <module>aws-java-sdk-lakeformation</module> -->
+    <!-- <module>aws-java-sdk-eventbridge</module> -->
+    <!-- <module>aws-java-sdk-ec2instanceconnect</module> -->
+    <!-- <module>aws-java-sdk-applicationinsights</module> -->
+    <!-- <module>aws-java-sdk-servicequotas</module> -->
+    <!-- <module>aws-java-sdk-personalizeevents</module> -->
+    <!-- <module>aws-java-sdk-personalize</module> -->
+    <!-- <module>aws-java-sdk-personalizeruntime</module> -->
+    <!-- <module>aws-java-sdk-ioteventsdata</module> -->
+    <!-- <module>aws-java-sdk-iotevents</module> -->
+    <!-- <module>aws-java-sdk-iotthingsgraph</module> -->
+    <!-- <module>aws-java-sdk-groundstation</module> -->
+    <!-- <module>aws-java-sdk-mediapackagevod</module> -->
+    <!-- <module>aws-java-sdk-managedblockchain</module> -->
+    <!-- <module>aws-java-sdk-textract</module> -->
+    <!-- <module>aws-java-sdk-worklink</module> -->
+    <!-- <module>aws-java-sdk-backup</module> -->
+    <!-- <module>aws-java-sdk-docdb</module> -->
+    <!-- <module>aws-java-sdk-apigatewayv2</module> -->
+    <!-- <module>aws-java-sdk-apigatewaymanagementapi</module> -->
+    <!-- <module>aws-java-sdk-kafka</module> -->
+    <!-- <module>aws-java-sdk-appmesh</module> -->
+    <!-- <module>aws-java-sdk-licensemanager</module> -->
+    <!-- <module>aws-java-sdk-securityhub</module> -->
+    <!-- <module>aws-java-sdk-fsx</module> -->
+    <!-- <module>aws-java-sdk-mediaconnect</module> -->
+    <!-- <module>aws-java-sdk-kinesisanalyticsv2</module> -->
+    <!-- <module>aws-java-sdk-comprehendmedical</module> -->
+    <!-- <module>aws-java-sdk-globalaccelerator</module> -->
+    <!-- <module>aws-java-sdk-transfer</module> -->
+    <!-- <module>aws-java-sdk-datasync</module> -->
+    <!-- <module>aws-java-sdk-robomaker</module> -->
+    <!-- <module>aws-java-sdk-amplify</module> -->
+    <!-- <module>aws-java-sdk-quicksight</module> -->
+    <!-- <module>aws-java-sdk-rdsdata</module> -->
+    <!-- <module>aws-java-sdk-route53resolver</module> -->
+    <!-- <module>aws-java-sdk-ram</module> -->
+    <!-- <module>aws-java-sdk-s3control</module> -->
+    <!-- <module>aws-java-sdk-pinpointsmsvoice</module> -->
+    <!-- <module>aws-java-sdk-pinpointemail</module> -->
+    <!-- <module>aws-java-sdk-chime</module> -->
+    <!-- <module>aws-java-sdk-signer</module> -->
+    <!-- <module>aws-java-sdk-dlm</module> -->
+    <!-- <module>aws-java-sdk-macie</module> -->
+    <!-- <module>aws-java-sdk-eks</module> -->
+    <!-- <module>aws-java-sdk-mediatailor</module> -->
+    <!-- <module>aws-java-sdk-neptune</module> -->
+    <!-- <module>aws-java-sdk-pi</module> -->
+    <!-- <module>aws-java-sdk-iot1clickprojects</module> -->
+    <!-- <module>aws-java-sdk-iot1clickdevices</module> -->
+    <!-- <module>aws-java-sdk-iotanalytics</module> -->
+    <!-- <module>aws-java-sdk-acmpca</module> -->
+    <!-- <module>aws-java-sdk-secretsmanager</module> -->
+    <!-- <module>aws-java-sdk-fms</module> -->
+    <!-- <module>aws-java-sdk-connect</module> -->
+    <!-- <module>aws-java-sdk-transcribe</module> -->
+    <!-- <module>aws-java-sdk-autoscalingplans</module> -->
+    <!-- <module>aws-java-sdk-workmail</module> -->
+    <!-- <module>aws-java-sdk-servicediscovery</module> -->
+    <!-- <module>aws-java-sdk-cloud9</module> -->
+    <!-- <module>aws-java-sdk-serverlessapplicationrepository</module> -->
+    <!-- <module>aws-java-sdk-alexaforbusiness</module> -->
+    <!-- <module>aws-java-sdk-resourcegroups</module> -->
+    <!-- <module>aws-java-sdk-comprehend</module> -->
+    <!-- <module>aws-java-sdk-translate</module> -->
+    <!-- <module>aws-java-sdk-sagemaker</module> -->
+    <!-- <module>aws-java-sdk-iotjobsdataplane</module> -->
+    <!-- <module>aws-java-sdk-sagemakerruntime</module> -->
+    <!-- <module>aws-java-sdk-kinesisvideo</module> -->
+    <!-- <module>aws-java-sdk-appsync</module> -->
+    <!-- <module>aws-java-sdk-guardduty</module> -->
+    <!-- <module>aws-java-sdk-mq</module> -->
+    <!-- <module>aws-java-sdk-mediaconvert</module> -->
+    <!-- <module>aws-java-sdk-mediastore</module> -->
+    <!-- <module>aws-java-sdk-mediastoredata</module> -->
+    <!-- <module>aws-java-sdk-medialive</module> -->
+    <!-- <module>aws-java-sdk-mediapackage</module> -->
+    <!-- <module>aws-java-sdk-costexplorer</module> -->
+    <!-- <module>aws-java-sdk-pricing</module> -->
+    <!-- <module>aws-java-sdk-mobile</module> -->
+    <!-- <module>aws-java-sdk-cloudhsmv2</module> -->
+    <!-- <module>aws-java-sdk-glue</module> -->
+    <!-- <module>aws-java-sdk-migrationhub</module> -->
+    <!-- <module>aws-java-sdk-dax</module> -->
+    <!-- <module>aws-java-sdk-greengrass</module> -->
+    <!-- <module>aws-java-sdk-athena</module> -->
+    <!-- <module>aws-java-sdk-marketplaceentitlement</module> -->
+    <!-- <module>aws-java-sdk-codestar</module> -->
+    <!-- <module>aws-java-sdk-lexmodelbuilding</module> -->
+    <!-- <module>aws-java-sdk-resourcegroupstaggingapi</module> -->
+    <!-- <module>aws-java-sdk-pinpoint</module> -->
+    <!-- <module>aws-java-sdk-xray</module> -->
+    <!-- <module>aws-java-sdk-opsworkscm</module> -->
+    <!-- <module>aws-java-sdk-support</module> -->
+    <!-- <module>aws-java-sdk-simpledb</module> -->
+    <!-- <module>aws-java-sdk-servicecatalog</module> -->
+    <!-- <module>aws-java-sdk-servermigration</module> -->
+    <!-- <module>aws-java-sdk-simpleworkflow</module> -->
+    <!-- <module>aws-java-sdk-storagegateway</module> -->
+    <!-- <module>aws-java-sdk-route53</module> -->
+    <!-- <module>aws-java-sdk-s3</module> -->
+    <!-- <module>aws-java-sdk-importexport</module> -->
+    <!-- <module>aws-java-sdk-sts</module> -->
+    <!-- <module>aws-java-sdk-sqs</module>/ -->
+    <!-- <module>aws-java-sdk-rds</module> -->
+    <!-- <module>aws-java-sdk-redshift</module> -->
+    <!-- <module>aws-java-sdk-elasticbeanstalk</module> -->
+    <!-- <module>aws-java-sdk-glacier</module> -->
+    <!-- <module>aws-java-sdk-iam</module> -->
+    <!-- <module>aws-java-sdk-datapipeline</module> -->
+    <!-- <module>aws-java-sdk-elasticloadbalancing</module> -->
+    <!-- <module>aws-java-sdk-elasticloadbalancingv2</module> -->
+    <!-- <module>aws-java-sdk-emr</module> -->
+    <!-- <module>aws-java-sdk-elasticache</module> -->
+    <!-- <module>aws-java-sdk-elastictranscoder</module> -->
+    <!-- <module>aws-java-sdk-ec2</module> -->
     <module>aws-java-sdk-dynamodb</module>
     <!--<module>aws-java-sdk-sns</module>-->
     <!--<module>aws-java-sdk-budgets</module>-->
@@ -235,10 +263,10 @@
   </scm>
   <properties>
       <awsjavasdk.version>${project.version}</awsjavasdk.version>
-      <awsjavasdk-stable.version>1.11.648</awsjavasdk-stable.version>
+      <awsjavasdk-stable.version>1.11.762</awsjavasdk-stable.version>
       <!-- The SDK requires Jackson 2.6 to support Java 6 customers. Feel free to override in your own application -->
       <jackson.version>2.6.7</jackson.version>
-      <jackson.databind.version>2.6.7.2</jackson.databind.version>
+      <jackson.databind.version>2.6.7.3</jackson.databind.version>
       <ion.java.version>1.0.2</ion.java.version>
       <junit.version>4.12</junit.version>
       <easymock.version>3.2</easymock.version>
@@ -267,7 +295,7 @@
       <cucumber.guice.version>4.0</cucumber.guice.version>
       <unitils.version>3.3</unitils.version>
       <!-- Netty is used by Kinesis Video -->
-      <netty.version>4.1.17.Final</netty.version>
+      <netty.version>4.1.44.Final</netty.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -343,7 +371,7 @@
               <configuration>
                 <publisher>
                   <contextUrl>
-                    {{ARTIFACTORY_CONTEXT_URL|"https://dataworld.artifactoryonline.com/dataworld"}}
+                    {{ARTIFACTORY_CONTEXT_URL|"https://dataworld.jfrog.io/dataworld"}}
                   </contextUrl>
                   <username>{{ARTIFACTORY_USERNAME|"maven"}}</username>
                   <password>{{ARTIFACTORY_PASSWORD}}</password>

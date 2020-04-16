@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -79,6 +79,11 @@ public class AbstractAmazonWorkspaces implements AmazonWorkspaces {
 
     @Override
     public DeleteWorkspaceImageResult deleteWorkspaceImage(DeleteWorkspaceImageRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public DeregisterWorkspaceDirectoryResult deregisterWorkspaceDirectory(DeregisterWorkspaceDirectoryRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -168,12 +173,32 @@ public class AbstractAmazonWorkspaces implements AmazonWorkspaces {
     }
 
     @Override
+    public MigrateWorkspaceResult migrateWorkspace(MigrateWorkspaceRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
     public ModifyAccountResult modifyAccount(ModifyAccountRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
     @Override
     public ModifyClientPropertiesResult modifyClientProperties(ModifyClientPropertiesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ModifySelfservicePermissionsResult modifySelfservicePermissions(ModifySelfservicePermissionsRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ModifyWorkspaceAccessPropertiesResult modifyWorkspaceAccessProperties(ModifyWorkspaceAccessPropertiesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public ModifyWorkspaceCreationPropertiesResult modifyWorkspaceCreationProperties(ModifyWorkspaceCreationPropertiesRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 
@@ -194,6 +219,11 @@ public class AbstractAmazonWorkspaces implements AmazonWorkspaces {
 
     @Override
     public RebuildWorkspacesResult rebuildWorkspaces(RebuildWorkspacesRequest request) {
+        throw new java.lang.UnsupportedOperationException();
+    }
+
+    @Override
+    public RegisterWorkspaceDirectoryResult registerWorkspaceDirectory(RegisterWorkspaceDirectoryRequest request) {
         throw new java.lang.UnsupportedOperationException();
     }
 

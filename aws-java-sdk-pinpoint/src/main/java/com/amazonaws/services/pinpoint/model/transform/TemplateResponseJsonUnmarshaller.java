@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -56,6 +56,10 @@ public class TemplateResponseJsonUnmarshaller implements Unmarshaller<TemplateRe
                     context.nextToken();
                     templateResponse.setCreationDate(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("DefaultSubstitutions", targetDepth)) {
+                    context.nextToken();
+                    templateResponse.setDefaultSubstitutions(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("LastModifiedDate", targetDepth)) {
                     context.nextToken();
                     templateResponse.setLastModifiedDate(context.getUnmarshaller(String.class).unmarshall(context));
@@ -65,6 +69,10 @@ public class TemplateResponseJsonUnmarshaller implements Unmarshaller<TemplateRe
                     templateResponse.setTags(new MapUnmarshaller<String, String>(context.getUnmarshaller(String.class), context.getUnmarshaller(String.class))
                             .unmarshall(context));
                 }
+                if (context.testExpression("TemplateDescription", targetDepth)) {
+                    context.nextToken();
+                    templateResponse.setTemplateDescription(context.getUnmarshaller(String.class).unmarshall(context));
+                }
                 if (context.testExpression("TemplateName", targetDepth)) {
                     context.nextToken();
                     templateResponse.setTemplateName(context.getUnmarshaller(String.class).unmarshall(context));
@@ -72,6 +80,10 @@ public class TemplateResponseJsonUnmarshaller implements Unmarshaller<TemplateRe
                 if (context.testExpression("TemplateType", targetDepth)) {
                     context.nextToken();
                     templateResponse.setTemplateType(context.getUnmarshaller(String.class).unmarshall(context));
+                }
+                if (context.testExpression("Version", targetDepth)) {
+                    context.nextToken();
+                    templateResponse.setVersion(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null || context.getLastParsedParentElement().equals(currentParentElement)) {

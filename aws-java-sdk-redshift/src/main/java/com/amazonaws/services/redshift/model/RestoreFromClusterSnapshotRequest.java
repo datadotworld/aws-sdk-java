@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -98,7 +98,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * Default: A random, system-chosen Availability Zone.
      * </p>
      * <p>
-     * Example: <code>us-east-1a</code>
+     * Example: <code>us-east-2a</code>
      * </p>
      */
     private String availabilityZone;
@@ -736,7 +736,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * Default: A random, system-chosen Availability Zone.
      * </p>
      * <p>
-     * Example: <code>us-east-1a</code>
+     * Example: <code>us-east-2a</code>
      * </p>
      * 
      * @param availabilityZone
@@ -745,7 +745,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        Default: A random, system-chosen Availability Zone.
      *        </p>
      *        <p>
-     *        Example: <code>us-east-1a</code>
+     *        Example: <code>us-east-2a</code>
      */
 
     public void setAvailabilityZone(String availabilityZone) {
@@ -760,7 +760,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * Default: A random, system-chosen Availability Zone.
      * </p>
      * <p>
-     * Example: <code>us-east-1a</code>
+     * Example: <code>us-east-2a</code>
      * </p>
      * 
      * @return The Amazon EC2 Availability Zone in which to restore the cluster.</p>
@@ -768,7 +768,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *         Default: A random, system-chosen Availability Zone.
      *         </p>
      *         <p>
-     *         Example: <code>us-east-1a</code>
+     *         Example: <code>us-east-2a</code>
      */
 
     public String getAvailabilityZone() {
@@ -783,7 +783,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      * Default: A random, system-chosen Availability Zone.
      * </p>
      * <p>
-     * Example: <code>us-east-1a</code>
+     * Example: <code>us-east-2a</code>
      * </p>
      * 
      * @param availabilityZone
@@ -792,7 +792,7 @@ public class RestoreFromClusterSnapshotRequest extends com.amazonaws.AmazonWebSe
      *        Default: A random, system-chosen Availability Zone.
      *        </p>
      *        <p>
-     *        Example: <code>us-east-1a</code>
+     *        Example: <code>us-east-2a</code>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

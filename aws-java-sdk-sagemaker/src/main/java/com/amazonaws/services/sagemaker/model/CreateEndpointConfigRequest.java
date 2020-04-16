@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -27,8 +27,7 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the endpoint configuration. You specify this name in a <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> request.
+     * The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      * </p>
      */
     private String endpointConfigName;
@@ -38,6 +37,8 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
      * </p>
      */
     private java.util.List<ProductionVariant> productionVariants;
+
+    private DataCaptureConfig dataCaptureConfig;
     /**
      * <p>
      * A list of key-value pairs. For more information, see <a
@@ -51,22 +52,55 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
      * The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on
      * the storage volume attached to the ML compute instance that hosts the endpoint.
      * </p>
+     * <p>
+     * The KmsKeyId can be any of the following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name: <code>alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateEndpoint</code>,
+     * <code>UpdateEndpoint</code> requests. For more information, refer to the AWS Key Management Service section<a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS KMS
+     * </a>
+     * </p>
      * <note>
      * <p>
-     * Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in the
-     * <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     * <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based
-     * instances, the call to <code>CreateEndpointConfig</code> fails.
+     * Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are
+     * encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code> when using an
+     * instance type with local storage. If any of the models that you specify in the <code>ProductionVariants</code>
+     * parameter use nitro-based instances with local storage, do not specify a value for the <code>KmsKeyId</code>
+     * parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based instances with local
+     * storage, the call to <code>CreateEndpointConfig</code> fails.
      * </p>
      * <p>
-     * For a list of nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     * For a list of instance types that support local instance storage, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes">Instance
+     * Store Volumes</a>.
      * </p>
      * <p>
-     * For more information about storage volumes on nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on Linux
-     * Instances</a>.
+     * For more information about local instance storage encryption, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     * Volumes</a>.
      * </p>
      * </note>
      */
@@ -74,13 +108,11 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the endpoint configuration. You specify this name in a <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> request.
+     * The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      * </p>
      * 
      * @param endpointConfigName
-     *        The name of the endpoint configuration. You specify this name in a <a
-     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> request.
+     *        The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      */
 
     public void setEndpointConfigName(String endpointConfigName) {
@@ -89,13 +121,10 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the endpoint configuration. You specify this name in a <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> request.
+     * The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      * </p>
      * 
-     * @return The name of the endpoint configuration. You specify this name in a <a
-     *         href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a>
-     *         request.
+     * @return The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      */
 
     public String getEndpointConfigName() {
@@ -104,13 +133,11 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
 
     /**
      * <p>
-     * The name of the endpoint configuration. You specify this name in a <a
-     * href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> request.
+     * The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      * </p>
      * 
      * @param endpointConfigName
-     *        The name of the endpoint configuration. You specify this name in a <a
-     *        href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html">CreateEndpoint</a> request.
+     *        The name of the endpoint configuration. You specify this name in a <a>CreateEndpoint</a> request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 
@@ -190,6 +217,32 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
 
     public CreateEndpointConfigRequest withProductionVariants(java.util.Collection<ProductionVariant> productionVariants) {
         setProductionVariants(productionVariants);
+        return this;
+    }
+
+    /**
+     * @param dataCaptureConfig
+     */
+
+    public void setDataCaptureConfig(DataCaptureConfig dataCaptureConfig) {
+        this.dataCaptureConfig = dataCaptureConfig;
+    }
+
+    /**
+     * @return
+     */
+
+    public DataCaptureConfig getDataCaptureConfig() {
+        return this.dataCaptureConfig;
+    }
+
+    /**
+     * @param dataCaptureConfig
+     * @return Returns a reference to this object so that method calls can be chained together.
+     */
+
+    public CreateEndpointConfigRequest withDataCaptureConfig(DataCaptureConfig dataCaptureConfig) {
+        setDataCaptureConfig(dataCaptureConfig);
         return this;
     }
 
@@ -284,43 +337,111 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
      * The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on
      * the storage volume attached to the ML compute instance that hosts the endpoint.
      * </p>
+     * <p>
+     * The KmsKeyId can be any of the following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name: <code>alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateEndpoint</code>,
+     * <code>UpdateEndpoint</code> requests. For more information, refer to the AWS Key Management Service section<a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS KMS
+     * </a>
+     * </p>
      * <note>
      * <p>
-     * Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in the
-     * <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     * <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based
-     * instances, the call to <code>CreateEndpointConfig</code> fails.
+     * Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are
+     * encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code> when using an
+     * instance type with local storage. If any of the models that you specify in the <code>ProductionVariants</code>
+     * parameter use nitro-based instances with local storage, do not specify a value for the <code>KmsKeyId</code>
+     * parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based instances with local
+     * storage, the call to <code>CreateEndpointConfig</code> fails.
      * </p>
      * <p>
-     * For a list of nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     * For a list of instance types that support local instance storage, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes">Instance
+     * Store Volumes</a>.
      * </p>
      * <p>
-     * For more information about storage volumes on nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on Linux
-     * Instances</a>.
+     * For more information about local instance storage encryption, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     * Volumes</a>.
      * </p>
      * </note>
      * 
      * @param kmsKeyId
      *        The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt
-     *        data on the storage volume attached to the ML compute instance that hosts the endpoint.</p> <note>
+     *        data on the storage volume attached to the ML compute instance that hosts the endpoint.</p>
      *        <p>
-     *        Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in the
-     *        <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     *        <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any
-     *        nitro-based instances, the call to <code>CreateEndpointConfig</code> fails.
+     *        The KmsKeyId can be any of the following formats:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Alias name: <code>alias/ExampleAlias</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The KMS key policy must grant permission to the IAM role that you specify in your
+     *        <code>CreateEndpoint</code>, <code>UpdateEndpoint</code> requests. For more information, refer to the AWS
+     *        Key Management Service section<a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS
+     *        KMS </a>
+     *        </p>
+     *        <note>
+     *        <p>
+     *        Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes
+     *        are encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code> when
+     *        using an instance type with local storage. If any of the models that you specify in the
+     *        <code>ProductionVariants</code> parameter use nitro-based instances with local storage, do not specify a
+     *        value for the <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using
+     *        any nitro-based instances with local storage, the call to <code>CreateEndpointConfig</code> fails.
      *        </p>
      *        <p>
-     *        For a list of nitro-based instances, see <a
-     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
-     *        >Nitro-based Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     *        For a list of instance types that support local instance storage, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes"
+     *        >Instance Store Volumes</a>.
      *        </p>
      *        <p>
-     *        For more information about storage volumes on nitro-based instances, see <a
-     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on
-     *        Linux Instances</a>.
+     *        For more information about local instance storage encryption, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     *        Volumes</a>.
      *        </p>
      */
 
@@ -333,42 +454,110 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
      * The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on
      * the storage volume attached to the ML compute instance that hosts the endpoint.
      * </p>
+     * <p>
+     * The KmsKeyId can be any of the following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name: <code>alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateEndpoint</code>,
+     * <code>UpdateEndpoint</code> requests. For more information, refer to the AWS Key Management Service section<a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS KMS
+     * </a>
+     * </p>
      * <note>
      * <p>
-     * Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in the
-     * <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     * <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based
-     * instances, the call to <code>CreateEndpointConfig</code> fails.
+     * Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are
+     * encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code> when using an
+     * instance type with local storage. If any of the models that you specify in the <code>ProductionVariants</code>
+     * parameter use nitro-based instances with local storage, do not specify a value for the <code>KmsKeyId</code>
+     * parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based instances with local
+     * storage, the call to <code>CreateEndpointConfig</code> fails.
      * </p>
      * <p>
-     * For a list of nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     * For a list of instance types that support local instance storage, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes">Instance
+     * Store Volumes</a>.
      * </p>
      * <p>
-     * For more information about storage volumes on nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on Linux
-     * Instances</a>.
+     * For more information about local instance storage encryption, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     * Volumes</a>.
      * </p>
      * </note>
      * 
      * @return The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt
-     *         data on the storage volume attached to the ML compute instance that hosts the endpoint.</p> <note>
+     *         data on the storage volume attached to the ML compute instance that hosts the endpoint.</p>
      *         <p>
-     *         Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in
-     *         the <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     *         <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any
-     *         nitro-based instances, the call to <code>CreateEndpointConfig</code> fails.
+     *         The KmsKeyId can be any of the following formats:
+     *         </p>
+     *         <ul>
+     *         <li>
+     *         <p>
+     *         Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Alias name: <code>alias/ExampleAlias</code>
+     *         </p>
+     *         </li>
+     *         <li>
+     *         <p>
+     *         Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     *         </p>
+     *         </li>
+     *         </ul>
+     *         <p>
+     *         The KMS key policy must grant permission to the IAM role that you specify in your
+     *         <code>CreateEndpoint</code>, <code>UpdateEndpoint</code> requests. For more information, refer to the AWS
+     *         Key Management Service section<a
+     *         href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS
+     *         KMS </a>
+     *         </p>
+     *         <note>
+     *         <p>
+     *         Certain Nitro-based instances include local storage, dependent on the instance type. Local storage
+     *         volumes are encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code>
+     *         when using an instance type with local storage. If any of the models that you specify in the
+     *         <code>ProductionVariants</code> parameter use nitro-based instances with local storage, do not specify a
+     *         value for the <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when
+     *         using any nitro-based instances with local storage, the call to <code>CreateEndpointConfig</code> fails.
      *         </p>
      *         <p>
-     *         For a list of nitro-based instances, see <a
-     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
-     *         >Nitro-based Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     *         For a list of instance types that support local instance storage, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes"
+     *         >Instance Store Volumes</a>.
      *         </p>
      *         <p>
-     *         For more information about storage volumes on nitro-based instances, see <a
-     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on
-     *         Linux Instances</a>.
+     *         For more information about local instance storage encryption, see <a
+     *         href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     *         Volumes</a>.
      *         </p>
      */
 
@@ -381,43 +570,111 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
      * The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on
      * the storage volume attached to the ML compute instance that hosts the endpoint.
      * </p>
+     * <p>
+     * The KmsKeyId can be any of the following formats:
+     * </p>
+     * <ul>
+     * <li>
+     * <p>
+     * Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name: <code>alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * <li>
+     * <p>
+     * Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     * </p>
+     * </li>
+     * </ul>
+     * <p>
+     * The KMS key policy must grant permission to the IAM role that you specify in your <code>CreateEndpoint</code>,
+     * <code>UpdateEndpoint</code> requests. For more information, refer to the AWS Key Management Service section<a
+     * href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS KMS
+     * </a>
+     * </p>
      * <note>
      * <p>
-     * Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in the
-     * <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     * <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based
-     * instances, the call to <code>CreateEndpointConfig</code> fails.
+     * Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes are
+     * encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code> when using an
+     * instance type with local storage. If any of the models that you specify in the <code>ProductionVariants</code>
+     * parameter use nitro-based instances with local storage, do not specify a value for the <code>KmsKeyId</code>
+     * parameter. If you specify a value for <code>KmsKeyId</code> when using any nitro-based instances with local
+     * storage, the call to <code>CreateEndpointConfig</code> fails.
      * </p>
      * <p>
-     * For a list of nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances">Nitro-based
-     * Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     * For a list of instance types that support local instance storage, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes">Instance
+     * Store Volumes</a>.
      * </p>
      * <p>
-     * For more information about storage volumes on nitro-based instances, see <a
-     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on Linux
-     * Instances</a>.
+     * For more information about local instance storage encryption, see <a
+     * href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     * Volumes</a>.
      * </p>
      * </note>
      * 
      * @param kmsKeyId
      *        The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt
-     *        data on the storage volume attached to the ML compute instance that hosts the endpoint.</p> <note>
+     *        data on the storage volume attached to the ML compute instance that hosts the endpoint.</p>
      *        <p>
-     *        Nitro-based instances do not support encryption with AWS KMS. If any of the models that you specify in the
-     *        <code>ProductionVariants</code> parameter use nitro-based instances, do not specify a value for the
-     *        <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using any
-     *        nitro-based instances, the call to <code>CreateEndpointConfig</code> fails.
+     *        The KmsKeyId can be any of the following formats:
+     *        </p>
+     *        <ul>
+     *        <li>
+     *        <p>
+     *        Key ID: <code>1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Key ARN: <code>arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Alias name: <code>alias/ExampleAlias</code>
+     *        </p>
+     *        </li>
+     *        <li>
+     *        <p>
+     *        Alias name ARN: <code>arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias</code>
+     *        </p>
+     *        </li>
+     *        </ul>
+     *        <p>
+     *        The KMS key policy must grant permission to the IAM role that you specify in your
+     *        <code>CreateEndpoint</code>, <code>UpdateEndpoint</code> requests. For more information, refer to the AWS
+     *        Key Management Service section<a
+     *        href="https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html"> Using Key Policies in AWS
+     *        KMS </a>
+     *        </p>
+     *        <note>
+     *        <p>
+     *        Certain Nitro-based instances include local storage, dependent on the instance type. Local storage volumes
+     *        are encrypted using a hardware module on the instance. You can't request a <code>KmsKeyId</code> when
+     *        using an instance type with local storage. If any of the models that you specify in the
+     *        <code>ProductionVariants</code> parameter use nitro-based instances with local storage, do not specify a
+     *        value for the <code>KmsKeyId</code> parameter. If you specify a value for <code>KmsKeyId</code> when using
+     *        any nitro-based instances with local storage, the call to <code>CreateEndpointConfig</code> fails.
      *        </p>
      *        <p>
-     *        For a list of nitro-based instances, see <a
-     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances"
-     *        >Nitro-based Instances</a> in the <i>Amazon Elastic Compute Cloud User Guide for Linux Instances</i>.
+     *        For a list of instance types that support local instance storage, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes"
+     *        >Instance Store Volumes</a>.
      *        </p>
      *        <p>
-     *        For more information about storage volumes on nitro-based instances, see <a
-     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/nvme-ebs-volumes.html">Amazon EBS and NVMe on
-     *        Linux Instances</a>.
+     *        For more information about local instance storage encryption, see <a
+     *        href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html">SSD Instance Store
+     *        Volumes</a>.
      *        </p>
      * @return Returns a reference to this object so that method calls can be chained together.
      */
@@ -443,6 +700,8 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
             sb.append("EndpointConfigName: ").append(getEndpointConfigName()).append(",");
         if (getProductionVariants() != null)
             sb.append("ProductionVariants: ").append(getProductionVariants()).append(",");
+        if (getDataCaptureConfig() != null)
+            sb.append("DataCaptureConfig: ").append(getDataCaptureConfig()).append(",");
         if (getTags() != null)
             sb.append("Tags: ").append(getTags()).append(",");
         if (getKmsKeyId() != null)
@@ -469,6 +728,10 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
             return false;
         if (other.getProductionVariants() != null && other.getProductionVariants().equals(this.getProductionVariants()) == false)
             return false;
+        if (other.getDataCaptureConfig() == null ^ this.getDataCaptureConfig() == null)
+            return false;
+        if (other.getDataCaptureConfig() != null && other.getDataCaptureConfig().equals(this.getDataCaptureConfig()) == false)
+            return false;
         if (other.getTags() == null ^ this.getTags() == null)
             return false;
         if (other.getTags() != null && other.getTags().equals(this.getTags()) == false)
@@ -487,6 +750,7 @@ public class CreateEndpointConfigRequest extends com.amazonaws.AmazonWebServiceR
 
         hashCode = prime * hashCode + ((getEndpointConfigName() == null) ? 0 : getEndpointConfigName().hashCode());
         hashCode = prime * hashCode + ((getProductionVariants() == null) ? 0 : getProductionVariants().hashCode());
+        hashCode = prime * hashCode + ((getDataCaptureConfig() == null) ? 0 : getDataCaptureConfig().hashCode());
         hashCode = prime * hashCode + ((getTags() == null) ? 0 : getTags().hashCode());
         hashCode = prime * hashCode + ((getKmsKeyId() == null) ? 0 : getKmsKeyId().hashCode());
         return hashCode;

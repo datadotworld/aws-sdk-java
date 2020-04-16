@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -105,8 +105,12 @@ public class GetRelationalDatabaseLogEventsRequest extends com.amazonaws.AmazonW
     private Boolean startFromHead;
     /**
      * <p>
-     * A token used for advancing to a specific page of results for your <code>get relational database log events</code>
-     * request.
+     * The token to advance to the next or previous page of results from your request.
+     * </p>
+     * <p>
+     * To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward token that you can specify as the
+     * page token in a subsequent request.
      * </p>
      */
     private String pageToken;
@@ -611,13 +615,20 @@ public class GetRelationalDatabaseLogEventsRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * A token used for advancing to a specific page of results for your <code>get relational database log events</code>
-     * request.
+     * The token to advance to the next or previous page of results from your request.
+     * </p>
+     * <p>
+     * To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward token that you can specify as the
+     * page token in a subsequent request.
      * </p>
      * 
      * @param pageToken
-     *        A token used for advancing to a specific page of results for your
-     *        <code>get relational database log events</code> request.
+     *        The token to advance to the next or previous page of results from your request.</p>
+     *        <p>
+     *        To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your
+     *        results are paginated, the response will return a next forward token and/or next backward token that you
+     *        can specify as the page token in a subsequent request.
      */
 
     public void setPageToken(String pageToken) {
@@ -626,12 +637,19 @@ public class GetRelationalDatabaseLogEventsRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * A token used for advancing to a specific page of results for your <code>get relational database log events</code>
-     * request.
+     * The token to advance to the next or previous page of results from your request.
+     * </p>
+     * <p>
+     * To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward token that you can specify as the
+     * page token in a subsequent request.
      * </p>
      * 
-     * @return A token used for advancing to a specific page of results for your
-     *         <code>get relational database log events</code> request.
+     * @return The token to advance to the next or previous page of results from your request.</p>
+     *         <p>
+     *         To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your
+     *         results are paginated, the response will return a next forward token and/or next backward token that you
+     *         can specify as the page token in a subsequent request.
      */
 
     public String getPageToken() {
@@ -640,13 +658,20 @@ public class GetRelationalDatabaseLogEventsRequest extends com.amazonaws.AmazonW
 
     /**
      * <p>
-     * A token used for advancing to a specific page of results for your <code>get relational database log events</code>
-     * request.
+     * The token to advance to the next or previous page of results from your request.
+     * </p>
+     * <p>
+     * To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your results are
+     * paginated, the response will return a next forward token and/or next backward token that you can specify as the
+     * page token in a subsequent request.
      * </p>
      * 
      * @param pageToken
-     *        A token used for advancing to a specific page of results for your
-     *        <code>get relational database log events</code> request.
+     *        The token to advance to the next or previous page of results from your request.</p>
+     *        <p>
+     *        To get a page token, perform an initial <code>GetRelationalDatabaseLogEvents</code> request. If your
+     *        results are paginated, the response will return a next forward token and/or next backward token that you
+     *        can specify as the page token in a subsequent request.
      * @return Returns a reference to this object so that method calls can be chained together.
      */
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -497,6 +497,56 @@ public interface AmazonManagedBlockchain {
      *      target="_top">AWS API Documentation</a>
      */
     RejectInvitationResult rejectInvitation(RejectInvitationRequest rejectInvitationRequest);
+
+    /**
+     * <p>
+     * Updates a member configuration with new parameters.
+     * </p>
+     * 
+     * @param updateMemberRequest
+     * @return Result of the UpdateMember operation returned by the service.
+     * @throws InvalidRequestException
+     *         The action or operation requested is invalid. Verify that the action is typed correctly.
+     * @throws AccessDeniedException
+     *         You do not have sufficient access to perform this action.
+     * @throws ResourceNotFoundException
+     *         A requested resource does not exist on the network. It may have been deleted or referenced inaccurately.
+     * @throws ThrottlingException
+     *         The request or operation could not be performed because a service is throttling requests. The most common
+     *         source of throttling errors is launching EC2 instances such that your service limit for EC2 instances is
+     *         exceeded. Request a limit increase or delete unused resources if possible.
+     * @throws InternalServiceErrorException
+     *         The request processing has failed because of an unknown error, exception or failure.
+     * @sample AmazonManagedBlockchain.UpdateMember
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/UpdateMember" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateMemberResult updateMember(UpdateMemberRequest updateMemberRequest);
+
+    /**
+     * <p>
+     * Updates a node configuration with new parameters.
+     * </p>
+     * 
+     * @param updateNodeRequest
+     * @return Result of the UpdateNode operation returned by the service.
+     * @throws InvalidRequestException
+     *         The action or operation requested is invalid. Verify that the action is typed correctly.
+     * @throws AccessDeniedException
+     *         You do not have sufficient access to perform this action.
+     * @throws ResourceNotFoundException
+     *         A requested resource does not exist on the network. It may have been deleted or referenced inaccurately.
+     * @throws ThrottlingException
+     *         The request or operation could not be performed because a service is throttling requests. The most common
+     *         source of throttling errors is launching EC2 instances such that your service limit for EC2 instances is
+     *         exceeded. Request a limit increase or delete unused resources if possible.
+     * @throws InternalServiceErrorException
+     *         The request processing has failed because of an unknown error, exception or failure.
+     * @sample AmazonManagedBlockchain.UpdateNode
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24/UpdateNode" target="_top">AWS
+     *      API Documentation</a>
+     */
+    UpdateNodeResult updateNode(UpdateNodeRequest updateNodeRequest);
 
     /**
      * <p>

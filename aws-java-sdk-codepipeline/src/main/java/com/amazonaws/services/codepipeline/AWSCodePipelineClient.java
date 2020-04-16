@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2015-2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with
  * the License. A copy of the License is located at
@@ -116,6 +116,11 @@ import com.amazonaws.services.codepipeline.model.transform.*;
  * <li>
  * <p>
  * <a>StartPipelineExecution</a>, which runs the most recent revision of an artifact through the pipeline.
+ * </p>
+ * </li>
+ * <li>
+ * <p>
+ * <a>StopPipelineExecution</a>, which stops the specified pipeline execution from continuing through the pipeline.
  * </p>
  * </li>
  * <li>
@@ -307,6 +312,9 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
                             new JsonErrorShapeMetadata().withErrorCode("InvalidWebhookFilterPatternException").withExceptionUnmarshaller(
                                     com.amazonaws.services.codepipeline.model.transform.InvalidWebhookFilterPatternExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("OutputVariablesSizeExceededException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codepipeline.model.transform.OutputVariablesSizeExceededExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidWebhookAuthenticationParametersException").withExceptionUnmarshaller(
                                     com.amazonaws.services.codepipeline.model.transform.InvalidWebhookAuthenticationParametersExceptionUnmarshaller
                                             .getInstance()))
@@ -359,6 +367,9 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
                             new JsonErrorShapeMetadata().withErrorCode("InvalidStructureException").withExceptionUnmarshaller(
                                     com.amazonaws.services.codepipeline.model.transform.InvalidStructureExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("DuplicatedStopRequestException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codepipeline.model.transform.DuplicatedStopRequestExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("InvalidBlockerDeclarationException").withExceptionUnmarshaller(
                                     com.amazonaws.services.codepipeline.model.transform.InvalidBlockerDeclarationExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
@@ -382,6 +393,9 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("JobNotFoundException").withExceptionUnmarshaller(
                                     com.amazonaws.services.codepipeline.model.transform.JobNotFoundExceptionUnmarshaller.getInstance()))
+                    .addErrorMetadata(
+                            new JsonErrorShapeMetadata().withErrorCode("PipelineExecutionNotStoppableException").withExceptionUnmarshaller(
+                                    com.amazonaws.services.codepipeline.model.transform.PipelineExecutionNotStoppableExceptionUnmarshaller.getInstance()))
                     .addErrorMetadata(
                             new JsonErrorShapeMetadata().withErrorCode("NotLatestPipelineExecutionException").withExceptionUnmarshaller(
                                     com.amazonaws.services.codepipeline.model.transform.NotLatestPipelineExecutionExceptionUnmarshaller.getInstance()))
@@ -1234,9 +1248,9 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
      * </p>
      * <important>
      * <p>
-     * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
-     * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
-     * This API also returns any secret values defined for the action.
+     * When this API is called, AWS CodePipeline returns temporary credentials for the S3 bucket used to store artifacts
+     * for the pipeline, if the action requires access to that S3 bucket for input or output artifacts. This API also
+     * returns any secret values defined for the action.
      * </p>
      * </important>
      * 
@@ -1487,9 +1501,9 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
      * </p>
      * <important>
      * <p>
-     * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
-     * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
-     * This API also returns any secret values defined for the action.
+     * When this API is called, AWS CodePipeline returns temporary credentials for the S3 bucket used to store artifacts
+     * for the pipeline, if the action requires access to that S3 bucket for input or output artifacts. This API also
+     * returns any secret values defined for the action.
      * </p>
      * </important>
      * 
@@ -1924,9 +1938,9 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
      * </p>
      * <important>
      * <p>
-     * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
-     * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
-     * This API also returns any secret values defined for the action.
+     * When this API is called, AWS CodePipeline returns temporary credentials for the S3 bucket used to store artifacts
+     * for the pipeline, if the action requires access to that S3 bucket for input or output artifacts. This API also
+     * returns any secret values defined for the action.
      * </p>
      * </important>
      * 
@@ -1989,8 +2003,8 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
      * </p>
      * <important>
      * <p>
-     * When this API is called, AWS CodePipeline returns temporary credentials for the Amazon S3 bucket used to store
-     * artifacts for the pipeline, if the action requires access to that Amazon S3 bucket for input or output artifacts.
+     * When this API is called, AWS CodePipeline returns temporary credentials for the S3 bucket used to store artifacts
+     * for the pipeline, if the action requires access to that S3 bucket for input or output artifacts.
      * </p>
      * </important>
      * 
@@ -2251,6 +2265,8 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
      *         The job was specified in an invalid format or cannot be found.
      * @throws InvalidJobStateException
      *         The job state was specified in an invalid format.
+     * @throws OutputVariablesSizeExceededException
+     *         Exceeded the total size limit for all variables in the pipeline.
      * @sample AWSCodePipeline.PutJobSuccessResult
      * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/PutJobSuccessResult"
      *      target="_top">AWS API Documentation</a>
@@ -2678,6 +2694,75 @@ public class AWSCodePipelineClient extends AmazonWebServiceClient implements AWS
             HttpResponseHandler<AmazonWebServiceResponse<StartPipelineExecutionResult>> responseHandler = protocolFactory.createResponseHandler(
                     new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                     new StartPipelineExecutionResultJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getAwsResponse();
+
+        } finally {
+
+            endClientExecution(awsRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * <p>
+     * Stops the specified pipeline execution. You choose to either stop the pipeline execution by completing
+     * in-progress actions without starting subsequent actions, or by abandoning in-progress actions. While completing
+     * or abandoning in-progress actions, the pipeline execution is in a <code>Stopping</code> state. After all
+     * in-progress actions are completed or abandoned, the pipeline execution is in a <code>Stopped</code> state.
+     * </p>
+     * 
+     * @param stopPipelineExecutionRequest
+     * @return Result of the StopPipelineExecution operation returned by the service.
+     * @throws ValidationException
+     *         The validation was specified in an invalid format.
+     * @throws PipelineNotFoundException
+     *         The pipeline was specified in an invalid format or cannot be found.
+     * @throws PipelineExecutionNotStoppableException
+     *         Unable to stop the pipeline execution. The execution might already be in a <code>Stopped</code> state, or
+     *         it might no longer be in progress.
+     * @throws DuplicatedStopRequestException
+     *         The pipeline execution is already in a <code>Stopping</code> state. If you already chose to stop and
+     *         wait, you cannot make that request again. You can choose to stop and abandon now, but be aware that this
+     *         option can lead to failed tasks or out of sequence tasks. If you already chose to stop and abandon, you
+     *         cannot make that request again.
+     * @sample AWSCodePipeline.StopPipelineExecution
+     * @see <a href="http://docs.aws.amazon.com/goto/WebAPI/codepipeline-2015-07-09/StopPipelineExecution"
+     *      target="_top">AWS API Documentation</a>
+     */
+    @Override
+    public StopPipelineExecutionResult stopPipelineExecution(StopPipelineExecutionRequest request) {
+        request = beforeClientExecution(request);
+        return executeStopPipelineExecution(request);
+    }
+
+    @SdkInternalApi
+    final StopPipelineExecutionResult executeStopPipelineExecution(StopPipelineExecutionRequest stopPipelineExecutionRequest) {
+
+        ExecutionContext executionContext = createExecutionContext(stopPipelineExecutionRequest);
+        AWSRequestMetrics awsRequestMetrics = executionContext.getAwsRequestMetrics();
+        awsRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<StopPipelineExecutionRequest> request = null;
+        Response<StopPipelineExecutionResult> response = null;
+
+        try {
+            awsRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new StopPipelineExecutionRequestProtocolMarshaller(protocolFactory).marshall(super.beforeMarshalling(stopPipelineExecutionRequest));
+                // Binds the request metrics to the current request.
+                request.setAWSRequestMetrics(awsRequestMetrics);
+                request.addHandlerContext(HandlerContextKey.SIGNING_REGION, getSigningRegion());
+                request.addHandlerContext(HandlerContextKey.SERVICE_ID, "CodePipeline");
+                request.addHandlerContext(HandlerContextKey.OPERATION_NAME, "StopPipelineExecution");
+                request.addHandlerContext(HandlerContextKey.ADVANCED_CONFIG, advancedConfig);
+
+            } finally {
+                awsRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<AmazonWebServiceResponse<StopPipelineExecutionResult>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new StopPipelineExecutionResultJsonUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getAwsResponse();
