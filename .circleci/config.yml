@@ -101,7 +101,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - dw-master
+                - dw-main
 
   build-test-deploy:
     jobs:
@@ -109,4 +109,4 @@ workflows:
           filters:
             branches:
               only:
-                - dw-master
+                - dw-main
