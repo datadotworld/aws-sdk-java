@@ -11,7 +11,7 @@ CIRCLE_TOKEN=${1:-}
 
 ACCOUNT=datadotworld
 PROJECT=aws-sdk-java
-BRANCH=dw-main
+BRANCH=main
 
 if [[ -z "${CIRCLE_TOKEN}" ]]; then
   echo "usage: $0 <CIRCLECI_API_TOKEN>"
