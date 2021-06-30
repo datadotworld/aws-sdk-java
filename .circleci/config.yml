@@ -53,7 +53,7 @@ jobs:
       - store_test_results:
           path: /tmp/circleci-test-results
 
-  master_build:
+  main_build:
     <<: *defaults
     steps:
       - checkout
@@ -101,12 +101,12 @@ workflows:
           filters:
             branches:
               ignore:
-                - dw-master
+                - main
 
   build-test-deploy:
     jobs:
-      - master_build:
+      - main_build:
           filters:
             branches:
               only:
-                - dw-master
+                - main
